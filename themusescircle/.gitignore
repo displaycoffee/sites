@@ -16,7 +16,7 @@ wp-content/*
 
 # Plugins
 wp-content/plugins/*
-!wp-content/plugins/custom-stuff/
+!wp-content/plugins/owl-post/
 
 # Themes
 wp-content/themes/*

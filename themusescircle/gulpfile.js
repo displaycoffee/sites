@@ -11,10 +11,10 @@ var browserSync = require('browser-sync').create(),
 /* Global Variables
    ---------------------------------------------- */
 
-var wpFolder = 'themes';
-var dirName = 'themusescircle';
-// var wpFolder = 'plugins';
-// var dirName = 'custom-stuff';
+// var wpFolder = 'themes';
+// var dirName = 'themusescircle';
+var wpFolder = 'plugins';
+var dirName = 'owl-post';
 var proxyURL = 'http://localhost/sites/themusescircle';
 
 /* Development Variables
@@ -46,7 +46,7 @@ if (dirName == 'themusescircle') {
 		devJS + '/navigation-links.js',
 		devJS + '/run-functions.js'
 	];
-} else if (dirName == 'custom-stuff') {
+} else if (dirName == 'owl-post') {
 	var jsSources = [	
 		devJS + '/image-reset.js',
 		devJS + '/media-library.js',

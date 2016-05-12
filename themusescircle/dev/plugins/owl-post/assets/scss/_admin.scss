@@ -1,0 +1,306 @@
+/* Post, Add Term, Edit Term, and Option styles for meta fields
+========================================================================== */
+
+.opc-post-meta, .opc-term-meta, .opc-options {
+	textarea {
+		height: 200px;
+	}
+	.options {
+		margin: 0 -10px;
+		& > div {
+			@include inline-block(top);
+			box-sizing: border-box;	
+			padding: 0 10px;
+			&.radio, &.check {
+				label, input[type='radio'], input[type='checkbox'] {
+					@include inline-block(middle);
+				}
+				label {
+					margin: 0 0 0 10px;
+				}
+				input[type='radio'], input[type='checkbox'] {
+					margin: 0;
+				}
+			}
+		}
+		& .text, & .check {
+			margin: 2px 0 5px;
+		}
+		& .text label {
+			display: block;
+			font-weight: bold;
+			margin: 0 0 5px 0;
+		}		
+	}
+	.wp-picker-container, .current-color {
+		@include inline-block(middle);
+	}
+	.wp-picker-container {
+		position: relative;
+		.wp-color-result {
+			margin: 0;
+		}
+		.wp-picker-input-wrap {
+			input[type='text'] {
+				width: 65px;
+				margin: 0 0 0 10px;
+			}
+			input[type='button'] {
+				width: 61px;							
+			}
+		}
+		.wp-picker-holder {
+			position: absolute;
+			top: 25px;
+			left: 0;
+			z-index: 20;
+		}
+		.wp-picker-open + .wp-picker-input-wrap input[type='text'] {
+			display: inline-block !important;
+		}
+	}	
+	.current-color {
+		height: 24px;
+		line-height: 24px;
+		margin: 0 0 0 10px;
+	}
+	.media-field {
+		.image-preview {
+			&, strong {
+				margin: 2px 0 5px 0;
+			}
+			strong {
+				display: block;
+			}
+			img {
+				max-width: 100%;
+				max-height: 250px;
+			}
+		}
+		.image-select {
+			margin: 5px 0;
+		}
+		.image-reset {
+			margin: 5px 0 5px 5px;
+		}
+	}
+	@include respond(782) {
+		.wp-picker-container .wp-picker-input-wrap {
+			input[type='text'] {
+				padding: 3px 5px;
+			}
+			input[type='button'] {
+			    height: 24px;
+			    line-height: 22px;
+			    padding: 0 8px 1px;
+			    font-size: 11px;
+			    margin: 0 0 0 6px;
+			}
+		}
+		.current-color {
+			display: block;
+			margin: 2px 0 5px 0;			
+		}
+		.media-field {
+			.image-select, .image-reset {
+				width: 100%;
+				margin: 5px 0;
+			}
+			.image-preview img {
+				max-height: 200px;
+			}			
+		}
+	}
+}
+
+/* Date Picker
+========================================================================== */
+
+#ui-datepicker-div {
+	background: #fff;
+	padding: 5px;
+	margin: 5px 0 0 0;
+	border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	.ui-datepicker-header {
+		position: relative;
+		background: #0085ba;
+		border: 1px solid #006799;
+		box-shadow: 0 1px 0 #006799;
+		color: #fff;
+		text-decoration: none;
+		text-shadow: 0 -1px 1px #006799,1px 0 1px #006799,0 1px 1px #006799,-1px 0 1px #006799;
+		padding: 5px;
+		.ui-datepicker-prev, .ui-datepicker-next {
+			cursor: pointer;
+			position: absolute;
+			top: 5px;
+			.ui-icon {
+				display: none;
+			}
+			&:before {
+				color: #fff;
+				display: inline-block;
+				font: 400 20px/1 dashicons;
+				speak: none;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				text-shadow: 0 -1px 1px #006799,1px 0 1px #006799,0 1px 1px #006799,-1px 0 1px #006799;
+			}
+		}
+		.ui-datepicker-prev {
+			left: 0;
+			&:before {
+				content: '\f141';
+			}
+		}
+		.ui-datepicker-next {
+			right: 0;
+			&:before {
+				content: '\f139';
+			}
+		}
+		.ui-datepicker-title {
+			padding: 0 30px;
+			text-align: center;
+		}
+	}
+	.ui-datepicker-calendar {
+		tr {
+			th, td {
+				width: 25px;
+				text-align: center;
+			}
+		}
+		tr th {
+			color: #23282d;
+			font-weight: 600;
+		}
+	}
+}
+
+/* Post styles for meta fields
+========================================================================== */
+
+.opc-post-meta {
+	.row {
+		margin: 0 0 20px 0;
+		&:last-child {
+			margin: 0;
+		}
+		.block01, .block02 {
+			@include inline-block(top);
+		}
+		.block01 {
+			width: 18%;
+			margin: 0 2% 0 0;
+			label {
+				font-weight: bold;
+				vertical-align: baseline;
+			}
+		}
+		.block02 {
+			width: 80%;
+			input[type='text'], input[type='url'], textarea, select {
+				width: 100%;
+			}
+			.wp-picker-input-wrap input[type='text'] {
+				width: 65px;
+			}
+			.options .text {
+				width: 25%;
+			}
+		}
+		@include respond(1100) {
+			.block02 .options .text {
+				width: 50%;
+			}
+		}
+		@include respond(782) {
+			.block01, .block02 {
+				width: 100%;
+			}
+			.block01 {
+				margin: 0 0 5px 0;
+			}
+			.block02 .wp-picker-container .wp-picker-input-wrap input[type='text'] {
+				width: 65px;
+			}
+		}
+		@include respond(600) {
+			.block02 .options .text {
+				width: 100%;
+			}
+		}					
+	}
+}
+
+/* Add Term, Edit Term, and Option styles for meta fields
+========================================================================== */
+
+.opc-term-meta, .opc-options {
+	#wp-opc-editor-wrap {
+		width: 95%;
+	}
+}
+
+/* Edit Term and Option styles for meta fields
+========================================================================== */
+
+.opc-term-meta td, .opc-options {
+	@include respond(782) {
+		#wp-opc-editor-wrap, input[type='url'] {
+			width: 100%;
+		}
+	}
+}
+
+/* Add Term and Edit Term for meta fields
+========================================================================== */
+
+.opc-term-meta .options .text input {
+	width: 100%;
+}
+
+/* Add Term styles for meta fields
+========================================================================== */
+
+div.opc-term-meta {
+	.options {
+		margin: 2px -10px; 
+		.text {
+			width: 47.5%;
+			input {
+				width: 100%;
+			}
+		}
+	}
+	@include respond(1100) {
+		.options .text {
+			width: 95%;
+		}
+	}
+	@include respond(600) {
+		.media-field {
+			.image-select, .image-reset {
+				width: 95%;
+			}			
+		}
+	}	
+}
+
+/* Edit Term for meta fields
+========================================================================== */
+
+.opc-term-meta td .options .text {
+	width: 23.75%;
+	@include respond(1100) {
+		width: 47.5%;
+	}
+	@include respond(782) {
+		width: 50%;
+	}
+	@include respond(600) {
+		width: 100%;
+	}
+}
