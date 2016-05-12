@@ -1,0 +1,23 @@
+/* WordPress specific classes - For posts/pages
+========================================================================== */
+
+.sticky {}
+
+.bypostauthor {}
+
+.wp-caption {}
+
+.wp-caption-text {}
+
+.gallery-caption {}
+
+.alignright {}
+
+.alignleft {}
+
+.aligncenter {}
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position :absolute !important;
+}

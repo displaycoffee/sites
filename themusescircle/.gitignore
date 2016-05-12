@@ -1,0 +1,23 @@
+# Files
+*.log
+.htaccess
+sitemap.xml
+sitemap.xml.gz
+/*.php
+/readme.html
+/license.txt
+
+# Folders
+wp-admin/
+wp-includes/
+wp-content/*
+!wp-content/plugins
+!wp-content/themes
+
+# Plugins
+wp-content/plugins/*
+!wp-content/plugins/custom-stuff/
+
+# Themes
+wp-content/themes/*
+!wp-content/themes/themusescircle/
