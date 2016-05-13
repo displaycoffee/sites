@@ -97,6 +97,21 @@ gulp.task('static', function() {
 		.pipe(gulp.dest(dist));
 });
 
+/* Owl Carousel
+   ---------------------------------------------- */
+
+gulp.task('owlJs', function() {
+	gulp.src(devJS + '/owl.carousel.min.js')
+		.pipe(gulp.dest(distJS));		
+});
+
+gulp.task('owlCSS', function() {
+	gulp.src(devSass + '/owl-post.scss')
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(autoprefixer())
+		.pipe(gulp.dest(distCSS));	
+});
+
 /* Watch All The Things
    ---------------------------------------------- */
 
@@ -109,9 +124,11 @@ gulp.task('watch', function() {
 	gulp.watch(devSass + '/*.scss', ['sass']);
 	gulp.watch(cssSources, ['css']);
 	gulp.watch(staticSources, ['static']);
+	gulp.watch(devJS + '/owl.carousel.min.js', ['owlJs']);
+	gulp.watch(devSass + '/owl-post.scss', ['owlCSS']);
 });
 
 /* Default Gulp Task
    ---------------------------------------------- */
 
-gulp.task('default', ['js', 'sass', 'css', 'static', 'watch']);
+gulp.task('default', ['js', 'sass', 'css', 'static', 'owlJs', 'owlCSS', 'watch']);
