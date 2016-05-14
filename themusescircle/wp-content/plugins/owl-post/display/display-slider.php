@@ -210,11 +210,7 @@
 					$script .= '</script>';
 
 					// Check if style tags are empty
-					if( $style != '<style></style>' ) {
-						$final_slider = $slider . $style . $script;
-					} else {
-						$final_slider = $slider . $script;
-					}					
+					$final_slider = $slider . $style . $script;					
 					return $final_slider;
 				}
 			}

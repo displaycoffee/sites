@@ -23,7 +23,7 @@
 			'labels'            => $labels,
 			'hierarchical'      => true,
 			'public'            => false,
-			'rewrite'           => true,
+			'rewrite'           => false,
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'show_in_nav_menus' => false,

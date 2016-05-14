@@ -26,6 +26,7 @@
 			'labels'              => $labels,
 			'description'         => __( 'Add Slider entries.', 'owl-post' ),	
 			'public'              => true,
+			'rewrite'             => false,
 			'menu_position'       => 6,
 			'menu_icon'           => 'dashicons-slides',
 			'supports'            => array( 'title', 'page-attributes' ),
@@ -43,5 +44,4 @@
 		
 		register_post_type( 'opc-slider', $args );
 	}
-
 	add_action( 'init', 'opc_create_slider', 0 );
