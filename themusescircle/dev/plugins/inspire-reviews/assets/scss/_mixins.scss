@@ -1,0 +1,12 @@
+// Mixins
+
+@mixin inline-block($vertical-align) {
+	display: inline-block;
+	vertical-align: $vertical-align;
+}
+
+@mixin respond($breakpoint) {
+	@media only screen and (max-width: $breakpoint + px) {
+		@content;
+	}
+}

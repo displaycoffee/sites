@@ -14,7 +14,8 @@ var browserSync = require('browser-sync').create(),
 // var wpFolder = 'themes';
 // var dirName = 'themusescircle';
 var wpFolder = 'plugins';
-var dirName = 'owl-post';
+// var dirName = 'owl-post';
+var dirName = 'inspire-reviews';
 var proxyURL = 'http://localhost/sites/themusescircle';
 
 /* Development Variables
@@ -45,7 +46,7 @@ if (dirName == 'themusescircle') {
 	var jsSources = [
 		devJS + '/run-functions.js'
 	];
-} else if (dirName == 'owl-post') {
+} else if (wpFolder == 'plugins') {
 	var jsSources = [	
 		devJS + '/image-reset.js',
 		devJS + '/media-library.js',
