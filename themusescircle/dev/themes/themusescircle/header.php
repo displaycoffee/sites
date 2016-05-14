@@ -32,26 +32,5 @@
 		<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 	</nav>
 	<?php get_search_form(); ?>
-	<div class="customizer-options">
-		<p>This is only here to show how customizer options work.</p>
-		<h2>Section 01</h2>
-		<p><?php echo esc_html( get_theme_mod( 'themusescircle_text', __( 'Default text field', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_url( get_theme_mod( 'themusescircle_url', __( 'http://www.wordpress.com', 'themusescircle' ) ) ); ?></p>
-		<?php echo wpautop( esc_html( get_theme_mod( 'themusescircle_textarea', __( 'Default textarea field', 'themusescircle' ) ) ) ); ?>
-		<p><?php echo esc_html( get_theme_mod( 'themusescircle_select', __( 'Option 01', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_html( get_theme_mod( 'themusescircle_radio', __( 'Yes', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_html( get_theme_mod( 'themusescircle_checkbox', __( '1', 'themusescircle' ) ) ); ?></p>
-		<h2>Section 02</h2>
-		<p><?php echo esc_html( get_theme_mod( 'themusescircle_date', __( '2017-01-01', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_html( get_theme_mod( 'themusescircle_page', __( '0', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_html( get_theme_mod( 'themusescircle_color', __( '#000000', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_url( get_theme_mod( 'themusescircle_file', __( 'No file selected.', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_url( get_theme_mod( 'themusescircle_image', __( 'No image selected.', 'themusescircle' ) ) ); ?></p>
-		<h2>Social Media Fields</h2>
-		<p><?php echo esc_url( get_theme_mod( 'themusescircle_facebook', __( 'http://www.facebook.com', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_url( get_theme_mod( 'themusescircle_gplus', __( 'http://www.google.com', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_url( get_theme_mod( 'themusescircle_linkedin', __( 'http://www.linkedin.com', 'themusescircle' ) ) ); ?></p>
-		<p><?php echo esc_url( get_theme_mod( 'themusescircle_twitter', __( 'http://www.twitter.com', 'themusescircle' ) ) ); ?></p>
-	</div>
 	<section class="content">
 		<div class="wrapper">		

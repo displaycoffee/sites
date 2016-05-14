@@ -37,15 +37,21 @@
 	    if( $atts['category'] ) {
 	    	// Query args
 			$args = array(
-				'post_type'	   => 'opc-slider',
-				'opc-category' => esc_attr( $atts['category'] ),
+				'post_type' => 'opc-slider',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'opc-category',
+						'field'    => 'slug',
+						'terms'    => esc_attr( $atts['category'] )
+					),
+				),
 			);
 			$query = new WP_Query( $args );		
 
 			// If the query has posts
 			if ( $query->have_posts() ) {
-				// Start slider section				
-				$slider = '<section id="opc-' . esc_attr( $atts['category'] ) . '" class="owl-carousel">';
+				// Start slider element				
+				$slider = '<div id="opc-' . esc_attr( $atts['category'] ) . '" class="owl-carousel">';
 
 				// While loop to query posts - for content and button
 				while ( $query->have_posts() ) {
@@ -100,13 +106,10 @@
 				}
 
 				// End slider section					
-				$slider .= '</section>';
+				$slider .= '</div>';
 
 				// Check if slider has content
-				if ( $slider != '<section id="opc-' . esc_attr( $atts['category'] ) . '" class="owl-carousel"></section>' ) {
-					// Display slider
-					echo $slider;				
-
+				if ( $slider != '<div id="opc-' . esc_attr( $atts['category'] ) . '" class="owl-carousel"></div>' ) {
 					// Get category meta
 					$term_args = get_term_by( 'slug', $atts['category'], 'opc-category' );
 					$term_id = $term_args->term_id;
@@ -189,11 +192,6 @@
 					// End slider styles
 					$style .= '</style>';
 
-					// Check if style tags are empty
-					if( $style != '<style></style>' ) {
-						echo $style;
-					}
-
 					// Being slider js
 					$script = '<script>';
 					$script .= 'jQuery(document).ready(function(){jQuery("#opc-' . esc_js( $atts['category'] ) . '").owlCarousel({';
@@ -210,9 +208,15 @@
 					$script .= rtrim( $script_options, ',' );
 					$script .= '})});';					
 					$script .= '</script>';
-					echo $script;
-				}
 
+					// Check if style tags are empty
+					if( $style != '<style></style>' ) {
+						$final_slider = $slider . $style . $script;
+					} else {
+						$final_slider = $slider . $script;
+					}					
+					return $final_slider;
+				}
 			}
 			wp_reset_postdata();
 		}
