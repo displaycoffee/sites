@@ -23,8 +23,8 @@
 		</div>
 		<nav class="navigation-links">
 			<ul>
-				<li class="prev"><?php previous_post_link( '%link', __( 'Previous: %title', 'themusescircle' ) ); ?></li>
-				<li class="next"><?php next_post_link( '%link', __( 'Next: %title', 'themusescircle' ) ); ?></li>					
+				<li class="prev"><?php previous_post_link( '%link', __( 'Previous: %title', 'themusescircle' ), TRUE ); ?></li>
+				<li class="next"><?php next_post_link( '%link', __( 'Next: %title', 'themusescircle' ), TRUE ); ?></li>					
 			</ul>
 		</nav>
 		<?php comments_template(); ?>
