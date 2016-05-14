@@ -46,17 +46,17 @@
 					),
 				),
 			);
-			$query = new WP_Query( $args );		
+			$opc_query = new WP_Query( $args );		
 
 			// If the query has posts
-			if ( $query->have_posts() ) {
+			if ( $opc_query->have_posts() ) {
 				// Start slider element				
 				$slider = '<div id="opc-' . esc_attr( $atts['category'] ) . '" class="owl-carousel">';
 
 				// While loop to query posts - for content and button
-				while ( $query->have_posts() ) {
+				while ( $opc_query->have_posts() ) {
 					// Query the post
-					$query->the_post();
+					$opc_query->the_post();
 					$postID = get_the_ID();
 
 					// Include variables
@@ -105,6 +105,9 @@
 					}
 				}
 
+				// Reset post data
+				wp_reset_postdata();
+
 				// End slider section					
 				$slider .= '</div>';
 
@@ -133,9 +136,9 @@
 					}
 
 					// While loop to query posts - for style block
-					while ( $query->have_posts() ) {					
+					while ( $opc_query->have_posts() ) {					
 						// Query the post
-						$query->the_post();
+						$opc_query->the_post();
 						$postID = get_the_ID();
 
 						// Include variables
@@ -189,6 +192,9 @@
 						$style .= $btn_style;
 					}
 
+					// Reset post data
+					wp_reset_postdata();
+
 					// End slider styles
 					$style .= '</style>';
 
@@ -213,8 +219,7 @@
 					$final_slider = $slider . $style . $script;					
 					return $final_slider;
 				}
-			}
-			wp_reset_postdata();
+			}			
 		}
 	}
 	add_shortcode( 'opc-slider', 'opc_display_slider' );
