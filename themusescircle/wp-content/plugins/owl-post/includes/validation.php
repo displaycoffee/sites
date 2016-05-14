@@ -24,6 +24,19 @@
 	    }
 	}
 
+	// Max width
+	function opc_sanitize_max_width_unit( $input ) {
+		// Get radio choices
+	    $choices = opc_max_width_unit_choices();
+
+	    // Check if choices are in array 
+	    foreach ( $choices as $choice ) {
+		   	if ( $choice['label'] == $input ) {
+		   		return $input;
+		    }
+	    }
+	}
+
 	// Hex color validation
     function opc_sanitize_hex( $input ) {
         if ( '' ===  $input ) {

@@ -5,7 +5,7 @@
 	// Create text styles
 	function opc_create_content_style( $color, $shadow, $postID, $selector ) {
 		if ( $color || $shadow ) {
-			$style = '#slide-' . $postID . ' ' . $selector . '{';
+			$style = '#opc-slide-' . $postID . ' .opc-content ' . $selector . '{';
 			$style .= $color ? 'color:' . esc_attr( $color ) . ';' : '';
 			$style .= ( $shadow == 1 ) ? 'text-shadow:2px 2px 2px #000;' : '';
 			$style .= '}';
@@ -65,7 +65,7 @@
 					// Create image area
 					$slide_image = '';
 					if ( $image_url ) {
-						$slide_image .= '<div class="image">';
+						$slide_image .= '<div class="opc-image">';
 						$slide_image .= '<img src="' . esc_url( $image_url ) . '"';
 						$slide_image .= ( $image_alt || $image_alt == '0' ) ? ' alt="' . esc_attr( $image_alt ) . '" title="' . esc_attr( $image_alt ) . '"' : '';
 						$slide_image .= ' />';
@@ -75,9 +75,9 @@
 					// Create content area
 					$slide_text = '';
 					if ( ( $header_content || $header_content == '0') || ( $subheader_content || $subheader_content == '0') || ( $normaltext_content || $normaltext_content == '0' ) ) {						
-						$slide_text .= '<div class="content">';
-						$slide_text .= ( $header_content || $header_content == '0' ) ? '<h2>' . esc_html( $header_content ) . '</h2>' : '';
-						$slide_text .= ( $subheader_content || $subheader_content == '0' ) ? '<h3>' . esc_html( $subheader_content ) . '</h3>' : '';
+						$slide_text .= '<div class="opc-content">';
+						$slide_text .= ( $header_content || $header_content == '0' ) ? '<h3>' . esc_html( $header_content ) . '</h3>' : '';
+						$slide_text .= ( $subheader_content || $subheader_content == '0' ) ? '<h4>' . esc_html( $subheader_content ) . '</h4>' : '';
 						$slide_text .= ( $normaltext_content || $normaltext_content == '0' ) ? '<p>' . esc_html( $normaltext_content ) . '</p>' : '';
 						$slide_text .= '</div>';
 					}
@@ -85,7 +85,7 @@
 					// Create button area
 					$slide_button = '';
 					if ( $btn_url && ( $btn_content || $btn_content == '0' ) ) {
-						$slide_button .= '<div class="button">';
+						$slide_button .= '<div class="opc-button">';
 						$slide_button .= '<a href="' . esc_url( $btn_url ) . '"';
 						$slide_button .= $btn_new_window ? ' target="_blank"' : '';
 						$slide_button .= ' alt="' . esc_html( substr( $btn_content, 0, 50 ) ) . '">';
@@ -97,7 +97,7 @@
 					// Check if slide is empty
 					if ( $slide_image != '' || $slide_text != '' || $slide_button != '' ) {
 						// Create slides for slider
-						$slider .= '<div class="slide" id="slide-' . $postID . '">';
+						$slider .= '<div class="opc-slide" id="opc-slide-' . $postID . '">';
 						$slider .= $slide_image;
 						$slider .= $slide_text;
 						$slider .= $slide_button;
@@ -118,6 +118,8 @@
 					$term_id = $term_args->term_id;
 
 					// Category meta variables
+					$max_width = get_term_meta( $term_id, 'opc-max-width', true );
+					$max_width_unit = ( get_term_meta( $term_id, 'opc-max-width-unit', true ) == 'Percentage') ? '%' : 'px';
 					$max_height = get_term_meta( $term_id, 'opc-max-height', true );
 					$disable_ap = get_term_meta( $term_id, 'opc-disable-autoplay', true );
 					$slide_speed = get_term_meta( $term_id, 'opc-slide-speed', true );
@@ -128,12 +130,19 @@
 					// Begin slider styles
 					$style = '<style>';
 
-					// Max image height from terms
-					if ( $max_height == '0' || $max_height ) {
-						$style .= '#opc-' . esc_attr( $atts['category'] ) . '.owl-carousel .slide .image img{max-height:';
-						$style .= opc_create_value( $max_height );
+					// Max width from terms
+					if ( $max_width == '0' || $max_width ) {
+						$style .= '#opc-' . esc_attr( $atts['category'] ) . '{max-width:';
+						$style .= esc_attr( $max_width ) . esc_attr( $max_width_unit );
 						$style .= '}';
 					}
+
+					// Max image height from terms
+					if ( $max_height == '0' || $max_height ) {
+						$style .= '#opc-' . esc_attr( $atts['category'] ) . '.owl-carousel .opc-slide .opc-image img{max-height:';
+						$style .= opc_create_value( $max_height );
+						$style .= '}';
+					}					
 
 					// While loop to query posts - for style block
 					while ( $opc_query->have_posts() ) {					
@@ -147,7 +156,7 @@
 						// Create image styles
 						$image_style = '';
 						if ( strtolower( $image_alignment ) != 'center' || $image_bg_color ) {
-							$image_style .= '#slide-' . $postID . ' .image{';
+							$image_style .= '#opc-slide-' . $postID . ' .opc-image{';
 							$image_style .= ( strtolower( $image_alignment ) != 'center') ? 'text-align:' . strtolower( esc_html( $image_alignment ) ) . ';' : '';
 							$image_style .= $image_bg_color ? 'background-color:' . esc_html( $image_bg_color ) . ';' : ''; 
 							$image_style .= '}';
@@ -156,22 +165,22 @@
 						// Create content styles
 						$content_style = '';
 						if ( ( $header_content == '0' || $header_content ) || ( $subheader_content == '0' || $subheader_content ) || ( $normaltext_content == '0' || $normaltext_content ) ) {
-							$content_style .= '#slide-' . $postID . ' .content{';
+							$content_style .= '#opc-slide-' . $postID . ' .opc-content{';
 							$content_style .= ( $content_top || $content_top == '0' ) ? 'top:' . opc_create_value( $content_top ) . ';' : '';		
 							$content_style .= ( $content_right || $content_right == '0' ) ? 'right:' . opc_create_value( $content_right ) . ';' : '';	
 							$content_style .= ( $content_bottom || $content_bottom == '0' ) ? 'bottom:' . opc_create_value( $content_bottom ) . ';' : '';	
 							$content_style .= ( $content_left || $content_left == '0' ) ? 'left:' . opc_create_value( $content_left ) . ';' : '';
 							$content_style .= ( $content_top == '' && $content_right == '' && $content_bottom == '' && $content_left == '' ) ? 'bottom:20px;left:20px;' : '';
 							$content_style .= '}';	
-							$content_style .= ( $header_content || $header_content == '0' ) ? opc_create_content_style( $header_color, $header_shadow, $postID, 'h2' ) : '';
-							$content_style .= ( $subheader_content || $subheader_content == '0' ) ? opc_create_content_style( $subheader_color, $subheader_shadow, $postID, 'h3' ) : '';
+							$content_style .= ( $header_content || $header_content == '0' ) ? opc_create_content_style( $header_color, $header_shadow, $postID, 'h3' ) : '';
+							$content_style .= ( $subheader_content || $subheader_content == '0' ) ? opc_create_content_style( $subheader_color, $subheader_shadow, $postID, 'h4' ) : '';
 							$content_style .= ( $normaltext_content || $normaltext_content == '0' ) ? opc_create_content_style( $normal_color, $normal_shadow, $postID, 'p' ) : '';
 						}
 
 						// Create button styles
 						$btn_style = '';
 						if ( $btn_url && ( $btn_content || $btn_content == '0' ) ) {
-							$btn_style .= '#slide-' . $postID . ' .button{';
+							$btn_style .= '#opc-slide-' . $postID . ' .opc-button{';
 							$btn_style .= ( $btn_top || $btn_top == '0' ) ? 'top:' . opc_create_value( $btn_top ) . ';' : '';	
 							$btn_style .= ( $btn_right || $btn_right == '0' ) ? 'right:' . opc_create_value( $btn_right ) . ';' : '';
 							$btn_style .= ( $btn_bottom || $btn_bottom == '0' ) ? 'bottom:' . opc_create_value( $btn_bottom ) . ';' : '';	
@@ -179,7 +188,7 @@
 							$btn_style .= ( $btn_top == '' && $btn_right == '' && $btn_bottom == '' && $btn_left == '' ) ? 'bottom:20px;right:20px;' : '';
 							$btn_style .= '}';
 							if ( $btn_text_color || $btn_bg_color ) {
-								$btn_style .= '#slide-' . $postID . ' .button a{';
+								$btn_style .= '#opc-slide-' . $postID . ' .opc-button a{';
 								$btn_style .= $btn_text_color ? 'color:' . esc_attr( $btn_text_color ) . ';' : '';
 								$btn_style .= $btn_bg_color ? 'background-color:' . esc_attr( $btn_bg_color ) . ';' : '';
 								$btn_style .= '}';

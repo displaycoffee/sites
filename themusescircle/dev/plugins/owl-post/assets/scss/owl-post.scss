@@ -62,15 +62,18 @@
 	
 /* Custom Plugin Styles
 ========================================================================== */
-.owl-carousel .slide {
+.owl-carousel .opc-slide {
 	position: relative;	
-	.button, .content {
+	.opc-button, .opc-content {
 		position: absolute;
 		z-index: 100;
 	}
-	.image {
+	.opc-image {
 		text-align: center;
 		line-height: 0;
+		img {
+			max-width: 100%;
+		}
 	}
 }
 	

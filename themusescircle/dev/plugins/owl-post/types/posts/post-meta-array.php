@@ -88,7 +88,7 @@
         'fields'   => array( 
             array(
                 'label'    => __( 'Content', 'owl-post' ),
-                'desc'     => __( 'Largest text on the rotator. Coded as a h2 tag.', 'owl-post' ),
+                'desc'     => __( 'Largest text on the rotator. Coded as a h3 tag.', 'owl-post' ),
                 'id'       => '_opc-header-content',
                 'name'     => '_opc-header-content',
                 'type'     => 'text',

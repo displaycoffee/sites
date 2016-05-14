@@ -9,6 +9,25 @@
         'category' => 'opc-category',
         'fields'   => array(           
             array(
+                'label'    => __( 'Max Width', 'owl-post' ),
+                'desc'     => __( 'Max width of the slider. Numeric values are in pixels.', 'owl-post' ),
+                'id'       => 'opc-max-width',
+                'name'     => 'opc-max-width',
+                'type'     => 'text',
+                'validate' => 'opc_sanitize_number',
+                'column'   => 'no'
+            ),
+            array(
+                'label'    => __( 'Max Width Unit', 'owl-post' ),
+                'desc'     => __( 'Should the max width unit use pixels or percentage? The default is pixels.', 'owl-post' ),
+                'id'       => 'opc-max-width-unit',
+                'name'     => 'opc-max-width-unit',
+                'type'     => 'radio',
+                'validate' => 'opc_sanitize_max_width_unit',
+                'column'   => 'yes',                
+                'options'  => opc_max_width_unit_choices()
+            ),
+            array(
                 'label'    => __( 'Max Height', 'owl-post' ),
                 'desc'     => __( 'Max height of images in the slider. Numeric values are in pixels.', 'owl-post' ),
                 'id'       => 'opc-max-height',
@@ -16,7 +35,7 @@
                 'type'     => 'text',
                 'validate' => 'opc_sanitize_number',
                 'column'   => 'no'
-            ),
+            ),                        
             array(
                 'label'    => __( 'Autoplay', 'owl-post' ),
                 'desc'     => __( 'To disable autoplay on slides, check this.', 'owl-post' ),
