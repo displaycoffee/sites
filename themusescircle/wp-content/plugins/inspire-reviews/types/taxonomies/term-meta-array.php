@@ -27,6 +27,15 @@
                 'column'   => 'no'
             ),   
             array(
+                'label'    => __( 'Goodreads', 'inspire-reviews' ),
+                'desc'     => __( 'URL of the author\'s Goodreads page.', 'inspire-reviews' ),
+                'id'       => 'author-goodreads',
+                'name'     => 'author-goodreads',
+                'type'     => 'url',
+                'validate' => 'esc_url',
+                'column'   => 'no'
+            ), 
+            array(
                 'label'    => __( 'Facebook', 'inspire-reviews' ),
                 'desc'     => __( 'URL of the author\'s Facebook.', 'inspire-reviews' ),
                 'id'       => 'author-facebook',
