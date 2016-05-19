@@ -24,7 +24,7 @@
                 'name'     => 'author-website',
                 'type'     => 'url',
                 'validate' => 'esc_url',
-                'column'   => 'no'
+                'column'   => 'yes'
             ),   
             array(
                 'label'    => __( 'Goodreads', 'inspire-reviews' ),
