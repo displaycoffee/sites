@@ -82,10 +82,6 @@
 	require_once( 'types/taxonomies/term-meta-array.php' );
 	require_once( 'types/taxonomies/term-meta-boxes.php' );	
 
-	// Display
-	// require_once( 'display/display-options.php' );	
-	// require_once( 'display/display-post-type.php' );	
-
 	// Get custom archive post templates
 	function insprvw_get_archive_template( $archive ) {
 		// Book review archive
