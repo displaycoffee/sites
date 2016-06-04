@@ -86,3 +86,13 @@
 	// require_once( 'display/display-cat-public.php' );	
 	// require_once( 'display/display-options.php' );	
 	// require_once( 'display/display-post-type.php' );	
+
+	// Get custom archive post templates
+	function insprvw_get_archive_template( $archive ) {
+		// Book review archive
+		if ( get_post_type() == 'insprvw-book-review' ) {
+			$archive = dirname( __FILE__ ) . '/templates/archive-book-review.php';
+		}
+		return $archive;
+	}
+	add_filter( 'archive_template', 'insprvw_get_archive_template' ) ;
