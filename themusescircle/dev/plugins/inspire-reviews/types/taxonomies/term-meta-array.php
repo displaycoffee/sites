@@ -28,7 +28,7 @@
             ),   
             array(
                 'label'    => __( 'Goodreads', 'inspire-reviews' ),
-                'desc'     => __( 'URL of the author\'s Goodreads page.', 'inspire-reviews' ),
+                'desc'     => __( 'URL of the author\'s Goodreads.', 'inspire-reviews' ),
                 'id'       => 'author-goodreads',
                 'name'     => 'author-goodreads',
                 'type'     => 'url',

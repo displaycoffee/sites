@@ -83,7 +83,6 @@
 	require_once( 'types/taxonomies/term-meta-boxes.php' );	
 
 	// Display
-	// require_once( 'display/display-cat-public.php' );	
 	// require_once( 'display/display-options.php' );	
 	// require_once( 'display/display-post-type.php' );	
 
@@ -96,3 +95,30 @@
 		return $archive;
 	}
 	add_filter( 'archive_template', 'insprvw_get_archive_template' ) ;
+
+
+	// Trim default excerpt length
+	function insprvw_excerpt_length( $length ) {
+	    return 50;
+	}
+	add_filter( 'excerpt_length', 'insprvw_excerpt_length' );
+
+	// Change text if excerpt length is reached
+	function insprvw_excerpt_more( $more ) {
+	    return '...';
+	}
+	add_filter( 'excerpt_more', 'insprvw_excerpt_more' );
+
+	// Custom read more link for excerpts
+	function insprvw_read_more() {
+	    return '<div class="read-more"><a href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __( 'Read More', 'inspire-reviews' ) . '</a></div>';
+	}
+
+	// Check if there is a custom excerpt and if so, make sure it's not too long
+	function insprvw_excerpt() {
+		if ( has_excerpt() ) {	    
+		    return '<p>' . wp_trim_words( get_the_excerpt(), 50 ) . '</p>' . insprvw_read_more();
+		} else {
+			return '<p>' . get_the_excerpt() . '</p>' . insprvw_read_more();
+		}
+	}
