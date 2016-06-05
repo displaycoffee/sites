@@ -45,8 +45,8 @@
 			'description'	=> __( 'Widgets in this area will be shown on all posts and pages.', 'themusescircle' ),
 			'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<h3 class="widget-title">',
-			'after_title'	=> '</h3>',
+			'before_title'	=> '<h4 class="widget-title">',
+			'after_title'	=> '</h4>',
 		) );
 	}
 	add_action( 'widgets_init', 'themusescircle_widgets_init' );
@@ -137,7 +137,7 @@
 
 	// Custom read more link for excerpts
 	function themusescircle_read_more() {
-	    return '<div class="read-more"><a href="' . esc_url( get_permalink( get_the_ID() ) ) . '">Read More</a></div>';
+	    return '<div class="read-more"><a href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __( 'Read More', 'themusescircle' ) . '</a></div>';
 	}
 
 	// Check if there is a custom excerpt and if so, make sure it's not too long

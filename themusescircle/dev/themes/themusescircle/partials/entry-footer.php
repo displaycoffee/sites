@@ -1,6 +1,6 @@
 <?php
 	/**
-	* Template for displaying entry footer
+	* Template for displaying post footer
 	*/
 
 	// Exit if accessed directly
@@ -20,7 +20,8 @@
 				comments_number( __( 'No comments', 'themusescircle' ), __( 'One comment', 'themusescircle' ), __( '% comments', 'themusescircle') );
 				echo '</a></div>';
 			}
+		} else {
+			edit_post_link( __('Edit', 'themusescircle'), '<div class="edit">', '</div>' );
 		}
 	?>
-	<?php edit_post_link( __('Edit', 'themusescircle'), '<div class="edit">', '</div>' ); ?>
 </footer>

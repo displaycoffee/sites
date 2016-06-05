@@ -1,6 +1,6 @@
 <?php
 	/**
-	* Template for displaying entry meta
+	* Template for displaying post meta
 	*/
 
 	// Exit if accessed directly
