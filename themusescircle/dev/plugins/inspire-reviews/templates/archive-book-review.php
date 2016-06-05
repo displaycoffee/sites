@@ -24,20 +24,41 @@
 	<?php if ( have_posts() ) : ?>
 		<div class="post-multiple">
 			<?php while ( have_posts() ) : the_post(); ?>	
-				<div id="post-<?php esc_attr( the_ID() ); ?>" class="insprvw-book-review" itemscope itemtype="http://schema.org/Blog">
+				<div id="post-<?php esc_attr( the_ID() ); ?>" class="insprvw-book-review" itemprop="mainEntity" itemscope itemtype="http://schema.org/Book">
 					<?php 
-						// Since the string is long, create variables for title before/after
-						$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
-						$title_after = '</a></h3></header>';
+						// Get the book title
+						$book_title = get_post_meta( $post->ID, '_insprvw-book-title', true );
 
-						// Display the title
-						the_title($title_before, $title_after);
+						// Display book meta title for schema
+						$book_title_meta = $book_title ? '<meta itemprop="name" content="' . $book_title . '">' : '';
+						echo $book_title_meta;
+
+						// TO DO - GET LIST OF AUTHOR NAMES
+						// $author_name_meta = $author_name ? '<meta itemprop="author" content="' . $author_name . '">' : '';
+						// echo $author_name_meta;		
+
+						// Get the book cover image
+						$book_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+
+						// Display author meta name for schema
+						$book_image_meta = $book_image[0] ? '<meta itemprop="image" content="' . $book_image[0] . '">' : '';
+						echo $book_image_meta;						
 					?>
-					<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ) ?>">
-					<?php include( '/../partials/entry-meta.php' ); ?>
-					<?php include( '/../partials/entry-thumbnail.php' ); ?>
-					<div class="entry-content" itemprop="text"><?php echo insprvw_excerpt(); ?></div>
-					<?php include( '/../partials/entry-footer.php' ); ?>
+					<div itemprop="review" itemscope itemtype="http://schema.org/Review">
+						<?php 
+							// Since the string is long, create variables for title before/after
+							$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
+							$title_after = '</a></h3></header>';
+
+							// Display the title
+							the_title($title_before, $title_after);
+						?>
+						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ) ?>">
+						<?php include( '/../partials/entry-meta.php' ); ?>
+						<?php include( '/../partials/entry-thumbnail.php' ); ?>
+						<div class="entry-content" itemprop="description"><?php echo insprvw_excerpt(); ?></div>
+						<?php include( '/../partials/entry-footer.php' ); ?>
+					</div>
 				</div>
 			<?php endwhile; ?>
 		</div>

@@ -16,7 +16,7 @@
 		// Check if we're on a page or not
 		if ( !is_page() ) { 
 			// Start thumbnail html
-			$thumbnail_start = '<div class="' . $thumbnail_main . '" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">'; 
+			$thumbnail_start = '<div class="' . $thumbnail_main . '">'; 
 			$thumbnail_start .= '<div class="' . $thumbnail_wrap . '">';
 			$thumbnail_start .= $thumbnail_image;
 			$thumbnail_start .= '</div>';

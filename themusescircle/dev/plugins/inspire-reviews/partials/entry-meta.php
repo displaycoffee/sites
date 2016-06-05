@@ -8,13 +8,13 @@
 ?>
 <div class="entry-meta">
 	<?php 
-		// Display the review rating
+		// Get the review rating
 		$review_rating = get_post_meta( $post->ID, '_insprvw-book-rating', true );
 
 		// Create rating display HTML
-		$rating_html = '<p class="rating" itemprop="">';
-		$rating_html .= ( $review_rating || $review_rating == '0' ) ? esc_html( $review_rating ) : '0';
-		$rating_html .= ' of 5</p>';
+		$rating_html = '<p class="rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">';
+		$rating_html .= ( $review_rating || $review_rating == '0' ) ? '<span class="rating-value" itemprop="ratingValue">' . esc_html( $review_rating ) . '</span>' : '<span class="rating-value" itemprop="worstRating">0</span>';
+		$rating_html .= ' of <span class="rating-value" itemprop="bestRating">5</span></p>';
 
 		// Display rating HTML
 		echo $rating_html;

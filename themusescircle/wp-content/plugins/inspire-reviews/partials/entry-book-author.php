@@ -29,7 +29,7 @@
 	$author_tumblr = get_term_meta( $author_term_id, 'author-tumblr', true );
 
 	// Create author image HTML
-	$author_image_html = '<div class="author-image" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">';
+	$author_image_html = '<div class="author-image">';
 	$author_image_html .= '<div class="image-wrap">';
 	$author_image_html .= '<img src="' . esc_url( $author_image ) . '" alt="' . esc_attr( $author_name ) . '" />';
 	$author_image_html .= '</div>';
