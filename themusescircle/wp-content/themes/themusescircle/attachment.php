@@ -20,7 +20,7 @@
 	<?php the_title( '<header class="main-title"><h1>', '</h1></header>' ); ?>
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<div class="entry-single">
-			<div id="attachment-<?php the_ID(); ?>" class="entry attachment">
+			<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry attachment">
 				<?php 
 					// Check if the parent title is there
 					if ( $att_parent_title ) {

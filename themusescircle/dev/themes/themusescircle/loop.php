@@ -9,7 +9,7 @@
 <?php if ( have_posts() ) : ?>
 	<div class="entry-multiple">
 		<?php while ( have_posts() ) : the_post(); ?>	
-			<div id="post-<?php esc_attr( the_ID() ); ?>" class="entry post" itemscope itemtype="http://schema.org/Blog">
+			<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry post" itemscope itemtype="http://schema.org/Blog">
 				<?php 
 					// Since the string is long, create variables for title before/after
 					$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '" itemprop="url" content="' . esc_url( get_the_permalink() ) . '">';

@@ -14,7 +14,7 @@
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ) ?>">
 		<div class="entry-single">
-			<div id="post-<?php esc_attr( the_ID() ); ?>" class="entry post">				
+			<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry post">				
 				<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
 				<div class="entry-details">
 					<?php get_template_part( 'partials/entry', 'meta' ); ?>
