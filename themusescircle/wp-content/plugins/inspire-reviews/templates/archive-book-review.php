@@ -60,11 +60,12 @@
 			$author_description_html .= '</div>';
 
 			// Create author display HTML
-			$author_html = '<div class="author-details">';
+			$author_html = '<div class="author-information">';
 			$author_html .= $author_image ? $author_image_html : '';
+			$author_html .= '<div class="author-details">';
 			$author_html .= $author_description ? $author_description_html : '';
 			$author_html .= ( $author_social_html != '<div class="author-social"></div>' ) ? $author_social_html : '';
-			$author_html .= '</div>';
+			$author_html .= '</div></div>';
 
 			// Display final HTML
 			echo $author_html;
@@ -74,39 +75,69 @@
 	?>
 	<h2><?php _e( 'Reviews', 'inspire-reviews' ); ?></h2>
 	<?php if ( have_posts() ) : ?>
-		<div class="post-multiple">
-			<?php while ( have_posts() ) : the_post(); ?>	
-				<div id="post-<?php esc_attr( the_ID() ); ?>" class="insprvw-book-review" itemprop="mainEntity" itemscope itemtype="http://schema.org/Book">
+		<div class="entry-multiple">
+			<?php while ( have_posts() ) : the_post(); ?>
+				<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-book-review" itemprop="mainEntity" itemscope itemtype="http://schema.org/Book">
 					<?php 
 						// Get the book title
 						$book_title = get_post_meta( $post->ID, '_insprvw-book-title', true );
 
 						// Display book meta title for schema
-						$book_title_meta = $book_title ? '<meta itemprop="name" content="' . $book_title . '">' : '';
-						echo $book_title_meta;
+						echo $book_title_meta = $book_title ? '<meta itemprop="name" content="' . $book_title . '">' : '';					
+					?>
+					<?php 
+						// Get the author name title
+						$author_terms = get_the_terms ( $post->ID, 'insprvw-book-author' );
+						
+						// Create an array to store author names
+						$author_names = array();
 
-						// TO DO - GET LIST OF AUTHOR NAMES
-						// $author_name_meta = $author_name ? '<meta itemprop="author" content="' . $author_name . '">' : '';
-						// echo $author_name_meta;		
-
-						// Get the book cover image
-						$book_image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+						// Loop through autor term meta and push name values to array
+						foreach ( $author_terms as $author ) {
+							array_push( $author_names, $author->name );
+						}
 
 						// Display author meta name for schema
-						$book_image_meta = $book_image[0] ? '<meta itemprop="image" content="' . $book_image[0] . '">' : '';
-						echo $book_image_meta;						
+						echo ( count( $author_names ) > 0 ) ? '<meta itemprop="author" content="' . join( ', ', $author_names ) . '">' : '';					
 					?>
-					<div itemprop="review" itemscope itemtype="http://schema.org/Review">
-						<?php 
-							// Since the string is long, create variables for title before/after
-							$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
-							$title_after = '</a></h3></header>';
+					<?php 
+						// Since the string is long, create variables for title before/after
+						$title_before = '<header class="entry-header"><h3><a href="' . esc_url( get_the_permalink() ) . '">';
+						$title_after = '</a></h3></header>';
 
-							// Display the title
-							the_title($title_before, $title_after);
-						?>
-						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ) ?>">
+						// Display the title
+						the_title($title_before, $title_after);
+					?>					
+					<?php 
+						if ( has_post_thumbnail() ) {
+							// Variables for display
+							$thumbnail_main = 'entry-thumbnail';
+							$thumbnail_wrap = 'image-wrap';
+							$thumbnail_image = get_the_post_thumbnail();
+
+							// Check if we're on a page or not
+							if ( !is_page() ) { 
+								// Start thumbnail html
+								$thumbnail_start = '<div class="' . $thumbnail_main . '" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">'; 
+								$thumbnail_start .= '<div class="' . $thumbnail_wrap . '">';
+								$thumbnail_start .= $thumbnail_image;
+								$thumbnail_start .= '</div>';
+								$thumbnail_start .= '<meta itemprop="url" content="';
+								echo $thumbnail_start;
+
+								// Display the thumbnail url inside the meta tag
+								esc_url( the_post_thumbnail_url() );
+
+								// End thumbnail html
+								$thumbnail_end = '">';
+								$thumbnail_end .= '</div>';
+								echo $thumbnail_end;
+							}
+						}
+					?>				
+					<div class="entry-details" itemprop="review" itemscope itemtype="http://schema.org/Review">
 						<div class="entry-meta">
+							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ) ?>">
 							<?php 
 								// Get the review rating
 								$review_rating = get_post_meta( $post->ID, '_insprvw-book-rating', true );
@@ -129,66 +160,36 @@
 								// Display the date
 								echo '<p class="date" itemprop="datePublished">' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
 							?>
-						</div>
+						</div>					
+						<div class="entry-content" itemprop="description"><?php echo insprvw_excerpt(); ?></div>
+					</div>
+					<footer class="entry-footer">
 						<?php 
-							if ( has_post_thumbnail() ) {
-								// Variables for display
-								$thumbnail_main = 'entry-thumbnail';
-								$thumbnail_wrap = 'image-wrap';
-								$thumbnail_image = get_the_post_thumbnail();
+							// Display list of book categories
+							echo get_the_term_list( $post->ID, 'insprvw-book-category', '<div class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
 
-								// Check if we're on a page or not
-								if ( !is_page() ) { 
-									// Start thumbnail html
-									$thumbnail_start = '<div class="' . $thumbnail_main . '">'; 
-									$thumbnail_start .= '<div class="' . $thumbnail_wrap . '">';
-									$thumbnail_start .= $thumbnail_image;
-									$thumbnail_start .= '</div>';
-									$thumbnail_start .= '<meta itemprop="url" content="';
-									echo $thumbnail_start;
+							// Display list of book genres
+							echo get_the_term_list( $post->ID, 'insprvw-book-genre', '<div class="genres" itemprop="keywords"><strong>' . __( 'Genres', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
 
-									// Display the thumbnail url inside the meta tag
-									esc_url( the_post_thumbnail_url() );
-
-									// End thumbnail html
-									$thumbnail_end = '">';
-									$thumbnail_end .= '</div>';
-									echo $thumbnail_end;
-								} else if ( is_page() ) {
-									$thumbnail_page = '<div class="' . $thumbnail_main . '"><div class="' . $thumbnail_wrap . '">'; 
-									$thumbnail_page .= $thumbnail_image;
-									$thumbnail_page .= '</div></div>';
-									echo $thumbnail_page;
+							// Display list of book tags
+							echo get_the_term_list( $post->ID, 'insprvw-book-tag', '<div class="tags" itemprop="keywords"><strong>' . __( 'Tags', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
+						?>
+						<?php
+							// Check if we're on a single post page
+							if ( !is_single() ) {
+								// Alter text based on number of comments or no comments
+								if ( comments_open() ) {					
+									echo '<div class="comments"><a href="' . esc_url( get_comments_link() ) . '">';
+									comments_number( __( 'No comments', 'inspire-reviews' ), __( 'One comment', 'inspire-reviews' ), __( '% comments', 'inspire-reviews') );
+									echo '</a></div>';
 								}
+							} else {
+								edit_post_link( __('Edit', 'inspire-reviews'), '<div class="edit">', '</div>' );
 							}
 						?>
-						<div class="entry-content" itemprop="description"><?php echo insprvw_excerpt(); ?></div>
-						<footer class="entry-footer">
-							<?php 
-								// Display list of book categories
-								echo get_the_term_list( $post->ID, 'insprvw-book-category', '<div class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
-
-								// Display list of book genres
-								echo get_the_term_list( $post->ID, 'insprvw-book-genre', '<div class="genres" itemprop="keywords"><strong>' . __( 'Genres', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
-
-								// Display list of book tags
-								echo get_the_term_list( $post->ID, 'insprvw-book-tag', '<div class="tags" itemprop="keywords"><strong>' . __( 'Tags', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
-							?>
-							<?php
-								// Check if we're on a single post page
-								if ( !is_single() ) {
-									// Alter text based on number of comments or no comments
-									if ( comments_open() ) {					
-										echo '<div class="comments"><a href="' . esc_url( get_comments_link() ) . '">';
-										comments_number( __( 'No comments', 'inspire-reviews' ), __( 'One comment', 'inspire-reviews' ), __( '% comments', 'inspire-reviews') );
-										echo '</a></div>';
-									}
-								}
-							?>
-						</footer>
-					</div>
-				</div>
-			<?php endwhile; ?>
+					</footer>
+				</div>	
+			<?php endwhile; ?>	
 		</div>
 		<?php 
 			// Check if pages are greater than 1
@@ -206,7 +207,7 @@
 				// Display pagination
 				echo '<nav class="pagination">' . paginate_links( $args ) . '</nav>';
 			}
-		?>	
+		?>		
 	<?php else : ?>
 		<div id="no-post" class="not-found">
 			<p>
@@ -221,7 +222,7 @@
 			</p>
 			<p><?php echo sprintf( __( 'Return to %1$s%2$s%3$s?', 'inspire-reviews' ), '<a href="', esc_url( home_url( '/' ) ), '">home</a>' ); ?></p>
 		</div>
-	<?php endif; ?>	
+	<?php endif; ?>			
 </article>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
