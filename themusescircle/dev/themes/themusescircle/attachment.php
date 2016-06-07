@@ -24,9 +24,9 @@
 				<?php 
 					// Check if the parent title is there
 					if ( $att_parent_title ) {
-						$att_header = '<header class="entry-header"><h2>' . __( 'Published in: ', 'themusescircle' );
+						$att_header = '<header class="entry-header"><h3>' . __( 'Published in: ', 'themusescircle' );
 						$att_header .= '<a href="' . esc_url( $att_parent_link ) . '">' . $att_parent_title . '</a>';
-						$att_header .= '</h2></header>';
+						$att_header .= '</h3></header>';
 						echo $att_header;
 					}
 				?>
