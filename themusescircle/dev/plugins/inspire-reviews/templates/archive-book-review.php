@@ -1,6 +1,6 @@
 <?php
 	/**
-	* Template for displaying book review archive pages
+	* Template for displaying book review archive
 	*/
 
 	// Exit if accessed directly
@@ -108,86 +108,12 @@
 						// Display the title
 						the_title($title_before, $title_after);
 					?>					
-					<?php 
-						if ( has_post_thumbnail() ) {
-							// Variables for display
-							$thumbnail_main = 'entry-thumbnail';
-							$thumbnail_wrap = 'image-wrap';
-							$thumbnail_image = get_the_post_thumbnail();
-
-							// Check if we're on a page or not
-							if ( !is_page() ) { 
-								// Start thumbnail html
-								$thumbnail_start = '<div class="' . $thumbnail_main . '" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">'; 
-								$thumbnail_start .= '<div class="' . $thumbnail_wrap . '">';
-								$thumbnail_start .= $thumbnail_image;
-								$thumbnail_start .= '</div>';
-								$thumbnail_start .= '<meta itemprop="url" content="';
-								echo $thumbnail_start;
-
-								// Display the thumbnail url inside the meta tag
-								esc_url( the_post_thumbnail_url() );
-
-								// End thumbnail html
-								$thumbnail_end = '">';
-								$thumbnail_end .= '</div>';
-								echo $thumbnail_end;
-							}
-						}
-					?>				
+					<?php include '/../partials/book-review-thumbnail.php'; ?>				
 					<div class="entry-details" itemprop="review" itemscope itemtype="http://schema.org/Review">
-						<div class="entry-meta">
-							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ) ?>">
-							<?php 
-								// Get the review rating
-								$review_rating = get_post_meta( $post->ID, '_insprvw-book-rating', true );
-
-								// Create rating display HTML
-								$rating_html = '<p class="rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">';
-								$rating_html .= ( $review_rating || $review_rating == '0' ) ? '<span class="rating-value" itemprop="ratingValue">' . esc_html( $review_rating ) . '</span>' : '<span class="rating-value" itemprop="worstRating">0</span>';
-								$rating_html .= ' of <span class="rating-value" itemprop="bestRating">5</span></p>';
-
-								// Display rating HTML
-								echo $rating_html;
-							?>
-							<?php 
-								// Check if author is available
-								if ( !is_author() ) {
-									echo '<p class="author" itemprop="author">' .  get_the_author_posts_link() . '</p>';
-								}
-							?>
-							<?php 
-								// Display the date
-								echo '<p class="date" itemprop="datePublished">' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
-							?>
-						</div>					
+						<?php include '/../partials/book-review-meta.php'; ?>					
 						<div class="entry-content" itemprop="description"><?php echo insprvw_excerpt(); ?></div>
 					</div>
-					<footer class="entry-footer">
-						<?php 
-							// Display list of book categories
-							echo get_the_term_list( $post->ID, 'insprvw-book-category', '<div class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
-
-							// Display list of book genres
-							echo get_the_term_list( $post->ID, 'insprvw-book-genre', '<div class="genres" itemprop="keywords"><strong>' . __( 'Genres', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
-
-							// Display list of book tags
-							echo get_the_term_list( $post->ID, 'insprvw-book-tag', '<div class="tags" itemprop="keywords"><strong>' . __( 'Tags', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
-						?>
-						<?php
-							// Check if we're on a single post page
-							if ( !is_single() ) {
-								// Alter text based on number of comments or no comments
-								if ( comments_open() ) {					
-									echo '<div class="comments"><a href="' . esc_url( get_comments_link() ) . '">';
-									comments_number( __( 'No comments', 'inspire-reviews' ), __( 'One comment', 'inspire-reviews' ), __( '% comments', 'inspire-reviews') );
-									echo '</a></div>';
-								}
-							} else {
-								edit_post_link( __('Edit', 'inspire-reviews'), '<div class="edit">', '</div>' );
-							}
-						?>
-					</footer>
+					<?php include '/../partials/book-review-footer.php'; ?>
 				</div>	
 			<?php endwhile; ?>	
 		</div>

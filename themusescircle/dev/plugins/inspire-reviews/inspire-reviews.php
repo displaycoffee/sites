@@ -82,9 +82,9 @@
 	require_once( 'types/taxonomies/term-meta-array.php' );
 	require_once( 'types/taxonomies/term-meta-boxes.php' );	
 
-	// Get custom archive post templates
+	// Get custom archive templates
 	function insprvw_get_archive_template( $archive ) {
-		// Book review archive
+		// Book review
 		if ( get_post_type() == 'insprvw-book-review' ) {
 			$archive = dirname( __FILE__ ) . '/templates/archive-book-review.php';
 		}
@@ -92,6 +92,15 @@
 	}
 	add_filter( 'archive_template', 'insprvw_get_archive_template' ) ;
 
+	// Get custom single template
+	function insprvw_get_single_template( $single ) {
+		// Book review 
+		if ( get_post_type() == 'insprvw-book-review' ) {
+			$single = dirname( __FILE__ ) . '/templates/single-book-review.php';
+		}
+		return $single;
+	}
+	add_filter( 'single_template', 'insprvw_get_single_template' );
 
 	// Trim default excerpt length
 	function insprvw_excerpt_length( $length ) {
