@@ -11,11 +11,15 @@
 	// Include header	
 	get_header(); 
 ?>
-<article>
-	<?php the_archive_title( '<header class="main-title"><h1>', '</h1></header>' ); ?>
-	<?php the_archive_description( '<div class="category-description">', '</div>' ); ?>	
-	<h2><?php _e( 'Posts', 'themusescircle' ); ?></h2>
-	<?php get_template_part( 'loop', 'index' ); ?>
-</article>
-<?php get_sidebar(); ?>
+<?php the_archive_title( '<header class="main-title"><div class="wrapper"><h1>', '</h1></div></header>' ); ?>
+<section class="content">
+	<div class="wrapper">
+		<article>			
+			<?php the_archive_description( '<div class="category-description">', '</div>' ); ?>	
+			<h2><?php _e( 'Posts', 'themusescircle' ); ?></h2>
+			<?php get_template_part( 'loop', 'index' ); ?>
+		</article>
+		<?php get_sidebar(); ?>
+	</div>
+</section>			
 <?php get_footer(); ?>

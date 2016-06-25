@@ -7,22 +7,21 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 ?>
 <?php if ( have_posts() ) : ?>
-	<div class="entry-multiple">
+	<div class="entry-multiple" itemtype="http://schema.org/Blog">
 		<?php while ( have_posts() ) : the_post(); ?>	
-			<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry post" itemscope itemtype="http://schema.org/Blog">
+			<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry post" itemscope itemtype="http://schema.org/BlogPosting">
+				<meta itemprop="mainEntityOfPage" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 				<?php 
 					// Since the string is long, create variables for title before/after
-					$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '" itemprop="url" content="' . esc_url( get_the_permalink() ) . '">';
+					$title_before = '<header class="entry-header"><h3 itemprop="headline"><a href="' . esc_url( get_the_permalink() ) . '">';
 					$title_after = '</a></h3></header>';
 
 					// Display the title
 					the_title($title_before, $title_after);
 				?>
-				<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
-				<div class="entry-details">
-					<?php get_template_part( 'partials/entry', 'meta' ); ?>						
-					<div class="entry-content" itemprop="text"><?php echo themusescircle_excerpt(); ?></div>
-				</div>
+				<?php get_template_part( 'partials/entry', 'meta' ); ?>
+				<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>									
+				<div class="entry-content" itemprop="text"><?php echo themusescircle_excerpt(); ?></div>
 				<?php get_template_part( 'partials/entry', 'footer' ); ?>
 			</div>
 		<?php endwhile; ?>

@@ -146,7 +146,7 @@
 		    )
 		);
 		$wp_customize->add_control(
-		    new AMBASE_Date_Picker( $wp_customize, 'themusescircle_date', 
+		    new themusescircle_Date_Picker( $wp_customize, 'themusescircle_date', 
 			    array(		        
 			        'label'	   => __( 'Date Picker', 'themusescircle' ),
 			        'section'  => 'themusescircle_section02',

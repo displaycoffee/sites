@@ -1,6 +1,6 @@
 <?php
 	/**
-	* Template for displaying post footer
+	* Template for displaying entry footer
 	*/
 
 	// Exit if accessed directly

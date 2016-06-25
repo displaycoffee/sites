@@ -45,8 +45,8 @@
 			'description'	=> __( 'Widgets in this area will be shown on all posts and pages.', 'themusescircle' ),
 			'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<h4 class="widget-title">',
-			'after_title'	=> '</h4>',
+			'before_title'	=> '<h3 class="widget-title">',
+			'after_title'	=> '</h3>',
 		) );
 	}
 	add_action( 'widgets_init', 'themusescircle_widgets_init' );

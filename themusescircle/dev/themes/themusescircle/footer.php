@@ -6,8 +6,6 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 ?>
-		</div>
-	</section>
 	<footer id="footer">
 		<p id="copyright">
 			<?php echo sprintf( __( '%1$s %2$s %3$s. All Rights Reserved.', 'themusescircle' ), '&copy;', date( 'Y' ), get_bloginfo( 'name' ) ); ?>

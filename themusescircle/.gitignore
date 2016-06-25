@@ -22,3 +22,5 @@ wp-content/plugins/*
 # Themes
 wp-content/themes/*
 !wp-content/themes/themusescircle/
+wp-content/themes/themusescircle/assets/images
+dev/themes/themusescircle/assets/images

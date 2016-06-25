@@ -31,6 +31,4 @@
 	<nav id="header-nav" class="navigation">
 		<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 	</nav>
-	<?php get_search_form(); ?>
-	<section class="content">
-		<div class="wrapper">		
+	<?php get_search_form(); ?>		

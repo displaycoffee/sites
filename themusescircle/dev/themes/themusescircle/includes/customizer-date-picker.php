@@ -14,7 +14,7 @@
     }
 
     // Create data picker class
-    class AMBASE_Date_Picker extends WP_Customize_Control {
+    class themusescircle_Date_Picker extends WP_Customize_Control {
         // Enqueue date picker style
         public function enqueue() {
             wp_enqueue_style( 'jquery-ui-datepicker' );

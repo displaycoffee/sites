@@ -9,8 +9,12 @@
 	// Include header	
 	get_header(); 
 ?>
-<article>
-	<?php get_template_part( 'loop', 'index' ); ?>
-</article>
-<?php get_sidebar(); ?>
+<section class="content">
+	<div class="wrapper">
+		<article>
+			<?php get_template_part( 'loop', 'index' ); ?>
+		</article>
+		<?php get_sidebar(); ?>
+	</div>
+</section>			
 <?php get_footer(); ?>
