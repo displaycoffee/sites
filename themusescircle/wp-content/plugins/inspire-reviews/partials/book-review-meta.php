@@ -7,7 +7,6 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 ?>
 <div class="entry-meta">
-	<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ) ?>">
 	<?php 
 		// Check if author is available
 		if ( !is_author() ) {

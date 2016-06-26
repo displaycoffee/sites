@@ -1,35 +1,36 @@
 <?php
 	/**
-	* Template for displaying book review thumbnail
+	* Template for displaying review thumbnail
 	*/
 
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 ?>
-<?php 
+<?php 	
+	// Variables for thumbnail schema
+	$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' )[0];
+	$thumbnail_width = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' )[1];
+	$thumbnail_height = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' )[2];
+
+	// If there's not a thumbnail, don't add thumbnail class
+	$thumbnail_class = has_post_thumbnail() ? ' class="entry-thumbnail"' : '';
+
+	// Start opening HTML
+	$thumbnail_html = '<div' . $thumbnail_class . ' itemprop="image" itemscope itemtype="https://schema.org/ImageObject">';		
+
+	// Check if there is a thumbnail
 	if ( has_post_thumbnail() ) {
-		// Variables for display
-		$thumbnail_main = 'entry-thumbnail';
-		$thumbnail_wrap = 'image-wrap';
-		$thumbnail_image = get_the_post_thumbnail();
-
-		// Check if we're on a page or not
-		if ( !is_page() ) { 
-			// Start thumbnail html
-			$thumbnail_start = '<div class="' . $thumbnail_main . '" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">'; 
-			$thumbnail_start .= '<div class="' . $thumbnail_wrap . '">';
-			$thumbnail_start .= $thumbnail_image;
-			$thumbnail_start .= '</div>';
-			$thumbnail_start .= '<meta itemprop="url" content="';
-			echo $thumbnail_start;
-
-			// Display the thumbnail url inside the meta tag
-			esc_url( the_post_thumbnail_url() );
-
-			// End thumbnail html
-			$thumbnail_end = '">';
-			$thumbnail_end .= '</div>';
-			echo $thumbnail_end;
-		}
+		$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( $thumbnail_src ) . '">';
+		$thumbnail_html .= '<meta itemprop="width" content="' . esc_html( $thumbnail_width ) . '">';
+		$thumbnail_html .= '<meta itemprop="height" content="' . esc_html( $thumbnail_height ) . '">';
+		$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail() . '</div>';		
+	} else {
+		$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( plugins_url() . '/inspire-reviews/assets/images/default-thumbnail.png' ) . '">';
+		$thumbnail_html .= '<meta itemprop="width" content="300">';
+		$thumbnail_html .= '<meta itemprop="height" content="300">';
 	}
+
+	// Start closing HTML
+	$thumbnail_html .= '</div>';
+	echo $thumbnail_html;
 ?>
