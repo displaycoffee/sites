@@ -47,6 +47,14 @@
                 'validate' => 'sanitize_text_field'
             ), 
             array(
+                'label'    => __( 'ISBN', 'inspire-reviews' ),
+                'desc'     => __( 'The 13 digit ISBN-13 of the book.', 'inspire-reviews' ),
+                'id'       => '_insprvw-book-isbn',
+                'name'     => '_insprvw-book-isbn',
+                'type'     => 'text',
+                'validate' => 'sanitize_text_field'
+            ),             
+            array(
                 'label'    => __( 'Publication Date', 'inspire-reviews' ),
                 'desc'     => __( 'Date  of book\'s publication.', 'inspire-reviews' ),
                 'id'       => '_insprvw-book-pub-date',
