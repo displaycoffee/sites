@@ -52,11 +52,37 @@
 		$book_list_item = $book_title ? insprvw_book_item_details( 'title', 'Title', 'name', $book_title ) : '';
 		$book_list_item .= $book_series ? insprvw_book_item_details( 'series', 'Series', 'position', $book_series ) : '';
 
-		$book_list_item .= '<li class="book-author" itemprop="author" itemscope itemtype="http://schema.org/Person">';
-		$book_list_item .= '<span class="review-label">Author:</span> ';
-		$book_list_item .= '<span class="review-value" itemprop="name">Test</span>';
-		$book_list_item .= '<meta itemprop="sameAs" content="website">';
-		$book_list_item .= '</li>';
+		// Get list of author names
+		$author_names = get_the_term_list( $post->ID, 'insprvw-book-author', '', ', ' );
+
+		// Add author list item
+		if ( strlen( $author_names ) > 0 ) {
+			// Get the information about the author categories
+			$author_terms = get_the_terms( $post->ID, 'insprvw-book-author' );
+
+			// Create an array to store author websites
+			$author_websites = array();
+
+			// Loop through autor term meta and push website values to array
+			foreach ( $author_terms as $author ) {
+				// Get term meta for author websites
+				$author_website_meta = get_term_meta( $author->term_id, 'author-website', true );
+
+				// Check if website meta is there and then push
+				if ( $author_website_meta ) {
+					array_push( $author_websites, $author_website_meta );
+				} else {
+					array_push( $author_websites, home_url( '/' ) );
+				}
+			}
+
+			// Tie together all author information
+			$book_list_item .= '<li class="book-author" itemprop="author" itemscope itemtype="http://schema.org/Person">';
+			$book_list_item .= '<span class="review-label">Author:</span> ';
+			$book_list_item .= '<span class="review-value" itemprop="name">' . $author_names . '</span>';
+			$book_list_item .= '<meta itemprop="sameAs" content="' . esc_html( join( ', ', $author_websites ) ) . '">';
+			$book_list_item .= '</li>';
+		}
 		
 		$book_list_item .= $book_isbn ? insprvw_book_item_details( 'isbn', 'ISBN', 'isbn', $book_isbn ) : '';		
 		$book_list_item .= insprvw_book_item_terms( $post->ID, 'insprvw-book-genre', 'genre', 'Genres', 'genre' );		
