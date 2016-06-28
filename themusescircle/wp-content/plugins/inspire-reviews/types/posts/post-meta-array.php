@@ -92,7 +92,7 @@
                 'id'       => '_insprvw-book-synopsis',
                 'name'     => '_insprvw-book-synopsis',
                 'type'     => 'textarea',
-                'validate' => 'sanitize_text_field'
+                'validate' => 'insprvw_sanitize_textarea'
             )
         )
     );

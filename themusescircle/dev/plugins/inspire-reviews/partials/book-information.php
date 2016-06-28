@@ -136,6 +136,6 @@
 		echo $book_info_list;
 
 		// Display book synopsis
-		echo $book_synopsis ? '<div class="book-synopsis" itemprop="description">' . $book_synopsis . '</div>' : '';
+		echo $book_synopsis ? '<div class="book-synopsis" itemprop="description">' . wpautop( esc_textarea ( $book_synopsis ) ) . '</div>' : '';
 	}
 ?>
