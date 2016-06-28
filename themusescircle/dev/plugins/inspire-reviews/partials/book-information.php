@@ -20,9 +20,9 @@
 		// Create list items with schema
 		function insprvw_book_item_details( $class, $label, $itemprop, $value ) {
 			// Create list item with details about book
-			$book_item_details = '<li class="book-' . esc_attr( $class ) . '">';
-			$book_item_details .= '<span class="review-label">' . esc_html( __( $label, 'inspire-reviews' ) ) . ':</span> ';
-			$book_item_details .= '<span class="review-value" itemprop="' . esc_attr( $itemprop ) . '">' . esc_html( $value ) . '</span>';
+			$book_item_details = '<li class="book-' . $class . '">';
+			$book_item_details .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
+			$book_item_details .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
 			$book_item_details .= '</li>';
 
 			// Return list item
@@ -31,14 +31,19 @@
 
 		// Create list of book terms
 		function insprvw_book_item_terms( $pid, $term, $class, $label, $itemprop ) {
-			// Variables to use in term list creation
-			$book_term_class = '<li class="book-' . esc_attr( $class ) . '">';
-			$book_term_label = '<span class="review-label">' . esc_html( __( $label, 'inspire-reviews' ) ) . ':</span> ';
-			$book_term_value_open = '<span class="review-value" itemprop="' . esc_attr( $itemprop ) . '">';
-			$book_term_value_close = '</span></li>';
+			// Get the list of linked terns
+			$term_list = get_the_term_list( $pid, $term, '', ', ' );
 
-			// Return term list
-			return get_the_term_list( esc_attr( $pid ), esc_attr( $term ), $book_term_class . $book_term_label . $book_term_value_open, ', ', $book_term_value_close );
+			// Create list item HTML
+			$term_list_item = '<li class="book-' . $class . '" itemprop="author" itemscope itemtype="http://schema.org/Person">';
+			$term_list_item .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
+			$term_list_item .= '<span class="review-value" itemprop="' . $itemprop . '">' . $term_list . '</span>';
+			$term_list_item .= '</li>';
+
+			// Return term list item is there is terms
+			if ( strlen( $term_list ) > 0 ) {
+				return $term_list_item;
+			}
 		}
 
 		// Book information meta for single pages
@@ -101,7 +106,7 @@
 
 		// Create buy links
 		function insprvw_book_buy_link( $class, $url, $text ) {
-			return '<a class="' . esc_attr( $class ) . '" href="' . esc_url( $url ) . '" target="_blank">' . __( esc_html( $text ), 'inspire-reviews' ) . '</a>, ';
+			return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'inspire-reviews' ) . '</a>, ';
 		}
 
 		// Book buy links for single pages

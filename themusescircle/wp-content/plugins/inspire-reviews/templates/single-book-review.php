@@ -21,7 +21,7 @@
 
 
 
-						<div itemprop="itemReviewed" class="book-details" itemscope itemtype="http://schema.org/Book">
+						<div class="book-details" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
 							<?php include '/../partials/book-information.php'; ?>
 						</div>
 
