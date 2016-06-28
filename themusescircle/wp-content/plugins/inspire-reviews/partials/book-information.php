@@ -35,7 +35,7 @@
 			$term_list = get_the_term_list( $pid, $term, '', ', ' );
 
 			// Create list item HTML
-			$term_list_item = '<li class="book-' . $class . '" itemprop="author" itemscope itemtype="http://schema.org/Person">';
+			$term_list_item = '<li class="book-' . $class . '">';
 			$term_list_item .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
 			$term_list_item .= '<span class="review-value" itemprop="' . $itemprop . '">' . $term_list . '</span>';
 			$term_list_item .= '</li>';
