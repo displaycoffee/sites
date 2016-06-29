@@ -6,9 +6,19 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }
 	
-	// Sanitize textarea 
+	// Textarea 
 	function themusescircle_sanitize_textarea( $input ) {
-	    return esc_textarea( $input );
+		// Find line replaces and replace them with text
+	    $replaced_input = str_replace( "\r\n", '**--KEEPNEWLINES--**', $input );
+
+	    // Sanitize the replaced text
+	    $sanitized_input = sanitize_text_field( $replaced_input );
+
+	    // Then add line breaks back in with new replacement on sanitized string
+	    $new_input = str_replace( '**--KEEPNEWLINES--**', "\r\n", $sanitized_input );
+
+	    // Return input
+	    return $new_input;
 	}
 
 	// Checkbox
