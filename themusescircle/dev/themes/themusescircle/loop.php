@@ -17,7 +17,7 @@
 					$title_after = '</a></h3></header>';
 
 					// Display the title
-					the_title($title_before, $title_after);
+					the_title( $title_before, $title_after );
 				?>
 				<?php get_template_part( 'partials/entry', 'meta' ); ?>
 				<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>									
