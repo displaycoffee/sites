@@ -16,19 +16,18 @@
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="entry-single">
 					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-book-review" itemscope itemtype="http://schema.org/Review">
-	
-
-
-
-
+						<meta itemprop="name" content="<?php echo get_the_title(); ?>"/>
+						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
+						<?php include '/../partials/review-meta.php'; ?>
+						<?php include '/../partials/review-thumbnail.php'; ?>						
 						<div class="book-details" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
 							<?php include '/../partials/book-information.php'; ?>
+						</div>						
+						<div class="entry-content">
+							<meta itemprop="description" content="<?php echo substr( strip_tags( get_the_content() ), 0, 197 ) . '...'; ?>"/>
+							<?php the_content(); ?>
 						</div>
-
-
-
-
-
+						<?php include '/../partials/review-footer.php'; ?>
 					</div>
 				</div>
 				<?php 
