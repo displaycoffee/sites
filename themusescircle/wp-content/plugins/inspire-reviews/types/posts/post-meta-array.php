@@ -226,7 +226,7 @@
                 'id'       => '_insprvw-movie-synopsis',
                 'name'     => '_insprvw-movie-synopsis',
                 'type'     => 'textarea',
-                'validate' => 'sanitize_text_field'
+                'validate' => 'insprvw_sanitize_textarea'
             )
         )
     );
@@ -318,7 +318,7 @@
                 'id'       => '_insprvw-show-synopsis',
                 'name'     => '_insprvw-show-synopsis',
                 'type'     => 'textarea',
-                'validate' => 'sanitize_text_field'
+                'validate' => 'insprvw_sanitize_textarea'
             )
         )
     );
