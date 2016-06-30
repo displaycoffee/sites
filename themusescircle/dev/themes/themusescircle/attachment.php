@@ -26,28 +26,31 @@
 						<?php 
 							// Check if the parent title is there
 							if ( $att_parent_title ) {
-								$att_header = '<header class="entry-header"><h3>' . __( 'Published in: ', 'themusescircle' );
+								// Create attachment header block
+								$att_header = '<header class="entry-header"><h3>' . __( 'Published in: ', 'themusescirle' );
 								$att_header .= '<a href="' . esc_url( $att_parent_link ) . '">' . $att_parent_title . '</a>';
 								$att_header .= '</h3></header>';
+
+								// Display attachment header block
 								echo $att_header;
 							}
 						?>
 						<?php get_template_part( 'partials/entry', 'meta' ); ?>	
 						<div class="entry-content">
 							<?php 
-								// Check if the attachment is an image or file
+								// Check if the attachment is an image or file and create attachment content block
 								if ( wp_attachment_is_image( $post->ID ) ) { 
 									$att_content = '<div class="attachment-image"><div class="image-wrap">' . wp_get_attachment_image( get_the_ID(), 'large' ) . '</div></div>';
 								} else {
 									$att_content = '<p class="attachment-file"><a href="' . esc_url( $att_url ) . '">' . $att_filename . '</a></p>';
 								}
 
-								// Check if the attachment has a caption
+								// Check if the attachment has a caption and continue attachment content block
 								if ( $att_caption ) {
 									$att_content .= '<p class="caption">' . $att_caption . '</p>';
 								}
 
-								// Display entry content
+								// Display attachment content block
 								echo $att_content; 
 							?>
 						</div>
@@ -55,8 +58,8 @@
 				</div>
 				<nav class="navigation-links">
 					<ul>
-						<li class="prev"><?php previous_image_link( false, __( 'Previous', 'themusescircle' ) ); ?></li>
-						<li class="next"><?php next_image_link( false, __( 'Next', 'themusescircle' ) ); ?></li>					
+						<li class="prev"><?php previous_image_link( false, __( 'Previous', 'themusescirle' ) ); ?></li>
+						<li class="next"><?php next_image_link( false, __( 'Next', 'themusescirle' ) ); ?></li>					
 					</ul>
 				</nav>
 			<?php endwhile; endif; ?>

@@ -7,7 +7,7 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }
 	
 	// Textarea 
-	function themusescircle_sanitize_textarea( $input ) {
+	function themusescirle_sanitize_textarea( $input ) {
 		// Find line replaces and replace them with text
 	    $replaced_input = str_replace( "\r\n", '**--KEEPNEWLINES--**', $input );
 
@@ -20,9 +20,10 @@
 	    // Return input
 	    return $new_input;
 	}
-
+	
 	// Checkbox
-	function themusescircle_sanatize_checkbox( $input ) {
+	function themusescirle_sanatize_checkbox( $input ) {
+		// Check if input is a string or integer of 1
 	    if ( $input == 1 || $input == '1' ) {
 	        return 1;
 	    } else {
@@ -31,9 +32,9 @@
 	}
 
 	// Select
-	function themusescircle_sanitize_select( $input ) {
+	function themusescirle_sanitize_select( $input ) {
 		// Get select choices
-	    $valid = themusescircle_select_choices();	
+	    $valid = themusescirle_select_choices();	
 
 	    // Check if choices are in array 
 	    if ( array_key_exists( $input, $valid ) ) {
@@ -44,9 +45,9 @@
 	}
 
 	// Radio
-	function themusescircle_sanitize_radio( $input ) {
+	function themusescirle_sanitize_radio( $input ) {
 		// Get radio choices
-	    $valid = themusescircle_radio_choices();
+	    $valid = themusescirle_radio_choices();
 
 	    // Check if choices are in array	 
 	    if ( array_key_exists( $input, $valid ) ) {
@@ -57,7 +58,8 @@
 	}	
 
 	// Numbers
-    function themusescircle_sanitize_number( $input ) {
+    function themusescirle_sanitize_number( $input ) {
+    	// Check if input is numeric
 	    if ( is_numeric( $input ) ) {
     		return intval( $input );
 	    } else {
@@ -66,10 +68,11 @@
 	}
 
 	// Date validation
-    function themusescircle_sanitize_date( $input ) {
+    function themusescirle_sanitize_date( $input ) {
     	// Get each value in the date - month, day, year
         $date = preg_match( '/(\d{4})-(\d{2})-(\d{2})/', $input, $match );
 
+        // Check if the date is valid based on regex match
         if ( $date == '1' && checkdate( $match[2], $match[3], $match[1] ) ) {
         	return $input;
         } else {

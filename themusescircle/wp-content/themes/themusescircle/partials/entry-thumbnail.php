@@ -17,7 +17,7 @@
 		// If there's not a thumbnail, don't add thumbnail class
 		$thumbnail_class = has_post_thumbnail() ? ' class="entry-thumbnail"' : '';
 
-		// Start opening HTML
+		// Create thumbnail block - START
 		$thumbnail_html = '<div' . $thumbnail_class . ' itemprop="image" itemscope itemtype="https://schema.org/ImageObject">';		
 
 		// Check if there is a thumbnail
@@ -32,13 +32,18 @@
 			$thumbnail_html .= '<meta itemprop="height" content="300">';
 		}
 
-		// Start closing HTML
+		// Create thumbnail block - END
 		$thumbnail_html .= '</div>';
+
+		// Display thumbnail block
 		echo $thumbnail_html;
 	} else if ( is_page() && has_post_thumbnail() ) {
+		// Create thumbnail block
 		$thumbnail_html = '<div class="entry-thumbnail">'; 
 		$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail() . '</div>';
 		$thumbnail_html .= '</div>';
+
+		// Display thumbnail block
 		echo $thumbnail_html;
 	}
 ?>

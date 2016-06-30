@@ -10,6 +10,7 @@
 	<?php 
 		// Dont display publisher schema on attachment pages
 		if ( !is_attachment() ) {
+			// Create publisher block
 			$publisher_schema = '<div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">';
 			$publisher_schema .= '<meta itemprop="name" content="' . get_bloginfo( 'name' ) . '">';
 			$publisher_schema .= '<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">';
@@ -17,6 +18,8 @@
 			$publisher_schema .= '<meta itemprop="width" content="600">';
 			$publisher_schema .= '<meta itemprop="height" content="60">';
 			$publisher_schema .= '</div></div>';
+
+			// Display publisher block
 			echo $publisher_schema;
 		}
 	?>

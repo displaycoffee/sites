@@ -8,7 +8,7 @@
 ?>
 <footer class="entry-footer">
 	<div class="categories" itemprop="keywords">
-		<?php _e( '<strong>Categories:</strong> ', 'themusescircle' ); ?><?php the_category( ', ' ); ?>
+		<?php _e( '<strong>Categories:</strong> ', 'themusescirle' ); ?><?php the_category( ', ' ); ?>
 	</div>
 	<?php echo the_tags( '<div class="tags" itemprop="keywords"><strong>Tags:</strong> ', ', ', '</div>' ); ?>
 	<?php
@@ -17,11 +17,11 @@
 			// Alter text based on number of comments or no comments
 			if ( comments_open() ) {					
 				echo '<div class="comments"><a href="' . esc_url( get_comments_link() ) . '">';
-				comments_number( __( 'No comments', 'themusescircle' ), __( 'One comment', 'themusescircle' ), __( '% comments', 'themusescircle') );
+				comments_number( __( 'No comments', 'themusescirle' ), __( 'One comment', 'themusescirle' ), __( '% comments', 'themusescirle') );
 				echo '</a></div>';
 			}
 		} else {
-			edit_post_link( __('Edit', 'themusescircle'), '<div class="edit">', '</div>' );
+			edit_post_link( __( 'Edit', 'themusescirle' ), '<div class="edit">', '</div>' );
 		}
 	?>
 </footer>
