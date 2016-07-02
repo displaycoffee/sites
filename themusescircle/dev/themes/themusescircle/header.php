@@ -17,11 +17,11 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <!--[if lt IE 9]>
-        <p class="browserupgrade">
-            You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-        </p>
-    <![endif]-->
+	<!--[if lt IE 9]>
+		<p class="browserupgrade">
+			<?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.', 'themusescirle' ); ?>
+		</p>
+	<![endif]-->
 	<header id="header">
 		<p class="site-name">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo get_bloginfo( 'name' ); ?></a>
