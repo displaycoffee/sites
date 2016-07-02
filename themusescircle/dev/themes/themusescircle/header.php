@@ -9,11 +9,11 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta charset="<?php esc_attr( bloginfo( 'charset' ) ); ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">        
-    <meta name="description" content="<?php echo get_bloginfo( 'description' ); ?>">
+    <meta name="description" content="<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_uri(); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo esc_url( get_stylesheet_uri() ); ?>" />
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

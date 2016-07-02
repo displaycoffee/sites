@@ -16,7 +16,7 @@
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="entry-single" itemtype="http://schema.org/Blog">
 					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry post" itemscope itemtype="http://schema.org/BlogPosting">
-						<meta itemprop="headline" content="<?php echo get_the_title(); ?>"/>
+						<meta itemprop="headline" content="<?php echo esc_attr( get_the_title() ); ?>"/>
 						<meta itemprop="mainEntityOfPage" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 						<?php get_template_part( 'partials/entry', 'meta' ); ?>	
 						<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
