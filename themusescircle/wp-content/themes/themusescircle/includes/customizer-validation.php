@@ -9,6 +9,7 @@
 	// Textarea 
 	function themusescirle_sanitize_textarea( $input ) {
 		// Find line replaces and replace them with text
+		// Note: line break \r\n must have double quotes around it
 	    $replaced_input = str_replace( "\r\n", '**--KEEPNEWLINES--**', $input );
 
 	    // Sanitize the replaced text
