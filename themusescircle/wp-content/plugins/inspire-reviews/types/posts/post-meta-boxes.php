@@ -43,7 +43,7 @@
                 // Common display value
                 $value = isset( $meta ) ? $meta : '';
                 
-                // Start opening HTML
+                // Create opening HTML block
                 $opening = '<div class="row ' . $field['id'] . '-wrap">';
                 $opening .= '<div class="block01">';
                 $opening .= '<label for="' . $field['id'] . '">';
@@ -51,6 +51,8 @@
                 $opening .= '</label>';
                 $opening .= '</div>';
                 $opening .= '<div class="block02">';
+
+                // Display opening HTML block
                 echo $opening;
 
                 // Loop through basic field types
@@ -81,9 +83,11 @@
                 // Display description if one is there
                 insprvw_display_description( $field );
 
-                // Start closing HTML
+                // Create closing HTML block
                 $closing = '</div>';
                 $closing .= '</div>';
+
+                // Display closing HTML block
                 echo $closing;
             }
 
