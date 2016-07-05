@@ -21,9 +21,9 @@
                 'default' => 'yes'
             ),
             array(
-                'label' => __( 'Percentage', 'owl-post' ), 
-                'id'    => 'opc-max-width-percentage',
-                'name'  => 'opc-max-width-percentage',
+                'label'   => __( 'Percentage', 'owl-post' ), 
+                'id'      => 'opc-max-width-percentage',
+                'name'    => 'opc-max-width-percentage',
             )
         );
     }       

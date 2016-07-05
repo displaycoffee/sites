@@ -27,10 +27,12 @@
 
 		// Show options content
 		function show_page() {
-			// Start opening HTML
+			// Create opening HTML block
 			$opening = '<div class="opc-options">';
 			$opening .= '<h1>' . $this->_optionPage['title'] . '</h1>';
 			$opening .= '<form method="post" enctype="multipart/form-data" action="options.php">';
+
+			// Display opening HTML block
 			echo $opening;
 
 			// Use nonce for verification
@@ -42,12 +44,14 @@
 			// Add fields
 			settings_fields( $this->_optionPage['options-group'] );
 
-			// Start closing HTML
+			// Create closing HTML block
 			$closing = '<p class="submit"> ';
 			$closing .= '<input type="submit" class="button-primary" value="' . __( 'Save Changes', 'custom-stuff' ) . '" />';
 			$closing .= '</p>';
 			$closing .= '</form>';
 			$closing .= '</div>';
+
+			// Display closing HTML block
 			echo $closing;
 		}		
 
