@@ -5,11 +5,14 @@
 	// Create text styles
 	function opc_create_content_style( $color, $shadow, $postID, $selector ) {
 		if ( $color || $shadow ) {
-			$style = '#opc-slide-' . $postID . ' .opc-content ' . $selector . '{';
-			$style .= $color ? 'color:' . esc_attr( $color ) . ';' : '';
-			$style .= ( $shadow == 1 ) ? 'text-shadow:2px 2px 2px #000;' : '';
-			$style .= '}';
-			return $style;
+			// Create content style block
+			$content_style = '#opc-slide-' . $postID . ' .opc-content ' . $selector . '{';
+			$content_style .= $color ? 'color:' . esc_attr( $color ) . ';' : '';
+			$content_style .= ( esc_attr( $shadow ) == 1 ) ? 'text-shadow:2px 2px 2px #000;' : '';
+			$content_style .= '}';
+
+			// Display content style block
+			return $content_style;
 		}
 	}
 

@@ -19,7 +19,7 @@
 <?php 
 	// Check if the author name is there. Not sure why it wouldn't be...
 	if ( $author_name ) {
-		echo '<header class="main-title"><div class="wrapper"><h1>' . __( 'Author: ', 'themusescirle' ) . $author_name . '</h1></div></header>';
+		echo '<header class="main-title"><div class="wrapper"><h1>' . __( 'Author: ', 'themusescircle' ) . $author_name . '</h1></div></header>';
 	}
 ?>
 <section class="content">
@@ -31,7 +31,7 @@
 					if ( $author_website ) {
 						// Create author block
 						$author_meta = '<div class="author-meta">';
-						$author_meta .= '<p class="website"><a href="' . esc_url( $author_website ) . '">' . __( 'Website', 'themusescirle' ) . '</a></p>';
+						$author_meta .= '<p class="website"><a href="' . esc_url( $author_website ) . '">' . __( 'Website', 'themusescircle' ) . '</a></p>';
 						$author_meta .= '</div>';
 
 						// Display author block
@@ -49,7 +49,7 @@
 					}
 				?>
 			</div>
-			<h2><?php printf( __( 'Posts by %s', 'themusescirle' ), $author_name ) ?></h2>
+			<h2><?php printf( __( 'Posts by %s', 'themusescircle' ), $author_name ) ?></h2>
 			<?php get_template_part( 'loop', 'index' ); ?>
 		</article>
 		<?php get_sidebar(); ?>

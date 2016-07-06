@@ -27,7 +27,7 @@
 							// Check if the parent title is there
 							if ( $att_parent_title ) {
 								// Create attachment header block
-								$att_header = '<header class="entry-header"><h3>' . __( 'Published in: ', 'themusescirle' );
+								$att_header = '<header class="entry-header"><h3>' . __( 'Published in: ', 'themusescircle' );
 								$att_header .= '<a href="' . esc_url( $att_parent_link ) . '">' . $att_parent_title . '</a>';
 								$att_header .= '</h3></header>';
 
@@ -58,8 +58,8 @@
 				</div>
 				<nav class="navigation-links">
 					<ul>
-						<li class="prev"><?php previous_image_link( false, __( 'Previous', 'themusescirle' ) ); ?></li>
-						<li class="next"><?php next_image_link( false, __( 'Next', 'themusescirle' ) ); ?></li>					
+						<li class="prev"><?php previous_image_link( false, __( 'Previous', 'themusescircle' ) ); ?></li>
+						<li class="next"><?php next_image_link( false, __( 'Next', 'themusescircle' ) ); ?></li>					
 					</ul>
 				</nav>
 			<?php endwhile; endif; ?>

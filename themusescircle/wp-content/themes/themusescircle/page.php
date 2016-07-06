@@ -18,7 +18,7 @@
 					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry page">
 						<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
 						<div class="entry-content"><?php the_content(); ?></div>
-						<?php edit_post_link( __( 'Edit', 'themusescirle' ), '<footer class="entry-footer"><div class="edit">', '</div></footer>' ); ?>				
+						<?php edit_post_link( __( 'Edit', 'themusescircle' ), '<footer class="entry-footer"><div class="edit">', '</div></footer>' ); ?>				
 					</div>
 				</div>
 			<?php endwhile; endif; ?>

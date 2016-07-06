@@ -15,9 +15,9 @@
 
 	// Check if a search query is present
 	if ( get_search_query() ) {
-		$search_header .= sprintf( __( 'Search results for "%s"', 'themusescirle' ), esc_html( get_search_query() ) );
+		$search_header .= sprintf( __( 'Search results for "%s"', 'themusescircle' ), esc_html( get_search_query() ) );
 	} else {
-		$search_header .= __( 'Search results', 'themusescirle' );
+		$search_header .= __( 'Search results', 'themusescircle' );
 	}
 
 	// Create search header block - END
