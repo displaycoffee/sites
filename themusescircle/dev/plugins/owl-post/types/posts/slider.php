@@ -2,29 +2,29 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }
 	
-	// Creates a slider
-	function opc_create_slider() {
+	// Creates a slide
+	function opc_create_slide() {
 		$labels = array(
 			'name'               => __( 'Owl Post', 'owl-post' ),
-			'singular_name'      => __( 'Slider', 'owl-post' ),
+			'singular_name'      => __( 'Slide', 'owl-post' ),
 			'add_new'            => __( 'Add New', 'owl-post' ),
-			'add_new_item'       => __( 'Add New Slider', 'owl-post' ),
-			'edit_item'          => __( 'Edit Slider', 'owl-post' ),
-			'new_item'           => __( 'New Slider', 'owl-post' ),
-			'all_items'          => __( 'All Sliders', 'owl-post' ),
-			'view_item'          => __( 'View Slider', 'owl-post' ),			
-			'search_items'       => __( 'Search Sliders', 'owl-post' ),
-			'not_found'          => __( 'No sliders found.', 'owl-post' ),
-			'not_found_in_trash' => __( 'No sliders found in trash.', 'owl-post' ),
-			'parent_item_colon'  => __( 'Parent Slider:', 'owl-post' ),
+			'add_new_item'       => __( 'Add New Slide', 'owl-post' ),
+			'edit_item'          => __( 'Edit Slide', 'owl-post' ),
+			'new_item'           => __( 'New Slide', 'owl-post' ),
+			'all_items'          => __( 'All Slides', 'owl-post' ),
+			'view_item'          => __( 'View Slide', 'owl-post' ),			
+			'search_items'       => __( 'Search Slides', 'owl-post' ),
+			'not_found'          => __( 'No slides found.', 'owl-post' ),
+			'not_found_in_trash' => __( 'No slides found in trash.', 'owl-post' ),
+			'parent_item_colon'  => __( 'Parent Slide:', 'owl-post' ),
 			'menu_name'          => __( 'Owl Post', 'owl-post' ),
-			'update_item'        => __( 'Update Sliders', 'owl-post' ),
+			'update_item'        => __( 'Update Slides', 'owl-post' ),
 		);
 
 		$args = array(
-			'label'               => __( 'Slider Entry', 'owl-post' ),
+			'label'               => __( 'Slide Entry', 'owl-post' ),
 			'labels'              => $labels,
-			'description'         => __( 'Add Slider entries.', 'owl-post' ),	
+			'description'         => __( 'Add Slide entries.', 'owl-post' ),	
 			'public'              => true,
 			'rewrite'             => false,
 			'menu_position'       => 6,
@@ -42,6 +42,6 @@
 			'capability_type'     => 'post',
 		);
 		
-		register_post_type( 'opc-slider', $args );
+		register_post_type( 'opc-slide', $args );
 	}
-	add_action( 'init', 'opc_create_slider', 0 );
+	add_action( 'init', 'opc_create_slide', 0 );

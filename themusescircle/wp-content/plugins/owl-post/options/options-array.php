@@ -6,7 +6,7 @@
     $optionPages = array();
  
     $optionPages[] = array(
-        'slug'          => 'edit.php?post_type=opc-slider',
+        'slug'          => 'edit.php?post_type=opc-slide',
         'title'         => __( 'Options', 'owl-post' ),
         'capability'    => 'manage_options',
         'menu-slug'     => 'opc-options.php',

@@ -8,7 +8,7 @@
     $postMetaBoxes[] = array(
         'id'       => 'opc-image',
         'title'    => __( 'Image', 'owl-post' ),
-        'page'     => 'opc-slider',
+        'page'     => 'opc-slide',
         'context'  => 'normal',
         'priority' => 'high',
         'fields'   => array(
@@ -43,7 +43,7 @@
     $postMetaBoxes[] = array(
         'id'       => 'opc-position',
         'title'    => __( 'Content Position', 'owl-post' ),
-        'page'     => 'opc-slider',
+        'page'     => 'opc-slide',
         'context'  => 'normal',
         'priority' => 'high',
         'fields'   => array(
@@ -82,7 +82,7 @@
     $postMetaBoxes[] = array(
         'id'       => 'opc-header',
         'title'    => __( 'Header', 'owl-post' ),
-        'page'     => 'opc-slider',
+        'page'     => 'opc-slide',
         'context'  => 'normal',
         'priority' => 'high',
         'fields'   => array( 
@@ -117,7 +117,7 @@
     $postMetaBoxes[] = array(
         'id'       => 'opc-subheader',
         'title'    => __( 'Sub-Header', 'owl-post' ),
-        'page'     => 'opc-slider',
+        'page'     => 'opc-slide',
         'context'  => 'normal',
         'priority' => 'high',
         'fields'   => array( 
@@ -152,7 +152,7 @@
     $postMetaBoxes[] = array(
         'id'       => 'opc-normal-text',
         'title'    => __( 'Normal Text', 'owl-post' ),
-        'page'     => 'opc-slider',
+        'page'     => 'opc-slide',
         'context'  => 'normal',
         'priority' => 'high',
         'fields'   => array( 
@@ -187,7 +187,7 @@
     $postMetaBoxes[] = array(
         'id'       => 'opc-btn',
         'title'    => __( 'Button', 'owl-post' ),
-        'page'     => 'opc-slider',
+        'page'     => 'opc-slide',
         'context'  => 'normal',
         'priority' => 'high',
         'fields'   => array( 

@@ -5,7 +5,7 @@
 	* Description: A custom post type to create sliders using Owl Carousel.
 	* Author: Adria Murphy
 	* Author URI: http://neverend.org/adria
-	* Version: 4.0
+	* Version: 5.0
 	* Text Domain: owl-post
 	**/
 	
@@ -20,7 +20,7 @@
 	// Loads necessary javascript and CSS
 	function opc_enqueue_assets() {
 	    global $typenow;
-	    if ( $typenow == 'opc-slider' ) {
+	    if ( $typenow == 'opc-slide' ) {
 	    	// Enqueue and localize media library
 	        wp_enqueue_media();
 	        wp_localize_script( 'opc_asset', 'image_select',
@@ -83,4 +83,4 @@
 	require_once( 'types/taxonomies/term-meta-boxes.php' );	
 
 	// Display
-	require_once( 'display/display-slider.php' );	
+	require_once( 'display/slider-display.php' );

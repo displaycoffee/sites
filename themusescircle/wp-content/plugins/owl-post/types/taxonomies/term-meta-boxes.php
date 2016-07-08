@@ -26,7 +26,7 @@
             // Loop through each meta box array
             foreach ( $this->_termMetaBox['fields'] as $field ) {
                 // Create opening HTML block
-                $opening = '<div class="form-field ' . $field['id'] . '-wrap cstmstff-term-meta">';
+                $opening = '<div class="form-field ' . $field['id'] . '-wrap opc-term-meta">';
                 $opening .= '<label for="' . $field['id'] . '">';
                 $opening .= $field['label'];
                 $opening .= '</label>';
@@ -81,7 +81,7 @@
 		    // Loop through each meta box array            
 		    foreach ( $this->_termMetaBox['fields'] as $field ) {		    
 	            // Create opening HTML block
-	            $opening = '<tr class="form-field ' . $field['id'] . '-wrap cstmstff-term-meta">';
+	            $opening = '<tr class="form-field ' . $field['id'] . '-wrap opc-term-meta">';
 	            $opening .= '<th scope="row">';
 	            $opening .= '<label for="' . $field['id'] . '">';
 	            $opening .= $field['label'];

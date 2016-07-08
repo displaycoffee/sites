@@ -30,6 +30,6 @@
 			'show_tagcloud'		=> false
 		);
 
-		register_taxonomy( 'opc-category', 'opc-slider', $args );
+		register_taxonomy( 'opc-category', 'opc-slide', $args );
 	}
 	add_action( 'init', 'opc_create_category', 0 );

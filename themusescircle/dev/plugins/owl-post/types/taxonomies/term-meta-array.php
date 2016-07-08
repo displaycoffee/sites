@@ -29,7 +29,7 @@
             ),
             array(
                 'label'    => __( 'Max Height', 'owl-post' ),
-                'desc'     => __( 'Max height of images in the slider. Numeric values are in pixels.', 'owl-post' ),
+                'desc'     => __( 'Max height of slide images. Numeric values are in pixels.', 'owl-post' ),
                 'id'       => 'opc-max-height',
                 'name'     => 'opc-max-height',
                 'type'     => 'text',
@@ -38,7 +38,7 @@
             ),                        
             array(
                 'label'    => __( 'Autoplay', 'owl-post' ),
-                'desc'     => __( 'To disable autoplay on slides, check this.', 'owl-post' ),
+                'desc'     => __( 'To disable autoplay on the slider, check this.', 'owl-post' ),
                 'id'       => 'opc-disable-autoplay',
                 'name'     => 'opc-disable-autoplay',
                 'type'     => 'checkbox',
@@ -57,7 +57,7 @@
             ),                      
             array(
                 'label'    => __( 'Navigation', 'owl-post' ),
-                'desc'     => __( 'To disable navigation on slides, check this.', 'owl-post' ),
+                'desc'     => __( 'To disable navigation on the slider, check this.', 'owl-post' ),
                 'id'       => 'opc-disable-navigation',
                 'name'     => 'opc-disable-navigation',
                 'type'     => 'checkbox',
@@ -67,7 +67,7 @@
             ),
             array(
                 'label'    => __( 'Pagination', 'owl-post' ),
-                'desc'     => __( 'To disable pagination on slides, check this.', 'owl-post' ),
+                'desc'     => __( 'To disable pagination on the slider, check this.', 'owl-post' ),
                 'id'       => 'opc-disable-pagination',
                 'name'     => 'opc-disable-pagination',
                 'type'     => 'checkbox',

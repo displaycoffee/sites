@@ -23,5 +23,8 @@ In WordPress, do the following:
 
 == Changelog ==
 
+= 5.0 =
+Updated slider display and conditionals.
+
 = 4.0 =
 Created a readme.txt file.
