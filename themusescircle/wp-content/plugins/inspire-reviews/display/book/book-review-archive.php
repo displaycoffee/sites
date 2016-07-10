@@ -13,13 +13,38 @@
 <section class="content">
 	<div class="wrapper">
 		<article>	
+			<?php 
+				// Check if we are on an author category and display information about the author
+				if ( is_tax( 'insprvw-book-author' ) ) {
+					include 'book-author-information.php';
+				} else {
+					the_archive_description( '<div class="category-description">', '</div>' );
+				}
+			?>		
+			<h2><?php _e( 'Reviews', 'inspire-reviews' ); ?></h2>
 			<?php if ( have_posts() ) : ?>	
 				<div class="entry-multiple">
 					<?php while ( have_posts() ) : the_post(); ?>
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-book-review" itemscope itemtype="http://schema.org/Review">
+							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
+							<?php 
+								// Since the string is long, create variables for title before/after
+								$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
+								$title_after = '</a></h3></header>';
+
+								// Display the title
+								the_title( $title_before, $title_after );
+							?>
+							<?php include '/../partials/review-meta.php'; ?>
+							<?php include '/../partials/review-thumbnail.php'; ?>
 							<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
 								<?php include 'book-information.php'; ?>	
 							</div>
+							<div class="entry-content">
+								<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
+								<?php insprvw_excerpt(); ?>
+							</div>
+							<?php include '/../partials/review-footer.php'; ?>
 						</div>
 					<?php endwhile; ?>
 				</div>

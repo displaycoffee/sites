@@ -77,7 +77,7 @@
 		}
 	}	
 
-	// Create buy links
-	function insprvw_book_buy_link( $class, $url, $text ) {
+	// Create links
+	function insprvw_create_link( $class, $url, $text ) {
 		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'inspire-reviews' ) . '</a>, ';
 	}	

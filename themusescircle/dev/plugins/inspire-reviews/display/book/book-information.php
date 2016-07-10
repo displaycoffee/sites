@@ -90,12 +90,12 @@
 		}
 
 		// Create buy links
-		$book_buy_links = $book_buy_amazon ? insprvw_book_buy_link( 'amazon', $book_buy_amazon, 'Amazon' ) : '';
-		$book_buy_links .= $book_buy_bn ? insprvw_book_buy_link( 'bn', $book_buy_bn, 'Barnes & Noble' ) : '';
-		$book_buy_links .= $book_buy_kobo ? insprvw_book_buy_link( 'kobo', $book_buy_kobo, 'Kobo' ) : '';
-		$book_buy_links .= $book_buy_ibook ? insprvw_book_buy_link( 'ibook', $book_buy_ibook, 'iBook' ) : '';
-		$book_buy_links .= $book_buy_gplay ? insprvw_book_buy_link( 'gplay', $book_buy_gplay, 'Google Play' ) : '';
-		$book_buy_links .= $book_buy_smashwords ? insprvw_book_buy_link( 'smashwords', $book_buy_smashwords, 'Smashwords' ) : '';
+		$book_buy_links = $book_buy_amazon ? insprvw_create_link( 'amazon', $book_buy_amazon, 'Amazon' ) : '';
+		$book_buy_links .= $book_buy_bn ? insprvw_create_link( 'bn', $book_buy_bn, 'Barnes & Noble' ) : '';
+		$book_buy_links .= $book_buy_kobo ? insprvw_create_link( 'kobo', $book_buy_kobo, 'Kobo' ) : '';
+		$book_buy_links .= $book_buy_ibook ? insprvw_create_link( 'ibook', $book_buy_ibook, 'iBook' ) : '';
+		$book_buy_links .= $book_buy_gplay ? insprvw_create_link( 'gplay', $book_buy_gplay, 'Google Play' ) : '';
+		$book_buy_links .= $book_buy_smashwords ? insprvw_create_link( 'smashwords', $book_buy_smashwords, 'Smashwords' ) : '';
 
 		// Create buy links list item
 		$book_buy_list_item = '<li class="book-buy-links">';
