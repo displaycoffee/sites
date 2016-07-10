@@ -6,15 +6,15 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 
-	// Common book meta that we'll need archive and single pages
-	$book_isbn = get_post_meta( $post->ID, '_insprvw-book-isbn', true );	
-	$book_title = get_post_meta( $post->ID, '_insprvw-book-title', true );		
+	// Include book meta
+	include( 'book-post-meta.php' ); 
 
 	// Get the information about the author categories
 	$author_terms = get_the_terms( $post->ID, 'insprvw-book-author' );
 
-	// Create an array to store author websites
+	// Create an array to store author websites and names
 	$author_websites = array();
+	$author_names = array();
 
 	// Loop through autor term meta and push website values to array
 	if ( $author_terms ) {
@@ -22,11 +22,19 @@
 			// Get term meta for author websites
 			$author_website_meta = get_term_meta( $author->term_id, 'author-website', true );
 
+			// Get term meta for author websites
+			$author_name_meta = $author->name;
+
 			// Check if website meta is there and then push
 			if ( $author_website_meta ) {
 				array_push( $author_websites, $author_website_meta );
 			} else {
 				array_push( $author_websites, home_url( '/' ) );
+			}
+
+			// Check if website meta is there and then push
+			if ( $author_name_meta ) {
+				array_push( $author_names, $author_name_meta );
 			}
 		}
 	}
@@ -37,22 +45,6 @@
 		// Add title and isbn schema
 		$book_schema = $book_title ? '<meta itemprop="name" content="' . esc_html( $book_title ) . '">' : '';
 		$book_schema .= $book_isbn ? '<meta itemprop="isbn" content="' . esc_html( $book_isbn ) . '">' : '';
-
-		// Create an array to store author names
-		$author_names = array();
-
-		// Loop through autor term meta and push website values to array
-		if ( $author_terms ) {
-			foreach ( $author_terms as $author ) {
-				// Get term meta for author websites
-				$author_name_meta = $author->name;
-
-				// Check if website meta is there and then push
-				if ( $author_name_meta ) {
-					array_push( $author_names, $author_name_meta );
-				}
-			}
-		}
 
 		// Create author name meta if it is available
 		if ( $author_names ) {
@@ -65,43 +57,6 @@
 		// Display book information
 		echo $book_schema;
 	} elseif ( is_single() ) {
-		// Create list items with schema
-		function insprvw_book_item_details( $class, $label, $itemprop, $value ) {
-			// Create list item with details about book
-			$book_item_details = '<li class="book-' . $class . '">';
-			$book_item_details .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
-			$book_item_details .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
-			$book_item_details .= '</li>';
-
-			// Return list item
-			return $book_item_details;
-		}
-
-		// Create list of book terms
-		function insprvw_book_item_terms( $pid, $term, $class, $label, $itemprop ) {
-			// Get the list of linked terns
-			$term_list = get_the_term_list( $pid, $term, '', ', ' );
-
-			// Create list item HTML
-			$term_list_item = '<li class="book-' . $class . '">';
-			$term_list_item .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
-			$term_list_item .= '<span class="review-value" itemprop="' . $itemprop . '">' . $term_list . '</span>';
-			$term_list_item .= '</li>';
-
-			// Return term list item is there is terms
-			if ( strlen( $term_list ) > 0 ) {
-				return $term_list_item;
-			}
-		}
-
-		// Book information meta for single pages
-		$book_binding = get_post_meta( $post->ID, '_insprvw-book-binding', true );		
-		$book_goodreads = get_post_meta( $post->ID, '_insprvw-book-goodreads', true );
-		$book_length = get_post_meta( $post->ID, '_insprvw-book-length', true );
-		$book_pub_date = get_post_meta( $post->ID, '_insprvw-book-pub-date', true );
-		$book_series = get_post_meta( $post->ID, '_insprvw-book-series', true );
-		$book_synopsis = get_post_meta( $post->ID, '_insprvw-book-synopsis', true );
-
 		// Create list items of book information
 		$book_list_item = $book_title ? insprvw_book_item_details( 'title', 'Title', 'name', $book_title ) : '';
 		$book_list_item .= $book_series ? insprvw_book_item_details( 'series', 'Series', 'position', $book_series ) : '';
@@ -133,19 +88,6 @@
 			$book_list_item .= '<span class="review-value"><a href="' . esc_url( $book_goodreads ) . '" target="_blank">Link</a></span>';
 			$book_list_item .= '</li>';
 		}
-
-		// Create buy links
-		function insprvw_book_buy_link( $class, $url, $text ) {
-			return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'inspire-reviews' ) . '</a>, ';
-		}
-
-		// Book buy links for single pages
-		$book_buy_amazon = get_post_meta( $post->ID, '_insprvw-book-amazon', true );		
-		$book_buy_bn = get_post_meta( $post->ID, '_insprvw-book-bn', true );
-		$book_buy_kobo = get_post_meta( $post->ID, '_insprvw-book-kobo', true );
-		$book_buy_ibook = get_post_meta( $post->ID, '_insprvw-book-ibook', true );
-		$book_buy_gplay = get_post_meta( $post->ID, '_insprvw-book-gplay', true );
-		$book_buy_smashwords = get_post_meta( $post->ID, '_insprvw-book-smashwords', true );
 
 		// Create buy links
 		$book_buy_links = $book_buy_amazon ? insprvw_book_buy_link( 'amazon', $book_buy_amazon, 'Amazon' ) : '';

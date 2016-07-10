@@ -16,46 +16,21 @@
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="entry-single">
 					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-book-review" itemscope itemtype="http://schema.org/Review">
-						<meta itemprop="name" content="<?php echo get_the_title(); ?>"/>
+						<meta itemprop="name" content="<?php echo esc_attr( get_the_title() ); ?>"/>
 						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 						<?php include '/../partials/review-meta.php'; ?>
 						<?php include '/../partials/review-thumbnail.php'; ?>						
 						<div class="book-details" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
-							<?php include '/../partials/book-information.php'; ?>
+							<?php include 'book-information.php'; ?>
 						</div>						
 						<div class="entry-content">
-							<meta itemprop="description" content="<?php echo substr( strip_tags( get_the_content() ), 0, 197 ) . '...'; ?>"/>
+							<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 							<?php the_content(); ?>
 						</div>
 						<?php include '/../partials/review-footer.php'; ?>
 					</div>
 				</div>
-				<?php 
-					// Don't print empty markup if there's nowhere to navigate.
-					$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-					$next = get_adjacent_post( false, '', false );
-
-					if ( $next || $previous ) {				
-						// Start navigation html
-						$single_navigation = '<nav class="navigation-links"><ul>';
-
-						// Check if previous is there
-						if ( $previous ) {
-							$single_navigation .= '<li class="prev">' . get_previous_post_link( '%link', __( 'Previous: %title', 'themusescircle' ) ) . '</li>';
-						}
-
-						// Check if next is there
-						if ( $next ) {
-							$single_navigation .= '<li class="next">' . get_next_post_link( '%link', __( 'Next: %title', 'themusescircle' ) ) . '</li>';
-						}
-
-						// End navigation html
-						$single_navigation .= '</ul></nav>';	
-
-						// Display navigation
-						echo $single_navigation;
-					}
-				?>
+				<?php include '/../partials/review-navigation.php'; ?>
 				<?php comments_template(); ?>
 			<?php endwhile; endif; ?>
 		</article>

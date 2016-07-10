@@ -10,7 +10,7 @@
 	<?php 
 		// Create publisher block
 		$publisher_schema = '<div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">';
-		$publisher_schema .= '<meta itemprop="name" content="' . get_bloginfo( 'name' ) . '">';
+		$publisher_schema .= '<meta itemprop="name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
 		$publisher_schema .= '</div>';
 
 		// Display publisher block
@@ -25,7 +25,7 @@
 			// Create author block
 			$author_schema = '<p class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">';
 			$author_schema .= '<span itemprop="name">' .  get_the_author_posts_link() . '</span>';
-			$author_schema .= '<meta itemprop="sameAs" content="' . $author_website . '">';
+			$author_schema .= '<meta itemprop="sameAs" content="' . esc_url( $author_website ) . '">';
 			$author_schema .= '</p>';
 			
 			// Display author block

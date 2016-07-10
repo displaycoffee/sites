@@ -6,7 +6,7 @@
 	function insprvw_get_archive_template( $archive ) {
 		// Book review
 		if ( get_post_type() == 'insprvw-book-review' ) {
-			$archive = dirname( __FILE__ ) . '/templates/archive-book-review.php';
+			$archive = dirname( __FILE__ ) . '/book/book-review-archive.php';
 		}
 		return $archive;
 	}
@@ -16,7 +16,7 @@
 	function insprvw_get_single_template( $single ) {
 		// Book review 
 		if ( get_post_type() == 'insprvw-book-review' ) {
-			$single = dirname( __FILE__ ) . '/templates/single-book-review.php';
+			$single = dirname( __FILE__ ) . '/book/book-review-single.php';
 		}
 		return $single;
 	}
@@ -47,3 +47,37 @@
 			return '<p>' . get_the_excerpt() . '</p>' . insprvw_read_more();
 		}
 	}
+
+	// Create list items with schema
+	function insprvw_book_item_details( $class, $label, $itemprop, $value ) {
+		// Create list item with details about book
+		$book_item_details = '<li class="book-' . $class . '">';
+		$book_item_details .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
+		$book_item_details .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
+		$book_item_details .= '</li>';
+
+		// Return list item
+		return $book_item_details;
+	}
+
+	// Create list of book terms
+	function insprvw_book_item_terms( $pid, $term, $class, $label, $itemprop ) {
+		// Get the list of linked terns
+		$term_list = get_the_term_list( $pid, $term, '', ', ' );
+
+		// Create list item HTML
+		$term_list_item = '<li class="book-' . $class . '">';
+		$term_list_item .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
+		$term_list_item .= '<span class="review-value" itemprop="' . $itemprop . '">' . $term_list . '</span>';
+		$term_list_item .= '</li>';
+
+		// Return term list item is there is terms
+		if ( strlen( $term_list ) > 0 ) {
+			return $term_list_item;
+		}
+	}	
+
+	// Create buy links
+	function insprvw_book_buy_link( $class, $url, $text ) {
+		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'inspire-reviews' ) . '</a>, ';
+	}	
