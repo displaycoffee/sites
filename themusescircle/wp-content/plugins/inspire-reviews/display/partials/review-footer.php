@@ -11,6 +11,8 @@
 		// Set the type for what type of review page we're on
 		if ( get_post_type() == 'insprvw-book-review' ) {
 			$review_type = 'book';
+		} else if ( get_post_type() == 'insprvw-movie-review' ) {
+			$review_type = 'video';
 		}
 
 		// Display list of categories

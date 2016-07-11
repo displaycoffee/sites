@@ -25,7 +25,7 @@
 			<?php if ( have_posts() ) : ?>	
 				<div class="entry-multiple">
 					<?php while ( have_posts() ) : the_post(); ?>
-						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-book-review" itemscope itemtype="http://schema.org/Review">
+						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review" itemscope itemtype="http://schema.org/Review">
 							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 							<?php 
 								// Since the string is long, create variables for title before/after
@@ -36,8 +36,8 @@
 								the_title( $title_before, $title_after );
 							?>
 							<?php include '/../partials/review-meta.php'; ?>
-							<?php include '/../partials/review-thumbnail.php'; ?>
-							<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
+							<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
+								<?php include '/../partials/review-thumbnail.php'; ?>
 								<?php include 'book-information.php'; ?>	
 							</div>
 							<div class="entry-content">

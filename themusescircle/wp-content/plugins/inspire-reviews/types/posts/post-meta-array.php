@@ -80,7 +80,7 @@
             ),  
             array(
                 'label'    => __( 'Goodreads', 'inspire-reviews' ),
-                'desc'     => __( 'URL to the books Goodread\'s page.', 'inspire-reviews' ),
+                'desc'     => __( 'URL to the book\'s Goodreads page.', 'inspire-reviews' ),
                 'id'       => '_insprvw-book-goodreads',
                 'name'     => '_insprvw-book-goodreads',
                 'type'     => 'url',
@@ -189,6 +189,14 @@
                 'validate' => 'sanitize_text_field'
             ),
             array(
+                'label'    => __( 'MPAA Rating', 'inspire-reviews' ),
+                'desc'     => __( 'The Motion Picture Rating (MPAA) of the movie.', 'inspire-reviews' ),
+                'id'       => '_insprvw-movie-mpaa',
+                'name'     => '_insprvw-movie-mpaa',
+                'type'     => 'text',
+                'validate' => 'sanitize_text_field'
+            ),            
+            array(
                 'label'    => __( 'Director', 'inspire-reviews' ),
                 'desc'     => __( 'The director of the movie.', 'inspire-reviews' ),
                 'id'       => '_insprvw-movie-director',
@@ -207,11 +215,11 @@
             array(
                 'label'    => __( 'Release Date', 'inspire-reviews' ),
                 'desc'     => __( 'Date of movie\'s release.', 'inspire-reviews' ),
-                'id'       => '_insprvw-book-release-date',
-                'name'     => '_insprvw-book-release-date',
+                'id'       => '_insprvw-movie-release-date',
+                'name'     => '_insprvw-movie-release-date',
                 'type'     => 'date',
                 'validate' => 'insprvw_sanitize_date'
-            ),  
+            ),              
             array(
                 'label'    => __( 'Runtime', 'inspire-reviews' ),
                 'desc'     => __( 'The runtime of the movie.', 'inspire-reviews' ),
@@ -220,6 +228,14 @@
                 'type'     => 'text',
                 'validate' => 'sanitize_text_field'
             ),  
+            array(
+                'label'    => __( 'Official Site/Wikipedia', 'inspire-reviews' ),
+                'desc'     => __( 'URL to the movie\'s website or wikipedia page.', 'inspire-reviews' ),
+                'id'       => '_insprvw-movie-link',
+                'name'     => '_insprvw-movie-link',
+                'type'     => 'url',
+                'validate' => 'esc_url'
+            ),            
             array(
                 'label'    => __( 'Synopsis', 'inspire-reviews' ),
                 'desc'     => __( 'A short description or plot on the movie.', 'inspire-reviews' ),

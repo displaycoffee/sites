@@ -17,6 +17,8 @@
 		// Book review 
 		if ( get_post_type() == 'insprvw-book-review' ) {
 			$single = dirname( __FILE__ ) . '/book/book-review-single.php';
+		} else if ( get_post_type() == 'insprvw-movie-review' ) {
+			$single = dirname( __FILE__ ) . '/movie/movie-review-single.php';
 		}
 		return $single;
 	}
@@ -49,19 +51,19 @@
 	}
 
 	// Create list items with schema
-	function insprvw_book_item_details( $class, $label, $itemprop, $value ) {
-		// Create list item with details about book
-		$book_item_details = '<li class="book-' . $class . '">';
-		$book_item_details .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
-		$book_item_details .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
-		$book_item_details .= '</li>';
+	function insprvw_item_details( $class, $label, $itemprop, $value ) {
+		// Create list item with details about review item
+		$review_item_details = '<li class="book-' . $class . '">';
+		$review_item_details .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
+		$review_item_details .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
+		$review_item_details .= '</li>';
 
 		// Return list item
-		return $book_item_details;
+		return $review_item_details;
 	}
 
 	// Create list of book terms
-	function insprvw_book_item_terms( $pid, $term, $class, $label, $itemprop ) {
+	function insprvw_item_terms( $pid, $term, $class, $label, $itemprop ) {
 		// Get the list of linked terns
 		$term_list = get_the_term_list( $pid, $term, '', ', ' );
 

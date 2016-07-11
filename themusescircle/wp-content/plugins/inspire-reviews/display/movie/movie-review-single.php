@@ -1,6 +1,6 @@
 <?php
 	/**
-	* Template for displaying single book review
+	* Template for displaying single movie review
 	*/
 
 	// Exit if accessed directly
@@ -15,21 +15,21 @@
 		<article>
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="entry-single">
-					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review" itemscope itemtype="http://schema.org/Review">
+					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-movie-review" itemscope itemtype="http://schema.org/Review">			
 						<meta itemprop="name" content="<?php echo esc_attr( get_the_title() ); ?>"/>
 						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 						<?php include '/../partials/review-meta.php'; ?>
-						<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
+						<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Movie">
 							<?php include '/../partials/review-thumbnail.php'; ?>						
 							<div class="entry-details">
-								<?php include 'book-information.php'; ?>
+								<?php include 'movie-information.php'; ?>
 							</div>						
 						</div>
 						<div class="entry-content">
 							<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 							<?php the_content(); ?>
 						</div>
-						<?php include '/../partials/review-footer.php'; ?>
+						<?php include '/../partials/review-footer.php'; ?>											
 					</div>
 				</div>
 				<?php include '/../partials/review-navigation.php'; ?>

@@ -15,14 +15,16 @@
 		<article>
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="entry-single">
-					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-book-review" itemscope itemtype="http://schema.org/Review">
+					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review" itemscope itemtype="http://schema.org/Review">
 						<meta itemprop="name" content="<?php echo esc_attr( get_the_title() ); ?>"/>
 						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 						<?php include '/../partials/review-meta.php'; ?>
-						<?php include '/../partials/review-thumbnail.php'; ?>						
-						<div class="book-details" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
-							<?php include 'book-information.php'; ?>
-						</div>						
+						<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
+							<?php include '/../partials/review-thumbnail.php'; ?>						
+							<div class="entry-details">
+								<?php include 'book-information.php'; ?>
+							</div>						
+						</div>
 						<div class="entry-content">
 							<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 							<?php the_content(); ?>
