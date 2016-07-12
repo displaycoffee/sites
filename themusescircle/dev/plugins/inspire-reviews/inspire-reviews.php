@@ -52,13 +52,13 @@
 	require_once( 'includes/validation.php' );
 
 	// Book Post Types
-	require_once( 'types/posts/book/review.php' );
+	require_once( 'types/posts/book/book-review.php' );
 
 	// Movie Post Types
-	require_once( 'types/posts/movie/review.php' );
+	require_once( 'types/posts/video/movie-review.php' );
 
 	// TV Post Types
-	require_once( 'types/posts/tv/review.php' );
+	require_once( 'types/posts/video/tv-review.php' );
 
 	// Post Types
 	require_once( 'types/posts/post-meta-array.php' );
