@@ -84,7 +84,7 @@
 		// Add goodreads link
 		if ( $book_goodreads ) {
 			$book_list_item .= '<li class="book-goodreads">';
-			$book_list_item .= '<span class="review-label">' . __( 'Goodreads', 'inspire-reviews' ) . '</span> ';
+			$book_list_item .= '<span class="review-label">' . __( 'Goodreads', 'inspire-reviews' ) . ':</span> ';
 			$book_list_item .= '<span class="review-value"><a href="' . esc_url( $book_goodreads ) . '" target="_blank">Link</a></span>';
 			$book_list_item .= '</li>';
 		}
@@ -99,7 +99,7 @@
 
 		// Create buy links list item
 		$book_buy_list_item = '<li class="book-buy-links">';
-		$book_buy_list_item .= '<span class="review-label">' . __( 'Buy:', 'inspire-reviews' ) . '</span> ';
+		$book_buy_list_item .= '<span class="review-label">' . __( 'Buy', 'inspire-reviews' ) . ':</span> ';
 		$book_buy_list_item .= '<span class="review-label">';
 		$book_buy_list_item .= rtrim( $book_buy_links, ', ' );
 		$book_buy_list_item .= '</span>';
