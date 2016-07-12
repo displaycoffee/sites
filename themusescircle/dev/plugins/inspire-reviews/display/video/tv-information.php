@@ -29,7 +29,7 @@
 		// Add tv link
 		if ( $tv_link ) {
 			$tv_list_item .= '<li class="tv-link">';
-			$tv_list_item .= '<span class="review-label">Link:</span> ';
+			$tv_list_item .= '<span class="review-label">' . __( 'Link', 'inspire-reviews' ) . ':</span> ';
 			$tv_list_item .= '<span class="review-value"><a itemprop="sameAs" href="' . esc_url( $tv_link ) . '" target="_blank">Link</a></span>';
 			$tv_list_item .= '</li>';
 		}

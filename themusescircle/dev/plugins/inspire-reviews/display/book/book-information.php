@@ -67,7 +67,7 @@
 		// Add author list item
 		if ( strlen( $author_names ) > 0 ) {
 			$book_list_item .= '<li class="book-author" itemprop="author" itemscope itemtype="http://schema.org/Person">';
-			$book_list_item .= '<span class="review-label">Author:</span> ';
+			$book_list_item .= '<span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> ';
 			$book_list_item .= '<span class="review-value" itemprop="name">' . $author_names . '</span>';
 			$book_list_item .= '<meta itemprop="sameAs" content="' . esc_html( join( ', ', $author_websites ) ) . '">';
 			$book_list_item .= '</li>';
@@ -84,7 +84,7 @@
 		// Add goodreads link
 		if ( $book_goodreads ) {
 			$book_list_item .= '<li class="book-goodreads">';
-			$book_list_item .= '<span class="review-label">Goodreads:</span> ';
+			$book_list_item .= '<span class="review-label">' . __( 'Goodreads', 'inspire-reviews' ) . '</span> ';
 			$book_list_item .= '<span class="review-value"><a href="' . esc_url( $book_goodreads ) . '" target="_blank">Link</a></span>';
 			$book_list_item .= '</li>';
 		}

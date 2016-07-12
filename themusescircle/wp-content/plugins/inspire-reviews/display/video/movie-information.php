@@ -28,7 +28,7 @@
 		// Add movie link
 		if ( $movie_link ) {
 			$movie_list_item .= '<li class="movie-link">';
-			$movie_list_item .= '<span class="review-label">Link:</span> ';
+			$movie_list_item .= '<span class="review-label">' . __( 'Link', 'inspire-reviews' ) . ':</span> ';
 			$movie_list_item .= '<span class="review-value"><a itemprop="sameAs" href="' . esc_url( $movie_link ) . '" target="_blank">Link</a></span>';
 			$movie_list_item .= '</li>';
 		}
