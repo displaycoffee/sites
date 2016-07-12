@@ -29,6 +29,6 @@
 			'show_in_nav_menus' => false
 		);
 
-		register_taxonomy( 'insprvw-video-theme', array( 'insprvw-show-review', 'insprvw-movie-review' ), $args );
+		register_taxonomy( 'insprvw-video-theme', array( 'insprvw-tv-review', 'insprvw-movie-review' ), $args );
 	}
 	add_action( 'init', 'insprvw_create_video_theme', 2 );

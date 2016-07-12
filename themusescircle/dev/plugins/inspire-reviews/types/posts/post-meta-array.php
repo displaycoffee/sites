@@ -229,8 +229,8 @@
                 'validate' => 'sanitize_text_field'
             ),  
             array(
-                'label'    => __( 'Official Site/Wikipedia', 'inspire-reviews' ),
-                'desc'     => __( 'URL to the movie\'s website or wikipedia page.', 'inspire-reviews' ),
+                'label'    => __( 'Link', 'inspire-reviews' ),
+                'desc'     => __( 'URL to the movie\'s website, imdb.com, or wikipedia page.', 'inspire-reviews' ),
                 'id'       => '_insprvw-movie-link',
                 'name'     => '_insprvw-movie-link',
                 'type'     => 'url',
@@ -248,17 +248,17 @@
     );
 
     $postMetaBoxes[] = array(
-        'id'       => 'insprvw-show-rating',
-        'title'    => __( 'Show Rating', 'inspire-reviews' ),
-        'page'     => 'insprvw-show-review',
+        'id'       => 'insprvw-tv-rating',
+        'title'    => __( 'TV Rating', 'inspire-reviews' ),
+        'page'     => 'insprvw-tv-review',
         'context'  => 'normal',
         'priority' => 'high',
         'fields'   => array(
             array(
                 'label'    => __( 'Rating', 'inspire-reviews' ),
                 'desc'     => __( 'The rating of the show for this review. Can be 0 - 5; decimals allowed.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-rating',
-                'name'     => '_insprvw-show-rating',
+                'id'       => '_insprvw-tv-rating',
+                'name'     => '_insprvw-tv-rating',
                 'type'     => 'text',
                 'validate' => 'insprvw_sanitize_rating'
             )
@@ -266,73 +266,81 @@
     );
 
     $postMetaBoxes[] = array(
-        'id'       => 'insprvw-show-information',
-        'title'    => __( 'Show Information', 'inspire-reviews' ),
-        'page'     => 'insprvw-show-review',
+        'id'       => 'insprvw-tv-information',
+        'title'    => __( 'TV Information', 'inspire-reviews' ),
+        'page'     => 'insprvw-tv-review',
         'context'  => 'normal',
         'priority' => 'high',
         'fields'   => array(
             array(
                 'label'    => __( 'Title', 'inspire-reviews' ),
                 'desc'     => __( 'The title of the show.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-title',
-                'name'     => '_insprvw-show-title',
+                'id'       => '_insprvw-tv-title',
+                'name'     => '_insprvw-tv-title',
                 'type'     => 'text',
                 'validate' => 'sanitize_text_field'
             ),
             array(
                 'label'    => __( 'Seasons', 'inspire-reviews' ),
                 'desc'     => __( 'The number of seasons in the show.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-seasons',
-                'name'     => '_insprvw-show-seasons',
+                'id'       => '_insprvw-tv-seasons',
+                'name'     => '_insprvw-tv-seasons',
                 'type'     => 'text',
                 'validate' => 'insprvw_sanitize_number'
             ),
             array(
                 'label'    => __( 'Episodes', 'inspire-reviews' ),
                 'desc'     => __( 'The number of episodes in the show.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-episodes',
-                'name'     => '_insprvw-show-episodes',
+                'id'       => '_insprvw-tv-episodes',
+                'name'     => '_insprvw-tv-episodes',
                 'type'     => 'text',
                 'validate' => 'insprvw_sanitize_number'
             ),
             array(
                 'label'    => __( 'Creator', 'inspire-reviews' ),
                 'desc'     => __( 'The creator of the show.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-creator',
-                'name'     => '_insprvw-show-creator',
+                'id'       => '_insprvw-tv-creator',
+                'name'     => '_insprvw-tv-creator',
                 'type'     => 'text',
                 'validate' => 'sanitize_text_field'
             ), 
             array(
                 'label'    => __( 'Network', 'inspire-reviews' ),
                 'desc'     => __( 'The network the show is on.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-network',
-                'name'     => '_insprvw-show-network',
+                'id'       => '_insprvw-tv-network',
+                'name'     => '_insprvw-tv-network',
                 'type'     => 'text',
                 'validate' => 'sanitize_text_field'
             ),                         
             array(
                 'label'    => __( 'Release Date', 'inspire-reviews' ),
                 'desc'     => __( 'Date of show\'s release.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-release-date',
-                'name'     => '_insprvw-show-release-date',
+                'id'       => '_insprvw-tv-release-date',
+                'name'     => '_insprvw-tv-release-date',
                 'type'     => 'date',
                 'validate' => 'insprvw_sanitize_date'
             ),   
             array(
                 'label'    => __( 'Runtime', 'inspire-reviews' ),
                 'desc'     => __( 'The runtime of the show.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-runtime',
-                'name'     => '_insprvw-show-runtime',
+                'id'       => '_insprvw-tv-runtime',
+                'name'     => '_insprvw-tv-runtime',
                 'type'     => 'text',
                 'validate' => 'sanitize_text_field'
             ),  
             array(
+                'label'    => __( 'Link', 'inspire-reviews' ),
+                'desc'     => __( 'URL to the tv\'s website, imdb.com, or wikipedia page.', 'inspire-reviews' ),
+                'id'       => '_insprvw-tv-link',
+                'name'     => '_insprvw-tv-link',
+                'type'     => 'url',
+                'validate' => 'esc_url'
+            ),              
+            array(
                 'label'    => __( 'Synopsis', 'inspire-reviews' ),
                 'desc'     => __( 'A short description or plot on the show.', 'inspire-reviews' ),
-                'id'       => '_insprvw-show-synopsis',
-                'name'     => '_insprvw-show-synopsis',
+                'id'       => '_insprvw-tv-synopsis',
+                'name'     => '_insprvw-tv-synopsis',
                 'type'     => 'textarea',
                 'validate' => 'insprvw_sanitize_textarea'
             )

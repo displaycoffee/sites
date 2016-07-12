@@ -2,7 +2,7 @@
 	/**
 	* Plugin Name: Inspire Reviews
 	* Plugin URI: http://neverend.org/adria
-	* Description: Used for reviewing various types of media such as books, movies, and tv shows.
+	* Description: Used for reviewing various types of media such as books, movies, and tv.
 	* Author: Adria Murphy
 	* Author URI: http://neverend.org/adria
 	* Version: 4.0
@@ -20,7 +20,7 @@
 	// Loads necessary javascript and CSS
 	function insprvw_enqueue_assets() {
 	    global $typenow;
-	    if ( $typenow == 'insprvw-book-review' || $typenow == 'insprvw-movie-review' || $typenow == 'insprvw-show-review' ) {
+	    if ( $typenow == 'insprvw-book-review' || $typenow == 'insprvw-movie-review' || $typenow == 'insprvw-tv-review' ) {
 	    	// Enqueue and localize media library
 	        wp_enqueue_media();
 	        wp_localize_script( 'insprvw_asset', 'image_select',
@@ -57,8 +57,8 @@
 	// Movie Post Types
 	require_once( 'types/posts/movie/review.php' );
 
-	// Show Post Types
-	require_once( 'types/posts/show/review.php' );
+	// TV Post Types
+	require_once( 'types/posts/tv/review.php' );
 
 	// Post Types
 	require_once( 'types/posts/post-meta-array.php' );
@@ -71,7 +71,7 @@
 	require_once( 'types/taxonomies/book/publisher.php' );
 	require_once( 'types/taxonomies/book/tag.php' );
 
-	// Video Taxonomies - For movies and tv shows
+	// Video Taxonomies - For movies and tv
 	require_once( 'types/taxonomies/video/actor.php' );
 	require_once( 'types/taxonomies/video/category.php' );
 	require_once( 'types/taxonomies/video/genre.php' );

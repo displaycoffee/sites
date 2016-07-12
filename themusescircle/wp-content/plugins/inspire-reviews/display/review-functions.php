@@ -17,8 +17,8 @@
 		// Book review 
 		if ( get_post_type() == 'insprvw-book-review' ) {
 			$single = dirname( __FILE__ ) . '/book/book-review-single.php';
-		} else if ( get_post_type() == 'insprvw-movie-review' ) {
-			$single = dirname( __FILE__ ) . '/movie/movie-review-single.php';
+		} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
+			$single = dirname( __FILE__ ) . '/video/video-review-single.php';
 		}
 		return $single;
 	}
@@ -50,16 +50,28 @@
 		}
 	}
 
-	// Create list items with schema
-	function insprvw_item_details( $class, $label, $itemprop, $value ) {
+	// Create list items (without schema)
+	function insprvw_item_details( $class, $label, $value ) {
 		// Create list item with details about review item
 		$review_item_details = '<li class="book-' . $class . '">';
 		$review_item_details .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
-		$review_item_details .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
+		$review_item_details .= '<span class="review-value">' . esc_html( $value ) . '</span>';
 		$review_item_details .= '</li>';
 
 		// Return list item
 		return $review_item_details;
+	}
+
+	// Create list items (with schema)
+	function insprvw_item_details_schema( $class, $label, $itemprop, $value ) {
+		// Create list item with details about review item
+		$review_item_details_schema = '<li class="book-' . $class . '">';
+		$review_item_details_schema .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
+		$review_item_details_schema .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
+		$review_item_details_schema .= '</li>';
+
+		// Return list item
+		return $review_item_details_schema;
 	}
 
 	// Create list of book terms

@@ -42,6 +42,10 @@
 			$review_type = 'book';
 		} else if ( get_post_type() == 'insprvw-movie-review' ) {
 			$review_type = 'movie';
+		} else if ( get_post_type() == 'insprvw-tv-review' ) {
+			$review_type = 'tv';
+		} else {
+			$review_type = null;
 		}
 
 		// Get the review rating

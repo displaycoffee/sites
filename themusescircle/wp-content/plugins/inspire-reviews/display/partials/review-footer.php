@@ -5,16 +5,18 @@
 
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
+
+	// Set the type for what type of review page we're on
+	if ( get_post_type() == 'insprvw-book-review' ) {
+		$review_type = 'book';
+	} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
+		$review_type = 'video';
+	} else {
+		$review_type = null;
+	}
 ?>
 <footer class="entry-footer">
 	<?php 
-		// Set the type for what type of review page we're on
-		if ( get_post_type() == 'insprvw-book-review' ) {
-			$review_type = 'book';
-		} else if ( get_post_type() == 'insprvw-movie-review' ) {
-			$review_type = 'video';
-		}
-
 		// Display list of categories
 		echo get_the_term_list( $post->ID, 'insprvw-' . $review_type . '-category', '<div class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</div>' );
 

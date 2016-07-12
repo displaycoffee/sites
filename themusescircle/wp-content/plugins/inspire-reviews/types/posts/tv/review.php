@@ -3,10 +3,10 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }
 	
 	// Create custom content type
-	function insprvw_create_show_review() {
+	function insprvw_create_tv_review() {
 		$labels = array(
-			'name'               => __( 'Show Reviews', 'inspire-reviews' ),
-			'singular_name'      => __( 'Show Review', 'inspire-reviews' ),
+			'name'               => __( 'TV Reviews', 'inspire-reviews' ),
+			'singular_name'      => __( 'TV Review', 'inspire-reviews' ),
 			'add_new'            => __( 'Add New', 'inspire-reviews' ),
 			'add_new_item'       => __( 'Add New Review', 'inspire-reviews' ),
 			'edit_item'          => __( 'Edit Review', 'inspire-reviews' ),
@@ -17,12 +17,12 @@
 			'not_found'          => __( 'No reviews found.', 'inspire-reviews' ),
 			'not_found_in_trash' => __( 'No reviews found in trash.', 'inspire-reviews' ),
 			'parent_item_colon'  => __( 'Parent Review:', 'inspire-reviews' ),
-			'menu_name'          => __( 'Show Reviews', 'inspire-reviews' ),
+			'menu_name'          => __( 'TV Reviews', 'inspire-reviews' ),
 			'update_item'        => __( 'Update Reviews', 'inspire-reviews' )
 		);
 
 		$args = array(
-			'label'               => __( 'Show Review', 'inspire-reviews' ),
+			'label'               => __( 'TV Review', 'inspire-reviews' ),
 			'labels'              => $labels,
 			'description'         => __( 'Add reviews.', 'inspire-reviews' ),	
 			'public'              => true,
@@ -41,7 +41,7 @@
 			'capability_type'     => 'post',
 		);
 		
-		register_post_type( 'insprvw-show-review', $args );
+		register_post_type( 'insprvw-tv-review', $args );
 	}
 
-	add_action( 'init', 'insprvw_create_show_review', 0 );
+	add_action( 'init', 'insprvw_create_tv_review', 0 );
