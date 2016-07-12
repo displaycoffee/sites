@@ -15,15 +15,15 @@
 
 	} elseif ( is_single() ) {
 		// Create list items of movie information
-		$movie_list_item = $movie_title ? insprvw_item_details_schema( 'title', 'Title', 'name', $movie_title ) : '';
-		$movie_list_item .= $movie_director ? insprvw_item_details_schema( 'director', 'Director', 'director', $movie_director ) : '';
-		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-actor', 'actors', 'Actors', 'actor' );
-		$movie_list_item .= $movie_mpaa_rating ? insprvw_item_details_schema( 'mpaa-rating', 'MPAA Rating', 'contentRating', $movie_mpaa_rating ) : '';		
-		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-genre', 'genre', 'Genres', 'genre' );
-		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-theme', 'theme', 'Themes', 'genre' );
-		$movie_list_item .= $movie_screenwriter ? insprvw_item_details_schema( 'screenwriter', 'Screenwriter', 'author', $movie_screenwriter ) : '';
-		$movie_list_item .= $movie_release_date ? insprvw_item_details_schema( 'release-date', 'Release Date', 'dateCreated', $movie_release_date ) : '';
-		$movie_list_item .= $movie_runtime ? insprvw_item_details_schema( 'runtime', 'Runtime', 'duration', $movie_runtime ) : '';
+		$movie_list_item = $movie_title ? insprvw_item_details_schema( 'movie-title', 'Title', 'name', $movie_title ) : '';
+		$movie_list_item .= $movie_director ? insprvw_item_details_schema( 'movie-director', 'Director', 'director', $movie_director ) : '';
+		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-actor', 'movie-actors', 'Actors', 'actor' );
+		$movie_list_item .= $movie_mpaa_rating ? insprvw_item_details_schema( 'movie-mpaa-rating', 'MPAA Rating', 'contentRating', $movie_mpaa_rating ) : '';		
+		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-genre', 'movie-genre', 'Genres', 'genre' );
+		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-theme', 'movie-theme', 'Themes', 'genre' );
+		$movie_list_item .= $movie_screenwriter ? insprvw_item_details_schema( 'movie-screenwriter', 'Screenwriter', 'author', $movie_screenwriter ) : '';
+		$movie_list_item .= $movie_release_date ? insprvw_item_details_schema( 'movie-release-date', 'Release Date', 'dateCreated', $movie_release_date ) : '';
+		$movie_list_item .= $movie_runtime ? insprvw_item_details_schema( 'movie-runtime', 'Runtime', 'duration', $movie_runtime ) : '';
 
 		// Add movie link
 		if ( $movie_link ) {

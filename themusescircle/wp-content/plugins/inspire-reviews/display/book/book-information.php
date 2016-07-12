@@ -58,8 +58,8 @@
 		echo $book_schema;
 	} elseif ( is_single() ) {
 		// Create list items of book information
-		$book_list_item = $book_title ? insprvw_item_details_schema( 'title', 'Title', 'name', $book_title ) : '';
-		$book_list_item .= $book_series ? insprvw_item_details_schema( 'series', 'Series', 'position', $book_series ) : '';
+		$book_list_item = $book_title ? insprvw_item_details_schema( 'book-title', 'Title', 'name', $book_title ) : '';
+		$book_list_item .= $book_series ? insprvw_item_details_schema( 'book-series', 'Series', 'position', $book_series ) : '';
 		
 		// Get list of author names
 		$author_names = get_the_term_list( $post->ID, 'insprvw-book-author', '', ', ' );	
@@ -74,12 +74,12 @@
 		}
 		
 		// Add multiple list items
-		$book_list_item .= $book_isbn ? insprvw_item_details_schema( 'isbn', 'ISBN', 'isbn', $book_isbn ) : '';		
-		$book_list_item .= insprvw_item_terms( $post->ID, 'insprvw-book-genre', 'genre', 'Genres', 'genre' );		
-		$book_list_item .= $book_length ? insprvw_item_details_schema( 'length', 'Length', 'numberOfPages', $book_length ) : '';
-		$book_list_item .= $book_binding ? insprvw_item_details_schema( 'binding', 'Binding', 'bookFormat', $book_binding ) : '';
-		$book_list_item .= $book_pub_date ? insprvw_item_details_schema( 'publication-date', 'Publication Date', 'datePublished', $book_pub_date ) : '';
-		$book_list_item .= insprvw_item_terms( $post->ID, 'insprvw-book-publisher', 'publisher', 'Publisher', 'publisher' );
+		$book_list_item .= $book_isbn ? insprvw_item_details_schema( 'book-isbn', 'ISBN', 'isbn', $book_isbn ) : '';		
+		$book_list_item .= insprvw_item_terms( $post->ID, 'insprvw-book-genre', 'book-genre', 'Genres', 'genre' );		
+		$book_list_item .= $book_length ? insprvw_item_details_schema( 'book-length', 'Length', 'numberOfPages', $book_length ) : '';
+		$book_list_item .= $book_binding ? insprvw_item_details_schema( 'book-binding', 'Binding', 'bookFormat', $book_binding ) : '';
+		$book_list_item .= $book_pub_date ? insprvw_item_details_schema( 'book-publication-date', 'Publication Date', 'datePublished', $book_pub_date ) : '';
+		$book_list_item .= insprvw_item_terms( $post->ID, 'insprvw-book-publisher', 'book-publisher', 'Publisher', 'publisher' );
 
 		// Add goodreads link
 		if ( $book_goodreads ) {

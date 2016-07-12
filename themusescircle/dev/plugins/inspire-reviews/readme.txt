@@ -23,5 +23,8 @@ In WordPress, do the following:
 
 == Changelog ==
 
+= 5.0 =
+Added single templates for movies, tv, and books. Added archive pages for movies.
+
 = 4.0 =
 Created a readme.txt file.
