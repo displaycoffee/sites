@@ -73,7 +73,7 @@
 			$book_list_item .= '</li>';
 		}
 		
-		// Add multiple list items
+		// Continue list items of book information
 		$book_list_item .= $book_isbn ? insprvw_item_details_schema( 'book-isbn', 'ISBN', 'isbn', $book_isbn ) : '';		
 		$book_list_item .= insprvw_item_terms( $post->ID, 'insprvw-book-genre', 'book-genre', 'Genres', 'genre' );		
 		$book_list_item .= $book_length ? insprvw_item_details_schema( 'book-length', 'Length', 'numberOfPages', $book_length ) : '';
