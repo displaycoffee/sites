@@ -6,7 +6,7 @@
 	$movie_title = get_post_meta( $post->ID, '_insprvw-movie-title', true );		
 	$movie_director = get_post_meta( $post->ID, '_insprvw-movie-director', true );
 	$movie_link = get_post_meta( $post->ID, '_insprvw-movie-link', true );	
-	$movie_mpaa_rating = get_post_meta( $post->ID, '_insprvw-movie-mpaa', true );
+	$movie_rated = get_post_meta( $post->ID, '_insprvw-movie-rated', true );
 	$movie_release_date = get_post_meta( $post->ID, '_insprvw-movie-release-date', true );
 	$movie_hours = get_post_meta( $post->ID, '_insprvw-movie-hours', true );
 	$movie_minutes = get_post_meta( $post->ID, '_insprvw-movie-minutes', true );

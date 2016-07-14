@@ -21,7 +21,7 @@
 		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-actor', 'movie-actors', 'Actors', 'actor' );
 		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-genre', 'movie-genre', 'Genres', 'genre' );
 		$movie_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-theme', 'movie-theme', 'Themes', 'genre' );		
-		$movie_list_item .= $movie_mpaa_rating ? insprvw_item_details_schema( 'movie-mpaa-rating', 'MPAA Rating', 'contentRating', $movie_mpaa_rating ) : '';		
+		$movie_list_item .= $movie_rated ? insprvw_item_details_schema( 'movie-rated', 'Rated', 'contentRating', $movie_rated ) : '';		
 
 		// Add movie link
 		if ( $movie_link ) {

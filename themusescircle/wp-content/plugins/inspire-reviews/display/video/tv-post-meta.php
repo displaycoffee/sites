@@ -9,6 +9,7 @@
 	$tv_creator = get_post_meta( $post->ID, '_insprvw-tv-creator', true );
 	$tv_network = get_post_meta( $post->ID, '_insprvw-tv-network', true );
 	$tv_link = get_post_meta( $post->ID, '_insprvw-tv-link', true );	
+	$tv_rated = get_post_meta( $post->ID, '_insprvw-tv-rated', true );
 	$tv_release_date = get_post_meta( $post->ID, '_insprvw-tv-release-date', true );
 	$tv_hours = get_post_meta( $post->ID, '_insprvw-tv-hours', true );
 	$tv_minutes = get_post_meta( $post->ID, '_insprvw-tv-minutes', true );

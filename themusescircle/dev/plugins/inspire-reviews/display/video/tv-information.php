@@ -22,6 +22,7 @@
 		$tv_list_item .= $tv_episodes ? insprvw_item_details_schema( 'tv-episodes', 'Episodes', 'numberOfEpisodes', $tv_episodes ) : '';
 		$tv_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-genre', 'tv-genre', 'Genres', 'genre' );
 		$tv_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-theme', 'tv-theme', 'Themes', 'genre' );
+		$tv_list_item .= $tv_rated ? insprvw_item_details_schema( 'tv-rated', 'Rated', 'contentRating', $tv_rated ) : '';	
 
 		// Add tv link
 		if ( $tv_link ) {

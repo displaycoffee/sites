@@ -189,13 +189,13 @@
                 'validate' => 'sanitize_text_field'
             ),
             array(
-                'label'    => __( 'MPAA Rating', 'inspire-reviews' ),
+                'label'    => __( 'Rated', 'inspire-reviews' ),
                 'desc'     => __( 'The Motion Picture Rating (MPAA) of the movie.', 'inspire-reviews' ),
-                'id'       => '_insprvw-movie-mpaa',
-                'name'     => '_insprvw-movie-mpaa',
+                'id'       => '_insprvw-movie-rated',
+                'name'     => '_insprvw-movie-rated',
                 'type'     => 'text',
                 'validate' => 'sanitize_text_field'
-            ),            
+            ),                       
             array(
                 'label'    => __( 'Director', 'inspire-reviews' ),
                 'desc'     => __( 'The director of the movie.', 'inspire-reviews' ),
@@ -291,6 +291,14 @@
                 'type'     => 'text',
                 'validate' => 'sanitize_text_field'
             ),
+            array(
+                'label'    => __( 'Rated', 'inspire-reviews' ),
+                'desc'     => __( 'The rating of the show.', 'inspire-reviews' ),
+                'id'       => '_insprvw-tv-rated',
+                'name'     => '_insprvw-tv-rated',
+                'type'     => 'text',
+                'validate' => 'sanitize_text_field'
+            ),             
             array(
                 'label'    => __( 'Seasons', 'inspire-reviews' ),
                 'desc'     => __( 'The number of seasons in the show.', 'inspire-reviews' ),
