@@ -27,9 +27,9 @@
 			$thumbnail_html .= '<meta itemprop="height" content="' . esc_html( $thumbnail_height ) . '">';
 			$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail() . '</div>';		
 		} else {
-			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-thumbnail.png' ) . '">';
-			$thumbnail_html .= '<meta itemprop="width" content="300">';
-			$thumbnail_html .= '<meta itemprop="height" content="300">';
+			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-square-thumbnail.png' ) . '">';
+			$thumbnail_html .= '<meta itemprop="width" content="400">';
+			$thumbnail_html .= '<meta itemprop="height" content="400">';
 		}
 
 		// Create thumbnail block - END
