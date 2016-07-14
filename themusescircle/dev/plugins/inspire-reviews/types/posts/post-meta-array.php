@@ -224,10 +224,21 @@
                 'label'    => __( 'Runtime', 'inspire-reviews' ),
                 'desc'     => __( 'The runtime of the movie.', 'inspire-reviews' ),
                 'id'       => '_insprvw-movie-runtime',
-                'name'     => '_insprvw-movie-runtime',
-                'type'     => 'text',
-                'validate' => 'sanitize_text_field'
-            ),  
+                'type'     => 'multitext',
+                'validate' => 'insprvw_sanitize_number',
+                'options'  => array(
+                    array(
+                        'label' => __( 'Hours', 'inspire-reviews' ), 
+                        'id'    => '_insprvw-movie-hours', 
+                        'name'  => '_insprvw-movie-hours'
+                    ),
+                    array(
+                        'label' => __( 'Minutes', 'inspire-reviews' ), 
+                        'id'    => '_insprvw-movie-minutes', 
+                        'name'  => '_insprvw-movie-minutes'
+                    )
+                )
+            ),                 
             array(
                 'label'    => __( 'Link', 'inspire-reviews' ),
                 'desc'     => __( 'URL to the movie\'s website, imdb.com, or wikipedia page.', 'inspire-reviews' ),
@@ -324,10 +335,21 @@
                 'label'    => __( 'Runtime', 'inspire-reviews' ),
                 'desc'     => __( 'The runtime of the show.', 'inspire-reviews' ),
                 'id'       => '_insprvw-tv-runtime',
-                'name'     => '_insprvw-tv-runtime',
-                'type'     => 'text',
-                'validate' => 'sanitize_text_field'
-            ),  
+                'type'     => 'multitext',
+                'validate' => 'insprvw_sanitize_number',
+                'options'  => array(
+                    array(
+                        'label' => __( 'Hours', 'inspire-reviews' ), 
+                        'id'    => '_insprvw-tv-hours', 
+                        'name'  => '_insprvw-tv-hours'
+                    ),
+                    array(
+                        'label' => __( 'Minutes', 'inspire-reviews' ), 
+                        'id'    => '_insprvw-tv-minutes', 
+                        'name'  => '_insprvw-tv-minutes'
+                    )
+                )
+            ), 
             array(
                 'label'    => __( 'Link', 'inspire-reviews' ),
                 'desc'     => __( 'URL to the tv\'s website, imdb.com, or wikipedia page.', 'inspire-reviews' ),

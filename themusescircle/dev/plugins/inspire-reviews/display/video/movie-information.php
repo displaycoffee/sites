@@ -33,7 +33,31 @@
 	
 		// Continue list items of movie information
 		$movie_list_item .= $movie_release_date ? insprvw_item_details_schema( 'movie-release-date', 'Release Date', 'dateCreated', $movie_release_date ) : '';
-		$movie_list_item .= $movie_runtime ? insprvw_item_details_schema( 'movie-runtime', 'Runtime', 'duration', $movie_runtime ) : '';
+		
+		// Add movie runtime
+		if ( $movie_hours || $movie_minutes ) {
+			// Plural and singular time conversions
+			$hours = ( $movie_hours > 1 ) ? __( 'hours', 'inspire-reviews' ) : __( 'hour', 'inspire-reviews' );
+			$minutes = ( $movie_minutes > 1 ) ? __( 'minutes', 'inspire-reviews' ) : __( 'minute', 'inspire-reviews' );
+
+			// Conditional space if hours and minutes are available
+			$spacing = ( $movie_hours || $movie_minutes ) ? ' ' : '';
+
+			// Hours for display and schema
+			$movie_hours_display = $movie_hours ? $movie_hours . ' ' . $hours : '';
+			$movie_hours_schema = $movie_hours ? $movie_hours . 'H': '';
+
+			// Minutes for display and schema
+			$movie_minutes_display = $movie_minutes ? $movie_minutes . ' ' . $minutes : '';
+			$movie_minutes_schema = $movie_minutes ? $movie_minutes . 'M': '';
+
+			// Display movie runtime block
+			$movie_list_item .= '<li class="movie-runtime">';
+			$movie_list_item .= '<meta itemprop="duration" content="' . $movie_hours_schema . $movie_minutes_schema . '" />';
+			$movie_list_item .= '<span class="review-label">' . __( 'Runtime', 'inspire-reviews' ) . ':</span> ';
+			$movie_list_item .= '<span class="review-value">' . $movie_hours_display . $spacing . $movie_minutes_display . '</span>';
+			$movie_list_item .= '</li>';
+		}		
 
 		// Display movie information
 		$movie_info_list = '<ul class="movie-information">';

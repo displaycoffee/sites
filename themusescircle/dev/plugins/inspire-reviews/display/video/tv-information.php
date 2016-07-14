@@ -34,7 +34,28 @@
 		// Continue list items of tv information
 		$tv_list_item .= $tv_release_date ? insprvw_item_details_schema( 'tv-release-date', 'Release Date', 'dateCreated', $tv_release_date ) : '';
 		$tv_list_item .= $tv_network ? insprvw_item_details( 'tv-network', 'Network', $tv_network ) : '';
-		$tv_list_item .= $tv_runtime ? insprvw_item_details( 'tv-runtime', 'Runtime', $tv_runtime ) : '';
+
+		// Add tv runtime
+		if ( $tv_hours || $tv_minutes ) {
+			// Plural and singular time conversions
+			$hours = ( $tv_hours > 1 ) ? __( 'hours', 'inspire-reviews' ) : __( 'hour', 'inspire-reviews' );
+			$minutes = ( $tv_minutes > 1 ) ? __( 'minutes', 'inspire-reviews' ) : __( 'minute', 'inspire-reviews' );
+
+			// Conditional space if hours and minutes are available
+			$spacing = ( $tv_hours || $tv_minutes ) ? ' ' : '';
+
+			// Hours for display
+			$tv_hours_display = $tv_hours ? $tv_hours . ' ' . $hours : '';
+
+			// Minutes for display
+			$tv_minutes_display = $tv_minutes ? $tv_minutes . ' ' . $minutes : '';
+
+			// Display tv runtime block
+			$tv_list_item .= '<li class="tv-runtime">';
+			$tv_list_item .= '<span class="review-label">' . __( 'Runtime', 'inspire-reviews' ) . ':</span> ';
+			$tv_list_item .= '<span class="review-value">' . $tv_hours_display . $spacing . $tv_minutes_display . '</span>';
+			$tv_list_item .= '</li>';
+		}
 			
 		// Display tv information
 		$tv_info_list = '<ul class="tv-information">';

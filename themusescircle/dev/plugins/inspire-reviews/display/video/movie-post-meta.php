@@ -8,7 +8,8 @@
 	$movie_link = get_post_meta( $post->ID, '_insprvw-movie-link', true );	
 	$movie_mpaa_rating = get_post_meta( $post->ID, '_insprvw-movie-mpaa', true );
 	$movie_release_date = get_post_meta( $post->ID, '_insprvw-movie-release-date', true );
-	$movie_runtime = get_post_meta( $post->ID, '_insprvw-movie-runtime', true );
+	$movie_hours = get_post_meta( $post->ID, '_insprvw-movie-hours', true );
+	$movie_minutes = get_post_meta( $post->ID, '_insprvw-movie-minutes', true );
 	$movie_screenwriter = get_post_meta( $post->ID, '_insprvw-movie-screenwriter', true );
 	$movie_synopsis = get_post_meta( $post->ID, '_insprvw-movie-synopsis', true );	
 

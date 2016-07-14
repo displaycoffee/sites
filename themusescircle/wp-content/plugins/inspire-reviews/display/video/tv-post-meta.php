@@ -10,7 +10,8 @@
 	$tv_network = get_post_meta( $post->ID, '_insprvw-tv-network', true );
 	$tv_link = get_post_meta( $post->ID, '_insprvw-tv-link', true );	
 	$tv_release_date = get_post_meta( $post->ID, '_insprvw-tv-release-date', true );
-	$tv_runtime = get_post_meta( $post->ID, '_insprvw-tv-runtime', true );
+	$tv_hours = get_post_meta( $post->ID, '_insprvw-tv-hours', true );
+	$tv_minutes = get_post_meta( $post->ID, '_insprvw-tv-minutes', true );
 	$tv_synopsis = get_post_meta( $post->ID, '_insprvw-tv-synopsis', true );	
 
 	if ( is_single() ) {
