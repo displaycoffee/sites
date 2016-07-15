@@ -17,21 +17,8 @@
 			<h2><?php _e( 'Reviews', 'inspire-reviews' ); ?></h2>
 			<?php if ( have_posts() ) : ?>	
 				<div class="entry-multiple">
-					<?php while ( have_posts() ) : the_post(); ?>
-						<?php 
-							// Set the type for what type of review page we're on
-							if ( get_post_type() == 'insprvw-movie-review' ) {
-								$video_type = 'movie';
-								$video_type_schema = 'http://schema.org/Movie';
-							} else if ( get_post_type() == 'insprvw-tv-review' ) {
-								$video_type = 'tv';
-								$video_type_schema = 'http://schema.org/TVSeries';
-							} else {
-								$video_type = null;
-								$video_type_schema = null;
-							}
-						?>						
-						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo $video_type; ?>-review" itemscope itemtype="http://schema.org/Review">
+					<?php while ( have_posts() ) : the_post(); ?>				
+						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_video_type( false ); ?>-review" itemscope itemtype="http://schema.org/Review">
 							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 							<?php 
 								// Since the string is long, create variables for title before/after
@@ -42,9 +29,9 @@
 								the_title( $title_before, $title_after );
 							?>
 							<?php include '/../partials/review-meta.php'; ?>
-							<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="<?php echo $video_type_schema; ?>">
+							<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="<?php echo insprvw_video_type( true ); ?>">
 								<?php include '/../partials/review-thumbnail.php'; ?>
-								<?php include $video_type . '-information.php'; ?>
+								<?php include insprvw_video_type( false ) . '-information.php'; ?>
 							</div>
 							<div class="entry-content">
 								<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>

@@ -37,19 +37,8 @@
 		echo '<p class="date" itemprop="datePublished">' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
 	?>
 	<?php 
-		// Set the type for what type of review page we're on
-		if ( get_post_type() == 'insprvw-book-review' ) {
-			$review_type_meta = 'book';
-		} else if ( get_post_type() == 'insprvw-movie-review' ) {
-			$review_type_meta = 'movie';
-		} else if ( get_post_type() == 'insprvw-tv-review' ) {
-			$review_type_meta = 'tv';
-		} else {
-			$review_type_meta = null;
-		}
-
 		// Get the review rating
-		$review_rating = get_post_meta( $post->ID, '_insprvw-' . $review_type_meta . '-rating', true );
+		$review_rating = get_post_meta( $post->ID, '_insprvw-' . insprvw_review_type( true ) . '-rating', true );
 
 		// Create rating block
 		$rating_html = '<p class="rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">';
