@@ -12,7 +12,11 @@
 <?php 
 	// Check if we're on an archive versus single post	
 	if ( is_archive() ) {
+		// Add title
+		$tv_schema = $tv_title ? '<meta itemprop="name" content="' . esc_attr( $tv_title ) . '">' : '';
 
+		// Display movie information
+		echo $tv_schema;
 	} elseif ( is_single() ) {
 		// Create list items of tv information
 		$tv_list_item = $tv_title ? insprvw_item_details_schema( 'tv-title', 'Title', 'name', $tv_title ) : '';

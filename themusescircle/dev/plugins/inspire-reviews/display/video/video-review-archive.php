@@ -48,7 +48,7 @@
 							</div>
 							<div class="entry-content">
 								<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
-								<?php insprvw_excerpt(); ?>
+								<?php echo insprvw_excerpt(); ?>
 							</div>
 							<?php include '/../partials/review-footer.php'; ?>							
 						</div>
