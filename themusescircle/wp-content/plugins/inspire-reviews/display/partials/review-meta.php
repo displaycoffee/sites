@@ -39,17 +39,17 @@
 	<?php 
 		// Set the type for what type of review page we're on
 		if ( get_post_type() == 'insprvw-book-review' ) {
-			$review_type = 'book';
+			$review_type_meta = 'book';
 		} else if ( get_post_type() == 'insprvw-movie-review' ) {
-			$review_type = 'movie';
+			$review_type_meta = 'movie';
 		} else if ( get_post_type() == 'insprvw-tv-review' ) {
-			$review_type = 'tv';
+			$review_type_meta = 'tv';
 		} else {
-			$review_type = null;
+			$review_type_meta = null;
 		}
 
 		// Get the review rating
-		$review_rating = get_post_meta( $post->ID, '_insprvw-' . $review_type . '-rating', true );
+		$review_rating = get_post_meta( $post->ID, '_insprvw-' . $review_type_meta . '-rating', true );
 
 		// Create rating block
 		$rating_html = '<p class="rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">';

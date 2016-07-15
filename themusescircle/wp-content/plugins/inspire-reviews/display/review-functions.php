@@ -7,6 +7,8 @@
 		// Book review
 		if ( get_post_type() == 'insprvw-book-review' ) {
 			$archive = dirname( __FILE__ ) . '/book/book-review-archive.php';
+		} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
+			$archive = dirname( __FILE__ ) . '/video/video-review-archive.php';
 		}
 		return $archive;
 	}
@@ -94,4 +96,4 @@
 	// Create links
 	function insprvw_create_link( $class, $url, $text ) {
 		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'inspire-reviews' ) . '</a>, ';
-	}	
+	}
