@@ -1,6 +1,6 @@
 <?php
 	/**
-	* Template for displaying book review footer
+	* Template for displaying review footer
 	*/
 
 	// Exit if accessed directly
