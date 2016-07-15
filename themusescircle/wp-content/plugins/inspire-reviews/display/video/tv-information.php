@@ -54,7 +54,7 @@
 			// Display tv runtime block
 			$tv_list_item .= '<li class="tv-runtime">';
 			$tv_list_item .= '<span class="review-label">' . __( 'Runtime', 'inspire-reviews' ) . ':</span> ';
-			$tv_list_item .= '<span class="review-value">' . $tv_hours_display . $spacing . $tv_minutes_display . '</span>';
+			$tv_list_item .= '<span class="review-value">' . esc_html( $tv_hours_display ) . $spacing . esc_html( $tv_minutes_display ) . '</span>';
 			$tv_list_item .= '</li>';
 		}
 			

@@ -53,9 +53,9 @@
 
 			// Display movie runtime block
 			$movie_list_item .= '<li class="movie-runtime">';
-			$movie_list_item .= '<meta itemprop="duration" content="' . $movie_hours_schema . $movie_minutes_schema . '" />';
+			$movie_list_item .= '<meta itemprop="duration" content="' . esc_attr( $movie_hours_schema ) . esc_attr( $movie_minutes_schema ) . '" />';
 			$movie_list_item .= '<span class="review-label">' . __( 'Runtime', 'inspire-reviews' ) . ':</span> ';
-			$movie_list_item .= '<span class="review-value">' . $movie_hours_display . $spacing . $movie_minutes_display . '</span>';
+			$movie_list_item .= '<span class="review-value">' . esc_html( $movie_hours_display ) . $spacing . esc_html( $movie_minutes_display ) . '</span>';
 			$movie_list_item .= '</li>';
 		}		
 

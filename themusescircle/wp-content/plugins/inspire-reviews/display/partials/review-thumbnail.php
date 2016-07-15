@@ -20,9 +20,9 @@
 	} else {	
 		// Create thumbnail block
 		$thumbnail_html = '<div class="entry-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">';	
-		$thumbnail_html .= '<meta itemprop="url" content="' . plugins_url( 'inspire-reviews/assets/images/default-portrait-thumbnail.jpg', '' ) . '">';
+		$thumbnail_html .= '<meta itemprop="url" content="' . esc_url ( plugins_url( 'inspire-reviews/assets/images/default-portrait-thumbnail.png', '' ) ) . '">';
 		$thumbnail_html .= '<div class="image-wrap default-image">';
-		$thumbnail_html .= '<img width="400" height="600" src="' . plugins_url( 'inspire-reviews/assets/images/default-portrait-thumbnail.jpg', '' ) . '" alt="Image Coming Soon" />';	
+		$thumbnail_html .= '<img src="' . plugins_url( 'inspire-reviews/assets/images/default-portrait-thumbnail.png', '' ) . '" width="400" height="600" alt="Image Coming Soon" />';	
 		$thumbnail_html .= '</div></div>';	
 	}
 

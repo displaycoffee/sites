@@ -12,9 +12,8 @@
 	// Get the information about the author categories
 	$author_terms = get_the_terms( $post->ID, 'insprvw-book-author' );
 
-	// Create an array to store author websites and names
+	// Create an array to store author websites
 	$author_websites = array();
-	$author_names = array();
 
 	// Loop through autor term meta and push website values to array
 	if ( $author_terms ) {
@@ -22,19 +21,11 @@
 			// Get term meta for author websites
 			$author_website_meta = get_term_meta( $author->term_id, 'author-website', true );
 
-			// Get term meta for author websites
-			$author_name_meta = $author->name;
-
 			// Check if website meta is there and then push
 			if ( $author_website_meta ) {
 				array_push( $author_websites, $author_website_meta );
 			} else {
 				array_push( $author_websites, home_url( '/' ) );
-			}
-
-			// Check if website meta is there and then push
-			if ( $author_name_meta ) {
-				array_push( $author_names, $author_name_meta );
 			}
 		}
 	}
@@ -43,14 +34,30 @@
 	// Check if we're on an archive versus single post	
 	if ( is_archive() ) {
 		// Add title and isbn schema
-		$book_schema = $book_title ? '<meta itemprop="name" content="' . esc_html( $book_title ) . '">' : '';
-		$book_schema .= $book_isbn ? '<meta itemprop="isbn" content="' . esc_html( $book_isbn ) . '">' : '';
+		$book_schema = $book_title ? '<meta itemprop="name" content="' . esc_attr( $book_title ) . '">' : '';
+		$book_schema .= $book_isbn ? '<meta itemprop="isbn" content="' . esc_attr( $book_isbn ) . '">' : '';
+
+		// Create an array to store author names
+		$author_names = array();
+
+		// Loop through autor term meta and push name values to array
+		if ( $author_terms ) {
+			foreach ( $author_terms as $author ) {
+				// Get term meta for author names
+				$author_name_meta = $author->name;
+
+				// Check if names are there and then push
+				if ( $author_name_meta ) {
+					array_push( $author_names, $author_name_meta );
+				}
+			}
+		}
 
 		// Create author name meta if it is available
 		if ( $author_names ) {
 			$book_schema .= '<div itemprop="author" itemscope itemtype="http://schema.org/Person">';
-			$book_schema .= '<meta itemprop="name" content="' . esc_html( join( ', ', $author_names ) ) . '">';
-			$book_schema .= '<meta itemprop="sameAs" content="' . esc_html( join( ', ', $author_websites ) ) . '">';
+			$book_schema .= '<meta itemprop="name" content="' . esc_attr( join( ', ', $author_names ) ) . '">';
+			$book_schema .= '<meta itemprop="sameAs" content="' . esc_attr( join( ', ', $author_websites ) ) . '">';
 			$book_schema .= '</div>';
 		}
 
@@ -69,7 +76,7 @@
 			$book_list_item .= '<li class="book-author" itemprop="author" itemscope itemtype="http://schema.org/Person">';
 			$book_list_item .= '<span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> ';
 			$book_list_item .= '<span class="review-value" itemprop="name">' . $author_names . '</span>';
-			$book_list_item .= '<meta itemprop="sameAs" content="' . esc_html( join( ', ', $author_websites ) ) . '">';
+			$book_list_item .= '<meta itemprop="sameAs" content="' . esc_attr( join( ', ', $author_websites ) ) . '">';
 			$book_list_item .= '</li>';
 		}
 		
