@@ -12,7 +12,7 @@
 		if ( !is_attachment() ) {
 			// Create publisher block
 			$publisher_schema = '<div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">';
-			$publisher_schema .= '<meta itemprop="name" content="' . get_bloginfo( 'name' ) . '">';
+			$publisher_schema .= '<meta itemprop="name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
 			$publisher_schema .= '<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">';
 			$publisher_schema .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/publisher-logo.png' ) . '">';
 			$publisher_schema .= '<meta itemprop="width" content="600">';
@@ -35,7 +35,7 @@
 
 		// Dont display modified date schema on attachment pages
 		if ( !is_attachment() ) {
-			echo '<meta itemprop="dateModified" content="' .  get_the_modified_date( get_option( 'date_format' ) ) . '"/>';
+			echo '<meta itemprop="dateModified" content="' .  esc_attr( get_the_modified_date( get_option( 'date_format' ) ) ) . '"/>';
 		}
 	?>
 </div>

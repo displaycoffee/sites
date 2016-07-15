@@ -23,8 +23,8 @@
 		// Check if there is a thumbnail
 		if ( has_post_thumbnail() ) {
 			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( $thumbnail_src ) . '">';
-			$thumbnail_html .= '<meta itemprop="width" content="' . esc_html( $thumbnail_width ) . '">';
-			$thumbnail_html .= '<meta itemprop="height" content="' . esc_html( $thumbnail_height ) . '">';
+			$thumbnail_html .= '<meta itemprop="width" content="' . esc_attr( $thumbnail_width ) . '">';
+			$thumbnail_html .= '<meta itemprop="height" content="' . esc_attr( $thumbnail_height ) . '">';
 			$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail() . '</div>';		
 		} else {
 			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-square-thumbnail.png' ) . '">';
