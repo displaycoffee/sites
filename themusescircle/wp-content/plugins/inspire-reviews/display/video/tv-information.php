@@ -14,6 +14,9 @@
 	if ( is_archive() ) {
 		// Add title
 		$tv_schema = $tv_title ? '<meta itemprop="name" content="' . esc_attr( $tv_title ) . '">' : '';
+		$tv_schema .= $tv_creator ? '<meta itemprop="creator" content="' . esc_attr( $tv_creator ) . '">' : '';
+		$tv_schema .= $tv_link ? '<meta itemprop="sameAs" content="' . esc_url( $tv_link ) . '">' : '';
+		$tv_schema .= $tv_release_date ? '<meta itemprop="dateCreated" content="' . esc_attr( $tv_release_date ) . '">' : '';
 
 		// Display movie information
 		echo $tv_schema;

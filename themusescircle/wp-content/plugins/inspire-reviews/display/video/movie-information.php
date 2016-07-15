@@ -14,6 +14,9 @@
 	if ( is_archive() ) {
 		// Add title
 		$movie_schema = $movie_title ? '<meta itemprop="name" content="' . esc_attr( $movie_title ) . '">' : '';
+		$movie_schema .= $movie_director ? '<meta itemprop="director" content="' . esc_attr( $movie_director ) . '">' : '';
+		$movie_schema .= $movie_link ? '<meta itemprop="sameAs" content="' . esc_url( $movie_link ) . '">' : '';
+		$movie_schema .= $movie_release_date ? '<meta itemprop="dateCreated" content="' . esc_attr( $movie_release_date ) . '">' : '';
 
 		// Display movie information
 		echo $movie_schema;
