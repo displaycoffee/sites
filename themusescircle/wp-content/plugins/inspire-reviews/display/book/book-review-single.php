@@ -34,7 +34,7 @@
 							$author_names = strip_tags( get_the_term_list( $post->ID, 'insprvw-book-author', '', ', ' ) );
 
 							// Use author shortcode to display author information
-							echo do_shortcode( '[display-author names="' . $author_names . '"]' );
+							echo do_shortcode( '[book-author names="' . $author_names . '"]' );
 						?>
 						<?php include '/../partials/review-footer.php'; ?>
 					</div>

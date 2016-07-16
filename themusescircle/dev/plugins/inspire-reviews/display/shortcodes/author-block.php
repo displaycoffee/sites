@@ -89,4 +89,4 @@
 			return $author_html;
 		}
 	}
-	add_shortcode( 'display-author', 'insprvw_display_author' );
+	add_shortcode( 'book-author', 'insprvw_display_author' );

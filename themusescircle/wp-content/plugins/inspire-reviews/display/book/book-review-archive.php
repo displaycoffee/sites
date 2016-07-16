@@ -23,7 +23,7 @@
 					$author_name = $author_term->name;
 
 					// Use author shortcode to display author information
-					echo do_shortcode( '[display-author names="' . $author_name . '" title="false"]' );				
+					echo do_shortcode( '[book-author names="' . $author_name . '" title="false"]' );				
 				} else {
 					the_archive_description( '<div class="category-description">', '</div>' );
 				}
