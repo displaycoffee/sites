@@ -1,17 +1,18 @@
 <?php
 	/**
-	* Shortcode for display book author information
+	* Shortcode to display book author information
 	*/
 
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 
-	// Loop through post type and create a shortcode for slider display
+	// Loop through post type and create a shortcode for author information
 	function insprvw_display_author( $atts ) {	
 		// Get arguments for shortcode
 	    $a = shortcode_atts( array(
 	        'names' => '',
-	        'title' => 'true'
+	        'title' => 'true',
+	        'order' => 'asc'
 	    ), $atts );	
 
 	    // If there's no names defined, stop and don't do anything
@@ -22,7 +23,8 @@
 			// Get arguments for shortcode (mostly name)
 			$args = array(
 				'name'       => $names_array,
-			    'hide_empty' => false
+			    'hide_empty' => false,
+			    'order' => $a['order']
 			); 
 
 			// Get term data for chosen names

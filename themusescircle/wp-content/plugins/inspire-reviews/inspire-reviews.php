@@ -86,4 +86,5 @@
 	require_once( 'display/review-functions.php' );	
 
 	// Shortcodes
-	require_once( 'display/shortcodes/author-block.php' );	
+	require_once( 'display/shortcodes/author-block.php' );
+	require_once( 'display/shortcodes/recent-posts.php' );	
