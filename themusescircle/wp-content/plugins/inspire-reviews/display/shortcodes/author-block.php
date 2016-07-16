@@ -66,13 +66,22 @@
 				$author_social_links .= $author_google ? insprvw_create_link( 'google', $author_google, 'Google+' ) : '';
 				$author_social_links .= $author_tumblr ? insprvw_create_link( 'tumblr', $author_tumblr, 'Tumblr' ) : '';
 
-				// Create author block
+				// Create author block - START
 				$author_html .= '<div class="author-information">';
+				$author_html .= $a['title'] == 'true' ? '<h3>' . __( 'About', 'inspire-reviews' ) . ' ' . $author_name . '</h3>' : '';
 				$author_html .= $author_image ? $author_image_html : '';
-				$author_html .= '<div class="author-details">';
-				$author_html .= $a['title'] == 'true' ? '<h3>About ' . $author_name . '</h3>' : '';
+				$author_html .= '<div class="author-details">';				
 				$author_html .= $author_description ? $author_description_html : '';
-				$author_html .= ( strlen( $author_social_links ) > 0 ) ? '<div class="author-social">' . rtrim( $author_social_links, ', ' ) . '</div>' : '';
+
+				// Display author social links
+				if ( strlen( $author_social_links ) > 0 ) {
+					$author_html .= '<div class="author-social">';
+					$author_html .= '<h4 class="social-title">' . __( 'Connect with', 'inspire-reviews' ) . ' ' . $author_name . '</h4>';
+					$author_html .= '<div class="social-list">' . rtrim( $author_social_links, ', ' ) . '</div>';
+					$author_html .= '</div>';
+				}
+
+				// Create author block - END
 				$author_html .= '</div></div>';
 			}
 
