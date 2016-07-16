@@ -16,7 +16,14 @@
 			<?php 
 				// Check if we are on an author category and display information about the author
 				if ( is_tax( 'insprvw-book-author' ) ) {
-					include 'book-author-information.php';
+					// Get author term details
+					$author_term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+					// Get author name
+					$author_name = $author_term->name;
+
+					// Use author shortcode to display author information
+					echo do_shortcode( '[display-author names="' . $author_name . '" title="false"]' );				
 				} else {
 					the_archive_description( '<div class="category-description">', '</div>' );
 				}

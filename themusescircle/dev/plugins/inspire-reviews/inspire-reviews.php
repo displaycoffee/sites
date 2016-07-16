@@ -5,7 +5,7 @@
 	* Description: Used for reviewing various types of media such as books, movies, and tv.
 	* Author: Adria Murphy
 	* Author URI: http://neverend.org/adria
-	* Version: 4.0
+	* Version: 6.0
 	* Text Domain: inspire-reviews
 	**/
 
@@ -84,3 +84,6 @@
 
 	// Functions for display
 	require_once( 'display/review-functions.php' );	
+
+	// Shortcodes
+	require_once( 'display/shortcodes/author-block.php' );	

@@ -29,6 +29,13 @@
 							<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 							<?php the_content(); ?>
 						</div>
+						<?php 
+							// Get author names without html
+							$author_names = strip_tags( get_the_term_list( $post->ID, 'insprvw-book-author', '', ', ' ) );
+
+							// Use author shortcode to display author information
+							echo do_shortcode( '[display-author names="' . $author_names . '"]' );
+						?>
 						<?php include '/../partials/review-footer.php'; ?>
 					</div>
 				</div>

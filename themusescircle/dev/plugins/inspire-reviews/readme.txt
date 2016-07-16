@@ -23,6 +23,12 @@ In WordPress, do the following:
 
 == Changelog ==
 
+= 6.0 =
+Add author block shortcode and update files to use this.
+
+= 5.5 =
+Added archive pages for movies and tv shows.
+
 = 5.0 =
 Added single templates for movies, tv, and books. Added archive pages for movies.
 

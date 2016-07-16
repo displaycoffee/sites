@@ -37,26 +37,13 @@
 		$book_schema = $book_title ? '<meta itemprop="name" content="' . esc_attr( $book_title ) . '">' : '';
 		$book_schema .= $book_isbn ? '<meta itemprop="isbn" content="' . esc_attr( $book_isbn ) . '">' : '';
 
-		// Create an array to store author names
-		$author_names = array();
-
-		// Loop through autor term meta and push name values to array
-		if ( $author_terms ) {
-			foreach ( $author_terms as $author ) {
-				// Get term meta for author names
-				$author_name_meta = $author->name;
-
-				// Check if names are there and then push
-				if ( $author_name_meta ) {
-					array_push( $author_names, $author_name_meta );
-				}
-			}
-		}
+		// Get author names without html
+		$author_names = strip_tags( get_the_term_list( $post->ID, 'insprvw-book-author', '', ', ' ) );
 
 		// Create author name meta if it is available
 		if ( $author_names ) {
 			$book_schema .= '<div itemprop="author" itemscope itemtype="http://schema.org/Person">';
-			$book_schema .= '<meta itemprop="name" content="' . esc_attr( join( ', ', $author_names ) ) . '">';
+			$book_schema .= '<meta itemprop="name" content="' . esc_attr( $author_names ) . '">';
 			$book_schema .= '<meta itemprop="sameAs" content="' . esc_attr( join( ', ', $author_websites ) ) . '">';
 			$book_schema .= '</div>';
 		}
