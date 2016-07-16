@@ -8,12 +8,12 @@
 		include( 'slider-functions.php' );
 
 		// Shortcode attributes
-	    $atts = shortcode_atts( array(
+	    $a = shortcode_atts( array(
 	        'category' => ''
 	    ), $atts );		
 
 	    // Check if a category is set. If not, don't run the loop
-	    if( $atts['category'] ) {
+	    if( $a['category'] ) {
 			// Create empty slide variable to store slides from post loop below
 			$slide = '';
 
@@ -24,7 +24,7 @@
 					array(
 						'taxonomy' => 'opc-category',
 						'field'    => 'slug',
-						'terms'    => esc_attr( $atts['category'] )
+						'terms'    => esc_attr( $a['category'] )
 					),
 				),
 			);
@@ -33,7 +33,7 @@
 			// If the query has posts
 			if ( $opc_query->have_posts() ) {	
 				// Create slider wrapper block - START			
-				$slider_wrapper = '<div id="opc-' . esc_attr( $atts['category'] ) . '" class="opc-slider-wrapper owl-carousel">';
+				$slider_wrapper = '<div id="opc-' . esc_attr( $a['category'] ) . '" class="opc-slider-wrapper owl-carousel">';
 
 				// While loop to query posts - for content and button
 				while ( $opc_query->have_posts() ) {
@@ -96,7 +96,7 @@
 				// Check if there are any slides
 				if ( strlen( $slide ) > 0 ) {
 					// Get category meta
-					$term_args = get_term_by( 'slug', $atts['category'], 'opc-category' );
+					$term_args = get_term_by( 'slug', $a['category'], 'opc-category' );
 					$term_id = $term_args->term_id;
 
 					// Include term meta
@@ -107,14 +107,14 @@
 
 					// Max width from terms
 					if ( $max_width == '0' || $max_width ) {
-						$slider_style .= '#opc-' . esc_attr( $atts['category'] ) . '{max-width:';
+						$slider_style .= '#opc-' . esc_attr( $a['category'] ) . '{max-width:';
 						$slider_style .= esc_attr( $max_width ) . esc_attr( $max_width_unit );
 						$slider_style .= '}';
 					}
 
 					// Max image height from terms
 					if ( $max_height == '0' || $max_height ) {
-						$slider_style .= '#opc-' . esc_attr( $atts['category'] ) . '.owl-carousel .opc-slide .opc-image img{max-height:';
+						$slider_style .= '#opc-' . esc_attr( $a['category'] ) . '.owl-carousel .opc-slide .opc-image img{max-height:';
 						$slider_style .= opc_create_value( $max_height );
 						$slider_style .= '}';
 					}	
@@ -188,7 +188,7 @@
 
 					// Create slider js block - START
 					$slider_js = '<script>';
-					$slider_js .= 'jQuery(document).ready(function(){jQuery("#opc-' . esc_js( $atts['category'] ) . '").owlCarousel({';
+					$slider_js .= 'jQuery(document).ready(function(){jQuery("#opc-' . esc_js( $a['category'] ) . '").owlCarousel({';
 					$slider_js .= 'singleItem:true,';
 
 					// Create slider js options block
