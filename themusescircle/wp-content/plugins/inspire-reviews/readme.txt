@@ -23,6 +23,9 @@ In WordPress, do the following:
 
 == Changelog ==
 
+= 7.0 =
+Add recent reviews shortcode.
+
 = 6.0 =
 Add author block shortcode and update files to use this.
 

@@ -24,7 +24,7 @@
 			$args = array(
 				'name'       => $names_array,
 			    'hide_empty' => false,
-			    'order' => $a['order']
+			    'order'      => $a['order']
 			); 
 
 			// Get term data for chosen names
@@ -33,6 +33,7 @@
 			// Create blank variable to store author block
 			$author_html = '';
 
+			// Loop through each author terms
 			foreach ( $author_terms as $author ) {
 				// Get author id
 				$author_id = $author->term_id;
@@ -86,7 +87,7 @@
 				// Create author block - END
 				$author_html .= '</div></div>';
 			}
-
+			
 			// Display final author block
 			return $author_html;
 		}
