@@ -14,9 +14,6 @@
 
 	    // Check if a category is set. If not, don't run the loop
 	    if( $a['category'] ) {
-			// Create empty slide variable to store slides from post loop below
-			$slide = '';
-
 	    	// Query args
 			$args = array(
 				'post_type' => 'opc-slide',
@@ -24,11 +21,14 @@
 					array(
 						'taxonomy' => 'opc-category',
 						'field'    => 'slug',
-						'terms'    => esc_attr( $a['category'] )
+						'terms'    => $a['category']
 					),
 				),
 			);
 			$opc_query = new WP_Query( $args );	
+
+			// Create empty slide variable to store slides from post loop below
+			$slide = '';
 
 			// If the query has posts
 			if ( $opc_query->have_posts() ) {	
