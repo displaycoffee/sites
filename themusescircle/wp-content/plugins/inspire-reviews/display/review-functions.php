@@ -26,6 +26,22 @@
 	}
 	add_filter( 'single_template', 'insprvw_get_single_template' );
 
+
+
+	// Custom template to display all reviews
+	function portfolio_page_template( $template ) {
+		// Page title or slug should be 'all reviews'
+		if ( is_page( 'All Reviews' ) || is_page( 'all-reviews' )  ) {
+			$template = dirname( __FILE__ ) . '/all-reviews.php';
+
+		}
+		return $template;
+	}
+	add_filter( 'template_include', 'portfolio_page_template', 99 );
+
+
+
+
 	// Create review type based on get_post_type
 	function insprvw_review_type( $all_types ) {
 		if ( get_post_type() == 'insprvw-book-review' ) {
