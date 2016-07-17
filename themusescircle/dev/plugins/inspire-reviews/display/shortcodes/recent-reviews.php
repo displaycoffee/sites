@@ -64,7 +64,6 @@
 
 			// While loop to query reviews
 			while ( $insprvw_query->have_posts() ) {
-
 				// Query the post
 				$insprvw_query->the_post();
 				$postID = get_the_ID();
