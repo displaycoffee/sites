@@ -25,7 +25,7 @@
 			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( $thumbnail_src ) . '">';
 			$thumbnail_html .= '<meta itemprop="width" content="' . esc_attr( $thumbnail_width ) . '">';
 			$thumbnail_html .= '<meta itemprop="height" content="' . esc_attr( $thumbnail_height ) . '">';
-			$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail() . '</div>';		
+			$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';		
 		} else {
 			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-square-thumbnail.png' ) . '">';
 			$thumbnail_html .= '<meta itemprop="width" content="400">';
@@ -40,7 +40,7 @@
 	} else if ( is_page() && has_post_thumbnail() ) {
 		// Create thumbnail block
 		$thumbnail_html = '<div class="entry-thumbnail">'; 
-		$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail() . '</div>';
+		$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';
 		$thumbnail_html .= '</div>';
 
 		// Display thumbnail block
