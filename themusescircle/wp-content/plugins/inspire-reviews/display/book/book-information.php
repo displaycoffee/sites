@@ -32,7 +32,7 @@
 ?>
 <?php 
 	// Check if we're on an archive versus single post	
-	if ( is_archive() ) {
+	if ( is_archive() || is_page( 'All Reviews' ) || is_page( 'all-reviews' ) ) {
 		// Add title and isbn schema
 		$book_schema = $book_title ? '<meta itemprop="name" content="' . esc_attr( $book_title ) . '">' : '';
 		$book_schema .= $book_isbn ? '<meta itemprop="isbn" content="' . esc_attr( $book_isbn ) . '">' : '';

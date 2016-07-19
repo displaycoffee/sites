@@ -11,7 +11,7 @@
 ?>
 <?php 
 	// Check if we're on an archive versus single post	
-	if ( is_archive() ) {
+	if ( is_archive() || is_page( 'All Reviews' ) || is_page( 'all-reviews' ) ) {
 		// Add title
 		$movie_schema = $movie_title ? '<meta itemprop="name" content="' . esc_attr( $movie_title ) . '">' : '';
 		$movie_schema .= $movie_director ? '<meta itemprop="director" content="' . esc_attr( $movie_director ) . '">' : '';

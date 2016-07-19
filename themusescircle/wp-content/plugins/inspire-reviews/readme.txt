@@ -23,6 +23,9 @@ In WordPress, do the following:
 
 == Changelog ==
 
+= 8.0 =
+Add template for 'All Reviews' page.
+
 = 7.0 =
 Add recent reviews shortcode.
 

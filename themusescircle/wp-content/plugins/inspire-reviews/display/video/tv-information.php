@@ -11,7 +11,7 @@
 ?>
 <?php 
 	// Check if we're on an archive versus single post	
-	if ( is_archive() ) {
+	if ( is_archive() || is_page( 'All Reviews' ) || is_page( 'all-reviews' ) ) {
 		// Add title
 		$tv_schema = $tv_title ? '<meta itemprop="name" content="' . esc_attr( $tv_title ) . '">' : '';
 		$tv_schema .= $tv_creator ? '<meta itemprop="creator" content="' . esc_attr( $tv_creator ) . '">' : '';

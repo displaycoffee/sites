@@ -15,7 +15,7 @@
 		// Create thumbnail block
 		$thumbnail_html = '<div class="entry-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">';	
 		$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( $thumbnail_src ) . '">';
-		$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail() . '</div>';	
+		$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';	
 		$thumbnail_html .= '</div>';	
 	} else {	
 		// Create thumbnail block
