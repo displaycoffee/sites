@@ -25,15 +25,6 @@
                 'type'     => 'url',
                 'validate' => 'esc_url',
                 'column'   => 'yes'
-            ),   
-            array(
-                'label'    => __( 'Goodreads', 'inspire-reviews' ),
-                'desc'     => __( 'URL of the author\'s Goodreads.', 'inspire-reviews' ),
-                'id'       => 'author-goodreads',
-                'name'     => 'author-goodreads',
-                'type'     => 'url',
-                'validate' => 'esc_url',
-                'column'   => 'no'
             ), 
             array(
                 'label'    => __( 'Facebook', 'inspire-reviews' ),
@@ -43,12 +34,48 @@
                 'type'     => 'url',
                 'validate' => 'esc_url',
                 'column'   => 'no'
-            ),  
+            ), 
+            array(
+                'label'    => __( 'Google+', 'inspire-reviews' ),
+                'desc'     => __( 'URL of the author\'s Google+.', 'inspire-reviews' ),
+                'id'       => 'author-gplus',
+                'name'     => 'author-gplus',
+                'type'     => 'url',
+                'validate' => 'esc_url',
+                'column'   => 'no'
+            ), 
+            array(
+                'label'    => __( 'LinkedIn', 'inspire-reviews' ),
+                'desc'     => __( 'URL of the author\'s LinkedIn.', 'inspire-reviews' ),
+                'id'       => 'author-linkedin',
+                'name'     => 'author-linkedin',
+                'type'     => 'url',
+                'validate' => 'esc_url',
+                'column'   => 'no'
+            ), 
             array(
                 'label'    => __( 'Twitter', 'inspire-reviews' ),
                 'desc'     => __( 'URL of the author\'s Twitter.', 'inspire-reviews' ),
                 'id'       => 'author-twitter',
                 'name'     => 'author-twitter',
+                'type'     => 'url',
+                'validate' => 'esc_url',
+                'column'   => 'no'
+            ),  
+            array(
+                'label'    => __( 'Instagram', 'inspire-reviews' ),
+                'desc'     => __( 'URL of the author\'s Instagram.', 'inspire-reviews' ),
+                'id'       => 'author-instagram',
+                'name'     => 'author-instagram',
+                'type'     => 'url',
+                'validate' => 'esc_url',
+                'column'   => 'no'
+            ),  
+            array(
+                'label'    => __( 'YouTube', 'inspire-reviews' ),
+                'desc'     => __( 'URL of the author\'s YouTube.', 'inspire-reviews' ),
+                'id'       => 'author-youtube',
+                'name'     => 'author-youtube',
                 'type'     => 'url',
                 'validate' => 'esc_url',
                 'column'   => 'no'
@@ -61,16 +88,7 @@
                 'type'     => 'url',
                 'validate' => 'esc_url',
                 'column'   => 'no'
-            ),  
-            array(
-                'label'    => __( 'Google+', 'inspire-reviews' ),
-                'desc'     => __( 'URL of the author\'s Google+.', 'inspire-reviews' ),
-                'id'       => 'author-google',
-                'name'     => 'author-google',
-                'type'     => 'url',
-                'validate' => 'esc_url',
-                'column'   => 'no'
-            ),  
+            ),
             array(
                 'label'    => __( 'Tumblr', 'inspire-reviews' ),
                 'desc'     => __( 'URL of the author\'s Tumblr.', 'inspire-reviews' ),
@@ -79,6 +97,15 @@
                 'type'     => 'url',
                 'validate' => 'esc_url',
                 'column'   => 'no'
-            )           
+            ),              
+            array(
+                'label'    => __( 'Goodreads', 'inspire-reviews' ),
+                'desc'     => __( 'URL of the author\'s Goodreads.', 'inspire-reviews' ),
+                'id'       => 'author-goodreads',
+                'name'     => 'author-goodreads',
+                'type'     => 'url',
+                'validate' => 'esc_url',
+                'column'   => 'no'
+            )          
         )
     );
