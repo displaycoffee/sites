@@ -29,7 +29,8 @@
 							<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 							<?php the_content(); ?>
 						</div>
-						<?php include '/../partials/review-footer.php'; ?>											
+						<?php include '/../partials/review-footer.php'; ?>
+						<?php include '/../partials/review-author.php'; ?>											
 					</div>
 				</div>
 				<?php include '/../partials/review-navigation.php'; ?>

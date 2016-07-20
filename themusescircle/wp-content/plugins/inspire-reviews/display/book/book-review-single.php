@@ -37,6 +37,7 @@
 							echo do_shortcode( '[book-author names="' . $author_names . '"]' );
 						?>
 						<?php include '/../partials/review-footer.php'; ?>
+						<?php include '/../partials/review-author.php'; ?>
 					</div>
 				</div>
 				<?php include '/../partials/review-navigation.php'; ?>
