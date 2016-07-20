@@ -146,7 +146,7 @@
 		    )
 		);
 		$wp_customize->add_control(
-		    new THEMUSESCIRCLE_Date_Picker( $wp_customize, 'themusescircle_date', 
+		    new themusescircle_Date_Picker( $wp_customize, 'themusescircle_date', 
 			    array(		        
 			        'label'	   => __( 'Date Picker', 'themusescircle' ),
 			        'section'  => 'themusescircle_section02',
@@ -231,7 +231,7 @@
 	        'themusescircle_social',
 	        array(
 	            'title'		  => __( 'Social Media', 'themusescircle' ),
-	            'description' => __( 'Add links for social media.', 'themusescircle' )
+	            'description' => __( 'Add links for website social media.', 'themusescircle' )
 	        )
 	    );
 
@@ -273,17 +273,17 @@
 
 	    // Social Media - LinkedIn
 		$wp_customize->add_setting(
-		    'themusescircle_linkedin',
+		    'themusescircle_youtube',
 		    array(
-		    	'default'			   => __( 'http://www.linkedin.com', 'themusescircle' ),
+		    	'default'			   => __( 'http://www.youtube.com', 'themusescircle' ),
 		        'sanitize_callback'	   => 'esc_url',
 		        'sanitize_js_callback' => 'esc_url'
 		    )
 		);
 		$wp_customize->add_control(
-		    'themusescircle_linkedin',
+		    'themusescircle_youtube',
 		    array(
-		        'label'	  => __( 'LinkedIn', 'themusescircle' ),
+		        'label'	  => __( 'YouTube', 'themusescircle' ),
 		        'section' => 'themusescircle_social',
 		        'type'	  => 'url'
 		    )

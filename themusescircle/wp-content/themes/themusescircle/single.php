@@ -22,6 +22,7 @@
 						<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
 						<div class="entry-content" itemprop="text"><?php the_content(); ?></div>
 						<?php get_template_part( 'partials/entry', 'footer' ); ?>
+						<?php get_template_part( 'partials/entry', 'author' ); ?>
 					</div>
 				</div>
 				<?php 

@@ -51,6 +51,21 @@
 	}
 	add_action( 'widgets_init', 'themusescircle_widgets_init' );
 
+	// Add user contact methods
+	function themusescircle_user_contact_methods( $user_contact ) {		
+		$user_contact['facebook']  = __( 'Facebook', 'themusescircle' );
+		$user_contact['gplus']     = __( 'Google+', 'themusescircle' );
+		$user_contact['linkedin']  = __( 'LinkedIn', 'themusescircle' );
+		$user_contact['twitter']   = __( 'Twitter', 'themusescircle' );
+		$user_contact['instagram'] = __( 'Instagram', 'themusescircle' );
+		$user_contact['youtube']   = __( 'YouTube', 'themusescircle' );
+		$user_contact['pinterest'] = __( 'Pinterest', 'themusescircle' );
+		$user_contact['tumblr']    = __( 'Tumblr', 'themusescircle' );
+		$user_contact['goodreads'] = __( 'Goodreads', 'themusescircle' );
+		return $user_contact;
+	}
+	add_filter( 'user_contactmethods', 'themusescircle_user_contact_methods' );
+
 	// Custom comments template
 	function themusescircle_custom_comments( $comment, $args, $depth ) {
 	    if ( 'div' === $args['style'] ) {
@@ -147,6 +162,11 @@
 		} else {
 			return '<p>' . get_the_excerpt() . '</p>' . themusescircle_read_more();
 		}
+	}
+
+	// Create links
+	function themusescircle_create_link( $class, $url, $text ) {
+		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'themusescircle' ) . '</a>, ';
 	}
 
 	// Include customizer choices

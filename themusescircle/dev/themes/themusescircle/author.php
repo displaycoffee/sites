@@ -8,13 +8,6 @@
 
 	// Include header
 	get_header(); 
-
-	// Grab all the variables we need for this page
-	$author_name = get_the_author();
-	$author_website = get_the_author_meta( 'user_url' );
-	$author_id = get_the_author_meta( 'ID' );
-	$author_avatar = get_avatar( $author_id, 200, '', esc_attr( get_the_author() ) );
-	$author_desc = get_the_author_meta( 'user_description' );
 ?>
 <?php 
 	// Check if the author name is there. Not sure why it wouldn't be...
@@ -25,30 +18,7 @@
 <section class="content">
 	<div class="wrapper">
 		<article>
-			<div id="author" class="author-info">
-				<?php
-					// Check if the author has a website
-					if ( $author_website ) {
-						// Create author block
-						$author_meta = '<div class="author-meta">';
-						$author_meta .= '<p class="website"><a href="' . esc_url( $author_website ) . '">' . __( 'Website', 'themusescircle' ) . '</a></p>';
-						$author_meta .= '</div>';
-
-						// Display author block
-						echo $author_meta;
-					}				
-		 
-					// Check if the author has an avatar
-					if ( $author_avatar ) { 
-						echo '<div class="author-thumbnail"><div class="image-wrap">' . $author_avatar . '</div></div>';
-					} 
-
-					// Check if the aithor has a description
-					if ( '' != $author_desc ) {
-						echo '<div class="author-biography"><p>' .  $author_desc . '</p></div>';
-					}
-				?>
-			</div>
+			<?php get_template_part( 'partials/entry', 'author' ); ?>
 			<h2><?php printf( __( 'Posts by %s', 'themusescircle' ), $author_name ) ?></h2>
 			<?php get_template_part( 'loop', 'index' ); ?>
 		</article>
