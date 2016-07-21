@@ -19,10 +19,9 @@ wp-content/plugins/*
 !wp-content/plugins/owl-post/
 !wp-content/plugins/inspire-reviews/
 wp-content/plugins/inspire-reviews/assets/images
-dev/plugins/inspire-reviews/assets/images
 
 # Themes
 wp-content/themes/*
 !wp-content/themes/themusescircle/
 wp-content/themes/themusescircle/assets/images
-dev/themes/themusescircle/assets/images
+wp-content/themes/themusescircle/assets/fonts
