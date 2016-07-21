@@ -17,6 +17,7 @@ wp-content/*
 # Plugins
 wp-content/plugins/*
 !wp-content/plugins/owl-post/
+wp-content/plugins/owl-post/assets/images
 !wp-content/plugins/inspire-reviews/
 wp-content/plugins/inspire-reviews/assets/images
 
