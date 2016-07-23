@@ -1,0 +1,115 @@
+/* Font kits
+========================================================================== */
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url($fonts + 'sourcesanspro.woff2') format('woff2'),
+         url($fonts + 'sourcesanspro.woff') format('woff'),
+         url($fonts + 'sourcesanspro.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url($fonts + 'sourcesanspro-bold.woff2') format('woff2'),
+         url($fonts + 'sourcesanspro-bold.woff') format('woff'),
+         url($fonts + 'sourcesanspro-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url($fonts + 'sourcesanspro-bolditalic.woff2') format('woff2'),
+         url($fonts + 'sourcesanspro-bolditalic.woff') format('woff'),
+         url($fonts + 'sourcesanspro-bolditalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url($fonts + 'sourcesanspro-italic.woff2') format('woff2'),
+         url($fonts + 'sourcesanspro-italic.woff') format('woff'),
+         url($fonts + 'sourcesanspro-italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url($fonts + 'sourcesanspro-light.woff2') format('woff2'),
+         url($fonts + 'sourcesanspro-light.woff') format('woff'),
+         url($fonts + 'sourcesanspro-light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url($fonts + 'sourcesanspro-lightitalic.woff2') format('woff2'),
+         url($fonts + 'sourcesanspro-lightitalic.woff') format('woff'),
+         url($fonts + 'sourcesanspro-lightitalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Qwigley';
+    src: url($fonts + 'qwigley.woff2') format('woff2'),
+         url($fonts + 'qwigley.woff') format('woff'),
+         url($fonts + 'qwigley.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Font Awesome';
+    src: url($fonts + 'fontawesome.woff2') format('woff2'),
+         url($fonts + 'fontawesome.woff') format('woff'),
+         url($fonts + 'fontawesome.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* General text elements
+========================================================================== */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Source Sans Pro', $sans-serif-fb;
+    font-size: 1.5em;
+    line-height: 1.7;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headers
+========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Qwigley', $serif-fb;  
+    font-weight: normal;  
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: 3.5em;
+}
+
+h2 {
+    font-size: 3.0em;
+}
+
+h3 {
+    font-size: 2.5em;
+}
+
+h4, h5, h6 {
+    font-size: 2em;
+}

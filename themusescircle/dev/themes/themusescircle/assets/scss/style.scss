@@ -18,8 +18,9 @@
 // Vendor
 @import 'normalize';
 
-// Base styles
-@import 'reset';
-
 // WordPress specific classes
 @import 'wordpress';
+
+// Everything else
+@import 'base';
+@import 'typography';
