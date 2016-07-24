@@ -34,3 +34,11 @@
 	width: $width;
 	height: $height;
 }
+
+// Transition
+@mixin transition($prop, $duration, $function) {
+	-webkit-transition: $prop $duration $function;	
+	-moz-transition: $prop $duration $function;	
+	-o-transition: $prop $duration $function;	
+	transition: $prop $duration $function;
+}
