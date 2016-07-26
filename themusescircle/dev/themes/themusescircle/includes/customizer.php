@@ -114,8 +114,8 @@
 		    'themusescircle_checkbox',
 		    array(
 		    	'default'			   => __( '1', 'themusescircle' ),
-		        'sanitize_callback'	   => 'themusescircle_sanatize_checkbox',
-		        'sanitize_js_callback' => 'themusescircle_sanatize_checkbox'
+		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
 		    )
 		);
 		$wp_customize->add_control(
@@ -223,6 +223,32 @@
 		            'section'  => 'themusescircle_section02',
 		            'settings' => 'themusescircle_image'
 		        )
+		    )
+		);
+
+		// Header
+	    $wp_customize->add_section(
+	        'themusescircle_header',
+	        array(
+	            'title'		  => __( 'Header', 'themusescircle' ),
+	            'description' => __( 'Update header elements.', 'themusescircle' )
+	        )
+	    );
+
+	    // Header - Hide Search
+		$wp_customize->add_setting(
+		    'themusescircle_hide_search',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_hide_search',
+		    array(
+		        'label'	  => __( 'Hide navigation search button', 'themusescircle' ),
+		        'section' => 'themusescircle_header',
+		        'type'	  => 'checkbox'
 		    )
 		);
 

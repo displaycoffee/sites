@@ -24,9 +24,18 @@
 	<![endif]-->
 	<nav id="header-nav" class="navigation">
 		<div class="wrapper cf">
-			<div class="search-button">
-				<a><i class="fa fa-search" aria-hidden="true"></i>Search</a>
-			</div>
+			<?php 
+				// Get hide search setting
+				$hide_search = get_theme_mod( 'themusescircle_hide_search' ); 
+
+				// Create search button block
+				$search_button = '<div class="search-button">';
+				$search_button .= '<a><i class="fa fa-search" aria-hidden="true"></i>Search</a>';
+				$search_button .= '</div>';
+
+				// Display search button block (if setting is checked, don't display it)
+				echo $hide_search ? '' : $search_button;
+			?>
 			<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 		</div>
 	</nav>

@@ -23,7 +23,7 @@
 	}
 	
 	// Checkbox
-	function themusescircle_sanatize_checkbox( $input ) {
+	function themusescircle_sanitize_checkbox( $input ) {
 		// Check if input is a string or integer of 1
 	    if ( $input == 1 || $input == '1' ) {
 	        return 1;
