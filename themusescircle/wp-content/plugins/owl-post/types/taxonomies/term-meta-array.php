@@ -43,7 +43,7 @@
                 'name'     => 'opc-disable-autoplay',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
                 'column'   => 'no'
             ),  
             array(
@@ -62,7 +62,7 @@
                 'name'     => 'opc-disable-navigation',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
                 'column'   => 'no'
             ),
             array(
@@ -72,7 +72,7 @@
                 'name'     => 'opc-disable-pagination',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
                 'column'   => 'no'
             ),   
             array(

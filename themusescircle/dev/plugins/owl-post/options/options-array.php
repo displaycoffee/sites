@@ -25,7 +25,7 @@
                 'name'     => 'opc-options[opc-remove-js]',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
                 'section'  => 'opc-option-section-01'
             ),  
             array(
@@ -35,7 +35,7 @@
                 'name'     => 'opc-options[opc-remove-css]',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
                 'section'  => 'opc-option-section-01'
             )                       
         )

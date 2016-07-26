@@ -26,7 +26,7 @@
                 'id'       => '_opc-image-alignment',
                 'name'     => '_opc-image-alignment',
                 'type'     => 'select',
-                'validate' => 'opc_sanatize_image_alignment',
+                'validate' => 'opc_sanitize_image_alignment',
                 'options'  => opc_image_alignment_choices()                
             ),
             array(
@@ -109,7 +109,7 @@
                 'name'     => '_opc-header-shadow',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
             ),
         )       
     );
@@ -144,7 +144,7 @@
                 'name'     => '_opc-subheader-shadow',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
             ),
         )       
     );
@@ -179,7 +179,7 @@
                 'name'     => '_opc-normal-text-shadow',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
             ),
         )       
     );
@@ -259,7 +259,7 @@
                 'name'     => '_opc-btn-new-window',
                 'type'     => 'checkbox',
                 'value'    => 1,
-                'validate' => 'opc_sanatize_checkbox',
+                'validate' => 'opc_sanitize_checkbox',
             )                                                                        
         )
     );

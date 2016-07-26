@@ -3,7 +3,7 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }
 	
 	// Checkbox validation
-	function opc_sanatize_checkbox( $input ) {
+	function opc_sanitize_checkbox( $input ) {
 	    if ( $input == 1 || $input == '1' ) {
 	        return 1;
 	    } else {
@@ -12,7 +12,7 @@
 	}
 
 	// Image alignment select
-	function opc_sanatize_image_alignment( $input ) {
+	function opc_sanitize_image_alignment( $input ) {
 		// Get select choices
 	    $valid = opc_image_alignment_choices();	
 
