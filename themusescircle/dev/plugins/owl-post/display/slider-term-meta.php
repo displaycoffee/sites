@@ -8,7 +8,7 @@
 	$max_height = get_term_meta( $term_id, 'opc-max-height', true );
 
 	// Autoplay
-	$disable_ap= get_term_meta( $term_id, 'opc-disable-autoplay', true );
+	$disable_ap = get_term_meta( $term_id, 'opc-disable-autoplay', true );
 
 	// Slide speed
 	$slide_speed = get_term_meta( $term_id, 'opc-slide-speed', true );
