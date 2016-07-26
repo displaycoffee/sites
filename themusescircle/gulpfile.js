@@ -11,11 +11,11 @@ var browserSync = require('browser-sync').create(),
 /* Global Variables
    ---------------------------------------------- */
 
-// var wpFolder = 'themes';
-// var dirName = 'themusescircle';
-var wpFolder = 'plugins';
+var wpFolder = 'themes';
+var dirName = 'themusescircle';
+// var wpFolder = 'plugins';
 // var dirName = 'inspire-reviews';
-var dirName = 'owl-post';
+// var dirName = 'owl-post';
 var proxyURL = 'http://localhost/sites/themusescircle';
 
 /* Development Variables
@@ -44,6 +44,7 @@ if (wpFolder == 'themes') {
 // JS files are different for folders, so let's add a conditonal
 if (dirName == 'themusescircle') {
 	var jsSources = [
+		devJS + '/main.js',
 		devJS + '/run-functions.js'
 	];
 } else if (wpFolder == 'plugins') {

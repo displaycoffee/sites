@@ -16,6 +16,12 @@
 	vertical-align: $vertical-align;
 }
 
+// Placeholder 
+@mixin placeholder {
+	color: $color-10;
+	font-style: italic;
+}
+
 // Quick reset
 @mixin reset {
 	margin: 0;

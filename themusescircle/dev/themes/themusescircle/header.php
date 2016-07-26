@@ -31,7 +31,10 @@
 				// Create search button block
 				$search_button = '<div class="search-button">';
 				$search_button .= '<a><i class="fa fa-search" aria-hidden="true"></i>Search</a>';
-				$search_button .= '</div>';
+				$search_button .= '<div class="search-header-bar">';
+				$search_button .= '<form class="search-form" method="get" action="' . esc_url( home_url( '/' ) ) . '">';
+				$search_button .= '<input class="text" id="s" name="s" type="text" value="' . esc_attr( get_search_query() ) . '" placeholder="' . __( 'What are you looking for?', 'themusescircle' ) . '" />';
+				$search_button .= '</form></div></div>';
 
 				// Display search button block (if setting is checked, don't display it)
 				echo $hide_search ? '' : $search_button;

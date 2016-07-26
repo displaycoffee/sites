@@ -1,0 +1,22 @@
+/* Form fields
+========================================================================== */
+
+::-webkit-input-placeholder {
+	@include placeholder;
+}
+::-moz-placeholder {
+	@include placeholder;	
+}
+:-ms-input-placeholder {
+	@include placeholder;	
+}
+:-moz-placeholder {
+	@include placeholder;	
+}
+
+input[type='text'] {
+	border: 0;
+	padding: 10px;
+	color: $color-09;
+	font-weight: normal;
+}

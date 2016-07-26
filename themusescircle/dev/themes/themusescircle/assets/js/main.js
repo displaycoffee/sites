@@ -3,6 +3,3 @@ function toggleSearchBar() {
         jQuery( '.search-header-bar' ).toggleClass( 'show' );
     });
 }
-jQuery( document ).ready( function( $ ) {
-    toggleSearchBar();
-});
