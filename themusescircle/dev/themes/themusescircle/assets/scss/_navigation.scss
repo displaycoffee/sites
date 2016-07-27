@@ -47,7 +47,7 @@
 			min-width: 300px;
 			background: $color-06;
 			padding: 10px;
-			@include transition(opacity, 0.3s, ease-in-out);
+			@include transition(opacity 0.3s ease-in-out);
 			input[type='text'] {
 				width: 100%;
 			}

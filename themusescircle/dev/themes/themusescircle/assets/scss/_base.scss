@@ -27,7 +27,7 @@ body {
 }
 
 a {
-    @include transition(color, 0.3s, ease-in-out);
+    @include transition(color 0.3s ease-in-out);
 }
 
 .wrapper {
