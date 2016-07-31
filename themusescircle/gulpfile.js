@@ -11,10 +11,10 @@ var browserSync = require('browser-sync').create(),
 /* Global Variables
    ---------------------------------------------- */
 
-var wpFolder = 'themes';
-var dirName = 'themusescircle';
-// var wpFolder = 'plugins';
-// var dirName = 'inspire-reviews';
+// var wpFolder = 'themes';
+// var dirName = 'themusescircle';
+var wpFolder = 'plugins';
+var dirName = 'inspire-reviews';
 // var dirName = 'owl-post';
 var proxyURL = 'http://localhost/sites/themusescircle';
 

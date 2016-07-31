@@ -7,7 +7,7 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 
 	// Include movie meta
-	include( 'movie-post-meta.php' ); 
+	include INSPRVW_DIR . 'display/video/movie-post-meta.php';
 ?>
 <?php 
 	// Check if we're on an archive versus single post	

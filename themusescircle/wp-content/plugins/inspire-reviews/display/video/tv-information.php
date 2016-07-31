@@ -7,7 +7,7 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 
 	// Include tv meta
-	include( 'tv-post-meta.php' ); 
+	include INSPRVW_DIR . 'display/video/tv-post-meta.php';
 ?>
 <?php 
 	// Check if we're on an archive versus single post	

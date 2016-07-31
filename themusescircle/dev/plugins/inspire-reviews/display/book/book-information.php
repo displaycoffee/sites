@@ -7,7 +7,7 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 
 	// Include book meta
-	include( 'book-post-meta.php' ); 
+	include INSPRVW_DIR . 'display/book/book-post-meta.php';
 
 	// Get the information about the author categories
 	$author_terms = get_the_terms( $post->ID, 'insprvw-book-author' );

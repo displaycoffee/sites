@@ -15,25 +15,25 @@
 		<article>
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
 				<div class="entry-single">
-					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_video_type( false ); ?>-review" itemscope itemtype="http://schema.org/Review">	
+					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_video_type( false ); ?>-review" itemscope itemtype="http://schema.org/Review">
 						<meta itemprop="name" content="<?php echo esc_attr( get_the_title() ); ?>"/>
 						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
-						<?php include '/../partials/review-meta.php'; ?>
+						<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
 						<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="<?php echo insprvw_video_type( true ); ?>">							
-							<?php include '/../partials/review-thumbnail.php'; ?>						
+							<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>							
 							<div class="entry-details">
-								<?php include insprvw_video_type( false ) . '-information.php'; ?>
+								<?php include INSPRVW_DIR . 'display/video/' . insprvw_video_type( false ) . '-information.php'; ?>
 							</div>						
 						</div>
 						<div class="entry-content">
 							<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 							<?php the_content(); ?>
 						</div>
-						<?php include '/../partials/review-footer.php'; ?>
-						<?php include '/../partials/review-author.php'; ?>											
+						<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>
+						<?php include INSPRVW_DIR . 'display/partials/review-author.php'; ?>									
 					</div>
 				</div>
-				<?php include '/../partials/review-navigation.php'; ?>
+				<?php include INSPRVW_DIR . 'display/partials/review-navigation.php'; ?>
 				<?php comments_template(); ?>
 			<?php endwhile; endif; ?>
 		</article>

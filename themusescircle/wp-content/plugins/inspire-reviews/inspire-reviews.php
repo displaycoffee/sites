@@ -12,6 +12,9 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }
 
+	// Define paths
+	define( 'INSPRVW_DIR', plugin_dir_path( __FILE__ ) );
+
 	// Load plugin text domain
 	function insprvw_load_textdomain() {
 		load_plugin_textdomain( 'inspire-reviews', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
@@ -48,43 +51,43 @@
 	add_action( 'admin_enqueue_scripts', 'insprvw_enqueue_assets' );
 
 	// Include multi-use files
-	require_once( 'includes/fields.php' );
-	require_once( 'includes/validation.php' );
+	require_once( INSPRVW_DIR . 'includes/fields.php' );
+	require_once( INSPRVW_DIR . 'includes/validation.php' );
 
 	// Book Post Types
-	require_once( 'types/posts/book/book-review.php' );
+	require_once( INSPRVW_DIR . 'types/posts/book/book-review.php' );
 
 	// Movie Post Types
-	require_once( 'types/posts/video/movie-review.php' );
+	require_once( INSPRVW_DIR . 'types/posts/video/movie-review.php' );
 
 	// TV Post Types
-	require_once( 'types/posts/video/tv-review.php' );
+	require_once( INSPRVW_DIR . 'types/posts/video/tv-review.php' );
 
 	// Post Types
-	require_once( 'types/posts/post-meta-array.php' );
-	require_once( 'types/posts/post-meta-boxes.php' );
+	require_once( INSPRVW_DIR . 'types/posts/post-meta-array.php' );
+	require_once( INSPRVW_DIR . 'types/posts/post-meta-boxes.php' );
 
 	// Book Taxonomies
-	require_once( 'types/taxonomies/book/author.php' );
-	require_once( 'types/taxonomies/book/category.php' );
-	require_once( 'types/taxonomies/book/genre.php' );
-	require_once( 'types/taxonomies/book/publisher.php' );
-	require_once( 'types/taxonomies/book/tag.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/book/author.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/book/category.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/book/genre.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/book/publisher.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/book/tag.php' );
 
 	// Video Taxonomies - For movies and tv
-	require_once( 'types/taxonomies/video/actor.php' );
-	require_once( 'types/taxonomies/video/category.php' );
-	require_once( 'types/taxonomies/video/genre.php' );
-	require_once( 'types/taxonomies/video/tag.php' );
-	require_once( 'types/taxonomies/video/theme.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/video/actor.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/video/category.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/video/genre.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/video/tag.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/video/theme.php' );
 
 	// Taxonomies
-	require_once( 'types/taxonomies/term-meta-array.php' );
-	require_once( 'types/taxonomies/term-meta-boxes.php' );	
+	require_once( INSPRVW_DIR . 'types/taxonomies/term-meta-array.php' );
+	require_once( INSPRVW_DIR . 'types/taxonomies/term-meta-boxes.php' );	
 
 	// Functions for display
-	require_once( 'display/review-functions.php' );	
+	require_once( INSPRVW_DIR . 'display/review-functions.php' );	
 
 	// Shortcodes
-	require_once( 'display/shortcodes/author-block.php' );
-	require_once( 'display/shortcodes/recent-reviews.php' );	
+	require_once( INSPRVW_DIR . 'display/shortcodes/author-block.php' );
+	require_once( INSPRVW_DIR . 'display/shortcodes/recent-reviews.php' );	

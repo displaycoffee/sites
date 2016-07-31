@@ -37,7 +37,7 @@
 								// Display the title
 								the_title( $title_before, $title_after );
 							?>	
-							<?php include '/partials/review-meta.php'; ?>
+							<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
 							<?php
 								// Schema link for book versus movies/tv	
 								if ( get_post_type() == 'insprvw-book-review' ) {
@@ -47,13 +47,13 @@
 								}
 							?>											
 							<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="<?php echo $schema_link; ?>">
-								<?php include '/partials/review-thumbnail.php'; ?>
+								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>
 								<?php 
 									// Include for book versus movies/tv	
 									if ( get_post_type() == 'insprvw-book-review' ) {
-										include '/book/book-information.php';
+										include INSPRVW_DIR . 'display/book/book-information.php';
 									} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
-										include '/video/' . insprvw_video_type( false ) . '-information.php';
+										include INSPRVW_DIR . 'display/video/' . insprvw_video_type( false ) . '-information.php';
 									}
 								?>
 							</div>
@@ -61,7 +61,7 @@
 								<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 								<?php echo insprvw_excerpt(); ?>
 							</div>
-							<?php include '/partials/review-footer.php'; ?>	
+							<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>	
 						</div>
 					<?php endwhile; wp_reset_postdata(); ?>
 				</div>
