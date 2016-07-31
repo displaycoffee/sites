@@ -1,1 +1,1 @@
-function toggleSearchBar(){jQuery(".search-button a").click(function(){jQuery(".search-header-bar").toggleClass("show")})}jQuery(document).ready(function(e){toggleSearchBar()});
+function toggleSearchBar(){jQuery(".search-button a").click(function(){jQuery(".search-header-bar").toggleClass("show")}),jQuery(document).on("click",function(e){jQuery(e.target).closest(".search-button").length||jQuery(".search-header-bar").removeClass("show")})}jQuery(document).ready(function(e){toggleSearchBar()});
