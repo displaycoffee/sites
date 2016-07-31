@@ -5,7 +5,7 @@
 	// Loop through post type and create a shortcode for slider display
 	function opc_display_slider( $atts ) {		
 		// Include common slider functions
-		include( 'slider-functions.php' );
+		include OPC_DIR . 'display/slider-functions.php';
 
 		// Shortcode attributes
 	    $a = shortcode_atts( array(
@@ -42,7 +42,7 @@
 					$postID = get_the_ID();
 
 					// Include post meta
-					include( 'slider-post-meta.php' );
+					include OPC_DIR . 'display/slider-post-meta.php';
 
 					// Create slide image block
 					$slide_image = '';
@@ -100,7 +100,7 @@
 					$term_id = $term_args->term_id;
 
 					// Include term meta
-					include( 'slider-term-meta.php' );
+					include OPC_DIR . 'display/slider-term-meta.php';
 
 					// Create slider style block - START
 					$slider_style = '<style>';			
@@ -129,7 +129,7 @@
 						$postID = get_the_ID();
 
 						// Include post meta
-						include( 'slider-post-meta.php' );
+						include OPC_DIR . 'display/slider-post-meta.php';
 
 						// Create image CSS block
 						$image_css = '';

@@ -12,6 +12,9 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }
 
+	// Define paths
+	define( 'OPC_DIR', plugin_dir_path( __FILE__ ) );
+
 	// Load plugin text domain
 	function opc_load_textdomain() {
 		load_plugin_textdomain( 'owl-post', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
@@ -64,23 +67,23 @@
 	add_action( 'wp_enqueue_scripts', 'opc_enqueue_owl' );
 
 	// Include multi-use files
-	require_once( 'includes/choices.php' );
-	require_once( 'includes/fields.php' );
-	require_once( 'includes/validation.php' );
+	require_once( OPC_DIR . 'includes/choices.php' );
+	require_once( OPC_DIR . 'includes/fields.php' );
+	require_once( OPC_DIR . 'includes/validation.php' );
 
 	// Options
-	require_once( 'options/options-array.php' );
-	require_once( 'options/options-page.php' );
+	require_once( OPC_DIR . 'options/options-array.php' );
+	require_once( OPC_DIR . 'options/options-page.php' );
 
 	// Post types
-	require_once( 'types/posts/slider.php' );
-	require_once( 'types/posts/post-meta-array.php' );
-	require_once( 'types/posts/post-meta-boxes.php' );
+	require_once( OPC_DIR . 'types/posts/slider.php' );
+	require_once( OPC_DIR . 'types/posts/post-meta-array.php' );
+	require_once( OPC_DIR . 'types/posts/post-meta-boxes.php' );
 
 	// Taxonomies
-	require_once( 'types/taxonomies/category.php' );	
-	require_once( 'types/taxonomies/term-meta-array.php' );	
-	require_once( 'types/taxonomies/term-meta-boxes.php' );	
+	require_once( OPC_DIR . 'types/taxonomies/category.php' );	
+	require_once( OPC_DIR . 'types/taxonomies/term-meta-array.php' );	
+	require_once( OPC_DIR . 'types/taxonomies/term-meta-boxes.php' );	
 
 	// Display
-	require_once( 'display/slider-display.php' );
+	require_once( OPC_DIR . 'display/slider-display.php' );
