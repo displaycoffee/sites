@@ -17,6 +17,9 @@
 
 		// Book buy links for single pages
 		$book_buy_amazon = get_post_meta( $post->ID, '_insprvw-book-amazon', true );		
+		$book_buy_amazon_paperback = get_post_meta( $post->ID, '_insprvw-book-amazon-paperback', true );
+		$book_buy_amazon_canada = get_post_meta( $post->ID, '_insprvw-book-amazon-canada', true );
+		$book_buy_amazon_uk = get_post_meta( $post->ID, '_insprvw-book-amazon-uk', true );
 		$book_buy_bn = get_post_meta( $post->ID, '_insprvw-book-bn', true );
 		$book_buy_kobo = get_post_meta( $post->ID, '_insprvw-book-kobo', true );
 		$book_buy_ibook = get_post_meta( $post->ID, '_insprvw-book-ibook', true );

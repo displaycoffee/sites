@@ -85,6 +85,9 @@
 
 		// Create buy links
 		$book_buy_links = $book_buy_amazon ? insprvw_create_link( 'amazon', $book_buy_amazon, 'Amazon' ) : '';
+		$book_buy_links .= $book_buy_amazon_paperback ? insprvw_create_link( 'amazon-paperback', $book_buy_amazon_paperback, 'Amazon Paperback' ) : '';
+		$book_buy_links .= $book_buy_amazon_canada ? insprvw_create_link( 'amazon-canada', $book_buy_amazon_canada, 'Amazon Canada' ) : '';
+		$book_buy_links .= $book_buy_amazon_uk ? insprvw_create_link( 'amazon-uk', $book_buy_amazon_uk, 'Amazon UK' ) : '';
 		$book_buy_links .= $book_buy_bn ? insprvw_create_link( 'bn', $book_buy_bn, 'Barnes & Noble' ) : '';
 		$book_buy_links .= $book_buy_kobo ? insprvw_create_link( 'kobo', $book_buy_kobo, 'Kobo' ) : '';
 		$book_buy_links .= $book_buy_ibook ? insprvw_create_link( 'ibook', $book_buy_ibook, 'iBook' ) : '';

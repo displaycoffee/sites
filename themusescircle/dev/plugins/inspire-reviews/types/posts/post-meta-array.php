@@ -113,6 +113,30 @@
                 'validate' => 'esc_url'
             ),
             array(
+                'label'    => __( 'Amazon Paperback', 'inspire-reviews' ),
+                'desc'     => __( 'URL to purchase the book on Amazon Paperback.', 'inspire-reviews' ),
+                'id'       => '_insprvw-book-amazon-paperback',
+                'name'     => '_insprvw-book-amazon-paperback',
+                'type'     => 'url',
+                'validate' => 'esc_url'
+            ),
+            array(
+                'label'    => __( 'Amazon Canada', 'inspire-reviews' ),
+                'desc'     => __( 'URL to purchase the book on Amazon Canada.', 'inspire-reviews' ),
+                'id'       => '_insprvw-book-amazon-canada',
+                'name'     => '_insprvw-book-amazon-canada',
+                'type'     => 'url',
+                'validate' => 'esc_url'
+            ),
+            array(
+                'label'    => __( 'Amazon UK', 'inspire-reviews' ),
+                'desc'     => __( 'URL to purchase the book on Amazon UK.', 'inspire-reviews' ),
+                'id'       => '_insprvw-book-amazon-uk',
+                'name'     => '_insprvw-book-amazon-uk',
+                'type'     => 'url',
+                'validate' => 'esc_url'
+            ),                                    
+            array(
                 'label'    => __( 'Barnes & Noble', 'inspire-reviews' ),
                 'desc'     => __( 'URL to purchase the book on Barnes & Noble.', 'inspire-reviews' ),
                 'id'       => '_insprvw-book-bn',
