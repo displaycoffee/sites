@@ -73,6 +73,6 @@
 		echo $movie_info_list;
 
 		// Display movie synopsis
-		echo $movie_synopsis ? '<div class="movie-synopsis" itemprop="description">' . wpautop( esc_textarea ( $movie_synopsis ) ) . '</div>' : '';
+		echo $movie_synopsis ? '<div class="movie-synopsis" itemprop="description">' . insprvw_display_shortcodes( wpautop( esc_textarea ( $movie_synopsis ) ) ) . '</div>' : '';
 	}
 ?>

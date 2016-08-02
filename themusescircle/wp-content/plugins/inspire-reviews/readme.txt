@@ -23,6 +23,9 @@ In WordPress, do the following:
 
 == Changelog ==
 
+= 8.5 =
+Add new book buy links, author amazon profile link, and bold and italic shortcodes. Enabled those shortcodes for display on the synopsis.
+
 = 8.0 =
 Add template for 'All Reviews' page.
 

@@ -147,3 +147,14 @@
 	function insprvw_create_link( $class, $url, $text ) {
 		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'inspire-reviews' ) . '</a>, ';
 	}
+
+	// Display certain shortcodes
+	function insprvw_display_shortcodes( $content ) {
+		$pattern = get_shortcode_regex( array(
+			'review-bold',
+			'review-italic',
+			'review-bold-italic'
+		) );
+		$content = preg_replace_callback( "/$pattern/", 'do_shortcode_tag', $content );
+		return $content;
+	}	

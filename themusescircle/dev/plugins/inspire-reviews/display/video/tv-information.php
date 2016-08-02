@@ -72,6 +72,6 @@
 		echo $tv_info_list;
 
 		// Display tv synopsis
-		echo $tv_synopsis ? '<div class="tv-synopsis" itemprop="description">' . wpautop( esc_textarea ( $tv_synopsis ) ) . '</div>' : '';
+		echo $tv_synopsis ? '<div class="tv-synopsis" itemprop="description">' .  insprvw_display_shortcodes( wpautop( esc_textarea ( $tv_synopsis ) ) ) . '</div>' : '';
 	}
 ?>

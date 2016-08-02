@@ -15,7 +15,6 @@ var browserSync = require('browser-sync').create(),
 // var dirName = 'themusescircle';
 var wpFolder = 'plugins';
 var dirName = 'inspire-reviews';
-// var dirName = 'owl-post';
 var proxyURL = 'http://localhost/sites/themusescircle';
 
 /* Development Variables
