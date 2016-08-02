@@ -54,6 +54,7 @@
 				$author_pinterest = get_term_meta( $author_id, 'author-pinterest', true );
 				$author_tumblr = get_term_meta( $author_id, 'author-tumblr', true );
 				$author_goodreads = get_term_meta( $author_id, 'author-goodreads', true );
+				$author_amazon = get_term_meta( $author_id, 'author-amazon', true );
 
 				// Create author image block
 				$author_image_html = '<div class="book-author-thumbnail">';
@@ -69,8 +70,9 @@
 				$author_social_links .= $author_instagram ? insprvw_create_link( 'instagram', $author_instagram, 'Instagram' ) : '';
 				$author_social_links .= $author_youtube ? insprvw_create_link( 'youtube', $author_youtube, 'YouTube' ) : '';
 				$author_social_links .= $author_pinterest ? insprvw_create_link( 'pinterest', $author_pinterest, 'Pinterest' ) : '';
-				$author_social_links .= $author_tumblr ? insprvw_create_link( 'goodreads', $author_pinterest, 'Goodreads' ) : '';
-				$author_social_links .= $author_goodreads ? insprvw_create_link( 'tumblr', $author_pinterest, 'Tumblr' ) : '';
+				$author_social_links .= $author_tumblr ? insprvw_create_link( 'tumblr', $author_tumblr, 'Tumblr' ) : '';
+				$author_social_links .= $author_goodreads ? insprvw_create_link( 'goodreads', $author_goodreads, 'Goodreads' ) : '';
+				$author_social_links .= $author_amazon ? insprvw_create_link( 'amazon', $author_amazon, 'Amazon Profile' ) : '';
 
 				// Create author social block
 				$author_social_html = '<div class="book-author-social">';

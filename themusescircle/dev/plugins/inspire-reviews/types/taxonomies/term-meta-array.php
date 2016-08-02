@@ -106,6 +106,15 @@
                 'type'     => 'url',
                 'validate' => 'esc_url',
                 'column'   => 'no'
-            )          
+            ),
+            array(
+                'label'    => __( 'Amazon Profile', 'inspire-reviews' ),
+                'desc'     => __( 'URL of the author\'s Amazon Profile.', 'inspire-reviews' ),
+                'id'       => 'author-amazon',
+                'name'     => 'author-amazon',
+                'type'     => 'url',
+                'validate' => 'esc_url',
+                'column'   => 'no'
+            )                      
         )
     );
