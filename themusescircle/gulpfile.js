@@ -11,10 +11,10 @@ var browserSync = require('browser-sync').create(),
 /* Global Variables
    ---------------------------------------------- */
 
-// var wpFolder = 'themes';
-// var dirName = 'themusescircle';
-var wpFolder = 'plugins';
-var dirName = 'inspire-reviews';
+var wpFolder = 'themes';
+var dirName = 'themusescircle';
+// var wpFolder = 'plugins';
+// var dirName = 'inspire-reviews';
 var proxyURL = 'http://localhost/sites/themusescircle';
 
 /* Development Variables
@@ -70,7 +70,9 @@ var sassSources = [devSass + '/style.scss'];
 gulp.task('sass', function() {
 	gulp.src(sassSources)
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-		.pipe(autoprefixer())
+		.pipe(autoprefixer({
+            browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
+        }))
 		.pipe(gulp.dest(distCSS));
 });
 
@@ -97,21 +99,6 @@ gulp.task('static', function() {
 		.pipe(gulp.dest(dist));
 });
 
-/* Owl Carousel
-   ---------------------------------------------- */
-
-gulp.task('owlJs', function() {
-	gulp.src(devJS + '/owl.carousel.min.js')
-		.pipe(gulp.dest(distJS));		
-});
-
-gulp.task('owlCSS', function() {
-	gulp.src(devSass + '/owl-post.scss')
-		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-		.pipe(autoprefixer())
-		.pipe(gulp.dest(distCSS));	
-});
-
 /* Watch All The Things
    ---------------------------------------------- */
 
@@ -124,11 +111,9 @@ gulp.task('watch', function() {
 	gulp.watch(devSass + '/*.scss', ['sass']);
 	gulp.watch(cssSources, ['css']);
 	gulp.watch(staticSources, ['static']);
-	gulp.watch(devJS + '/owl.carousel.min.js', ['owlJs']);
-	gulp.watch(devSass + '/owl-post.scss', ['owlCSS']);
 });
 
 /* Default Gulp Task
    ---------------------------------------------- */
 
-gulp.task('default', ['js', 'sass', 'css', 'static', 'owlJs', 'owlCSS', 'watch']);
+gulp.task('default', ['js', 'sass', 'css', 'static', 'watch']);

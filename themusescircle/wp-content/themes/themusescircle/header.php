@@ -17,29 +17,37 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-	<!--[if lt IE 9]>
+	<!--[if lte IE 9]>
 		<p class="browserupgrade">
 			<?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.', 'themusescircle' ); ?>
 		</p>
 	<![endif]-->
 	<nav id="header-nav" class="navigation">
-		<div class="wrapper cf">
+		<div class="wrapper">
+			<?php 
+				// Display main menu
+				wp_nav_menu( array( 
+					'theme_location'  => 'main-menu', 
+					'container_id' 	  => 'main-menu-container', 
+					'container_class' => 'menu-container' 
+				) ); 
+			?>
 			<?php 
 				// Get hide search setting
 				$hide_search = get_theme_mod( 'themusescircle_hide_search' ); 
 
 				// Create search button block
-				$search_button = '<div class="search-button">';
-				$search_button .= '<a><i class="fa fa-search" aria-hidden="true"></i>Search</a>';
-				$search_button .= '<div class="search-header-bar">';
+				$search_button = '<div id="search-menu-container" class="menu-container">';
+				$search_button .= '<ul id="menu-search" class="menu">';
+				$search_button .= '<li class="menu-item">';
+				$search_button .= '<a class="search-button"><i class="fa fa-search" aria-hidden="true"></i>Search</a>';
 				$search_button .= '<form class="search-form" method="get" action="' . esc_url( home_url( '/' ) ) . '">';
 				$search_button .= '<input class="text" id="s" name="s" type="text" value="' . esc_attr( get_search_query() ) . '" placeholder="' . __( 'What are you looking for?', 'themusescircle' ) . '" />';
-				$search_button .= '</form></div></div>';
+				$search_button .= '</form></li></ul></div>';
 
 				// Display search button block (if setting is checked, don't display it)
 				echo $hide_search ? '' : $search_button;
 			?>
-			<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 		</div>
 	</nav>
 	<header id="header">

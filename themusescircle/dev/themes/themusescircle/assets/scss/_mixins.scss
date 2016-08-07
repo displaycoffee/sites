@@ -10,6 +10,13 @@
 	}
 }
 
+// Flex 
+
+@mixin flex($flow) {
+	display: flex;
+	flex-flow: $flow;
+}
+
 // Inline block
 @mixin inline-block($vertical-align) {
 	display: inline-block;
