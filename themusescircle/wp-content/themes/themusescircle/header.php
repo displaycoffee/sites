@@ -51,9 +51,11 @@
 		</div>
 	</nav>
 	<header id="header">
-		<p class="site-name">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo get_bloginfo( 'name' ); ?></a>
-		</p>
-		<p class="site-description"><?php echo get_bloginfo( 'description' ); ?></p>
+		<div class="wrapper">
+			<div class="header-content">
+				<h1 class="site-name"><?php echo get_bloginfo( 'name' ); ?></h1>
+				<p class="site-description"><?php echo get_bloginfo( 'description' ); ?></p>
+			</div>
+		</div>
 	</header>
 	<?php get_search_form(); ?>		

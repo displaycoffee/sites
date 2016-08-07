@@ -1,0 +1,29 @@
+/* Header
+========================================================================== */
+
+#header {
+	background: $color-03;
+	height: 320px;
+	.wrapper {
+		background: url($images + 'muses-header.png') left center no-repeat;
+		height: 440px;
+		position: relative;
+		top: -60px;
+		z-index: 1;
+		.header-content {
+			height: 100%;
+			@include flex(column nowrap);
+			justify-content: center;
+			align-items: flex-end;
+			.site-name {
+				font-size: 5.0em;
+				line-height: 0.75;
+				text-shadow: 1px 3px 0 rgba(0,0,0,0.85);
+			}
+			.site-description {
+				font-size: 1.14em;
+				text-shadow: 1px 1px 0 rgba(0,0,0,0.85);
+			}
+		}
+	}
+}
