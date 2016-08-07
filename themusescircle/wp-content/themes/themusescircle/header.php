@@ -22,6 +22,19 @@
 			<?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.', 'themusescircle' ); ?>
 		</p>
 	<![endif]-->
+	<section id="top-bar">
+		<div class="wrapper">
+			<div class="social-media">
+				<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				<a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+				<a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
+				<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a href=""><span class="custom-icon goodreads"></span></a>
+				<a href=""><span class="custom-icon library-thing"></span></a>
+			</div>
+			<?php get_search_form(); ?>	
+		</div>
+	</section>
 	<nav id="header-nav" class="navigation">
 		<div class="wrapper">
 			<?php 
@@ -57,5 +70,4 @@
 				<p class="site-description"><?php echo get_bloginfo( 'description' ); ?></p>
 			</div>
 		</div>
-	</header>
-	<?php get_search_form(); ?>		
+	</header>		

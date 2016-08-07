@@ -12,6 +12,7 @@
 
 #header-nav {
 	background: url($images + 'muses-bg.png') 0 0 repeat-x;
+	border-top: 1px solid $color-05 + #000;
 	border-bottom: 1px solid $color-08;
 	font-size: 0.94em;
 	.wrapper {
