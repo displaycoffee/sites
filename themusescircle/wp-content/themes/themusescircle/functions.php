@@ -164,9 +164,24 @@
 		}
 	}
 
-	// Create links
+	// Create generic links
 	function themusescircle_create_link( $class, $url, $text ) {
 		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'themusescircle' ) . '</a>, ';
+	}
+
+	// Create social links with icons
+	function themusescircle_social_link( $link, $class, $fa ) {
+		$social_link = '<a href="' . esc_url( $link ) . '" target="_blank">';
+
+		// Check if the icon should be fontawesone or not
+		if ( $fa == 'true' || $fa == 'yes' ) {
+			$social_link .= '<i class="fa ' . $class . '" aria-hidden="true"></i>';
+		} else {
+			$social_link .= '<span class="custom-icon ' . $class . '"></span>';
+		}
+
+		$social_link .= '</a>';
+		return $social_link;					
 	}
 
 	// Include customizer choices

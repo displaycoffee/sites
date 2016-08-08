@@ -1,4 +1,4 @@
-/* Navigation
+/* Navigation - General
 ========================================================================== */
 
 .navigation ul {
@@ -7,7 +7,7 @@
 	padding: 0;
 }
 
-/* Navigation - Main and search menu
+/* Navigation - Main menu
 ========================================================================== */
 
 #header-nav {
@@ -16,123 +16,86 @@
 	border-bottom: 1px solid $color-08;
 	font-size: 0.94em;
 	.wrapper {
-		position: relative;
-		z-index: 2;
-		justify-content: flex-end;
-		&, .menu-container .menu {
-			@include flex(row nowrap);
-		}
-		.menu-container {			
-			&, & > ul > li {
-				@include flex(column nowrap);
-			}
-			& > ul {				
-				flex: 1;
-				a {
-					color: $color-01;
-				}
+		text-align: right;
+		.menu-main-menu-container {	
+			display: inline-block;
+			position: relative;
+			z-index: 2;
+			a {
+				color: $color-01;
+			}	
+			.menu {
+				@include flex(row wrap);
+				border-left: 1px solid $color-05 + #000;
+				border-right: 1px solid $color-05 - #222;
 				& > li {
 					position: relative;	
 					border-right: 1px solid $color-05 + #000;
-					border-left: 1px solid $color-05 - #222;								
+					border-left: 1px solid $color-05 - #222;
+					text-align: center;			
+					& > a, .toggle-submenu {
+						vertical-align: middle;
+						&:hover {
+							color: $color-07;
+						}						
+					}
 					& > a {
-						margin: auto;
-						flex: 1;
+						display: inline-block;
 						height: 60px;
 						line-height: 60px;
 						overflow: hidden;
 						padding: 0 20px;
 						text-align: center;
-						text-shadow: 1px 1px 0 rgba(0,0,0,0.85);
-						&:hover {
-							color: $color-07;
+						text-shadow: 1px 1px 0 rgba(0,0,0,0.85);						
+					}
+					&.menu-item-has-children {
+						& > a {
+							padding: 0 5px 0 20px;
+						}
+						.toggle-submenu {
+							padding: 0 20px 0 5px;
+							cursor: pointer;
+							@include transition(color 0.3s ease-in-out);
+							&:before {
+								content: '\f078';
+							}
+							&.show:before {
+								content: '\f077';
+							}
 						}
 					}
-					ul, .search-form {
+					.sub-menu {
 						position: absolute;
-						top: 60px;						
+						top: 60px;	
+						left: 0;
+						z-index: 3;
+						min-width: 200px;					
 						background: $color-06;
 						padding: 10px;						
 						opacity: 0;
-						z-index: -2;
 						@include transition(opacity 0.3s ease-in-out);
-						&:before {
-							display: block;
-							content: '';
-							width: 0;
-							height: 0;
-							position: absolute;
-							top: -5px;
-							border-bottom: 5px solid $color-06;
-							border-left: 5px inset transparent;
-							border-right: 5px inset transparent;	
-						}							
-					}
+						text-align: left;
+						&.show {
+							opacity: 1;
+						}
+						li {			
+							a {
+								display: block;
+								margin: 0 0 5px 0;
+								&:hover {
+									color: $color-02;
+								}
+							}
+							&:last-child a {
+								margin: 0
+							}
+							ul {
+								display: none;
+							}
+						}											
+					}						
 				}
 			}
 		}
-	}
-}
-
-/* Navigation - Main menu
-========================================================================== */
-
-#header-nav .wrapper #main-menu-container {
-	border-left: 1px solid $color-05 + #000;
-	border-right: 1px solid $color-05 - #222;	
-	& > ul > li {
-		ul {
-			left: 0;
-			min-width: 200px;
-			&:before {
-				left: 30px;
-			}	
-			li {			
-				a {
-					display: block;
-					margin: 0 0 5px 0;
-					&:hover {
-						color: $color-02;
-					}
-				}
-				&:last-child a {
-					margin: 0
-				}
-			}
-		}
-		&:hover ul {
-			opacity: 1;
-			z-index: 3;			
-		}
-	}
-}
-
-/* Navigation - Search menu
-========================================================================== */
-
-#header-nav .wrapper #search-menu-container {
-	border-right: 1px solid $color-05 - #222;
-	margin: 0 0 0 -1px;
-	& > ul > li {
-		.search-button {
-			cursor: pointer;
-			i {
-				padding: 0 5px 0 0;
-			}
-		}
-		.search-form {
-			right: 0;
-			min-width: 300px;
-			&:before {
-				right: 45px;
-			}			
-			&.show {
-				opacity: 1;
-				z-index: 2;	
-			}
-			input[type='text'] {
-				width: 100%;
-			}			
-		}	
 	}
 }

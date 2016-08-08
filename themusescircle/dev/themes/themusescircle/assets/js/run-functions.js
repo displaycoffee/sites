@@ -1,3 +1,3 @@
 jQuery( document ).ready( function( $ ) {
-    toggleSearchBar();
+    toggleNavSubMenus( '#menu-main-menu > li' );
 });

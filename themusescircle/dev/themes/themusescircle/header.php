@@ -22,45 +22,43 @@
 			<?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.', 'themusescircle' ); ?>
 		</p>
 	<![endif]-->
-	<section id="top-bar">
-		<div class="wrapper">
-			<div class="social-media">
-				<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-				<a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-				<a href=""><i class="fa fa-youtube" aria-hidden="true"></i></a>
-				<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-				<a href=""><span class="custom-icon goodreads"></span></a>
-				<a href=""><span class="custom-icon library-thing"></span></a>
-			</div>
-			<?php get_search_form(); ?>	
-		</div>
-	</section>
+	<?php 
+		// Get social media links
+		$social_facebook = get_theme_mod( 'themusescircle_facebook' );
+		$social_gplus = get_theme_mod( 'themusescircle_gplus' );
+		$social_youtube = get_theme_mod( 'themusescircle_youtube' );
+		$social_twitter = get_theme_mod( 'themusescircle_twitter' );
+		$social_goodreads = get_theme_mod( 'themusescircle_goodreads' );
+		$social_librarything = get_theme_mod( 'themusescircle_librarything' );
+
+		// Create social media links
+		$social_media_links = $social_facebook ? themusescircle_social_link( $social_facebook, 'fa-facebook', 'true' ) : '';
+		$social_media_links .= $social_gplus ? themusescircle_social_link( $social_gplus, 'fa-google-plus', 'true' ) : '';
+		$social_media_links .= $social_youtube ? themusescircle_social_link( $social_youtube, 'fa-youtube', 'true' ) : '';
+		$social_media_links .= $social_twitter ? themusescircle_social_link( $social_twitter, 'fa-twitter', 'true' ) : '';
+		$social_media_links .= $social_goodreads ? themusescircle_social_link( $social_goodreads, 'goodreads', 'false' ) : '';
+		$social_media_links .= $social_librarything ? themusescircle_social_link( $social_librarything, 'library-thing', 'false' ) : '';
+
+		// Get hide search setting
+		$hide_search = get_theme_mod( 'themusescircle_hide_search' ); 
+
+		// Check if social media links or hide search is not checked
+		if ( strlen( $social_media_links ) > 0 || !$hide_search ) {
+			// Create header top bar
+			$top_bar = '<section id="top-bar">';
+			$top_bar .= '<div class="wrapper">';
+			$top_bar .= ( strlen( $social_media_links ) > 0 ) ? '<div class="social-media">' . $social_media_links . '</div>' : '';;
+			$top_bar .= $hide_search ? '' : get_search_form( false );
+			$top_bar .= '</div>';
+			$top_bar .= '</section>';
+
+			// Display top bar
+			echo $top_bar;
+		}
+	?>
 	<nav id="header-nav" class="navigation">
 		<div class="wrapper">
-			<?php 
-				// Display main menu
-				wp_nav_menu( array( 
-					'theme_location'  => 'main-menu', 
-					'container_id' 	  => 'main-menu-container', 
-					'container_class' => 'menu-container' 
-				) ); 
-			?>
-			<?php 
-				// Get hide search setting
-				$hide_search = get_theme_mod( 'themusescircle_hide_search' ); 
-
-				// Create search button block
-				$search_button = '<div id="search-menu-container" class="menu-container">';
-				$search_button .= '<ul id="menu-search" class="menu">';
-				$search_button .= '<li class="menu-item">';
-				$search_button .= '<a class="search-button"><i class="fa fa-search" aria-hidden="true"></i>Search</a>';
-				$search_button .= '<form class="search-form" method="get" action="' . esc_url( home_url( '/' ) ) . '">';
-				$search_button .= '<input class="text" id="s" name="s" type="text" value="' . esc_attr( get_search_query() ) . '" placeholder="' . __( 'What are you looking for?', 'themusescircle' ) . '" />';
-				$search_button .= '</form></li></ul></div>';
-
-				// Display search button block (if setting is checked, don't display it)
-				echo $hide_search ? '' : $search_button;
-			?>
+			<?php wp_nav_menu( array( 'theme_location'  => 'main-menu' ) ); ?>
 		</div>
 	</nav>
 	<header id="header">
