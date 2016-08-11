@@ -11,8 +11,11 @@
 	// Include header	
 	get_header(); 
 ?>
-<section id="home-slider">
-	<div class="wrapper">stuff</div>
+<section id="about-muses">
+	<div class="wrapper">
+		<div class="column">column 1</div>
+		<div class="column">column 2</div>
+	</div>
 </section>
 <section id="home-latest-reviews">
 	<div class="wrapper">stuff</div>	

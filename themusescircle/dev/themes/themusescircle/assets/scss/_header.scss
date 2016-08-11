@@ -89,6 +89,7 @@
 		height: 440px;
 		position: relative;
 		top: -60px;
+		left: 0;
 		.header-content {
 			height: 100%;
 			@include flex(column nowrap);

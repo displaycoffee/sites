@@ -27,6 +27,85 @@
 
 		// Social Media
 	    $wp_customize->add_section(
+	        'themusescircle_about',
+	        array(
+	            'title'		  => __( 'About Site', 'themusescircle' ),
+	            'description' => __( 'Information related to site on static front page.', 'themusescircle' )
+	        )
+	    );
+
+		// About - Left Column
+		$wp_customize->add_setting(
+		    'themusescircle_about_left',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_textarea',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_textarea'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_about_left',
+		    array(
+		        'label'	  => __( 'Left Column Text', 'ambase' ),
+		        'section' => 'themusescircle_about',
+		        'type'	  => 'textarea'
+		    )
+		);	
+
+		// About - Right Column
+		$wp_customize->add_setting(
+		    'themusescircle_about_right',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_textarea',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_textarea'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_about_right',
+		    array(
+		        'label'	      => __( 'Right Column Text', 'ambase' ),
+		        'section'     => 'themusescircle_about',
+		        'description' => __( 'If blank, right column will not show and left column will be full width.', 'ambase' ),
+		        'type'	      => 'textarea'
+		    )
+		);	
+
+	    // About - Read More Text
+		$wp_customize->add_setting(
+		    'themusescircle_about_more',
+		    array(
+		        'sanitize_callback'	   => 'sanitize_text_field',
+		        'sanitize_js_callback' => 'sanitize_text_field'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_about_more',
+		    array(
+		        'label'	      => __( 'Read More Text', 'ambase' ),
+		        'description' => __( 'If blank, url will not show.', 'ambase' ),
+		        'section'     => 'themusescircle_about',
+		        'type'	      => 'text'
+		    )
+		);
+
+	    // About - Read More Link
+		$wp_customize->add_setting(
+		    'themusescircle_about_more_url',
+		    array(
+		        'sanitize_callback'	   => 'esc_url',
+		        'sanitize_js_callback' => 'esc_url'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_about_more_url',
+		    array(
+		        'label'	  => __( 'Read More Link', 'themusescircle' ),
+		        'section' => 'themusescircle_about',
+		        'type'	  => 'url'
+		    )
+		);		
+
+		// Social Media
+	    $wp_customize->add_section(
 	        'themusescircle_social',
 	        array(
 	            'title'		  => __( 'Social Media', 'themusescircle' ),
