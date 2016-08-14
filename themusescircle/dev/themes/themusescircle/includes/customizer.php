@@ -8,6 +8,51 @@
 
 	// Adds individual sections, settings, and controls
 	function themusescircle_customizer_section( $wp_customize ) {
+		$wp_customize->add_panel( 
+			'testtest', 
+			array(
+				'title'       => __( 'testing', 'themusescircle' ),
+				'description' => __( 'Description.', 'themusescircle' ),
+				'priority'    => 160
+			) 
+		);
+
+		// Social Media
+	    $wp_customize->add_section(
+	        'testtest_section',
+	        array(
+	            'title'		  => __( 'About Site', 'themusescircle' ),
+	            'description' => __( 'Information related to site on static front page.', 'themusescircle' ),
+	            'panel' 	  => 'testtest',
+	        )
+	    );
+
+	    // Static Front Page - Hide Header Search
+		$wp_customize->add_setting(
+		    'testtest_field',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
+		    )
+		);
+		$wp_customize->add_control(
+		    'testtest_field',
+		    array(
+		        'label'	  => __( 'Hide search bar in header', 'themusescircle' ),
+		        'section' => 'testtest_section',
+		        'type'	  => 'checkbox'
+		    )
+		);
+
+		// $wp_customize->add_section( $section_id , array(
+		// 'title' => $menu->name,
+		// 'panel' => 'menus',
+		// ) );
+
+
+
+
+
 	    // Static Front Page - Hide Header Search
 		$wp_customize->add_setting(
 		    'themusescircle_hide_search',
