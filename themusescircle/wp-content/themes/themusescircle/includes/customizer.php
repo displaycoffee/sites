@@ -8,50 +8,114 @@
 
 	// Adds individual sections, settings, and controls
 	function themusescircle_customizer_section( $wp_customize ) {
+		// Home Page
 		$wp_customize->add_panel( 
-			'testtest', 
+			'themusescircle_front_content', 
 			array(
-				'title'       => __( 'testing', 'themusescircle' ),
-				'description' => __( 'Description.', 'themusescircle' ),
+				'title'       => __( 'Front Page Content', 'themusescircle' ),
+				'description' => __( 'Here you can manage the content sections seen on the front page.', 'themusescircle' ),
 				'priority'    => 160
 			) 
 		);
 
-		// Social Media
+		// About 
 	    $wp_customize->add_section(
-	        'testtest_section',
+	        'themusescircle_front_about',
 	        array(
-	            'title'		  => __( 'About Site', 'themusescircle' ),
-	            'description' => __( 'Information related to site on static front page.', 'themusescircle' ),
-	            'panel' 	  => 'testtest',
+	            'title'		  => __( 'About', 'themusescircle' ),
+	            'description' => __( 'Quick information about the site.', 'themusescircle' ),
+	            'panel' 	  => 'themusescircle_front_content',
 	        )
 	    );
 
-	    // Static Front Page - Hide Header Search
+	    // About - Show section
 		$wp_customize->add_setting(
-		    'testtest_field',
+		    'themusescircle_hide_about',
 		    array(
 		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
 		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
 		    )
 		);
 		$wp_customize->add_control(
-		    'testtest_field',
+		    'themusescircle_hide_about',
 		    array(
-		        'label'	  => __( 'Hide search bar in header', 'themusescircle' ),
-		        'section' => 'testtest_section',
+		        'label'	  => __( 'Hide "About" section', 'themusescircle' ),
+		        'section' => 'themusescircle_front_about',
 		        'type'	  => 'checkbox'
 		    )
 		);
 
-		// $wp_customize->add_section( $section_id , array(
-		// 'title' => $menu->name,
-		// 'panel' => 'menus',
-		// ) );
+		// About - Left column
+		$wp_customize->add_setting(
+		    'themusescircle_about_left',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_textarea',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_textarea'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_about_left',
+		    array(
+		        'label'	      => __( 'Left column text', 'ambase' ),
+		        'description' => __( 'In addition to the checkbox above, leaving this column blank will hide the "About" section.', 'ambase' ),
+		        'section'     => 'themusescircle_front_about',
+		        'type'	      => 'textarea'
+		    )
+		);		
+		
+		// About - Right column
+		$wp_customize->add_setting(
+		    'themusescircle_about_right',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_textarea',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_textarea'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_about_right',
+		    array(
+		        'label'	      => __( 'Right column text', 'ambase' ),
+		        'description' => __( 'If blank, right column will not show and left column will be full width.', 'ambase' ),
+		        'section'     => 'themusescircle_front_about',		        
+		        'type'	      => 'textarea'
+		    )
+		);				
 
+	    // About - "Read More" text
+		$wp_customize->add_setting(
+		    'themusescircle_about_more_text',
+		    array(
+		        'sanitize_callback'	   => 'sanitize_text_field',
+		        'sanitize_js_callback' => 'sanitize_text_field'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_about_more_text',
+		    array(
+		        'label'	      => __( '"Read More" text', 'ambase' ),
+		        'description' => __( 'Default text is "Read More".', 'ambase' ),
+		        'section'     => 'themusescircle_front_about',
+		        'type'	      => 'text'
+		    )
+		);
 
-
-
+	    // About - "Read More" link
+		$wp_customize->add_setting(
+		    'themusescircle_about_more_url',
+		    array(
+		        'sanitize_callback'	   => 'esc_url',
+		        'sanitize_js_callback' => 'esc_url'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_about_more_url',
+		    array(
+		        'label'	  	  => __( '"Read More" link', 'themusescircle' ),
+		        'description' => __( 'If blank, link will not show.', 'ambase' ),
+		        'section'     => 'themusescircle_front_about',
+		        'type'	      => 'url'
+		    )
+		);	
 
 	    // Static Front Page - Hide Header Search
 		$wp_customize->add_setting(
@@ -69,85 +133,6 @@
 		        'type'	  => 'checkbox'
 		    )
 		);
-
-		// Social Media
-	    $wp_customize->add_section(
-	        'themusescircle_about',
-	        array(
-	            'title'		  => __( 'About Site', 'themusescircle' ),
-	            'description' => __( 'Information related to site on static front page.', 'themusescircle' )
-	        )
-	    );
-
-		// About - Left Column
-		$wp_customize->add_setting(
-		    'themusescircle_about_left',
-		    array(
-		        'sanitize_callback'	   => 'themusescircle_sanitize_textarea',
-		        'sanitize_js_callback' => 'themusescircle_sanitize_textarea'
-		    )
-		);
-		$wp_customize->add_control(
-		    'themusescircle_about_left',
-		    array(
-		        'label'	  => __( 'Left Column Text', 'ambase' ),
-		        'section' => 'themusescircle_about',
-		        'type'	  => 'textarea'
-		    )
-		);	
-
-		// About - Right Column
-		$wp_customize->add_setting(
-		    'themusescircle_about_right',
-		    array(
-		        'sanitize_callback'	   => 'themusescircle_sanitize_textarea',
-		        'sanitize_js_callback' => 'themusescircle_sanitize_textarea'
-		    )
-		);
-		$wp_customize->add_control(
-		    'themusescircle_about_right',
-		    array(
-		        'label'	      => __( 'Right Column Text', 'ambase' ),
-		        'section'     => 'themusescircle_about',
-		        'description' => __( 'If blank, right column will not show and left column will be full width.', 'ambase' ),
-		        'type'	      => 'textarea'
-		    )
-		);	
-
-	    // About - Read More Text
-		$wp_customize->add_setting(
-		    'themusescircle_about_more',
-		    array(
-		        'sanitize_callback'	   => 'sanitize_text_field',
-		        'sanitize_js_callback' => 'sanitize_text_field'
-		    )
-		);
-		$wp_customize->add_control(
-		    'themusescircle_about_more',
-		    array(
-		        'label'	      => __( 'Read More Text', 'ambase' ),
-		        'description' => __( 'If blank, url will not show.', 'ambase' ),
-		        'section'     => 'themusescircle_about',
-		        'type'	      => 'text'
-		    )
-		);
-
-	    // About - Read More Link
-		$wp_customize->add_setting(
-		    'themusescircle_about_more_url',
-		    array(
-		        'sanitize_callback'	   => 'esc_url',
-		        'sanitize_js_callback' => 'esc_url'
-		    )
-		);
-		$wp_customize->add_control(
-		    'themusescircle_about_more_url',
-		    array(
-		        'label'	  => __( 'Read More Link', 'themusescircle' ),
-		        'section' => 'themusescircle_about',
-		        'type'	  => 'url'
-		    )
-		);		
 
 		// Social Media
 	    $wp_customize->add_section(
