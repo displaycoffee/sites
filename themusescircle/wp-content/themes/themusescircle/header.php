@@ -40,7 +40,7 @@
 		$social_media_links .= $social_librarything ? themusescircle_social_link( $social_librarything, 'library-thing', 'false' ) : '';
 
 		// Get hide search setting
-		$hide_search = get_theme_mod( 'themusescircle_hide_search' ); 
+		$hide_search = get_theme_mod( 'themusescircle_header_hide_search' ); 
 
 		// Check if social media links or hide search is not checked
 		if ( strlen( $social_media_links ) > 0 || !$hide_search ) {

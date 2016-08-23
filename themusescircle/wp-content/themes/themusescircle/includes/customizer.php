@@ -8,12 +8,38 @@
 
 	// Adds individual sections, settings, and controls
 	function themusescircle_customizer_section( $wp_customize ) {
+		// Header
+	    $wp_customize->add_section(
+	        'themusescircle_header',
+	        array(
+	            'title'	      => __( 'Header', 'themusescircle' ),
+	            'description' => __( 'Manage different aspects of the theme header.', 'themusescircle' ),
+	            'priority'    => 150
+	        )
+	    );
+
+	    // Header - Hide search
+		$wp_customize->add_setting(
+		    'themusescircle_header_hide_search',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_header_hide_search',
+		    array(
+		        'label'	  => __( 'Hide search bar', 'themusescircle' ),
+		        'section' => 'themusescircle_header',
+		        'type'	  => 'checkbox'
+		    )
+		);
+
 		// Front page content
 		$wp_customize->add_panel( 
 			'themusescircle_front_content', 
 			array(
 				'title'       => __( 'Front Page Content', 'themusescircle' ),
-				'description' => __( 'Here you can manage the content sections seen on the front page.', 'themusescircle' ),
 				'priority'    => 160
 			) 
 		);
@@ -57,7 +83,6 @@
 		    'themusescircle_about_title',
 		    array(
 		        'label'	      => __( 'Section title', 'themusescircle' ),
-		        'description' => __( 'Default text is "About".', 'themusescircle' ),
 		        'section'     => 'themusescircle_about',
 		        'type'	      => 'text'
 		    )
@@ -75,7 +100,6 @@
 		    'themusescircle_about_left',
 		    array(
 		        'label'	      => __( 'Left column text', 'themusescircle' ),
-		        'description' => __( 'In addition to the above checkbox, leaving this column blank will hide the "About" section.', 'themusescircle' ),
 		        'section'     => 'themusescircle_about',
 		        'type'	      => 'textarea'
 		    )
@@ -93,7 +117,7 @@
 		    'themusescircle_about_right',
 		    array(
 		        'label'	      => __( 'Right column text', 'themusescircle' ),
-		        'description' => __( 'If blank, right column will not show and left column will be full width.', 'themusescircle' ),
+		        'description' => __( 'If blank, left column will be full width.', 'themusescircle' ),
 		        'section'     => 'themusescircle_about',		        
 		        'type'	      => 'textarea'
 		    )
@@ -111,7 +135,6 @@
 		    'themusescircle_about_more_text',
 		    array(
 		        'label'	      => __( '"Read More" text', 'themusescircle' ),
-		        'description' => __( 'Default text is "Read More".', 'themusescircle' ),
 		        'section'     => 'themusescircle_about',
 		        'type'	      => 'text'
 		    )
@@ -129,7 +152,6 @@
 		    'themusescircle_about_more_url',
 		    array(
 		        'label'	  	  => __( '"Read More" link', 'themusescircle' ),
-		        'description' => __( 'If blank, link will not show.', 'themusescircle' ),
 		        'section'     => 'themusescircle_about',
 		        'type'	      => 'url'
 		    )
@@ -353,23 +375,6 @@
 		        'description' => __( 'Default number is 6.', 'themusescircle' ),
 		        'section'     => 'themusescircle_from_blog',
 		        'type'	      => 'text'
-		    )
-		);
-
-	    // Static Front Page - Hide Header Search
-		$wp_customize->add_setting(
-		    'themusescircle_hide_search',
-		    array(
-		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
-		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
-		    )
-		);
-		$wp_customize->add_control(
-		    'themusescircle_hide_search',
-		    array(
-		        'label'	  => __( 'Hide search bar in header', 'themusescircle' ),
-		        'section' => 'static_front_page',
-		        'type'	  => 'checkbox'
 		    )
 		);
 
