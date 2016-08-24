@@ -159,66 +159,115 @@
 
 		// Latest Reviews 
 	    $wp_customize->add_section(
-	        'themusescircle_latest_reviews',
+	        'themusescircle_recent_reviews',
 	        array(
-	            'title'		  => __( 'Latest Reviews', 'themusescircle' ),
-	            'description' => __( 'Display the latest reviews in a carousel.', 'themusescircle' ),
+	            'title'		  => __( 'Recent Reviews', 'themusescircle' ),
+	            'description' => __( 'Display recent reviews in a carousel.', 'themusescircle' ),
 	            'panel' 	  => 'themusescircle_front_content'
 	        )
 	    );
 
 	    // Latest Reviews - Hide section
 		$wp_customize->add_setting(
-		    'themusescircle_latest_reviews_hide',
+		    'themusescircle_recent_reviews_hide',
 		    array(
 		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
 		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
 		    )
 		);
 		$wp_customize->add_control(
-		    'themusescircle_latest_reviews_hide',
+		    'themusescircle_recent_reviews_hide',
 		    array(
 		        'label'	  => __( 'Hide section', 'themusescircle' ),
-		        'section' => 'themusescircle_latest_reviews',
+		        'section' => 'themusescircle_recent_reviews',
 		        'type'	  => 'checkbox'
 		    )
 		);
 
 	    // Latest Reviews - Section title
 		$wp_customize->add_setting(
-		    'themusescircle_latest_reviews_title',
+		    'themusescircle_recent_reviews_title',
 		    array(
 		        'sanitize_callback'	   => 'sanitize_text_field',
 		        'sanitize_js_callback' => 'sanitize_text_field'
 		    )
 		);
 		$wp_customize->add_control(
-		    'themusescircle_latest_reviews_title',
+		    'themusescircle_recent_reviews_title',
 		    array(
-		        'label'	      => __( 'Section title', 'themusescircle' ),
-		        'description' => __( 'Default text is "Latest Reviews".', 'themusescircle' ),
-		        'section'     => 'themusescircle_latest_reviews',
-		        'type'	      => 'text'
+		        'label'   => __( 'Section title', 'themusescircle' ),
+		        'section' => 'themusescircle_recent_reviews',
+		        'type'	  => 'text'
 		    )
 		);
 
 		// Latest Reviews - Number of reviews
 		$wp_customize->add_setting(
-		    'themusescircle_latest_reviews_number',
+		    'themusescircle_recent_reviews_number',
 		    array(
 		        'sanitize_callback'	   => 'themusescircle_sanitize_number',
 		        'sanitize_js_callback' => 'themusescircle_sanitize_number'
 		    )
 		);
 		$wp_customize->add_control(
-		    'themusescircle_latest_reviews_number',
+		    'themusescircle_recent_reviews_number',
 		    array(
-		        'label'	      => __( 'Number of reviews', 'themusescircle' ),
-		        'description' => __( 'Default number is 15.', 'themusescircle' ),
-		        'section'     => 'themusescircle_latest_reviews',
-		        'type'	      => 'text'
+		        'label'	  => __( 'Number of reviews', 'themusescircle' ),
+		        'section' => 'themusescircle_recent_reviews',
+		        'type'    => 'text'
 		    )
 		);
+
+		// Latest Reviews - Hide book reviews
+		$wp_customize->add_setting(
+		    'themusescircle_recent_reviews_hide_books',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_recent_reviews_hide_books',
+		    array(
+		        'label'	  => __( 'Hide book reviews', 'themusescircle' ),
+		        'section' => 'themusescircle_recent_reviews',
+		        'type'    => 'checkbox'
+		    )
+		);
+
+		// Latest Reviews - Hide movie reviews
+		$wp_customize->add_setting(
+		    'themusescircle_recent_reviews_hide_movies',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_recent_reviews_hide_movies',
+		    array(
+		        'label'	  => __( 'Hide movie reviews', 'themusescircle' ),
+		        'section' => 'themusescircle_recent_reviews',
+		        'type'    => 'checkbox'
+		    )
+		);
+
+		// Latest Reviews - Hide tv reviews
+		$wp_customize->add_setting(
+		    'themusescircle_recent_reviews_hide_tv',
+		    array(
+		        'sanitize_callback'	   => 'themusescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'themusescircle_sanitize_checkbox'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_recent_reviews_hide_tv',
+		    array(
+		        'label'	  => __( 'Hide tv reviews', 'themusescircle' ),
+		        'section' => 'themusescircle_recent_reviews',
+		        'type'    => 'checkbox'
+		    )
+		);				
 
 		// Review Buttons
 	    $wp_customize->add_section(
