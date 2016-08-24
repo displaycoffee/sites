@@ -1,34 +1,3 @@
-// Toggle navigation sub menus
-function toggleNavSubMenus( selector ) {
-	jQuery( selector ).each( function() {
-		// Check if selector has a sub menu
-		if ( jQuery( this ).hasClass( 'menu-item-has-children' ) ) {
-			// Get current selector
-			var current = this;
-
-			// Add a toggle icon after main link element
-			jQuery( '<i class="fa toggle-submenu" aria-hidden="true"></i>' ).insertAfter( jQuery( current ).find( '> a' ) ); 
-
-			// Create sub menu variables for targetting			
-			var subMenuButton = jQuery( current ).find( '.toggle-submenu' );
-			var subMenu = jQuery( current ).find( '.sub-menu' );
-
-			// Toggle show/hide class if search button is clicked on
-		    jQuery( subMenuButton ).click( function() {
-		        jQuery( subMenu ).toggleClass( 'show' );
-		        jQuery( subMenuButton ).toggleClass( 'show' );
-		    });
-
-		    // If anything outside search-button is clicked on, hide the search bar
-			jQuery( document ).on( 'click', function( event ) {
-				if ( !jQuery( event.target ).closest( current ).length ) {
-					jQuery( subMenu ).removeClass( 'show' );
-					jQuery( subMenuButton ).removeClass( 'show' );
-				}
-			}); 
-		}
-	});
-}
 "function"!==typeof Object.create&&(Object.create=function(f){function g(){}g.prototype=f;return new g});
 (function(f,g,k){var l={init:function(a,b){this.$elem=f(b);this.options=f.extend({},f.fn.owlCarousel.options,this.$elem.data(),a);this.userOptions=a;this.loadContent()},loadContent:function(){function a(a){var d,e="";if("function"===typeof b.options.jsonSuccess)b.options.jsonSuccess.apply(this,[a]);else{for(d in a.owl)a.owl.hasOwnProperty(d)&&(e+=a.owl[d].item);b.$elem.html(e)}b.logIn()}var b=this,e;"function"===typeof b.options.beforeInit&&b.options.beforeInit.apply(this,[b.$elem]);"string"===typeof b.options.jsonPath?
 (e=b.options.jsonPath,f.getJSON(e,a)):b.logIn()},logIn:function(){this.$elem.data("owl-originalStyles",this.$elem.attr("style"));this.$elem.data("owl-originalClasses",this.$elem.attr("class"));this.$elem.css({opacity:0});this.orignalItems=this.options.items;this.checkBrowser();this.wrapperWidth=0;this.checkVisible=null;this.setVars()},setVars:function(){if(0===this.$elem.children().length)return!1;this.baseClass();this.eventTypes();this.$userItems=this.$elem.children();this.itemsAmount=this.$userItems.length;
@@ -76,12 +45,3 @@ f(k).off(".owl owl");f(g).off("resize",this.resizer)},unWrap:function(){0!==this
 a);this.unWrap();this.init(a,this.$elem)},addItem:function(a,b){var e;if(!a)return!1;if(0===this.$elem.children().length)return this.$elem.append(a),this.setVars(),!1;this.unWrap();e=void 0===b||-1===b?-1:b;e>=this.$userItems.length||-1===e?this.$userItems.eq(-1).after(a):this.$userItems.eq(e).before(a);this.setVars()},removeItem:function(a){if(0===this.$elem.children().length)return!1;a=void 0===a||-1===a?-1:a;this.unWrap();this.$userItems.eq(a).remove();this.setVars()}};f.fn.owlCarousel=function(a){return this.each(function(){if(!0===
 f(this).data("owl-init"))return!1;f(this).data("owl-init",!0);var b=Object.create(l);b.init(a,this);f.data(this,"owlCarousel",b)})};f.fn.owlCarousel.options={items:5,itemsCustom:!1,itemsDesktop:[1199,4],itemsDesktopSmall:[979,3],itemsTablet:[768,2],itemsTabletSmall:!1,itemsMobile:[479,1],singleItem:!1,itemsScaleUp:!1,slideSpeed:200,paginationSpeed:800,rewindSpeed:1E3,autoPlay:!1,stopOnHover:!1,navigation:!1,navigationText:["prev","next"],rewindNav:!0,scrollPerPage:!1,pagination:!0,paginationNumbers:!1,
 responsive:!0,responsiveRefreshRate:200,responsiveBaseWidth:g,baseClass:"owl-carousel",theme:"owl-theme",lazyLoad:!1,lazyFollow:!0,lazyEffect:"fade",autoHeight:!1,jsonPath:!1,jsonSuccess:!1,dragBeforeAnimFinish:!0,mouseDrag:!0,touchDrag:!0,addClassActive:!1,transitionStyle:!1,beforeUpdate:!1,afterUpdate:!1,beforeInit:!1,afterInit:!1,beforeMove:!1,afterMove:!1,afterAction:!1,startDragging:!1,afterLazyLoad:!1}})(jQuery,window,document);
-jQuery( document ).ready( function( $ ) {
-    toggleNavSubMenus( '#menu-main-menu > li' );
-
-    $( '.insprvw-recent-reviews' ).owlCarousel({
-    	pagination     : false,
-    	navigation     : true,
-    	navigationText : ['', '']
-    });
-});

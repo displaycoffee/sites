@@ -44,6 +44,7 @@ if (wpFolder == 'themes') {
 if (dirName == 'themusescircle') {
 	var jsSources = [
 		devJS + '/main.js',
+		devJS + '/owl-carousel.js',
 		devJS + '/run-functions.js'
 	];
 } else if (wpFolder == 'plugins') {

@@ -81,7 +81,9 @@
 		$recent_reviews_section .= '<h2>';
 		$recent_reviews_section .= $recent_reviews_title ? esc_html( $recent_reviews_title ) : __( 'Recent Reviews', 'themusescircle' );
 		$recent_reviews_section .= '</h2>';
+		
 		$recent_reviews_section .= do_shortcode( '[recent-reviews amount="' . ( $recent_reviews_number ? esc_html( $recent_reviews_number ) : 15 ) . '" types="' . $recent_reviews_types . '"]' );			
+		
 
 		// Create "Recent Review" block - END
 		$recent_reviews_section .= '</div></section>';
