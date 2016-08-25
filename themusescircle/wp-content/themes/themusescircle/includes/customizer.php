@@ -140,7 +140,7 @@
 		    )
 		);
 
-	    // About - "Read More" link
+	    // About - "Read More" url
 		$wp_customize->add_setting(
 		    'themusescircle_about_more_url',
 		    array(
@@ -151,7 +151,7 @@
 		$wp_customize->add_control(
 		    'themusescircle_about_more_url',
 		    array(
-		        'label'	  	  => __( '"Read More" link', 'themusescircle' ),
+		        'label'	  	  => __( '"Read More" url', 'themusescircle' ),
 		        'section'     => 'themusescircle_about',
 		        'type'	      => 'url'
 		    )
@@ -274,7 +274,7 @@
 	        'themusescircle_review_buttons',
 	        array(
 	            'title'		  => __( 'Review Buttons', 'themusescircle' ),
-	            'description' => __( 'Display buttons to each review archive page.', 'themusescircle' ),
+	            'description' => __( 'Display buttons to review archive pages.', 'themusescircle' ),
 	            'panel' 	  => 'themusescircle_front_content'
 	        )
 	    );
@@ -296,6 +296,40 @@
 		    )
 		);
 
+	    // Review Buttons - Section title
+		$wp_customize->add_setting(
+		    'themusescircle_review_buttons_title',
+		    array(
+		        'sanitize_callback'	   => 'sanitize_text_field',
+		        'sanitize_js_callback' => 'sanitize_text_field'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_review_buttons_title',
+		    array(
+		        'label'   => __( 'Section title', 'themusescircle' ),
+		        'section' => 'themusescircle_review_buttons',
+		        'type'	  => 'text'
+		    )
+		);
+
+		// Review Buttons - Book url
+		$wp_customize->add_setting(
+		    'themusescircle_review_buttons_book_url',
+		    array(
+		        'sanitize_callback'	   => 'esc_url',
+		        'sanitize_js_callback' => 'esc_url'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_review_buttons_book_url',
+		    array(
+		        'label'	  	  => __( 'Book url', 'themusescircle' ),
+		        'section'     => 'themusescircle_review_buttons',
+		        'type'	      => 'url'
+		    )
+		);	
+
 	    // Review Buttons - Hide book review button
 		$wp_customize->add_setting(
 		    'themusescircle_review_buttons_hide_books',
@@ -312,6 +346,23 @@
 		        'type'	  => 'checkbox'
 		    )
 		);
+
+		// Review Buttons - Movie url
+		$wp_customize->add_setting(
+		    'themusescircle_review_buttons_movie_url',
+		    array(
+		        'sanitize_callback'	   => 'esc_url',
+		        'sanitize_js_callback' => 'esc_url'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_review_buttons_movie_url',
+		    array(
+		        'label'	  	  => __( 'Movie url', 'themusescircle' ),
+		        'section'     => 'themusescircle_review_buttons',
+		        'type'	      => 'url'
+		    )
+		);	
 
 	    // Review Buttons - Hide movie review button
 		$wp_customize->add_setting(
@@ -330,6 +381,23 @@
 		    )
 		);
 
+		// Review Buttons - TV url
+		$wp_customize->add_setting(
+		    'themusescircle_review_buttons_tv_url',
+		    array(
+		        'sanitize_callback'	   => 'esc_url',
+		        'sanitize_js_callback' => 'esc_url'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_review_buttons_tv_url',
+		    array(
+		        'label'	  	  => __( 'TV url', 'themusescircle' ),
+		        'section'     => 'themusescircle_review_buttons',
+		        'type'	      => 'url'
+		    )
+		);			
+
 	    // Review Buttons - Hide tv review button
 		$wp_customize->add_setting(
 		    'themusescircle_review_buttons_hide_tv',
@@ -346,6 +414,23 @@
 		        'type'	  => 'checkbox'
 		    )
 		);
+
+		// Review Buttons - "Everything" url
+		$wp_customize->add_setting(
+		    'themusescircle_review_buttons_everything_url',
+		    array(
+		        'sanitize_callback'	   => 'esc_url',
+		        'sanitize_js_callback' => 'esc_url'
+		    )
+		);
+		$wp_customize->add_control(
+		    'themusescircle_review_buttons_everything_url',
+		    array(
+		        'label'	  	  => __( '"Everything" url', 'themusescircle' ),
+		        'section'     => 'themusescircle_review_buttons',
+		        'type'	      => 'url'
+		    )
+		);			
 
 	    // Review Buttons - Hide "Everything" review button
 		$wp_customize->add_setting(
