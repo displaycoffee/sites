@@ -144,8 +144,28 @@
 			echo $review_buttons_section;
 		}
 	?>
-	<section id="blog-roll">
-		<div class="wrapper">stuff</div>	
-	</section>
+	<?php 
+		// Get "From the Blog" customizations
+		$from_blog_hide = get_theme_mod( 'themusescircle_from_blog_hide' );
+		$from_blog_title = get_theme_mod( 'themusescircle_from_blog_title' );
+		$from_blog_number = get_theme_mod( 'themusescircle_from_blog_number' );
+
+		$paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
+
+    	// Query args for recent blog posts
+		$args = array(
+			'post_type'      => 'post',
+			'posts_per_page' => 6
+		);
+		$wp_query = new WP_Query( $args );
+	?>
+	<?php if ( !$from_blog_hide ) : ?>
+		<section id="from-the-blog">
+			<div class="wrapper">
+				<h2><?php echo $from_blog_title ? esc_html( $from_blog_title ) : __( 'From the Blog', 'themusescircle' ); ?></h2>
+				<?php get_template_part( 'loop', 'index' ); ?>
+			</div>	
+		</section>
+	<?php endif; ?>
 </div>
 <?php get_footer(); ?>

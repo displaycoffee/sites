@@ -488,7 +488,6 @@
 		    'themusescircle_from_blog_title',
 		    array(
 		        'label'	      => __( 'Section title', 'themusescircle' ),
-		        'description' => __( 'Default text is "From the Blog".', 'themusescircle' ),
 		        'section'     => 'themusescircle_from_blog',
 		        'type'	      => 'text'
 		    )
@@ -506,7 +505,6 @@
 		    'themusescircle_from_blog_number',
 		    array(
 		        'label'	      => __( 'Number of posts', 'themusescircle' ),
-		        'description' => __( 'Default number is 6.', 'themusescircle' ),
 		        'section'     => 'themusescircle_from_blog',
 		        'type'	      => 'text'
 		    )

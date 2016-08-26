@@ -8,7 +8,7 @@
 ?>
 <?php 
 	// Check if we're on a page or not
-	if ( !is_page() ) { 
+	if ( !is_page() || is_front_page() ) { 
 		// Variables for thumbnail schema
 		$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' )[0];
 		$thumbnail_width = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' )[1];
