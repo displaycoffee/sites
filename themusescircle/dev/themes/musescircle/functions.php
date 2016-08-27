@@ -25,7 +25,8 @@
 
 		// Register navigation menus
 		register_nav_menus( array(
-			'main-menu' => __( 'Main Menu', 'musescircle' )
+			'main-menu'   => __( 'Main Menu', 'musescircle' ),
+			'social-menu' => __( 'Social Media Menu', 'musescircle' )
 		) );
 	}
 	add_action( 'after_setup_theme', 'musescircle_setup' );	

@@ -8,7 +8,7 @@
 	.wrapper {
 		@include flex(row nowrap);
 		align-items: center;
-		.social-media, .search-bar {
+		.menu-social-container, .search-bar {
 			flex: 1;
 		}
 	}
@@ -17,49 +17,12 @@
 /* Header - Social media
 ========================================================================== */
 
-#top-bar .wrapper .social-media {
+#top-bar .wrapper .menu-social-container ul {
 	margin: 0 -4px;
-	a {
-		&, .custom-icon {
-			display: inline-block;
-		}
+	li {
+		display: inline-block;
 		vertical-align: middle;
 		padding: 0 4px;
-		.fa, .custom-icon {
-			@include transition(all 0.3s ease-in-out);
-		}
-		.fa {
-			color: $color-06;
-			font-size: 1.34em;
-		}
-		.custom-icon {
-			height: 20px;
-			position: relative;
-			top: 3px;
-			background-position: center center;
-			background-repeat: no-repeat;
-			&.goodreads {
-				width: 14px;
-				background-image: url($images + 'gr-icon-small-pink.png');
-			}
-			&.library-thing {
-				width: 21px;
-				background-image: url($images + 'lt-icon-small-pink.png');
-			}										
-		}
-		&:hover {
-			.fa {
-				color: $color-01;
-			}
-			.custom-icon {
-				&.goodreads {
-					background-image: url($images + 'gr-icon-small-white.png');
-				}
-				&.library-thing {
-					background-image: url($images + 'lt-icon-small-white.png');
-				}										
-			}
-		}
 	}
 }
 

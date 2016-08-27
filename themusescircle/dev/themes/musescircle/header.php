@@ -22,32 +22,26 @@
 			<?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.', 'musescircle' ); ?>
 		</p>
 	<![endif]-->
+	<?php  ?>
 	<?php 
-		// Get social media links
-		$social_facebook = get_theme_mod( 'musescircle_facebook' );
-		$social_gplus = get_theme_mod( 'musescircle_gplus' );
-		$social_youtube = get_theme_mod( 'musescircle_youtube' );
-		$social_twitter = get_theme_mod( 'musescircle_twitter' );
-		$social_goodreads = get_theme_mod( 'musescircle_goodreads' );
-		$social_librarything = get_theme_mod( 'musescircle_librarything' );
-
-		// Create social media links
-		$social_media_links = $social_facebook ? musescircle_social_link( $social_facebook, 'fa-facebook', 'true' ) : '';
-		$social_media_links .= $social_gplus ? musescircle_social_link( $social_gplus, 'fa-google-plus', 'true' ) : '';
-		$social_media_links .= $social_youtube ? musescircle_social_link( $social_youtube, 'fa-youtube', 'true' ) : '';
-		$social_media_links .= $social_twitter ? musescircle_social_link( $social_twitter, 'fa-twitter', 'true' ) : '';
-		$social_media_links .= $social_goodreads ? musescircle_social_link( $social_goodreads, 'goodreads', 'false' ) : '';
-		$social_media_links .= $social_librarything ? musescircle_social_link( $social_librarything, 'library-thing', 'false' ) : '';
-
 		// Get hide search setting
 		$hide_search = get_theme_mod( 'musescircle_header_hide_search' ); 
 
+		// Social menu settings
+		$social_menu = wp_nav_menu( array( 
+			'theme_location' => 'social-menu',
+			'echo'           => false,
+			'link_before'    => '<span class="social-icon"></span><span class="social-text">',
+			'link_after'     => '</span>',
+			'fallback_cb'    => false
+		) );
+
 		// Check if social media links or hide search is not checked
-		if ( strlen( $social_media_links ) > 0 || !$hide_search ) {
+		if ( has_nav_menu( 'social-menu' ) || !$hide_search ) {
 			// Create header top bar
 			$top_bar = '<section id="top-bar">';
 			$top_bar .= '<div class="wrapper">';
-			$top_bar .= ( strlen( $social_media_links ) > 0 ) ? '<div class="social-media">' . $social_media_links . '</div>' : '';;
+			$top_bar .= $social_menu;
 			$top_bar .= $hide_search ? '' : get_search_form( false );
 			$top_bar .= '</div>';
 			$top_bar .= '</section>';
@@ -58,7 +52,7 @@
 	?>
 	<nav id="header-nav" class="navigation">
 		<div class="wrapper">
-			<?php wp_nav_menu( array( 'theme_location'  => 'main-menu' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 		</div>
 	</nav>
 	<header id="header">
