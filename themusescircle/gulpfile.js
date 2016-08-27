@@ -12,7 +12,7 @@ var browserSync = require('browser-sync').create(),
    ---------------------------------------------- */
 
 var wpFolder = 'themes';
-var dirName = 'themusescircle';
+var dirName = 'musescircle';
 // var wpFolder = 'plugins';
 // var dirName = 'inspire-reviews';
 var proxyURL = 'http://localhost/sites/themusescircle';
@@ -41,7 +41,7 @@ if (wpFolder == 'themes') {
    ---------------------------------------------- */
 
 // JS files are different for folders, so let's add a conditonal
-if (dirName == 'themusescircle') {
+if (dirName == 'musescircle') {
 	var jsSources = [
 		devJS + '/main.js',
 		devJS + '/owl-carousel.js',

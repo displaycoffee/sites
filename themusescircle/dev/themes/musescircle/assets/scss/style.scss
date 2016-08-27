@@ -1,0 +1,31 @@
+/*!
+	Theme Name: musescircle
+	Theme URI: http://neverend.org/adria
+	Author: Adria Murphy
+	Author URI: http://neverend.org/adria
+	Description: A theme for musescircle.com. Copyright 2016 musescircle.com.
+	Version: 2.0
+	License: GNU General Public License
+	License URI: https://www.gnu.org/licenses/gpl.html
+	Tags: musescircle.com, movie reviews, tv reviews, book reviews
+	Text Domain: musescircle
+*/
+
+// Helpers
+@import 'variables';
+@import 'mixins';
+
+// Vendor
+@import 'normalize';
+
+// WordPress specific classes
+@import 'wordpress';
+
+// Everything else
+@import 'base';
+@import 'typography';
+@import 'font-awesome';
+@import 'owl-carousel';
+@import 'form-fields';
+@import 'navigation';
+@import 'header';
