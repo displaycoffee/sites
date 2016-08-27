@@ -1,6 +1,6 @@
 <?php
 	/**
-	* Shortcode to display book author information
+	* Shortcodes to display special formatting
 	*/
 
 	// Exit if accessed directly

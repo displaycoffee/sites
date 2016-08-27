@@ -119,7 +119,7 @@
 				$review .= $review_title;
 				$review .= $review_date;
 				$review .= $a['line'] == 'true' ? '<hr />' : '';
-				$review .= $a['excerpt'] == 'true' ? '<div class="review-excerpt">' . insprvw_excerpt() . '</div>' : '';
+				$review .= $a['excerpt'] == 'true' ? '<div class="review-excerpt">' . insprvw_short_excerpt() . '</div>' : '';
 				$review .= '</div>';
 			}
 			

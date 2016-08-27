@@ -102,6 +102,11 @@
 		}
 	}
 
+	// Check if there is a custom excerpt and if so, make sure it's not too long
+	function insprvw_short_excerpt() {
+		return '<p>' . wp_trim_words( get_the_excerpt(), 20 ) . '</p>' . insprvw_read_more();
+	}
+
 	// Create list items (without schema)
 	function insprvw_item_details( $class, $label, $value ) {
 		// Create list item with details about review item

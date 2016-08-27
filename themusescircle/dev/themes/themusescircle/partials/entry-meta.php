@@ -26,12 +26,12 @@
 	<?php 
 		// Add author schema when not on attachment page
 		$author_schema = !is_attachment() ? ' itemprop="author"' : '';
-		echo '<p class="author"' . $author_schema . '>' .  get_the_author_posts_link() . '</p>';
+		echo '<p class="author"' . $author_schema . '><strong>' .  __( 'By', 'themusescircle' ) . ':</strong> ' .  get_the_author_posts_link() . '</p>';
 	?>
 	<?php 
 		// Add date published schema when not on attachment page
 		$date_schema = !is_attachment() ? ' itemprop="datePublished"' : '';
-		echo '<p class="date"' . $date_schema . '>' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
+		echo '<p class="date"' . $date_schema . '><strong>' .  __( 'Date', 'themusescircle' ) . ':</strong> ' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
 
 		// Dont display modified date schema on attachment pages
 		if ( !is_attachment() ) {

@@ -24,6 +24,7 @@
 
 			// Create author block
 			$author_schema = '<p class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">';
+			$author_schema .= '<strong>' .  __( 'By', 'inspire-reviews' ) . ':</strong> ';
 			$author_schema .= '<span itemprop="name">' .  get_the_author_posts_link() . '</span>';
 			$author_schema .= '<meta itemprop="sameAs" content="' . esc_url( $author_website ) . '">';
 			$author_schema .= '</p>';
@@ -32,16 +33,19 @@
 			echo $author_schema;
 		}
 	?>
+	<span class="bullet">&bull;</span>
 	<?php 
 		// Display the date
-		echo '<p class="date" itemprop="datePublished">' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
+		echo '<p class="date" itemprop="datePublished"><strong>' .  __( 'Date', 'inspire-reviews' ) . ':</strong> ' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
 	?>
+	<span class="bullet">&bull;</span>
 	<?php 
 		// Get the review rating
 		$review_rating = get_post_meta( $post->ID, '_insprvw-' . insprvw_review_type( true ) . '-rating', true );
 
 		// Create rating block
 		$rating_html = '<p class="rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">';
+		$rating_html .= '<strong>' .  __( 'Rating', 'inspire-reviews' ) . ':</strong> ';
 		$rating_html .= ( $review_rating || $review_rating == '0' ) ? '<span class="rating-value" itemprop="ratingValue">' . esc_html( $review_rating ) . '</span>' : '<span class="rating-value" itemprop="worstRating">0</span>';
 		$rating_html .= ' of <span class="rating-value" itemprop="bestRating">5</span></p>';
 

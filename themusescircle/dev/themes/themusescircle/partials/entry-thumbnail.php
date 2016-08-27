@@ -30,6 +30,9 @@
 			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-square-thumbnail.png' ) . '">';
 			$thumbnail_html .= '<meta itemprop="width" content="400">';
 			$thumbnail_html .= '<meta itemprop="height" content="400">';
+			$thumbnail_html .= '<div class="image-wrap default-image">';
+			$thumbnail_html .= '<img src="' . esc_url( get_template_directory_uri() . '/assets/images/default-square-thumbnail.png' ) . '" width="400" height="400" alt="Image Coming Soon" />';	
+			$thumbnail_html .= '</div>';	
 		}
 
 		// Create thumbnail block - END

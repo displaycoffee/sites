@@ -6,9 +6,21 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 ?>
-<?php if ( have_posts() ) : ?>
+<?php 
+	// Get "From the Blog" post number for front page
+	$from_blog_number = get_theme_mod( 'themusescircle_from_blog_number' );
+	$number_home_posts = $from_blog_number ? esc_html( $from_blog_number ) : 6;
+
+	// Set up args for custom loop query
+	$args = array(
+		'post_type' 	 => 'post',
+		'posts_per_page' => ( is_front_page() ? $number_home_posts : '')
+	);
+	$post_query = new WP_Query( $args ); 
+?>
+<?php if ( $post_query->have_posts() ) : ?>
 	<div class="entry-multiple" itemtype="http://schema.org/Blog">
-		<?php while ( have_posts() ) : the_post(); ?>	
+		<?php while ( $post_query->have_posts() ) : $post_query->the_post(); ?>	
 			<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry post" itemscope itemtype="http://schema.org/BlogPosting">
 				<meta itemprop="mainEntityOfPage" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 				<?php 
