@@ -49,6 +49,33 @@
 			'before_title'	=> '<h3 class="widget-title">',
 			'after_title'	=> '</h3>',
 		) );
+		register_sidebar( array(
+			'name'			=> __( 'Footer Column 01', 'musescircle' ),
+			'id'			=> 'footer-column01',
+			'description'	=> __( 'A widget for the footer columns.', 'musescircle' ),
+			'before_widget' => '<div id="footer-column01" class="column widget-container ' . esc_attr( '%2$s' ) . '">',
+			'after_widget'	=> '</div>',
+			'before_title'	=> '<h4>',
+			'after_title'	=> '</h4>',
+		) );	
+		register_sidebar( array(
+			'name'			=> __( 'Footer Column 02', 'musescircle' ),
+			'id'			=> 'footer-column02',
+			'description'	=> __( 'A widget for the footer columns.', 'musescircle' ),
+			'before_widget' => '<div id="footer-column02" class="column widget-container ' . esc_attr( '%2$s' ) . '">',
+			'after_widget'	=> '</div>',
+			'before_title'	=> '<h4>',
+			'after_title'	=> '</h4>',
+		) );
+		register_sidebar( array(
+			'name'			=> __( 'Footer Column 03', 'musescircle' ),
+			'id'			=> 'footer-column03',
+			'description'	=> __( 'A widget for the footer columns.', 'musescircle' ),
+			'before_widget' => '<div id="footer-column03" class="column widget-container ' . esc_attr( '%2$s' ) . '">',
+			'after_widget'	=> '</div>',
+			'before_title'	=> '<h4>',
+			'after_title'	=> '</h4>',
+		) );					
 	}
 	add_action( 'widgets_init', 'musescircle_widgets_init' );
 
