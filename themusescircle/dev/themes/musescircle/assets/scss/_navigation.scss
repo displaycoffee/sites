@@ -54,14 +54,10 @@
 						}
 						.toggle-submenu {
 							padding: 0 20px 0 5px;
+							@include sizing(40px, auto);
+							fill: currentColor;
 							cursor: pointer;
 							@include transition(color 0.3s ease-in-out);
-							&:before {
-								content: '\f078';
-							}
-							&.show:before {
-								content: '\f077';
-							}
 						}
 					}
 					.sub-menu {

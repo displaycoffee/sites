@@ -21,27 +21,17 @@
 		<p class="browserupgrade">
 			<?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.', 'musescircle' ); ?>
 		</p>
-	<![endif]-->
-	<?php  ?>
+	<![endif]-->	
 	<?php 
 		// Get hide search setting
 		$hide_search = get_theme_mod( 'musescircle_header_hide_search' ); 
-
-		// Social menu settings
-		$social_menu = wp_nav_menu( array( 
-			'theme_location' => 'social-menu',
-			'echo'           => false,
-			'link_before'    => '<span class="social-icon"></span><span class="social-text">',
-			'link_after'     => '</span>',
-			'fallback_cb'    => false
-		) );
 
 		// Check if social media links or hide search is not checked
 		if ( has_nav_menu( 'social-menu' ) || !$hide_search ) {
 			// Create header top bar
 			$top_bar = '<section id="top-bar">';
 			$top_bar .= '<div class="wrapper">';
-			$top_bar .= $social_menu;
+			$top_bar .= musescircle_social_menu( 'social-menu' );
 			$top_bar .= $hide_search ? '' : get_search_form( false );
 			$top_bar .= '</div>';
 			$top_bar .= '</section>';

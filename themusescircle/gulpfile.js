@@ -42,9 +42,10 @@ if (wpFolder == 'themes') {
 
 // JS files are different for folders, so let's add a conditonal
 if (dirName == 'musescircle') {
-	var jsSources = [
-		devJS + '/main.js',
+	var jsSources = [		
 		devJS + '/owl-carousel.js',
+		devJS + '/svgxuse.js',
+		devJS + '/main.js',
 		devJS + '/run-functions.js'
 	];
 } else if (wpFolder == 'plugins') {

@@ -1,34 +1,3 @@
-// Toggle navigation sub menus
-function toggleNavSubMenus( selector ) {
-	jQuery( selector ).each( function() {
-		// Check if selector has a sub menu
-		if ( jQuery( this ).hasClass( 'menu-item-has-children' ) ) {
-			// Get current selector
-			var current = this;
-
-			// Add a toggle icon after main link element
-			jQuery( '<i class="fa toggle-submenu" aria-hidden="true"></i>' ).insertAfter( jQuery( current ).find( '> a' ) ); 
-
-			// Create sub menu variables for targetting			
-			var subMenuButton = jQuery( current ).find( '.toggle-submenu' );
-			var subMenu = jQuery( current ).find( '.sub-menu' );
-
-			// Toggle show/hide class if search button is clicked on
-		    jQuery( subMenuButton ).click( function() {
-		        jQuery( subMenu ).toggleClass( 'show' );
-		        jQuery( subMenuButton ).toggleClass( 'show' );
-		    });
-
-		    // If anything outside search-button is clicked on, hide the search bar
-			jQuery( document ).on( 'click', function( event ) {
-				if ( !jQuery( event.target ).closest( current ).length ) {
-					jQuery( subMenu ).removeClass( 'show' );
-					jQuery( subMenuButton ).removeClass( 'show' );
-				}
-			}); 
-		}
-	});
-}
 "function"!==typeof Object.create&&(Object.create=function(f){function g(){}g.prototype=f;return new g});
 (function(f,g,k){var l={init:function(a,b){this.$elem=f(b);this.options=f.extend({},f.fn.owlCarousel.options,this.$elem.data(),a);this.userOptions=a;this.loadContent()},loadContent:function(){function a(a){var d,e="";if("function"===typeof b.options.jsonSuccess)b.options.jsonSuccess.apply(this,[a]);else{for(d in a.owl)a.owl.hasOwnProperty(d)&&(e+=a.owl[d].item);b.$elem.html(e)}b.logIn()}var b=this,e;"function"===typeof b.options.beforeInit&&b.options.beforeInit.apply(this,[b.$elem]);"string"===typeof b.options.jsonPath?
 (e=b.options.jsonPath,f.getJSON(e,a)):b.logIn()},logIn:function(){this.$elem.data("owl-originalStyles",this.$elem.attr("style"));this.$elem.data("owl-originalClasses",this.$elem.attr("class"));this.$elem.css({opacity:0});this.orignalItems=this.options.items;this.checkBrowser();this.wrapperWidth=0;this.checkVisible=null;this.setVars()},setVars:function(){if(0===this.$elem.children().length)return!1;this.baseClass();this.eventTypes();this.$userItems=this.$elem.children();this.itemsAmount=this.$userItems.length;
@@ -76,6 +45,240 @@ f(k).off(".owl owl");f(g).off("resize",this.resizer)},unWrap:function(){0!==this
 a);this.unWrap();this.init(a,this.$elem)},addItem:function(a,b){var e;if(!a)return!1;if(0===this.$elem.children().length)return this.$elem.append(a),this.setVars(),!1;this.unWrap();e=void 0===b||-1===b?-1:b;e>=this.$userItems.length||-1===e?this.$userItems.eq(-1).after(a):this.$userItems.eq(e).before(a);this.setVars()},removeItem:function(a){if(0===this.$elem.children().length)return!1;a=void 0===a||-1===a?-1:a;this.unWrap();this.$userItems.eq(a).remove();this.setVars()}};f.fn.owlCarousel=function(a){return this.each(function(){if(!0===
 f(this).data("owl-init"))return!1;f(this).data("owl-init",!0);var b=Object.create(l);b.init(a,this);f.data(this,"owlCarousel",b)})};f.fn.owlCarousel.options={items:5,itemsCustom:!1,itemsDesktop:[1199,4],itemsDesktopSmall:[979,3],itemsTablet:[768,2],itemsTabletSmall:!1,itemsMobile:[479,1],singleItem:!1,itemsScaleUp:!1,slideSpeed:200,paginationSpeed:800,rewindSpeed:1E3,autoPlay:!1,stopOnHover:!1,navigation:!1,navigationText:["prev","next"],rewindNav:!0,scrollPerPage:!1,pagination:!0,paginationNumbers:!1,
 responsive:!0,responsiveRefreshRate:200,responsiveBaseWidth:g,baseClass:"owl-carousel",theme:"owl-theme",lazyLoad:!1,lazyFollow:!0,lazyEffect:"fade",autoHeight:!1,jsonPath:!1,jsonSuccess:!1,dragBeforeAnimFinish:!0,mouseDrag:!0,touchDrag:!0,addClassActive:!1,transitionStyle:!1,beforeUpdate:!1,afterUpdate:!1,beforeInit:!1,afterInit:!1,beforeMove:!1,afterMove:!1,afterAction:!1,startDragging:!1,afterLazyLoad:!1}})(jQuery,window,document);
+/*!
+ * @copyright Copyright (c) 2016 IcoMoon.io
+ * @license   Licensed under MIT license
+ *            See https://github.com/Keyamoon/svgxuse
+ * @version   1.1.20
+ */
+/*jslint browser: true */
+/*global XDomainRequest, MutationObserver, window */
+(function () {
+    'use strict';
+    if (window && window.addEventListener) {
+        var cache = Object.create(null); // holds xhr objects to prevent multiple requests
+        var checkUseElems;
+        var tid; // timeout id
+        var debouncedCheck = function () {
+            clearTimeout(tid);
+            tid = setTimeout(checkUseElems, 100);
+        };
+        var unobserveChanges = function () {
+            return;
+        };
+        var observeChanges = function () {
+            var observer;
+            window.addEventListener('resize', debouncedCheck, false);
+            window.addEventListener('orientationchange', debouncedCheck, false);
+            if (window.MutationObserver) {
+                observer = new MutationObserver(debouncedCheck);
+                observer.observe(document.documentElement, {
+                    childList: true,
+                    subtree: true,
+                    attributes: true
+                });
+                unobserveChanges = function () {
+                    try {
+                        observer.disconnect();
+                        window.removeEventListener('resize', debouncedCheck, false);
+                        window.removeEventListener('orientationchange', debouncedCheck, false);
+                    } catch (ignore) {}
+                };
+            } else {
+                document.documentElement.addEventListener('DOMSubtreeModified', debouncedCheck, false);
+                unobserveChanges = function () {
+                    document.documentElement.removeEventListener('DOMSubtreeModified', debouncedCheck, false);
+                    window.removeEventListener('resize', debouncedCheck, false);
+                    window.removeEventListener('orientationchange', debouncedCheck, false);
+                };
+            }
+        };
+        var createRequest = function (url) {
+            // In IE 9, cross domain requests can only be sent using XDomainRequest.
+            // XDomainRequest would fail if CORS headers are not set.
+            // Therefore, XDomainRequest should only be used with cross domain requests.
+            function getHostname(href) {
+                var a = document.createElement('a');
+                a.href = href;
+                return a.hostname;
+            }
+            var Request;
+            var hname = location.hostname;
+            var hname2;
+            if (window.XMLHttpRequest) {
+                Request = new XMLHttpRequest();
+                hname2 = getHostname(url);
+                if (Request.withCredentials === undefined && hname2 !== '' && hname2 !== hname) {
+                    Request = XDomainRequest || undefined;
+                } else {
+                    Request = XMLHttpRequest;
+                }
+            }
+            return Request;
+        };
+        var xlinkNS = 'http://www.w3.org/1999/xlink';
+        checkUseElems = function () {
+            var base;
+            var bcr;
+            var fallback = ''; // optional fallback URL in case no base path to SVG file was given and no symbol definition was found.
+            var hash;
+            var i;
+            var inProgressCount = 0;
+            var isHidden;
+            var Request;
+            var url;
+            var uses;
+            var xhr;
+            function observeIfDone() {
+                // If done with making changes, start watching for chagnes in DOM again
+                inProgressCount -= 1;
+                if (inProgressCount === 0) { // if all xhrs were resolved
+                    unobserveChanges(); // make sure to remove old handlers
+                    observeChanges(); // watch for changes to DOM
+                }
+            }
+            function attrUpdateFunc(spec) {
+                return function () {
+                    if (cache[spec.base] !== true) {
+                        spec.useEl.setAttributeNS(xlinkNS, 'xlink:href', '#' + spec.hash);
+                    }
+                };
+            }
+            function onloadFunc(xhr) {
+                return function () {
+                    var body = document.body;
+                    var x = document.createElement('x');
+                    var svg;
+                    xhr.onload = null;
+                    x.innerHTML = xhr.responseText;
+                    svg = x.getElementsByTagName('svg')[0];
+                    if (svg) {
+                        svg.setAttribute('aria-hidden', 'true');
+                        svg.style.position = 'absolute';
+                        svg.style.width = 0;
+                        svg.style.height = 0;
+                        svg.style.overflow = 'hidden';
+                        body.insertBefore(svg, body.firstChild);
+                    }
+                    observeIfDone();
+                };
+            }
+            function onErrorTimeout(xhr) {
+                return function () {
+                    xhr.onerror = null;
+                    xhr.ontimeout = null;
+                    observeIfDone();
+                };
+            }
+            unobserveChanges(); // stop watching for changes to DOM
+            // find all use elements
+            uses = document.getElementsByTagName('use');
+            for (i = 0; i < uses.length; i += 1) {
+                try {
+                    bcr = uses[i].getBoundingClientRect();
+                } catch (ignore) {
+                    // failed to get bounding rectangle of the use element
+                    bcr = false;
+                }
+                url = uses[i].getAttributeNS(xlinkNS, 'href').split('#');
+                base = url[0];
+                hash = url[1];
+                isHidden = bcr && bcr.left === 0 && bcr.right === 0 && bcr.top === 0 && bcr.bottom === 0;
+                if (bcr && bcr.width === 0 && bcr.height === 0 && !isHidden) {
+                    // the use element is empty
+                    // if there is a reference to an external SVG, try to fetch it
+                    // use the optional fallback URL if there is no reference to an external SVG
+                    if (fallback && !base.length && hash && !document.getElementById(hash)) {
+                        base = fallback;
+                    }
+                    if (base.length) {
+                        // schedule updating xlink:href
+                        xhr = cache[base];
+                        if (xhr !== true) {
+                            // true signifies that prepending the SVG was not required
+                            setTimeout(attrUpdateFunc({
+                                useEl: uses[i],
+                                base: base,
+                                hash: hash
+                            }), 0);
+                        }
+                        if (xhr === undefined) {
+                            Request = createRequest(base);
+                            if (Request !== undefined) {
+                                xhr = new Request();
+                                cache[base] = xhr;
+                                xhr.onload = onloadFunc(xhr);
+                                xhr.onerror = onErrorTimeout(xhr);
+                                xhr.ontimeout = onErrorTimeout(xhr);
+                                xhr.open('GET', base);
+                                xhr.send();
+                                inProgressCount += 1;
+                            }
+                        }
+                    }
+                } else {
+                    if (!isHidden) {
+                        if (cache[base] === undefined) {
+                            // remember this URL if the use element was not empty and no request was sent
+                            cache[base] = true;
+                        } else if (cache[base].onload) {
+                            // if it turns out that prepending the SVG is not necessary,
+                            // abort the in-progress xhr.
+                            cache[base].abort();
+                            delete cache[base].onload;
+                            cache[base] = true;
+                        }
+                    } else if (base.length && cache[base]) {
+                        attrUpdateFunc({
+                            useEl: uses[i],
+                            base: base,
+                            hash: hash
+                        })();
+                    }
+                }
+            }
+            uses = '';
+            inProgressCount += 1;
+            observeIfDone();
+        };
+        // The load event fires when all resources have finished loading, which allows detecting whether SVG use elements are empty.
+        window.addEventListener('load', function winLoad() {
+            window.removeEventListener('load', winLoad, false); // to prevent memory leaks
+            tid = setTimeout(checkUseElems, 0);
+        }, false);
+    }
+}());
+// Toggle navigation sub menus
+function toggleNavSubMenus( selector ) {
+	jQuery( selector ).each( function() {
+		// Check if selector has a sub menu
+		if ( jQuery( this ).hasClass( 'menu-item-has-children' ) ) {
+			// Get current selector
+			var current = this;
+
+			// Add a toggle icon after main link element
+			jQuery( '<svg class="icon icon-chevron-down toggle-submenu" width="32" height="32" viewBox="0 0 32 32"><use xlink:href="wp-content/themes/musescircle/assets/images/icons.svg#icon-chevron-down"></use></svg>' ).insertAfter( jQuery( current ).find( '> a' ) ); 
+
+			// Create sub menu variables for targetting			
+			var subMenuButton = jQuery( current ).find( '.toggle-submenu' );
+			var subMenu = jQuery( current ).find( '.sub-menu' );
+
+			// Toggle show/hide class if search button is clicked on
+		    jQuery( subMenuButton ).click( function() {
+		        jQuery( subMenu ).toggleClass( 'show' );
+		        jQuery( subMenuButton ).toggleClass( 'show' );
+		    });
+
+		    // If anything outside search-button is clicked on, hide the search bar
+			jQuery( document ).on( 'click', function( event ) {
+				if ( !jQuery( event.target ).closest( current ).length ) {
+					jQuery( subMenu ).removeClass( 'show' );
+					jQuery( subMenuButton ).removeClass( 'show' );
+				}
+			}); 
+		}
+	});
+}
 jQuery( document ).ready( function( $ ) {
     toggleNavSubMenus( '#menu-main > li' );
 

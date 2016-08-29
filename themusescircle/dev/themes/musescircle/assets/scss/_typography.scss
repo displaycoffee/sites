@@ -64,15 +64,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Font Awesome';
-    src: url($fonts + 'fontawesome.woff2?v=4.6.3') format('woff2'),
-         url($fonts + 'fontawesome.woff?v=4.6.3') format('woff'),
-         url($fonts + 'fontawesome.ttf?v=4.6.3') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 /* General text elements
 ========================================================================== */
 

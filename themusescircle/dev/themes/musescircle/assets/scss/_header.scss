@@ -18,11 +18,30 @@
 ========================================================================== */
 
 #top-bar .wrapper .menu-social-container ul {
-	margin: 0 -4px;
+	margin: 0 -3px;
 	li {
-		display: inline-block;
-		vertical-align: middle;
-		padding: 0 4px;
+		@include inline-block(middle);
+		padding: 0 3px;
+		a { 	
+			color: $color-01;
+			&:hover {
+				color: $color-07;
+			}
+			&, .social-icon, .social-text {
+				display: block;
+			}
+			.social-icon {
+				@include sizing(auto, 25px);
+				svg {
+					fill: currentColor;
+					height: 100%;
+				}
+			}
+			.social-text {
+				text-indent: -9999px;
+				@include sizing(0,0);
+			}														
+		}		
 	}
 }
 
