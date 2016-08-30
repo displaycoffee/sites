@@ -16,13 +16,11 @@ wp-content/*
 
 # Plugins
 wp-content/plugins/*
-!wp-content/plugins/owl-post/
-wp-content/plugins/owl-post/assets/images
 !wp-content/plugins/inspire-reviews/
 wp-content/plugins/inspire-reviews/assets/images
 
 # Themes
 wp-content/themes/*
-!wp-content/themes/themusescircle/
-wp-content/themes/themusescircle/assets/images
-wp-content/themes/themusescircle/assets/fonts
+!wp-content/themes/musescircle/
+wp-content/themes/emusescircle/assets/images
+wp-content/themes/musescircle/assets/fonts
