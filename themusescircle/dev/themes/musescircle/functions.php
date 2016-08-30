@@ -35,6 +35,9 @@
 	function musescircle_load_scripts() {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'functions', get_template_directory_uri () . '/assets/js/functions.js', 'jquery', '', true );
+
+		// Get blog url to use in JavaScript
+		wp_localize_script( 'functions', 'wpurl', array( 'siteurl' => get_option( 'siteurl' ) ) );
 	}
 	add_action( 'wp_enqueue_scripts', 'musescircle_load_scripts' );
 
@@ -59,41 +62,41 @@
 	    		// Create svg properties	    		
 				if ( strpos( esc_url( $menu_item->url ), 'facebook.com' ) !== false ) {
 					$svg_name = 'facebook';
-					$svg_attributes = 'width="19" height="32" viewBox="0 0 19 32"';
+					$svg_attributes = 'viewBox="0 0 19 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'plus.google.com' ) !== false ) {
 					$svg_name = 'google-plus';
-					$svg_attributes = 'width="41" height="32" viewBox="0 0 41 32"';
+					$svg_attributes = 'viewBox="0 0 41 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'linkedin.com' ) !== false ) {
 					$svg_name = 'linkedin';
-					$svg_attributes = 'width="27" height="32" viewBox="0 0 27 32"';
+					$svg_attributes = 'viewBox="0 0 27 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'twitter.com' ) !== false ) {
 					$svg_name = 'twitter';
-					$svg_attributes = 'width="30" height="32" viewBox="0 0 30 32"';
+					$svg_attributes = 'viewBox="0 0 30 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'instagram.com' ) !== false ) {
 					$svg_name = 'instagram';
-					$svg_attributes = 'width="27" height="32" viewBox="0 0 27 32"';
+					$svg_attributes = 'viewBox="0 0 27 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'youtube.com' ) !== false ) {
 					$svg_name = 'youtube';
-					$svg_attributes = 'width="27" height="32" viewBox="0 0 27 32"';
+					$svg_attributes = 'viewBox="0 0 27 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'pinterest.com' ) !== false ) {
 					$svg_name = 'pinterest';
-					$svg_attributes = 'width="32" height="32" viewBox="0 0 32 32"';
+					$svg_attributes = 'viewBox="0 0 32 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'tumblr.com' ) !== false ) {
 					$svg_name = 'tumblr';
-					$svg_attributes = 'width="19" height="32" viewBox="0 0 19 32"';
+					$svg_attributes = 'viewBox="0 0 19 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'goodreads.com' ) !== false ) {
 					$svg_name = 'goodreads';
-					$svg_attributes = 'width="32" height="32" viewBox="0 0 32 32"';
+					$svg_attributes = 'viewBox="0 0 32 32"';
 				} elseif ( strpos( esc_url( $menu_item->url ), 'librarything.com' ) !== false ) {
 					$svg_name = 'library-thing';
-					$svg_attributes = 'width="32" height="32" viewBox="0 0 32 32"';
+					$svg_attributes = 'viewBox="0 0 32 32"';
 				} else {
 					$svg_name = 'heart';
-					$svg_attributes = 'width="32" height="32" viewBox="0 0 32 32"';
+					$svg_attributes = 'viewBox="0 0 32 32"';
 				}
 
 				// Create svg	
-				$menu_svg = '<svg class="icon icon-' . $svg_name . '" ' . $svg_attributes . '><use xlink:href="wp-content/themes/musescircle/assets/images/icons.svg#icon-' . $svg_name . '"></use></svg>';
+				$menu_svg = '<svg class="icon icon-' . $svg_name . '" ' . $svg_attributes . '><use xlink:href="' . get_option( 'siteurl' ) . '/wp-content/themes/musescircle/assets/images/icons.svg#icon-' . $svg_name . '"></use></svg>';
 
 				// Check if menu item has a parent and if not, create list item elements
 		    	if ( !$menu_item->menu_item_parent ) {

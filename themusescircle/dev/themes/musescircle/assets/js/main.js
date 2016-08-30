@@ -1,3 +1,5 @@
+var url = wpurl.siteurl;
+
 // Toggle navigation sub menus
 function toggleNavSubMenus( selector ) {
 	jQuery( selector ).each( function() {
@@ -7,7 +9,7 @@ function toggleNavSubMenus( selector ) {
 			var current = this;
 
 			// Add a toggle icon after main link element
-			jQuery( '<svg class="icon icon-chevron-down toggle-submenu" width="32" height="32" viewBox="0 0 32 32"><use xlink:href="wp-content/themes/musescircle/assets/images/icons.svg#icon-chevron-down"></use></svg>' ).insertAfter( jQuery( current ).find( '> a' ) ); 
+			jQuery( '<svg class="icon icon-chevron-down toggle-submenu" viewBox="0 0 32 32"><use xlink:href="' + url + '/wp-content/themes/musescircle/assets/images/icons.svg#icon-chevron-down"></use></svg>' ).insertAfter( jQuery( current ).find( '> a' ) ); 
 
 			// Create sub menu variables for targetting			
 			var subMenuButton = jQuery( current ).find( '.toggle-submenu' );

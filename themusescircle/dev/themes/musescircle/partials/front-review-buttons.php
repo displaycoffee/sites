@@ -27,28 +27,28 @@
 
 	// Check if book review button is not hidden
 	if ( !$review_buttons_hide_books ) {
-		$review_buttons_section .= '<a href="' . ( $review_buttons_book_url ? esc_url( $review_buttons_book_url ) : esc_url ( get_bloginfo( 'url' ) . '/insprvw-book-review' ) ) . '" class="book button-simple">';
+		$review_buttons_section .= '<a href="' . ( $review_buttons_book_url ? esc_url( $review_buttons_book_url ) : esc_url ( get_option( 'siteurl' ) . '/insprvw-book-review' ) ) . '" class="book button-simple">';
 		$review_buttons_section .= __( 'Books', 'musescircle' );
 		$review_buttons_section .= '</a>';	
 	}
 
 	// Check if movie review button is not hidden
 	if ( !$review_buttons_hide_movies ) {
-		$review_buttons_section .= '<a href="' . ( $review_buttons_movie_url ? esc_url( $review_buttons_movie_url ) : esc_url ( get_bloginfo( 'url' ) . '/insprvw-movie-review' ) ) . '" class="movie button-simple">';
+		$review_buttons_section .= '<a href="' . ( $review_buttons_movie_url ? esc_url( $review_buttons_movie_url ) : esc_url ( get_option( 'siteurl' ) . '/insprvw-movie-review' ) ) . '" class="movie button-simple">';
 		$review_buttons_section .= __( 'Movies', 'musescircle' );
 		$review_buttons_section .= '</a>';	
 	}
 
 	// Check if tv review button is not hidden
 	if ( !$review_buttons_hide_tv ) {
-		$review_buttons_section .= '<a href="' . ( $review_buttons_tv_url ? esc_url( $review_buttons_tv_url ) : esc_url ( get_bloginfo( 'url' ) . '/insprvw-tv-review' ) ) . '" class="tv button-simple">';
+		$review_buttons_section .= '<a href="' . ( $review_buttons_tv_url ? esc_url( $review_buttons_tv_url ) : esc_url ( get_option( 'siteurl' ) . '/insprvw-tv-review' ) ) . '" class="tv button-simple">';
 		$review_buttons_section .= __( 'TV', 'musescircle' );
 		$review_buttons_section .= '</a>';	
 	}
 
 	// Check if everything review button is not hidden
 	if ( !$review_buttons_hide_everything ) {
-		$review_buttons_section .= '<a href="' . ( $review_buttons_everything_url ? esc_url( $review_buttons_everything_url ) : esc_url ( get_bloginfo( 'url' ) . '/all-reviews' ) ) . '" class="everything button-simple">';
+		$review_buttons_section .= '<a href="' . ( $review_buttons_everything_url ? esc_url( $review_buttons_everything_url ) : esc_url ( get_option( 'siteurl' ) . '/all-reviews' ) ) . '" class="everything button-simple">';
 		$review_buttons_section .= __( 'Everything', 'musescircle' );
 		$review_buttons_section .= '</a>';	
 	}						

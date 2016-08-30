@@ -36,7 +36,7 @@
 
 	// Create "About" block - END
 	$about_section .= '</div><div class="read-more">';
-	$about_section .= '<a href="' . ( $about_more_url ? esc_url( $about_more_url ) : esc_url ( get_bloginfo( 'url' ) . '/about' ) ) . '">';
+	$about_section .= '<a href="' . ( $about_more_url ? esc_url( $about_more_url ) : esc_url ( get_option( 'siteurl' ) . '/about' ) ) . '">';
 	$about_section .= $about_more_text ? esc_html( $about_more_text ) : __( 'Read More', 'musescircle' );
 	$about_section .= '</a></div>';		
 	$about_section .= '</div></section>';

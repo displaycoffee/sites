@@ -31,7 +31,9 @@
 				display: block;
 			}
 			.social-icon {
-				@include sizing(auto, 25px);
+				@include sizing(auto, 20px);
+				min-width: 22px;
+				text-align: center;
 				svg {
 					fill: currentColor;
 					height: 100%;
