@@ -22,5 +22,5 @@ wp-content/plugins/inspire-reviews/assets/images
 # Themes
 wp-content/themes/*
 !wp-content/themes/musescircle/
-wp-content/themes/emusescircle/assets/images
+wp-content/themes/musescircle/assets/images
 wp-content/themes/musescircle/assets/fonts
