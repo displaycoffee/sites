@@ -68,6 +68,7 @@
 #header {
 	background: $color-03;
 	height: 320px;
+	margin: 0 0 30px 0;
 	.wrapper {
 		background: url($images + 'muses-header.png') left center no-repeat;
 		height: 440px;
@@ -82,11 +83,10 @@
 			.site-name {
 				font-size: 5.0em;
 				line-height: 0.75;
-				text-shadow: 1px 3px 0 rgba(0,0,0,0.85);
+				margin: 0;
 			}
 			.site-description {
 				font-size: 1.14em;
-				text-shadow: 1px 1px 0 rgba(0,0,0,0.85);
 			}
 		}
 	}

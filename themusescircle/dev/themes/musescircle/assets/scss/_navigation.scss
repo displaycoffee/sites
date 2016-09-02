@@ -18,8 +18,7 @@
 	.wrapper {
 		text-align: right;
 		.menu-main-container {	
-			display: inline-block;
-			vertical-align: middle;
+			@include inline-block(middle);
 			position: relative;
 			z-index: 2;
 			a {
@@ -35,13 +34,12 @@
 					border-left: 1px solid $color-05 - #222;
 					text-align: center;			
 					& > a, .toggle-submenu {
-						vertical-align: middle;
 						&:hover {
 							color: $color-07;
 						}						
 					}
 					& > a {
-						display: inline-block;
+						display: block;
 						height: 60px;
 						line-height: 60px;
 						overflow: hidden;
@@ -51,12 +49,14 @@
 					}
 					&.menu-item-has-children {
 						& > a {
-							padding: 0 5px 0 20px;
+							padding: 0 50px 0 20px;
 						}
 						.toggle-submenu {
-							margin: 0 20px 0 5px;
-							width: 15px;
-							@include sizing(15px, auto);
+							position: absolute;
+							right: 20px;
+							top: 20px;
+							z-index: 10;
+							@include sizing(18px, auto);
 							fill: currentColor;
 							cursor: pointer;
 							@include transition(color 0.3s ease-in-out);

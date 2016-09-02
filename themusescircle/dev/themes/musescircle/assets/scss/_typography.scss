@@ -91,6 +91,10 @@ a {
 /* Headers
 ========================================================================== */
 
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0 0 20px 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Qwigley', $serif-fb;  
     font-weight: normal;  
@@ -102,13 +106,13 @@ h1 {
 }
 
 h2 {
-    font-size: 3.0em;
+    font-size: 3.2em;
 }
 
 h3 {
-    font-size: 2.5em;
+    font-size: 2.7em;
 }
 
 h4, h5, h6 {
-    font-size: 2em;
+    font-size: 2.2em;
 }

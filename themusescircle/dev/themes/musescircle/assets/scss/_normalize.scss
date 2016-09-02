@@ -27,8 +27,7 @@ nav, section, summary {
 }
 
 audio, canvas, progress, video {
-	display: inline-block;
-	vertical-align: baseline;
+	@include inline-block(baseline);
 }
 
 audio:not([controls]) {

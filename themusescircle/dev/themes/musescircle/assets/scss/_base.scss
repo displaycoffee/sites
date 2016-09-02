@@ -30,20 +30,14 @@ a {
     @include transition(color 0.3s ease-in-out);
 }
 
+img {
+	max-width: 100%;
+	@include sizing(auto, auto);
+}
+
 .wrapper {
 	margin: 0 auto;
 	max-width: 1320px;
 	width: auto;
 	padding: 0 20px;
-}
-
-.cf {
-	&:before, &:after {
-		content: '';
-		display: table;
-		zoom: 1;
-	}
-	&:after {
-		clear: both;
-	}
 }
