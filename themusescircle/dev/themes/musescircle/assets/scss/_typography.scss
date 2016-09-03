@@ -73,8 +73,8 @@ html {
 
 body {
     font-family: 'Source Sans Pro', $sans-serif-fb;
-    @include font-size(16px);
-    line-height: 1.7;
+    @include font-size(15px);
+    line-height: 1.5;
     font-weight: 300;
     color: $color-01;
     -webkit-font-smoothing: antialiased;

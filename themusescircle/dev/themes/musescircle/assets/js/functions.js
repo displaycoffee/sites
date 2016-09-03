@@ -248,8 +248,6 @@ responsive:!0,responsiveRefreshRate:200,responsiveBaseWidth:g,baseClass:"owl-car
         }, false);
     }
 }());
-var url = wpurl.siteurl;
-
 // Toggle navigation sub menus
 function toggleNavSubMenus( selector ) {
 	jQuery( selector ).each( function() {
@@ -281,12 +279,18 @@ function toggleNavSubMenus( selector ) {
 		}
 	});
 }
+// Site URL from theme funtions.php file
+var url = wpurl.siteurl;
+
 jQuery( document ).ready( function( $ ) {
     toggleNavSubMenus( '#menu-main > li' );
 
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
     	pagination     : false,
     	navigation     : true,
-    	navigationText : ['', '']
+    	navigationText : [
+    		'<svg class="icon icon-chevron-left" viewBox="0 0 24 32"><use xlink:href="' + url + '/wp-content/themes/musescircle/assets/images/icons.svg#icon-chevron-left"></use></svg>',
+    		'<svg class="icon icon-chevron-right" viewBox="0 0 22 32"><use xlink:href="' + url + '/wp-content/themes/musescircle/assets/images/icons.svg#icon-chevron-right"></use></svg>'
+    	]
     });
 });

@@ -1,5 +1,3 @@
-var url = wpurl.siteurl;
-
 // Toggle navigation sub menus
 function toggleNavSubMenus( selector ) {
 	jQuery( selector ).each( function() {

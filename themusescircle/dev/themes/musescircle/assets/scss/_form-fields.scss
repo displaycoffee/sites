@@ -30,10 +30,15 @@ input[type='button'], input[type='reset'], input[type='submit'], button, .button
 	background: $color-05;
 	border-bottom: 3px solid $color-06;
 	color: #fff;
-	padding: 0 20px;
+	padding: 0 30px;
 	text-transform: uppercase;
 	@include transition(background 0.3s ease-in-out);
+	@include font-size(14px);
 	&:hover {
 		background: $color-06;
 	}
+}
+
+a.button {
+	@include inline-block(middle);
 }

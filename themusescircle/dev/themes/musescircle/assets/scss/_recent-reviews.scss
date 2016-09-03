@@ -1,0 +1,79 @@
+/* Recent Reviews
+========================================================================== */
+
+.insprvw-recent-reviews .insprvw-review {
+	text-align: center;
+	position: relative;
+	padding: 0 20px;
+	.review-thumbnail .image-wrap, .review-date {
+		border-radius: 100%;
+	}
+	.review-thumbnail {
+		margin: 0 0 10px 0;
+		.image-wrap {
+			border: 10px solid $color-06;
+			@include sizing(200px, 200px);
+			overflow: hidden;	
+			margin: 0 auto;
+		}
+	}
+	.review-date {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		text-transform: uppercase;
+		border: 5px solid $color-06;
+		padding: 10px;
+		@include sizing(75px, 75px);
+		background: $color-05;
+		box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);
+		@include font-size(13px);
+		line-height: 1.4;
+		.month, .day {
+			@include inline-block(middle);
+		}
+		.month {
+			margin: 5px 2.5px 0 0;
+		}
+		.day {
+			margin: 5px 0 0 2.5px;
+		}
+		.year {
+			display: block;
+		}
+	}
+	.review-title h4 {
+		margin: 0;
+		min-height: 44px;
+		a {
+			color: $color-01;
+			&:hover {
+				color: $color-07;
+			}
+			.main-title, .sub-title {
+				display: block;
+				font-family: 'Source Sans Pro';
+				font-weight: 300;
+			}
+			.main-title {
+				@include font-size(18px);
+				margin: 0 0 8px 0;
+			}
+			.sub-title {
+				@include font-size(15px);
+			}
+		}
+	}
+	hr {
+		@include sizing(100%, 0);
+		margin: 10px 0;
+		border: 0;
+		border-bottom: 1px dashed $color-06;
+	}
+	.review-excerpt {
+		p {
+			@include font-size(14px);
+		}
+	}
+}

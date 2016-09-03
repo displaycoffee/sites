@@ -30,75 +30,36 @@
 	}
 }
 
-/* Front page - Recent Reviews
+/* Front page - Recent Reviews (More styles in _recent-revies.scss)
 ========================================================================== */
 
-#front-page-sections #recent-reviews {
-	.insprvw-recent-reviews .insprvw-review {
-		text-align: center;
-		position: relative;
-		padding: 0 20px;
-		.review-thumbnail .image-wrap, .review-date {
-			border-radius: 100%;
-		}
-		.review-thumbnail {
-			margin: 0 0 10px 0;
-			.image-wrap {
-				border: 10px solid $color-06;
-				@include sizing(220px, 220px);
-				overflow: hidden;	
-				margin: 0 auto;
-			}
-		}
-		.review-date {
+#front-page-sections #recent-reviews .owl-carousel {
+	padding: 0 40px;	
+	.owl-controls {
+		.owl-prev, .owl-next {
 			position: absolute;
 			top: 0;
-			left: 0;
-			z-index: 2;
-			text-transform: uppercase;
-			border: 5px solid $color-06;
+			bottom: 0;
+			margin: auto;
+			@include sizing(40px, 40px);
+			border-radius: 100%;
+			background: $color-06;
 			padding: 10px;
-			@include sizing(75px, 75px);
-			background: $color-05;
-			box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);
-			@include font-size(13px);
-			line-height: 1.4;
-			.month, .day {
-				@include inline-block(middle);
+			text-align: center;
+			svg {
+				@include sizing(auto, 100%);
+				fill: $color-01;
+				@include transition(fill 0.3s ease-in-out);				
 			}
-			.month {
-				margin: 5px 2.5px 0 0;
-			}
-			.day {
-				margin: 5px 0 0 2.5px;
-			}
-			.year {
-				display: block;
-			}
+			&:hover svg {
+				fill: $color-05;
+			}			
 		}
-		.review-title h4 {
-			margin: 0;
-			a {
-				color: $color-01;
-				.main-title, .sub-title {
-					display: block;
-					font-family: 'Source Sans Pro';
-					font-weight: 300;
-				}
-				.main-title {
-					@include font-size(17px);
-					margin: 0 0 10px 0;
-				}
-				.sub-title {
-					@include font-size(15px);
-				}
-			}
+		.owl-prev {
+			left: 0;
 		}
-		hr {
-			@include sizing(100%, 0);
-			margin: 10px 0;
-			border: 0;
-			border-bottom: 1px dashed $color-06;
+		.owl-next {
+			right: 0;
 		}
 	}
 }
