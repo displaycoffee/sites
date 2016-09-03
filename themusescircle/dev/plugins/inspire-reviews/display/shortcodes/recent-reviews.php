@@ -89,23 +89,28 @@
 				$review_thumbnail .= '</div></div>';
 
 				// Create title block - START
-				$review_title = '<div class="entry-title">';
+				$review_title = '<div class="review-title">';
 				$review_title .= '<h4><a href="' . esc_url( get_the_permalink() ) . '">';
 
 				// Create sub-title based on post type
 				if ( get_post_type() == 'insprvw-book-review' ) {
 					// Get book title meta 
 					$book_title = get_post_meta( $postID, '_insprvw-book-title', true );
-					
-					// Break up the title based on a match from book title meta
-					$new_title = str_replace( esc_html( $book_title ), '', get_the_title() );
 
-					// If there is book title meta, display it
-					$review_title .= '<span class="main-title">' . ( $book_title ? esc_html( $book_title ) : get_the_title() ) . '</span>';
+					// First we need to check for "curly" apostophes
+					$fixed_book_title = str_replace( '’', '\'', $book_title );
+					$fixed_review_title = str_replace( '&#8217;', '\'', get_the_title() );
+
+					// Break up the title based on a match from book title meta and create sub-title
+					$sub_title = str_replace( $fixed_book_title, '', $fixed_review_title );
+
+					// If there is book title meta, use that, otherwise fallback to post/review title
+					$review_title .= '<span class="main-title">' . ( $book_title ? esc_html( $fixed_book_title ) : esc_html( $fixed_review_title ) ) . '</span>';
 
 					// Then display the sub-title
-					$review_title .= '<span class="sub-title">' . $new_title . '</span>';	
+					$review_title .= '<span class="sub-title">' . esc_html( $sub_title ) . '</span>';	
 				} else {
+					// Just display the post/review title for movies and tv shows
 					$review_title .= '<span class="main-title">' . get_the_title() . '</span>';		
 				}
 
