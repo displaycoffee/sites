@@ -61,7 +61,7 @@
 			@include sizing(75px, 75px);
 			background: $color-05;
 			box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);
-			font-size: 0.875em;
+			@include font-size(13px);
 			line-height: 1.4;
 			.month, .day {
 				@include inline-block(middle);
@@ -76,7 +76,7 @@
 				display: block;
 			}
 		}
-		.entry-title h4 {
+		.review-title h4 {
 			margin: 0;
 			a {
 				color: $color-01;
@@ -86,11 +86,11 @@
 					font-weight: 300;
 				}
 				.main-title {
-					font-size: 0.55em;
+					@include font-size(17px);
 					margin: 0 0 10px 0;
 				}
 				.sub-title {
-					font-size: 0.43em;
+					@include font-size(15px);
 				}
 			}
 		}

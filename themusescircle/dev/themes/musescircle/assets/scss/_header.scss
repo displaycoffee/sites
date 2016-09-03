@@ -51,7 +51,7 @@
 ========================================================================== */
 
 #top-bar .wrapper .search-bar {
-	font-size: 0.94em;
+	@include font-size(15px);
 	text-align: right;
 	.search-form {
 		input[type='text'] {
@@ -81,12 +81,12 @@
 			justify-content: center;
 			align-items: flex-end;
 			.site-name {
-				font-size: 5.0em;
+				@include font-size(80px);
 				line-height: 0.75;
 				margin: 0;
 			}
 			.site-description {
-				font-size: 1.14em;
+				@include font-size(18px);
 			}
 		}
 	}

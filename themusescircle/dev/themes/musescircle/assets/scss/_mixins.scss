@@ -1,19 +1,12 @@
-// Clearfix
-@mixin clearfix($selector) {
-	#{$selector}:before, #{$selector}:after {
-		content: "";
-		display: table;
-		zoom: 1;
-	}
-	#{$selector}:after {
-		clear: both;
-	}
-}
-
 // Flex 
 @mixin flex($flow) {
 	display: flex;
 	flex-flow: $flow;
+}
+
+// Font size conversion
+@mixin font-size($size) {
+	font-size: #{$size / 16px}rem;
 }
 
 // Inline block
