@@ -34,7 +34,7 @@
 				@include sizing(auto, 20px);
 				min-width: 22px;
 				text-align: center;
-				svg {
+				.icon {
 					fill: currentColor;
 					height: 100%;
 				}

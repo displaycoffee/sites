@@ -28,6 +28,7 @@
 		$author_schema = !is_attachment() ? ' itemprop="author"' : '';
 		echo '<p class="author"' . $author_schema . '><strong>' .  __( 'By', 'musescircle' ) . ':</strong> ' .  get_the_author_posts_link() . '</p>';
 	?>
+	<span class="bullet">&bull;</span>
 	<?php 
 		// Add date published schema when not on attachment page
 		$date_schema = !is_attachment() ? ' itemprop="datePublished"' : '';

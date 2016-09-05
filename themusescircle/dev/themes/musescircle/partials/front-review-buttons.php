@@ -28,28 +28,32 @@
 	// Check if book review button is not hidden
 	if ( !$review_buttons_hide_books ) {
 		$review_buttons_section .= '<a href="' . ( $review_buttons_book_url ? esc_url( $review_buttons_book_url ) : esc_url ( get_option( 'siteurl' ) . '/insprvw-book-review' ) ) . '" class="book button-simple">';
-		$review_buttons_section .= __( 'Books', 'musescircle' );
+		$review_buttons_section .= '<svg class="icon icon-book" viewBox="0 0 30 32"><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/icons.svg#icon-book"></use></svg>';
+		$review_buttons_section .= '<span class="button-text">' . __( 'Books', 'musescircle' ) . '</span>';
 		$review_buttons_section .= '</a>';	
 	}
 
 	// Check if movie review button is not hidden
 	if ( !$review_buttons_hide_movies ) {
 		$review_buttons_section .= '<a href="' . ( $review_buttons_movie_url ? esc_url( $review_buttons_movie_url ) : esc_url ( get_option( 'siteurl' ) . '/insprvw-movie-review' ) ) . '" class="movie button-simple">';
-		$review_buttons_section .= __( 'Movies', 'musescircle' );
+		$review_buttons_section .= '<svg class="icon icon-film" viewBox="0 0 34 32"><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/icons.svg#icon-film"></use></svg>';
+		$review_buttons_section .= '<span class="button-text">' . __( 'Movies', 'musescircle' ) . '</span>';
 		$review_buttons_section .= '</a>';	
 	}
 
 	// Check if tv review button is not hidden
 	if ( !$review_buttons_hide_tv ) {
 		$review_buttons_section .= '<a href="' . ( $review_buttons_tv_url ? esc_url( $review_buttons_tv_url ) : esc_url ( get_option( 'siteurl' ) . '/insprvw-tv-review' ) ) . '" class="tv button-simple">';
-		$review_buttons_section .= __( 'TV', 'musescircle' );
+		$review_buttons_section .= '<svg class="icon icon-television" viewBox="0 0 34 32"><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/icons.svg#icon-television"></use></svg>';
+		$review_buttons_section .= '<span class="button-text">' . __( 'TV', 'musescircle' ) . '</span>';
 		$review_buttons_section .= '</a>';	
 	}
 
 	// Check if everything review button is not hidden
 	if ( !$review_buttons_hide_everything ) {
 		$review_buttons_section .= '<a href="' . ( $review_buttons_everything_url ? esc_url( $review_buttons_everything_url ) : esc_url ( get_option( 'siteurl' ) . '/all-reviews' ) ) . '" class="everything button-simple">';
-		$review_buttons_section .= __( 'Everything', 'musescircle' );
+		$review_buttons_section .= '<svg class="icon icon-heart" viewBox="0 0 32 32"><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/icons.svg#icon-heart"></use></svg>';
+		$review_buttons_section .= '<span class="button-text">' . __( 'Everything', 'musescircle' ) . '</span>';
 		$review_buttons_section .= '</a>';	
 	}						
 

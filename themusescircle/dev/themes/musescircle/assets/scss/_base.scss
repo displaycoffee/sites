@@ -9,10 +9,6 @@ h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, dl, dd {
 	@include reset;
 }
 
-a {
-	text-decoration: none;
-}
-
 /* Base styles
 ========================================================================== */
 
@@ -24,10 +20,6 @@ html, body {
 body { 
 	height: 100%;
 	background: $color-04; 	
-}
-
-a {
-    @include transition(color 0.3s ease-in-out);
 }
 
 img {

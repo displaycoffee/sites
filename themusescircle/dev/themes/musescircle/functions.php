@@ -96,7 +96,7 @@
 				}
 
 				// Create svg	
-				$menu_svg = '<svg class="icon icon-' . $svg_name . '" ' . $svg_attributes . '><use xlink:href="' . get_option( 'siteurl' ) . '/wp-content/themes/musescircle/assets/images/icons.svg#icon-' . $svg_name . '"></use></svg>';
+				$menu_svg = '<svg class="icon icon-' . $svg_name . '" ' . $svg_attributes . '><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/icons.svg#icon-' . $svg_name . '"></use></svg>';
 
 				// Check if menu item has a parent and if not, create list item elements
 		    	if ( !$menu_item->menu_item_parent ) {
