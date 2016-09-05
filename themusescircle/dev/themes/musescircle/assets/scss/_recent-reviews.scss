@@ -5,16 +5,17 @@
 	text-align: center;
 	position: relative;
 	padding: 0 20px;
-	.review-thumbnail .image-wrap, .review-date {
+	.review-thumbnail, .review-date {
 		border-radius: 100%;
 	}
 	.review-thumbnail {
-		margin: 0 0 10px 0;
-		.image-wrap {
-			border: 10px solid $color-06;
-			@include sizing(200px, 200px);
-			overflow: hidden;	
-			margin: 0 auto;
+		margin: 0 auto 10px auto;
+		border: 10px solid $color-06;
+		max-width: 220px;
+		overflow: hidden;
+		.image-wrap {	
+			@include sizing(100%, 0);
+			padding: 0 0 100% 0;
 		}
 	}
 	.review-date {
