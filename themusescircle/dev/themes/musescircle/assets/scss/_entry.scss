@@ -1,37 +1,74 @@
-/* Entry - Multiple
+/* Entry - Multiple (aka Archives) - Posts and Reviews
 ========================================================================== */
 
 .entry-multiple {
 	@include flex(row wrap);
+	margin: 0 -10px;
+	&, .entry {
+		@include flex(row wrap);
+	}
 	.entry {
 		flex: 1 1 50%;
-		.entry-header h3, .entry-meta {
-			margin: 0 0 10px 0;
-		}
-		.entry-header h3 {
-			text-align: left;
-			font-family: $font-01;
-			@include font-size(18px);
-			a {
-				color: $color-07;
-				&:hover {
-					color: $color-01;
+		padding: 0 10px;
+		margin: 0 0 30px 0;
+		.entry-wrapper {
+			flex: 1;
+			.entry-header h3, .entry-content > p {
+				margin: 0 0 10px 0;
+			}
+			.entry-header h3 {
+				@include font-size(18px);
+				font-family: $font-01;
+				line-height: inherit;
+				a {
+					color: $color-07;
+					&:hover {
+						color: $color-01;
+					}
+				}
+			}
+			.entry-meta {
+				margin: 0 0 5px 0;
+				p {
+					margin: 0 0 5px 0;
+				}
+				.author, .date, .categories, .bullet {
+					@include inline-block(middle);
+				}
+				.bullet {
+					margin: 0 10px 5px 10px;
 				}
 			}
 		}
-		.entry-meta {
-			.author, .bullet, .date {
-				@include inline-block(middle);
-			}
-			.author, .date {
-				margin: 0;
-			}
-			.bullet {
-				margin: 0 5px;
-			}
-		}
-		.entry-thumbnail {
-			max-width: 200px;
-		}
+	}	
+}
+
+/* Entry - Multiple (aka Archives) - Thumnail Extend
+========================================================================== */
+
+.thumbnail-extend {
+	flex: 1;
+	max-width: 180px;
+	margin: 0 20px 0 0;
+	border: 5px solid $color-06;
+	line-height: 0;		
+}
+
+/* Entry - Multiple (aka Archives) - Posts
+========================================================================== */
+
+.entry-multiple .entry.post .entry-thumbnail {
+	@extend .thumbnail-extend;
+} 
+
+/* Entry - Multiple (aka Archives) - Reviews
+========================================================================== */
+
+.entry-multiple .entry.insprvw-review {
+	.entry-item-reviewed {
+		@extend .thumbnail-extend;
+	}
+	.entry-wrapper .entry-meta .rating {
+		@include inline-block(middle);
 	}
 }
