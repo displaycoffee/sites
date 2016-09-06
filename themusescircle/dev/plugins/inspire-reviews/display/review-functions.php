@@ -90,7 +90,7 @@
 
 	// Custom read more link for excerpts
 	function insprvw_read_more() {
-	    return '<div class="read-more"><a class="button" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __( 'Read Review', 'inspire-reviews' ) . '</a></div>';
+	    return '<div class="read-more"><a href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . __( 'Read Review', 'inspire-reviews' ) . '</a></div>';
 	}
 
 	// Check if there is a custom excerpt and if so, make sure it's not too long

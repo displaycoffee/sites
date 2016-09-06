@@ -39,4 +39,10 @@
 			echo '<meta itemprop="dateModified" content="' .  esc_attr( get_the_modified_date( get_option( 'date_format' ) ) ) . '"/>';
 		}
 	?>
+	<?php if ( !is_single() ) : ?>
+		<span class="bullet">&bull;</span>
+		<p class="categories" itemprop="keywords">
+			<?php _e( '<strong>Categories:</strong> ', 'musescircle' ); ?><?php the_category( ', ' ); ?>
+		</p>
+	<?php endif; ?>
 </div>

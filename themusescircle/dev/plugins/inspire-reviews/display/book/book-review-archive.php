@@ -34,24 +34,25 @@
 					<?php while ( have_posts() ) : the_post(); ?>
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review" itemscope itemtype="http://schema.org/Review">
 							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
-							<?php 
-								// Since the string is long, create variables for title before/after
-								$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
-								$title_after = '</a></h3></header>';
-
-								// Display the title
-								the_title( $title_before, $title_after );
-							?>
-							<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
 							<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
 								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>
 								<?php include INSPRVW_DIR . 'display/book/book-information.php'; ?>
+							</div>							
+							<div class="entry-wrapper">
+								<?php 
+									// Since the string is long, create variables for title before/after
+									$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
+									$title_after = '</a></h3></header>';
+
+									// Display the title
+									the_title( $title_before, $title_after );
+								?>
+								<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>	
+								<div class="entry-content">
+									<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
+									<?php echo insprvw_excerpt(); ?>
+								</div>
 							</div>
-							<div class="entry-content">
-								<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
-								<?php echo insprvw_excerpt(); ?>
-							</div>
-							<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>
 						</div>
 					<?php endwhile; ?>
 				</div>

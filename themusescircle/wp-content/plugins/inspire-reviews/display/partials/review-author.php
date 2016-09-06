@@ -42,16 +42,16 @@
 	?>
 	<?php 
 		// Create author social links
-		$author_social_links = $author_website ? themusescircle_create_link( 'website', $author_website, 'Website' ) : '';
-		$author_social_links .= $author_facebook ? themusescircle_create_link( 'facebook', $author_facebook, 'Facebook' ) : '';
-		$author_social_links .= $author_gplus ? themusescircle_create_link( 'gplus', $author_gplus, 'Google+' ) : '';
-		$author_social_links .= $author_linkedin ? themusescircle_create_link( 'linkedin', $author_linkedin, 'LinkedIn' ) : '';
-		$author_social_links .= $author_twitter ? themusescircle_create_link( 'twitter', $author_twitter, 'Twitter' ) : '';			
-		$author_social_links .= $author_instagram ? themusescircle_create_link( 'instagram', $author_instagram, 'Instagram' ) : '';
-		$author_social_links .= $author_youtube ? themusescircle_create_link( 'youtube', $author_youtube, 'YouTube' ) : '';
-		$author_social_links .= $author_pinterest ? themusescircle_create_link( 'pinterest', $author_pinterest, 'Pinterest' ) : '';
-		$author_social_links .= $author_tumblr ? themusescircle_create_link( 'goodreads', $author_pinterest, 'Goodreads' ) : '';
-		$author_social_links .= $author_goodreads ? themusescircle_create_link( 'tumblr', $author_pinterest, 'Tumblr' ) : '';
+		$author_social_links = $author_website ? insprvw_create_link( 'website', $author_website, 'Website' ) : '';
+		$author_social_links .= $author_facebook ? insprvw_create_link( 'facebook', $author_facebook, 'Facebook' ) : '';
+		$author_social_links .= $author_gplus ? insprvw_create_link( 'gplus', $author_gplus, 'Google+' ) : '';
+		$author_social_links .= $author_linkedin ? insprvw_create_link( 'linkedin', $author_linkedin, 'LinkedIn' ) : '';
+		$author_social_links .= $author_twitter ? insprvw_create_link( 'twitter', $author_twitter, 'Twitter' ) : '';			
+		$author_social_links .= $author_instagram ? insprvw_create_link( 'instagram', $author_instagram, 'Instagram' ) : '';
+		$author_social_links .= $author_youtube ? insprvw_create_link( 'youtube', $author_youtube, 'YouTube' ) : '';
+		$author_social_links .= $author_pinterest ? insprvw_create_link( 'pinterest', $author_pinterest, 'Pinterest' ) : '';
+		$author_social_links .= $author_tumblr ? insprvw_create_link( 'goodreads', $author_pinterest, 'Goodreads' ) : '';
+		$author_social_links .= $author_goodreads ? insprvw_create_link( 'tumblr', $author_pinterest, 'Tumblr' ) : '';
 
 		// Create author social block
 		$author_social_html = '<div class="entry-author-social">';

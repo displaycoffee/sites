@@ -13,15 +13,8 @@
 	<?php echo the_tags( '<div class="tags" itemprop="keywords"><strong>' . __( 'Tags', 'musescircle' ) . ':</strong> ', ', ', '</div>' ); ?>
 	<?php
 		// Check if we're on a single post page
-		if ( !is_single() ) {
-			// Alter text based on number of comments or no comments
-			if ( comments_open() ) {					
-				echo '<div class="comments"><a href="' . esc_url( get_comments_link() ) . '">';
-				comments_number( __( 'No comments', 'musescircle' ), __( 'One comment', 'musescircle' ), __( '% comments', 'musescircle') );
-				echo '</a></div>';
-			}
-		} else {
-			edit_post_link( __( 'Edit', 'musescircle' ), '<div class="edit">', '</div>' );
+		if ( is_single() ) {
+			edit_post_link( __( 'Edit', 'musescircle' ), '<p class="edit">', '</p>' );
 		}
 	?>
 </footer>

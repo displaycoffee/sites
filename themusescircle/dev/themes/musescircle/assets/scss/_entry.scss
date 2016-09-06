@@ -1,0 +1,37 @@
+/* Entry - Multiple
+========================================================================== */
+
+.entry-multiple {
+	@include flex(row wrap);
+	.entry {
+		flex: 1 1 50%;
+		.entry-header h3, .entry-meta {
+			margin: 0 0 10px 0;
+		}
+		.entry-header h3 {
+			text-align: left;
+			font-family: $font-01;
+			@include font-size(18px);
+			a {
+				color: $color-07;
+				&:hover {
+					color: $color-01;
+				}
+			}
+		}
+		.entry-meta {
+			.author, .bullet, .date {
+				@include inline-block(middle);
+			}
+			.author, .date {
+				margin: 0;
+			}
+			.bullet {
+				margin: 0 5px;
+			}
+		}
+		.entry-thumbnail {
+			max-width: 200px;
+		}
+	}
+}
