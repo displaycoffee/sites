@@ -38,12 +38,6 @@
 		// Display the date
 		echo '<p class="date" itemprop="datePublished"><strong>' .  __( 'Date', 'inspire-reviews' ) . ':</strong> ' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
 	?>
-	<?php if ( !is_single() ) : ?>
-		<?php 
-			// Display list of categories
-			echo get_the_term_list( $post->ID, 'insprvw-' . insprvw_review_type( false ) . '-category', '<span class="bullet">&bull;</span><p class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</p>' );
-		?>
-	<?php endif; ?>	
 	<span class="bullet">&bull;</span>
 	<?php 
 		// Get the review rating
@@ -58,4 +52,10 @@
 		// Display rating block
 		echo $rating_html;
 	?>
+	<?php 
+		// Display list of categories if not on single page
+		if ( !is_single() ) {			
+			echo get_the_term_list( $post->ID, 'insprvw-' . insprvw_review_type( false ) . '-category', '<p class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</p>' );
+		}
+	?>	
 </div>
