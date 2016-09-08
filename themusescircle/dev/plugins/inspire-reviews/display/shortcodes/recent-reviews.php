@@ -82,7 +82,7 @@
 				if ( has_post_thumbnail() ) {				
 					$review_thumbnail .= get_the_post_thumbnail( $postID, 'thumbnail' );
 				} else {	
-					$review_thumbnail .= '<svg viewBox="0 0 400 400"><use xlink:href="' . plugins_url( 'inspire-reviews/assets/images/default-image.svg#default-image', '' ) . '"></use></svg>';
+					$review_thumbnail .= '<svg viewBox="0 0 400 400"><use xlink:href="' . plugins_url( 'inspire-reviews/assets/images/default-image.svg#default-image-square', '' ) . '"></use></svg>';
 				}
 
 				// Create thumbnail block - END

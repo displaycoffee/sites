@@ -24,11 +24,11 @@
 			$thumbnail_html .= '<meta itemprop="height" content="' . esc_attr( $thumbnail_height ) . '">';
 			$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';		
 		} else {
-			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-image.svg' ) . '">';
+			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-image.svg#default-image-rectangle' ) . '">';
 			$thumbnail_html .= '<meta itemprop="width" content="400">';
-			$thumbnail_html .= '<meta itemprop="height" content="400">';
+			$thumbnail_html .= '<meta itemprop="height" content="600">';
 			$thumbnail_html .= '<div class="image-wrap default-image">';
-			$thumbnail_html .= '<svg viewBox="0 0 400 400"><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/default-image.svg#default-image"></use></svg>';
+			$thumbnail_html .= '<svg viewBox="0 0 400 600"><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/default-image.svg#default-image-rectangle"></use></svg>';
 			$thumbnail_html .= '</div>';	
 		}
 
