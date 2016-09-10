@@ -40,14 +40,32 @@
 	?>
 	<span class="bullet">&bull;</span>
 	<?php 
+		// Set up star SVGs
+		$star_full = '<svg class="icon icon-star" viewBox="0 0 30 32"><use xlink:href="' . esc_url ( plugins_url( 'inspire-reviews/assets/images/icons.svg#icon-star', '' ) ) . '"></use></svg>';
+		$star_empty = '<svg class="icon icon-star-o" viewBox="0 0 30 32"><use xlink:href="' . esc_url ( plugins_url( 'inspire-reviews/assets/images/icons.svg#icon-star-o', '' ) ) . '"></use></svg>';
+
 		// Get the review rating
 		$review_rating = get_post_meta( $post->ID, '_insprvw-' . insprvw_review_type( true ) . '-rating', true );
+
+		// Set values depending on whether or not a rating is set 
+		if ( $review_rating || $review_rating == '0' ) {
+			$rating_value = esc_html( $review_rating );
+			$rating_width = ( esc_html( $review_rating ) * 20 ) . '%';
+		} else {
+			$rating_value = 0;
+			$rating_width = 0 . '%';			
+		}
 
 		// Create rating block
 		$rating_html = '<p class="rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">';
 		$rating_html .= '<strong>' .  __( 'Rating', 'inspire-reviews' ) . ':</strong> ';
-		$rating_html .= ( $review_rating || $review_rating == '0' ) ? '<span class="rating-value" itemprop="ratingValue">' . esc_html( $review_rating ) . '</span>' : '<span class="rating-value" itemprop="worstRating">0</span>';
-		$rating_html .= ' of <span class="rating-value" itemprop="bestRating">5</span></p>';
+		$rating_html .= '<span class="rating-star-container">';
+		$rating_html .= '<span class="rating-star-out-of">' . $star_full . $star_full . $star_full . $star_full . $star_full . '</span>';
+		$rating_html .= '<span class="rating-star-avg" style="width: ' . $rating_width . '">' . $star_empty . $star_empty . $star_empty . $star_empty . $star_empty . '</span>';
+		$rating_html .= '</span>';
+		$rating_html .= '<meta itemprop="ratingValue" content="' . $rating_value . '">';
+		$rating_html .= '<meta itemprop="worstRating" content="0">';
+		$rating_html .= '<meta itemprop="bestRating" content="5">';
 
 		// Display rating block
 		echo $rating_html;

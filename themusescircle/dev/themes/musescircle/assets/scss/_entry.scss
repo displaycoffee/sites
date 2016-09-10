@@ -14,7 +14,7 @@
 		.entry-wrapper {
 			flex: 1;
 			.entry-header h3, .entry-content > p {
-				margin: 0 0 10px 0;
+				margin: 0 0 5px 0;
 			}
 			.entry-header h3 {
 				@include font-size(18px);
@@ -28,15 +28,15 @@
 				}
 			}
 			.entry-meta {
-				margin: 0 0 5px 0;
-				p {
-					margin: 0 0 5px 0;
-				}
-				.author, .date, .categories, .bullet {
+				margin: 0 0 8px 0;
+				.author, .date, .bullet {
 					@include inline-block(middle);
 				}
+				.author, .date, .categories {
+					margin: 0 0 2px 0;
+				}
 				.bullet {
-					margin: 0 10px 5px 10px;
+					margin: 0 5px 2px 5px;
 				}
 			}
 		}
@@ -79,5 +79,9 @@
 		.entry-thumbnail {
 			@extend .thumbnail-extend;
 		}
+	}
+	.entry-wrapper .entry-meta .rating {
+		@include inline-block(middle);
+		margin: 0 0 2px 0;
 	}
 }
