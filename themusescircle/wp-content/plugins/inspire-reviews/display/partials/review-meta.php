@@ -41,8 +41,7 @@
 	<span class="bullet">&bull;</span>
 	<?php 
 		// Set up star SVGs
-		$star_full = '<svg class="icon icon-star" viewBox="0 0 30 32"><use xlink:href="' . esc_url ( plugins_url( 'inspire-reviews/assets/images/icons.svg#icon-star', '' ) ) . '"></use></svg>';
-		$star_empty = '<svg class="icon icon-star-o" viewBox="0 0 30 32"><use xlink:href="' . esc_url ( plugins_url( 'inspire-reviews/assets/images/icons.svg#icon-star-o', '' ) ) . '"></use></svg>';
+		$star = '<svg class="icon icon-star" viewBox="0 0 30 32"><use xlink:href="' . esc_url ( plugins_url( 'inspire-reviews/assets/images/icons.svg#icon-star', '' ) ) . '"></use></svg>';
 
 		// Get the review rating
 		$review_rating = get_post_meta( $post->ID, '_insprvw-' . insprvw_review_type( true ) . '-rating', true );
@@ -59,9 +58,8 @@
 		// Create rating block
 		$rating_html = '<p class="rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">';
 		$rating_html .= '<strong>' .  __( 'Rating', 'inspire-reviews' ) . ':</strong> ';
-		$rating_html .= '<span class="rating-star-container">';
-		$rating_html .= '<span class="rating-star-out-of">' . $star_full . $star_full . $star_full . $star_full . $star_full . '</span>';
-		$rating_html .= '<span class="rating-star-avg" style="width: ' . $rating_width . '">' . $star_empty . $star_empty . $star_empty . $star_empty . $star_empty . '</span>';
+		$rating_html .= '<span class="rating-out-of">' . $star . $star . $star . $star . $star;
+		$rating_html .= '<span class="rating-value" style="width: ' . $rating_width . '">' . $star . $star . $star . $star . $star . '</span>';
 		$rating_html .= '</span>';
 		$rating_html .= '<meta itemprop="ratingValue" content="' . $rating_value . '">';
 		$rating_html .= '<meta itemprop="worstRating" content="0">';
