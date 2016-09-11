@@ -45,3 +45,11 @@ img {
 		padding: 0 20px;
 	}
 }
+
+.menu {
+	&, li, ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+}

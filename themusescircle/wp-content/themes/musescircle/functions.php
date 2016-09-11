@@ -26,6 +26,7 @@
 		// Register navigation menus
 		register_nav_menus( array(
 			'main-menu'   => __( 'Main Menu', 'musescircle' ),
+			'footer-menu' => __( 'Footer Menu', 'musescircle' ),
 			'social-menu' => __( 'Social Media Menu', 'musescircle' )
 		) );
 	}
@@ -44,7 +45,7 @@
 	// Custom social media menu
 	function musescircle_social_menu( $menu_name ) {
 		// Get the nav menu based on $menu_name (same as 'theme_location' or 'menu' arg to wp_nav_menu)
-		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[$menu_name] ) ) {
 			// Get nav menu object
 		    $menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
 		 
