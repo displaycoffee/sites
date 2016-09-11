@@ -16,18 +16,8 @@
 /* Front page - About Site
 ========================================================================== */
 
-#front-page-sections #about-site {
-	.row {
-		@include flex(row nowrap);
-		margin: 0 -10px;
-		.column {
-			flex: 1;
-			padding: 0 10px;
-		}
-	}
-	.read-more {
-		text-align: right;
-	}
+#front-page-sections #about-site .read-more {
+	text-align: right;
 }
 
 /* Front page - Recent Reviews (More styles in _recent-revies.scss)

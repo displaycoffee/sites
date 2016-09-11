@@ -17,87 +17,87 @@
 	@include font-size(14px);
 	.wrapper {
 		text-align: right;
-		.menu-main-container {	
-			@include inline-block(middle);
-			position: relative;
-			z-index: 2;
-			a {
-				color: $color-01;
-			}	
-			.menu {
-				@include flex(row wrap);
-				border-left: 1px solid $color-05 + #000;
-				border-right: 1px solid $color-05 - #222;
-				& > li {
-					position: relative;	
-					border-right: 1px solid $color-05 + #000;
-					border-left: 1px solid $color-05 - #222;
-					text-align: center;			
-					& > a, .toggle-submenu {
-						&:hover {
-							color: $color-07;
-						}						
-					}
-					& > a {
-						display: block;
-						height: 60px;
-						line-height: 60px;
-						overflow: hidden;
-						padding: 0 20px;
-						text-align: center;
-						text-shadow: 1px 1px 0 rgba(0,0,0,0.85);						
-					}
-					&.menu-item-has-children {
-						& > a {
-							padding: 0 50px 0 20px;
-						}
-						.toggle-submenu {
-							position: absolute;
-							right: 20px;
-							top: 20px;
-							z-index: 10;
-							@include sizing(18px, auto);
-							fill: currentColor;
-							cursor: pointer;
-							@include transition(color 0.3s ease-in-out);
-							@include transition(transform 0.8s ease-in-out);
-						  	transform: rotate(0deg);							
-							&.show {
-								transform: rotate(180deg);
-							}
-						}
-					}
-					.sub-menu {
-						position: absolute;
-						top: 60px;	
-						left: 0;
-						z-index: 3;
-						min-width: 200px;					
-						background: $color-06;
-						padding: 10px;						
-						opacity: 0;
-						@include transition(opacity 0.5s ease-in-out);
-						text-align: left;
-						&.show {
-							opacity: 1;
-						}
-						li {			
-							a {
-								display: block;
-								margin: 0 0 5px 0;
-								&:hover {
-									color: $color-02;
-								}
-							}
-							&:last-child a {
-								margin: 0
-							}
-							ul {
-								display: none;
-							}
-						}											
+	}
+	.menu-main-container {	
+		@include inline-block(middle);
+		position: relative;
+		z-index: 2;
+		a {
+			color: $color-01;
+		}	
+		.menu {
+			@include flex(row wrap);
+			border-left: 1px solid $color-05 + #000;
+			border-right: 1px solid $color-05 - #222;
+			& > li {
+				position: relative;	
+				border-right: 1px solid $color-05 + #000;
+				border-left: 1px solid $color-05 - #222;
+				text-align: center;			
+				& > a, .toggle-submenu {
+					&:hover {
+						color: $color-07;
 					}						
 				}
+				& > a {
+					display: block;
+					height: 60px;
+					line-height: 60px;
+					overflow: hidden;
+					padding: 0 20px;
+					text-align: center;
+					text-shadow: 1px 1px 0 rgba(0,0,0,0.85);						
+				}
+				&.menu-item-has-children {
+					& > a {
+						padding: 0 50px 0 20px;
+					}
+					.toggle-submenu {
+						position: absolute;
+						right: 20px;
+						top: 20px;
+						z-index: 10;
+						@include sizing(18px, auto);
+						fill: currentColor;
+						cursor: pointer;
+						@include transition(color 0.3s ease-in-out);
+						@include transition(transform 0.8s ease-in-out);
+					  	transform: rotate(0deg);							
+						&.show {
+							transform: rotate(180deg);
+						}
+					}
+				}
+				.sub-menu {
+					position: absolute;
+					top: 60px;	
+					left: 0;
+					z-index: 3;
+					min-width: 200px;					
+					background: $color-06;
+					padding: 10px;						
+					opacity: 0;
+					@include transition(opacity 0.5s ease-in-out);
+					text-align: left;
+					&.show {
+						opacity: 1;
+					}
+					li {			
+						a {
+							display: block;
+							margin: 0 0 5px 0;
+							&:hover {
+								color: $color-02;
+							}
+						}
+						&:last-child a {
+							margin: 0
+						}
+						ul {
+							display: none;
+						}
+					}											
+				}						
 			}
 		}
 	}

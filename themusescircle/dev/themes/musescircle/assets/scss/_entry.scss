@@ -14,18 +14,28 @@
 		.entry-wrapper {
 			flex: 1;
 		}
-		.entry-header h3, .entry-content > p {
-			margin: 0 0 5px 0;
-		}
 		.entry-header h3 {
 			@include font-size(18px);
 			font-family: $font-01;
 			line-height: inherit;
+			margin: 0 0 5px 0;
 			a {
 				color: $color-07;
 				&:hover {
 					color: $color-01;
 				}
+			}
+		}
+		.entry-content {
+			& > p:last-of-type, .read-more {
+				display: inline;
+			}
+			& > p:last-of-type {
+				margin: 0;
+				display: inline;
+			}
+			.read-more {
+				padding: 0 0 0 5px;
 			}
 		}
 		.entry-meta {
@@ -47,7 +57,7 @@
 ========================================================================== */
 
 .flex-extend {
-	flex: 0 0 180px;
+	flex: 0 0 160px;
 	margin: 0 20px 0 0;	
 }
 
