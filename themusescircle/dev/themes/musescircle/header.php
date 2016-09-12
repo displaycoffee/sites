@@ -42,7 +42,12 @@
 	?>
 	<nav id="header-nav" class="navigation">
 		<div class="wrapper">
-			<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+			<?php 
+				wp_nav_menu( array( 
+					'theme_location' => 'main-menu',
+					'container_class' => 'menu-main-container'
+				) ); 
+			?>
 		</div>
 	</nav>
 	<header id="header">

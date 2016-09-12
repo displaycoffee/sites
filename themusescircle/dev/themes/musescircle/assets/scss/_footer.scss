@@ -9,7 +9,7 @@
 		h4 {
 			margin: 0 0 10px 0;
 		}
-		.menu-footer-container {
+		.widget_nav_menu > div {
 			@include font-size(16px);
 			.menu {
 				@include flex(row wrap);
@@ -29,5 +29,8 @@
 				}
 			}
 		}
+		.search-form {
+			@include inline-form(100%, none, 100px);
+		}		
 	}
 }

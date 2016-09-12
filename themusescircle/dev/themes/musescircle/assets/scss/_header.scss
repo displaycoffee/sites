@@ -50,26 +50,10 @@
 /* Top bar - Search bar
 ========================================================================== */
 
-#top-bar .search-bar {
-	@include font-size(14px);
+#top-bar .search-bar {	
 	text-align: right;
 	.search-form {
-		position: relative;
-		input[type='text'] {
-			@include sizing(75%, 39px);
-			line-height: 39px;
-			max-width: 450px;
-			padding: 0 110px 0 10px;
-			border: 1px solid $color-07;
-		}
-		input[type='submit'] {
-			position: absolute;
-			right: 2px;
-			top: 2px;
-			z-index: 2;
-			width: 100px;
-			padding: 0 10px;
-		}
+		@include inline-form(75%, 450px, 100px);
 	}
 }
 
