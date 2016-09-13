@@ -50,11 +50,13 @@
 			?>
 		</div>
 	</nav>
-	<header id="header">
-		<div class="wrapper">
-			<div class="header-content">
-				<h1 class="site-name"><?php echo get_bloginfo( 'name' ); ?></h1>
-				<p class="site-description"><?php echo get_bloginfo( 'description' ); ?></p>
+	<?php if ( is_front_page() ) : ?>
+		<header id="header" class="front-page-header">
+			<div class="wrapper">
+				<div class="header-content">
+					<h1 class="site-name"><?php echo get_bloginfo( 'name' ); ?></h1>
+					<p class="site-description"><?php echo get_bloginfo( 'description' ); ?></p>
+				</div>
 			</div>
-		</div>
-	</header>		
+		</header>
+	<?php endif; ?>	
