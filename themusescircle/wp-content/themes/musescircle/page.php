@@ -9,7 +9,7 @@
 	// Include header	
 	get_header(); 
 ?>
-<?php the_title( '<header class="main-title"><div class="wrapper"><h1>', '</h1></div></header>' ); ?>
+<?php get_template_part( 'page', 'title' ); ?>
 <section class="content">
 	<div class="wrapper">
 		<article>

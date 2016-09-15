@@ -16,7 +16,6 @@
 	$att_filename = basename( get_attached_file( get_the_ID() ) );
 	$att_caption = get_the_excerpt();
 ?>
-<?php the_title( '<header class="main-title"><div class="wrapper"><h1>', '</h1></div></header>' ); ?>
 <section class="content">
 	<div class="wrapper">
 		<article>

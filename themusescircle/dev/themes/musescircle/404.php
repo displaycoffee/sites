@@ -9,11 +9,7 @@
 	// Include header
 	get_header(); 
 ?>
-<header class="main-title">
-	<div class="wrapper">
-		<h1><?php _e( 'Not Found', 'musescircle' ); ?></h1>
-	</div>
-</header>
+<?php get_template_part( 'page', 'title' ); ?>
 <section class="content">
 	<div class="wrapper">
 		<article>

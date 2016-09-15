@@ -15,32 +15,14 @@
 	vertical-align: $vertical-align;
 }
 
-@mixin inline-form($tw, $mw, $sw) {
-	position: relative;
-	input[type='text'] {
-		@include sizing($tw, 39px);
-		line-height: 39px;
-		max-width: $mw;
-		padding: 0 ($sw + 10) 0 10px;
-		border: 1px solid $color-07;
-		@include font-size(14px);
-	}
-	input[type='submit'] {
-		position: absolute;
-		right: 2px;
-		top: 2px;
-		z-index: 2;
-		width: $sw;
-		padding: 0 10px;
-	}	
-}
-
 // Placeholder 
+// Examples: @include placeholder {}, :focus{@include placeholder {}}, or input {@include placeholder {}}
 @mixin placeholder {
-	color: $color-10;
-	font-style: italic;
+	&::-webkit-input-placeholder {@content}
+	&:-moz-placeholder           {@content}
+	&::-moz-placeholder          {@content}
+	&:-ms-input-placeholder      {@content}  
 }
-
 // Quick reset
 @mixin reset {
 	margin: 0;

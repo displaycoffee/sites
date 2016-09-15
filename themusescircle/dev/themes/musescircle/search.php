@@ -9,23 +9,7 @@
 	// Include header	
 	get_header(); 
 ?>
-<?php 
-	// Create search header block - START
-	$search_header = '<header class="main-title"><div class="wrapper"><h1>';
-
-	// Check if a search query is present
-	if ( get_search_query() ) {
-		$search_header .= sprintf( __( 'Search results for "%s"', 'musescircle' ), esc_html( get_search_query() ) );
-	} else {
-		$search_header .= __( 'Search results', 'musescircle' );
-	}
-
-	// Create search header block - END
-	$search_header .= '</h1></div></header>';	
-
-	// Display search header block
-	echo $search_header;	
-?>
+<?php get_template_part( 'page', 'title' ); ?>
 <section class="content">
 	<div class="wrapper">
 		<article>

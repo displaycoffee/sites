@@ -30,7 +30,27 @@
 			}
 		}
 		.search-form {
-			@include inline-form(100%, none, 100px);
+			position: relative;
+			input[type='text'] {
+				width: 100%;
+				padding: 0 40px 0 10px;
+				&:focus ~ button svg {
+					fill: $color-01;				
+				}
+			}
+			button {
+				position: absolute;
+				right: 10px;
+				top: 8px;
+				svg {
+					@include sizing(auto, 18px);
+					fill: $color-13;
+					@include transition(fill 0.3s ease-in-out);
+					&:hover {
+						fill: $color-01;
+					}
+				}
+			}			
 		}		
 	}
 }

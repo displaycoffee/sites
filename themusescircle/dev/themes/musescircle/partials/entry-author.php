@@ -7,7 +7,6 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 
 	// Grab all the variables we need for this page
-	$author_name = get_the_author();
 	$author_id = get_the_author_meta( 'ID' );
 	$author_image = get_avatar( $author_id, 200, '', esc_attr( get_the_author() ) );
 	$author_description = get_the_author_meta( 'user_description' );	
@@ -28,7 +27,7 @@
 	<?php
 		// Don't display on author archive
 		if ( !is_author() ) { 	
-			echo '<h3>' . __( 'About', 'musescircle' ) . ' ' . $author_name . '</h3>';
+			echo '<h3>' . __( 'About', 'musescircle' ) . ' ' . get_the_author() . '</h3>';
 		}
 	?>
 	<?php 
