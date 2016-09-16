@@ -52,7 +52,7 @@
 					}
 				?>
 				<?php comments_template(); ?>
-			<?php endwhile; endif; ?>
+			<?php endwhile; wp_reset_postdata(); endif; ?>
 		</article>
 		<?php get_sidebar(); ?>
 	</div>

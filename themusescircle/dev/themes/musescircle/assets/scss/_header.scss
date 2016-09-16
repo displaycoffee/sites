@@ -83,6 +83,23 @@
 	}
 }
 
+/* Top bar - Home link
+========================================================================== */
+
+#top-bar .home-link {
+	@include sizing(auto, 20px);
+	min-width: 22px;
+	margin: 0 0 0 10px;
+	svg {
+		@include sizing(auto, 100%);
+		fill: $color-13;
+		@include transition(fill 0.3s ease-in-out);
+		&:hover {
+			fill: $color-01;
+		}
+	}	
+}
+
 /* Header - Front Page
 ========================================================================== */
 

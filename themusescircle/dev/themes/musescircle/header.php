@@ -33,6 +33,9 @@
 			$top_bar .= '<div class="wrapper">';
 			$top_bar .= musescircle_social_menu( 'social-menu' );
 			$top_bar .= $hide_search ? '' : get_search_form( false );
+			$top_bar .= '<a class="home-link" href="' . esc_url( get_bloginfo( 'url' ) ) . '">';
+			$top_bar .= '<svg class="icon icon-home" viewBox="0 0 30 32"><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/icons.svg#icon-home"></use></svg>';
+			$top_bar .= '</a>';
 			$top_bar .= '</div>';
 			$top_bar .= '</section>';
 

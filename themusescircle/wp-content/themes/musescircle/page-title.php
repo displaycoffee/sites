@@ -29,6 +29,9 @@
 					} else {
 						_e( 'Search results', 'musescircle' );
 					}
+				} else if ( is_home() && !is_front_page() ) {
+					// Check if on blog				
+					echo single_post_title();
 				} else {
 					// For everything else
 					echo get_the_title();

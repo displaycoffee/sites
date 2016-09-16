@@ -21,7 +21,7 @@
 						<?php edit_post_link( __( 'Edit', 'musescircle' ), '<footer class="entry-footer"><div class="edit">', '</div></footer>' ); ?>				
 					</div>
 				</div>
-			<?php endwhile; endif; ?>
+			<?php endwhile; wp_reset_postdata(); endif; ?>
 		</article>
 		<?php get_sidebar(); ?>
 	</div>
