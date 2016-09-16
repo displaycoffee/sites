@@ -14,13 +14,16 @@
 	<div class="wrapper">
 		<article>	
 			<?php the_archive_description( '<div class="category-description">', '</div>' ); ?>	
-			<h2><?php _e( 'Reviews', 'inspire-reviews' ); ?></h2>
 			<?php if ( have_posts() ) : ?>	
 				<div class="entry-multiple">
 					<?php while ( have_posts() ) : the_post(); ?>				
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_video_type( false ); ?>-review" itemscope itemtype="http://schema.org/Review">
 							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
-							<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="<?php echo insprvw_video_type( true ); ?>">
+							<?php 
+								// If there's not a thumbnail, don't add thumbnail class
+								$item_reviewed_class = has_post_thumbnail() ? 'class="entry-item-reviewed"' : '';
+							?>
+							<div <?php echo $item_reviewed_class; ?> itemprop="itemReviewed" itemscope itemtype="<?php echo insprvw_video_type( true ); ?>">
 								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>
 								<?php include INSPRVW_DIR . 'display/video/' . insprvw_video_type( false ) . '-information.php'; ?>
 							</div>
@@ -43,6 +46,7 @@
 					<?php endwhile; ?>
 				</div>
 				<?php include INSPRVW_DIR . 'display/partials/review-pagination.php'; ?>
+				<?php wp_reset_postdata(); ?>
 			<?php else : ?>
 				<?php include INSPRVW_DIR . 'display/partials/review-no-posts.php'; ?>
 			<?php endif; ?>	
