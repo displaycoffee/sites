@@ -6,11 +6,6 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 ?>
-<?php 
-	// Get "From the Blog" post number for front page
-	$from_blog_number = get_theme_mod( 'musescircle_from_blog_number' );
-	$number_home_posts = $from_blog_number ? esc_html( $from_blog_number ) : 6;
-?>
 <?php if ( have_posts() ) : ?>
 	<div class="entry-multiple" itemtype="http://schema.org/Blog">
 		<?php while ( have_posts() ) : the_post(); ?>	

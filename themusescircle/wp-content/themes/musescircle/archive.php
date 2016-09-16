@@ -15,8 +15,7 @@
 <section class="content">
 	<div class="wrapper">
 		<article>			
-			<?php the_archive_description( '<div class="category-description">', '</div>' ); ?>	
-			<h2><?php _e( 'Posts', 'musescircle' ); ?></h2>
+			<?php the_archive_description( '<div class="category-description">', '</div>' ); ?>
 			<?php get_template_part( 'loop', 'index' ); ?>
 		</article>
 		<?php get_sidebar(); ?>
