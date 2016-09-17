@@ -6,7 +6,7 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 ?>
-<header class="main-title">
+<header id="header" class="main-header">
 	<div class="wrapper">
 		<h1>
 			<?php 				

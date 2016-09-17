@@ -9,7 +9,7 @@
 	// Include header	
 	get_header(); 	
 ?>
-<?php the_title( '<header class="main-title"><div class="wrapper"><h1>', '</h1></div></header>' ); ?>
+<?php include INSPRVW_DIR . 'display/partials/review-title.php'; ?>
 <section class="content">
 	<div class="wrapper">
 		<article>	
@@ -26,27 +26,21 @@
 			?>			
 			<?php if ( $insprvw_query->have_posts() ) : ?>	
 				<div class="entry-multiple">
-					<?php while ( $insprvw_query->have_posts() ) : $insprvw_query->the_post(); ?>							
+					<?php while ( $insprvw_query->have_posts() ) : $insprvw_query->the_post(); ?>
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_review_type( true ); ?>-review" itemscope itemtype="http://schema.org/Review">
 							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 							<?php 
-								// Since the string is long, create variables for title before/after
-								$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
-								$title_after = '</a></h3></header>';
+								// If there's not a thumbnail, don't add thumbnail class
+								$item_reviewed_class = has_post_thumbnail() ? 'class="entry-item-reviewed"' : '';
 
-								// Display the title
-								the_title( $title_before, $title_after );
-							?>	
-							<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
-							<?php
 								// Schema link for book versus movies/tv	
 								if ( get_post_type() == 'insprvw-book-review' ) {
 									$schema_link = 'http://schema.org/Book';
 								} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
 									$schema_link = insprvw_video_type( true );
 								}
-							?>											
-							<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="<?php echo $schema_link; ?>">
+							?>		
+							<div <?php echo $item_reviewed_class; ?> itemprop="itemReviewed" itemscope itemtype="<?php echo $schema_link; ?>">
 								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>
 								<?php 
 									// Include for book versus movies/tv	
@@ -57,11 +51,21 @@
 									}
 								?>
 							</div>
-							<div class="entry-content">
-								<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
-								<?php echo insprvw_excerpt(); ?>
-							</div>
-							<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>	
+							<div class="entry-wrapper">
+								<?php 
+									// Since the string is long, create variables for title before/after
+									$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
+									$title_after = '</a></h3></header>';
+
+									// Display the title
+									the_title( $title_before, $title_after );
+								?>	
+								<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
+								<div class="entry-content">
+									<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
+									<?php echo insprvw_excerpt(); ?>
+								</div>
+							</div>	
 						</div>
 					<?php endwhile; wp_reset_postdata(); ?>
 				</div>
@@ -90,4 +94,4 @@
 		<?php get_sidebar(); ?>
 	</div>
 </section>			
-<?php get_footer(); ?>				
+<?php get_footer(); ?>	

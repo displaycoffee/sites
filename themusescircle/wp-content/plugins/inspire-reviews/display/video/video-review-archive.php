@@ -9,7 +9,7 @@
 	// Include header	
 	get_header(); 	
 ?>
-<?php the_archive_title( '<header class="main-title"><div class="wrapper"><h1>', '</h1></div></header>' ); ?>
+<?php include INSPRVW_DIR . 'display/partials/review-title.php'; ?>
 <section class="content">
 	<div class="wrapper">
 		<article>	

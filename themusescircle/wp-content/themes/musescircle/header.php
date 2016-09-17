@@ -46,7 +46,7 @@
 	<nav id="header-nav" class="navigation">
 		<div class="wrapper">
 			<?php if ( !is_front_page() ) : ?>
-				<h1 class="site-name"><?php echo get_bloginfo( 'name' ); ?></h1>
+				<h2 class="site-name"><a class="home-link" href="<?php echo esc_url( get_bloginfo( 'url' ) ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></h2>
 			<?php endif; ?>	
 			<?php 
 				wp_nav_menu( array( 
