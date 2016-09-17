@@ -11,6 +11,14 @@
 	// Include header	
 	get_header(); 
 ?>
+<header id="header" class="front-page-header">
+	<div class="wrapper">
+		<div class="header-content">
+			<h1 class="site-name"><?php echo get_bloginfo( 'name' ); ?></h1>
+			<p class="site-description"><?php echo get_bloginfo( 'description' ); ?></p>
+		</div>
+	</div>
+</header>	
 <div id="front-page-sections">
 	<?php get_template_part( 'partials/front', 'about' ); ?>
 	<?php get_template_part( 'partials/front', 'recent-reviews' ); ?>

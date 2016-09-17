@@ -16,6 +16,7 @@
 	$att_filename = basename( get_attached_file( get_the_ID() ) );
 	$att_caption = get_the_excerpt();
 ?>
+<?php get_template_part( 'page', 'title' ); ?>
 <section class="content">
 	<div class="wrapper">
 		<article>
