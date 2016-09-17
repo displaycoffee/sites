@@ -45,6 +45,9 @@
 	?>
 	<nav id="header-nav" class="navigation">
 		<div class="wrapper">
+			<?php if ( !is_front_page() ) : ?>
+				<h1 class="site-name"><?php echo get_bloginfo( 'name' ); ?></h1>
+			<?php endif; ?>	
 			<?php 
 				wp_nav_menu( array( 
 					'theme_location' => 'main-menu',
@@ -62,4 +65,6 @@
 				</div>
 			</div>
 		</header>
+	<?php else : ?>	
+		<?php get_template_part( 'page', 'title' ); ?>
 	<?php endif; ?>	

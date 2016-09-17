@@ -11,7 +11,6 @@
 	// Include header	
 	get_header(); 
 ?>
-<?php get_template_part( 'page', 'title' ); ?>
 <section class="content">
 	<div class="wrapper">
 		<article>			
