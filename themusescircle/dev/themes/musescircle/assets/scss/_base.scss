@@ -26,30 +26,3 @@ img {
 	max-width: 100%;
 	@include sizing(auto, auto);
 }
-
-.wrapper {
-	margin: 0 auto;
-	max-width: 1320px;
-	width: auto;
-	padding: 0 20px;
-}
-
-/* Layout
-========================================================================== */
-
-.row {
-	@include flex(row nowrap);
-	margin: 0 -20px;
-	.column {
-		flex: 1;
-		padding: 0 20px;
-	}
-}
-
-.menu {
-	&, li, ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-}
