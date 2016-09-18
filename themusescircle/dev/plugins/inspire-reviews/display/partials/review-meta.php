@@ -40,8 +40,8 @@
 	?>
 	<span class="bullet">&bull;</span>
 	<?php 
-		// Set up star SVGs
-		$star = '<svg class="icon icon-star" viewBox="0 0 30 32"><use xlink:href="' . esc_url ( plugins_url( 'inspire-reviews/assets/images/icons.svg#icon-star', '' ) ) . '"></use></svg>';
+		// Set up star icons
+		$star = '<span class="icon icon-star"></span>';
 
 		// Get the review rating
 		$review_rating = get_post_meta( $post->ID, '_insprvw-' . insprvw_review_type( true ) . '-rating', true );
@@ -58,12 +58,16 @@
 		// Create rating block
 		$rating_html = '<p class="rating" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">';
 		$rating_html .= '<strong>' .  __( 'Rating', 'inspire-reviews' ) . ':</strong> ';
-		$rating_html .= '<span class="rating-out-of">' . $star . $star . $star . $star . $star;
-		$rating_html .= '<span class="rating-value" style="width: ' . $rating_width . '">' . $star . $star . $star . $star . $star . '</span>';
+		$rating_html .= '<span class="rating-wrapper">';
+		$rating_html .= '<span class="rating-text">' . $rating_value . ' out of 5</span>';
+		$rating_html .= '<span class="rating-out-of" title="' . $rating_value . ' out of 5">';
+		$rating_html .= $star . $star . $star . $star . $star;		
+		$rating_html .= '<span class="rating-value" style="width: ' . $rating_width . '">' . $star . $star . $star . $star . $star . '</span>';		
 		$rating_html .= '</span>';
 		$rating_html .= '<meta itemprop="ratingValue" content="' . $rating_value . '">';
 		$rating_html .= '<meta itemprop="worstRating" content="0">';
 		$rating_html .= '<meta itemprop="bestRating" content="5">';
+		$rating_html .= '</span>';
 
 		// Display rating block
 		echo $rating_html;
