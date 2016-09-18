@@ -38,7 +38,12 @@
 		// Display the date
 		echo '<p class="date" itemprop="datePublished"><strong>' .  __( 'Date', 'inspire-reviews' ) . ':</strong> ' .  get_the_time( get_option( 'date_format' ) ) . '</p>';
 	?>
-	<span class="bullet">&bull;</span>
+	<?php 
+		// Display bullet if on single page
+		if ( is_single() ) {			
+			echo '<span class="bullet">&bull;</span>';
+		}
+	?>	
 	<?php 
 		// Set up star icons
 		$star = '<span class="icon icon-star"></span>';
