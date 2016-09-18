@@ -103,5 +103,177 @@
 /* Layout - Content - Two columns - Aside
 ========================================================================== */
 
-.content aside .widget-area {
+.content aside .widget-area .widget-container {
+	h3 {
+		text-align: center;
+		&:after {
+			content: '';
+			display: block;
+			margin: -5px auto 0 auto;
+			@include sizing(75%, 1px);
+			background: $color-01;
+		}
+	}
+	ul, select {
+		margin: 0 0 20px 0;
+	}
+	select {
+		width: 100%;
+	}
+	ul {
+		margin: 0 0 20px 0;
+		list-style: none;
+		li {
+			position: relative;
+			padding: 0 0 0 20px;
+			margin: 0 0 2px 0;
+			&:before {
+				@include muses-icons;
+				color: $color-01;
+				content: $icon-angle-right;
+				position: absolute;
+				top: 2px;
+				left: 0;
+			}
+			ul {
+				margin: 2px 0 0 0;
+			}
+		}
+	}
+	&.widget_archive, &.widget_categories, &.widget_recent_comments, &.widget_pages, &.widget_recent_entries {
+		ul li {
+			padding: 0 0 0 25px;
+			&:before {
+				@include font-size(14px);
+			}
+		}
+	}
+	&.widget_archive ul li:before {
+		content: $icon-inbox;
+	}
+	&.widget_categories ul li:before {
+		content: $icon-folder-open;
+	}	
+	&.widget_recent_comments ul li:before {
+		content: $icon-comment;
+	}
+	&.widget_pages ul li:before, &.widget_recent_entries ul li:before {
+		content: $icon-quill;
+	}
+	&.widget_tag_cloud .tagcloud {
+		margin: 0 -2.5px 15px -2.5px;
+		a {
+			@include inline-block(middle);
+			margin: 0 2.5px 5px 2.5px;
+			background: $color-06;
+			color: $color-01;
+			padding: 5px 5px 5px 25px;
+			border-radius: 5px;
+			position: relative;
+			&:before {
+				@include muses-icons(14px);
+				color: $color-01;
+				content: $icon-tag;
+				position: absolute;
+				top: 6px;
+				left: 5px;
+			}
+			&[style*='8pt'] {
+				@include font-size(11px, important);
+			}
+			&[style*='11.6pt'] {
+				@include font-size(12px, important);
+			}
+			&[style*='14pt'] {
+				@include font-size(13px, important);
+			}	
+			&[style*='16pt'] {
+				@include font-size(14px, important);
+			}
+			&[style*='19pt'] {
+				@include font-size(15px, important);
+				&:before {
+					top: 8px;
+				}
+			}						
+			&[style*='21pt'] {
+				@include font-size(17px, important);
+				&:before {
+					top: 10px;
+				}				
+			}	
+			&[style*='22pt'] {
+				@include font-size(18px, important);
+				&:before {
+					top: 12px;
+				}				
+			}							
+		}
+	}
+	&.widget_calendar .calendar_wrap table {
+		margin: 0 0 20px 0;
+		width: 100%;
+		@include font-size(14px);
+		caption, tbody td, tfoot td {
+			border: 1px solid $color-06;
+		}
+		caption, tfoot {
+			background: $color-06;
+		}
+		thead, tbody td a {
+			background: $color-07;
+		}
+		caption, td {
+			padding: 2px;
+		}
+		tbody td a, tfoot td a {
+			color: $color-01;
+			&:hover {
+				color: $color-02;
+			}			
+		}
+		caption {
+			text-transform: uppercase;
+		}
+		td {
+			text-align: center;
+			vertical-align: middle;
+		}		
+		thead th {
+			font-weight: bold;
+			border: 1px solid $color-07;
+		}
+		tbody {
+			td a {
+				display: block;
+				@include sizing(100%, 100%);
+				box-shadow: 0 0 0 2px $color-07;
+			}
+			tr:first-child td {
+				border-top: 1px solid $color-07;
+			}			
+		}
+	}
+	&.widget_nav_menu {
+		.menu-social-container .menu {
+			text-align: center;
+			&, li {
+				margin: 0 0 10px 0;
+			}
+			li {
+				padding: 0;
+				&:before {
+					display: none;
+				}
+				a {
+					&:before {
+						color: $color-01;
+					}
+					&:hover:before {
+						color: $color-07;
+					}
+				}
+			}
+		}
+	}
 }

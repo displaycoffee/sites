@@ -5,8 +5,12 @@
 }
 
 // Font size conversion
-@mixin font-size($size) {
-	font-size: #{$size / 16px}rem;
+@mixin font-size($size, $important: '') {
+	@if $important != '' {	
+		font-size: #{$size / 16px}rem !important;	
+	} @else {
+		font-size: #{$size / 16px}rem;
+	}
 }
 
 // Muses Icons

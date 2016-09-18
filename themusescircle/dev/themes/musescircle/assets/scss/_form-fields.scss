@@ -15,24 +15,28 @@ input[type='text'], input[type='button'], input[type='reset'], input[type='submi
 	outline: 0;
 }
 
-input[type='text'], input[type='button'], input[type='reset'], input[type='submit'], button, .button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a {
+input[type='text'], input[type='button'], input[type='reset'], input[type='submit'], select, button, .button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a {
 	line-height: 35px;
 	height: 35px;
 	border: 0;
 }
 
-input[type='text'] {
+input[type='text'], select {
 	background: $color-12;
 	border-radius: 4px;
 	color: $color-01;
 }
 
-input[type='text'] {
+input[type='text'], select {
 	padding: 0 10px;
 }
 
 textarea {
 	padding: 10px;
+}
+
+select option {
+	color: $color-02;
 }
 
 input[type='button'], input[type='reset'], input[type='submit'], button, .button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a {
@@ -60,4 +64,38 @@ a.button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a
 	line-height: normal;
 	@include sizing(auto, auto);
 	padding: 0;
+}
+
+/* Search form
+========================================================================== */
+
+.search-form {
+	position: relative;
+	margin: 0 0 20px 0;
+	input[type='text'] {
+		width: 100%;
+		padding: 0 40px 0 10px;
+		&:focus ~ button .icon {
+			color: $color-01;				
+		}
+	}
+	button {
+		position: absolute;
+		right: 10px;
+		top: 6px;
+		.icon {
+			color: $color-13;
+			@include transition(color 0.3s ease-in-out);
+			&:hover {
+				color: $color-01;
+			}
+		}
+	}			
+}	
+
+#top-bar .search-bar .search-form {
+	margin: 0;
+	input[type='text'] {
+		@include sizing(50%, 30px);
+	}
 }

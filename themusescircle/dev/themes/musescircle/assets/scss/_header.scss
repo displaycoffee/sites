@@ -19,31 +19,6 @@
 
 #top-bar .search-bar {	
 	text-align: right;
-	.search-form {
-		position: relative;
-		input[type='text'] {
-			@include sizing(50%, 30px);
-			line-height: 30px;
-			@include font-size(14px);
-			padding: 0 35px 0 10px;
-			&:focus ~ button .icon {
-				color: $color-01;				
-			}
-		}
-		button {
-			position: absolute;
-			right: 10px;
-			top: 6px;
-			.icon {
-				@include font-size(14px);
-				color: $color-13;
-				@include transition(color 0.3s ease-in-out);
-				&:hover {
-					color: $color-01;
-				}
-			}
-		}
-	}
 }
 
 /* Top bar - Home link

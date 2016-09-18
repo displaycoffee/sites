@@ -80,7 +80,7 @@ function toggleNavSubMenus( selector ) {
 var url = wpurl.siteurl;
 
 jQuery( document ).ready( function( $ ) {
-    toggleNavSubMenus( '.menu-main-container .menu > li' );
+    toggleNavSubMenus( '#header-nav .menu-main-container .menu > li' );
 
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
     	pagination     : false,
