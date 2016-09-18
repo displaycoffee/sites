@@ -1,3 +1,59 @@
+/* Social media
+========================================================================== */
+
+.menu-social-container ul {
+	margin: 0 -5px;
+	li {
+		@include inline-block(middle);		
+		a { 	
+			color: $color-01;
+			display: block;
+			font-size: 0;
+			text-align: center;
+			padding: 0 5px;
+			&:before {
+				@include muses-icons(18px);
+				color: $color-13;
+				content: $icon-heart;
+				@include transition(color 0.3s ease-in-out);
+			}
+			&[href*='facebook']:before {
+				content: $icon-facebook;
+			}
+			&[href*='plus.google']:before {
+				content: $icon-google-plus;
+			}
+			&[href*='linkedin']:before {
+				content: $icon-linkedin;
+			}
+			&[href*='twitter']:before {
+				content: $icon-twitter;
+			}
+			&[href*='instagram']:before {
+				content: $icon-instagram;
+			}
+			&[href*='youtube']:before {
+				content: $icon-youtube-play;
+			}
+			&[href*='pinterest']:before {
+				content: $icon-pinterest;
+			}
+			&[href*='goodreads']:before {
+				content: $icon-goodreads;
+			}
+			&[href*='librarything']:before {
+				content: $icon-library-thing;
+			}
+			&[href*='goodreads']:before, &[href*='librarything']:before {
+				@include font-size(16px);
+			}												
+			&:hover:before {
+				color: $color-01;
+			}								
+		}		
+	}
+}
+
 /* Layout
 ========================================================================== */
 

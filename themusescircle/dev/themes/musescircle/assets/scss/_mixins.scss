@@ -9,6 +9,25 @@
 	font-size: #{$size / 16px}rem;
 }
 
+// Muses Icons
+@mixin muses-icons($fs: '') {
+	@if $fs != '' {	
+		@include font-size($fs);		
+	} @else {
+		@include font-size(16px);
+	}
+    font-family: 'Muses Icons' !important;
+    speak: none;    
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @include inline-block(middle); 	
+}
+
 // Inline block
 @mixin inline-block($vertical-align) {
 	display: inline-block;

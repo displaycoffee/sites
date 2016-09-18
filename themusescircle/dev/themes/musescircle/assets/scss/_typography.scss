@@ -64,6 +64,175 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Muses Icons';
+    src: url($fonts + 'muses-icons.woff2') format('woff2'),
+         url($fonts + 'muses-icons.woff') format('woff'),
+         url($fonts + 'muses-icons.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Muses Icon
+========================================================================== */
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'Muses Icons' !important;
+    speak: none;
+    @include font-size(16px);
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @include inline-block(middle);    
+}
+
+.icon-library-thing:before {
+    content: $icon-library-thing;
+}
+.icon-goodreads:before {
+    content: $icon-goodreads;
+}
+.icon-search:before {
+    content: $icon-search;
+}
+.icon-heart:before {
+    content: $icon-heart;
+}
+.icon-star:before {
+    content: $icon-star;
+}
+.icon-film:before {
+    content: $icon-film;
+}
+.icon-check:before {
+    content: $icon-check;
+}
+.icon-times:before, .icon-close:before, .icon-remove:before {
+    content: $icon-times;
+}
+.icon-home:before {
+    content: $icon-home;
+}
+.icon-tag:before {
+    content: $icon-tag;
+}
+.icon-book:before {
+    content: $icon-book;
+}
+.icon-pencil:before {
+    content: $icon-pencil;
+}
+.icon-asterisk:before {
+    content: $icon-asterisk;
+}
+.icon-calendar:before {
+    content: $icon-calendar;
+}
+.icon-comment:before {
+    content: $icon-comment;
+}
+.icon-folder-open:before {
+    content: $icon-folder-open;
+}
+.icon-comments:before {
+    content: $icon-comments;
+}
+.icon-twitter:before {
+    content: $icon-twitter;
+}
+.icon-facebook:before {
+    content: $icon-facebook;
+}
+.icon-google-plus:before {
+    content: $icon-google-plus;
+}
+.icon-envelope:before {
+    content: $icon-envelope;
+}
+.icon-linkedin:before {
+    content: $icon-linkedin;
+}
+.icon-chevron-left:before {
+    content: $icon-chevron-left;
+}
+.icon-chevron-right:before {
+    content: $icon-chevron-right;
+}
+.icon-chevron-up:before {
+    content: $icon-chevron-up;
+}
+.icon-chevron-down:before {
+    content: $icon-chevron-down;
+}
+.icon-angle-double-left:before {
+    content: $icon-angle-double-left;
+}
+.icon-angle-double-right:before {
+    content: $icon-angle-double-right;
+}
+.icon-angle-double-up:before {
+    content: $icon-angle-double-up;
+}
+.icon-angle-double-down:before {
+    content: $icon-angle-double-down;
+}
+.icon-angle-left:before {
+    content: $icon-angle-left;
+}
+.icon-angle-right:before {
+    content: $icon-angle-right;
+}
+.icon-angle-up:before {
+    content: $icon-angle-up;
+}
+.icon-angle-down:before {
+    content: $icon-angle-down;
+}
+.icon-youtube:before {
+    content: $icon-youtube;
+}
+.icon-youtube-play:before {
+    content: $icon-youtube-play;
+}
+.icon-instagram:before {
+    content: $icon-instagram;
+}
+.icon-tumblr:before {
+    content: $icon-tumblr;
+}
+.icon-paper-plane:before {
+    content: $icon-paper-plane;
+}
+.icon-pinterest:before {
+    content: $icon-pinterest;
+}
+.icon-tv:before, .icon-television:before {
+    content: $icon-tv;
+}
+.icon-quill:before {
+    content: $icon-quill;
+}
+.icon-pen:before {
+    content: $icon-pen;
+}
+.icon-film2:before {
+    content: $icon-film2;
+}
+.icon-video-camera:before {
+    content: $icon-video-camera;
+}
+.icon-book2:before {
+    content: $icon-book2;
+}
+.icon-tv2:before, .icon-television2:before {
+    content: $icon-tv2;
+}
+
 /* General text elements
 ========================================================================== */
 

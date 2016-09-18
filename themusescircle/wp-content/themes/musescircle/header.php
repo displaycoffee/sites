@@ -26,15 +26,21 @@
 		// Get hide search setting
 		$hide_search = get_theme_mod( 'musescircle_header_hide_search' ); 
 
+		// Get social menu
+		$social_menu = wp_nav_menu( array( 
+			'theme_location' => 'social-menu',
+			'echo' 			 => false
+		) ); 
+
 		// Check if social media links or hide search is not checked
 		if ( has_nav_menu( 'social-menu' ) || !$hide_search ) {
 			// Create header top bar
 			$top_bar = '<section id="top-bar">';
 			$top_bar .= '<div class="wrapper">';
-			$top_bar .= musescircle_social_menu( 'social-menu' );
+			$top_bar .= $social_menu;
 			$top_bar .= $hide_search ? '' : get_search_form( false );
 			$top_bar .= '<a class="home-link" href="' . esc_url( get_bloginfo( 'url' ) ) . '">';
-			$top_bar .= '<svg class="icon icon-home" viewBox="0 0 30 32"><use xlink:href="' . esc_url( get_template_directory_uri() ) . '/assets/images/icons.svg#icon-home"></use></svg>';
+			$top_bar .= '<span class="icon icon-home"></span>';
 			$top_bar .= '</a>';
 			$top_bar .= '</div>';
 			$top_bar .= '</section>';
@@ -51,7 +57,6 @@
 			<?php 
 				wp_nav_menu( array( 
 					'theme_location' => 'main-menu',
-					'container_class' => 'menu-main-container'
 				) ); 
 			?>
 		</div>
