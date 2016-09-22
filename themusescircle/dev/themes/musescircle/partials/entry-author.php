@@ -41,21 +41,23 @@
 	?>
 	<?php 
 		// Create author social links
-		$author_social_links = $author_website ? musescircle_create_link( 'website', $author_website, 'Website' ) : '';
-		$author_social_links .= $author_facebook ? musescircle_create_link( 'facebook', $author_facebook, 'Facebook' ) : '';
-		$author_social_links .= $author_gplus ? musescircle_create_link( 'gplus', $author_gplus, 'Google+' ) : '';
-		$author_social_links .= $author_linkedin ? musescircle_create_link( 'linkedin', $author_linkedin, 'LinkedIn' ) : '';
-		$author_social_links .= $author_twitter ? musescircle_create_link( 'twitter', $author_twitter, 'Twitter' ) : '';			
-		$author_social_links .= $author_instagram ? musescircle_create_link( 'instagram', $author_instagram, 'Instagram' ) : '';
-		$author_social_links .= $author_youtube ? musescircle_create_link( 'youtube', $author_youtube, 'YouTube' ) : '';
-		$author_social_links .= $author_pinterest ? musescircle_create_link( 'pinterest', $author_pinterest, 'Pinterest' ) : '';
-		$author_social_links .= $author_tumblr ? musescircle_create_link( 'goodreads', $author_pinterest, 'Goodreads' ) : '';
-		$author_social_links .= $author_goodreads ? musescircle_create_link( 'tumblr', $author_pinterest, 'Tumblr' ) : '';
+		$author_social_links = $author_website ? '<li>' . musescircle_create_link( 'website', $author_website, 'Website' ) . '</li>' : '';
+		$author_social_links .= $author_facebook ? '<li>' . musescircle_create_link( 'facebook', $author_facebook, 'Facebook' ) . '</li>' : '';
+		$author_social_links .= $author_gplus ? '<li>' . musescircle_create_link( 'gplus', $author_gplus, 'Google+' ) . '</li>' : '';
+		$author_social_links .= $author_linkedin ? '<li>' . musescircle_create_link( 'linkedin', $author_linkedin, 'LinkedIn' ) . '</li>' : '';
+		$author_social_links .= $author_twitter ? '<li>' . musescircle_create_link( 'twitter', $author_twitter, 'Twitter' ) . '</li>' : '';			
+		$author_social_links .= $author_instagram ? '<li>' . musescircle_create_link( 'instagram', $author_instagram, 'Instagram' ) . '</li>' : '';
+		$author_social_links .= $author_youtube ? '<li>' . musescircle_create_link( 'youtube', $author_youtube, 'YouTube' ) . '</li>' : '';
+		$author_social_links .= $author_pinterest ? '<li>' . musescircle_create_link( 'pinterest', $author_pinterest, 'Pinterest' ) . '</li>' : '';
+		$author_social_links .= $author_goodreads ? '<li>' . musescircle_create_link( 'goodreads', $author_goodreads, 'Goodreads' ) . '</li>' : '';
+		$author_social_links .= $author_tumblr ? '<li>' . musescircle_create_link( 'tumblr', $author_tumblr, 'Tumblr' ) . '</li>' : '';
 
 		// Create author social block
-		$author_social_html = '<div class="entry-author-social">';
-		$author_social_html .= rtrim( $author_social_links, ', ' );
-		$author_social_html .= '</div>';
+		$author_social_html = '<div class="entry-author-social menu-social-container">';
+		$author_social_html .= '<strong>' . __( 'Connect:', 'musescircle' ) . '</strong>';
+		$author_social_html .= '<ul class="menu">';
+		$author_social_html .= $author_social_links;
+		$author_social_html .= '</ul></div>';
 
 		// Create author description block
 		$author_description_html = '<div class="entry-author-description">';

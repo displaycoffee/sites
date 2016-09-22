@@ -35,8 +35,8 @@
 			$args = array(
 				'end_size'	=> 2,
 				'mid_size'	=> 3,
-				'prev_text' => __( 'Previous', 'musescircle' ),
-				'next_text' => __( 'Next', 'musescircle' ),
+				'prev_text' => __( '<span class="icon icon-chevron-left"></span>', 'musescircle' ),
+				'next_text' => __( '<span class="icon icon-chevron-right"></span>', 'musescircle' ),
 				'type'		=> 'list'			
 			);
 
