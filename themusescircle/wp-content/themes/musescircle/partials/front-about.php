@@ -16,7 +16,7 @@
 ?>
 <?php 
 	// Default text for left column
-	$about_default_text = '<p>Welcome to our site! We\'re just getting started, but be sure to check back for more information soon.</p>';
+	$about_default_text = '<p>' . __( 'Welcome to our site! We\'re just getting started, but be sure to check back for more information soon.', 'musescircle' ) . '</p>';
 
 	// Create "About" block - START
 	$about_section = '<section id="about-site"><div class="wrapper">';

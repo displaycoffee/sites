@@ -23,6 +23,9 @@
 			'caption',
 		) );	
 
+		// Add support for posts/pages
+		add_post_type_support( 'page', 'excerpt' );
+
 		// Register navigation menus
 		register_nav_menus( array(
 			'main-menu'   => __( 'Main Menu', 'musescircle' ),
@@ -192,7 +195,12 @@
 		if ( has_excerpt() ) {	    
 		    return '<p>' . wp_trim_words( get_the_excerpt(), 50 ) . '</p>' . musescircle_read_more();
 		} else {
-			return '<p>' . get_the_excerpt() . '</p>' . musescircle_read_more();
+			// Check the length of the excerpt
+			if ( strlen( get_the_excerpt() ) > 0 ) {
+				return '<p>' . get_the_excerpt() . '</p>' . musescircle_read_more();
+			} else {
+				return '<p>' . __( 'For additional information, click the title or', 'musescircle' ) . '</p>' . musescircle_read_more() . '.';
+			}
 		}
 	}
 
@@ -200,6 +208,11 @@
 	function musescircle_create_link( $class, $url, $text ) {
 		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'musescircle' ) . '</a>';
 	}
+
+	// Create catergort lists
+	function musescircle_create_category_list( $id, $category ) {
+		return get_the_term_list( $id, $category, '<p class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
+	}	
 
 	// Include customizer choices
 	require_once( 'includes/customizer-choices.php' );

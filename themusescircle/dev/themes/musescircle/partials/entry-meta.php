@@ -39,9 +39,20 @@
 			echo '<meta itemprop="dateModified" content="' .  esc_attr( get_the_modified_date( get_option( 'date_format' ) ) ) . '"/>';
 		}
 	?>
-	<?php if ( !is_single() ) : ?>
-		<p class="categories" itemprop="keywords">
-			<?php _e( '<strong>Categories:</strong> ', 'musescircle' ); ?><?php the_category( ', ' ); ?>
-		</p>
-	<?php endif; ?>
+	<?php 
+		// Don't display these top category lists on single pages
+		if ( !is_single() ) {
+			// Get post type to generate dyanmic categories
+			$post_type = get_post_type();			
+
+			// Check what type of post we're viewing and display the right categories (mostly setup for search archive)
+			if ( $post_type == 'post' ) {
+				echo musescircle_create_category_list( $post->ID, 'category' );
+			} else if ( $post_type == 'insprvw-book-review' ) {
+				echo musescircle_create_category_list( $post->ID, 'insprvw-book-category' );
+			} else if ( $post_type == 'insprvw-movie-review' ||  $post_type == 'insprvw-tv-review' ) {
+				echo musescircle_create_category_list( $post->ID, 'insprvw-video-category' );
+			} 
+		}
+	?>
 </div>

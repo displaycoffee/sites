@@ -8,7 +8,7 @@
 ?>
 <footer class="entry-footer">
 	<div class="categories" itemprop="keywords">
-		<?php _e( '<strong>Categories:</strong> ', 'musescircle' ); ?><?php the_category( ', ' ); ?>
+		<?php echo musescircle_create_category_list( $post->ID, 'category' ); ?>
 	</div>
 	<?php echo the_tags( '<div class="tags" itemprop="keywords"><strong>' . __( 'Tags', 'musescircle' ) . ':</strong> ', ', ', '</div>' ); ?>
 	<?php

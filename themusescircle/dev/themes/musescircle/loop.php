@@ -21,7 +21,7 @@
 						// Display the title
 						the_title( $title_before, $title_after );
 					?>
-					<?php get_template_part( 'partials/entry', 'meta' ); ?>														
+					<?php get_template_part( 'partials/entry', 'meta' ); ?>			
 					<div class="entry-content" itemprop="text"><?php echo musescircle_excerpt(); ?></div>
 				</div>
 			</div>
