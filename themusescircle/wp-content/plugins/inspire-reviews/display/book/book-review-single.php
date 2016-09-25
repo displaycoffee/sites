@@ -37,7 +37,6 @@
 							echo do_shortcode( '[book-author names="' . $author_names . '"]' );
 						?>
 						<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>
-						<?php include INSPRVW_DIR . 'display/partials/review-author.php'; ?>
 					</div>
 				</div>
 				<?php include INSPRVW_DIR . 'display/partials/review-navigation.php'; ?>

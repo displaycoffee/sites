@@ -14,6 +14,18 @@
 		.entry-wrapper {
 			flex: 1;
 		}
+		.entry-content {
+			& > p:last-of-type, .read-more {
+				display: inline;
+			}
+			& > p:last-of-type {
+				margin: 0;
+				display: inline;
+			}
+			.read-more {
+				padding: 0 0 0 5px;
+			}
+		}		
 	}
 }
 
@@ -187,16 +199,14 @@
 	border: 5px solid $color-06;		
 }
 
-article > .entry-author .entry-author-thumbnail {
+.entry-author .entry-author-thumbnail {
 	flex: 1 1 160px;
 	max-width: 160px;
 }
 
-.entry-single {
-	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
-		flex: 1 1 200px;
-		max-width: 200px;		
-	}
+.book-author .book-author-thumbnail {
+	flex: 1 1 200px;
+	max-width: 200px;		
 }
 
 .entry-author .entry-author-details, .book-author .book-author-details {	
@@ -211,23 +221,3 @@ article > .entry-author .entry-author-thumbnail {
 		padding: 0 10px 0 0;
 	}
 }
-
-/* Entry - Multiple (aka Archives) - Posts and Reviews
-========================================================================== */
-
-// .entry-multiple {
-// 	.entry {
-// 		.entry-content {
-// 			& > p:last-of-type, .read-more {
-// 				display: inline;
-// 			}
-// 			& > p:last-of-type {
-// 				margin: 0;
-// 				display: inline;
-// 			}
-// 			.read-more {
-// 				padding: 0 0 0 5px;
-// 			}
-// 		}
-// 	}	
-// }
