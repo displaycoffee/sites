@@ -3,45 +3,50 @@
 
 .insprvw-recent-reviews .insprvw-review {
 	text-align: center;
-	position: relative;
 	padding: 0 20px;
-	.review-thumbnail, .review-date {
-		border-radius: 100%;
-	}
-	.review-thumbnail {
+	.review-meta {
 		margin: 0 auto 10px auto;
-		border: 10px solid $color-06;
 		max-width: 220px;
-		overflow: hidden;
-		.image-wrap {	
-			@include sizing(100%, 0);
-			padding: 0 0 100% 0;
+		position: relative;
+		.review-thumbnail, .review-date {
+			border-radius: 100%;
 		}
-	}
-	.review-date {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 2;
-		text-transform: uppercase;
-		border: 5px solid $color-06;
-		padding: 10px;
-		@include sizing(75px, 75px);
-		background: $color-05;
-		box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);
-		@include font-size(13px);
-		line-height: 1.4;
-		.month, .day {
-			@include inline-block(middle);
+		.review-thumbnail {
+			border: 10px solid $color-06;
+			overflow: hidden;
+			.image-wrap {	
+				@include sizing(100%, 0);
+				padding: 0 0 100% 0;
+				img {
+					width: 100%;
+				}
+			}
 		}
-		.month {
-			margin: 5px 2.5px 0 0;
-		}
-		.day {
-			margin: 5px 0 0 2.5px;
-		}
-		.year {
-			display: block;
+		.review-date {
+			position: absolute;
+			top: 0;
+			left: -20px;
+			z-index: 2;
+			text-transform: uppercase;
+			border: 5px solid $color-06;
+			padding: 10px;
+			@include sizing(75px, 75px);
+			background: $color-05;
+			box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);
+			@include font-size(13px);
+			line-height: 1.4;
+			.month, .day {
+				@include inline-block(middle);
+			}
+			.month {
+				margin: 5px 2.5px 0 0;
+			}
+			.day {
+				margin: 5px 0 0 2.5px;
+			}
+			.year {
+				display: block;
+			}
 		}
 	}
 	.review-title h4 {
@@ -76,5 +81,14 @@
 		p {
 			@include font-size(14px);
 		}
+	}
+}
+
+.insprvw-recent-reviews:not(.owl-carousel) {
+	@include flex(row wrap);
+	margin: 0 -20px;
+	.insprvw-review {
+		padding: 0 20px 20px 20px; 
+		flex: 1 1 20%;
 	}
 }

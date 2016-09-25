@@ -120,9 +120,11 @@
 
 				// Create single review block
 				$review .= '<div id="review-' . esc_attr( $postID ) . '" class="review insprvw-review">';				
+				$review .= '<div class="review-meta">';
 				$review .= $a['thumbnail'] == 'true' ? $review_thumbnail : '';
-				$review .= $review_title;
 				$review .= $review_date;
+				$review .= '</div>';
+				$review .= $review_title;
 				$review .= $a['line'] == 'true' ? '<hr />' : '';
 				$review .= $a['excerpt'] == 'true' ? '<div class="review-excerpt">' . insprvw_short_excerpt() . '</div>' : '';
 				$review .= '</div>';
