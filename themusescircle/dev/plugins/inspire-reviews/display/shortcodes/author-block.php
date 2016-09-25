@@ -62,22 +62,24 @@
 				$author_image_html .= '</div>';			
 
 				// Create author social links
-				$author_social_links = $author_website ? insprvw_create_link( 'website', $author_website, 'Website' ) : '';
-				$author_social_links .= $author_facebook ? insprvw_create_link( 'facebook', $author_facebook, 'Facebook' ) : '';
-				$author_social_links .= $author_gplus ? insprvw_create_link( 'gplus', $author_gplus, 'Google+' ) : '';
-				$author_social_links .= $author_linkedin ? insprvw_create_link( 'linkedin', $author_linkedin, 'LinkedIn' ) : '';
-				$author_social_links .= $author_twitter ? insprvw_create_link( 'twitter', $author_twitter, 'Twitter' ) : '';			
-				$author_social_links .= $author_instagram ? insprvw_create_link( 'instagram', $author_instagram, 'Instagram' ) : '';
-				$author_social_links .= $author_youtube ? insprvw_create_link( 'youtube', $author_youtube, 'YouTube' ) : '';
-				$author_social_links .= $author_pinterest ? insprvw_create_link( 'pinterest', $author_pinterest, 'Pinterest' ) : '';
-				$author_social_links .= $author_tumblr ? insprvw_create_link( 'tumblr', $author_tumblr, 'Tumblr' ) : '';
-				$author_social_links .= $author_goodreads ? insprvw_create_link( 'goodreads', $author_goodreads, 'Goodreads' ) : '';
-				$author_social_links .= $author_amazon ? insprvw_create_link( 'amazon', $author_amazon, 'Amazon Profile' ) : '';
+				$author_social_links = $author_website ? '<li>' . insprvw_create_link( 'website', $author_website, 'Website' ) . '</li>' : '';
+				$author_social_links .= $author_facebook ? '<li>' . insprvw_create_link( 'facebook', $author_facebook, 'Facebook' ) . '</li>' : '';
+				$author_social_links .= $author_gplus ? '<li>' . insprvw_create_link( 'gplus', $author_gplus, 'Google+' ) . '</li>' : '';
+				$author_social_links .= $author_linkedin ? '<li>' . insprvw_create_link( 'linkedin', $author_linkedin, 'LinkedIn' ) . '</li>' : '';
+				$author_social_links .= $author_twitter ? '<li>' . insprvw_create_link( 'twitter', $author_twitter, 'Twitter' ) . '</li>' : '';			
+				$author_social_links .= $author_instagram ? '<li>' . insprvw_create_link( 'instagram', $author_instagram, 'Instagram' ) . '</li>' : '';
+				$author_social_links .= $author_youtube ? '<li>' . insprvw_create_link( 'youtube', $author_youtube, 'YouTube' ) . '</li>' : '';
+				$author_social_links .= $author_pinterest ? '<li>' . insprvw_create_link( 'pinterest', $author_pinterest, 'Pinterest' ) . '</li>' : '';
+				$author_social_links .= $author_tumblr ? '<li>' . insprvw_create_link( 'tumblr', $author_tumblr, 'Tumblr' ) . '</li>' : '';
+				$author_social_links .= $author_goodreads ? '<li>' . insprvw_create_link( 'goodreads', $author_goodreads, 'Goodreads' ) . '</li>' : '';
+				$author_social_links .= $author_amazon ? '<li>' . insprvw_create_link( 'amazon', $author_amazon, 'Amazon Profile' ) . '</li>' : '';
 
 				// Create author social block
-				$author_social_html = '<div class="book-author-social">';
-				$author_social_html .= rtrim( $author_social_links, ', ' );
-				$author_social_html .= '</div>';
+				$author_social_html = '<div class="book-author-social menu-social-container">';
+				$author_social_html .= '<strong>' . __( 'Connect:', 'inspire-reviews' ) . '</strong>';
+				$author_social_html .= '<ul class="menu">';
+				$author_social_html .= str_replace( ',', '', $author_social_links );
+				$author_social_html .= '</ul></div>';
 
 				// Create author description block
 				$author_description_html = '<div class="book-author-description">';

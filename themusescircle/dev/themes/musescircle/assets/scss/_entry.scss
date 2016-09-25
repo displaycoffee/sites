@@ -25,28 +25,24 @@
 	margin: 0 20px 0 0;	
 }
 
-.thumbnail-extend {
-	.image-wrap {
-		line-height: 0;
-		border: 5px solid $color-06;
-		overflow: hidden;
-		img {
-			width: 100%;
-		}
+.thumbnail-extend .image-wrap {
+	line-height: 0;
+	border: 5px solid $color-06;
+	overflow: hidden;
+	img {
+		width: 100%;
 	}
 }
 
 .entry-multiple .entry {
-	&.post .entry-thumbnail {
-		@extend .flex-extend;
+	&.post .entry-thumbnail {	
+		@extend .flex-extend;	
 		@extend .thumbnail-extend;
 	}
-	&.insprvw-review {
-		.entry-item-reviewed {
-			@extend .flex-extend;
-			.entry-thumbnail {
-				@extend .thumbnail-extend;
-			}
+	&.insprvw-review .entry-item-reviewed {
+		@extend .flex-extend;
+		.entry-thumbnail {
+			@extend .thumbnail-extend;
 		}
 	}
 } 
@@ -62,6 +58,22 @@
 				background-repeat: no-repeat;
 				background-position: center 35%;
 				background-size: cover;
+			}
+		}
+	}
+	&.insprvw-review .entry-item-reviewed {
+		&:before, &:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.entry-thumbnail {
+			float: left;
+			max-width: 300px;
+			padding: 0 20px 20px 0;
+			.image-wrap {
+				line-height: 0;
+				border: 5px solid $color-06;				
 			}
 		}
 	}
@@ -87,10 +99,7 @@
 ========================================================================== */
 
 .entry .entry-meta {	
-	.author, .date, .bullet {
-		@include inline-block(middle);
-	}
-	.author, .date, .categories {
+	p {
 		margin: 0 0 2px 0;
 	}
 	.bullet {
@@ -100,65 +109,125 @@
 
 .entry-multiple .entry .entry-meta {
 	margin: 0 0 8px 0;
+	.author, .date, .bullet {
+		@include inline-block(middle);
+	}
 }
 
 .entry-single .entry .entry-meta {
-	margin: 0 0 20px 0;
+	margin: 0 0 18px 0;
 	@include font-size(18px);
+	p, .bullet {
+		@include inline-block(middle);
+	}
+}
+
+
+
+/* Entry - Rating
+========================================================================== */
+
+.entry.insprvw-review .entry-meta .rating {
+	strong, .rating-wrapper, .rating-out-of, .rating-value {
+		@include inline-block(middle);
+	}	
+	.rating-text {
+		@include font-size(0px);
+		text-index: -9999;
+	}
+	.rating-out-of {
+		position: relative;
+		background: $color-04;
+		.icon-star {
+			margin: 0 1px;
+		}
+		.rating-value {
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;	
+			white-space: nowrap;
+			overflow: hidden;
+			background: inherit;							
+			.icon-star {
+				color: $color-07;
+			}				
+		}
+	}		
+}
+
+.entry-multiple .entry.insprvw-review .entry-meta .rating .rating-out-of .icon-star {
+	@include font-size(16px);
+}
+
+.entry-single .entry.insprvw-review .entry-meta .rating .rating-out-of {
+	top: -3px;
+	.icon-star {
+		@include font-size(20px);
+	}
+}
+
+/* Entry - Author
+========================================================================== */
+
+.entry-author, .book-author {
+	@include flex(row wrap);
+	align-items: flex-start;
+	margin: 0 0 20px 0;	
+	h3 {
+		flex: 100%;
+		margin: 0 0 10px 0;
+	}
+}
+
+.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {	
+	margin: 0 20px 0 0;
+	line-height: 0;
+	overflow: hidden;
+	border: 5px solid $color-06;		
+}
+
+article > .entry-author .entry-author-thumbnail {
+	flex: 1 1 160px;
+	max-width: 160px;
+}
+
+.entry-single {
+	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
+		flex: 1 1 200px;
+		max-width: 200px;		
+	}
+}
+
+.entry-author .entry-author-details, .book-author .book-author-details {	
+	flex: 1;
+}
+
+.entry-author .entry-author-details .entry-author-social, .book-author .book-author-details .book-author-social {	
+	strong, .menu {
+		@include inline-block(middle);
+	}
+	strong {
+		padding: 0 10px 0 0;
+	}
 }
 
 /* Entry - Multiple (aka Archives) - Posts and Reviews
 ========================================================================== */
 
-.entry-multiple {
-	.entry {
-		.entry-content {
-			& > p:last-of-type, .read-more {
-				display: inline;
-			}
-			& > p:last-of-type {
-				margin: 0;
-				display: inline;
-			}
-			.read-more {
-				padding: 0 0 0 5px;
-			}
-		}
-	}	
-}
-
-/* Entry - Multiple (aka Archives) - Reviews
-========================================================================== */
-
-.entry-multiple .entry.insprvw-review {
-	.entry-meta .rating {		
-		margin: 0 0 2px 0;  
-		strong, .rating-wrapper, .rating-out-of, .rating-value {
-			@include inline-block(middle);
-		}
-		.rating-text {
-			@include font-size(0px);
-			text-index: -9999;
-		}
-		.rating-out-of {
-			position: relative;
-			background: $color-04;
-			.icon-star {
-				margin: 0 1px;
-				@include font-size(16px);
-			}
-			.rating-value {
-				overflow: hidden;
-				position: absolute;
-				top: 0;
-				left: 0;	
-				white-space: nowrap;
-				overflow: hidden;
-				background: inherit;							
-				.icon-star {
-					color: $color-07;
-				}				
-			}
-		}
-	}
-}
+// .entry-multiple {
+// 	.entry {
+// 		.entry-content {
+// 			& > p:last-of-type, .read-more {
+// 				display: inline;
+// 			}
+// 			& > p:last-of-type {
+// 				margin: 0;
+// 				display: inline;
+// 			}
+// 			.read-more {
+// 				padding: 0 0 0 5px;
+// 			}
+// 		}
+// 	}	
+// }

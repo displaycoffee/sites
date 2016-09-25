@@ -206,7 +206,7 @@
 
 	// Create generic links
 	function musescircle_create_link( $class, $url, $text ) {
-		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'musescircle' ) . '</a>';
+		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'musescircle' ) . '</a>, ';
 	}
 
 	// Create catergort lists

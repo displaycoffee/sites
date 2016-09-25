@@ -56,7 +56,7 @@
 		$author_social_html = '<div class="entry-author-social menu-social-container">';
 		$author_social_html .= '<strong>' . __( 'Connect:', 'musescircle' ) . '</strong>';
 		$author_social_html .= '<ul class="menu">';
-		$author_social_html .= $author_social_links;
+		$author_social_html .= str_replace( ',', '', $author_social_links );
 		$author_social_html .= '</ul></div>';
 
 		// Create author description block
