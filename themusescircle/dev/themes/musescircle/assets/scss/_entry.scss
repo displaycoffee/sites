@@ -1,4 +1,4 @@
-/* Entry - Multiple (aka Archives) - Posts and Reviews
+/* Entry - Layout
 ========================================================================== */
 
 .entry-multiple {
@@ -14,46 +14,10 @@
 		.entry-wrapper {
 			flex: 1;
 		}
-		.entry-header h3 {
-			@include font-size(18px);
-			font-family: $font-01;
-			line-height: inherit;
-			margin: 0 0 5px 0;
-			a {
-				color: $color-07;
-				&:hover {
-					color: $color-01;
-				}
-			}
-		}
-		.entry-content {
-			& > p:last-of-type, .read-more {
-				display: inline;
-			}
-			& > p:last-of-type {
-				margin: 0;
-				display: inline;
-			}
-			.read-more {
-				padding: 0 0 0 5px;
-			}
-		}
-		.entry-meta {
-			margin: 0 0 8px 0;
-			.author, .date, .bullet {
-				@include inline-block(middle);
-			}
-			.author, .date, .categories {
-				margin: 0 0 2px 0;
-			}
-			.bullet {
-				margin: 0 5px 2px 5px;
-			}
-		}
-	}	
+	}
 }
 
-/* Entry - Multiple (aka Archives) - Flex & Thumbnail Extend
+/* Entry - Thumbnail
 ========================================================================== */
 
 .flex-extend {
@@ -72,24 +36,101 @@
 	}
 }
 
-/* Entry - Multiple (aka Archives) - Posts
+.entry-multiple .entry {
+	&.post .entry-thumbnail {
+		@extend .flex-extend;
+		@extend .thumbnail-extend;
+	}
+	&.insprvw-review {
+		.entry-item-reviewed {
+			@extend .flex-extend;
+			.entry-thumbnail {
+				@extend .thumbnail-extend;
+			}
+		}
+	}
+} 
+
+.entry-single .entry {
+	&.post, &.page {
+		.entry-thumbnail {
+			@include sizing(100%, 200px);
+			margin: 0 0 20px 0;
+			border: 1px solid $color-03;
+			.image-wrap {
+				@include sizing(100%, 100%);
+				background-repeat: no-repeat;
+				background-position: center 35%;
+				background-size: cover;
+			}
+		}
+	}
+}
+
+/* Entry - Header
 ========================================================================== */
 
-.entry-multiple .entry.post .entry-thumbnail {
-	@extend .flex-extend;
-	@extend .thumbnail-extend;
-} 
+.entry-multiple .entry .entry-header h3 {
+	@include font-size(18px);
+	font-family: $font-01;
+	line-height: inherit;
+	margin: 0 0 5px 0;
+	a {
+		color: $color-07;
+		&:hover {
+			color: $color-01;
+		}
+	}
+}
+
+/* Entry - Meta
+========================================================================== */
+
+.entry .entry-meta {	
+	.author, .date, .bullet {
+		@include inline-block(middle);
+	}
+	.author, .date, .categories {
+		margin: 0 0 2px 0;
+	}
+	.bullet {
+		margin: 0 5px 2px 5px;
+	}	
+}
+
+.entry-multiple .entry .entry-meta {
+	margin: 0 0 8px 0;
+}
+
+.entry-single .entry .entry-meta {
+	margin: 0 0 20px 0;
+	@include font-size(18px);
+}
+
+/* Entry - Multiple (aka Archives) - Posts and Reviews
+========================================================================== */
+
+.entry-multiple {
+	.entry {
+		.entry-content {
+			& > p:last-of-type, .read-more {
+				display: inline;
+			}
+			& > p:last-of-type {
+				margin: 0;
+				display: inline;
+			}
+			.read-more {
+				padding: 0 0 0 5px;
+			}
+		}
+	}	
+}
 
 /* Entry - Multiple (aka Archives) - Reviews
 ========================================================================== */
 
 .entry-multiple .entry.insprvw-review {
-	.entry-item-reviewed {
-		@extend .flex-extend;
-		.entry-thumbnail {
-			@extend .thumbnail-extend;
-		}
-	}
 	.entry-meta .rating {		
 		margin: 0 0 2px 0;  
 		strong, .rating-wrapper, .rating-out-of, .rating-value {
