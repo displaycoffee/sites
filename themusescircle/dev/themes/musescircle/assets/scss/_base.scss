@@ -5,10 +5,6 @@
 	box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, dl, dd {
-	@include reset;
-}
-
 /* Base styles
 ========================================================================== */
 
@@ -25,4 +21,147 @@ body {
 img {
 	max-width: 100%;
 	@include sizing(auto, auto);
+}
+
+h1, h2, h3, h4, h5, h6, p, figure, pre, code {
+    margin: 0 0 20px 0;
+}
+
+ul, ol, dl {
+	padding: 0;
+	margin: 0 0 20px 40px;
+}
+
+pre, code {
+	white-space: normal;
+	display: block;
+	@include font-size(14px);
+	font-family: 'Courier New', monospace;
+	background: $color-14;	
+	color: $color-02;
+	border: 2px solid $color-06;
+	padding: 20px;
+}
+
+blockquote {
+	width: 75%;
+	margin: 0 auto 20px auto;
+	padding: 0 50px;
+	font-style: italic;
+	position: relative;
+	&:before, &:after {
+		position: absolute;		
+		@include muses-icons(25px);
+	}
+	&:before {
+		content: $icon-quotes-left;
+		top: 0;
+		left: 0;
+	}
+	&:after {
+		content: $icon-quotes-right;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+hr {
+	margin: 30px 0; 
+	@include sizing(100%, 0);
+	border: 0;
+	border-bottom: 1px dashed $color-06;
+}
+
+/* WordPress specific (For page/post editor mostly)
+========================================================================== */
+
+.wp-caption, .gallery {
+	background: url($images + 'muses-bg.png') 0 0 repeat;
+	background-attachment: fixed;
+	border: 1px solid $color-08;
+	margin: 0 0 20px 0;
+	.wp-caption-text {
+		font-style: italic;
+		@include font-size(14px);
+		margin: 10px 0 0 0;
+	}
+}
+
+.wp-caption {
+	padding: 10px;
+	line-height: 0;	
+	.wp-caption-text {
+		line-height: 1.5;
+	}
+}
+
+.gallery {	
+	@include flex(row wrap);
+	padding: 1% 0.5% 0 0.5%;
+	text-align: center;
+	figure {
+		margin: 0 0.5% 1% 0.5%;
+		padding: 1%;
+		background: rgba(0,0,0,0.25);
+		.gallery-icon {
+			line-height: 0;
+		}
+	}
+	&.gallery-columns-1 figure {
+		flex: 1 1 100%;
+	}
+	&.gallery-columns-2 figure {
+		flex: 1 1 49%;
+		max-width: 49%;
+	}
+	&.gallery-columns-3 figure {
+		flex: 1 1 32.33%;
+		max-width: 32.33%;
+	}
+	&.gallery-columns-4 figure {
+		flex: 1 1 24%;
+		max-width: 24%;
+	}
+	&.gallery-columns-5 figure {
+		flex: 1 1 19%;
+		max-width: 19%;
+	}
+	&.gallery-columns-6 figure {
+		flex: 1 1 15.66%;
+		max-width: 15.66%;
+	}
+	&.gallery-columns-7 figure {
+		flex: 1 1 13.28%;
+		max-width: 13.28%;
+	}
+	&.gallery-columns-8 figure {
+		flex: 1 1 11.5%;
+		max-width: 11.5%;
+	}
+	&.gallery-columns-9 figure {
+		flex: 1 1 10.11%;
+		max-width: 10.11%;
+	}			
+}
+
+.alignleft {
+	float: left;
+	clear: left;
+	margin: 0 20px 20px 0;
+}
+ 
+.alignright {
+	float: right;
+	clear: right;
+	margin: 0 0 20px 20px;
+}
+
+.aligncenter {
+	display: block;
+	margin: 0 auto 20px auto;
+}
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position :absolute !important;
 }

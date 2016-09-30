@@ -72,10 +72,7 @@
 		}
 	}
 	hr {
-		@include sizing(100%, 0);
 		margin: 10px 0;
-		border: 0;
-		border-bottom: 1px dashed $color-06;
 	}
 	.review-excerpt {
 		p {

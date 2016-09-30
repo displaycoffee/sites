@@ -46,11 +46,6 @@
 	&::-moz-placeholder          {@content}
 	&:-ms-input-placeholder      {@content}  
 }
-// Quick reset
-@mixin reset {
-	margin: 0;
-	padding: 0;
-}
 
 // Responsive max-width media query
 @mixin respond($breakpoint) {

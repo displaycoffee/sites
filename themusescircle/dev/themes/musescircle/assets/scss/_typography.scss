@@ -235,6 +235,12 @@
 .icon-tv2:before, .icon-television2:before {
     content: $icon-tv2;
 }
+.icon-quotes-left:before {
+    content: $icon-quotes-left;
+}
+.icon-quotes-right:before {
+    content: $icon-quotes-right;
+}
 
 /* General text elements
 ========================================================================== */
@@ -262,10 +268,6 @@ a {
 
 /* Headers
 ========================================================================== */
-
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0 0 20px 0;
-}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: $font-02;  
