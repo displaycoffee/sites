@@ -291,6 +291,7 @@
 		&.edit-allowed {
 			position: relative;
 			padding: 10px 90px 10px 0;
+			min-height: 47px;
 			.edit {
 				position: absolute;
 				top: 10px;
@@ -302,3 +303,66 @@
 		text-align: right;
 	}
 }
+
+/* Entry - Comments List
+========================================================================== */
+
+#comments .comments-list {
+	border-bottom: 1px solid $color-05;
+	margin: 0 0 20px 0;
+	ul {
+		margin: 0;
+		list-style: none;
+		li {
+			@include flex(row wrap);
+			align-items: flex-start;				
+			.comment-thumbnail {
+			    flex: 1 1 54px;
+			    max-width: 54px;	
+			    margin: 0 20px 0 0;	
+			    line-height: 0;
+			    border: 2px solid $color-06;				    			
+			}
+			.comment-wrapper {
+				flex: 1;
+				margin: 0 0 20px 0;
+				.comment-meta, .comment-footer {
+					p {
+						@include inline-block(middle);
+						margin: 0;
+					}
+				}
+				.comment-meta, .comment-content p {
+					margin: 0 0 10px 0;
+				}
+				.comment-meta {
+					font-style: italic;
+					&:before, &:after {		
+						@include muses-icons(14px);
+					}
+					&:before {
+						margin: -10px 10px 0 0;
+						content: $icon-quotes-left;
+					}
+					&:after {
+						margin: 0 0 -10px 10px;
+						content: $icon-quotes-right;
+					}						
+				}
+				.comment-footer .bullet {
+					@include inline-block(middle);
+					margin: 0 5px;
+				}					
+			}
+			.children {
+				margin: 0 0 0 74px;
+				flex: 1 1 100%;
+			}
+		}
+	}
+}
+
+/* Entry - Comments Respond
+========================================================================== */
+
+#respond {}
