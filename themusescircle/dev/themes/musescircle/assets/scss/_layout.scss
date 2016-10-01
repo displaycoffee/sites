@@ -112,8 +112,7 @@
 	}
 	.pagination > .page-numbers, .navigation-links ul {
 		li {
-			@include inline-block(middle);
-			line-height: 32px;
+			@include inline-block(middle);			
 			a {
 				color: $color-01;
 				background: $color-06;
@@ -130,6 +129,7 @@
 			margin: 0 -2.5px;
 			li {
 				min-width: 32px;
+				line-height: 32px;
 				margin: 0 2.5px;
 				.page-numbers {
 					display: block;
@@ -154,7 +154,7 @@
 			width: 50%;
 			a {
 				@include inline-block(middle);
-				padding: 0 10px;
+				padding: 5px 10px;
 				border-radius: 4px;					
 			}
 			&.prev {

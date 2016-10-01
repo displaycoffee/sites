@@ -39,9 +39,9 @@
 						<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>
 						<?php edit_post_link( __( 'Edit', 'inspire-reviews' ), '<p class="edit">', '</p>' ); ?>
 					</div>
-				</div>
-				<?php include INSPRVW_DIR . 'display/partials/review-navigation.php'; ?>
+				</div>				
 				<?php comments_template(); ?>
+				<?php include INSPRVW_DIR . 'display/partials/review-navigation.php'; ?>
 			<?php endwhile; wp_reset_postdata(); endif; ?>
 		</article>
 		<?php get_sidebar(); ?>

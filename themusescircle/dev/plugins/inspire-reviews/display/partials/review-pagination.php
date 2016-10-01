@@ -14,8 +14,8 @@
 		$args = array(
 			'end_size'	=> 2,
 			'mid_size'	=> 3,
-			'prev_text' => __( 'Previous', 'inspire-reviews' ),
-			'next_text' => __( 'Next', 'inspire-reviews' ),
+			'prev_text' => '<span class="icon icon-chevron-left"></span>',
+			'next_text' => '<span class="icon icon-chevron-right"></span>',
 			'type'		=> 'list'			
 		);
 

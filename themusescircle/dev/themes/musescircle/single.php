@@ -25,6 +25,7 @@
 						<?php edit_post_link( __( 'Edit', 'musescircle' ), '<p class="edit">', '</p>' ); ?>						
 					</div>
 				</div>
+				<?php comments_template(); ?>
 				<?php 
 					// Don't print empty markup if there's nowhere to navigate.
 					$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
@@ -50,8 +51,7 @@
 						// Display navigation block
 						echo $single_navigation;
 					}
-				?>
-				<?php comments_template(); ?>
+				?>				
 			<?php endwhile; wp_reset_postdata(); endif; ?>
 		</article>
 		<?php get_sidebar(); ?>
