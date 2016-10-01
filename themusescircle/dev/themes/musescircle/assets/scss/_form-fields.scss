@@ -11,28 +11,31 @@
 	color: $color-01;
 }}
 
-input[type='text'], input[type='button'], input[type='reset'], input[type='submit'], button, textarea {
+input[type='text'], input[type='email'], input[type='url'], input[type='button'], input[type='reset'], input[type='submit'], button, textarea {
 	outline: 0;
 }
 
-input[type='text'], input[type='button'], input[type='reset'], input[type='submit'], select, button, .button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a {
+input[type='text'], input[type='email'], input[type='url'], input[type='button'], input[type='reset'], input[type='submit'], select, 
+button, .button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a {
 	line-height: 35px;
 	height: 35px;
 	border: 0;
 }
 
-input[type='text'], select {
+input[type='text'], input[type='email'], input[type='url'], select, textarea {
 	background: $color-12;
 	border-radius: 4px;
 	color: $color-01;
+	width: 100%;
 }
 
-input[type='text'], select {
+input[type='text'], input[type='email'], input[type='url'], select {
 	padding: 0 10px;
 }
 
 textarea {
 	padding: 10px;
+	border: 0;
 }
 
 select option {
@@ -50,6 +53,11 @@ input[type='button'], input[type='reset'], input[type='submit'], button, .button
 	&:hover {
 		background: $color-06;
 	}
+}
+
+label {
+	display: block;
+	margin: 0 0 05 0;
 }
 
 a.button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a {
@@ -73,7 +81,6 @@ a.button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a
 	position: relative;
 	margin: 0 0 20px 0;
 	input[type='text'] {
-		width: 100%;
 		padding: 0 40px 0 10px;
 		&:focus ~ button .icon {
 			color: $color-01;				

@@ -308,8 +308,6 @@
 ========================================================================== */
 
 #comments .comments-list {
-	border-bottom: 1px solid $color-05;
-	margin: 0 0 20px 0;
 	ul {
 		margin: 0;
 		list-style: none;
@@ -365,4 +363,31 @@
 /* Entry - Comments Respond
 ========================================================================== */
 
-#respond {}
+#respond {
+	border-bottom: 1px solid $color-05;
+	margin: 0 0 20px 0;
+	form {
+		@include flex(row wrap);
+		margin: 0 -5px;
+		p {
+			margin: 0 5px 20px 5px;
+		}
+		.comment-form-author, .comment-form-email, .comment-form-url {
+			flex: 3;
+		}
+		.comment-form-author, .comment-form-email, .comment-form-url, .comment-form-comment {
+			label:after {
+				content: ':';
+			}
+		}
+		.comment-notes, .comment-form-comment, .form-submit {
+			flex: 1 1 100%;
+		}
+		.comment-form-comment {
+			order: 5;
+		}
+		.form-submit {
+			order: 6;
+		}
+	}
+}

@@ -150,24 +150,28 @@
 	}
 	.navigation-links {
 		margin: 0 0 20px 0;
-		ul li {
-			width: 50%;
-			a {
-				@include inline-block(middle);
-				padding: 5px 10px;
-				border-radius: 4px;					
-			}
-			&.prev {
-				padding: 0 2.5px 0 0;
-				a .icon {
-					margin: 0 10px 0 0;
+		text-align: center;
+		ul {
+			@include inline-block(middle);
+			margin: 0 auto;
+			li {
+				a {
+					@include inline-block(middle);
+					padding: 5px 10px;
+					border-radius: 4px;					
 				}
-			}
-			&.next {
-				padding: 0 0 0 2.5px;
-				text-align: right;
-				a .icon {
-					margin: 0 0 0 10px;
+				&.prev {
+					padding: 0 2.5px 0 0;
+					a .icon {
+						margin: 0 10px 0 0;
+					}
+				}
+				&.next {
+					padding: 0 0 0 2.5px;
+					text-align: right;
+					a .icon {
+						margin: 0 0 0 10px;
+					}
 				}
 			}
 		}
