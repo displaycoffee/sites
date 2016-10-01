@@ -76,7 +76,7 @@
 	}
 }
 
-.menu, .pagination > .page-numbers {
+.menu, .pagination > .page-numbers, .navigation-links ul {
 	&, li, ul {
 		list-style: none;
 		margin: 0;
@@ -110,36 +110,64 @@
 	.category-description {
 		margin: 0 0 50px 0;
 	}
+	.pagination > .page-numbers, .navigation-links ul {
+		li {
+			@include inline-block(middle);
+			line-height: 32px;
+			a {
+				color: $color-01;
+				background: $color-06;
+				@include transition(background 0.3s ease-in-out);
+				&:hover {
+					background: $color-05;
+				}				
+			}
+		}
+	}
 	.pagination {
 		text-align: center;
 		& > .page-numbers {
-			margin: 0 -4px;
+			margin: 0 -2.5px;
 			li {
-				@include inline-block(middle);
-				margin: 0 4px;
-				line-height: 32px;
 				min-width: 32px;
+				margin: 0 2.5px;
 				.page-numbers {
 					display: block;
 					padding: 0 5px;
 					@include sizing(100%, 100%);	
 					border-radius: 4px;					
-				}		
-				a.page-numbers {
-					color: $color-01;
-					background: $color-06;
-					@include transition(background 0.3s ease-in-out);
-					&:hover {
-						background: $color-05;
-					}					
 				}
-				span.page-numbers.current {
+				span.current {
 					background: $color-01;
 					color: $color-07;
 					font-weight: bold;
 				}
 				.icon {
 					@include font-size(12px);
+				}
+			}
+		}
+	}
+	.navigation-links {
+		margin: 0 0 20px 0;
+		ul li {
+			width: 50%;
+			a {
+				@include inline-block(middle);
+				padding: 0 10px;
+				border-radius: 4px;					
+			}
+			&.prev {
+				padding: 0 2.5px 0 0;
+				a .icon {
+					margin: 0 10px 0 0;
+				}
+			}
+			&.next {
+				padding: 0 0 0 2.5px;
+				text-align: right;
+				a .icon {
+					margin: 0 0 0 10px;
 				}
 			}
 		}

@@ -17,12 +17,12 @@
 
 		// Check if previous is there
 		if ( $previous ) {
-			$single_navigation .= '<li class="prev">' . get_previous_post_link( '%link', __( 'Previous: %title', 'inspire-reviews' ) ) . '</li>';
+			$single_navigation .= '<li class="prev">' . get_previous_post_link( '%link', '<span class="icon icon-chevron-left"></span>' . __( '%title', 'inspire-reviews' ) ) . '</li>';
 		}
 
 		// Check if next is there
 		if ( $next ) {
-			$single_navigation .= '<li class="next">' . get_next_post_link( '%link', __( 'Next: %title', 'inspire-reviews' ) ) . '</li>';
+			$single_navigation .= '<li class="next">' . get_next_post_link( '%link', __( '%title', 'inspire-reviews' ) . '<span class="icon icon-chevron-right"></span>' ) . '</li>';
 		}
 
 		// End navigation html

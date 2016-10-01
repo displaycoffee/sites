@@ -58,8 +58,8 @@
 				</div>
 				<nav class="navigation-links">
 					<ul>
-						<li class="prev"><?php previous_image_link( false, __( 'Previous', 'musescircle' ) ); ?></li>
-						<li class="next"><?php next_image_link( false, __( 'Next', 'musescircle' ) ); ?></li>					
+						<li class="prev"><?php previous_image_link( false, '<span class="icon icon-chevron-left"></span>' ); ?></li>
+						<li class="next"><?php next_image_link( false, '<span class="icon icon-chevron-right"></span>' ); ?></li>					
 					</ul>
 				</nav>
 			<?php endwhile; endif; ?>

@@ -36,12 +36,12 @@
 
 						// Check if previous is there
 						if ( $previous ) {
-							$single_navigation .= '<li class="prev">' . get_previous_post_link( '%link', __( 'Previous: %title', 'musescircle' ) ) . '</li>';
+							$single_navigation .= '<li class="prev">' . get_previous_post_link( '%link', '<span class="icon icon-chevron-left"></span>' . __( '%title', 'musescircle' ) ) . '</li>';
 						}
 
 						// Check if next is there
 						if ( $next ) {
-							$single_navigation .= '<li class="next">' . get_next_post_link( '%link', __( 'Next: %title', 'musescircle' ) ) . '</li>';
+							$single_navigation .= '<li class="next">' . get_next_post_link( '%link', __( '%title', 'musescircle' ) . '<span class="icon icon-chevron-right"></span>' ) . '</li>';
 						}
 
 						// Creat navigation block - END
