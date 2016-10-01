@@ -18,7 +18,7 @@
 					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry page">
 						<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
 						<div class="entry-content"><?php the_content(); ?></div>
-						<?php edit_post_link( __( 'Edit', 'musescircle' ), '<p class="edit">', '</p>' ); ?>							
+						<?php edit_post_link( __( 'Edit Content', 'musescircle' ), '<p class="edit">', '</p>' ); ?>							
 					</div>
 				</div>
 			<?php endwhile; wp_reset_postdata(); endif; ?>

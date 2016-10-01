@@ -36,8 +36,7 @@
 							// Use author shortcode to display author information
 							echo do_shortcode( '[book-author names="' . $author_names . '"]' );
 						?>
-						<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>
-						<?php edit_post_link( __( 'Edit', 'inspire-reviews' ), '<p class="edit">', '</p>' ); ?>
+						<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>						
 					</div>
 				</div>				
 				<?php comments_template(); ?>

@@ -29,8 +29,7 @@
 							<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 							<?php the_content(); ?>
 						</div>
-						<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>	
-						<?php edit_post_link( __( 'Edit', 'inspire-reviews' ), '<p class="edit">', '</p>' ); ?>								
+						<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>															
 					</div>
 				</div>				
 				<?php comments_template(); ?>

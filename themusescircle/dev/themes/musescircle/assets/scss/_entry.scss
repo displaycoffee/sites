@@ -259,32 +259,46 @@
 /* Entry - Footer
 ========================================================================== */
 
-.entry-single .entry .entry-footer {
-	margin: 0 0 18px 0;
-	border-top: 1px solid $color-05;
-	border-bottom: 1px solid $color-05;
-	padding: 10px 0;
-	p {
-		margin: 0 0 2px 0;
-	}
-	.tags, .categories {
-		position: relative;
-		padding: 0 0 0 25px;
-		strong {
-			padding: 0 5px 0 0;
+.entry-single .entry {
+	.entry-footer {
+		margin: 0 0 18px 0;
+		border-top: 1px solid $color-05;
+		border-bottom: 1px solid $color-05;
+		padding: 10px 0;
+		p {
+			margin: 0 0 2px 0;
 		}
-		&:before {
-			@include muses-icons;
-			color: $color-01;
-			position: absolute;
-			top: 2px;
-			left: 0;
+		.tags, .categories {
+			position: relative;
+			padding: 0 0 0 25px;
+			strong {
+				padding: 0 5px 0 0;
+			}
+			&:before {
+				@include muses-icons;
+				color: $color-01;
+				position: absolute;
+				top: 2px;
+				left: 0;
+			}
 		}
+		.tags:before {
+			content: $icon-tag;
+		}
+		.categories:before {
+			content: $icon-folder-open;
+		}
+		&.edit-allowed {
+			position: relative;
+			padding: 10px 90px 10px 0;
+			.edit {
+				position: absolute;
+				top: 10px;
+				right: 0;
+			}
+		}	
 	}
-	.tags:before {
-		content: $icon-tag;
-	}
-	.categories:before {
-		content: $icon-folder-open;
+	.edit {
+		text-align: right;
 	}
 }
