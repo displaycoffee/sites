@@ -22,6 +22,7 @@
 						<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
 						<div class="entry-content" itemprop="text"><?php the_content(); ?></div>
 						<?php get_template_part( 'partials/entry', 'footer' ); ?>
+						<?php edit_post_link( __( 'Edit', 'musescircle' ), '<p class="edit">', '</p>' ); ?>						
 					</div>
 				</div>
 				<?php 

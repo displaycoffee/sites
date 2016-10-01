@@ -97,7 +97,7 @@
 		// Create buy links list item
 		$book_buy_list_item = '<li>';
 		$book_buy_list_item .= '<span class="review-label">' . __( 'Buy', 'inspire-reviews' ) . ':</span> ';
-		$book_buy_list_item .= '<span class="review-label">';
+		$book_buy_list_item .= '<span class="review-value">';
 		$book_buy_list_item .= rtrim( $book_buy_links, ', ' );
 		$book_buy_list_item .= '</span>';
 		$book_buy_list_item .= '</li>';

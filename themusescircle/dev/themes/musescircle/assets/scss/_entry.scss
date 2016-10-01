@@ -52,7 +52,7 @@
 		.entry-thumbnail {
 			@include sizing(100%, 200px);
 			margin: 0 0 20px 0;
-			border: 1px solid $color-08;
+			border: 1px solid $color-05;
 			.image-wrap {
 				@include sizing(100%, 100%);
 				background-repeat: no-repeat;
@@ -73,7 +73,7 @@
 			margin: 0 20px 20px 0;
 			.image-wrap {
 				line-height: 0;
-				border: 5px solid $color-08;				
+				border: 5px solid $color-06;				
 			}
 		}
 	}
@@ -259,8 +259,14 @@
 /* Entry - Footer
 ========================================================================== */
 
-.entry-single .entry.insprvw-review .entry-footer {
+.entry-single .entry .entry-footer {
 	margin: 0 0 18px 0;
+	border-top: 1px solid $color-05;
+	border-bottom: 1px solid $color-05;
+	padding: 10px 0;
+	a {
+		color: #ffffff;
+	}
 	p {
 		margin: 0 0 2px 0;
 	}
