@@ -76,9 +76,7 @@ hr {
 ========================================================================== */
 
 .wp-caption, .gallery {
-	background: url($images + 'muses-bg.png') 0 0 repeat;
-	background-attachment: fixed;
-	border: 1px solid $color-08;
+	@include muses-bg;
 	margin: 0 0 20px 0;
 	.wp-caption-text {
 		font-style: italic;

@@ -19,7 +19,7 @@
 						<meta itemprop="name" content="<?php echo esc_attr( get_the_title() ); ?>"/>
 						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
 						<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
-						<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
+						<div class="entry-item-reviewed <?php echo ( has_post_thumbnail() ? 'has-thumbnail' : 'no-thumbnail' ); ?>" itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">
 							<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>						
 							<div class="entry-details">
 								<?php include INSPRVW_DIR . 'display/book/book-information.php'; ?>

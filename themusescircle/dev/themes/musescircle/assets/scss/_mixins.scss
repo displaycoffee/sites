@@ -13,6 +13,12 @@
 	}
 }
 
+@mixin muses-bg {
+	background: url($images + 'muses-bg.png') 0 0 repeat;
+	background-attachment: fixed;
+	border: 1px solid $color-05;	
+}
+
 // Muses Icons
 @mixin muses-icons($fs: '') {
 	@if $fs != '' {	

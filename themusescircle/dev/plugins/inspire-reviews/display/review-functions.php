@@ -108,9 +108,9 @@
 	}
 
 	// Create list items (without schema)
-	function insprvw_item_details( $class, $label, $value ) {
+	function insprvw_item_details( $label, $value ) {
 		// Create list item with details about review item
-		$review_item_details = '<li class="' . $class . '">';
+		$review_item_details = '<li>';
 		$review_item_details .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
 		$review_item_details .= '<span class="review-value">' . esc_html( $value ) . '</span>';
 		$review_item_details .= '</li>';
@@ -120,9 +120,9 @@
 	}
 
 	// Create list items (with schema)
-	function insprvw_item_details_schema( $class, $label, $itemprop, $value ) {
+	function insprvw_item_details_schema( $label, $itemprop, $value ) {
 		// Create list item with details about review item
-		$review_item_details_schema = '<li class="' . $class . '">';
+		$review_item_details_schema = '<li>';
 		$review_item_details_schema .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
 		$review_item_details_schema .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
 		$review_item_details_schema .= '</li>';
@@ -132,12 +132,12 @@
 	}
 
 	// Create list of book terms
-	function insprvw_item_terms( $pid, $term, $class, $label, $itemprop ) {
+	function insprvw_item_terms( $pid, $term, $label, $itemprop ) {
 		// Get the list of linked terns
 		$term_list = get_the_term_list( $pid, $term, '', ', ' );
 
 		// Create list item HTML
-		$term_list_item = '<li class="' . $class . '">';
+		$term_list_item = '<li>';
 		$term_list_item .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
 		$term_list_item .= '<span class="review-value" itemprop="' . $itemprop . '">' . $term_list . '</span>';
 		$term_list_item .= '</li>';
