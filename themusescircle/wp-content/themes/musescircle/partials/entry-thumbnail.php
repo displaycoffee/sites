@@ -28,11 +28,7 @@
 			$thumbnail_html .= '<meta itemprop="height" content="' . esc_attr( $thumbnail_height ) . '">';
 
 			// Display image or background for archive versus single page 
-			if ( !is_single() ) {
-				$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';		
-			} else {
-				$thumbnail_html .= '<div class="image-wrap" style="background-image: url(\'' . esc_url( $thumbnail_src_large ) . '\');"></div>';
-			}
+			$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';
 		} else {
 			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-image-rectangle.png' ) . '">';
 			$thumbnail_html .= '<meta itemprop="width" content="600">';
@@ -47,7 +43,7 @@
 	} else if ( is_page() && has_post_thumbnail() ) {
 		// Create thumbnail block
 		$thumbnail_html = '<div class="entry-thumbnail">'; 
-		$thumbnail_html .= '<div class="image-wrap" style="background-image: url(\'' . esc_url( $thumbnail_src_large ) . '\');"></div>';
+		$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';
 		$thumbnail_html .= '</div>';
 
 		// Display thumbnail block

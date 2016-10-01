@@ -49,15 +49,22 @@
 
 .entry-single .entry {
 	&.post, &.page {
+		position: relative;
 		.entry-thumbnail {
-			@include sizing(100%, 200px);
-			margin: 0 0 20px 0;
-			border: 1px solid $color-05;
+			@include sizing(125px, 240px);
+			position: absolute;
+			top: -270px;
+			left: 0;
+			@include flex(column nowrap);
+			justify-content: center;
 			.image-wrap {
-				@include sizing(100%, 100%);
-				background-repeat: no-repeat;
-				background-position: center 35%;
-				background-size: cover;
+				@include sizing(100%, 125px);
+				border: 5px solid $color-06;
+				border-radius: 100%;
+				overflow: hidden;
+				img {
+					width: 100%;
+				}
 			}
 		}
 	}
