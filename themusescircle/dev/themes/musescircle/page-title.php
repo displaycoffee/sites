@@ -8,14 +8,14 @@
 
 	// Check if we are on a page or post and if there is a thumbnail
 	if ( has_post_thumbnail() && ( is_page() || is_single() ) ) {
-		$thumbnail_class = ' class="has-thumbnail"';
+		$thumbnail_class = 'has-thumbnail';
 	} else {
-		$thumbnail_class = '';
+		$thumbnail_class = 'no-thumbnail';
 	}
 ?>
 <header id="header" class="main-header">
 	<div class="wrapper">
-		<h1<?php echo $thumbnail_class; ?>>
+		<h1 class="<?php echo $thumbnail_class; ?>">
 			<?php 				
 				if ( is_404() ) {
 					// Check if on 404 page

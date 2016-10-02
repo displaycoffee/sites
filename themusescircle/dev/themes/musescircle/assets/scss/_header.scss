@@ -189,13 +189,12 @@
 		height: 100%;
 	}
 	h1 {
+		margin: 0;
 		height: 100%;
 		@include flex(column nowrap);
 		justify-content: center;
 		@include font-size(55px);
 		&.has-thumbnail {
-			position: relative;
-			z-index: 2;
 			padding: 0 0 0 150px;
 		}
 	}

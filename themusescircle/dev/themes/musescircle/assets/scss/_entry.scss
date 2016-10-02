@@ -168,7 +168,7 @@
 .entry-single .entry.insprvw-review .entry-meta .rating .rating-out-of {
 	top: -3px;
 	.icon-star {
-		@include font-size(20px);
+		@include font-size(18px);
 	}
 }
 
@@ -178,7 +178,7 @@
 .entry-author, .book-author {
 	@include flex(row wrap);
 	align-items: flex-start;
-	margin: 0 0 20px 0;	
+	margin: 0 0 20px 0;
 	h3 {
 		flex: 100%;
 		margin: 0 0 10px 0;
@@ -186,24 +186,21 @@
 }
 
 .entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {	
+	flex: 1 1 160px;
+	max-width: 160px;	
 	margin: 0 20px 0 0;
 	line-height: 0;
 	overflow: hidden;
 	border: 5px solid $color-06;			
 }
 
-.entry-author .entry-author-thumbnail {
-	flex: 1 1 160px;
-	max-width: 160px;
-}
-
-.book-author .book-author-thumbnail {
-	flex: 1 1 200px;
-	max-width: 200px;		
-}
-
 .entry-author .entry-author-details, .book-author .book-author-details {	
 	flex: 1;
+}
+
+.entry-single .entry.insprvw-review .book-author .book-author-thumbnail {
+	flex: 1 1 200px;
+	max-width: 200px;	
 }
 
 .entry-author .entry-author-details .entry-author-social, .book-author .book-author-details .book-author-social {	
@@ -214,6 +211,8 @@
 		padding: 0 10px 0 0;
 	}
 }
+
+
 
 /* Entry - Review Details
 ========================================================================== */
@@ -261,6 +260,14 @@
 	.read-more {
 		padding: 0 0 0 5px;
 	}
+}
+
+.entry-single .entry .entry-content {
+	&:before, &:after {
+		content: '';
+		display: block;
+		clear: both;
+	}	
 }
 
 /* Entry - Footer
@@ -314,8 +321,8 @@
 /* Entry - Comments List
 ========================================================================== */
 
-#comments .comments-list {
-	ul {
+#comments {
+	 .comments-list ul {
 		margin: 0;
 		list-style: none;
 		li {
@@ -363,6 +370,18 @@
 				margin: 0 0 0 74px;
 				flex: 1 1 100%;
 			}
+		}
+	}
+	.pagination {
+		margin: 0 0 20px 0;
+		text-align: left;
+		&:before {
+			content: 'More comments:';
+			margin:  0 0 5px 0;
+			display: block;
+		}
+		ul li {
+			text-align: center;
 		}
 	}
 }

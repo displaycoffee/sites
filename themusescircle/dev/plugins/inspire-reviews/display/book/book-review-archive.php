@@ -22,8 +22,10 @@
 					// Get author name
 					$author_name = $author_term->name;
 
-					// Use author shortcode to display author information
-					echo do_shortcode( '[book-author names="' . $author_name . '" title="false"]' );				
+					// Use author shortcode to display author information and create header
+					$author_header = do_shortcode( '[book-author names="' . $author_name . '" title="false"]' );				
+					$author_header .= '<h2>' . sprintf( __( 'Books by %1$s', 'inspire-reviews' ), $author_name ) . '</h2>';
+					echo $author_header;
 				} else {
 					the_archive_description( '<div class="category-description">', '</div>' );
 				}

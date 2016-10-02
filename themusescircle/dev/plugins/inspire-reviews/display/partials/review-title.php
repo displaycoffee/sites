@@ -14,7 +14,7 @@
 					// Check if on acrhive
 					if ( is_author() ) {
 						// Check if the archive is an author archive
-						_e( 'Author: ', 'musescircle' );
+						_e( 'Author: ', 'inspire-reviews' );
 						echo get_the_author();
 					} else {
 						echo get_the_archive_title();
