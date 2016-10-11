@@ -211,7 +211,7 @@
 		return '<a class="' . $class . '" href="' . esc_url( $url ) . '" target="_blank">' . __( $text, 'musescircle' ) . '</a>, ';
 	}
 
-	// Create catergort lists
+	// Create catergory lists
 	function musescircle_create_category_list( $id, $category ) {
 		return get_the_term_list( $id, $category, '<p class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
 	}	

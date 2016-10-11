@@ -76,19 +76,20 @@ hr {
 ========================================================================== */
 
 .wp-caption, .gallery {
-	@include muses-bg;
 	margin: 0 0 20px 0;
 	.wp-caption-text {
 		font-style: italic;
-		@include font-size(14px);
-		margin: 10px 0 0 0;
+		@include font-size(14px);	
 	}
 }
 
 .wp-caption {
-	padding: 10px;
 	line-height: 0;	
+	border: 1px solid $color-05;	
 	.wp-caption-text {
+		@include muses-bg;
+		border-top: 0;
+		padding: 10px;
 		line-height: 1.5;
 	}
 }
@@ -97,12 +98,16 @@ hr {
 	@include flex(row wrap);
 	padding: 1% 0.5% 0 0.5%;
 	text-align: center;
+	@include muses-bg(true);
 	figure {
 		margin: 0 0.5% 1% 0.5%;
 		padding: 1%;
 		background: rgba(0,0,0,0.25);
 		.gallery-icon {
 			line-height: 0;
+		}
+		.wp-caption-text {
+			margin: 10px 0 0 0;
 		}
 	}
 	&.gallery-columns-1 figure {
