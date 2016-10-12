@@ -76,11 +76,33 @@ function toggleNavSubMenus( selector ) {
 		}
 	});
 }
+
+// Remove navigation when empty - mostly for attachment.php navigation
+function hideNavigation( $selector ) {
+	var previous = jQuery( $selector ).find( '.prev' );
+	var next = jQuery( $selector ).find( '.next' );
+
+	// Remove previous link there's nothing there
+	if ( previous.children().length == 0 ) {
+		previous.remove();
+	}
+
+	// Remove next link there's nothing there
+	if ( next.children().length == 0 ) {
+		next.remove();
+	}
+
+	// If previous and next links are empty, remove pagination/selector container
+	if ( ( previous.children().length == 0 ) && ( next.children().length == 0 ) ) {
+		jQuery( $selector ).remove();
+	}
+}
 // Site URL from theme funtions.php file
 var url = wpurl.siteurl;
 
 jQuery( document ).ready( function( $ ) {
     toggleNavSubMenus( '#header-nav .menu-main-container .menu > li' );
+    hideNavigation( 'body.attachment .navigation-links' );
 
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
     	pagination     : false,

@@ -3,6 +3,7 @@ var url = wpurl.siteurl;
 
 jQuery( document ).ready( function( $ ) {
     toggleNavSubMenus( '#header-nav .menu-main-container .menu > li' );
+    hideNavigation( 'body.attachment .navigation-links' );
 
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
     	pagination     : false,

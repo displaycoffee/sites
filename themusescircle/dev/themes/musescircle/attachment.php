@@ -12,8 +12,7 @@
 	// Grab all the variables we need for this page
 	$att_parent_link = get_permalink( $post->post_parent );
 	$att_parent_title = get_the_title( $post->post_parent );
-	$att_url = wp_get_attachment_url();
-	
+	$att_url = wp_get_attachment_url();	
 	$att_caption = get_the_excerpt();
 ?>
 <?php get_template_part( 'page', 'title' ); ?>
