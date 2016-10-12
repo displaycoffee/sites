@@ -44,7 +44,7 @@ if (wpFolder == 'themes') {
 if (dirName == 'musescircle') {
 	var jsSources = [		
 		devJS + '/owl-carousel.js',
-		devJS + '/svgxuse.js',
+		devJS + '/jquery.swipebox.js',
 		devJS + '/main.js',
 		devJS + '/run-functions.js'
 	];
