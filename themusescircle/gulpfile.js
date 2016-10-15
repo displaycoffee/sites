@@ -59,7 +59,6 @@ if (dirName == 'musescircle') {
 gulp.task('js', function() {
 	gulp.src(jsSources)
 		.pipe(concat('functions.js'))
-		.pipe(gulp.dest(devJS))
 		.pipe(uglify())
 		.pipe(gulp.dest(distJS));
 });

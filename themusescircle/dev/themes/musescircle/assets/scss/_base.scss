@@ -70,6 +70,7 @@ hr {
 	@include sizing(100%, 0);
 	border: 0;
 	border-bottom: 1px dashed $color-05;
+	clear: both;
 }
 
 /* WordPress specific (For page/post editor mostly)
@@ -105,6 +106,10 @@ hr {
 		background: rgba(0,0,0,0.25);
 		.gallery-icon {
 			line-height: 0;
+			a {
+				display: block;
+				@include sizing(100%, 100%);
+			}
 		}
 		.wp-caption-text {
 			margin: 10px 0 0 0;
@@ -114,36 +119,28 @@ hr {
 		flex: 1 1 100%;
 	}
 	&.gallery-columns-2 figure {
-		flex: 1 1 49%;
-		max-width: 49%;
+		@include gallery-columns(2, 1);
 	}
 	&.gallery-columns-3 figure {
-		flex: 1 1 32.33%;
-		max-width: 32.33%;
+		@include gallery-columns(3, 1);
 	}
 	&.gallery-columns-4 figure {
-		flex: 1 1 24%;
-		max-width: 24%;
+		@include gallery-columns(4, 1);
 	}
 	&.gallery-columns-5 figure {
-		flex: 1 1 19%;
-		max-width: 19%;
+		@include gallery-columns(5, 1);
 	}
 	&.gallery-columns-6 figure {
-		flex: 1 1 15.66%;
-		max-width: 15.66%;
+		@include gallery-columns(6, 1);
 	}
 	&.gallery-columns-7 figure {
-		flex: 1 1 13.28%;
-		max-width: 13.28%;
+		@include gallery-columns(7, 1);
 	}
 	&.gallery-columns-8 figure {
-		flex: 1 1 11.5%;
-		max-width: 11.5%;
+		@include gallery-columns(8, 1);
 	}
 	&.gallery-columns-9 figure {
-		flex: 1 1 10.11%;
-		max-width: 10.11%;
+		@include gallery-columns(9, 1);
 	}			
 }
 
