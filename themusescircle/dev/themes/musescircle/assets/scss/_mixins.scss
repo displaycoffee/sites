@@ -4,6 +4,12 @@
 	flex-flow: $flow;
 }
 
+// Inline flex 
+@mixin inline-flex($flow) {
+	display: inline-flex;
+	flex-flow: $flow;
+}
+
 // Font size conversion
 @mixin font-size($size, $important: '') {
 	@if $important != '' {	
@@ -14,12 +20,15 @@
 }
 
 // Calculation for gallery columns
-@mixin gallery-columns($columns, $spacing) {
-	flex: 1 1 ((100 / $columns - $spacing) * 1%);
-	max-width: ((100 / $columns - $spacing) * 1%);	
+@mixin gallery-columns($columns) {
+	max-width: ((170 * $columns) * 1px);
+	figure {
+		flex: 1 1 ((100 / $columns) * 1%);
+		max-width: ((100 / $columns) * 1%);		
+	}	
 }
 
-// For stone-link muses background
+// For stone-like muses background
 @mixin muses-bg($border: '') {
 	background: url($images + 'muses-bg.png') 0 0 repeat;
 	background-attachment: fixed;

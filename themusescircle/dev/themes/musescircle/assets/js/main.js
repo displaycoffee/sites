@@ -1,17 +1,17 @@
 // Toggle navigation sub menus
 function toggleNavSubMenus( selector ) {
 	jQuery( selector ).each( function() {
-		// Check if selector has a sub menu
-		if ( jQuery( this ).hasClass( 'menu-item-has-children' ) ) {
-			// Get current selector
-			var current = this;
+		// Get current nav selector
+		var currentNav = jQuery( this );
 
+		// Check if selector has a sub menu
+		if ( currentNav.hasClass( 'menu-item-has-children' ) ) {
 			// Add a toggle icon after main link element
-			jQuery( '<span class="icon icon-chevron-down toggle-submenu"></span>' ).insertAfter( jQuery( current ).find( '> a' ) ); 
+			jQuery( '<span class="icon icon-chevron-down toggle-submenu"></span>' ).insertAfter( currentNav.find( '> a' ) ); 
 
 			// Create sub menu variables for targetting			
-			var subMenuButton = jQuery( current ).find( '.toggle-submenu' );
-			var subMenu = jQuery( current ).find( '.sub-menu' );
+			var subMenuButton = currentNav.find( '.toggle-submenu' );
+			var subMenu = currentNav.find( '.sub-menu' );
 
 			// Toggle show/hide class if search button is clicked on
 		    jQuery( subMenuButton ).click( function() {
@@ -21,7 +21,7 @@ function toggleNavSubMenus( selector ) {
 
 		    // If anything outside search-button is clicked on, hide the search bar
 			jQuery( document ).on( 'click', function( event ) {
-				if ( !jQuery( event.target ).closest( current ).length ) {
+				if ( !jQuery( event.target ).closest( currentNav ).length ) {
 					jQuery( subMenu ).removeClass( 'show' );
 					jQuery( subMenuButton ).removeClass( 'show' );
 				}
@@ -53,29 +53,52 @@ function hideNavigation( selector ) {
 
 // Convert WordPress galleries with images into a swipebox gallery
 function addSwipeBoxGallery( selector ) {
-	// Get variables for the galleries	
-    var currentGallery = jQuery( selector );
-    var galleryID = jQuery( selector ).attr( 'id' );
-    var galleryImageLink = jQuery( selector ).find( '.gallery-item .gallery-icon a' );
+    jQuery( selector ).each( function() {
+        // Get variables for the galleries  
+        var currentGallery = jQuery( this );
+        var galleryID = currentGallery.attr( 'id' );
+        var galleryImageLink = currentGallery.find( '.gallery-item .gallery-icon a' );
+        var galleryValid;
 
-    // For each link in a gallery
-    jQuery( galleryImageLink ).each( function() {
-    	// Check if the link has a valid image extension
-		var srcCheck = ( /\.(gif|jpg|jpeg|tiff|png|bmp|svg)$/i ).test( this );     
-      
-      	// Only add swipebox if links check out to true
-		if ( srcCheck == true ) {
-			// Add rel attribute for image links to galleries can be connected
-			jQuery( this ).attr( 'rel', galleryID );
+        // Check all links in a gallery to see if they link to valid image file extensions
+        jQuery( galleryImageLink ).each( function() {
+            // Get the current image link
+            var currentImageLink = jQuery( this );
 
-			// Get the alt attribute on the image element and add as a title to the link for a caption
-			var galleryCaption = jQuery( this ).find( 'img' ).attr( 'alt' );
-			jQuery( this ).attr( 'title', galleryCaption );
+            // Check if the link has a valid image extension
+            var srcCheck = ( /\.(gif|jpg|jpeg|tiff|png|bmp|svg)$/i ).test( currentImageLink.attr( 'href' ) ); 
 
-			// Intitalize swipebox
-		    jQuery( galleryImageLink ).swipebox({
-		        loopAtEnd     : true
-		    });
-		}
+            // If gallery has all valid links, set gallery to valid
+            if ( srcCheck == false ) {
+                galleryValid = false;
+                return false;
+            } else {
+                galleryValid = galleryID;
+            }
+        });
+
+        // If the gallery is valid...
+        if ( galleryValid == galleryID ) {                    
+            // Loop through links and add necessary elements for swipebox
+            jQuery( galleryImageLink ).each( function() {
+                // Get the current image link
+                currentImageLink = jQuery( this );
+
+                // Add rel attribute for image links to galleries can be connected
+                currentImageLink.attr( 'rel', galleryID );
+
+                // Add swipebox class to add swipebox
+                currentImageLink.attr( 'class', 'swipebox' );
+
+                // Get the alt attribute on the image element and add as a title to the link for a caption
+                var galleryCaption = currentImageLink.find( 'img' ).attr( 'alt' );
+                currentImageLink.attr( 'title', galleryCaption );
+
+	            // Intitalize swipebox
+	            jQuery( '.swipebox' ).swipebox({
+	                loopAtEnd     : true
+	            });
+            });
+        }
     });
 }

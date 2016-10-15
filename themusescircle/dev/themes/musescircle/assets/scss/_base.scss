@@ -97,50 +97,63 @@ hr {
 
 .gallery {	
 	@include flex(row wrap);
-	padding: 1% 0.5% 0 0.5%;
-	text-align: center;
 	@include muses-bg(true);
+	padding: 5px;
+	margin: 0 auto 20px auto;
 	figure {
-		margin: 0 0.5% 1% 0.5%;
-		padding: 1%;
-		background: rgba(0,0,0,0.25);
+		margin: 0;
 		.gallery-icon {
-			line-height: 0;
+			padding: 5px;
+			margin: 5px;
+			background: $color-12;
 			a {
 				display: block;
-				@include sizing(100%, 100%);
+				@include sizing(100%, 0);
+				padding: 0 0 100% 0;
+				position: relative;
+				overflow: hidden;
+				img {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					margin: auto;
+				}
 			}
 		}
 		.wp-caption-text {
-			margin: 10px 0 0 0;
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
 		}
 	}
-	&.gallery-columns-1 figure {
-		flex: 1 1 100%;
+	&.gallery-columns-1 {
+		@include gallery-columns(1);
 	}
-	&.gallery-columns-2 figure {
-		@include gallery-columns(2, 1);
+	&.gallery-columns-2 {
+		@include gallery-columns(2);
 	}
-	&.gallery-columns-3 figure {
-		@include gallery-columns(3, 1);
+	&.gallery-columns-3 {
+		@include gallery-columns(3);
 	}
-	&.gallery-columns-4 figure {
-		@include gallery-columns(4, 1);
+	&.gallery-columns-4 {
+		@include gallery-columns(4);
 	}
-	&.gallery-columns-5 figure {
-		@include gallery-columns(5, 1);
+	&.gallery-columns-5 {
+		@include gallery-columns(5);
 	}
-	&.gallery-columns-6 figure {
-		@include gallery-columns(6, 1);
+	&.gallery-columns-6 {
+		@include gallery-columns(6);
 	}
-	&.gallery-columns-7 figure {
-		@include gallery-columns(7, 1);
+	&.gallery-columns-7 {
+		@include gallery-columns(7);
 	}
-	&.gallery-columns-8 figure {
-		@include gallery-columns(8, 1);
+	&.gallery-columns-8 {
+		@include gallery-columns(8);
 	}
-	&.gallery-columns-9 figure {
-		@include gallery-columns(9, 1);
+	&.gallery-columns-9 {
+		@include gallery-columns(9);
 	}			
 }
 

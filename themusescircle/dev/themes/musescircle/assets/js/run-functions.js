@@ -4,9 +4,7 @@ var url = wpurl.siteurl;
 jQuery( document ).ready( function( $ ) {
     toggleNavSubMenus( '#header-nav .menu-main-container .menu > li' );
     hideNavigation( 'body.attachment .navigation-links' );
-    jQuery( '.gallery' ).each( function() {
-        addSwipeBoxGallery( this );
-    });
+    addSwipeBoxGallery( '.gallery' );
 
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
     	pagination     : false,
