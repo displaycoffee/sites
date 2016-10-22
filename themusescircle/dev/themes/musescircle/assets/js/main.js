@@ -103,84 +103,96 @@ function addSwipeBoxGallery( selector ) {
     });
 }
 
-// Countdown timer
-// Modified from http://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies
-function newTimeFunction() {
-	// Loop through all count downs on the page
+// Countdown functions modified from http://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies
+
+// Get remaining time from an end date
+function getRemainingTime( endTime ) {
+	// Get current time
+	var currentTime = Date.parse( new Date() );	
+
+	// Get remaining time by subtracting end and current date
+	var remainingTime = endTime - currentTime;	
+
+	// Create total number of seconds for time calculations
+	var totalSeconds = Math.floor( remainingTime / 1000 );
+
+	// Create object to store time data
+	return {
+		'remaining' : remainingTime,
+		'days'      : Math.floor( totalSeconds / 60 / 60 / 24 ),
+		'hours'     : Math.floor( totalSeconds / 60 / 60 ) % 24,
+		'minutes'   : Math.floor( totalSeconds / 60 ) % 60,
+		'seconds'   : totalSeconds % 60
+	};
+}
+
+// Initialize countdown
+function initializeCountdown() {
+	// Loop through all countdown elements on the page
 	jQuery( '.countdown' ).each( function() {
-		// Get formatted times
-		var current = Date.parse( new Date() );
+		// Countdown selector 
+		var countdown = jQuery( this );
+
+		// Get end date of current selector
 		var end = Date.parse( this.dataset.endDate );
 
-		// Get remaining time by subtracting end and current date
-		var remainingTime = end - current;
+		// Get time values
+		var time = getRemainingTime( end );
 
 		// Check if there is any remaining time left
-		if ( remainingTime > 0 ) {
-			// Create units of time
-			var totalSeconds = Math.floor( remainingTime / 1000 );
-			var seconds = totalSeconds % 60;
-			var minutes = Math.floor( totalSeconds / 60 ) % 60;
-			var hours = Math.floor( totalSeconds / 60 / 60 ) % 24;
-			var days = Math.floor( totalSeconds / 60 / 60 / 24 );
-
-			// Quick function for inner countdown markup
-			function createCountdownMarkup( eleclass, value, label ) {
-				return '<div class="' + eleclass + '"><span class="countdown-value">' + value + '</span><span class="countdown-label">' + label + '</span></div>'
+		if ( time.remaining > 0 ) {
+			// Create inner countdown markup
+			function createCountdownMarkup( text ) {
+				return '<div class="' + text + '"><span class="countdown-value"></span><span class="countdown-label">' + text + '</span></div>'
 			}
 
-			// Create countdown elements
-			var secondsElement = createCountdownMarkup( 'seconds', days, 'seconds' );
-			var minutesElement = createCountdownMarkup( 'minutes', minutes, 'minutes' );
-			var hoursElement = createCountdownMarkup( 'hours', hours, 'hours' );
-			var daysElement = createCountdownMarkup( 'days', days, 'days' );
+			// Add elements to countdown div
+			countdown.append( createCountdownMarkup( 'days' ), createCountdownMarkup( 'hours' ), createCountdownMarkup( 'minutes' ), createCountdownMarkup( 'seconds' ) );
 
-			// Add timer to countdown div
-			jQuery( this ).append( daysElement, hoursElement, minutesElement, secondsElement );
+			// Selectors for time elements
+			var daysSelector = countdown.find( '.days .countdown-value' );
+			var hoursSelector = countdown.find( '.hours .countdown-value' );
+			var minutesSelector = countdown.find( '.minutes .countdown-value' );
+			var secondsSelector = countdown.find( '.seconds .countdown-value' );
+
+			// Add values to countdown
+			daysSelector.append( ( '0' + time.days ).slice( -2 ) );
+			hoursSelector.append( ( '0' + time.hours ).slice( -2 ) );
+			minutesSelector.append( ( '0' + time.minutes ).slice( -2 ) );
+			secondsSelector.append( ( '0' + time.seconds ).slice( -2 ) );			
+
+			// Update the clock values
+			function updateClock() {
+				// Get latest time
+				var time = getRemainingTime( end );
+
+				// Check if time values have changed 
+				if ( daysSelector.text() != time.days ) {
+					daysSelector.text( ( '0' + time.days ).slice( -2 ) );
+				}
+				if ( hoursSelector.text() != time.hours ) {
+					hoursSelector.text( ( '0' + time.hours ).slice( -2 ) );
+				}
+				if ( minutesSelector.text() != time.minutes ) {
+					minutesSelector.text( ( '0' + time.minutes ).slice( -2 ) );
+				}
+				if ( secondsSelector.text() != time.seconds ) {
+					secondsSelector.text( ( '0' + time.seconds ).slice( -2 ) );
+				}
+
+				// If there is no remaining time, stop the countdown
+				if ( time.remaining <= 0 ) {
+					clearInterval( timeinterval );
+				}
+			}
+
+			// Run update clock on one second intervals
+			updateClock();
+			var timeinterval = setInterval( updateClock, 1000 );
+		} else {
+			countdown.remove();
 		}
 	});
 }
 
-newTimeFunction();
-
-// function getTimeRemaining( endtime ) {
-// 	var time = Date.parse( endtime ) - Date.parse( new Date() );
-// 	var seconds = Math.floor((time / 1000) % 60);
-// 	var minutes = Math.floor((time / 1000 / 60) % 60);
-// 	var hours = Math.floor((time / (1000 * 60 * 60)) % 24);
-// 	var days = Math.floor(time / (1000 * 60 * 60 * 24));
-// 	return {
-// 		'total': time,
-// 		'days': days,
-// 		'hours': hours,
-// 		'minutes': minutes,
-// 		'seconds': seconds
-// 	};
-// }
-
-// function initializeClock(id, endtime) {
-// 	var clock = document.getElementById(id);
-// 	var daysSpan = clock.querySelector('.days');
-// 	var hoursSpan = clock.querySelector('.hours');
-// 	var minutesSpan = clock.querySelector('.minutes');
-// 	var secondsSpan = clock.querySelector('.seconds');
-
-// 	function updateClock() {
-// 		var time = getTimeRemaining(endtime);
-
-// 		daysSpan.innerHTML = time.days;
-// 		hoursSpan.innerHTML = ('0' + time.hours).slice(-2);
-// 		minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
-// 		secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
-
-// 		if (time.total <= 0) {
-// 			clearInterval(timeinterval);
-// 		}
-// 	}
-
-// 	updateClock();
-// 	var timeinterval = setInterval(updateClock, 1000);
-// }
-
-// var deadline = '2016-10-31';
-// initializeClock('clockdiv', deadline);
+initializeCountdown();
