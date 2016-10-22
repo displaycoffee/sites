@@ -21,6 +21,16 @@
 </header>	
 <div id="front-page-sections">
 	<?php get_template_part( 'partials/front', 'about' ); ?>
+	<section>
+		<div class="wrapper">
+			<div class="countdown" data-end-date="2016-10-31">
+				<span class="days"></span>
+			</div>			
+			<div class="countdown" data-end-date="2016-12-31">
+				<span class="days"></span>
+			</div>
+		</div>
+	</section>
 	<?php get_template_part( 'partials/front', 'recent-reviews' ); ?>
 	<?php get_template_part( 'partials/front', 'review-buttons' ); ?>
 	<?php get_template_part( 'partials/front', 'from-blog' ); ?>
