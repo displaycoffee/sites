@@ -23,12 +23,8 @@
 	<?php get_template_part( 'partials/front', 'about' ); ?>
 	<section>
 		<div class="wrapper">
-			<div class="countdown" data-end-date="2016-10-31">
-				<span class="days"></span>
-			</div>			
-			<div class="countdown" data-end-date="2016-12-31">
-				<span class="days"></span>
-			</div>
+			<div class="countdown" data-end-date="2016-10-31"></div>			
+			<div class="countdown" data-end-date="2017-12-22"></div>
 		</div>
 	</section>
 	<?php get_template_part( 'partials/front', 'recent-reviews' ); ?>

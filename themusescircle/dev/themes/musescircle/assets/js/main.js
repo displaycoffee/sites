@@ -106,14 +106,11 @@ function addSwipeBoxGallery( selector ) {
 // Countdown timer
 // Modified from http://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies
 function newTimeFunction() {
-	// Get elements with the class name "countdown"
-	var countdown = document.getElementsByClassName( 'countdown' );
-
 	// Loop through all count downs on the page
-	for ( i = 0; i < countdown.length; i++ ) {
+	jQuery( '.countdown' ).each( function() {
 		// Get formatted times
 		var current = Date.parse( new Date() );
-		var end = Date.parse( countdown[i].dataset.endDate );
+		var end = Date.parse( this.dataset.endDate );
 
 		// Get remaining time by subtracting end and current date
 		var remainingTime = end - current;
@@ -127,22 +124,21 @@ function newTimeFunction() {
 			var hours = Math.floor( totalSeconds / 60 / 60 ) % 24;
 			var days = Math.floor( totalSeconds / 60 / 60 / 24 );
 
+			// Quick function for inner countdown markup
+			function createCountdownMarkup( eleclass, value, label ) {
+				return '<div class="' + eleclass + '"><span class="countdown-value">' + value + '</span><span class="countdown-label">' + label + '</span></div>'
+			}
 
-			//var daysSpan = countdown[i].querySelector( '.days' );
-			//console.log(daysSpan);
-			//daysSpan.innerHTML = days;
-			
+			// Create countdown elements
+			var secondsElement = createCountdownMarkup( 'seconds', days, 'seconds' );
+			var minutesElement = createCountdownMarkup( 'minutes', minutes, 'minutes' );
+			var hoursElement = createCountdownMarkup( 'hours', hours, 'hours' );
+			var daysElement = createCountdownMarkup( 'days', days, 'days' );
 
-			// console.log( remainingTime )
-			// console.log( seconds );
-			// console.log( minutes );
-			// console.log( hours );
-			// console.log( days );
-			// console.log( clock[0] );
-			// console.log( clock[1] );
-			// console.log( clock.length );
+			// Add timer to countdown div
+			jQuery( this ).append( daysElement, hoursElement, minutesElement, secondsElement );
 		}
-	}
+	});
 }
 
 newTimeFunction();
