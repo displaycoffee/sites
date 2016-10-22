@@ -227,3 +227,6 @@
 
 	// Include customizer file
 	require_once( 'includes/customizer.php' );
+
+	// Include shortcode file
+	require_once( 'includes/shortcodes.php' );	
