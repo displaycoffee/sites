@@ -107,11 +107,8 @@ function addSwipeBoxGallery( selector ) {
 
 // Get remaining time from an end date
 function getRemainingTime( endTime ) {
-	// Get current time
-	var currentTime = Date.parse( new Date() );	
-
 	// Get remaining time by subtracting end and current date
-	var remainingTime = endTime - currentTime;	
+	var remainingTime = Date.parse( endTime ) - Date.parse( new Date() );	
 
 	// Create total number of seconds for time calculations
 	var totalSeconds = Math.floor( remainingTime / 1000 );
@@ -134,7 +131,7 @@ function initializeCountdown() {
 		var countdown = jQuery( this );
 
 		// Get end date of current selector
-		var end = Date.parse( this.dataset.endDate );
+		var end = this.dataset.endDate;
 
 		// Get time values
 		var time = getRemainingTime( end );
