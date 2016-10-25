@@ -130,8 +130,11 @@ function initializeCountdown() {
 		// Countdown selector 
 		var countdown = jQuery( this );
 
-		// Get end date of current selector
+		// Get possible data attributes
 		var end = this.dataset.endDate;
+		var content = this.dataset.content.replace( /(<([^>]+)>)/ig, '');
+		var url = this.dataset.url;
+		var target = ( ( this.dataset.target && this.dataset.target.toLowerCase() == 'new' ) ? ' target="_blank"' : '' );
 
 		// Get time values
 		var time = getRemainingTime( end );
@@ -143,8 +146,9 @@ function initializeCountdown() {
 				return '<div class="' + text + '"><span class="countdown-value"></span><span class="countdown-label">' + text + '</span></div>'
 			}
 
-			// Add elements to countdown div
-			countdown.append( createCountdownMarkup( 'days' ), createCountdownMarkup( 'hours' ), createCountdownMarkup( 'minutes' ), createCountdownMarkup( 'seconds' ) );
+			// Add timer elements to countdown div
+			countdown.append( '<div class="timer"></div>' );
+			countdown.find( '.timer' ).append( createCountdownMarkup( 'days' ), createCountdownMarkup( 'hours' ), createCountdownMarkup( 'minutes' ), createCountdownMarkup( 'seconds' ) );
 
 			// Selectors for time elements
 			var daysSelector = countdown.find( '.days .countdown-value' );
@@ -186,6 +190,19 @@ function initializeCountdown() {
 			// Run update clock on one second intervals
 			updateClock();
 			var timeinterval = setInterval( updateClock, 1000 );
+
+
+			// If there's content data, add message element
+			if ( content ) {
+				countdown.append( '<div class="message"></div>' );
+
+				// Check if there is a link and add it to the timer, otherwise, just display content
+				if ( url ) {
+					countdown.find( '.message' ).append( '<p><a href="' + url + '"' + target + '>' + content + '</a></p>' );
+				} else {
+					countdown.find( '.message' ).append( '<p>' + content + '</p>' );
+				}
+			}
 		} else {
 			countdown.remove();
 		}
