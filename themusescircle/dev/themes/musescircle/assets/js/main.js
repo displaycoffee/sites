@@ -132,7 +132,7 @@ function initializeCountdown() {
 
 		// Get possible data attributes
 		var end = this.dataset.endDate;
-		var content = this.dataset.content.replace( /(<([^>]+)>)/ig, '');
+		var content = this.dataset.content.replace( /(<([^>]+)>)/ig, '' );
 		var url = this.dataset.url;
 		var target = ( ( this.dataset.target && this.dataset.target.toLowerCase() == 'new' ) ? ' target="_blank"' : '' );
 
