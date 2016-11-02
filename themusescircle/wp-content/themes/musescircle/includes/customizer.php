@@ -140,7 +140,7 @@
 		    )
 		);
 
-	    // About - "Read More" url
+	    // About - "Read More" URL
 		$wp_customize->add_setting(
 		    'musescircle_about_more_url',
 		    array(
@@ -151,11 +151,106 @@
 		$wp_customize->add_control(
 		    'musescircle_about_more_url',
 		    array(
-		        'label'	  	  => __( '"Read More" url', 'musescircle' ),
+		        'label'	  	  => __( '"Read More" URL', 'musescircle' ),
 		        'section'     => 'musescircle_about',
 		        'type'	      => 'url'
 		    )
 		);	
+
+		// Countdown Promotion 
+	    $wp_customize->add_section(
+	        'musescircle_countdown_promotion',
+	        array(
+	            'title'		  => __( 'Countdown Promotion', 'musescircle' ),
+	            'description' => __( 'Promote a book, movie, or tv release with a countdown timer.', 'musescircle' ),
+	            'panel' 	  => 'musescircle_front_content'
+	        )
+	    );
+
+	    // Countdown Promotion - Hide section
+		$wp_customize->add_setting(
+		    'musescircle_countdown_promotion_hide',
+		    array(
+		        'sanitize_callback'	   => 'musescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'musescircle_sanitize_checkbox'
+		    )
+		);
+		$wp_customize->add_control(
+		    'musescircle_countdown_promotion_hide',
+		    array(
+		        'label'	  => __( 'Hide section', 'musescircle' ),
+		        'section' => 'musescircle_countdown_promotion',
+		        'type'	  => 'checkbox'
+		    )
+		);
+
+		// Countdown Promotion - Date
+		$wp_customize->add_setting(
+		    'musescircle_countdown_promotion_date',
+		    array(
+		        'sanitize_callback'	   => 'musescircle_sanitize_date',
+		        'sanitize_js_callback' => 'musescircle_sanitize_date'
+		    )
+		);
+		$wp_customize->add_control(
+		    'musescircle_countdown_promotion_date',
+		    array(
+		        'label'	      => __( 'End date', 'musescircle' ),
+		        'section'     => 'musescircle_countdown_promotion',
+		        'type'	      => 'date'
+		    )
+		);		
+		
+		// Countdown Promotion - Content
+		$wp_customize->add_setting(
+		    'musescircle_countdown_promotion_content',
+		    array(
+		        'sanitize_callback'	   => 'sanitize_text_field',
+		        'sanitize_js_callback' => 'sanitize_text_field'
+		    )
+		);
+		$wp_customize->add_control(
+		    'musescircle_countdown_promotion_content',
+		    array(
+		        'label'	      => __( 'Content', 'musescircle' ),
+		        'section'     => 'musescircle_countdown_promotion',		        
+		        'type'	      => 'text'
+		    )
+		);				
+
+	    // Countdown Promotion - URL
+		$wp_customize->add_setting(
+		    'musescircle_countdown_promotion_url',
+		    array(
+		        'sanitize_callback'	   => 'esc_url',
+		        'sanitize_js_callback' => 'esc_url'
+		    )
+		);
+		$wp_customize->add_control(
+		    'musescircle_countdown_promotion_url',
+		    array(
+		        'label'	      => __( 'URL', 'musescircle' ),
+		        'section'     => 'musescircle_countdown_promotion',
+		        'type'	      => 'text'
+		    )
+		);
+
+	    // Countdown Promotion - New Window
+		$wp_customize->add_setting(
+		    'musescircle_countdown_promotion_new_window',
+		    array(
+		        'sanitize_callback'	   => 'musescircle_sanitize_checkbox',
+		        'sanitize_js_callback' => 'musescircle_sanitize_checkbox'
+		    )
+		);
+		$wp_customize->add_control(
+		    'musescircle_countdown_promotion_new_window',
+		    array(
+		        'label'	  => __( 'Open URL in new window', 'musescircle' ),
+		        'section' => 'musescircle_countdown_promotion',
+		        'type'	  => 'checkbox'
+		    )
+		);			
 
 		// Latest Reviews 
 	    $wp_customize->add_section(
@@ -313,7 +408,7 @@
 		    )
 		);
 
-		// Review Buttons - Book url
+		// Review Buttons - Book URL
 		$wp_customize->add_setting(
 		    'musescircle_review_buttons_book_url',
 		    array(
@@ -324,7 +419,7 @@
 		$wp_customize->add_control(
 		    'musescircle_review_buttons_book_url',
 		    array(
-		        'label'	  	  => __( 'Book url', 'musescircle' ),
+		        'label'	  	  => __( 'Book URL', 'musescircle' ),
 		        'section'     => 'musescircle_review_buttons',
 		        'type'	      => 'url'
 		    )
@@ -347,7 +442,7 @@
 		    )
 		);
 
-		// Review Buttons - Movie url
+		// Review Buttons - Movie URL
 		$wp_customize->add_setting(
 		    'musescircle_review_buttons_movie_url',
 		    array(
@@ -358,7 +453,7 @@
 		$wp_customize->add_control(
 		    'musescircle_review_buttons_movie_url',
 		    array(
-		        'label'	  	  => __( 'Movie url', 'musescircle' ),
+		        'label'	  	  => __( 'Movie URL', 'musescircle' ),
 		        'section'     => 'musescircle_review_buttons',
 		        'type'	      => 'url'
 		    )
@@ -381,7 +476,7 @@
 		    )
 		);
 
-		// Review Buttons - TV url
+		// Review Buttons - TV URL
 		$wp_customize->add_setting(
 		    'musescircle_review_buttons_tv_url',
 		    array(
@@ -392,7 +487,7 @@
 		$wp_customize->add_control(
 		    'musescircle_review_buttons_tv_url',
 		    array(
-		        'label'	  	  => __( 'TV url', 'musescircle' ),
+		        'label'	  	  => __( 'TV URL', 'musescircle' ),
 		        'section'     => 'musescircle_review_buttons',
 		        'type'	      => 'url'
 		    )
@@ -415,7 +510,7 @@
 		    )
 		);
 
-		// Review Buttons - "Everything" url
+		// Review Buttons - "Everything" URL
 		$wp_customize->add_setting(
 		    'musescircle_review_buttons_everything_url',
 		    array(
@@ -426,7 +521,7 @@
 		$wp_customize->add_control(
 		    'musescircle_review_buttons_everything_url',
 		    array(
-		        'label'	  	  => __( '"Everything" url', 'musescircle' ),
+		        'label'	  	  => __( '"Everything" URL', 'musescircle' ),
 		        'section'     => 'musescircle_review_buttons',
 		        'type'	      => 'url'
 		    )
