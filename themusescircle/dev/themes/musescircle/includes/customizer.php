@@ -196,6 +196,7 @@
 		    'musescircle_countdown_promotion_date',
 		    array(
 		        'label'	      => __( 'End date', 'musescircle' ),
+		        'description' => __( 'If blank, countdown will not show.', 'musescircle' ),
 		        'section'     => 'musescircle_countdown_promotion',
 		        'type'	      => 'date'
 		    )
