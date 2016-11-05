@@ -192,5 +192,3 @@ function initializeCountdown() {
 		}
 	});
 }
-
-initializeCountdown();
