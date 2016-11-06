@@ -109,7 +109,7 @@ function addSwipeBoxGallery( selector ) {
 // Get remaining time from an end date
 function getRemainingTime( endTime ) {
 	// Get remaining time by subtracting end and current date
-	var remainingTime = Date.parse( endTime ) - Date.parse( new Date() );	
+	var remainingTime = Date.parse( new Date( endTime ) ) - Date.parse( new Date() );	
 
 	// Create total number of seconds for time calculations
 	var totalSeconds = Math.floor( remainingTime / 1000 );
@@ -127,12 +127,13 @@ function getRemainingTime( endTime ) {
 // Initialize countdown
 function initializeCountdown() {
 	// Loop through all countdown elements on the page
-	jQuery( '.countdown-timer' ).each( function() {
+	jQuery( '.countdown' ).each( function() {
 		// Countdown selector 
 		var countdown = jQuery( this );
 
-		// Get end date
+		// Get countdown data variables
 		var end = this.dataset.endDate;
+		var content = this.dataset.content.replace( /(<([^>]+)>)/ig, '' );
 
 		// Get time values
 		var time = getRemainingTime( end );
@@ -144,8 +145,9 @@ function initializeCountdown() {
 				return '<div class="' + text + '"><span class="countdown-value"></span><span class="countdown-label">' + text + '</span></div>'
 			}
 
-			// Add timer elements to countdown div
-			countdown.append( createCountdownMarkup( 'days' ), createCountdownMarkup( 'hours' ), createCountdownMarkup( 'minutes' ), createCountdownMarkup( 'seconds' ) );
+			// Add timer elements to countdown
+			countdown.append( '<div class="countdown-timer"></div>' );
+			countdown.find( '.countdown-timer' ).append( createCountdownMarkup( 'days' ), createCountdownMarkup( 'hours' ), createCountdownMarkup( 'minutes' ), createCountdownMarkup( 'seconds' ) );
 
 			// Selectors for time elements
 			var daysSelector = countdown.find( '.days .countdown-value' );
@@ -187,6 +189,13 @@ function initializeCountdown() {
 			// Run update clock on one second intervals
 			updateClock();
 			var timeinterval = setInterval( updateClock, 1000 );
+
+			// Check if content is available for a message
+			if ( content ) {
+				// Add message elements to countdown
+				countdown.append( '<div class="countdown-message"></div>' );
+				countdown.find( '.countdown-message' ).append( ( content.length > 100 ? ( content.substring(0, 97) + '...' ) : content ) );
+			}
 		} else {
 			countdown.remove();
 		}
