@@ -13,19 +13,22 @@
 	function musescircle_countdown( $atts, $content = null ) {
 		// Get arguments for shortcode
 	    $a = shortcode_atts( array(
-	        'date'    => '11-12-2016',
+	        'date'    => '2016-11-09',
 	        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque odit facere consectetur perspiciatis hic quos quasi, itaque qui quae totam iure blanditiis non, assumenda nemo ex',
 	        'url'     => '',
 	        'window'  => ''
 	    ), $atts );	
 
+	    // Get date check boolean
+	    $check_date = musescircle_parse_date( $a['date'] ); 
+
 	    // First, check if date is set and if so, display countdown timer
-	    if ( $a['date'] ) {
+	    if ( $a['date'] && $check_date ) {
 	    	// Strip html and convert any remaining special characters for data-content attribute use
 		    $new_content = htmlspecialchars( strip_tags( $a['content'] ), ENT_QUOTES);
 
 		    // Create "Countdown" block - START
-			$countdown_html = '<div class="countdown" data-end-date="' . esc_attr( $a['date'] ) . '" data-content="' . esc_attr( $new_content ) . '"></div>';
+			$countdown_html = '<div class="countdown" data-end-date="' . esc_attr( $a['date'] ) . '" data-content="' . esc_attr( $new_content ) . '">';
 
 		    // Create "Countdown" block - END
 			$countdown_html .= '</div>';

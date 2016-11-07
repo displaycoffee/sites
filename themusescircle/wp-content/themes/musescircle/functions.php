@@ -216,6 +216,18 @@
 		return get_the_term_list( $id, $category, '<p class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
 	}	
 
+    // Parse date into an array to check values
+    function musescircle_parse_date( $date ) {
+		$date_array = date_parse( $date );
+
+		// Check if the date contains a parseable month, year, and day, and there's no errors
+		if ( $date_array['year'] && $date_array['month'] && $date_array['day'] && $date_array['error_count'] <= 0 ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	// Include customizer choices
 	require_once( 'includes/customizer-choices.php' );
 
