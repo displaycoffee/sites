@@ -103,6 +103,16 @@ function addSwipeBoxGallery( selector ) {
     });
 }
 
+// Check url function from http://stackoverflow.com/a/22519594
+function checkURL( url ) {
+	var regexURL = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i;
+	if( !regexURL.test( url ) ) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 // Countdown functions modified from http://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies
 // Dates can be entered as... month/day/year, month-day-year, or Month Day, Year
 
@@ -133,7 +143,8 @@ function initializeCountdown() {
 
 		// Get countdown data variables
 		var end = this.dataset.endDate;
-		var content = this.dataset.content.replace( /(<([^>]+)>)/ig, '' );
+		var content = ( this.dataset.content ? this.dataset.content.replace( /(<([^>]+)>)/ig, '' ) : '' );
+		var url = this.dataset.url;
 
 		// Get time values
 		var time = getRemainingTime( end );
@@ -192,9 +203,18 @@ function initializeCountdown() {
 
 			// Check if content is available for a message
 			if ( content ) {
+				// Shorten content 
+				var newContent = ( content.length > 100 ? ( content.substring( 0, 97 ) + '...' ) : content );
+
 				// Add message elements to countdown
 				countdown.append( '<div class="countdown-message"></div>' );
-				countdown.find( '.countdown-message' ).append( ( content.length > 100 ? ( content.substring(0, 97) + '...' ) : content ) );
+
+				// Add URL is there is one
+				if ( url && checkURL( url ) == true ) {
+					countdown.find( '.countdown-message' ).append( '<a href="' + url + '">' + newContent + '</a>' );
+				} else {
+					countdown.find( '.countdown-message' ).append( newContent );
+				}
 			}
 		} else {
 			countdown.remove();
