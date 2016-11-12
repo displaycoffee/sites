@@ -30,5 +30,21 @@
 		</footer>
 	<?php endif; ?>	
 	<?php wp_footer(); ?>
+	<style>
+		.scroll-to-top {
+			position:fixed;
+			top:75px;
+			right:40px;
+			display:none;
+		}
+		.scroll-to-bottom {
+			position:fixed;
+			top:50px;
+			right:40px;
+			display:none;
+		}		
+	</style>
+	<a href="#" class="scroll-to-bottom">Scroll To Bottom</a>
+	<a href="#" class="scroll-to-top">Scroll To Top</a>
 </body>
 </html>

@@ -236,3 +236,24 @@ function hideCountdown() {
 		jQuery( '#countdown-promotion' ).remove();
 	}
 }
+
+// Scroll to top functionality
+// Modified from https://paulund.co.uk/how-to-create-an-animated-scroll-to-top-with-jquery
+function scrollOnPage( selector, distance, position ) {
+	// Check to see if the window is top if not then display button
+	jQuery( window ).scroll( function() {
+		if ( jQuery( this ).scrollTop() > distance ) {
+			jQuery( selector ).fadeIn();
+		} else {
+			jQuery( selector ).fadeOut();
+		}
+	});
+	
+	// Click event to scroll to top
+	jQuery( selector ).click( function() {
+		jQuery( 'html, body' ).animate({
+			scrollTop : position
+		}, 1000 );
+		return false;
+	});	
+}
