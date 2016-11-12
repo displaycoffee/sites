@@ -40,13 +40,25 @@
 			}
 			&[href*='tumblr']:before {
 				content: $icon-tumblr;
+			}
+			&[href*='digg']:before {
+			    content: $icon-digg;
+			}
+			&[href*='reddit']:before {    
+			    content: $icon-reddit;
+			}
+			&[href*='stumbleupon']:before {    
+			    content: $icon-stumble-upon;
 			}			
+			&[href*='mailto']:before {
+				content: $icon-envelope;
+			}							
 			&[href*='goodreads']:before {
 				content: $icon-goodreads;
 			}
 			&[href*='librarything']:before {
 				content: $icon-library-thing;
-			}
+			}	
 			&[href*='goodreads']:before, &[href*='librarything']:before {
 				@include font-size(16px);
 			}												
@@ -54,6 +66,18 @@
 				color: $color-01;
 			}								
 		}		
+	}
+}
+
+/* Social media - Sharing Buttons
+========================================================================== */
+
+.menu-social-container.sharing-buttons {
+	strong, .menu {
+		@include inline-block(middle);
+	}
+	strong {
+		padding: 0 5px 0 0;
 	}
 }
 
