@@ -6,6 +6,7 @@ jQuery( document ).ready( function( $ ) {
     hideNavigation( 'body.attachment .navigation-links' );
     addSwipeBoxGallery( '.gallery' );
     initializeCountdown();
+    hideCountdown();
     
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
     	pagination     : false,

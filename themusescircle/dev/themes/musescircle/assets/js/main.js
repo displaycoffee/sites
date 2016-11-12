@@ -145,6 +145,7 @@ function initializeCountdown() {
 		var end = this.dataset.endDate;
 		var content = ( this.dataset.content ? this.dataset.content.replace( /(<([^>]+)>)/ig, '' ) : '' );
 		var url = this.dataset.url;
+		var urlWindow = this.dataset.window;
 
 		// Get time values
 		var time = getRemainingTime( end );
@@ -209,9 +210,16 @@ function initializeCountdown() {
 				// Add message elements to countdown
 				countdown.append( '<div class="countdown-message"></div>' );
 
+				// Add new window attribute if input is "new"
+				if ( urlWindow && urlWindow.toLowerCase() == 'new' ) {
+					urlWindow = ' target="_blank"';
+				} else {
+					urlWindow = '';
+				}
+
 				// Add URL is there is one
 				if ( url && checkURL( url ) == true ) {
-					countdown.find( '.countdown-message' ).append( '<a href="' + url + '">' + newContent + '</a>' );
+					countdown.find( '.countdown-message' ).append( '<a href="' + url + '"' + urlWindow + '>' + newContent + '</a>' );
 				} else {
 					countdown.find( '.countdown-message' ).append( newContent );
 				}
@@ -220,4 +228,11 @@ function initializeCountdown() {
 			countdown.remove();
 		}
 	});
+}
+
+// Hide countdown on home page is nothing is there
+function hideCountdown() {
+	if ( jQuery( '#countdown-promotion .wrapper' ).children().length == 0 ) {
+		jQuery( '#countdown-promotion' ).remove();
+	}
 }

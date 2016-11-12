@@ -75,7 +75,7 @@
 
         // Check if the date is valid based on regex match
         if ( $date == '1' && checkdate( $match[2], $match[3], $match[1] ) ) {
-        	return $input;
+        	return $match[2] . '/' . $match[3] . '/' . $match[1];
         } else {
         	return '';
         }
