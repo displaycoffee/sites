@@ -24,7 +24,7 @@
         $date = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $input, $match );
 
         if ( $date == '1' && checkdate( $match[1], $match[2], $match[3] ) ) {
-        	return $input;
+        	return $match[1] . '/' . $match[2] . '/' . $match[3];
         } else {
         	return null;
         }

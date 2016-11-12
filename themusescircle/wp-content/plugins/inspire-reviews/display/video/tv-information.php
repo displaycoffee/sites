@@ -39,8 +39,12 @@
 			$tv_list_item .= '</li>';
 		}
 
+		// Update format of date
+		$tv_release_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $tv_release_date, $date_match );
+		$tv_release_date_formatted = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];		
+
 		// Continue list items of tv information
-		$tv_list_item .= $tv_release_date ? insprvw_item_details_schema( 'Release Date', 'dateCreated', $tv_release_date ) : '';
+		$tv_list_item .= $tv_release_date ? insprvw_item_details_schema( 'Release Date', 'dateCreated', $tv_release_date_formatted ) : '';
 		$tv_list_item .= $tv_network ? insprvw_item_details( 'Network', $tv_network ) : '';
 
 		// Add tv runtime

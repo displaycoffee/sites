@@ -13,5 +13,7 @@ jQuery( document ).ready( function( $ ) {
         $( this ).find( 'tr' ).addClass( 'form-field' );
     });
 
-    $( '.date-picker' ).datepicker();
+    $( '.date-picker' ).datepicker({
+        dateFormat: 'mm/dd/yy'
+    });
 });

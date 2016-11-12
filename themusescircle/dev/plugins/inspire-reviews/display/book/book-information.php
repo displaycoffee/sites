@@ -66,13 +66,17 @@
 			$book_list_item .= '<meta itemprop="sameAs" content="' . esc_attr( join( ', ', $author_websites ) ) . '">';
 			$book_list_item .= '</li>';
 		}
+
+		// Update format of date
+		$book_pub_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $book_pub_date, $date_match );
+		$book_pub_date_formatted = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];
 		
 		// Continue list items of book information
 		$book_list_item .= $book_isbn ? insprvw_item_details_schema( 'ISBN', 'isbn', $book_isbn ) : '';		
 		$book_list_item .= insprvw_item_terms( $post->ID, 'insprvw-book-genre', 'Genres', 'genre' );		
 		$book_list_item .= $book_length ? insprvw_item_details_schema( 'Length', 'numberOfPages', $book_length ) : '';
 		$book_list_item .= $book_binding ? insprvw_item_details_schema( 'Binding', 'bookFormat', $book_binding ) : '';
-		$book_list_item .= $book_pub_date ? insprvw_item_details_schema( 'Publication Date', 'datePublished', $book_pub_date ) : '';
+		$book_list_item .= $book_pub_date ? insprvw_item_details_schema( 'Publication Date', 'datePublished', $book_pub_date_formatted ) : '';
 		$book_list_item .= insprvw_item_terms( $post->ID, 'insprvw-book-publisher', 'Publisher', 'publisher' );
 
 		// Add goodreads link
