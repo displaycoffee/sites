@@ -200,3 +200,35 @@ hr {
 		display: none;
 	}	
 }
+
+.countdown {
+	text-align: center;
+	margin: 0 0 20px 0;
+	.countdown-timer {
+		margin: 0 -5px 10px -5px;
+		& > div {
+			@include inline-block(middle);
+			margin: 0 5px;
+			& > span {
+				display: block;
+			}
+			.countdown-value {
+				@include sizing(75px, 75px);
+				line-height: 65px;
+				margin: 0 0 5px 0;
+				@include font-size(20px);
+			    border: 5px solid $color-06;
+			    background: $color-05;
+			    box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);			
+				border-radius: 100%;
+			}
+			.countdown-label {
+				font-family: $font-02;
+				@include font-size(30px);
+			}
+		}
+	}
+	.countdown-message p {
+		margin: 0;
+	}
+}

@@ -35,6 +35,9 @@
 	}
 	add_action( 'after_setup_theme', 'musescircle_setup' );	
 
+	// Enable shortcodes in text widgets
+	add_filter( 'widget_text', 'do_shortcode' );
+
 	// Add theme related scripts
 	function musescircle_load_scripts() {
 		wp_enqueue_script( 'jquery' );
