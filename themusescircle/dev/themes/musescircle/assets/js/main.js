@@ -219,9 +219,9 @@ function initializeCountdown() {
 
 				// Add URL is there is one
 				if ( url && checkURL( url ) == true ) {
-					countdown.find( '.countdown-message' ).append( '<a href="' + url + '"' + urlWindow + '>' + newContent + '</a>' );
+					countdown.find( '.countdown-message' ).append( '<p><a href="' + url + '"' + urlWindow + '>' + newContent + '</a></p>' );
 				} else {
-					countdown.find( '.countdown-message' ).append( newContent );
+					countdown.find( '.countdown-message' ).append( '<p>' + newContent + '</p>' );
 				}
 			}
 		} else {

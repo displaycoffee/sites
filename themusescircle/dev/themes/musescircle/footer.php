@@ -30,7 +30,7 @@
 		</footer>
 	<?php endif; ?>	
 	<?php wp_footer(); ?>
-	<a href="#" class="scroll-to-top"><span class="icon icon-chevron-up"></span></a>
-	<a href="#" class="scroll-to-bottom"><span class="icon icon-chevron-down"></span></a>
+	<a href="#" class="scroll-to-top" title="<?php _e( 'Scroll to Top', 'musescircle' ) ?>"><span class="icon icon-chevron-up"></span></a>
+	<a href="#" class="scroll-to-bottom" title="<?php _e( 'Scroll to Bottom', 'musescircle' ) ?>"><span class="icon icon-chevron-down"></span></a>
 </body>
 </html>
