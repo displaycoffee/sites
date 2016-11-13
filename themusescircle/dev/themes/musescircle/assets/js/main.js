@@ -257,3 +257,31 @@ function scrollOnPage( selector, distance, position ) {
 		return false;
 	});	
 }
+
+// Spoiler toggle functionality
+function toggleSpoilerContent() {
+	// Loop through any spoiler codes on page
+	jQuery( '.spoiler' ).each( function() {
+		// Get variables for spoiler
+		var currentSpoiler = jQuery( this );
+		var spoilerClose = currentSpoiler.find( '.spoiler-close' );
+		var spoilerOpen = currentSpoiler.find( '.spoiler-open' );
+		var spoilerContent = currentSpoiler.find( '.spoiler-content' );
+
+		// Hide spoiler close tag and content by default
+		spoilerClose.add( spoilerContent ).addClass( 'spoiler-hide' );
+
+		// Click event for showing spoiler content
+		jQuery( spoilerOpen ).click( function() {
+			spoilerClose.add( spoilerContent ).addClass( 'spoiler-show' ).removeClass( 'spoiler-hide' );
+			spoilerOpen.addClass( 'spoiler-hide' ).removeClass( 'spoiler-show' );
+		});
+
+		// Click event for hiding spoiler content
+		jQuery( spoilerClose ).click( function() {
+			spoilerClose.add( spoilerContent ).addClass( 'spoiler-hide' ).removeClass( 'spoiler-show' );
+			spoilerOpen.addClass( 'spoiler-show' ).removeClass( 'spoiler-hide' );
+		});
+
+	});	
+}

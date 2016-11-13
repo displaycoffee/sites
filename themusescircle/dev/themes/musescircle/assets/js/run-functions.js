@@ -12,6 +12,7 @@ jQuery( document ).ready( function( $ ) {
     hideCountdown();
     scrollOnPage( '.scroll-to-top', 100, 0 );
     scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
+    toggleSpoilerContent();
 
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
     	pagination     : false,

@@ -9,6 +9,20 @@
 	}
 	add_shortcode( 'clearfix', 'musescircle_clearfix' );	
 
+	// Spoiler shortcode
+	function musescircle_spoiler( $atts, $content = null ) {
+		// Create spoiler block
+		$spoiler_html = '<span class="spoiler">';
+		$spoiler_html .= '<a class="spoiler-open">' . __( '[Open Spoiler]', 'musescircle' )  . '</a> ';
+		$spoiler_html .= '<a class="spoiler-close">' . __( '[Close Spoiler]', 'musescircle' )  . '</a> ';
+		$spoiler_html .= '<span class="spoiler-content">' . esc_html( $content ) . '</span>';
+		$spoiler_html .= '</span>';
+
+		// Display spoiler block
+		return $spoiler_html;
+	}
+	add_shortcode( 'spoiler', 'musescircle_spoiler' );		
+
 	// Countdown shortcode
 	function musescircle_countdown( $atts ) {
 		// Get arguments for shortcode

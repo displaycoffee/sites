@@ -185,3 +185,18 @@ hr {
 .clearfix {
 	clear: both;
 }
+
+.spoiler {
+	.spoiler-close, .spoiler-open {
+		cursor: pointer;
+		font-weight: bold;
+	    color: $color-07;
+	    @include transition(color 0.3s ease-in-out);
+	    &:hover {
+	        color: $color-01;
+	    }
+	}
+	.spoiler-hide {
+		display: none;
+	}	
+}
