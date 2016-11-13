@@ -32,3 +32,28 @@
 		}	
 	}
 }
+
+/* Scroll to top/bottom
+========================================================================== */
+
+.scroll-to-top, .scroll-to-bottom {
+	display: none;
+	position: fixed;
+	right: 40px;
+	@include arrow-buttons;	
+	color: $color-01;
+}
+
+.scroll-to-top {
+	bottom: 100px;
+	.icon {
+		margin: -5px 0 0 0;
+	}
+}
+
+.scroll-to-bottom {
+	bottom: 50px;
+	.icon {
+		margin: -2px 0 0 0;
+	}	
+}
