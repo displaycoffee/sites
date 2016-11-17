@@ -176,7 +176,7 @@ hr {
 
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
-	position :absolute !important;
+	position: absolute !important;
 }
 
 /* Theme shortcodes
@@ -199,6 +199,49 @@ hr {
 	.spoiler-hide {
 		display: none;
 	}	
+}
+
+.signature {
+	margin: 30px 0;
+	overflow: hidden;
+	.signature-wrapper {
+		background: url($images + 'textured-bg.png') center center no-repeat;
+		max-width: 500px;
+		height: 175px;
+		margin: 0 auto;
+		position: relative;
+		.signature-fairy, .signature-greeting, .signature-name {
+			position: absolute;
+			width: 100%;
+			text-align: center;			
+		}
+		.signature-fairy {
+			line-height: 0;
+			z-index: 1;
+			top: 0;
+			right: -50px;
+			img {
+				max-height: 175px;
+			}
+		}
+		.signature-greeting, .signature-name {
+			font-family: $font-02;
+			z-index: 2;
+			text-shadow: 1px 3px 0 rgba(0,0,0,0.85);
+			transform: rotate(-5deg);
+		}
+		.signature-greeting {
+			left: -60px;
+			top: 35px;
+			@include font-size(40px);
+		}
+		.signature-name {
+			left: 0;
+			top: 40px;
+			@include font-size(125px);
+			color: $color-07;
+		}
+	}
 }
 
 .countdown {

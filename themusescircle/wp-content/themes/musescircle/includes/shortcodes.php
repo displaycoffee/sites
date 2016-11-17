@@ -21,7 +21,33 @@
 		// Display spoiler block
 		return $spoiler_html;
 	}
-	add_shortcode( 'spoiler', 'musescircle_spoiler' );		
+	add_shortcode( 'spoiler', 'musescircle_spoiler' );	
+
+	// Signature shortcode
+	function musescircle_signature( $atts ) {
+		// Get arguments for shortcode
+	    $a = shortcode_atts( array(
+	        'greeting' => 'Best Wishes',
+	        'name'     => 'Mia'
+	    ), $atts );	
+
+	    // Create image attribute text
+	    $attribute_text = esc_html( $a['greeting'] ) . ', ' . esc_html( $a['name'] );
+
+		// Create signature block
+		$signature_html = '<div class="signature"><div class="signature-wrapper">';
+		$signature_html .= '<div class="signature-fairy">';
+		$signature_html .= '<img src="' . esc_url( get_template_directory_uri() . '/assets/images/fairy.png' ) . '" alt="' . esc_html( $attribute_text ) . '" title="' . esc_html( $attribute_text ) . '" />';
+		$signature_html .= '</div>';
+		$signature_html .= '<p class="signature-greeting">' . esc_html( $a['greeting'] ) . ',</p>';
+		$signature_html .= '<p class="signature-name">' . esc_html( $a['name'] ) . '</p>';
+		$signature_html .= '</div></div>';
+
+		// Display signature block
+		return $signature_html;
+	}
+	add_shortcode( 'signature', 'musescircle_signature' );	
+
 
 	// Countdown shortcode
 	function musescircle_countdown( $atts ) {
