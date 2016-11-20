@@ -57,7 +57,7 @@ input[type='button'], input[type='reset'], input[type='submit'], button, .button
 
 label {
 	display: block;
-	margin: 0 0 05 0;
+	margin: 0 0 5px 0;
 }
 
 a.button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a {
@@ -105,4 +105,11 @@ a.button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a
 	input[type='text'] {
 		@include sizing(50%, 30px);
 	}
+}
+
+/* Contact form
+========================================================================== */
+
+.wpcf7-form .row {
+	margin: 0 -20px 20px -20px;
 }
