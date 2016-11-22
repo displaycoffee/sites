@@ -285,3 +285,50 @@ function toggleSpoilerContent() {
 
 	});	
 }
+
+// Initialize Mobile Menu
+function initializeMobileMenu( selector, width ) {
+	// Variables for use inside function
+	var mobile_once = false;
+	var parentSelector = jQuery( selector ).parent();
+
+	// Create mobile menu elements
+	function createMobileElements() {
+		// Create mobile menu container and menu toggle button
+		jQuery( 'body' ).append( '<div class="mobile-menu hidden"></div>' );
+		parentSelector.append( '<div class="mobile-toggle" style="position: relative; z-index: 99999;"><a>Toggle Button</a></div>' );
+
+		// Move selected menu to mobile container
+		jQuery( selector ).detach().appendTo( '.mobile-menu' );
+	}
+
+	// Replace mobile elements
+	function replaceMobileElements() {
+		// Remove mobile menu elements
+		jQuery( '.mobile-menu, .mobile-toggle' ).remove();
+
+		// Move selected menu to mobile container
+		jQuery( selector ).detach().appendTo( parentSelector );
+	}
+
+	// Check width of browser
+	function checkBrowserWidth() {
+	    if ( ( window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth ) <= width ) {
+	        createMobileElements();
+	    } else {
+	        replaceMobileElements();
+	    }
+	}
+
+	checkBrowserWidth();
+
+
+	//  Toggle mobile menu
+	jQuery( '.mobile-toggle a' ).click( function() {
+		if ( jQuery( '.mobile-menu' ).hasClass( 'hidden' ) ) {
+			jQuery( '.mobile-menu' ).removeClass( 'hidden' ).addClass( 'show' );
+		} else {
+			jQuery( '.mobile-menu' ).removeClass( 'show' ).addClass( 'hidden' );
+		}
+	});
+}

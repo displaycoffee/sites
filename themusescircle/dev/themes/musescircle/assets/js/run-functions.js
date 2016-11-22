@@ -14,6 +14,12 @@ jQuery( document ).ready( function( $ ) {
     scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
     toggleSpoilerContent();
 
+    var mobile_once = false;
+    if ( !mobile_once ) {
+        initializeMobileMenu( '.menu-main-container', 767 );
+        mobile_once = true;
+    };
+
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
     	pagination     : false,
     	navigation     : true,
