@@ -1,0 +1,8 @@
+/* 767 Breakpoint
+========================================================================== */
+
+@include respond(767) {
+	#header-nav .mobile-menu-button {
+		display: block;
+	}
+}

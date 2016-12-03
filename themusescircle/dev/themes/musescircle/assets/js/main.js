@@ -286,49 +286,104 @@ function toggleSpoilerContent() {
 	});	
 }
 
+// Debounce function from underscore.js and https://davidwalsh.name/javascript-debounce-function
+function debounce( func, wait, immediate ) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if ( !immediate ) { 
+				func.apply( context, args );
+			}
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout( timeout );
+		timeout = setTimeout( later, wait );
+		if ( callNow ) { 
+			func.apply( context, args ); 
+		}
+	};
+};
+
 // Initialize Mobile Menu
-function initializeMobileMenu( selector, width ) {
-	// Variables for use inside function
-	var mobile_once = false;
-	var parentSelector = jQuery( selector ).parent();
+function initializeMobileMenu( options ) {
+	// Variables from mobile object
+	var menu = jQuery( options.menu );
+	var menuContainer = jQuery( options.menuContainer );
+	var mobileButton = jQuery( options.mobileButton );
+	var mobileMenu = jQuery( options.mobileMenu );
+	var width = options.width;
 
-	// Create mobile menu elements
-	function createMobileElements() {
-		// Create mobile menu container and menu toggle button
-		jQuery( 'body' ).append( '<div class="mobile-menu hidden"></div>' );
-		parentSelector.append( '<div class="mobile-toggle" style="position: relative; z-index: 99999;"><a>Toggle Button</a></div>' );
+	// Set a mobile false state (for window resize mainly)
+	var mobileOnce = false;
 
-		// Move selected menu to mobile container
-		jQuery( selector ).detach().appendTo( '.mobile-menu' );
-	}
-
-	// Replace mobile elements
-	function replaceMobileElements() {
-		// Remove mobile menu elements
-		jQuery( '.mobile-menu, .mobile-toggle' ).remove();
-
-		// Move selected menu to mobile container
-		jQuery( selector ).detach().appendTo( parentSelector );
-	}
-
-	// Check width of browser
-	function checkBrowserWidth() {
-	    if ( ( window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth ) <= width ) {
-	        createMobileElements();
-	    } else {
-	        replaceMobileElements();
-	    }
-	}
-
-	checkBrowserWidth();
-
-
-	//  Toggle mobile menu
-	jQuery( '.mobile-toggle a' ).click( function() {
-		if ( jQuery( '.mobile-menu' ).hasClass( 'hidden' ) ) {
-			jQuery( '.mobile-menu' ).removeClass( 'hidden' ).addClass( 'show' );
+	// Add/remove classes when mobile menu button is clicked on
+	mobileButton.click( function() {
+		if ( mobileMenu.hasClass( 'show' ) ) {
+			mobileMenu.removeClass( 'show' );
+			jQuery( 'body, html' ).removeClass( 'mobile-open' );
 		} else {
-			jQuery( '.mobile-menu' ).removeClass( 'show' ).addClass( 'hidden' );
+			mobileMenu.addClass( 'show' );
+			jQuery( 'body, html' ).addClass( 'mobile-open' );
 		}
 	});
+
+	// Resize actions for mobile menu
+	function mobileResizeAction() {
+		// Check all sorts of window and document widths to make sure resizing is consistent across browsers
+		if ( ( window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth ) <= width ) {			
+
+			// Check if mobile ones is false, meaning we haven't activated the mobile menu yet
+			if ( !mobileOnce ) {
+
+				// Move menu to menu container
+				menu.detach().appendTo( mobileMenu );
+
+				// In that mobile menu container, look for first level list and its items
+				menu.find( 'ul' ).find( 'li' ).each( function() {
+					// Get current selector and check if there are any second level lists
+					var current = jQuery( this );
+					var children = current.children( 'ul' );
+
+					// If there is a second level list, add a menu toggle icon
+					if ( children.length > 0 ) {
+						jQuery('<span class="icon icon-chevron-right slide-submenu"></span>').insertBefore( children );
+					}
+				});
+
+				// Add/remove classes to slide second level menu open
+				jQuery( '.slide-submenu' ).click( function() {
+					if ( jQuery( this ).next().hasClass( 'slide-open' ) ) {
+						jQuery( this ).next().removeClass( 'slide-open' );
+					} else {
+						jQuery( this ).next().addClass( 'slide-open' );
+					}
+				});	
+
+				// After everything has been done, set mobile to true so it's not run again on resize
+				mobileOnce = true;
+			}
+		} else {
+			// Check if mobile is true, meaning we're resizing and want to clean up on resize
+			if ( mobileOnce ) {
+				// Replace menu in correct location, remove slide menu toggle, and remove any extra slide-open class
+				menu.detach().appendTo( menuContainer );
+				jQuery( '.slide-submenu' ).remove();
+				jQuery( 'ul' ).removeClass( 'slide-open' );
+
+				// Then set mobile to false again so we can start over
+				mobileOnce = false;
+			}
+		}
+	}
+
+	// Call mobile menu once if browser is brought up or refreshed
+	mobileResizeAction();
+
+	// Then run mobile menu on resizing using debounce
+	var resizeForMobile = debounce(function() { 
+		mobileResizeAction(); 
+	}, 250 );
+	window.addEventListener( 'resize', resizeForMobile );
 }

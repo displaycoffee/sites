@@ -54,6 +54,7 @@
 			<?php if ( !is_front_page() ) : ?>
 				<h2 class="site-name"><a class="home-link" href="<?php echo esc_url( get_bloginfo( 'url' ) ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></h2>
 			<?php endif; ?>	
+			<div class="mobile-menu-button">Click here</div>
 			<?php 
 				wp_nav_menu( array( 
 					'theme_location' => 'main-menu',
@@ -61,3 +62,4 @@
 			?>
 		</div>
 	</nav>
+	<nav id="mobile-menu"></nav>

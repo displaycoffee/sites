@@ -38,7 +38,7 @@
 	}	
 }
 
-/* Header navigation - Main menu
+/* Header navigation
 ========================================================================== */
 
 #header-nav {
@@ -136,7 +136,7 @@
 	}
 }
 
-/* Navigation - Site Name
+/* Header navigation - Site Name
 ========================================================================== */
 
 #header-nav .site-name {
@@ -147,6 +147,19 @@
 	overflow: hidden;
 	text-shadow: 1px 2px 0 rgba(0,0,0,0.85);
 }
+
+/* Mobile button and menu
+========================================================================== */
+
+#header-nav .mobile-menu-button {
+	position: relative;
+	z-index: 99999999;
+}
+
+#header-nav .mobile-menu-button, #mobile-menu {
+	display: block;
+}
+
 
 /* Header - Front Page
 ========================================================================== */
