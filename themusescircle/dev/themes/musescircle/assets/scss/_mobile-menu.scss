@@ -1,0 +1,20 @@
+/* Mobile button and menu
+========================================================================== */
+
+#header-nav .mobile-menu-button {
+	position: relative;
+	z-index: 99999999;
+}
+
+#header-nav .mobile-menu-button, #mobile-menu {
+	display: none;
+}
+
+/* Responsive - Mobile button and menu
+========================================================================== */
+
+@include respond(767) {
+	#header-nav .mobile-menu-button {
+		display: block;
+	}
+}

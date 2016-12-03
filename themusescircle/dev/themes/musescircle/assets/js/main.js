@@ -1,11 +1,12 @@
 // Toggle navigation sub menus
 function toggleNavSubMenus( selector ) {
 	jQuery( selector ).each( function() {
-		// Get current nav selector
+		// Get current selector and check if there are any second level lists
 		var currentNav = jQuery( this );
+		var children = currentNav.children( 'ul' );
 
-		// Check if selector has a sub menu
-		if ( currentNav.hasClass( 'menu-item-has-children' ) ) {
+		// If there is a second level list, add a menu toggle icon
+		if ( children.length > 0 ) {
 			// Add a toggle icon after main link element
 			jQuery( '<span class="icon icon-chevron-down toggle-submenu"></span>' ).insertAfter( currentNav.find( '> a' ) ); 
 
@@ -333,10 +334,8 @@ function initializeMobileMenu( options ) {
 	function mobileResizeAction() {
 		// Check all sorts of window and document widths to make sure resizing is consistent across browsers
 		if ( ( window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth ) <= width ) {			
-
 			// Check if mobile ones is false, meaning we haven't activated the mobile menu yet
 			if ( !mobileOnce ) {
-
 				// Move menu to menu container
 				menu.detach().appendTo( mobileMenu );
 
@@ -384,6 +383,6 @@ function initializeMobileMenu( options ) {
 	// Then run mobile menu on resizing using debounce
 	var resizeForMobile = debounce(function() { 
 		mobileResizeAction(); 
-	}, 250 );
+	}, 200 );
 	window.addEventListener( 'resize', resizeForMobile );
 }
