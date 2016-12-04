@@ -12,9 +12,6 @@
 	.menu-social-container, .search-bar, .home-link {
 		flex: 1;
 	}
-	.search-bar, .home-link {
-		margin: 0 0 0 10px;
-	}
 }
 
 /* Top bar - Search bar
@@ -22,6 +19,7 @@
 
 #top-bar .search-bar {	
 	max-width: 300px;
+	margin: 0 0 0 10px;
 	.search-form {
 		margin: 0;
 		input[type='text'] {
@@ -35,7 +33,8 @@
 
 #top-bar .home-link {
 	@include sizing(auto, 20px);
-	max-width: 22px;
+	max-width: 35px;
+	text-align: right;
 	.icon {
 		@include font-size(18px);
 		color: $color-13;
@@ -211,4 +210,16 @@
 			padding: 0 0 0 150px;
 		}
 	}
+}
+
+
+/* Mobile nav and button
+========================================================================== */
+
+.mobile-menu-button {
+	display: none;
+}
+
+#mobile-menu {
+	left: -500px;
 }

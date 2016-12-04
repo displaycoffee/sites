@@ -32,24 +32,21 @@
 			'echo' 			 => false
 		) ); 
 
-		// Check if social media links or hide search is not checked
-		if ( has_nav_menu( 'social-menu' ) || !$hide_search ) {
-			// Create header top bar
-			$top_bar = '<section id="top-bar">';
-			$top_bar .= '<div class="wrapper">';
-			$top_bar .= $social_menu;
-			$top_bar .= $hide_search ? '' : get_search_form( false );
-			$top_bar .= '<a class="home-link" href="' . esc_url( get_bloginfo( 'url' ) ) . '">';
-			$top_bar .= '<span class="icon icon-home"></span>';
-			$top_bar .= '</a>';
-			$top_bar .= '</div>';
-			$top_bar .= '</section>';
+		// Create header top bar
+		$top_bar = '<section id="top-bar">';
+		$top_bar .= '<div class="wrapper">';
+		$top_bar .= $social_menu;
+		$top_bar .= '<div class="mobile-menu-button"><span class="icon icon-lines"></span><span class="mobile-menu-text">Menu<span></div>';
+		$top_bar .= $hide_search ? '' : get_search_form( false );
+		$top_bar .= '<a class="home-link" href="' . esc_url( get_bloginfo( 'url' ) ) . '">';
+		$top_bar .= '<span class="icon icon-home"></span>';
+		$top_bar .= '</a>';
+		$top_bar .= '</div>';
+		$top_bar .= '</section>';
 
-			// Display top bar
-			echo $top_bar;
-		}
+		// Display top bar
+		echo $top_bar;
 	?>
-	<div class="mobile-menu-button">Click here</div>
 	<nav id="header-nav" class="navigation">
 		<div class="wrapper">
 			<?php if ( !is_front_page() ) : ?>
