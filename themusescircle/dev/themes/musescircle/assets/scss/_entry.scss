@@ -51,14 +51,12 @@
 	&.post, &.page {
 		position: relative;
 		.entry-thumbnail {
-			@include sizing(125px, 240px);
+			@include sizing(125px, 125px);
 			position: absolute;
-			top: -270px;
+			top: -220px;
 			left: 0;
-			@include flex(column nowrap);
-			justify-content: center;
 			.image-wrap {
-				@include sizing(100%, 125px);
+				@include sizing(100%, 100%);
 				border: 5px solid $color-06;
 				border-radius: 100%;
 				overflow: hidden;

@@ -34,11 +34,11 @@
 		}
 	}
 	#header.front-page-header {
-		height: 246px;
+		height: 240px;
 		.wrapper {
 			background-position: -100px center;
-			background-size: auto 330px;
-			height: 330px;
+			background-size: auto 324px;
+			height: 324px;
 			top: -42px;
 		}
 		.header-content {
@@ -56,16 +56,21 @@
 ========================================================================== */
 
 @include respond(899) {
+	#header.front-page-header, #header.main-header {
+		height: 190px;
+	}
+	#header.front-page-header .header-content .site-name, #header.main-header h1 {
+		@include font-size(45px);
+	}
 	#header.front-page-header {
-		height: 194px;
 		.wrapper {
-			background-size: auto 260px;
-			height: 260px;
+			background-size: auto 256px;
+			height: 256px;
 			top: -33px;
 		}
-		.header-content .site-name {
-			@include font-size(60px);
-		}
+	}
+	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
+		top: -190px;
 	}
 }
 
@@ -84,5 +89,38 @@
 			max-width: none;
 			margin: 0;
 		}
+	}
+	#header-nav {
+		height: 50px;
+		text-align: center;
+		.wrapper {
+			display: block;
+			padding: 0 20px;
+		}
+		.site-name {
+			line-height: 55px;
+			height: auto;
+		}
+	}
+	#header.front-page-header {
+		margin: -7px 0 23px 0;
+		.wrapper {
+			background: url($images + 'muses-header-centered.png') center center no-repeat;
+			background-size: auto 256px;
+		}
+		.header-content {
+			align-items: center;
+		}
+	}
+	#header.main-header h1 {
+		text-align: center;
+		&.has-thumbnail {
+			text-align: left;
+			padding: 0 0 0 125px;
+		}
+	}
+	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
+		top: -175px;
+		@include sizing(100px, 100px);
 	}
 }
