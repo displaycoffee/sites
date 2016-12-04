@@ -100,13 +100,6 @@ a.button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a
 	}			
 }	
 
-#top-bar .search-bar .search-form {
-	margin: 0;
-	input[type='text'] {
-		@include sizing(50%, 30px);
-	}
-}
-
 /* Contact form
 ========================================================================== */
 

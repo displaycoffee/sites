@@ -1,3 +1,68 @@
-/* 767 Breakpoint
+/* 1099 Breakpoint
 ========================================================================== */
 
+@include respond(1099) {
+	#top-bar .search-bar {	
+		max-width: 200px;
+	}
+	#header-nav .menu-main-container .menu > li {
+		& > a {
+			padding: 0 15px;
+		}
+		&.menu-item-has-children > a {
+			padding: 0 45px 0 15px;
+		}
+	}
+	#header.front-page-header {
+		height: 246px;
+		.wrapper {
+			background-position: -100px center;
+			background-size: auto 330px;
+			height: 330px;
+			top: -42px;
+		}
+		.header-content {
+			.site-name {
+				@include font-size(70px);
+			}
+			.site-description {
+				@include font-size(16px);
+			}
+		}
+	}
+}
+
+/* 899 Breakpoint
+========================================================================== */
+
+@include respond(899) {
+	#header.front-page-header {
+		height: 194px;
+		.wrapper {
+			background-size: auto 260px;
+			height: 260px;
+			top: -33px;
+		}
+		.header-content .site-name {
+			@include font-size(60px);
+		}
+	}
+}
+
+/* 768 Breakpoint
+========================================================================== */
+
+@include respond(768) {
+	#top-bar {
+		.menu-social-container {
+			flex: 1 1 100%;
+			display: block;
+			text-align: center;
+			margin: 0 -5px 10px -5px;
+		}
+		.search-bar {
+			max-width: none;
+			margin: 0;
+		}
+	}
+}

@@ -6,19 +6,28 @@
 	padding: 10px 0;
 	box-shadow: inset 0px -4px 6px rgba(0,0,0,0.40);
 	.wrapper {
-		@include flex(row nowrap);
+		@include flex(row wrap);
 		align-items: center;
 	}
-	.menu-social-container, .search-bar {
+	.menu-social-container, .search-bar, .home-link {
 		flex: 1;
-	}	
+	}
+	.search-bar, .home-link {
+		margin: 0 0 0 10px;
+	}
 }
 
 /* Top bar - Search bar
 ========================================================================== */
 
 #top-bar .search-bar {	
-	text-align: right;
+	max-width: 300px;
+	.search-form {
+		margin: 0;
+		input[type='text'] {
+			@include sizing(100%, 30px);
+		}
+	}
 }
 
 /* Top bar - Home link
@@ -26,8 +35,7 @@
 
 #top-bar .home-link {
 	@include sizing(auto, 20px);
-	min-width: 22px;
-	margin: 0 0 0 10px;
+	max-width: 22px;
 	.icon {
 		@include font-size(18px);
 		color: $color-13;
@@ -156,10 +164,10 @@
 	height: 320px;
 	margin: 0 0 30px 0;
 	.wrapper {
-		background: url($images + 'muses-header.png') -30px center no-repeat;
-		height: 440px;
+		background: url($images + 'muses-header.png') -50px center no-repeat;
+		height: 430px;
 		position: relative;
-		top: -60px;
+		top: -50px;
 		left: 0;
 	}
 	.header-content {

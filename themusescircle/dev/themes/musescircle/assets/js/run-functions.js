@@ -20,7 +20,7 @@ jQuery( document ).ready( function( $ ) {
         menuContainer : '#header-nav .wrapper',
         mobileButton  : '.mobile-menu-button',
         mobileMenu    : '#mobile-menu',
-        width         : 767
+        width         : 768
     });
 
     $( '#front-page-sections #recent-reviews .insprvw-recent-reviews' ).owlCarousel({
