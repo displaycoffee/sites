@@ -1,3 +1,23 @@
+/* 1340 Breakpoint
+========================================================================== */
+
+@include respond(1340) {
+	#header-nav {
+		.wrapper {
+			padding: 0 0 0 20px;
+		}
+		.menu-main-container .menu {
+			&, & > li:last-child  {
+				border-right: 0;
+			}
+			& > li .sub-menu {
+				left: auto;
+				right: 0;
+			}
+		}
+	}
+}
+
 /* 1099 Breakpoint
 ========================================================================== */
 
