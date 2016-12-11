@@ -36,7 +36,7 @@
 	max-width: 35px;
 	text-align: right;
 	.icon {
-		@include font-size(18px);
+		font-size: rem(18px);
 		color: $color-13;
 		@include transition(color 0.3s ease-in-out);
 		&:hover {
@@ -52,7 +52,7 @@
 	background: url($images + 'muses-bg.png') 0 0 repeat-x;
 	border-top: 1px solid $color-05 + #000;
 	border-bottom: 1px solid $color-08;
-	@include font-size(14px);
+	font-size: rem(14px);
 	.wrapper {
 		@include flex(row nowrap);
 		align-items: center;
@@ -148,7 +148,7 @@
 
 #header-nav .site-name {
 	margin: 0;
-	@include font-size(40px);
+	font-size: rem(40px);
 	height: 35px;
 	line-height: 1;
 	overflow: hidden;
@@ -166,7 +166,7 @@
 		background: url($images + 'muses-header.png') -50px center no-repeat;
 		height: 430px;
 		position: relative;
-		top: -50px;
+		top: -55px;
 		left: 0;
 	}
 	.header-content {
@@ -178,12 +178,12 @@
 			text-shadow: 1px 2px 0 rgba(0,0,0,0.85);
 		}
 		.site-name {
-			@include font-size(80px);
+			font-size: rem(80px);
 			line-height: 0.75;
 			margin: 0;
 		}
 		.site-description {
-			@include font-size(18px);
+			font-size: rem(18px);
 		}
 	}
 }
@@ -204,7 +204,7 @@
 		height: 100%;
 		@include flex(column nowrap);
 		justify-content: center;
-		@include font-size(55px);
+		font-size: rem(55px);
 		text-shadow: 1px 2px 0 rgba(0,0,0,0.85);
 		&.has-thumbnail {
 			padding: 0 0 0 150px;

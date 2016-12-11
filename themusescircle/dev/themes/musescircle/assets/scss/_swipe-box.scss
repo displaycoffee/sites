@@ -148,7 +148,8 @@ html.swipebox-html.swipebox-touch {
 #swipebox-arrows {
 	display: block;
 	margin: 0 auto;
-	width: 100%;
+	//width: 100%;
+	width: 95%;
 	height: 50px;
 }
 
@@ -158,13 +159,15 @@ html.swipebox-html.swipebox-touch {
 }
 
 #swipebox-next {
-	background-position: -78px 13px;
+	//background-position: -78px 13px;
+	background-position: -98px 13px;
 	float: right;
 }
 
 #swipebox-close {
 	top: 0;
-	right: 0;
+	//right: 0;
+	right: 10px;
 	position: absolute;
 	z-index: 9999;
 	background-position: 15px 12px;
@@ -247,15 +250,15 @@ html.swipebox-html.swipebox-touch {
 	}
 }
 
-@media screen and (min-width: 800px) {
-	#swipebox-close {
-		right: 10px;
-	}
-	#swipebox-arrows {
-		width: 92%;
-		max-width: 800px;
-	}
-}
+// @media screen and (min-width: 800px) {
+// 	#swipebox-close {
+// 		right: 10px;
+// 	}
+// 	#swipebox-arrows {
+// 		width: 92%;
+// 		max-width: 800px;
+// 	}
+// }
 
 /* Skin 
 --------------------------*/
@@ -281,7 +284,7 @@ html.swipebox-html.swipebox-touch {
 	//border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 	color: white !important;
 	//font-size: 15px;
-	@include font-size(16px);
+	font-size: rem(16px);
 	//line-height: 43px;
 	line-height: 50px;
 	//font-family: Helvetica, Arial, sans-serif;

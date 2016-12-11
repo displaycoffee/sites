@@ -88,7 +88,7 @@
 ========================================================================== */
 
 .entry-multiple .entry .entry-header h3 {
-	@include font-size(18px);
+	font-size: rem(18px);
 	font-family: $font-01;
 	line-height: inherit;
 	margin: 0 0 5px 0;
@@ -121,7 +121,7 @@
 
 .entry-single .entry .entry-meta {
 	margin: 0 0 18px 0;
-	@include font-size(18px);
+	font-size: rem(18px);
 	p, .bullet {
 		@include inline-block(middle);
 	}
@@ -135,7 +135,7 @@
 		@include inline-block(middle);
 	}	
 	.rating-text {
-		@include font-size(0px);
+		font-size: rem(0);
 		text-index: -9999;
 	}
 	.rating-out-of {
@@ -160,13 +160,13 @@
 }
 
 .entry-multiple .entry.insprvw-review .entry-meta .rating .rating-out-of .icon-star {
-	@include font-size(16px);
+	font-size: rem(16px);
 }
 
 .entry-single .entry.insprvw-review .entry-meta .rating .rating-out-of {
 	top: -3px;
 	.icon-star {
-		@include font-size(18px);
+		font-size: rem(18px);
 	}
 }
 
@@ -411,7 +411,7 @@
 		}
 		.wp-caption-text {
 			font-style: italic;
-			@include font-size(14px);			
+			font-size: rem(14px);
 		}
 	}
 	.navigation-links {

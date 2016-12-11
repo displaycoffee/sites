@@ -10,7 +10,7 @@
 			margin: 0 0 10px 0;
 		}
 		.widget_nav_menu > div:not(.menu-social-container) {
-			@include font-size(16px);
+			font-size: rem(16px);
 			.menu {
 				@include flex(row wrap);
 				margin: 0 0 15px 0;

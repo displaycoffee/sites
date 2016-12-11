@@ -73,6 +73,68 @@
     font-style: normal;
 }
 
+/* General text elements
+========================================================================== */
+
+html {
+    font-size: $base-font-size + px;
+}
+
+body {
+    font-family: $font-01;
+    font-size: rem(15px);
+    line-height: 1.5;
+    font-weight: 300;
+    color: $color-01;
+}
+
+a {
+    color: $color-07;
+    @include transition(color 0.3s ease-in-out);
+    text-decoration: none;
+    &:hover {
+        color: $color-01;
+    }
+}
+
+/* Headers
+========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-02;  
+    font-weight: normal;  
+    line-height: 1.1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    a {
+        color: $color-01;
+        &:hover {
+            color: $color-07;
+        }
+    }
+}
+
+h1 {
+    font-size: rem(50px);
+}
+
+h2 {
+    font-size: rem(45px);
+}
+
+h3 {
+    font-size: rem(40px);
+}
+
+h4 {
+    font-size: rem(35px);
+}
+
+h5, h6 {
+    font-size: rem(30px);
+}
+
 /* Muses Icon
 ========================================================================== */
 
@@ -80,7 +142,7 @@
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'Muses Icons' !important;
     speak: none;
-    @include font-size(16px);
+    font-size: rem(16px);
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -252,66 +314,4 @@
 }
 .icon-menu:before {
     content: $icon-menu;
-}
-
-/* General text elements
-========================================================================== */
-
-html {
-    font-size: 100%;
-}
-
-body {
-    font-family: $font-01;
-    @include font-size(15px);
-    line-height: 1.5;
-    font-weight: 300;
-    color: $color-01;
-}
-
-a {
-    color: $color-07;
-    @include transition(color 0.3s ease-in-out);
-    text-decoration: none;
-    &:hover {
-        color: $color-01;
-    }
-}
-
-/* Headers
-========================================================================== */
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: $font-02;  
-    font-weight: normal;  
-    line-height: 1.1;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    a {
-        color: $color-01;
-        &:hover {
-            color: $color-07;
-        }
-    }
-}
-
-h1 {
-    @include font-size(50px);
-}
-
-h2 {
-    @include font-size(45px);
-}
-
-h3 {
-    @include font-size(40px);
-}
-
-h4 {
-    @include font-size(35px);
-}
-
-h5, h6 {
-    @include font-size(30px);
 }

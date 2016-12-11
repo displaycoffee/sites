@@ -1,3 +1,5 @@
+// Also includes functions in addition to mixins
+
 // Arrow buttons
 @mixin arrow-buttons {
 	@include sizing(40px, 40px);
@@ -6,12 +8,40 @@
 	padding: 10px;
 	text-align: center;
 	.icon {
-		@include font-size(18px);
+		font-size: rem(18px);
 		@include transition(color 0.3s ease-in-out);			
 	}
 	&:hover .icon {
 		color: $color-05;
 	}	
+}
+
+// PX to EM conversion
+// From https://css-tricks.com/snippets/sass/px-to-em-functions
+@function em($pixels, $context: $base-font-size) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1em;
+}
+
+// PX to REM conversion
+// Modified from https://css-tricks.com/snippets/sass/px-to-em-functions
+@function rem($pixels, $context: $base-font-size) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1rem;
 }
 
 // Flex 
@@ -24,15 +54,6 @@
 @mixin inline-flex($flow) {
 	display: inline-flex;
 	flex-flow: $flow;
-}
-
-// Font size conversion
-@mixin font-size($size, $important: '') {
-	@if $important != '' {	
-		font-size: #{$size / 16px}rem !important;	
-	} @else {
-		font-size: #{$size / 16px}rem;
-	}
 }
 
 // Calculation for gallery columns
@@ -56,9 +77,9 @@
 // Muses icons
 @mixin muses-icons($fs: '') {
 	@if $fs != '' {	
-		@include font-size($fs);		
+		font-size: rem($fs);		
 	} @else {
-		@include font-size(16px);
+		font-size: rem(16px);
 	}
     font-family: 'Muses Icons' !important;
     speak: none;    
@@ -89,7 +110,7 @@
 
 // Responsive max-width media query
 @mixin respond($breakpoint) {
-	@media only screen and (max-width: $breakpoint + px) {
+	@media only screen and (max-width: $breakpoint) {
 		@content;
 	}
 }

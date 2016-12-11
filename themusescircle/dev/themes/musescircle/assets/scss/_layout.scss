@@ -60,7 +60,7 @@
 				content: $icon-library-thing;
 			}	
 			&[href*='goodreads']:before, &[href*='librarything']:before {
-				@include font-size(16px);
+				font-size: rem(16px);
 			}												
 			&:hover:before {
 				color: $color-01;
@@ -170,7 +170,7 @@
 					font-weight: bold;
 				}
 				.icon {
-					@include font-size(12px);
+					font-size: rem(12px);
 				}
 			}
 		}
@@ -248,7 +248,7 @@
 		ul li {
 			padding: 0 0 0 25px;
 			&:before {
-				@include font-size(14px);
+				font-size: rem(14px);
 			}
 		}
 	}
@@ -284,31 +284,31 @@
 				left: 5px;
 			}
 			&[style*='8pt'] {
-				@include font-size(11px, important);
+				font-size: rem(11px) !important;
 			}
 			&[style*='11.6pt'] {
-				@include font-size(12px, important);
+				font-size: rem(12px) !important;
 			}
 			&[style*='14pt'] {
-				@include font-size(13px, important);
+				font-size: rem(13px) !important;
 			}	
 			&[style*='16pt'] {
-				@include font-size(14px, important);
+				font-size: rem(14px) !important;
 			}
 			&[style*='19pt'] {
-				@include font-size(15px, important);
+				font-size: rem(15px) !important;
 				&:before {
 					top: 8px;
 				}
 			}						
 			&[style*='21pt'] {
-				@include font-size(17px, important);
+				font-size: rem(17px) !important;
 				&:before {
 					top: 10px;
 				}				
 			}	
 			&[style*='22pt'] {
-				@include font-size(18px, important);
+				font-size: rem(18px) !important;
 				&:before {
 					top: 12px;
 				}				
@@ -318,7 +318,7 @@
 	&.widget_calendar .calendar_wrap table {
 		margin: 0 0 20px 0;
 		width: 100%;
-		@include font-size(14px);
+		font-size: rem(14px);
 		caption, tbody td, tfoot td {
 			border: 1px solid $color-06;
 		}
@@ -384,12 +384,12 @@
 	&.widget_text .textwidget .countdown .countdown-timer > div {
 		.countdown-value {
 			@include sizing(50px, 50px);
-			@include font-size(14px);
+			font-size: rem(14px);
 			line-height: 44px;
 			border: 3px solid $color-06;
 		}
 		.countdown-label {
-			@include font-size(25px);
+			font-size: rem(25px);
 		}
 	}
 }

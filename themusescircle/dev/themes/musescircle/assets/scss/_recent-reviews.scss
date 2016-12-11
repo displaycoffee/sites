@@ -33,7 +33,7 @@
 			@include sizing(75px, 75px);
 			background: $color-05;
 			box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);
-			@include font-size(13px);
+			font-size: rem(13px);
 			line-height: 1.4;
 			.month, .day {
 				@include inline-block(middle);
@@ -63,11 +63,11 @@
 				font-weight: 300;
 			}
 			.main-title {
-				@include font-size(18px);
+				font-size: rem(18px);
 				margin: 0 0 8px 0;
 			}
 			.sub-title {
-				@include font-size(15px);
+				font-size: rem(15px);
 			}
 		}
 	}
@@ -76,7 +76,7 @@
 	}
 	.review-excerpt {
 		p {
-			@include font-size(14px);
+			font-size: rem(14px);
 		}
 	}
 }

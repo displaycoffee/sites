@@ -332,8 +332,15 @@ function initializeMobileMenu( options ) {
 
 	// Resize actions for mobile menu
 	function mobileResizeAction() {
+		// Widths for em comparison
+		var baseFontSize = 16;
+		var windowWidth = ( window.innerWidth / baseFontSize );
+		var docWidth = ( document.documentElement.clientWidth / baseFontSize );
+		var bodyWidth = ( document.body.clientWidth / baseFontSize );
+		var responseWidth = ( width / baseFontSize );
+
 		// Check all sorts of window and document widths to make sure resizing is consistent across browsers
-		if ( ( window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth ) <= width ) {			
+		if ( ( windowWidth || docWidth || bodyWidth ) <= responseWidth ) {			
 			// Check if mobile ones is false, meaning we haven't activated the mobile menu yet
 			if ( !mobileOnce ) {
 				// Move menu to menu container
