@@ -347,7 +347,7 @@ function initializeMobileMenu( options ) {
 				menu.detach().appendTo( mobileMenu );
 
 				// In that mobile menu container, look for first level list and its items
-				menu.find( 'ul' ).find( 'li' ).each( function() {
+				menu.children( 'ul' ).children( 'li' ).each( function() {
 					// Get current selector and check if there are any second level lists
 					var current = jQuery( this );
 					var children = current.children( 'ul' );
@@ -360,10 +360,12 @@ function initializeMobileMenu( options ) {
 
 				// Add/remove classes to slide second level menu open
 				jQuery( '.slide-submenu' ).click( function() {
-					if ( jQuery( this ).next().hasClass( 'slide-open' ) ) {
-						jQuery( this ).next().removeClass( 'slide-open' );
-					} else {
-						jQuery( this ).next().addClass( 'slide-open' );
+					if ( jQuery( this ).next().hasClass( 'slide-open' ) ) {						
+						menu.children( 'ul' ).children( 'li' ).removeClass( 'slide-close' );
+						jQuery( this ).next().add( jQuery( this ).parent() ).removeClass( 'slide-open' );
+					} else {						
+						menu.children( 'ul' ).children( 'li' ).addClass( 'slide-close' );
+						jQuery( this ).next().add( jQuery( this ).parent() ).addClass( 'slide-open' ).removeClass('slide-close');
 					}
 				});	
 
@@ -376,7 +378,10 @@ function initializeMobileMenu( options ) {
 				// Replace menu in correct location, remove slide menu toggle, and remove any extra slide-open class
 				menu.detach().appendTo( menuContainer );
 				jQuery( '.slide-submenu' ).remove();
-				jQuery( 'ul' ).removeClass( 'slide-open' );
+				jQuery( 'ul, li' ).removeClass( 'slide-open' );
+				jQuery( 'li' ).removeClass( 'slide-close' );
+				jQuery( 'body, html' ).removeClass( 'mobile-open' );
+				mobileMenu.removeClass( 'show' );
 
 				// Then set mobile to false again so we can start over
 				mobileOnce = false;

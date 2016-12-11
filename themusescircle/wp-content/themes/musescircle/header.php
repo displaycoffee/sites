@@ -36,7 +36,7 @@
 		$top_bar = '<section id="top-bar">';
 		$top_bar .= '<div class="wrapper">';
 		$top_bar .= $social_menu;
-		$top_bar .= '<div class="mobile-menu-button"><span class="icon icon-lines"></span><span class="mobile-menu-text">Menu<span></div>';
+		$top_bar .= '<div class="mobile-menu-button"><span class="icon icon-lines"></span><span class="icon icon-remove"></span><span class="mobile-menu-text">Menu<span></div>';
 		$top_bar .= $hide_search ? '' : get_search_form( false );
 		$top_bar .= '<a class="home-link" href="' . esc_url( get_bloginfo( 'url' ) ) . '">';
 		$top_bar .= '<span class="icon icon-home"></span>';
