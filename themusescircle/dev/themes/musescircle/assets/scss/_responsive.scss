@@ -62,13 +62,14 @@
 	#header.front-page-header .header-content .site-name, #header.main-header h1 {
 		font-size: rem(45px);
 	}
-	#header.front-page-header {
-		.wrapper {
-			background-size: auto 256px;
-			height: 256px;
-			top: -33px;
-		}
+	#header.front-page-header .wrapper {
+		background-size: auto 256px;
+		height: 256px;
+		top: -33px;
 	}
+	#header.main-header .wrapper {
+		background-size: auto 190px;
+	}	
 	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
 		top: -190px;
 	}
@@ -112,11 +113,16 @@
 			align-items: center;
 		}
 	}
-	#header.main-header h1 {
-		text-align: center;
-		&.has-thumbnail {
-			text-align: left;
-			padding: 0 0 0 125px;
+	#header.main-header {
+		.wrapper {
+			background-position: center center;
+		}
+		h1 {
+			text-align: center;
+			&.has-thumbnail {
+				text-align: left;
+				padding: 0 0 0 125px;
+			}
 		}
 	}
 	.mobile-menu-button {
