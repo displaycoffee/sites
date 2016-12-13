@@ -74,15 +74,15 @@
 		background-size: auto 190px;
 	}	
 
+	// layout.scss
+	.row .column {
+		flex: 1 1 50%;
+	}	
+
 	// entry.scss
 	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
 		top: -190px;
 	}
-
-	// footer.scss
-	#footer .row .column {
-		flex: 1 1 50%;
-	}	
 }
 
 /* 768 Breakpoint
@@ -166,8 +166,13 @@
 ========================================================================== */
 
 @include respond(em(620)) {
-	// footer.scss
-	#footer .row .column {
+	// layout.scss
+	.row .column {
 		flex: 1 1 100%;
 	}	
+
+	// front-page.scss 
+	#front-page-sections #about-site .read-more {
+		text-align: center;
+	}
 }
