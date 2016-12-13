@@ -2,6 +2,7 @@
 ========================================================================== */
 
 @include respond(em(1340)) {
+	// header.scss
 	#header-nav {
 		.wrapper {
 			padding: 0 0 0 20px;
@@ -22,6 +23,7 @@
 ========================================================================== */
 
 @include respond(em(1099)) {
+	// header.scss
 	#top-bar .search-bar {	
 		max-width: 200px;
 	}
@@ -56,6 +58,7 @@
 ========================================================================== */
 
 @include respond(em(899)) {
+	// header.scss
 	#header.front-page-header, #header.main-header {
 		height: 190px;
 	}
@@ -70,15 +73,23 @@
 	#header.main-header .wrapper {
 		background-size: auto 190px;
 	}	
+
+	// entry.scss
 	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
 		top: -190px;
 	}
+
+	// footer.scss
+	#footer .row .column {
+		flex: 1 1 50%;
+	}	
 }
 
 /* 768 Breakpoint
 ========================================================================== */
 
 @include respond(em(768)) {
+	// header.scss
 	#top-bar {
 		.menu-social-container {
 			flex: 1 1 100%;
@@ -143,8 +154,20 @@
 			}
 		}
 	}
+
+	// entry.scss
 	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
 		top: -175px;
 		@include sizing(100px, 100px);
 	}
+}
+
+/* 620 Breakpoint
+========================================================================== */
+
+@include respond(em(620)) {
+	// footer.scss
+	#footer .row .column {
+		flex: 1 1 100%;
+	}	
 }
