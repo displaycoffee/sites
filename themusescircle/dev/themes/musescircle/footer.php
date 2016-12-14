@@ -9,7 +9,7 @@
 	<?php if ( is_active_sidebar( 'footer-column01' ) || is_active_sidebar( 'footer-column02' ) || is_active_sidebar( 'footer-column03' ) ) : ?>
 		<footer id="footer">
 			<div class="wrapper">
-				<div class="row">
+				<div class="row row-20">
 					<?php if ( is_active_sidebar( 'footer-column01' ) ) : ?>
 						<div id="footer-column01" class="column">
 							<?php dynamic_sidebar( 'footer-column01' ); ?>

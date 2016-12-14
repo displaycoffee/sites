@@ -59,37 +59,37 @@
 ========================================================================== */
 
 #front-page-sections #review-buttons {
-	.wrapper {
-		@include flex(row wrap);
-		justify-content: center;
-	}
 	h3 {
-		flex: 1 1 100%;
 		font-size: rem(18px);
 		font-family: $font-01;
 		font-weight: 300;
 	}
-	a {		
-		flex: 1;
-		max-width: 200px;
-		margin: 0 10px;
-		border: 1px solid $color-01;
-		padding: 8px 10px;
-		text-align: center;
-		font-size: rem(14px);
-		text-transform: uppercase;
-		color: $color-01;
-		.button-text {
-			@include inline-block(middle);
-		}
-		.icon {
-			font-size: rem(18px);
-			margin: -4px 10px 0 0;
-		}
-		&:hover {
-			@include transition(all 0.3s ease-in-out);
-			border: 1px solid $color-07;
-			color: $color-07;
+	.row {
+		justify-content: center;		
+		.column {
+			max-width: 220px;
+			a {		
+				display: block;
+				width: 100%;
+				border: 1px solid $color-01;
+				padding: 8px 10px;
+				text-align: center;
+				font-size: rem(14px);
+				text-transform: uppercase;
+				color: $color-01;
+				.button-text {
+					@include inline-block(middle);
+				}
+				.icon {
+					font-size: rem(18px);
+					margin: -4px 10px 0 0;
+				}
+				&:hover {
+					@include transition(all 0.3s ease-in-out);
+					border: 1px solid $color-07;
+					color: $color-07;
+				}
+			}
 		}
 	}
 }

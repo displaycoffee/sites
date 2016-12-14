@@ -23,7 +23,7 @@
 	$about_section .= '<h2>';
 	$about_section .= $about_title ? esc_html( $about_title ) : __( 'About', 'musescircle' );
 	$about_section .= '</h2>';
-	$about_section .= '<div class="row"><div class="column">';
+	$about_section .= '<div class="row row-20"><div class="column">';
 	$about_section .= $about_left ? wpautop( esc_textarea ( $about_left ) ) : __( $about_default_text, 'musescircle' );
 	$about_section .= '</div>';
 

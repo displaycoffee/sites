@@ -83,6 +83,17 @@
 	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
 		top: -190px;
 	}
+
+	// font-page.scss
+	#front-page-sections #review-buttons {
+		h3 {
+			margin: 0;
+		}
+		.row .column {
+			max-width: none;
+			margin: 20px 0 0 0;
+		}
+	}
 }
 
 /* 768 Breakpoint

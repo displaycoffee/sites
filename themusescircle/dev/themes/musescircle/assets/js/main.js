@@ -332,8 +332,7 @@ function initializeMobileMenu( options ) {
 
 	// Resize actions for mobile menu
 	function mobileResizeAction() {
-		// Widths for em comparison
-		var baseFontSize = 16;
+		// Widths for em comparison		
 		var windowWidth = ( window.innerWidth / baseFontSize );
 		var docWidth = ( document.documentElement.clientWidth / baseFontSize );
 		var bodyWidth = ( document.body.clientWidth / baseFontSize );

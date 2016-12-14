@@ -4,6 +4,9 @@ var url = wpurl.siteurl;
 // Get distance for scroll to bottom
 var bottomDistance =  jQuery( document ).height() + jQuery( window ).height();
 
+// Base font size for responsive comparisons
+var baseFontSize = 16;
+
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
     toggleNavSubMenus( '#header-nav .menu-main-container .menu > li' );
