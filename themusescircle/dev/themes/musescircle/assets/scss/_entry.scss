@@ -20,29 +20,19 @@
 /* Entry - Thumbnail
 ========================================================================== */
 
-.flex-extend {
-	flex: 0 0 160px;
-	margin: 0 20px 0 0;	
-}
-
-.thumbnail-extend .image-wrap {
-	line-height: 0;
-	border: 5px solid $color-06;	
-	overflow: hidden;
-	img {
-		width: 100%;
-	}
-}
-
 .entry-multiple .entry {
-	&.post .entry-thumbnail {	
-		@extend .flex-extend;	
-		@extend .thumbnail-extend;
+	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed {
+		flex: 0 0 160px;
+		margin: 0 20px 0 0;			
 	}
-	&.insprvw-review .entry-item-reviewed {
-		@extend .flex-extend;
-		.entry-thumbnail {
-			@extend .thumbnail-extend;
+	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed .entry-thumbnail {
+		.image-wrap {
+			line-height: 0;
+			border: 5px solid $color-06;	
+			overflow: hidden;
+			img {
+				width: 100%;
+			}		
 		}
 	}
 } 

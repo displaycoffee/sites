@@ -80,8 +80,13 @@
 	}	
 
 	// entry.scss
-	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
-		top: -190px;
+	.entry-single {
+		.entry.post .entry-thumbnail, .entry.page .entry-thumbnail {
+			top: -190px;
+		}
+	}
+	.entry-multiple {
+		display: block;
 	}
 
 	// font-page.scss
@@ -104,7 +109,6 @@
 	#top-bar {
 		.menu-social-container {
 			flex: 1 1 100%;
-			display: block;
 			text-align: center;
 			margin: 0 -5px 10px -5px;
 		}
@@ -143,7 +147,7 @@
 			text-align: center;
 			&.has-thumbnail {
 				text-align: left;
-				padding: 0 0 0 125px;
+				padding: 0 0 0 100px;
 			}
 		}
 	}
@@ -167,23 +171,71 @@
 	}
 
 	// entry.scss
-	.entry-single .entry.post .entry-thumbnail, .entry-single .entry.page .entry-thumbnail {
-		top: -175px;
-		@include sizing(100px, 100px);
+	.entry-single {
+		.entry.post .entry-thumbnail, .entry.page .entry-thumbnail {
+			top: -175px;
+			@include sizing(80px, 80px);
+		}
 	}
 }
 
-/* 620 Breakpoint
+/* 650 Breakpoint
 ========================================================================== */
 
-@include respond(em(620)) {
+@include respond(em(650)) {
 	// layout.scss
-	.row .column {
-		flex: 1 1 100%;
+	.row {
+		display: block;
 	}	
+
+	// entry.scss 
+	.entry-multiple {
+		.entry.post .entry-thumbnail, .entry.insprvw-review .entry-item-reviewed {
+			flex: 0 0 130px;
+		}
+	}
 
 	// front-page.scss 
 	#front-page-sections #about-site .read-more {
 		text-align: center;
 	}
+
+	// recent-reviews.scss
+	.insprvw-recent-reviews .insprvw-review .review-meta {
+		.review-thumbnail {
+			border: 6px solid $color-06;
+		}
+		.review-date {
+			top: 20px;
+			padding: 8px;
+			@include sizing(60px, 60px);
+			font-size: rem(11px);
+			line-height: 1.6;
+			border: 3px solid $color-06;
+		}
+	}
+}
+
+/* 450 Breakpoint
+========================================================================== */
+
+@include respond(em(450)) {
+	// entry.scss 
+	.entry-multiple {
+		.entry {
+			display: block;
+		}
+		.entry.post .entry-thumbnail, .entry.insprvw-review .entry-item-reviewed {
+			margin: 0;
+		}
+		.entry.post .entry-thumbnail, .entry.insprvw-review .entry-item-reviewed .entry-thumbnail {
+			margin: 0 0 10px 0;
+			.image-wrap {
+				max-height: 200px;
+				img {
+					margin: -50px 0 0 0;
+				}
+			}
+		}
+	}	
 }
