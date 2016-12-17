@@ -27,9 +27,7 @@
 	}
 	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed .entry-thumbnail {
 		.image-wrap {
-			line-height: 0;
-			border: 5px solid $color-06;	
-			overflow: hidden;
+			border: 5px solid $color-06;
 			img {
 				width: 100%;
 			}		
@@ -47,9 +45,8 @@
 			left: 0;
 			.image-wrap {
 				@include sizing(100%, 100%);
-				border: 5px solid $color-06;
 				border-radius: 100%;
-				overflow: hidden;
+				border: 5px solid $color-06;
 				img {
 					width: 100%;
 				}
@@ -67,7 +64,6 @@
 			max-width: 300px;
 			margin: 0 20px 20px 0;
 			.image-wrap {
-				line-height: 0;
 				border: 5px solid $color-06;				
 			}
 		}
@@ -174,12 +170,11 @@
 }
 
 .entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {	
-	flex: 1 1 160px;
-	max-width: 160px;	
+	flex: 0 0 160px;	
 	margin: 0 20px 0 0;
-	line-height: 0;
-	overflow: hidden;
-	border: 5px solid $color-06;			
+	.image-wrap {
+		border: 5px solid $color-06;			
+	}
 }
 
 .entry-author .entry-author-details, .book-author .book-author-details {	
@@ -187,8 +182,7 @@
 }
 
 .entry-single .entry.insprvw-review .book-author .book-author-thumbnail {
-	flex: 1 1 200px;
-	max-width: 200px;	
+	flex: 0 0 200px;	
 }
 
 .entry-author .entry-author-details .entry-author-social, .book-author .book-author-details .book-author-social {	
@@ -302,11 +296,11 @@
 			@include flex(row wrap);
 			align-items: flex-start;				
 			.comment-thumbnail {
-			    flex: 1 1 54px;
-			    max-width: 54px;	
+			    flex: 0 0 54px;
 			    margin: 0 20px 0 0;	
-			    line-height: 0;
-			    border: 2px solid $color-06;				    			
+			    .image-wrap {
+				    border: 2px solid $color-06;				    			
+				}
 			}
 			.comment-wrapper {
 				flex: 1;

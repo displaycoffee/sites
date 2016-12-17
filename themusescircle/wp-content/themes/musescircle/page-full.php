@@ -11,7 +11,7 @@
 	get_header(); 
 ?>
 <?php get_template_part( 'page', 'title' ); ?>
-<section class="content">
+<section class="content full-width">
 	<div class="wrapper">
 		<article>
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

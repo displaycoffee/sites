@@ -19,13 +19,25 @@
 	}
 }
 
+/* 1199 Breakpoint
+========================================================================== */
+
+@include respond(em(1199)) {
+	// entry.scss
+	.content:not(.full-width), #front-page-sections:not(.full-width) {
+		.entry-multiple {
+			display: block;
+		}
+	}
+}
+
 /* 1099 Breakpoint
 ========================================================================== */
 
 @include respond(em(1099)) {
 	// header.scss
 	#top-bar .search-bar {	
-		max-width: 200px;
+		flex: 0 0 200px;
 	}
 	#header-nav .menu-main-container .menu > li {
 		& > a {
@@ -84,9 +96,14 @@
 		.entry.post .entry-thumbnail, .entry.page .entry-thumbnail {
 			top: -190px;
 		}
+		.entry.insprvw-review .book-author .book-author-thumbnail {
+			flex: 0 0 160px;
+		}		
 	}
-	.entry-multiple {
-		display: block;
+	.content.full-width, #front-page-sections.full-width {
+		.entry-multiple {
+			display: block;
+		}
 	}
 
 	// font-page.scss
@@ -113,7 +130,7 @@
 			margin: 0 -5px 10px -5px;
 		}
 		.search-bar {
-			max-width: none;
+			flex: 1;
 			margin: 0;
 		}
 	}
@@ -170,6 +187,19 @@
 		}
 	}
 
+	// layout.scss
+	.content {
+		.wrapper {
+			display: block;
+		}
+		aside {
+			margin: 30px 0 0 0;
+			padding: 30px 0 0 0;
+			border-left: 0;
+			border-top: 1px dashed $color-05;
+		}
+	}
+
 	// entry.scss
 	.entry-single {
 		.entry.post .entry-thumbnail, .entry.page .entry-thumbnail {
@@ -179,20 +209,20 @@
 	}
 }
 
-/* 650 Breakpoint
+/* 699 Breakpoint
 ========================================================================== */
 
-@include respond(em(650)) {
+@include respond(em(699)) {
 	// layout.scss
 	.row {
 		display: block;
 	}	
 
 	// entry.scss 
-	.entry-multiple {
-		.entry.post .entry-thumbnail, .entry.insprvw-review .entry-item-reviewed {
-			flex: 0 0 130px;
-		}
+	.entry-multiple .entry.post .entry-thumbnail, .entry-multiple .entry.insprvw-review .entry-item-reviewed,
+	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail,
+	.entry-single .entry.insprvw-review .book-author .book-author-thumbnail {
+		flex: 0 0 130px;
 	}
 
 	// front-page.scss 
@@ -206,7 +236,7 @@
 			border: 6px solid $color-06;
 		}
 		.review-date {
-			top: 20px;
+			top: 16px;
 			padding: 8px;
 			@include sizing(60px, 60px);
 			font-size: rem(11px);
@@ -216,26 +246,32 @@
 	}
 }
 
-/* 450 Breakpoint
+/* 499 Breakpoint
 ========================================================================== */
 
-@include respond(em(450)) {
+@include respond(em(499)) {
 	// entry.scss 
+	.entry-multiple	.entry, .entry-author, .book-author {
+		display: block;
+	}
+	.entry-multiple .entry.post .entry-thumbnail, .entry-multiple .entry.insprvw-review .entry-item-reviewed,
+	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
+		margin: 0 0 10px 0;
+		.image-wrap {
+			max-height: 200px;
+		}			
+	}
 	.entry-multiple {
-		.entry {
-			display: block;
-		}
 		.entry.post .entry-thumbnail, .entry.insprvw-review .entry-item-reviewed {
-			margin: 0;
-		}
-		.entry.post .entry-thumbnail, .entry.insprvw-review .entry-item-reviewed .entry-thumbnail {
-			margin: 0 0 10px 0;
-			.image-wrap {
-				max-height: 200px;
-				img {
-					margin: -50px 0 0 0;
-				}
-			}
-		}
+			.image-wrap img {
+				margin: -30% 0 0 0;
+			}			
+		}		
 	}	
+	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
+		.image-wrap img {
+			margin: -20% 0 0 0;
+			width: 100%;
+		}		
+	}
 }

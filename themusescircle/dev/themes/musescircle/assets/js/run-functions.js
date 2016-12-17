@@ -32,6 +32,11 @@ jQuery( document ).ready( function( $ ) {
     	navigationText : [
     		'<span class="icon icon-chevron-left"></span>',
     		'<span class="icon icon-chevron-right"></span>'
-    	]
+    	],
+        items : 5, //10 items above 1000px browser width
+        itemsDesktop : [1182,4], //5 items between 1000px and 901px
+        itemsDesktopSmall : [982,3], // betweem 900px and 601px
+        itemsTablet: [751,2], //2 items between 600 and 0
+        itemsMobile : [482,1] // itemsMobile disabled - inherit from itemsTablet option        
     });
 });

@@ -91,6 +91,11 @@
 	padding: 0 20px;
 }
 
+.image-wrap {
+	overflow: hidden;
+	line-height: 0;
+}
+
 .row {
 	@include flex(row wrap);
 	.column {

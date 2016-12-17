@@ -19,7 +19,7 @@
 		</div>
 	</div>
 </header>	
-<div id="front-page-sections">
+<div id="front-page-sections" class="full-width">
 	<?php get_template_part( 'partials/front', 'about' ); ?>
 	<?php get_template_part( 'partials/front', 'countdown' ); ?>
 	<?php get_template_part( 'partials/front', 'recent-reviews' ); ?>
