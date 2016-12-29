@@ -19,12 +19,9 @@
 		// Thumbnail image src for schema
 		$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' )[0];
 
-		// If we're on an archive, add a class for image wrapping
-		$thumbnail_image_class = !is_single() ? ' image-wrap-full' : '';
-
 		// Create thumbnail block
 		$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( $thumbnail_src ) . '">';
-		$thumbnail_html .= '<div class="image-wrap image-wrap-border' . $thumbnail_image_class . '">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';	
+		$thumbnail_html .= '<div class="image-wrap image-wrap-border">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';	
 	} else {	
 		// Create thumbnail block
 		$thumbnail_html .= '<meta itemprop="url" content="' . esc_url ( plugins_url( 'inspire-reviews/assets/images/default-image-rectangle.png', '' ) ) . '">';
