@@ -58,7 +58,7 @@
 
 				// Create author image block
 				$author_image_html = '<div class="book-author-thumbnail">';
-				$author_image_html .= '<div class="image-wrap"><img src="' . esc_url( $author_image ) . '" alt="' . esc_attr( $author_name ) . '" /></div>';
+				$author_image_html .= '<div class="image-wrap image-wrap-border"><img src="' . esc_url( $author_image ) . '" alt="' . esc_attr( $author_name ) . '" /></div>';
 				$author_image_html .= '</div>';			
 
 				// Create author social links

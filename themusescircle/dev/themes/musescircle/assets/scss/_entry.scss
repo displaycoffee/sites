@@ -25,14 +25,6 @@
 		flex: 0 0 160px;
 		margin: 0 20px 0 0;			
 	}
-	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed .entry-thumbnail {
-		.image-wrap {
-			border: 5px solid $color-06;
-			img {
-				width: 100%;
-			}		
-		}
-	}
 } 
 
 .entry-single .entry {
@@ -46,10 +38,6 @@
 			.image-wrap {
 				@include sizing(100%, 100%);
 				border-radius: 100%;
-				border: 5px solid $color-06;
-				img {
-					width: 100%;
-				}
 			}
 		}
 	}
@@ -63,9 +51,6 @@
 			float: left;
 			max-width: 300px;
 			margin: 0 20px 20px 0;
-			.image-wrap {
-				border: 5px solid $color-06;				
-			}
 		}
 	}
 }
@@ -172,9 +157,6 @@
 .entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {	
 	flex: 0 0 160px;	
 	margin: 0 20px 0 0;
-	.image-wrap {
-		border: 5px solid $color-06;			
-	}
 }
 
 .entry-author .entry-author-details, .book-author .book-author-details {	

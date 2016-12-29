@@ -40,7 +40,7 @@
 				<?php 
 					// Create author image block
 					$author_image_html = '<div class="entry-author-thumbnail">';
-					$author_image_html .= '<div class="image-wrap">' . $author_image . '</div>';
+					$author_image_html .= '<div class="image-wrap image-wrap-border">' . $author_image . '</div>';
 					$author_image_html .= '</div>';	
 
 					// Display author image block

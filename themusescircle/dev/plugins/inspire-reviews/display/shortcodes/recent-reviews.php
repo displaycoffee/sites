@@ -76,7 +76,7 @@
 				$review_date .= '</div>';
 
 				// Create thumbnail block - START
-				$review_thumbnail = '<div class="review-thumbnail"><div class="image-wrap">';
+				$review_thumbnail = '<div class="review-thumbnail"><div class="image-wrap image-wrap-full">';
 
 				// Check if thumbnail is available
 				if ( has_post_thumbnail() ) {				

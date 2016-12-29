@@ -94,6 +94,12 @@
 .image-wrap {
 	overflow: hidden;
 	line-height: 0;
+	&.image-wrap-border {
+		border: 5px solid $color-06;
+	}	
+	&.image-wrap-full img {
+		width: 100%;
+	}
 }
 
 .row {

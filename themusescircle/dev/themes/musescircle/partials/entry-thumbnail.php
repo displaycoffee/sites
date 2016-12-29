@@ -27,8 +27,11 @@
 			$thumbnail_html .= '<meta itemprop="width" content="' . esc_attr( $thumbnail_width ) . '">';
 			$thumbnail_html .= '<meta itemprop="height" content="' . esc_attr( $thumbnail_height ) . '">';
 
+			// If we're on an archive, add a class for image wrapping
+			$thumbnail_image_class = !is_single() ? ' image-wrap-full' : '';
+
 			// Display image or background for archive versus single page 
-			$thumbnail_html .= '<div class="image-wrap">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';
+			$thumbnail_html .= '<div class="image-wrap image-wrap-border' . $thumbnail_image_class . '">' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</div>';
 		} else {
 			$thumbnail_html .= '<meta itemprop="url" content="' . esc_url( get_template_directory_uri() . '/assets/images/default-image-rectangle.png' ) . '">';
 			$thumbnail_html .= '<meta itemprop="width" content="600">';
