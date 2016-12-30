@@ -201,15 +201,17 @@
 		background: url($images + 'muses-forest.png') -75px center no-repeat;
 		height: 100%;
 	}
-	h1 {
-		margin: 0;
+	.header-content {
 		height: 100%;
 		@include flex(column nowrap);
-		justify-content: center;
-		font-size: rem(55px);
-		text-shadow: 1px 2px 0 rgba(0,0,0,0.85);
-		&.has-thumbnail {
-			padding: 0 0 0 150px;
+		justify-content: center;		
+		h1 {
+			margin: 0;
+			font-size: rem(55px);
+			text-shadow: 1px 2px 0 rgba(0,0,0,0.85);
+			&.has-thumbnail {
+				padding: 0 0 0 150px;
+			}
 		}
 	}
 }

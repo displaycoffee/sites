@@ -74,7 +74,7 @@
 	#header.front-page-header, #header.main-header {
 		height: 190px;
 	}
-	#header.front-page-header .header-content .site-name, #header.main-header h1 {
+	#header.front-page-header .header-content .site-name, #header.main-header .header-content h1 {
 		font-size: rem(45px);
 	}
 	#header.front-page-header .wrapper {
@@ -160,11 +160,10 @@
 		.wrapper {
 			background-position: center center;
 		}
-		h1 {
+		.header-content h1 {
 			text-align: center;
 			&.has-thumbnail {
-				text-align: left;
-				padding: 0 0 0 100px;
+				padding: 0;
 			}
 		}
 	}
@@ -203,8 +202,10 @@
 	// entry.scss
 	.entry-single {
 		.entry.post .entry-thumbnail, .entry.page .entry-thumbnail {
-			top: -175px;
-			@include sizing(80px, 80px);
+			top: -75px;
+			right: 0;
+			margin: auto;
+			@include sizing(100px, 100px);
 		}
 	}
 }
@@ -250,6 +251,15 @@
 ========================================================================== */
 
 @include respond(em(499)) {
+	// header.scss
+	#header.main-header {
+		.header-content h1 {
+
+			&.has-thumbnail {
+			}
+		}
+	}
+
 	// entry.scss 
 	.entry-multiple	.entry, .entry-author, .book-author {
 		display: block;
@@ -259,20 +269,21 @@
 		margin: 0 0 10px 0;
 		.image-wrap {
 			max-height: 200px;
+			img {
+				width: 100%;
+			}			
 		}			
 	}
 	.entry-multiple {
 		.entry.post .entry-thumbnail, .entry.insprvw-review .entry-item-reviewed {
 			.image-wrap img {
-				margin: -30% 0 0 0;
-				width: 100%;
+				margin: -30% 0 0 0;;
 			}			
 		}		
 	}	
 	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
 		.image-wrap img {
 			margin: -20% 0 0 0;
-			width: 100%;
 		}		
 	}
 }
