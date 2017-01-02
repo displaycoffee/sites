@@ -221,8 +221,10 @@
 			}
 		}
 	}
-	.has-thumbnail .entry-single .entry.post {
-		padding: 40px 0 0 0;
+	.has-thumbnail .entry-single .entry {
+		&.post, &.page {
+			padding: 40px 0 0 0;
+		}
 	}
 }
 
@@ -275,9 +277,10 @@
 	// base.scss
 	.alignleft, .alignright {
 		float: none;
-		margin: 0 auto 20px auto;
+		display: block;
+		margin: 0 0 20px 0;
 	}
-	
+
 	// entry.scss 
 	.entry-multiple	.entry, .entry-author, .book-author {
 		display: block;
