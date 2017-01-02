@@ -207,12 +207,18 @@
 	}
 
 	// entry.scss
-	.entry-single {
-		.entry.post .entry-thumbnail, .entry.page .entry-thumbnail {
+	.entry-single .entry {
+		&.post .entry-thumbnail, &.page .entry-thumbnail {
 			top: -80px;
 			right: 0;
 			margin: auto;
 			@include sizing(100px, 100px);
+		}
+		.entry-content {
+			overflow: hidden;
+			.size-full, .size-medium {
+				max-width: 300px;
+			}
 		}
 	}
 	.has-thumbnail .entry-single .entry.post {
@@ -234,6 +240,11 @@
 	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail,
 	.entry-single .entry.insprvw-review .book-author .book-author-thumbnail {
 		flex: 0 0 130px;
+	}
+	.entry-single .entry .entry-content {
+		.size-full, .size-medium {
+			max-width: 200px;
+		}
 	}
 
 	// front-page.scss 
@@ -261,15 +272,12 @@
 ========================================================================== */
 
 @include respond(em(499)) {
-	// header.scss
-	#header.main-header {
-		.header-content h1 {
-
-			&.has-thumbnail {
-			}
-		}
+	// base.scss
+	.alignleft, .alignright {
+		float: none;
+		margin: 0 auto 20px auto;
 	}
-
+	
 	// entry.scss 
 	.entry-multiple	.entry, .entry-author, .book-author {
 		display: block;
@@ -290,7 +298,15 @@
 				margin: -30% 0 0 0;;
 			}			
 		}		
-	}	
+	}
+	.entry-single .entry .entry-content {
+		.size-full, .size-medium, .size-thumbnail {
+			max-width: 100%;
+		}
+		.size-full, .size-medium {
+			width: 100%;
+		}
+	}		
 	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
 		.image-wrap img {
 			margin: -20% 0 0 0;
