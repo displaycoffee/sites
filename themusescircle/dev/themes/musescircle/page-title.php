@@ -5,18 +5,11 @@
 
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
-
-	// Check if we are on a page or post and if there is a thumbnail
-	if ( has_post_thumbnail() && ( is_page() || is_single() ) ) {
-		$thumbnail_class = 'has-thumbnail';
-	} else {
-		$thumbnail_class = 'no-thumbnail';
-	}
 ?>
 <header id="header" class="main-header">
 	<div class="wrapper">
 		<div class="header-content">
-			<h1 class="<?php echo $thumbnail_class; ?>">
+			<h1>
 				<?php 				
 					if ( is_404() ) {
 						// Check if on 404 page

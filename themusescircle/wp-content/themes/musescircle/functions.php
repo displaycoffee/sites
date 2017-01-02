@@ -168,6 +168,19 @@
 	}
 	add_filter( 'get_comments_number', 'musescircle_comments_number' );
 
+	// Add classes to body_class	
+	function musescircle_body_classes( $classes ) {	
+		if ( is_page() || is_single() ) {
+			if ( has_post_thumbnail() ) {
+				$classes[] = 'has-thumbnail';
+			} else {
+				$classes[] = 'no-thumbnail';
+			}
+		}
+		return $classes;
+	}
+	add_filter( 'body_class', 'musescircle_body_classes' );
+
 	// Remove certain classes from post entries
 	function musescircle_post_classes( $classes ) {
 	    $class_key = array_search( 'hentry', $classes );	 
