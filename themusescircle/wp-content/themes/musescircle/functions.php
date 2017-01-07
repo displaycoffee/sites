@@ -35,6 +35,29 @@
 	}
 	add_action( 'after_setup_theme', 'musescircle_setup' );	
 
+	// Update the output of the wordpress caption
+	function musescircle_caption( $empty, $attr, $content ) {		
+		if ( 1 > (int) $attr['width'] || empty( $attr['caption'] ) ) {
+			return '';
+		}
+
+		if ( $attr['id'] ) {
+			$attr['id'] = 'id="' . esc_attr( $attr['id'] ) . '" ';
+		}
+
+		// Create figure block
+		$caption = '<figure ' . esc_attr( $attr['id'] ) . ' class="wp-caption ' . esc_attr( $attr['align'] ) . '">';
+		$caption .= '<div class="wp-caption-wrap">';
+		$caption .= do_shortcode( $content );
+		$caption .= '<figcaption class="wp-caption-text">' . esc_html( $attr['caption'] ) . '</figcaption>';
+		$caption .= '</div>';
+		$caption .= '</figure>';
+
+		// Display figure block
+		return $caption;
+	}
+	add_filter( 'img_caption_shortcode', 'musescircle_caption', 10, 3 );
+
 	// Enable shortcodes in text widgets
 	add_filter( 'widget_text', 'do_shortcode' );
 

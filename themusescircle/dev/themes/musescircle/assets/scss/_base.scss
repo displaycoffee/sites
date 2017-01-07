@@ -86,15 +86,15 @@ hr {
 
 .wp-caption {
 	line-height: 0;	
-	border: 1px solid $color-05;	
-	&, img {
-		max-width: 100%;
-	}
-	.wp-caption-text {
+	.wp-caption-wrap {
+		@include inline-block(top);
+		border: 1px solid $color-05;
 		@include muses-bg;
-		border-top: 0;
-		padding: 10px;
-		line-height: 1.5;
+		.wp-caption-text {
+			border-top: 0;
+			padding: 10px;
+			line-height: 1.5;
+		}
 	}
 }
 

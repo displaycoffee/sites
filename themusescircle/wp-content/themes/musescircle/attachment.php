@@ -45,7 +45,9 @@
 									$att_caption_class = ( $att_caption ) ? ' class="wp-caption"' : '';
 
 									// Create attachment details block - START
-									$att_content = '<figure id="attachment_' . esc_attr( get_the_ID() ) . '" style="width: ' . $att_width .'px"' . $att_caption_class . '>' . $att_src;
+									$att_content = '<figure id="attachment_' . esc_attr( get_the_ID() ) . '" ' . $att_caption_class . '>';
+									$att_content .= '<div class="wp-caption-wrap">';
+									$att_content .= $att_src;
 
 									// Check if the attachment has a caption and continue attachment content block
 									if ( $att_caption ) {
@@ -53,6 +55,7 @@
 									}
 
 									// Create attachment details block - END
+									$att_content .= '</div>';
 									$att_content .= '</figure>';
 								} else {
 									// Variables for file attachment
