@@ -233,6 +233,9 @@
 		display: block;
 		clear: both;
 	}	
+	img[class*='wp-image-'] {
+		display: block;
+	}
 }
 
 /* Entry - Footer

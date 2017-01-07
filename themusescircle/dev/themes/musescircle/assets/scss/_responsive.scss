@@ -215,8 +215,8 @@
 			@include sizing(100px, 100px);
 		}
 		.entry-content {
-			overflow: hidden;
-			.size-full, .size-medium {
+			overflow: hidden;			
+			img[class*='wp-image-'] {
 				max-width: 300px;
 			}
 		}
@@ -244,8 +244,8 @@
 		flex: 0 0 130px;
 	}
 	.entry-single .entry .entry-content {
-		.size-full, .size-medium {
-			max-width: 200px;
+		img[class*='wp-image-'] {
+			max-width: 250px;
 		}
 	}
 
@@ -277,7 +277,6 @@
 	// base.scss
 	.alignleft, .alignright {
 		float: none;
-		display: block;
 		margin: 0 0 20px 0;
 	}
 
@@ -303,11 +302,8 @@
 		}		
 	}
 	.entry-single .entry .entry-content {
-		.size-full, .size-medium, .size-thumbnail {
+		img[class*='wp-image-'] {
 			max-width: 100%;
-		}
-		.size-full, .size-medium {
-			width: 100%;
 		}
 	}		
 	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {

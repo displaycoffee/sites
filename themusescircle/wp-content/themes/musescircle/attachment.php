@@ -46,16 +46,18 @@
 
 									// Create attachment details block - START
 									$att_content = '<figure id="attachment_' . esc_attr( get_the_ID() ) . '" ' . $att_caption_class . '>';
-									$att_content .= '<div class="wp-caption-wrap">';
-									$att_content .= $att_src;
 
 									// Check if the attachment has a caption and continue attachment content block
 									if ( $att_caption ) {
+										$att_content .= '<div class="wp-caption-wrap">';
+										$att_content .= $att_src;
 										$att_content .= '<figcaption class="wp-caption-text">' . $att_caption . '</figcaption>';
+										$att_content .= '</div>';
+									} else {
+										$att_content .= $att_src;
 									}
 
 									// Create attachment details block - END
-									$att_content .= '</div>';
 									$att_content .= '</figure>';
 								} else {
 									// Variables for file attachment
