@@ -25,6 +25,11 @@
 		flex: 0 0 160px;
 		margin: 0 20px 0 0;			
 	}
+	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed .entry-thumbnail {
+		.image-wrap img {
+			width: 100%;
+		}	
+	}	
 } 
 
 .entry-single .entry {
@@ -155,16 +160,25 @@
 }
 
 .entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {	
-	flex: 0 0 160px;
 	margin: 0 20px 0 0;
+}
+
+.archive {
+	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
+		flex: 0 0 160px;
+		.image-wrap img {
+			width: 100%;
+		}		
+	}
+}
+
+.entry-single .entry.insprvw-review .book-author .book-author-thumbnail {
+	flex: 0 1 auto;
+	max-width: 200px;
 }
 
 .entry-author .entry-author-details, .book-author .book-author-details {	
 	flex: 1;
-}
-
-.entry-single .entry.insprvw-review .book-author .book-author-thumbnail {
-	flex: 0 0 200px;
 }
 
 .entry-author .entry-author-details .entry-author-social, .book-author .book-author-details .book-author-social {	
