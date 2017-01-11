@@ -60,7 +60,7 @@
 @mixin gallery-columns($columns) {
 	max-width: ((170 * $columns) * 1px);
 	figure {
-		flex: 0 0 ((100 / $columns) * 1%);
+		flex: 0 1 ((100 / $columns) * 1%);
 	}	
 }
 

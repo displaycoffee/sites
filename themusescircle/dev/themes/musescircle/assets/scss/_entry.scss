@@ -8,7 +8,7 @@
 		@include flex(row wrap);
 	}
 	.entry {
-		flex: 1 1 50%;
+		flex: 0 1 50%;
 		padding: 0 10px;
 		margin: 0 0 30px 0;
 		.entry-wrapper {
@@ -55,7 +55,7 @@
 		.entry-thumbnail {
 			float: left;
 			max-width: 300px;
-			margin: 0 20px 20px 0;
+			margin: 0 20px 10px 0;
 		}
 	}
 }
@@ -154,7 +154,7 @@
 	align-items: flex-start;
 	margin: 0 0 20px 0;
 	h3 {
-		flex: 100%;
+		flex: 0 1 100%;
 		margin: 0 0 10px 0;
 	}
 }
@@ -172,7 +172,7 @@
 	}
 }
 
-.entry-single .entry.insprvw-review .book-author .book-author-thumbnail {
+.single .book-author .book-author-thumbnail {
 	flex: 0 1 auto;
 	max-width: 200px;
 }
@@ -189,8 +189,6 @@
 		padding: 0 5px 0 0;
 	}
 }
-
-
 
 /* Entry - Review Details
 ========================================================================== */
@@ -335,7 +333,7 @@
 			}
 			.children {
 				margin: 0 0 0 74px;
-				flex: 1 1 100%;
+				flex: 0 1 100%;
 			}
 		}
 	}
@@ -374,7 +372,7 @@
 			}
 		}
 		.comment-notes, .comment-form-comment, .form-submit {
-			flex: 1 1 100%;
+			flex: 0 1 100%;
 		}
 		.comment-form-comment {
 			order: 5;
