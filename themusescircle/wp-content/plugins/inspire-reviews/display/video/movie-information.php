@@ -39,8 +39,10 @@
 		}
 	
 		// Update format of date
-		$movie_release_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $movie_release_date, $date_match );
-		$movie_release_date_formatted = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];
+		if ( $movie_release_date ) {
+			$movie_release_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $movie_release_date, $date_match );
+			$movie_release_date_formatted = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];
+		}
 
 		// Continue list items of movie information
 		$movie_list_item .= $movie_release_date ? insprvw_item_details_schema( 'Release Date', 'dateCreated', $movie_release_date_formatted ) : '';

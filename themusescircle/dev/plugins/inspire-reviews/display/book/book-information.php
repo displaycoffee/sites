@@ -68,8 +68,10 @@
 		}
 
 		// Update format of date
-		$book_pub_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $book_pub_date, $date_match );
-		$book_pub_date_formatted = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];
+		if ( $book_pub_date ) {
+			$book_pub_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $book_pub_date, $date_match );
+			$book_pub_date_formatted = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];
+		}
 		
 		// Continue list items of book information
 		$book_list_item .= $book_isbn ? insprvw_item_details_schema( 'ISBN', 'isbn', $book_isbn ) : '';		
