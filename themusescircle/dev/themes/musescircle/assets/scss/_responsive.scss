@@ -88,7 +88,7 @@
 
 	// layout.scss
 	.row .column {
-		flex: 0 1 50%;
+		flex: 1 1 50%;
 	}	
 
 	// entry.scss
@@ -96,6 +96,14 @@
 		.entry.post .entry-thumbnail, .entry.page .entry-thumbnail {
 			top: -190px;
 		}
+		.entry.insprvw-review .entry-meta {
+			.date ~ .bullet {
+				display: none;
+			}
+			.rating {
+				display: block;
+			}
+		}		
 	}
 	.single .book-author .book-author-thumbnail {
 		flex: 0 0 160px;
@@ -129,7 +137,7 @@
 	// header.scss
 	#top-bar {
 		.menu-social-container {
-			flex: 0 1 100%;
+			flex: 1 1 100%;
 			text-align: center;
 			margin: 0 -5px 10px -5px;
 		}
@@ -218,6 +226,11 @@
 			margin: auto;
 			@include sizing(100px, 100px);
 		}
+		&.insprvw-review .entry-meta {
+			.date ~ .bullet, .rating {
+				display: inline-block;
+			}
+		}		
 		.entry-content {
 			overflow: hidden;			
 			img[class*='wp-image-'] {
@@ -307,9 +320,19 @@
 			margin: -20% 0 0 0;
 		}		
 	}
-	.entry-single .entry .entry-content {
-		img[class*='wp-image-'] {
-			max-width: 100%;
+	.entry-single {
+		.entry .entry-content {
+			img[class*='wp-image-'] {
+				max-width: 100%;
+			}
+		}
+		.entry.insprvw-review .entry-meta {
+			.date ~ .bullet {
+				display: none;
+			}
+			.rating {
+				display: block;
+			}
 		}
 	}		
 }
