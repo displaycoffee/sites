@@ -117,6 +117,13 @@
 			display: block;
 		}
 	}
+	.entry-single .entry .entry-footer.edit-allowed {
+		padding: 10px 0;
+		.edit {
+			position: static;
+			margin: 20px 0 0 0;
+		}
+	}	
 
 	// font-page.scss
 	#front-page-sections #review-buttons {
@@ -264,10 +271,8 @@
 	.single .book-author .book-author-thumbnail {
 		flex: 0 0 130px;
 	}
-	.entry-single .entry .entry-content {
-		img[class*='wp-image-'] {
-			max-width: 250px;
-		}
+	.entry-single .entry .entry-content img[class*='wp-image-'] {
+		max-width: 250px;
 	}
 
 	// front-page.scss 
