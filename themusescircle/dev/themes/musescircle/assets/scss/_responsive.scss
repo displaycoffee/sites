@@ -231,6 +231,22 @@
 			padding: 40px 0 0 0;
 		}
 	}
+
+	// footer.scss
+	#footer {
+		padding: 30px 0 70px 0;
+	}
+	.scroll-to-top, .scroll-to-bottom {
+		left: 0;
+		bottom: 20px;
+		margin: auto;
+	}	
+	.scroll-to-top {
+		right: 50px;
+	}
+	.scroll-to-bottom {
+		right: -50px;
+	}	
 }
 
 /* 699 Breakpoint
