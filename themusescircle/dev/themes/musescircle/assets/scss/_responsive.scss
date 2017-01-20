@@ -192,18 +192,6 @@
 	.mobile-open {
 		overflow: hidden;
 	}
-	body.mobile-open {
-		@include transition(margin 0.3s ease-in-out);
-		margin: 0 0 0 $mobile-menu-width;
-		.mobile-menu-button .icon {
-			&.icon-lines {
-				display: none;
-			}
-			&.icon-remove {
-				display: inline-block;
-			}
-		}
-	}
 
 	// layout.scss
 	.content {

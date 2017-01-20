@@ -17,6 +17,9 @@
 			.image-wrap {	
 				@include sizing(100%, 0);
 				padding: 0 0 100% 0;
+				img {
+					width: 100%;
+				}
 			}
 		}
 		.review-date {

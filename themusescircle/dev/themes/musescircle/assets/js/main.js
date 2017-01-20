@@ -319,15 +319,20 @@ function initializeMobileMenu( options ) {
 	// Set a mobile false state (for window resize mainly)
 	var mobileOnce = false;
 
-	// Add/remove classes when mobile menu button is clicked on
-	mobileButton.click( function() {
+	// Create open / close function
+	function toggleMobileMenu() {
 		if ( mobileMenu.hasClass( 'show' ) ) {
 			mobileMenu.removeClass( 'show' );
 			jQuery( 'body, html' ).removeClass( 'mobile-open' );
 		} else {
 			mobileMenu.addClass( 'show' );
 			jQuery( 'body, html' ).addClass( 'mobile-open' );
-		}
+		}		
+	}
+
+	// Add/remove classes when mobile menu button is clicked on
+	mobileButton.click( function() {
+		toggleMobileMenu();
 	});
 
 	// Resize actions for mobile menu
@@ -342,6 +347,15 @@ function initializeMobileMenu( options ) {
 		if ( ( windowWidth || docWidth || bodyWidth ) <= responseWidth ) {			
 			// Check if mobile ones is false, meaning we haven't activated the mobile menu yet
 			if ( !mobileOnce ) {
+				// Create a mobile header and insert it at the top
+				var mobileButton = '<header class="mobile-menu-header"><span class="mobile-header">Menu</span><span class="icon icon-remove"></span></header>';
+				jQuery( mobileButton ).appendTo( mobileMenu );
+
+				// Close menu when button is clicked on
+				jQuery( '.mobile-menu-header .icon-remove' ).click( function() {
+					toggleMobileMenu();
+				});
+
 				// Move menu to menu container
 				menu.detach().appendTo( mobileMenu );
 
@@ -374,7 +388,8 @@ function initializeMobileMenu( options ) {
 		} else {
 			// Check if mobile is true, meaning we're resizing and want to clean up on resize
 			if ( mobileOnce ) {
-				// Replace menu in correct location, remove slide menu toggle, and remove any extra slide-open class
+				// Remove close button, replace menu, remove slide menu toggle, and remove any extra slide-open class
+				jQuery( '.mobile-menu-header' ).remove()
 				menu.detach().appendTo( menuContainer );
 				jQuery( '.slide-submenu' ).remove();
 				jQuery( 'ul, li' ).removeClass( 'slide-open' );

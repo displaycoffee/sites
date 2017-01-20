@@ -230,34 +230,26 @@
     span {
     	@include inline-block(middle);
     }
-    .icon {
+    .icon-lines {
     	@include sizing(25px, 20px);	    	
     	position: relative;
-    	margin: 0 5px 0 0;
-    	&.icon-lines {
-    		background: $color-01;
-	    	&:before, &:after {
-	    		display: block;
-	    		background: $color-03;
-	    		content: '';
-	    		@include sizing(100%, 4px);
-	    		position: absolute;
-	    		z-index: 2;
-	    		left: 0;
-	    	}
-	    	&:before {
-	    		top: 4px;
-	    	}
-	    	&:after {
-	    		bottom: 4px;
-	    	}	    		
+    	margin: 0 5px 0 0;    	
+    	background: $color-01;
+    	&:before, &:after {
+    		display: block;
+    		background: $color-03;
+    		content: '';
+    		@include sizing(100%, 4px);
+    		position: absolute;
+    		z-index: 2;
+    		left: 0;
     	}
-    	&.icon-remove {
-    		display: none;
-    		font-size: rem(24px);
-    		line-height: 20px;
-    		top: -2px;
+    	&:before {
+    		top: 4px;
     	}
+    	&:after {
+    		bottom: 4px;
+    	}	
     }	
 }
 
@@ -272,6 +264,30 @@
 	@include transition(left 0.3s ease-in-out);
 	&.show {
 		left: 0;			
+		box-shadow: 7px 0 5px -2px rgba(0,0,0,0.35);
+	}
+	.mobile-menu-header {
+		position: relative;
+		border-bottom: 1px solid $color-04 - #222;	
+		padding: 0 10px;
+		.mobile-header, .icon-remove {
+			line-height: 50px;
+		}
+		.mobile-header {
+			font-weight: bold;
+			font-size: rem(20px);
+		}
+		.icon-remove {
+			display: block;
+			@include sizing(50px, 50px);
+			position: absolute;
+			right: 0;
+			top: 0;
+			text-align: center;
+			font-size: rem(25px);
+			background: $color-06;
+			cursor: pointer;
+		}
 	}
 	.menu-main-container .menu {		
 		position: relative;
@@ -287,16 +303,14 @@
 			a {
 				color: $color-01;
 				display: block;	
-				padding: 10px;			
+				padding: 10px;	
+				font-size: rem(16px);		
 			}
 		}
 		& > li {			
 			position: relative;
 			left: 0;
 			@include transition(left 0.3s ease-in-out);
-			&:first-child {
-				border-top: 1px solid transparent;
-			}
 			&.menu-item-has-children {
 				& > a {
 					padding: 10px 50px 10px 10px;
@@ -316,6 +330,7 @@
 						cursor: pointer;
 						@include transition(all 0.5s ease-in-out);
 					  	transform: rotate(0deg);
+					  	font-size: rem(20px);
 					}
 				}				
 			}			
