@@ -16,6 +16,29 @@
 	}	
 }
 
+// Countdown styles
+@mixin countdown($element, $size) {
+	@if $element == label {	
+		@if $size == small {
+			font-size: rem(25px);
+		} @else {
+			font-size: rem(30px);
+		}
+	} @else if $element == value {
+		@if $size == small {
+			@include sizing(50px, 50px);
+			font-size: rem(14px);
+			line-height: 44px;
+			border: 3px solid $color-06;
+		} @else {
+			@include sizing(75px, 75px);
+			font-size: rem(20px);
+			line-height: 65px;
+			border: 5px solid $color-06;
+		}		
+	}	
+}
+
 // PX to EM conversion
 // From https://css-tricks.com/snippets/sass/px-to-em-functions
 @function em($pixels, $context: $base-font-size) {
@@ -114,7 +137,30 @@
 	}
 }
 
-// Defining size for elements
+// signature styles
+@mixin signature($element, $size) {
+	@if $element == wrapper {	
+		@if $size == small {
+			height: 125px;
+		} @else {
+			height: 175px;
+		}
+	} @else if $element == greeting {
+		@if $size == small {
+			font-size: rem(35px);
+		} @else {
+			font-size: rem(40px);
+		}		
+	} @else if $element == name {
+		@if $size == small {
+			font-size: rem(75px);
+		} @else {
+			font-size: rem(125px);
+		}		
+	}	
+}
+
+// Sizing for elements
 @mixin sizing($width, $height) {
 	width: $width;
 	height: $height;

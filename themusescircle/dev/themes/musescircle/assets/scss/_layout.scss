@@ -399,15 +399,4 @@
 			}
 		}
 	}
-	&.widget_text .textwidget .countdown .countdown-timer > div {
-		.countdown-value {
-			@include sizing(50px, 50px);
-			font-size: rem(14px);
-			line-height: 44px;
-			border: 3px solid $color-06;
-		}
-		.countdown-label {
-			font-size: rem(25px);
-		}
-	}
 }

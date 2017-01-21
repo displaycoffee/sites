@@ -209,21 +209,24 @@ hr {
 	overflow: hidden;
 	.signature-wrapper {
 		max-width: 500px;
-		height: 175px;
+		@include signature(wrapper, normal);
 		margin: 0 auto;
 		position: relative;
 		.signature-fairy, .signature-greeting, .signature-name {
 			position: absolute;
+			right: 0;
+			margin: auto;
 			width: 100%;
 			text-align: center;			
 		}
 		.signature-fairy {
+			height: 100%;
 			line-height: 0;
 			z-index: 1;
 			top: 0;
-			right: -50px;
+			left: 50px;
 			img {
-				max-height: 175px;
+				max-height: 100%;
 			}
 		}
 		.signature-greeting, .signature-name {
@@ -235,12 +238,12 @@ hr {
 		.signature-greeting {
 			left: -60px;
 			top: 35px;
-			font-size: rem(40px);
+			@include signature(greeting, normal);
 		}
 		.signature-name {
 			left: 0;
 			top: 40px;
-			font-size: rem(125px);
+			@include signature(name, normal);
 			color: $color-07;
 		}
 	}
@@ -258,22 +261,42 @@ hr {
 				display: block;
 			}
 			.countdown-value {
-				@include sizing(75px, 75px);
-				line-height: 65px;
+				@include countdown(value, normal);
 				margin: 0 0 5px 0;
-				font-size: rem(20px);
-			    border: 5px solid $color-06;
 			    background: $color-05;
 			    box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);			
 				border-radius: 100%;
 			}
 			.countdown-label {
-				font-family: $font-02;
-				font-size: rem(30px);
+				@include countdown(label, normal);
+				font-family: $font-02;				
 			}
 		}
 	}
 	.countdown-message p {
 		margin: 0;
 	}
+}
+
+/* Theme shortcodes - Sidebar
+========================================================================== */
+
+.content aside {
+	.signature .signature-wrapper {
+		@include signature(wrapper, small);
+		.signature-greeting {
+			@include signature(greeting, small);
+		}
+		.signature-name {
+			@include signature(name, small);
+		}
+	}	
+	.countdown .countdown-timer > div {
+		.countdown-value {
+			@include countdown(value, small);
+		}
+		.countdown-label {
+			@include countdown(label, small);
+		}
+	}	
 }

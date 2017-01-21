@@ -141,6 +141,27 @@
 ========================================================================== */
 
 @include respond(em(768)) {
+	// base.scss 
+	.content aside {
+		.signature .signature-wrapper {
+			@include signature(wrapper, normal);
+			.signature-greeting {
+				@include signature(greeting, normal);
+			}
+			.signature-name {
+				@include signature(name, normal);
+			}
+		}
+		.countdown .countdown-timer > div {
+			.countdown-value {
+				@include countdown(value, normal);
+			}
+			.countdown-label {
+				@include countdown(label, normal);
+			}
+		}		
+	}
+
 	// header.scss
 	#top-bar {
 		.menu-social-container {
@@ -304,6 +325,27 @@
 	.alignleft, .alignright {
 		float: none;
 		margin: 0 0 20px 0;
+	}
+	.signature, .content aside .signature {
+		.signature-wrapper {
+			@include signature(wrapper, small);
+			.signature-greeting {
+				@include signature(greeting, small);
+			}
+			.signature-name {
+				@include signature(name, small);
+			}
+		}
+	}
+	.countdown, .content aside .countdown {
+		.countdown-timer > div {
+			.countdown-value {
+				@include countdown(value, small);
+			}
+			.countdown-label {
+				@include countdown(label, small);
+			}
+		}
 	}
 
 	// entry.scss 
