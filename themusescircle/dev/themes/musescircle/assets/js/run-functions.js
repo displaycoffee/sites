@@ -19,7 +19,7 @@ jQuery( document ).ready( function( $ ) {
     toggleSpoilerContent();
 
     initializeMobileMenu({
-        menu          : '.menu-main-container',
+        menu          : '#header-nav .menu-main-container',
         menuContainer : '#header-nav .wrapper',
         mobileButton  : '.mobile-menu-button',
         mobileMenu    : '#mobile-menu',
