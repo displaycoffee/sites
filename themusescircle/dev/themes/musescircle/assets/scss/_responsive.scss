@@ -22,7 +22,7 @@
 /* 1199 Breakpoint
 ========================================================================== */
 
-@include respond(em(1199)) {
+@include respond(em(1199)) {	
 	// entry.scss
 	.content:not(.full-width), #front-page-sections:not(.full-width) {
 		.entry-multiple {
@@ -35,6 +35,14 @@
 ========================================================================== */
 
 @include respond(em(1099)) {
+	// shortcodes.scss
+	.content:not(.full-width) .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
+		flex: 0 1 33.33%;
+	}
+	.content.full-width .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
+		flex: 0 1 25%;
+	}
+
 	// header.scss
 	#top-bar .search-bar {	
 		flex: 0 0 200px;
@@ -70,6 +78,14 @@
 ========================================================================== */
 
 @include respond(em(899)) {
+	// shortcodes.scss
+	.content:not(.full-width) .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
+		flex: 0 1 50%;
+	}
+	.content.full-width .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
+		flex: 0 1 33.33%;
+	}
+
 	// header.scss
 	#header.front-page-header, #header.main-header {
 		height: 190px;
@@ -165,6 +181,9 @@
 				@include countdown(label, normal);
 			}
 		}		
+	}	
+	.content.full-width .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
+		flex: 0 1 50%;
 	}
 
 	// header.scss
@@ -252,11 +271,8 @@
 				display: inline-block;
 			}
 		}		
-		.entry-content {
-			overflow: hidden;			
-			img[class*='wp-image-'] {
-				max-width: 300px;
-			}
+		.entry-content img[class*='wp-image-'] {
+			max-width: 300px;
 		}
 	}
 	.has-thumbnail .entry-single .entry {
@@ -298,6 +314,11 @@
 			font-size: rem(11px);
 			line-height: 1.6;
 			border: 3px solid $color-06;
+		}
+	}
+	.content:not(.full-width), .content.full-width {
+		.insprvw-recent-reviews:not(.owl-carousel) .insprvw-review .review-meta .review-date {
+			left: -9px;
 		}
 	}
 
@@ -352,6 +373,14 @@
 			.countdown-label {
 				@include countdown(label, small);
 			}
+		}
+	}
+	.insprvw-recent-reviews:not(.owl-carousel) {
+		display: block;
+	}
+	.content:not(.full-width), .content.full-width {
+		.insprvw-recent-reviews:not(.owl-carousel) .insprvw-review .review-meta .review-date {
+			left: -18px;
 		}
 	}
 

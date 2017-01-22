@@ -188,11 +188,19 @@
 
 .insprvw-recent-reviews:not(.owl-carousel) {
 	@include flex(row wrap);
+	justify-content: center;
 	margin: 0 -20px;
 	.insprvw-review {
 		padding: 0 20px 20px 20px; 
-		flex: 1 1 20%;
 	}
+}
+
+.content:not(.full-width) .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
+	flex: 0 1 25%;
+}
+
+.content.full-width .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
+	flex: 0 1 20%;
 }
 
 /* Shortcodes - Sidebar & Footer

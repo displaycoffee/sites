@@ -1,28 +1,6 @@
 /* WordPress specific (For page/post editor mostly)
 ========================================================================== */
 
-.alignleft {
-	float: left;
-	clear: left;
-	margin: 0 20px 20px 0;
-}
- 
-.alignright {
-	float: right;
-	clear: right;
-	margin: 0 0 20px 20px;
-}
-
-.aligncenter {
-	display: block;
-	margin: 0 auto 20px auto;
-}
-
-.screen-reader-text {
-	clip: rect(1px, 1px, 1px, 1px);
-	position: absolute !important;
-}
-
 .wp-caption, .gallery {
 	margin: 0 0 20px 0;
 	.wp-caption-text {
@@ -105,6 +83,28 @@
 	&.gallery-columns-9 {
 		@include gallery-columns(9);
 	}			
+}
+
+.alignleft {
+	float: left;
+	clear: left;
+	margin: 0 20px 20px 0;
+}
+ 
+.alignright {
+	float: right;
+	clear: right;
+	margin: 0 0 20px 20px;
+}
+
+.aligncenter {
+	display: block;
+	margin: 0 auto 20px auto;
+}
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
 }
 
 /* Widgets
