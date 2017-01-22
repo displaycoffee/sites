@@ -1,0 +1,329 @@
+/* WordPress specific (For page/post editor mostly)
+========================================================================== */
+
+.alignleft {
+	float: left;
+	clear: left;
+	margin: 0 20px 20px 0;
+}
+ 
+.alignright {
+	float: right;
+	clear: right;
+	margin: 0 0 20px 20px;
+}
+
+.aligncenter {
+	display: block;
+	margin: 0 auto 20px auto;
+}
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+
+.wp-caption, .gallery {
+	margin: 0 0 20px 0;
+	.wp-caption-text {
+		font-style: italic;
+		font-size: rem(14px);
+	}
+}
+
+.wp-caption {
+	line-height: 0;	
+	.wp-caption-wrap {
+		@include inline-block(top);
+		border: 1px solid $color-05;
+		@include muses-bg;
+		.wp-caption-text {
+			border-top: 0;
+			padding: 10px;
+			line-height: 1.5;
+		}
+	}
+}
+
+.gallery {	
+	@include flex(row wrap);
+	@include muses-bg(true);
+	padding: 5px;
+	margin: 0 auto 20px auto;
+	figure {
+		margin: 0;
+		.gallery-icon {
+			padding: 5px;
+			margin: 5px;
+			background: $color-12;
+			a {
+				display: block;
+				@include sizing(100%, 0);
+				padding: 0 0 100% 0;
+				position: relative;
+				overflow: hidden;
+				img {
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					margin: auto;
+				}
+			}
+		}
+		.wp-caption-text {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+	}
+	&.gallery-columns-1 {
+		@include gallery-columns(1);
+	}
+	&.gallery-columns-2 {
+		@include gallery-columns(2);
+	}
+	&.gallery-columns-3 {
+		@include gallery-columns(3);
+	}
+	&.gallery-columns-4 {
+		@include gallery-columns(4);
+	}
+	&.gallery-columns-5 {
+		@include gallery-columns(5);
+	}
+	&.gallery-columns-6 {
+		@include gallery-columns(6);
+	}
+	&.gallery-columns-7 {
+		@include gallery-columns(7);
+	}
+	&.gallery-columns-8 {
+		@include gallery-columns(8);
+	}
+	&.gallery-columns-9 {
+		@include gallery-columns(9);
+	}			
+}
+
+/* Widgets
+========================================================================== */
+
+.widget-container {
+	ul {
+		list-style: none;
+	}
+	select {
+		margin: 0 0 20px 0;
+	}
+	&.widget_tag_cloud .tagcloud {
+		margin: 0 -2.5px 15px -2.5px;
+		a {
+			@include inline-block(middle);
+			margin: 0 2.5px 5px 2.5px;
+			background: $color-06;
+			color: $color-01;
+			padding: 5px 5px 5px 25px;
+			border-radius: 5px;
+			position: relative;
+			&:before {
+				@include muses-icons(14px);
+				color: $color-01;
+				content: $icon-tag;
+				position: absolute;
+				top: 6px;
+				left: 5px;
+			}
+			&[style*='8pt'] {
+				font-size: rem(11px) !important;
+			}
+			&[style*='11.6pt'] {
+				font-size: rem(12px) !important;
+			}
+			&[style*='14pt'] {
+				font-size: rem(13px) !important;
+			}	
+			&[style*='16pt'] {
+				font-size: rem(14px) !important;
+			}
+			&[style*='19pt'] {
+				font-size: rem(15px) !important;
+				&:before {
+					top: 8px;
+				}
+			}						
+			&[style*='21pt'] {
+				font-size: rem(17px) !important;
+				&:before {
+					top: 10px;
+				}				
+			}	
+			&[style*='22pt'] {
+				font-size: rem(18px) !important;
+				&:before {
+					top: 12px;
+				}				
+			}							
+		}
+	}	
+	&.widget_calendar .calendar_wrap table {
+		margin: 0 0 20px 0;
+		width: 100%;
+		font-size: rem(14px);
+		caption, tbody td, tfoot td {
+			border: 1px solid $color-06;
+		}
+		caption, tfoot {
+			background: $color-06;
+		}
+		thead, tbody td a {
+			background: $color-05;
+		}
+		caption, td {
+			padding: 2px;
+		}
+		tbody td a, tfoot td a {
+			color: $color-01;
+			&:hover {
+				color: $color-13;
+			}			
+		}
+		caption {
+			text-transform: uppercase;
+		}
+		td {
+			text-align: center;
+			vertical-align: middle;
+		}		
+		thead th {
+			font-weight: bold;
+			border: 1px solid $color-05;
+		}
+		tbody {
+			td a {
+				display: block;
+				@include sizing(100%, 100%);
+				box-shadow: 0 0 0 2px $color-05;
+			}
+			tr:first-child td {
+				border-top: 1px solid $color-07;
+			}			
+		}
+	}
+}
+
+/* Widgets - Sidebar
+========================================================================== */
+
+.content aside .widget-container {
+	h3 {
+		text-align: center;
+		&:after {
+			content: '';
+			display: block;
+			margin: -5px auto 0 auto;
+			@include sizing(75%, 1px);
+			background: $color-01;
+		}
+	}
+	ul {
+		margin: 0 0 20px 0;
+		li {
+			position: relative;
+			padding: 0 0 0 20px;
+			margin: 0 0 2px 0;
+			&:before {
+				@include muses-icons;
+				color: $color-01;
+				content: $icon-angle-right;
+				position: absolute;
+				top: 2px;
+				left: 0;
+			}
+			ul {
+				margin: 2px 0 0 0;
+			}
+		}
+	}
+	&.widget_archive, &.widget_categories, &.widget_recent_comments, &.widget_pages, &.widget_recent_entries {
+		ul li {
+			padding: 0 0 0 25px;
+			&:before {
+				font-size: rem(14px);
+			}
+		}
+	}
+	&.widget_archive ul li:before {
+		content: $icon-inbox;
+	}
+	&.widget_categories ul li:before {
+		content: $icon-folder-open;
+	}	
+	&.widget_recent_comments ul li:before {
+		content: $icon-comment;
+	}
+	&.widget_pages ul li:before, &.widget_recent_entries ul li:before {
+		content: $icon-quill;
+		top: 4px;
+	}	
+	&.widget_nav_menu {
+		.menu-social-container .menu {
+			text-align: center;
+			&, li {
+				margin: 0 0 10px 0;
+			}
+			li {
+				padding: 0;
+				&:before {
+					display: none;
+				}
+				a {
+					&:before {
+						color: $color-01;
+					}
+					&:hover:before {
+						color: $color-07;
+					}
+				}
+			}
+		}
+	}	
+}
+
+/* Widgets - Footer
+========================================================================== */
+
+#footer .column .widget-container {
+	h4 {
+		margin: 0 0 10px 0;
+	}
+	& > ul, & > div:not(.menu-social-container) > ul {
+		font-size: rem(16px);
+		@include flex(row wrap);
+		margin: 0 -10px 15px -10px;		
+		& > li {
+			flex: 1 1 50%;
+			padding: 0 10px;
+			& > a {
+				display: block;
+				color: $color-01;
+				padding: 0 0 5px 0;
+				&:hover {
+					color: $color-07;
+				}
+			}
+			&.menu-item-has-children .sub-menu {
+				display: none;
+			}
+		}
+	}
+	&.widget_recent_comments, &.widget_recent_entries {
+		& > ul {
+			display: block;
+		}
+	}
+	&.widget_nav_menu .menu-social-container {
+		margin: 0 0 15px 0;
+	}
+}

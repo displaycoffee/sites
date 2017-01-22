@@ -137,7 +137,7 @@
 	}
 }
 
-// signature styles
+// Signature styles
 @mixin signature($element, $size) {
 	@if $element == wrapper {	
 		@if $size == small {

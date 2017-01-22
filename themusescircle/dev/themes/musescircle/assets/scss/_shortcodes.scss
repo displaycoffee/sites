@@ -1,0 +1,219 @@
+/* Clearfix
+========================================================================== */
+
+.clearfix {
+	clear: both;
+}
+
+/* Spoiler
+========================================================================== */
+
+.spoiler {
+	.spoiler-close, .spoiler-open {
+		cursor: pointer;
+		font-weight: bold;
+	    color: $color-07;
+	    @include transition(color 0.3s ease-in-out);
+	    &:hover {
+	        color: $color-01;
+	    }
+	}
+	.spoiler-hide {
+		display: none;
+	}	
+}
+
+/* Signature
+========================================================================== */
+
+.signature {
+	margin: 30px 0;
+	overflow: hidden;
+	.signature-wrapper {
+		max-width: 500px;
+		@include signature(wrapper, normal);
+		margin: 0 auto;
+		position: relative;
+		.signature-fairy, .signature-greeting, .signature-name {
+			position: absolute;
+			right: 0;
+			margin: auto;
+			width: 100%;
+			text-align: center;			
+		}
+		.signature-fairy {
+			height: 100%;
+			line-height: 0;
+			z-index: 1;
+			top: 0;
+			left: 50px;
+			img {
+				max-height: 100%;
+			}
+		}
+		.signature-greeting, .signature-name {
+			font-family: $font-02;
+			z-index: 2;
+			text-shadow: 1px 3px 0 rgba(0,0,0,0.85);
+			transform: rotate(-5deg);
+		}
+		.signature-greeting {
+			left: -60px;
+			top: 35px;
+			@include signature(greeting, normal);
+		}
+		.signature-name {
+			left: 0;
+			top: 40px;
+			@include signature(name, normal);
+			color: $color-07;
+		}
+	}
+}
+
+/* Countdown
+========================================================================== */
+
+.countdown {
+	text-align: center;
+	margin: 0 0 20px 0;
+	.countdown-timer {
+		margin: 0 -5px 10px -5px;
+		& > div {
+			@include inline-block(middle);
+			margin: 0 5px;
+			& > span {
+				display: block;
+			}
+			.countdown-value {
+				@include countdown(value, normal);
+				margin: 0 0 5px 0;
+			    background: $color-05;
+			    box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);			
+				border-radius: 100%;
+			}
+			.countdown-label {
+				@include countdown(label, normal);
+				font-family: $font-02;				
+			}
+		}
+	}
+	.countdown-message p {
+		margin: 0;
+	}
+}
+
+/* Recent Reviews
+========================================================================== */
+
+.insprvw-recent-reviews .insprvw-review {
+	text-align: center;
+	padding: 0 20px;
+	.review-meta {
+		margin: 0 auto 10px auto;
+		max-width: 220px;
+		position: relative;
+		.review-thumbnail, .review-date {
+			border-radius: 100%;
+		}
+		.review-thumbnail {
+			border: 10px solid $color-06;
+			overflow: hidden;
+			.image-wrap {	
+				@include sizing(100%, 0);
+				padding: 0 0 100% 0;
+				img {
+					width: 100%;
+				}
+			}
+		}
+		.review-date {
+			position: absolute;
+			top: 0;
+			left: -18px;
+			z-index: 2;
+			text-transform: uppercase;
+			border: 5px solid $color-06;
+			padding: 10px;
+			@include sizing(75px, 75px);
+			background: $color-05;
+			box-shadow: inset 3px 3px 10px rgba(0,0,0,0.55);
+			font-size: rem(13px);
+			line-height: 1.4;
+			.month, .day {
+				@include inline-block(middle);
+			}
+			.month {
+				margin: 5px 2.5px 0 0;
+			}
+			.day {
+				margin: 5px 0 0 2.5px;
+			}
+			.year {
+				display: block;
+			}
+		}
+	}
+	.review-title h4 {
+		margin: 0;
+		min-height: 44px;
+		a {
+			color: $color-01;
+			&:hover {
+				color: $color-07;
+			}
+			.main-title, .sub-title {
+				display: block;
+				font-family: $font-01;
+				font-weight: 300;
+			}
+			.main-title {
+				font-size: rem(18px);
+				margin: 0 0 8px 0;
+			}
+			.sub-title {
+				font-size: rem(15px);
+			}
+		}
+	}
+	hr {
+		margin: 10px 0;
+	}
+	.review-excerpt {
+		p {
+			font-size: rem(14px);
+		}
+	}
+}
+
+.insprvw-recent-reviews:not(.owl-carousel) {
+	@include flex(row wrap);
+	margin: 0 -20px;
+	.insprvw-review {
+		padding: 0 20px 20px 20px; 
+		flex: 1 1 20%;
+	}
+}
+
+/* Shortcodes - Sidebar & Footer
+========================================================================== */
+
+.content aside, #footer .column {
+	.signature .signature-wrapper {
+		@include signature(wrapper, small);
+		.signature-greeting {
+			@include signature(greeting, small);
+		}
+		.signature-name {
+			@include signature(name, small);
+		}
+	}	
+	.countdown .countdown-timer > div {
+		.countdown-value {
+			@include countdown(value, small);
+		}
+		.countdown-label {
+			@include countdown(label, small);
+		}
+	}	
+}

@@ -86,6 +86,17 @@
 		background-size: auto 190px;
 	}	
 
+	// font-page.scss
+	#front-page-sections #review-buttons {
+		h3 {
+			margin: 0;
+		}
+		.row .column {
+			max-width: none;
+			margin: 20px 0 0 0;
+		}
+	}
+
 	// layout.scss
 	.row .column {
 		flex: 1 1 50%;
@@ -124,25 +135,19 @@
 			margin: 20px 0 0 0;
 		}
 	}	
-
-	// font-page.scss
-	#front-page-sections #review-buttons {
-		h3 {
-			margin: 0;
-		}
-		.row .column {
-			max-width: none;
-			margin: 20px 0 0 0;
-		}
-	}
 }
 
 /* 768 Breakpoint
 ========================================================================== */
 
 @include respond(em(768)) {
-	// base.scss 
-	.content aside {
+	// wordpress.scss
+	.content aside .widget-container h3:after {
+		display: none;
+	}
+
+	// shortcodes.scss 
+	.content aside, #footer .column {
 		.signature .signature-wrapper {
 			@include signature(wrapper, normal);
 			.signature-greeting {
@@ -227,10 +232,10 @@
 			display: block;
 		}
 		aside {
-			margin: 30px 0 0 0;
-			padding: 30px 0 0 0;
+			margin: 20px 0 0 0;
+			padding: 20px 0 0 0;
 			border-left: 0;
-			border-top: 1px dashed $color-05;
+			border-top: 1px solid $color-05;
 		}
 	}
 
@@ -281,6 +286,26 @@
 ========================================================================== */
 
 @include respond(em(699)) {
+	// shortcodes.scss
+	.insprvw-recent-reviews .insprvw-review .review-meta {
+		.review-thumbnail {
+			border: 6px solid $color-06;
+		}
+		.review-date {
+			top: 16px;
+			padding: 8px;
+			@include sizing(60px, 60px);
+			font-size: rem(11px);
+			line-height: 1.6;
+			border: 3px solid $color-06;
+		}
+	}
+
+	// front-page.scss 
+	#front-page-sections #about-site .read-more {
+		text-align: center;
+	}
+
 	// layout.scss
 	.row {
 		display: block;
@@ -295,38 +320,20 @@
 	.entry-single .entry .entry-content img[class*='wp-image-'] {
 		max-width: 250px;
 	}
-
-	// front-page.scss 
-	#front-page-sections #about-site .read-more {
-		text-align: center;
-	}
-
-	// recent-reviews.scss
-	.insprvw-recent-reviews .insprvw-review .review-meta {
-		.review-thumbnail {
-			border: 6px solid $color-06;
-		}
-		.review-date {
-			top: 16px;
-			padding: 8px;
-			@include sizing(60px, 60px);
-			font-size: rem(11px);
-			line-height: 1.6;
-			border: 3px solid $color-06;
-		}
-	}
 }
 
 /* 499 Breakpoint
 ========================================================================== */
 
 @include respond(em(499)) {
-	// base.scss
+	// wordpress.scss
 	.alignleft, .alignright {
 		float: none;
 		margin: 0 0 20px 0;
 	}
-	.signature, .content aside .signature {
+
+	// shortcodes.scss
+	.signature, .content aside .signature, #footer .column .signature {
 		.signature-wrapper {
 			@include signature(wrapper, small);
 			.signature-greeting {
@@ -337,7 +344,7 @@
 			}
 		}
 	}
-	.countdown, .content aside .countdown {
+	.countdown, .content aside .countdown, #footer .column .countdown {
 		.countdown-timer > div {
 			.countdown-value {
 				@include countdown(value, small);

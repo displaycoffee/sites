@@ -2,35 +2,9 @@
 ========================================================================== */
 
 #footer {
-	background: url($images + 'muses-bg.png') 0 0 repeat-x;
+	background: url($images + 'muses-bg.png') 0 0;
 	border-top: 1px solid $color-05 + #000;
 	padding: 30px 0;
-	.row .column {
-		h4 {
-			margin: 0 0 10px 0;
-		}
-		.widget_nav_menu > div:not(.menu-social-container) {
-			font-size: rem(16px);
-			.menu {
-				@include flex(row wrap);
-				margin: 0 0 15px 0;
-				& > li {
-					flex: 1 1 50%;
-					& > a {
-						display: block;
-						color: $color-01;
-						padding: 0 0 5px 0;
-						&:hover {
-							color: $color-07;
-						}
-					}
-					&.menu-item-has-children .sub-menu {
-						display: none;
-					}
-				}
-			}
-		}	
-	}
 }
 
 /* Scroll to top/bottom
