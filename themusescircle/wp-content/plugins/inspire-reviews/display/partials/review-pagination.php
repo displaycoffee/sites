@@ -12,7 +12,7 @@
 
 		// Pagination arguments
 		$args = array(
-			'end_size'	=> 2,
+			'end_size'	=> 1,
 			'mid_size'	=> 3,
 			'prev_text' => '<span class="icon icon-chevron-left"></span>',
 			'next_text' => '<span class="icon icon-chevron-right"></span>',

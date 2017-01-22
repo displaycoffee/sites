@@ -136,6 +136,16 @@
 	.row .column {
 		flex: 1 1 50%;
 	}	
+	.content article .pagination > .page-numbers {
+		margin: 0 -1px -5px -1px;
+		li {
+			margin: 0 1px 5px 1px;
+			.page-numbers {
+				min-width: 26px;
+				font-size: rem(14px);
+			}
+		}
+	}
 
 	// entry.scss
 	.entry-single {
@@ -269,6 +279,16 @@
 		.wrapper {
 			display: block;
 		}
+		article .pagination > .page-numbers {
+			margin: 0 -2.5px -5px -2.5px;
+			li {				
+				margin: 0 2.5px 5px 2.5px;
+				.page-numbers {
+					min-width: 32px;
+					font-size: rem(15px);
+				}
+			}
+		}
 		aside {
 			margin: 20px 0 0 0;
 			padding: 20px 0 0 0;
@@ -360,6 +380,16 @@
 	.row {
 		display: block;
 	}	
+	.content article .pagination > .page-numbers {
+		margin: 0 -1px -5px -1px;
+		li {			
+			margin: 0 1px 5px 1px;
+			.page-numbers {
+				min-width: 26px;
+				font-size: rem(14px);
+			}
+		}
+	}
 
 	// entry.scss 
 	.entry-multiple .entry.post .entry-thumbnail, .entry-multiple .entry.insprvw-review .entry-item-reviewed,

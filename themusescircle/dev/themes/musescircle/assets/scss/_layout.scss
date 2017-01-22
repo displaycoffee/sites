@@ -171,15 +171,15 @@
 	.pagination {
 		text-align: center;
 		& > .page-numbers {
-			margin: 0 -2.5px;
+			margin: 0 -2.5px -5px -2.5px;
 			li {
-				min-width: 32px;
-				line-height: 32px;
-				margin: 0 2.5px;
+				margin: 0 2.5px 5px 2.5px;
 				.page-numbers {
 					display: block;
 					padding: 0 5px;
 					@include sizing(100%, 100%);	
+					min-width: 32px;
+					line-height: 32px;
 					border-radius: 4px;					
 				}
 				span.current {
