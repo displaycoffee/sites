@@ -22,7 +22,12 @@
 /* 1199 Breakpoint
 ========================================================================== */
 
-@include respond(em(1199)) {	
+@include respond(em(1199)) {
+	// wordpress.scss 
+	.gallery.gallery-columns-9 {
+		@include gallery-columns(8);
+	}	
+
 	// entry.scss
 	.content:not(.full-width), #front-page-sections:not(.full-width) {
 		.entry-multiple {
@@ -35,6 +40,13 @@
 ========================================================================== */
 
 @include respond(em(1099)) {
+	// wordpress.scss 
+	.gallery {
+		&.gallery-columns-8, &.gallery-columns-9 {
+			@include gallery-columns(7);
+		}
+	}		
+
 	// shortcodes.scss
 	.content:not(.full-width) .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
 		flex: 0 1 33.33%;
@@ -78,6 +90,13 @@
 ========================================================================== */
 
 @include respond(em(899)) {
+	// wordpress.scss 
+	.gallery {
+		&.gallery-columns-7, &.gallery-columns-8, &.gallery-columns-9 {
+			@include gallery-columns(6);
+		}
+	}
+
 	// shortcodes.scss
 	.content:not(.full-width) .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
 		flex: 0 1 50%;
@@ -157,7 +176,7 @@
 ========================================================================== */
 
 @include respond(em(768)) {
-	// wordpress.scss
+	// wordpress.scss 
 	.content aside .widget-container h3:after {
 		display: none;
 	}
@@ -302,6 +321,16 @@
 ========================================================================== */
 
 @include respond(em(699)) {
+	// wordpress.scss 
+	.gallery {
+		&.gallery-columns-3, &.gallery-columns-4 {
+			max-width: none;
+		}
+		&.gallery-columns-6, &.gallery-columns-7, &.gallery-columns-8, &.gallery-columns-9 {
+			@include gallery-columns(5);
+		}
+	}
+
 	// shortcodes.scss
 	.insprvw-recent-reviews .insprvw-review .review-meta {
 		.review-thumbnail {
@@ -352,6 +381,14 @@
 		float: none;
 		margin: 0 0 20px 0;
 	}
+	.gallery {
+		&.gallery-columns-1, &.gallery-columns-2 {
+			max-width: none;
+		}		
+		&.gallery-columns-5, &.gallery-columns-6, &.gallery-columns-7, &.gallery-columns-8, &.gallery-columns-9 {
+			@include gallery-columns(4);
+		}
+	}	
 
 	// shortcodes.scss
 	.signature, .content aside .signature, #footer .column .signature {
