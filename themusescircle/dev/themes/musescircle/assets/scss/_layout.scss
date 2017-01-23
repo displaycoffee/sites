@@ -155,35 +155,31 @@
 	.category-description {
 		margin: 0 0 50px 0;
 	}
-	.pagination > .page-numbers, .navigation-links ul {
-		li {
-			@include inline-block(middle);			
-			a {
-				color: $color-01;
-				background: $color-06;
-				@include transition(background 0.3s ease-in-out);
-				&:hover {
-					background: $color-05;
-				}				
-			}
-		}
-	}
 	.pagination {
 		text-align: center;
 		& > .page-numbers {
 			margin: 0 -2.5px -5px -2.5px;
 			li {
 				margin: 0 2.5px 5px 2.5px;
+				@include inline-block(middle);	
 				.page-numbers {
 					display: block;
 					padding: 0 5px;
 					@include sizing(100%, 100%);	
 					min-width: 32px;
 					line-height: 32px;
-					border-radius: 4px;					
+					border-radius: 4px;	
+					color: $color-01;								
+				}
+				a.page-numbers {
+					background: $color-06;
+					@include transition(background 0.3s ease-in-out);
+					&:hover {
+						background: $color-05;
+					}
 				}
 				span.current {
-					background: $color-01;
+					background: $color-01;				
 					color: $color-07;
 					font-weight: bold;
 				}
@@ -193,28 +189,48 @@
 			}
 		}
 	}
-	.navigation-links {
-		text-align: center;
-		ul {
-			@include inline-block(middle);
-			margin: 0 auto;
-			li {
-				a {
-					@include inline-block(middle);
-					padding: 5px 10px;
-					border-radius: 4px;					
+	.navigation-links ul {
+		@include flex(row nowrap);			
+		margin: 0 -10px -5px -10px;
+		li {
+			flex: 1;
+			padding: 0 10px;
+			margin: 0 0 5px 0;
+			a {
+				color: $color-01;
+				@include inline-block(middle);
+				min-height: 32px;
+				position: relative;					
+				.icon {
+					position: absolute;
+					top: 0;
+					@include sizing(32px, 32px);
+					line-height: 32px;
+					background: $color-06;
+					@include transition(background 0.3s ease-in-out);
+					border-radius: 4px;
+					text-align: center;						
 				}
-				&.prev {
-					padding: 0 2.5px 0 0;
-					a .icon {
-						margin: 0 10px 0 0;
+				&:hover {
+					color: $color-07;
+					.icon {
+						background: $color-05;
+						color: $color-01;
 					}
+				}					
+			}
+			&.prev a {
+				padding: 5px 0 0 40px;
+				.icon {
+					left: 0;
 				}
-				&.next {
-					padding: 0 0 0 2.5px;
-					text-align: right;
-					a .icon {
-						margin: 0 0 0 10px;
+			}
+			&.next {
+				text-align: right;
+				a {
+					padding: 5px 40px 0 0;
+					.icon {
+						right: 0;
 					}
 				}
 			}
