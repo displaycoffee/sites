@@ -271,7 +271,15 @@
 	    display: block;
 	}
 	.mobile-open {
+		position: relative;
 		overflow: hidden;
+	}
+	html.mobile-open {
+		height: 100%;
+		margin-top: 0 !important;
+		body.mobile-open.logged-in {
+			padding-top: 46px;
+		}
 	}
 
 	// layout.scss
@@ -485,12 +493,14 @@
 				max-width: 100%;
 			}
 		}
-		.entry.insprvw-review .entry-meta {
-			.date ~ .bullet {
-				display: none;
-			}
-			.rating {
-				display: block;
+		.entry, .entry.insprvw-review {
+			.entry-meta {
+				.date ~ .bullet, .bullet {
+					display: none;
+				}
+				.author, .date, .rating {
+					display: block;
+				}
 			}
 		}
 	}		

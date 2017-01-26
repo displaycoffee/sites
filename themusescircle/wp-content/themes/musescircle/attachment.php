@@ -26,9 +26,9 @@
 							// Check if the parent title is there
 							if ( $att_parent_title ) {
 								// Create attachment header block
-								$att_header = '<header class="entry-header"><h3>' . __( 'Published in: ', 'musescircle' );
+								$att_header = '<div class="entry-published"><p><strong>' . __( 'Published in: ', 'musescircle' ) . '</strong>';
 								$att_header .= '<a href="' . esc_url( $att_parent_link ) . '">' . $att_parent_title . '</a>';
-								$att_header .= '</h3></header>';
+								$att_header .= '</p></div>';
 
 								// Display attachment header block
 								echo $att_header;
@@ -42,19 +42,14 @@
 									// Variables for image attachment
 									$att_src = wp_get_attachment_image( get_the_ID(), 'large' );
 									$att_width = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' )[1];
-									$att_caption_class = ( $att_caption ) ? ' class="wp-caption"' : '';
 
 									// Create attachment details block - START
-									$att_content = '<figure id="attachment_' . esc_attr( get_the_ID() ) . '" ' . $att_caption_class . '>';
+									$att_content = '<figure id="attachment_' . esc_attr( get_the_ID() ) . '">';
+									$att_content .= $att_src;
 
 									// Check if the attachment has a caption and continue attachment content block
 									if ( $att_caption ) {
-										$att_content .= '<div class="wp-caption-wrap">';
-										$att_content .= $att_src;
-										$att_content .= '<figcaption class="wp-caption-text">' . $att_caption . '</figcaption>';
-										$att_content .= '</div>';
-									} else {
-										$att_content .= $att_src;
+										$att_content .= '<figcaption class="wp-caption-text"><strong>' . __( 'Details', 'musescircle' ) . ':</strong> ' . $att_caption . '</figcaption>';										
 									}
 
 									// Create attachment details block - END

@@ -387,13 +387,19 @@
 ========================================================================== */
 
 .attachment {
-	.entry-single .entry.attachment .entry-content .attachment-file {
-		.attachment-text {
+	.entry-single .entry.attachment {
+		.entry-published p {
+			font-size: rem(18px);
 			margin: 0 0 2px 0;
 		}
-		.wp-caption-text {
-			font-style: italic;
-			font-size: rem(14px);
+		.entry-content {
+			.attachment-file .attachment-text, figure img {
+				margin: 0 0 2px 0;
+			}
+			.wp-caption-text {
+				font-style: italic;
+				font-size: rem(14px);
+			}
 		}
 	}
 	.navigation-links {
