@@ -168,11 +168,20 @@ function initializeCountdown() {
 			var minutesSelector = countdown.find( '.minutes .countdown-value' );
 			var secondsSelector = countdown.find( '.seconds .countdown-value' );
 
+			// Make sure time is at least two digits
+			function formatTime( time ) {
+				if ( time > 9) {
+					return time;
+				} else {
+					return ( '0' + time ).slice( -2 );
+				}
+			}
+
 			// Add values to countdown
-			daysSelector.append( ( '0' + time.days ).slice( -2 ) );
-			hoursSelector.append( ( '0' + time.hours ).slice( -2 ) );
-			minutesSelector.append( ( '0' + time.minutes ).slice( -2 ) );
-			secondsSelector.append( ( '0' + time.seconds ).slice( -2 ) );			
+			daysSelector.append( formatTime( time.days ) );
+			hoursSelector.append( formatTime( time.hours ) );
+			minutesSelector.append( formatTime( time.minutes ) );
+			secondsSelector.append( formatTime( time.seconds ) );			
 
 			// Update the clock values
 			function updateClock() {
@@ -181,16 +190,16 @@ function initializeCountdown() {
 
 				// Check if time values have changed 
 				if ( daysSelector.text() != time.days ) {
-					daysSelector.text( time.days );
+					daysSelector.text( formatTime( time.days ) );
 				}
 				if ( hoursSelector.text() != time.hours ) {
-					hoursSelector.text( time.hours );
+					hoursSelector.text( formatTime( time.hours ) );
 				}
 				if ( minutesSelector.text() != time.minutes ) {
-					minutesSelector.text( time.minutes );
+					minutesSelector.text( formatTime( time.minutes ) );
 				}
 				if ( secondsSelector.text() != time.seconds ) {
-					secondsSelector.text( time.seconds );
+					secondsSelector.text( formatTime( time.seconds ) );
 				}
 
 				// If there is no remaining time, stop the countdown
