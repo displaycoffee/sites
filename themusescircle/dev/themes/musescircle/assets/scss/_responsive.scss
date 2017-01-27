@@ -179,6 +179,14 @@
 			position: static;
 			margin: 20px 0 0 0;
 		}
+	}
+	#comments .comments-list ul li .comment-wrapper .comment-meta {
+		p {
+			display: block;
+		}
+		.author {
+			margin: 0 0 2px 0;
+		}
 	}	
 }
 
@@ -327,6 +335,14 @@
 			padding: 40px 0 0 0;
 		}
 	}
+	#comments .comments-list ul li .comment-wrapper .comment-meta {
+		p {
+			display: inline-block;
+		}
+		.author {
+			margin: 0;
+		}
+	}	
 
 	// footer.scss
 	#footer {
@@ -398,6 +414,14 @@
 	.entry-single .entry .entry-content img[class*='wp-image-'] {
 		max-width: 250px;
 	}
+	#comments .comments-list ul li .comment-wrapper .comment-meta {
+		p {
+			display: block;
+		}
+		.author {
+			margin: 0 0 2px 0;
+		}
+	}	
 }
 
 /* 499 Breakpoint
@@ -502,6 +526,15 @@
 					display: block;
 				}
 			}
+		}
+	}
+	#comments .comments-list ul li {
+		.comment-thumbnail {
+			flex: 0 0 30px;
+			margin: 0 10px 0 0;
+		}
+		.children {
+			margin: 0 0 0 40px;
 		}
 	}		
 }
