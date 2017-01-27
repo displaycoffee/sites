@@ -20,10 +20,10 @@
 	</div>
 </header>	
 <div id="front-page-sections" class="full-width">
-	<?php get_template_part( 'partials/front', 'about' ); ?>
-	<?php get_template_part( 'partials/front', 'countdown' ); ?>
-	<?php get_template_part( 'partials/front', 'recent-reviews' ); ?>
-	<?php get_template_part( 'partials/front', 'review-buttons' ); ?>
-	<?php get_template_part( 'partials/front', 'from-blog' ); ?>
+	<?php get_template_part( 'front/front', 'about' ); ?>
+	<?php get_template_part( 'front/front', 'countdown' ); ?>
+	<?php get_template_part( 'front/front', 'recent-reviews' ); ?>
+	<?php get_template_part( 'front/front', 'review-buttons' ); ?>
+	<?php get_template_part( 'front/front', 'from-blog' ); ?>
 </div>
 <?php get_footer(); ?>

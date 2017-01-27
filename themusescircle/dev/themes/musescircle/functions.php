@@ -268,16 +268,16 @@
 	}
 
 	// Include customizer choices
-	require_once( 'includes/customizer-choices.php' );
+	require_once( 'customizer/customizer-choices.php' );
 
 	// Include custom controls
-	require_once( 'includes/customizer-date-picker.php' );
+	require_once( 'customizer/customizer-date-picker.php' );
 
 	// Include customizer validation
-	require_once( 'includes/customizer-validation.php' );
+	require_once( 'customizer/customizer-validation.php' );
 
 	// Include customizer file
-	require_once( 'includes/customizer.php' );
+	require_once( 'customizer/customizer.php' );
 
 	// Include shortcode file
 	require_once( 'includes/shortcodes.php' );	
