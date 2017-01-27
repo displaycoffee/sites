@@ -181,16 +181,16 @@ function initializeCountdown() {
 
 				// Check if time values have changed 
 				if ( daysSelector.text() != time.days ) {
-					daysSelector.text( ( '0' + time.days ).slice( -2 ) );
+					daysSelector.text( time.days );
 				}
 				if ( hoursSelector.text() != time.hours ) {
-					hoursSelector.text( ( '0' + time.hours ).slice( -2 ) );
+					hoursSelector.text( time.hours );
 				}
 				if ( minutesSelector.text() != time.minutes ) {
-					minutesSelector.text( ( '0' + time.minutes ).slice( -2 ) );
+					minutesSelector.text( time.minutes );
 				}
 				if ( secondsSelector.text() != time.seconds ) {
-					secondsSelector.text( ( '0' + time.seconds ).slice( -2 ) );
+					secondsSelector.text( time.seconds );
 				}
 
 				// If there is no remaining time, stop the countdown

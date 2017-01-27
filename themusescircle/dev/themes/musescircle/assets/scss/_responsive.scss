@@ -162,7 +162,7 @@
 		}		
 	}
 	.single .book-author .book-author-thumbnail {
-		flex: 0 0 160px;
+		flex: 0 0 150px;
 		max-width: none;
 		.image-wrap img {
 			width: 100%;
@@ -409,7 +409,7 @@
 	.entry-multiple .entry.post .entry-thumbnail, .entry-multiple .entry.insprvw-review .entry-item-reviewed,
 	.archive .entry-author .entry-author-thumbnail, .archive .book-author .book-author-thumbnail,
 	.single .book-author .book-author-thumbnail {
-		flex: 0 0 130px;
+		flex: 0 0 125px;
 	}
 	.entry-single .entry .entry-content img[class*='wp-image-'] {
 		max-width: 250px;
@@ -530,11 +530,11 @@
 	}
 	#comments .comments-list ul li {
 		.comment-thumbnail {
-			flex: 0 0 30px;
+			flex: 0 0 29px;
 			margin: 0 10px 0 0;
 		}
 		.children {
-			margin: 0 0 0 40px;
+			margin: 0 0 0 39px;
 		}
 	}		
 }

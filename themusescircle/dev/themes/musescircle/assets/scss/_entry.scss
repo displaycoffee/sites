@@ -22,7 +22,7 @@
 
 .entry-multiple .entry {
 	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed {
-		flex: 0 0 160px;
+		flex: 0 0 150px;
 		margin: 0 20px 0 0;			
 	}
 	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed .entry-thumbnail {
@@ -165,7 +165,7 @@
 
 .archive {
 	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
-		flex: 0 0 160px;
+		flex: 0 0 150px;
 		.image-wrap img {
 			width: 100%;
 		}		
