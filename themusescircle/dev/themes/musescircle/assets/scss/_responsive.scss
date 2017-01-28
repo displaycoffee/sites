@@ -194,6 +194,11 @@
 ========================================================================== */
 
 @include respond(em(768)) {
+	// form-fields
+	input[type='text'], input[type='email'], input[type='url'], select, textarea {
+		font-size: rem(16px)
+	}
+
 	// wordpress.scss 
 	.content aside .widget-container h3:after {
 		display: none;
@@ -421,7 +426,12 @@
 		.author {
 			margin: 0 0 2px 0;
 		}
-	}	
+	}
+	#respond form {
+		.comment-form-author,.comment-form-email, .comment-form-url {
+			flex: 1 1 100%;
+		}
+	}
 }
 
 /* 499 Breakpoint

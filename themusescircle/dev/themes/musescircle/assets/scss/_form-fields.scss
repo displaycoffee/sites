@@ -27,6 +27,13 @@ input[type='text'], input[type='email'], input[type='url'], select, textarea {
 	border-radius: 4px;
 	color: $color-01;
 	width: 100%;
+	margin: 0 0 20px 0;
+}
+
+p {
+	input[type='text'], input[type='email'], input[type='url'], select, textarea {
+		margin: 0;	
+	}
 }
 
 input[type='text'], input[type='email'], input[type='url'], select {
@@ -82,6 +89,7 @@ a.button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a
 	margin: 0 0 20px 0;
 	input[type='text'] {
 		padding: 0 40px 0 10px;
+		margin: 0;
 		&:focus ~ button .icon {
 			color: $color-01;				
 		}
@@ -98,11 +106,4 @@ a.button, .insprvw-recent-reviews .review .read-more a, #about-site .read-more a
 			}
 		}
 	}			
-}	
-
-/* Contact form
-========================================================================== */
-
-.wpcf7-form .row {
-	margin: 0 -20px 20px -20px;
 }
