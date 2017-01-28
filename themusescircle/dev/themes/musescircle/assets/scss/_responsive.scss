@@ -84,6 +84,11 @@
 			}
 		}
 	}
+
+	// entry.scss {
+	.entry-single .entry.insprvw-review .entry-item-reviewed .entry-thumbnail {
+		max-width: 250px;
+	}
 }
 
 /* 899 Breakpoint
@@ -152,14 +157,27 @@
 		.entry.post .entry-thumbnail, .entry.page .entry-thumbnail {
 			top: -190px;
 		}
-		.entry.insprvw-review .entry-meta {
-			.date ~ .bullet {
-				display: none;
+		.entry.insprvw-review {
+			.entry-meta {
+				.date ~ .bullet {
+					display: none;
+				}
+				.rating {
+					display: block;
+				}
 			}
-			.rating {
-				display: block;
+			.entry-item-reviewed {
+				.entry-thumbnail {
+					max-width: 200px;
+				}
+				.entry-details {
+					margin: 0 0 20px 0;
+					.review-synopsis {
+						clear: left;
+					}
+				}				
 			}
-		}		
+		}	
 	}
 	.single .book-author .book-author-thumbnail {
 		flex: 0 0 150px;
@@ -416,8 +434,13 @@
 	.single .book-author .book-author-thumbnail {
 		flex: 0 0 125px;
 	}
-	.entry-single .entry .entry-content img[class*='wp-image-'] {
-		max-width: 250px;
+	.entry-single {
+		.entry .entry-content img[class*='wp-image-'] {
+			max-width: 250px;
+		}
+		.entry.insprvw-review .entry-item-reviewed .entry-thumbnail {
+			max-width: 150px;
+		}	
 	}
 	#comments .comments-list ul li .comment-wrapper .comment-meta {
 		p {
@@ -536,6 +559,25 @@
 					display: block;
 				}
 			}
+		}
+		.entry.insprvw-review .entry-item-reviewed {
+			.entry-thumbnail {
+				float: none;
+				margin: 0 auto 20px auto;
+				max-width: 100%;
+				.image-wrap {
+					@include inline-block(middle);
+				}
+			}
+			.entry-details {
+				margin: 0 0 20px 0;
+				.review-information {
+					overflow: visible;
+				}
+				.review-synopsis {
+					clear: none;
+				}
+			}			
 		}
 	}
 	#comments .comments-list ul li {

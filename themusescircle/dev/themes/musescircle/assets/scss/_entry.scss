@@ -55,7 +55,7 @@
 		.entry-thumbnail {
 			float: left;
 			max-width: 300px;
-			margin: 0 20px 10px 0;
+			margin: 0 20px 20px 0;
 		}
 	}
 }
@@ -195,16 +195,17 @@
 
 .entry-single .entry.insprvw-review .entry-item-reviewed {
 	.entry-details {
+		margin: 0 0 20px 20px;
 		.review-information {
-			position: relative;
-			left: 20px;
+			overflow: hidden;
+			margin: 0 0 20px 0;
+			padding: 0 0 0 20px;
 			li .review-label {
 				font-weight: bold;
 			}
 		}
 		.review-synopsis {
-			@include muses-bg(true);	
-			margin: 0 0 20px 20px;
+			@include muses-bg(true);				
 			padding: 20px;
 			p:last-child {
 				margin: 0;
