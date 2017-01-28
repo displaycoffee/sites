@@ -5,7 +5,7 @@
 	// Creates a theme
 	function insprvw_create_video_theme() {
 		$labels = array(
-			'name'              => __( 'Themes', 'inspire-reviews' ),
+			'name'              => __( 'Video Themes', 'inspire-reviews' ),
 			'singular_name'     => __( 'Theme', 'inspire-reviews' ),
 			'search_items'      => __( 'Search Themes', 'inspire-reviews' ),
 			'all_items'         => __( 'All Themes', 'inspire-reviews' ),

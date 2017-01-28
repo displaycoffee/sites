@@ -5,7 +5,7 @@
 	// Creates a category
 	function insprvw_create_video_category() {
 		$labels = array(
-			'name'              => __( 'Categories', 'inspire-reviews' ),
+			'name'              => __( 'Video Categories', 'inspire-reviews' ),
 			'singular_name'     => __( 'Category', 'inspire-reviews' ),
 			'search_items'      => __( 'Search Categories', 'inspire-reviews' ),
 			'all_items'         => __( 'All Categories', 'inspire-reviews' ),

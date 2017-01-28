@@ -5,7 +5,7 @@
 	// Creates a tag
 	function insprvw_create_book_tag() {
 		$labels = array(
-			'name'              => __( 'Tags', 'inspire-reviews' ),
+			'name'              => __( 'Book Tags', 'inspire-reviews' ),
 			'singular_name'     => __( 'Tag', 'inspire-reviews' ),
 			'search_items'      => __( 'Search Tags', 'inspire-reviews' ),
 			'all_items'         => __( 'All Tags', 'inspire-reviews' ),

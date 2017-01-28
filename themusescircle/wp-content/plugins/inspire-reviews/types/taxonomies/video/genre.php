@@ -5,7 +5,7 @@
 	// Creates a genre
 	function insprvw_create_video_genre() {
 		$labels = array(
-			'name'              => __( 'Genres', 'inspire-reviews' ),
+			'name'              => __( 'Video Genres', 'inspire-reviews' ),
 			'singular_name'     => __( 'Genre', 'inspire-reviews' ),
 			'search_items'      => __( 'Search Genres', 'inspire-reviews' ),
 			'all_items'         => __( 'All Genres', 'inspire-reviews' ),
