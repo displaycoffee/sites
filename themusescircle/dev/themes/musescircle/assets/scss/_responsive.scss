@@ -27,6 +27,13 @@
 	.gallery.gallery-columns-9 {
 		@include gallery-columns(8);
 	}	
+	#footer .column .widget-container {
+		&.widget_archive, &.widget_categories {
+			& > ul {
+				display: block;
+			}
+		}
+	}		
 
 	// entry.scss
 	.content:not(.full-width), #front-page-sections:not(.full-width) {
@@ -410,6 +417,13 @@
 			@include gallery-columns(5);
 		}
 	}
+	#footer .column .widget-container {
+		&.widget_archive, &.widget_categories {
+			& > ul {
+				@include flex(row wrap);
+			}
+		}
+	}	
 
 	// shortcodes.scss
 	.insprvw-recent-reviews .insprvw-review .review-meta {
@@ -485,6 +499,13 @@
 		}		
 		&.gallery-columns-5, &.gallery-columns-6, &.gallery-columns-7, &.gallery-columns-8, &.gallery-columns-9 {
 			@include gallery-columns(4);
+		}
+	}
+	#footer .column .widget-container {
+		&.widget_archive, &.widget_categories {
+			& > ul {
+				display: block;
+			}
 		}
 	}	
 
