@@ -39,6 +39,9 @@
 	.content:not(.full-width), #front-page-sections:not(.full-width) {
 		.entry-multiple {
 			display: block;
+			.entry {
+				width: auto;
+			}
 		}
 	}
 }
@@ -542,7 +545,10 @@
 
 	// layout.scss
 	.content article .navigation-links ul {
-		display: block;
+		li {
+			display: block;
+			width: auto;
+		}
 		li.next {
 			text-align: left;
 			a {

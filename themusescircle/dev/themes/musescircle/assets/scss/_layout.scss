@@ -89,6 +89,7 @@
 	max-width: 1320px;
 	width: auto;
 	padding: 0 20px;
+	border: 1px solid #ff00ff;
 }
 
 .image-wrap {
@@ -190,10 +191,10 @@
 		}
 	}
 	.navigation-links ul {
-		@include flex(row nowrap);			
 		margin: 0 -10px -5px -10px;
 		li {
-			flex: 1;
+			@include inline-block(top);
+			width: 50%;
 			padding: 0 10px;
 			margin: 0 0 5px 0;
 			a {
