@@ -302,7 +302,8 @@
 		@include flex(row wrap);
 		margin: 0 -5px 15px -5px;		
 		& > li {
-			flex: 1 1 50%;
+			flex: 1 0 auto;
+			width: 50%;
 			padding: 0 5px;
 			& > a {
 				@include inline-block(middle);
@@ -320,6 +321,9 @@
 	&.widget_recent_comments, &.widget_recent_entries {
 		& > ul {
 			display: block;
+			& > li {
+				width: auto;
+			}
 		}
 	}
 	&.widget_nav_menu .menu-social-container {

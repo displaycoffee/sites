@@ -192,15 +192,16 @@
 	margin: 0 -20px;
 	.insprvw-review {
 		padding: 0 20px 20px 20px; 
+		flex: 0 1 auto;
 	}
 }
 
 .content:not(.full-width) .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
-	flex: 0 1 25%;
+	width: 25%;
 }
 
 .content.full-width .insprvw-recent-reviews:not(.owl-carousel) .insprvw-review {
-	flex: 0 1 20%;
+	width: 20%;
 }
 
 /* Shortcodes - Sidebar & Footer

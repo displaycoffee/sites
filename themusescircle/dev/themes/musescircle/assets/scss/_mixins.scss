@@ -80,10 +80,13 @@
 }
 
 // Calculation for gallery columns
-@mixin gallery-columns($columns) {
+@mixin gallery-columns($columns, $responsive: '') {
 	max-width: ((170 * $columns) * 1px);
 	figure {
-		flex: 0 1 ((100 / $columns) * 1%);
+		@if $responsive == '' {	
+			flex: 0 1 auto;
+		}
+		width: ((100 / $columns) * 1%);
 	}	
 }
 
