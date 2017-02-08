@@ -30,7 +30,7 @@
 <section class="content">
 	<div class="wrapper">
 		<article>
-			<div class="entry-author">
+			<div class="author-wrapper entry-author">
 				<?php
 					// Don't display on author archive
 					if ( !is_author() ) { 	
@@ -39,7 +39,7 @@
 				?>
 				<?php 
 					// Create author image block
-					$author_image_html = '<div class="entry-author-thumbnail">';
+					$author_image_html = '<div class="author-thumbnail">';
 					$author_image_html .= '<div class="image-wrap image-wrap-border">' . $author_image . '</div>';
 					$author_image_html .= '</div>';	
 
@@ -60,21 +60,21 @@
 					$author_social_links .= $author_tumblr ? '<li>' . musescircle_create_link( 'tumblr', $author_tumblr, 'Tumblr' ) . '</li>' : '';
 
 					// Create author social block
-					$author_social_html = '<div class="entry-author-social menu-social-container">';
+					$author_social_html = '<div class="author-social menu-social-container">';
 					$author_social_html .= '<strong>' . __( 'Connect:', 'musescircle' ) . '</strong>';
 					$author_social_html .= '<ul class="menu">';
 					$author_social_html .= str_replace( ',', '', $author_social_links );
 					$author_social_html .= '</ul></div>';
 
 					// Create author description block
-					$author_description_html = '<div class="entry-author-description">';
+					$author_description_html = '<div class="author-description">';
 					$author_description_html .= wpautop( esc_textarea ( $author_description ) );
 					$author_description_html .= '</div>';
 
 					// Check if there is a description or any social media links
 					if ( $author_description || strlen( $author_social_links ) > 0 ) {
 						// Create author details block
-						$author_details_html = '<div class="entry-author-details">';
+						$author_details_html = '<div class="author-details">';
 						$author_details_html .= $author_description ? $author_description_html : '';
 						$author_details_html .= ( strlen( $author_social_links ) > 0 ) ? $author_social_html : '';
 						$author_details_html .= '</div>';				

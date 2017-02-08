@@ -150,50 +150,42 @@
 /* Entry - Author
 ========================================================================== */
 
-.entry-author, .book-author {
+.author-wrapper {
 	@include flex(row wrap);
 	margin: 0 0 20px 0;
+	h3, .author-thumbnail, .author-details {
+		min-width: 1px;
+	}
 	h3 {
 		flex: 1 1 100%;
 		margin: 0 0 10px 0;
 	}
-}
-
-.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {	
-	margin: 0 20px 0 0;
-}
-
-.archive {
-	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
-		flex: 0 0 150px;
-		.image-wrap img {
-			width: 100%;
-		}		
+	.author-thumbnail {	
+		margin: 0 20px 0 0;
+	}
+	.author-details {
+		flex: 1 1 0%;
+	}
+	.author-social {
+		strong, .menu {
+			@include inline-block(middle);
+		}
+		strong {
+			padding: 0 5px 0 0;
+		}
 	}
 }
 
-.single .book-author .book-author-thumbnail {
+.archive .author-wrapper .author-thumbnail {
+	flex: 0 0 150px;
+	.image-wrap img {
+		width: 100%;
+	}
+}
+
+.single .author-wrapper .author-thumbnail {
 	flex: 0 0 auto;
 	max-width: 200px;
-}
-
-.entry-author .entry-author-details, .book-author .book-author-details {	
-	flex: 1 1 0%;
-}
-
-.entry-author .entry-author-details .entry-author-social, .book-author .book-author-details .book-author-social {	
-	strong, .menu {
-		@include inline-block(middle);
-	}
-	strong {
-		padding: 0 5px 0 0;
-	}
-}
-
-.entry-author h3, .book-author h3, 
-.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail,
-.entry-author .entry-author-details, .book-author .book-author-details {
-	min-width: 1px;
 }
 
 /* Entry - Review Details

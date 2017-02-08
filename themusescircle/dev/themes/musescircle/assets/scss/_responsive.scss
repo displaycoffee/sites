@@ -193,7 +193,7 @@
 			}
 		}	
 	}
-	.single .book-author .book-author-thumbnail {
+	.single .author-wrapper .author-thumbnail {
 		flex: 0 0 150px;
 		max-width: none;
 		.image-wrap img {
@@ -473,8 +473,7 @@
 
 	// entry.scss 
 	.entry-multiple .entry.post .entry-thumbnail, .entry-multiple .entry.insprvw-review .entry-item-reviewed,
-	.archive .entry-author .entry-author-thumbnail, .archive .book-author .book-author-thumbnail,
-	.single .book-author .book-author-thumbnail {
+	.archive .author-wrapper .author-thumbnail, .single .author-wrapper .author-thumbnail {
 		flex: 0 0 125px;
 	}
 	.entry-single {
@@ -581,11 +580,11 @@
 	}
 
 	// entry.scss 
-	.entry-multiple	.entry, .entry-author, .book-author {
+	.entry-multiple	.entry, .author-wrapper {
 		display: block;
 	}
 	.entry-multiple .entry.post .entry-thumbnail, .entry-multiple .entry.insprvw-review .entry-item-reviewed,
-	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
+	.author-wrapper .author-thumbnail {
 		margin: 0 0 10px 0;
 		.image-wrap {
 			max-height: 200px;	
@@ -598,10 +597,8 @@
 			}			
 		}		
 	}
-	.entry-author .entry-author-thumbnail, .book-author .book-author-thumbnail {
-		.image-wrap img {
-			margin: -20% 0 0 0;
-		}		
+	.author-wrapper .author-thumbnail .image-wrap img {
+		margin: -20% 0 0 0;
 	}
 	.entry-single {
 		.entry .entry-content {

@@ -57,7 +57,7 @@
 				$author_amazon = get_term_meta( $author_id, 'author-amazon', true );
 
 				// Create author image block
-				$author_image_html = '<div class="book-author-thumbnail">';
+				$author_image_html = '<div class="author-thumbnail">';
 				$author_image_html .= '<div class="image-wrap image-wrap-border"><img src="' . esc_url( $author_image ) . '" alt="' . esc_attr( $author_name ) . '" /></div>';
 				$author_image_html .= '</div>';			
 
@@ -75,22 +75,22 @@
 				$author_social_links .= $author_amazon ? '<li>' . insprvw_create_link( 'amazon', $author_amazon, 'Amazon Profile' ) . '</li>' : '';
 
 				// Create author social block
-				$author_social_html = '<div class="book-author-social menu-social-container">';
+				$author_social_html = '<div class="author-social menu-social-container">';
 				$author_social_html .= '<strong>' . __( 'Connect:', 'inspire-reviews' ) . '</strong>';
 				$author_social_html .= '<ul class="menu">';
 				$author_social_html .= str_replace( ',', '', $author_social_links );
 				$author_social_html .= '</ul></div>';
 
 				// Create author description block
-				$author_description_html = '<div class="book-author-description">';
+				$author_description_html = '<div class="author-description">';
 				$author_description_html .= wpautop( esc_textarea ( $author_description ) );
 				$author_description_html .= '</div>';
 
 				// Create author block - START
-				$author_html .= '<div class="book-author">';
+				$author_html .= '<div class="author-wrapper book-author">';
 				$author_html .= $a['title'] == 'true' ? '<h3>' . __( 'About', 'inspire-reviews' ) . ' ' . $author_name . '</h3>' : '';
 				$author_html .= $author_image ? $author_image_html : '';
-				$author_html .= '<div class="book-author-details">';				
+				$author_html .= '<div class="author-details">';				
 				$author_html .= $author_description ? $author_description_html : '';
 				$author_html .= ( strlen( $author_social_links ) > 0 ) ? $author_social_html : '';
 				$author_html .= '</div></div>';
