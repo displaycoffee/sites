@@ -24,7 +24,7 @@
 }
 
 .gallery {	
-	@include flex(row wrap);
+	@include flex-flow(row wrap);
 	@include muses-bg(true);
 	padding: 5px;
 	margin: 0 auto 20px auto;
@@ -299,10 +299,10 @@
 	}
 	& > ul, & > div:not(.menu-social-container) > ul {
 		font-size: rem(16px);
-		@include flex(row wrap);
+		@include flex-flow(row wrap);
 		margin: 0 -5px 15px -5px;		
 		& > li {
-			flex: 1 0 auto;
+			@include flex(grow);
 			width: 50%;
 			padding: 0 5px;
 			& > a {

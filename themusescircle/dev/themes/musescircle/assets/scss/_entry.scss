@@ -2,18 +2,18 @@
 ========================================================================== */
 
 .entry-multiple {
-	@include flex(row wrap);
+	@include flex-flow(row wrap);
 	margin: 0 -10px 30px -10px;
 	&, .entry {
-		@include flex(row wrap);
+		@include flex-flow(row wrap);
 	}
 	.entry {
-		flex: 1 0 auto;
+		@include flex(grow);
 		width: 50%;
 		padding: 0 10px;
 		margin: 0 0 30px 0;
 		.entry-wrapper {
-			flex: 1 1 0%;
+			@include flex(base);
 		}		
 	}
 }
@@ -151,20 +151,20 @@
 ========================================================================== */
 
 .author-wrapper {
-	@include flex(row wrap);
+	@include flex-flow(row wrap);
 	margin: 0 0 20px 0;
 	h3, .author-thumbnail, .author-details {
 		min-width: 1px;
 	}
 	h3 {
-		flex: 1 1 100%;
+		@include flex(full);
 		margin: 0 0 10px 0;
 	}
 	.author-thumbnail {	
 		margin: 0 20px 0 0;
 	}
 	.author-details {
-		flex: 1 1 0%;
+		@include flex(base);
 	}
 	.author-social {
 		strong, .menu {
@@ -184,7 +184,7 @@
 }
 
 .single .author-wrapper .author-thumbnail {
-	flex: 0 0 auto;
+	@include flex(max);
 	max-width: 200px;
 }
 
@@ -284,7 +284,7 @@
 		margin: 0;
 		list-style: none;
 		li {
-			@include flex(row wrap);
+			@include flex-flow(row wrap);
 			align-items: flex-start;		
 			.comment-thumbnail {
 			    flex: 0 0 54px;
@@ -294,7 +294,7 @@
 				}
 			}
 			.comment-wrapper {
-				flex: 1 1 0%;
+				@include flex(base);
 				margin: 0 0 20px 0;
 				.comment-meta, .comment-footer {
 					p {
@@ -325,8 +325,8 @@
 				}					
 			}
 			.children {
+				@include flex(full);
 				margin: 0 0 0 74px;
-				flex: 1 1 100%;
 			}
 		}
 	}
@@ -351,13 +351,13 @@
 	border-bottom: 1px solid $color-05;
 	margin: 0 0 20px 0;
 	form {
-		@include flex(row wrap);
+		@include flex-flow(row wrap);
 		margin: 0 -5px;
 		p {
 			margin: 0 5px 20px 5px;
 		}
 		.comment-form-author, .comment-form-email, .comment-form-url {
-			flex: 1 1 0%;
+			@include flex(base);
 		}
 		.comment-form-author, .comment-form-email, .comment-form-url, .comment-form-comment {
 			label:after {
@@ -365,7 +365,7 @@
 			}
 		}
 		.comment-notes, .comment-form-comment, .form-submit {
-			flex: 1 1 100%;
+			@include flex(full);
 		}
 		.comment-form-comment {
 			order: 5;

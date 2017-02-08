@@ -67,14 +67,30 @@
 	@return $pixels / $context * 1rem;
 }
 
-// Flex 
-@mixin flex($flow) {
+// Set flex flow property
+// flex: grow - shrink - basis
+@mixin flex($type: '') {
+	@if $type == grow {
+		flex: 1 0 auto; 
+	} @else if $type == base {
+		flex: 1 1 0%; 
+	} @else if $type == full {
+		flex: 1 1 100%;
+	} @else if $type == max {
+		flex: 0 0 auto;
+	} @else {
+		flex: 0 1 auto; 
+	}
+}
+
+// Flex flow
+@mixin flex-flow($flow) {
 	display: flex;
 	flex-flow: $flow;
 }
 
-// Inline flex 
-@mixin inline-flex($flow) {
+// Flex flow inline 
+@mixin flex-flow-inline($flow) {
 	display: inline-flex;
 	flex-flow: $flow;
 }
@@ -84,7 +100,7 @@
 	max-width: ((170 * $columns) * 1px);
 	figure {
 		@if $responsive == '' {	
-			flex: 0 1 auto;
+			@include flex;
 		}
 		width: ((100 / $columns) * 1%);
 	}	

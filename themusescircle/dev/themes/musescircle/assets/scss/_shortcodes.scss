@@ -187,12 +187,12 @@
 }
 
 .insprvw-recent-reviews:not(.owl-carousel) {
-	@include flex(row wrap);
+	@include flex-flow(row wrap);
 	justify-content: center;
 	margin: 0 -20px;
 	.insprvw-review {
 		padding: 0 20px 20px 20px; 
-		flex: 0 1 auto;
+		@include flex;
 	}
 }
 

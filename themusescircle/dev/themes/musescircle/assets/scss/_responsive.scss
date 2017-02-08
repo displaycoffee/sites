@@ -152,7 +152,7 @@
 
 	// layout.scss
 	.row .column {
-		flex: 1 0 auto;
+		@include flex(grow);
 		width: 50%;
 	}	
 	.content article .pagination > .page-numbers {
@@ -274,12 +274,12 @@
 	// header.scss
 	#top-bar {
 		.menu-social-container {
-			flex: 1 1 100%;
+			@include flex(full);
 			text-align: center;
 			margin: 0 -5px 10px -5px;
 		}
 		.search-bar {
-			flex: 1 1 0%;
+			@include flex(base);
 			margin: 0;
 		}
 	}
@@ -430,7 +430,7 @@
 	#footer .column .widget-container {
 		&.widget_archive, &.widget_categories {
 			& > ul {
-				@include flex(row wrap);
+				@include flex-flow(row wrap);
 				& > li {
 					width: 50%;
 				}
@@ -494,7 +494,7 @@
 	}
 	#respond form {
 		.comment-form-author,.comment-form-email, .comment-form-url {
-			flex: 1 1 100%;
+			@include flex(full);
 		}
 	}
 }
