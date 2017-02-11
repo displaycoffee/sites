@@ -297,14 +297,17 @@
 	h4 {
 		margin: 0 0 10px 0;
 	}
+	& > ul, &.widget_nav_menu .menu-social-container {
+		margin: 0 0 15px 0;
+	}
 	& > ul, & > div:not(.menu-social-container) > ul {
 		font-size: rem(16px);
 		@include flex-flow(row wrap);
-		margin: 0 -5px 15px -5px;		
+		margin: 0 -5px 15px -5px;			
 		& > li {
 			@include flex(grow);
 			width: 50%;
-			padding: 0 5px;
+			padding: 0 5px;			
 			& > a {
 				@include inline-block(middle);
 				color: $color-01;
@@ -316,17 +319,11 @@
 			&.menu-item-has-children .sub-menu {
 				display: none;
 			}
-		}
+		}					
 	}
 	&.widget_recent_comments, &.widget_recent_entries {
 		& > ul {
-			display: block;
-			& > li {
-				width: auto;
-			}
+			@include flex-reset('& > li');
 		}
-	}
-	&.widget_nav_menu .menu-social-container {
-		margin: 0 0 15px 0;
 	}
 }

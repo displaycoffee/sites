@@ -16,6 +16,18 @@
 	}	
 }
 
+// Clearfix
+@mixin clearfix($selector) {
+	#{$selector}:before, #{$selector}:after {
+		content: "";
+		display: table;
+		zoom: 1;
+	}
+	#{$selector}:after {
+		clear: both;
+	}
+}
+
 // Countdown styles
 @mixin countdown($element, $size) {
 	@if $element == label {	
@@ -93,6 +105,14 @@
 @mixin flex-flow-inline($flow) {
 	display: inline-flex;
 	flex-flow: $flow;
+}
+
+// Responsive reset for flex
+@mixin flex-reset($selector) {
+	display: block;
+	#{$selector} {
+		width: auto;
+	}
 }
 
 // Calculation for gallery columns

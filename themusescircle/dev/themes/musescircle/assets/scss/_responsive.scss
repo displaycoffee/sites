@@ -30,10 +30,7 @@
 	#footer .column .widget-container {
 		&.widget_archive, &.widget_categories {
 			& > ul {
-				display: block;
-				& > li {
-					width: auto;
-				}
+				@include flex-reset('& > li');
 			}
 		}
 	}		
@@ -41,10 +38,7 @@
 	// entry.scss
 	.content:not(.full-width), #front-page-sections:not(.full-width) {
 		.entry-multiple {
-			display: block;
-			.entry {
-				width: auto;
-			}
+			@include flex-reset('.entry');
 		}
 	}
 }
@@ -144,7 +138,8 @@
 		h3 {
 			margin: 0;
 		}
-		.row .column {
+		.row .book-column {
+			width: 50%;
 			max-width: none;
 			margin: 20px 0 0 0;
 		}
@@ -202,10 +197,7 @@
 	}
 	.content.full-width, #front-page-sections.full-width {
 		.entry-multiple {
-			display: block;
-			.entry {
-				width: auto;
-			}
+			@include flex-reset('.entry');
 		}
 	}
 	.entry-single .entry .entry-footer.edit-allowed {
@@ -459,16 +451,18 @@
 	}
 
 	// front-page.scss 
-	#front-page-sections #about-site .read-more {
-		text-align: center;
+	#front-page-sections {
+		#about-site .read-more {
+			text-align: center;
+		}
+		#review-buttons .row .book-column {
+			width: auto;
+		}
 	}
 
 	// layout.scss
 	.row {
-		display: block;
-		.column {
-			width: auto;
-		}
+		@include flex-reset('.column');
 	}	
 
 	// entry.scss 
@@ -519,10 +513,7 @@
 	#footer .column .widget-container {
 		&.widget_archive, &.widget_categories {
 			& > ul {
-				display: block;
-				& > li {
-					width: auto;
-				}
+				@include flex-reset('& > li');
 			}
 		}
 	}	
