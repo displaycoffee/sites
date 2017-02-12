@@ -267,6 +267,9 @@
 		}
 	}
 
+	// Include customizer enqueue
+	require_once( 'customizer/customizer-enqueue.php' );	
+
 	// Include customizer choices
 	require_once( 'customizer/customizer-choices.php' );
 

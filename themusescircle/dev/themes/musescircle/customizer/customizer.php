@@ -8,6 +8,9 @@
 
 	// Adds individual sections, settings, and controls
 	function musescircle_customizer_section( $wp_customize ) {
+		// Remove sections
+		$wp_customize->remove_section('custom_css');
+
 		// Header
 	    $wp_customize->add_section(
 	        'musescircle_header',
@@ -193,14 +196,15 @@
 		    )
 		);
 		$wp_customize->add_control(
-		    'musescircle_countdown_promotion_date',
-		    array(
-		        'label'	      => __( 'End date', 'musescircle' ),
-		        'description' => __( 'If blank, countdown will not show.', 'musescircle' ),
-		        'section'     => 'musescircle_countdown_promotion',
-		        'type'	      => 'date'
-		    )
-		);		
+		    new MUSESCIRCLE_Date_Picker( $wp_customize, 'musescircle_countdown_promotion_date', 
+			    array(		        
+			        'label'	      => __( 'End date', 'musescircle' ),
+			        'description' => __( 'If blank, countdown will not show.', 'musescircle' ),
+			        'section'     => 'musescircle_countdown_promotion',
+			        'settings' => 'musescircle_countdown_promotion_date'
+			    )
+			)
+		);	
 		
 		// Countdown Promotion - Content
 		$wp_customize->add_setting(

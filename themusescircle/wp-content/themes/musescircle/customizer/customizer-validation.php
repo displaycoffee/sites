@@ -71,12 +71,11 @@
 	// Date validation
     function musescircle_sanitize_date( $input ) {
     	// Get each value in the date - month, day, year
-        $date = preg_match( '/(\d{4})-(\d{2})-(\d{2})/', $input, $match );
+        $date = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $input, $match );
 
-        // Check if the date is valid based on regex match
-        if ( $date == '1' && checkdate( $match[2], $match[3], $match[1] ) ) {
-        	return $match[2] . '/' . $match[3] . '/' . $match[1];
+        if ( $date == '1' && checkdate( $match[1], $match[2], $match[3] ) ) {
+        	return $match[1] . '/' . $match[2] . '/' . $match[3];
         } else {
-        	return '';
-        }
+        	return null;
+        }        
     }		
