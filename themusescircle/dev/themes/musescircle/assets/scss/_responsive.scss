@@ -28,10 +28,8 @@
 		@include gallery-columns(8, responsive);
 	}	
 	#footer .column .widget-container {
-		&.widget_archive, &.widget_categories {
-			& > ul {
-				@include flex-reset('& > li');
-			}
+		& > ul, & > div:not(.menu-social-container) > ul {
+			@include flex-reset('& > li');
 		}
 	}		
 
@@ -420,12 +418,10 @@
 		}
 	}
 	#footer .column .widget-container {
-		&.widget_archive, &.widget_categories {
-			& > ul {
-				@include flex-flow(row wrap);
-				& > li {
-					width: 50%;
-				}
+		& > ul, & > div:not(.menu-social-container) > ul {
+			@include flex-flow(row wrap);
+			& > li {
+				width: 50%;
 			}
 		}
 	}	
@@ -511,10 +507,8 @@
 		}
 	}
 	#footer .column .widget-container {
-		&.widget_archive, &.widget_categories {
-			& > ul {
-				@include flex-reset('& > li');
-			}
+		& > ul, & > div:not(.menu-social-container) > ul {
+			@include flex-reset('& > li');
 		}
 	}	
 
