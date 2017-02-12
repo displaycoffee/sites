@@ -32,7 +32,8 @@
 ========================================================================== */
 
 #top-bar .home-link {
-	@include sizing(auto, 20px);
+	display: block;
+	height: 20px;
 	flex: 0 0 35px;
 	text-align: right;
 	.icon {
