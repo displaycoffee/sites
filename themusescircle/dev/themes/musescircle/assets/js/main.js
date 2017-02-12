@@ -143,10 +143,10 @@ function initializeCountdown() {
 		var countdown = jQuery( this );
 
 		// Get countdown data variables
-		var end = this.dataset.endDate;
-		var content = ( this.dataset.content ? this.dataset.content.replace( /(<([^>]+)>)/ig, '' ) : '' );
-		var url = this.dataset.url;
-		var urlWindow = this.dataset.window;
+		var end = this.getAttribute('data-end-date');
+		var content = ( this.getAttribute('data-content') ? this.getAttribute('data-content').replace( /(<([^>]+)>)/ig, '' ) : '' );
+		var url = this.getAttribute('data-url');
+		var urlWindow = this.getAttribute('data-window');
 
 		// Get time values
 		var time = getRemainingTime( end );
