@@ -13,17 +13,18 @@
 <section class="content">
 	<div class="wrapper">
 		<article>
-			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-				<div class="entry-single" itemtype="http://schema.org/Blog">
-					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry post" itemscope itemtype="http://schema.org/BlogPosting">
-						<meta itemprop="headline" content="<?php echo esc_attr( get_the_title() ); ?>"/>
-						<meta itemprop="mainEntityOfPage" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
-						<?php get_template_part( 'partials/entry', 'meta' ); ?>	
-						<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
-						<div class="entry-content" itemprop="text"><?php the_content(); ?></div>
-						<?php get_template_part( 'partials/entry', 'footer' ); ?>				
-					</div>
-				</div>
+			<?php if ( have_posts() ) : ?>
+				<div class="entry-single">
+					<?php while ( have_posts() ) : the_post(); ?>						
+						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry post">
+							<?php get_template_part( 'partials/entry', 'meta' ); ?>	
+							<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
+							<div class="entry-content"><?php the_content(); ?></div>
+							<?php get_template_part( 'partials/entry', 'footer' ); ?>				
+						</div>						
+					<?php endwhile; ?>
+					<?php get_template_part( 'partials/entry', 'json-ld' ); ?>	
+				</div>												
 				<?php comments_template(); ?>
 				<?php 
 					// Don't print empty markup if there's nowhere to navigate.
@@ -50,8 +51,9 @@
 						// Display navigation block
 						echo $single_navigation;
 					}
-				?>				
-			<?php endwhile; wp_reset_postdata(); endif; ?>
+				?>
+				<?php wp_reset_postdata(); ?>	
+			<?php endif; ?>
 		</article>
 		<?php get_sidebar(); ?>
 	</div>

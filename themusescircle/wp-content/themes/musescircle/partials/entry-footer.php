@@ -12,7 +12,7 @@
 		echo musescircle_create_category_list( $post->ID, 'category' );
 
 		// Display list of tags
-		echo the_tags( '<p class="tags" itemprop="keywords"><strong>' . __( 'Tags', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
+		echo the_tags( '<p class="tags"><strong>' . __( 'Tags', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
 
 		// sharing buttons
 		get_template_part( 'partials/sharing', 'buttons' );

@@ -252,7 +252,7 @@
 
 	// Create catergory lists
 	function musescircle_create_category_list( $id, $category ) {
-		return get_the_term_list( $id, $category, '<p class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
+		return get_the_term_list( $id, $category, '<p class="categories"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
 	}	
 
     // Parse date into an array to check values
