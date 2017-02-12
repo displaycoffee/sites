@@ -11,6 +11,9 @@
 
 .wp-caption {
 	line-height: 0;	
+	&, .wp-caption-wrap {
+		max-width: 100%;
+	}
 	.wp-caption-wrap {
 		@include inline-block(top);
 		border: 1px solid $color-05;

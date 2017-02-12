@@ -554,10 +554,7 @@
 
 	// layout.scss
 	.content article .navigation-links ul {
-		li {
-			display: block;
-			width: auto;
-		}
+		@include flex-reset('li');
 		li.next {
 			text-align: left;
 			a {

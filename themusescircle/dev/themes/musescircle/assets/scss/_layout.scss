@@ -191,8 +191,9 @@
 	}
 	.navigation-links ul {
 		margin: 0 -10px -5px -10px;
+		@include flex-flow(row nowrap);
 		li {
-			@include inline-block(top);
+			@include flex(grow);
 			width: 50%;
 			padding: 0 10px;
 			margin: 0 0 5px 0;
