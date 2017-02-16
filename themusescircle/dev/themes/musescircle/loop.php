@@ -5,6 +5,9 @@
 
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
+
+	// Create empty json-ld string to store data
+	$json_block = '';
 ?>
 <?php if ( have_posts() ) : ?>
 	<div class="entry-multiple">
@@ -21,11 +24,17 @@
 						the_title( $title_before, $title_after );
 					?>
 					<?php get_template_part( 'partials/entry', 'meta' ); ?>			
-					<div class="entry-content"><?php echo musescircle_excerpt( true ); ?></div>
+					<div class="entry-content"><?php echo musescircle_excerpt(); ?></div>
 				</div>
 			</div>			
+			<?php 
+				// Create json-ld string for blog schema
+				$json_block .= musescircle_blog_json( $post ) . ',';
+			?>
 		<?php endwhile; ?>
-		<?php get_template_part( 'partials/entry', 'json-ld' ); ?>
+		<script type="application/ld+json">
+			{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	
+		</script>					
 	</div>
 	<?php 
 		// Check if pages are greater than 1

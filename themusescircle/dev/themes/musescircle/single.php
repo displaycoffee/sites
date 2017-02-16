@@ -8,6 +8,9 @@
 
 	// Include header	
 	get_header(); 
+
+	// Create empty json-ld string to store data
+	$json_block = '';
 ?>
 <?php get_template_part( 'page', 'title' ); ?>
 <section class="content">
@@ -21,9 +24,15 @@
 							<?php get_template_part( 'partials/entry', 'thumbnail' ); ?>
 							<div class="entry-content"><?php the_content(); ?></div>
 							<?php get_template_part( 'partials/entry', 'footer' ); ?>				
-						</div>						
+						</div>	
+						<?php 
+							// Create json-ld string for blog schema
+							$json_block .= musescircle_blog_json( $post );
+						?>											
 					<?php endwhile; ?>
-					<?php get_template_part( 'partials/entry', 'json-ld' ); ?>	
+					<script type="application/ld+json">
+						{"@context": "http://schema.org","@graph": [<?php echo $json_block; ?>]}	
+					</script>	
 				</div>												
 				<?php comments_template(); ?>
 				<?php 
