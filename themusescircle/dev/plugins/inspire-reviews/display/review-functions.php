@@ -107,6 +107,36 @@
 		return '<p>' . substr( get_the_excerpt(), 0, 125 ) . '...</p>' . insprvw_read_more();
 	}
 
+    // Generate json-ld data for book schema
+    function insprvw_book_json( $post ) {
+		// Get the author website and set fallback
+		$author_website = get_the_author_meta( 'user_url' ) ? get_the_author_meta( 'user_url' ) : home_url( '/' );
+
+		// Create json-ld block - START
+		$json_ld = '{';
+		$json_ld .= '"@type": "Review",';
+		$json_ld .= '"name": "' . esc_html( get_the_title() ) . '",';
+		$json_ld .= '"url": "' . esc_url( get_the_permalink() ) . '",';
+
+		// Post author
+		$json_ld .= '"author": {';
+		$json_ld .= '"@type": "Person",';
+		$json_ld .= '"name": "' . esc_html( get_the_author() ) . '",';
+		$json_ld .= '"sameAs": "' . esc_url( $author_website ) . '"';
+		$json_ld .= '},';
+
+		// Date
+		$json_ld .= '"datePublished": "' . esc_html( get_the_time( get_option( 'date_format' ) ) ) . '",';
+
+		// Description
+		$json_ld .= '"description": "' . esc_html( wp_strip_all_tags( insprvw_excerpt() ) ) . '"';
+
+		// Create json-ld block - END		
+		$json_ld .= '}';
+
+		return $json_ld;
+	}
+
 	// Create list items (without schema)
 	function insprvw_item_details( $label, $value ) {
 		// Create list item with details about review item

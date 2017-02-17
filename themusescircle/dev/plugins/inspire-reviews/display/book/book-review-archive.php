@@ -8,6 +8,9 @@
 
 	// Include header	
 	get_header(); 
+
+	// Create empty json-ld string to store data
+	$json_block = '';	
 ?>
 <?php include INSPRVW_DIR . 'display/partials/review-title.php'; ?>
 <section class="content">
@@ -59,7 +62,14 @@
 								</div>
 							</div>
 						</div>
-					<?php endwhile; ?>						
+						<?php 
+							// Create json-ld string for blog schema
+							$json_block .= insprvw_book_json( $post ) . ',';
+						?>						
+					<?php endwhile; ?>		
+					<script type="application/ld+json">
+						{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	
+					</script>									
 				</div>
 				<?php include INSPRVW_DIR . 'display/partials/review-pagination.php'; ?>
 				<?php wp_reset_postdata(); ?>
