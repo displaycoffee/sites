@@ -51,8 +51,8 @@
 	add_action( 'admin_enqueue_scripts', 'insprvw_enqueue_assets' );
 
 	// Include multi-use files
-	require_once( INSPRVW_DIR . 'includes/fields.php' );
-	require_once( INSPRVW_DIR . 'includes/validation.php' );
+	require_once( INSPRVW_DIR . 'types/fields.php' );
+	require_once( INSPRVW_DIR . 'types/validation.php' );
 
 	// Book Post Types
 	require_once( INSPRVW_DIR . 'types/posts/book/book-review.php' );
@@ -86,9 +86,11 @@
 	require_once( INSPRVW_DIR . 'types/taxonomies/term-meta-boxes.php' );	
 
 	// Functions for display
-	require_once( INSPRVW_DIR . 'display/review-functions.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/functions-reviews.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/functions-book-meta.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/functions-book-json.php' );	
 
 	// Shortcodes
-	require_once( INSPRVW_DIR . 'display/shortcodes/author-block.php' );
-	require_once( INSPRVW_DIR . 'display/shortcodes/formatting.php' );	
-	require_once( INSPRVW_DIR . 'display/shortcodes/recent-reviews.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/shortcode-author-block.php' );
+	require_once( INSPRVW_DIR . 'display/includes/shortcode-formatting.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/shortcode-recent-reviews.php' );	

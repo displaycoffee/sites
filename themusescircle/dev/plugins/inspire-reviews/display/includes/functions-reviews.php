@@ -6,9 +6,9 @@
 	function insprvw_get_archive_template( $archive ) {
 		// Book review
 		if ( get_post_type() == 'insprvw-book-review' ) {
-			$archive = dirname( __FILE__ ) . '/book/book-review-archive.php';
+			$archive = INSPRVW_DIR . 'display/book/book-review-archive.php';
 		} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
-			$archive = dirname( __FILE__ ) . '/video/video-review-archive.php';
+			$archive = INSPRVW_DIR . 'display/video/video-review-archive.php';
 		}
 		return $archive;
 	}
@@ -18,9 +18,9 @@
 	function insprvw_get_single_template( $single ) {
 		// Book review 
 		if ( get_post_type() == 'insprvw-book-review' ) {
-			$single = dirname( __FILE__ ) . '/book/book-review-single.php';
+			$single = INSPRVW_DIR . 'display/book/book-review-single.php';
 		} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
-			$single = dirname( __FILE__ ) . '/video/video-review-single.php';
+			$single = INSPRVW_DIR . 'display/video/video-review-single.php';
 		}
 		return $single;
 	}
@@ -30,7 +30,7 @@
 	function insprvw_all_reviews_template( $template ) {
 		// Looks for page title ('All Reviews') or slug ('all-reviews')
 		if ( is_page( 'All Reviews' ) || is_page( 'all-reviews' )  ) {
-			$template = dirname( __FILE__ ) . '/all-reviews.php';
+			$template = INSPRVW_DIR . 'display/all-reviews.php';
 		}
 		return $template;
 	}
@@ -105,36 +105,6 @@
 	// Check if there is a custom excerpt and if so, make sure it's not too long
 	function insprvw_short_excerpt() {
 		return '<p>' . substr( get_the_excerpt(), 0, 125 ) . '...</p>' . insprvw_read_more();
-	}
-
-    // Generate json-ld data for book schema
-    function insprvw_book_json( $post ) {
-		// Get the author website and set fallback
-		$author_website = get_the_author_meta( 'user_url' ) ? get_the_author_meta( 'user_url' ) : home_url( '/' );
-
-		// Create json-ld block - START
-		$json_ld = '{';
-		$json_ld .= '"@type": "Review",';
-		$json_ld .= '"name": "' . esc_html( get_the_title() ) . '",';
-		$json_ld .= '"url": "' . esc_url( get_the_permalink() ) . '",';
-
-		// Post author
-		$json_ld .= '"author": {';
-		$json_ld .= '"@type": "Person",';
-		$json_ld .= '"name": "' . esc_html( get_the_author() ) . '",';
-		$json_ld .= '"sameAs": "' . esc_url( $author_website ) . '"';
-		$json_ld .= '},';
-
-		// Date
-		$json_ld .= '"datePublished": "' . esc_html( get_the_time( get_option( 'date_format' ) ) ) . '",';
-
-		// Description
-		$json_ld .= '"description": "' . esc_html( wp_strip_all_tags( insprvw_excerpt() ) ) . '"';
-
-		// Create json-ld block - END		
-		$json_ld .= '}';
-
-		return $json_ld;
 	}
 
 	// Create list items (without schema)
