@@ -1,7 +1,6 @@
 <?php
 	/**
 	* Template Name: Full Width Page
-	* Template for displaying full width pages
 	*/
 
 	// Exit if accessed directly

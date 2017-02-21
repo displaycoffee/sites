@@ -3,6 +3,9 @@
 	* For theme shortcodes
 	*/
 
+	// Exit if accessed directly
+	if ( !defined( 'ABSPATH' ) ) { exit; }	
+
 	// Easy clearfix for floated images and content
 	function musescircle_clearfix() {
 		return '<div class="clearfix"></div>';
