@@ -19,7 +19,7 @@
 <body <?php body_class(); ?>>
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
-			<?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.', 'musescircle' ); ?>
+			<?php _e( 'You are using an <strong>outdated</strong> browser. Please <a href="//browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.', 'musescircle' ); ?>
 		</p>
 	<![endif]-->	
 	<?php 
