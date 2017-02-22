@@ -175,16 +175,26 @@
 	}
 
 	// Check if there is a custom excerpt and if so, make sure it's not too long
-	function musescircle_excerpt() {
-		if ( has_excerpt() ) {	    
-		    return '<p>' . wp_trim_words( get_the_excerpt(), 50 ) . '</p>' . musescircle_read_more();
+	function musescircle_excerpt( $html ) {
+		// Set defauly message if there is no excerpt or page body text
+		if ( strlen( get_the_excerpt() ) > 0 ) {
+			$message = get_the_excerpt();
 		} else {
-			// Check the length of the excerpt
-			if ( strlen( get_the_excerpt() ) > 0 ) {
-				return '<p>' . get_the_excerpt() . '</p>' . musescircle_read_more();
+			$message = __( 'For additional information, please read post or page.', 'musescircle' );
+		}	
+
+		if ( $html == true ) {
+			if ( has_excerpt() ) {	    
+			    return '<p>' . wp_trim_words( get_the_excerpt(), 50 ) . '</p>' . musescircle_read_more();
 			} else {
-				return '<p>' . __( 'For additional information, click the title or', 'musescircle' ) . '</p>' . musescircle_read_more() . '.';
+				return '<p>' . $message . '</p>' . musescircle_read_more();
 			}
+		} else {
+			if ( has_excerpt() ) {	    
+			    return wp_trim_words( get_the_excerpt(), 50 );
+			} else {
+				return $message;
+			}			
 		}
 	}
 

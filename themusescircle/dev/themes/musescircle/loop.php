@@ -24,7 +24,7 @@
 						the_title( $title_before, $title_after );
 					?>
 					<?php get_template_part( 'partials/entry', 'meta' ); ?>			
-					<div class="entry-content"><?php echo musescircle_excerpt(); ?></div>
+					<div class="entry-content"><?php echo musescircle_excerpt( true ); ?></div>
 				</div>
 			</div>			
 			<?php 
