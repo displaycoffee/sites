@@ -198,20 +198,21 @@
 		// Loop through categories and push to array
 		$terms = get_the_terms( $id, $taxonomy ); 
 		$display = '';
+		$list = '';
 
 		// Check if the terms are in an array and if the array is greater than or equal to 1
 		if ( gettype( $terms ) == 'array' && count( $terms ) >= 1 ) {
 			// Are both before and after defined?
 			if ( $before && $after ) {
 				// Use wordpress get_the_term list to display all html
-				$display = get_the_term_list( $id, $taxonomy, $before, $separator, $after );
+				$display .= get_the_term_list( $id, $taxonomy, $before, $separator, $after );
 			} else {
 				foreach( $terms as $term ) {
 					// Get each term name
-					$list = $term->name . esc_html( $separator );
+					$list .= $term->name . esc_html( $separator );
 				}
 
-				$display = rtrim( $list, $separator );
+				$display .= rtrim( $list, $separator );
 			}
 
 			return $display;

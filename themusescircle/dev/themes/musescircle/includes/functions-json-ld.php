@@ -19,27 +19,29 @@
 			$thumbnail_height = 700;					
 		}	
 
-		// Create blank array to store keywords for tags and categories
-		$keywords = array();
+		// // Create blank array to store keywords for tags and categories
+		// $keywords = array();
 
-		// Loop through categories and push to array
-		$categories = get_the_terms( $post->ID, 'category' ); 
-		if ( $categories ) {
-			foreach( $categories as $category ) {
-				array_push( $keywords, $category->name );
-			}
-		}
+		// // Loop through categories and push to array
+		// $categories = get_the_terms( $post->ID, 'category' ); 
+		// if ( $categories ) {
+		// 	foreach( $categories as $category ) {
+		// 		array_push( $keywords, $category->name );
+		// 	}
+		// }
 
-		// Loop through tags and push to array
-		$tags = get_the_terms( $post->ID, 'post_tag' ); 
-		if ( $tags ) {
-			foreach( $tags as $tag ) {
-				array_push( $keywords, $tag->name );
-			}
-		}
+		// // Loop through tags and push to array
+		// $tags = get_the_terms( $post->ID, 'post_tag' ); 
+		// if ( $tags ) {
+		// 	foreach( $tags as $tag ) {
+		// 		array_push( $keywords, $tag->name );
+		// 	}
+		// }
 
-		// Implode keywords to get a comma separated string
-		$final_keywords = implode(', ', $keywords);		
+		// // Implode keywords to get a comma separated string
+		// $final_keywords = implode(', ', $keywords);		
+
+		$keywords = musescircle_term_list( $post->ID, 'category', '', ', ', '' ) . ', ' . musescircle_term_list( $post->ID, 'post_tag', '', ', ', '' );
 
 		// Create json-ld block - START
 		$json_ld = '{';
@@ -85,7 +87,8 @@
 		$json_ld .= '},';
 
 		// Keywords
-		$json_ld .= '"keywords": "' . esc_html( $final_keywords ) . '",';
+		//$json_ld .= '"keywords": "' . esc_html( $final_keywords ) . '",';
+		$json_ld .= '"keywords": "' . esc_html( rtrim( $keywords, ', ' ) ) . '",';
 
 		// Text / description
 		$json_ld .= '"text": "' . esc_html( wp_strip_all_tags( musescircle_excerpt() ) ) . '"';
