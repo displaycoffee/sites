@@ -86,9 +86,10 @@
 	require_once( INSPRVW_DIR . 'types/taxonomies/term-meta-boxes.php' );	
 
 	// Functions for display
-	require_once( INSPRVW_DIR . 'display/includes/functions-reviews.php' );	
-	require_once( INSPRVW_DIR . 'display/includes/functions-book-meta.php' );	
-	require_once( INSPRVW_DIR . 'display/includes/functions-book-json.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/functions.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/functions-display.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/functions-meta.php' );	
+	require_once( INSPRVW_DIR . 'display/includes/functions-json-ld.php' );	
 
 	// Shortcodes
 	require_once( INSPRVW_DIR . 'display/includes/shortcode-author-block.php' );

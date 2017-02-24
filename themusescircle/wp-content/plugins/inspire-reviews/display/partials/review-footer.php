@@ -8,11 +8,22 @@
 ?>
 <footer class="entry-footer<?php echo ( current_user_can( 'edit_posts' ) ? ' edit-allowed' : '' ) ?>">
 	<?php 
-		// Display list of categories
-		echo get_the_term_list( $post->ID, 'insprvw-' . insprvw_review_type( false ) . '-category', '<p class="categories" itemprop="keywords"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</p>' );
+		// Get the categories and tags based on review type
+		if ( get_post_type() == 'insprvw-book-review' ) {
 
-		// Display list of tags
-		echo get_the_term_list( $post->ID, 'insprvw-' . insprvw_review_type( false ) . '-tag', '<p class="tags" itemprop="keywords"><strong>' . __( 'Tags', 'inspire-reviews' ) . ':</strong> ', ', ', '</p>' );
+			// Categories
+			echo insprvw_term_list( $post->ID, 'insprvw-book-category', '<p class="categories"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</p>' );
+
+			// Tags
+			echo insprvw_term_list( $post->ID, 'insprvw-book-tag', '<p class="tags"><strong>' . __( 'Tags', 'inspire-reviews' ) . ':</strong> ', ', ', '</p>' );
+		} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
+
+			// Categories
+			echo insprvw_term_list( $post->ID, 'insprvw-video-category', '<p class="categories"><strong>' . __( 'Categories', 'inspire-reviews' ) . ':</strong> ', ', ', '</p>' ); 
+
+			// Tags	
+			echo insprvw_term_list( $post->ID, 'insprvw-video-tag', '<p class="tags"><strong>' . __( 'Tags', 'inspire-reviews' ) . ':</strong> ', ', ', '</p>' ); 
+		}
 
 		// sharing buttons
 		include INSPRVW_DIR . 'display/partials/sharing-buttons.php';

@@ -39,7 +39,7 @@
 								<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
 								<div class="entry-content">
 									<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
-									<?php echo insprvw_excerpt(); ?>
+									<?php echo insprvw_excerpt( true ); ?>
 								</div>
 							</div>						
 						</div>
