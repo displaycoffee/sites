@@ -36,20 +36,18 @@
 			<?php if ( have_posts() ) : ?>	
 				<div class="entry-multiple">
 					<?php while ( have_posts() ) : the_post(); ?>
-						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review" itemscope itemtype="http://schema.org/Review">
-							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
+						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review">
 							<?php 
 								// If there's not a thumbnail, don't add thumbnail class
 								$item_reviewed_class = has_post_thumbnail() ? 'class="entry-item-reviewed"' : '';
 							?>
-							<div <?php echo $item_reviewed_class; ?> itemprop="itemReviewed" itemscope itemtype="http://schema.org/Book">	
+							<div <?php echo $item_reviewed_class; ?>>	
 								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>
-								<?php include INSPRVW_DIR . 'display/book/book-information.php'; ?>
 							</div>							
 							<div class="entry-wrapper">
 								<?php 
 									// Since the string is long, create variables for title before/after
-									$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
+									$title_before = '<header class="entry-header"><h3><a href="' . esc_url( get_the_permalink() ) . '">';
 									$title_after = '</a></h3></header>';
 
 									// Display the title
@@ -57,7 +55,6 @@
 								?>
 								<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>	
 								<div class="entry-content">
-									<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
 									<?php echo insprvw_excerpt( true ); ?>
 								</div>
 							</div>

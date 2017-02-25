@@ -20,7 +20,7 @@
 	}
 
 	// Check if there is a custom excerpt and if so, make sure it's not too long
-	function insprvw_excerpt( $html, $length = 50 ) {
+	function insprvw_excerpt( $html ) {
 
 		// Set defauly message if there is no excerpt or page body text
 		if ( strlen( get_the_excerpt() ) > 0 ) {
@@ -31,13 +31,13 @@
 
 		if ( $html == true ) {
 			if ( has_excerpt() ) {	    
-			    return '<p>' . wp_trim_words( get_the_excerpt(), $length ) . '</p>' . insprvw_read_more();
+			    return '<p>' . wp_trim_words( get_the_excerpt(), 50 ) . '</p>' . insprvw_read_more();
 			} else {
 				return '<p>' . $message . '</p>' . insprvw_read_more();
 			}
 		} else {
 			if ( has_excerpt() ) {	    
-			    return wp_trim_words( get_the_excerpt(), $length );
+			    return wp_trim_words( get_the_excerpt(), 50 );
 			} else {
 				return $message;
 			}			

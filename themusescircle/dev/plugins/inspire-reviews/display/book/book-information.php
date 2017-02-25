@@ -53,17 +53,9 @@
 		$book_list_item = $book_title ? insprvw_item_details( 'Title', $book_title ) : '';
 		$book_list_item .= $book_series ? insprvw_item_details( 'Series', $book_series ) : '';
 		
-		// Get list of author names
-		$author_names = get_the_term_list( $post->ID, 'insprvw-book-author', '', ', ' );	
 
-		// Add author list item
-		if ( strlen( $author_names ) > 0 ) {
-			$book_list_item .= '<li itemprop="author" itemscope itemtype="http://schema.org/Person">';
-			$book_list_item .= '<span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> ';
-			$book_list_item .= '<span class="review-value" itemprop="name">' . $author_names . '</span>';
-			$book_list_item .= '<meta itemprop="sameAs" content="' . esc_attr( join( ', ', $author_websites ) ) . '">';
-			$book_list_item .= '</li>';
-		}
+		
+		$book_list_item .= insprvw_term_list( $post->ID, 'insprvw-book-author', '<li><span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
 
 		// Update format of date
 		if ( $book_pub_date ) {
