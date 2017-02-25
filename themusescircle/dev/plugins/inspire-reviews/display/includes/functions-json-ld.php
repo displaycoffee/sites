@@ -4,19 +4,16 @@
 
     // Generate json-ld data for book schema
     function insprvw_book_json( $post ) {
-		// Get the author website and set fallback
+		// Get the post author website and set fallback
 		$author_website = get_the_author_meta( 'user_url' ) ? get_the_author_meta( 'user_url' ) : home_url( '/' ); 
 
-		// Get category and tags for keywords
-		$keywords = insprvw_term_list( $post->ID, 'insprvw-book-category', '', ', ', '' ) . ', ' . insprvw_term_list( $post->ID, 'insprvw-book-tag', '', ', ', '' );
-
-		// Get the information about the author categories
+		// Get list of book authors to grab websites
 		$author_terms = get_the_terms( $post->ID, 'insprvw-book-author' );
 
-		// Create an array to store author websites
+		// Create an array to store book author websites
 		$author_websites = array();
 
-		// Loop through autor term meta and push website values to array
+		// Loop through book autor term meta and push website values to array
 		if ( $author_terms ) {
 			foreach ( $author_terms as $author ) {
 				// Get term meta for author websites
@@ -31,13 +28,19 @@
 			}
 		}
 
+		// Check for thumbnails
 		if ( has_post_thumbnail() ) {
-			// Thumbnail image src for schema
 			$thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' )[0];
 		} else {	
-			// Create thumbnail block
 			$thumbnail_src = plugins_url( 'inspire-reviews/assets/images/default-image-rectangle.png', '' );
 		}
+
+		// Set a comma sepator if there are category terms
+		$categories = insprvw_term_list( $post->ID, 'insprvw-book-category', '', ', ', '' );
+		$categories = $categories ? $categories . ', ' : '';
+
+		// Get category and tags for keywords
+		$keywords = $categories . insprvw_term_list( $post->ID, 'insprvw-book-tag', '', ', ', '' );
 
 		// Update synopsis to remove possible shortcodes and shorten it
 		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
@@ -81,25 +84,21 @@
 		// Description
 		$json_ld .= '"description": "' . esc_html( substr( insprvw_excerpt( false ), 0, 192 ) ) . '...",';
 
-		// Book
+		// Item type - Book
 		$json_ld .= '"itemReviewed": {';
 		$json_ld .= '"@type": "http://schema.org/Book",';
 		$json_ld .= '"name": "' . esc_html( insprvw_book_meta( $post->ID, 'title' ) ) . '",';
 		$json_ld .= '"position": "' . esc_html( insprvw_book_meta( $post->ID, 'series' ) ) . '",';
 		$json_ld .= '"image": "' . esc_url( $thumbnail_src ) . '",';
 
-
-		
-
-
-		// Book author
+		//  Item type - Book - author
 		$json_ld .= '"author": {';
 		$json_ld .= '"@type": "Person",';
 		$json_ld .= '"name": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-author', '', ', ', '' ) ) . '",';
 		$json_ld .= '"sameAs": "' . esc_html( join( ', ', $author_websites ) ) . '"';
 		$json_ld .= '},';
 
-
+		// Item type - Book
 		$json_ld .= '"isbn": "' . esc_html( insprvw_book_meta( $post->ID, 'isbn' ) ) . '",';
 		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-genre', '', ', ', '' ) ) . '",';
 		$json_ld .= '"numberOfPages": "' . esc_html( insprvw_book_meta( $post->ID, 'length' ) ) . '",';
@@ -107,7 +106,6 @@
 		$json_ld .= '"datePublished": "' . esc_html( insprvw_book_meta( $post->ID, 'date' ) ) . '",';
 		$json_ld .= '"publisher": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-publisher', '', ', ', '' ) ) . '",';
 		$json_ld .= '"description": "' . esc_html( $synopsis ) . '"';
-
 		$json_ld .= '}';
 
 		// Create json-ld block - END		

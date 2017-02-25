@@ -6,106 +6,95 @@
 	// Exit if accessed directly
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 
-	// Get the information about the author categories
-	$author_terms = get_the_terms( $post->ID, 'insprvw-book-author' );
+	// Title
+	$title = insprvw_book_meta( $post->ID, 'title' );
+	$title = $title ? insprvw_item_details( 'Title', $title ) : '';
 
-	// Create an array to store author websites
-	$author_websites = array();
+	// Series
+	$series = insprvw_book_meta( $post->ID, 'series' );
+	$series = $series ? insprvw_item_details( 'Series', $series ) : '';
 
-	// Loop through autor term meta and push website values to array
-	if ( $author_terms ) {
-		foreach ( $author_terms as $author ) {
-			// Get term meta for author websites
-			$author_website_meta = get_term_meta( $author->term_id, 'author-website', true );
+	// Isbn
+	$isbn = insprvw_book_meta( $post->ID, 'isbn' );
+	$isbn = $isbn ? insprvw_item_details( 'ISBN', $isbn ) : '';
 
-			// Check if website meta is there and then push
-			if ( $author_website_meta ) {
-				array_push( $author_websites, $author_website_meta );
-			} else {
-				array_push( $author_websites, home_url( '/' ) );
-			}
-		}
+	// Length
+	$length = insprvw_book_meta( $post->ID, 'length' );
+	$length = $length ? insprvw_item_details( 'Length', $length ) : '';
+
+	// Binding
+	$binding = insprvw_book_meta( $post->ID, 'binding' ); 
+	$binding = $binding ? insprvw_item_details( 'Binding', $binding ) : '';
+
+	// Publication date
+	$pub_date = insprvw_book_meta( $post->ID, 'date' );
+
+	// Update format of date
+	if ( $pub_date ) {
+		$pub_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $pub_date, $date_match );
+		$pub_date = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];
+		$pub_date = insprvw_item_details( 'Publication Date', $pub_date );
 	}
-?>
-<?php 
-	$book_title = insprvw_book_meta( $post->ID, 'title' );
-	$book_series = insprvw_book_meta( $post->ID, 'series' );
-	$book_isbn = insprvw_book_meta( $post->ID, 'isbn' );
-	$book_length = insprvw_book_meta( $post->ID, 'length' );
-	$book_binding = insprvw_book_meta( $post->ID, 'binding' ); 
-	$book_pub_date = insprvw_book_meta( $post->ID, 'date' );
-	$book_goodreads = insprvw_book_meta( $post->ID, 'goodreads' );
-	$book_buy_amazon = insprvw_book_meta( $post->ID, 'amazon' );
-	$book_buy_amazon_paperback = insprvw_book_meta( $post->ID, 'amazonpb' );
-	$book_buy_amazon_canada = insprvw_book_meta( $post->ID, 'amazonca' );
-	$book_buy_amazon_uk = insprvw_book_meta( $post->ID, 'amazonuk' );
-	$book_buy_bn = insprvw_book_meta( $post->ID, 'bn' );
-	$book_buy_kobo = insprvw_book_meta( $post->ID, 'kobo' );
-	$book_buy_ibook = insprvw_book_meta( $post->ID, 'ibook' );
-	$book_buy_gplay = insprvw_book_meta( $post->ID, 'gplay' );
-	$book_buy_smashwords = insprvw_book_meta( $post->ID, 'smashwords' );
-	$book_synopsis = insprvw_book_meta( $post->ID, 'synopsis' );
 
+	// Goodreads
+	$goodreads = insprvw_book_meta( $post->ID, 'goodreads' );
+	if ( $goodreads ) {
+		$goodreads = '<li>';
+		$goodreads .= '<span class="review-label">' . __( 'Goodreads', 'inspire-reviews' ) . ':</span> ';
+		$goodreads .= '<span class="review-value"><a href="' . esc_url( $goodreads ) . '" target="_blank">Link</a></span>';
+		$goodreads .= '</li>';
+	}
 
-	// Check if we're on an archive versus single post	
-	if ( is_single() ) {
-		// Create list items of book information
-		$book_list_item = $book_title ? insprvw_item_details( 'Title', $book_title ) : '';
-		$book_list_item .= $book_series ? insprvw_item_details( 'Series', $book_series ) : '';
-		
+	// Buy links	
+	$buy_amazon = insprvw_book_meta( $post->ID, 'amazon' );
+	$buy_amazon_paperback = insprvw_book_meta( $post->ID, 'amazonpb' );
+	$buy_amazon_canada = insprvw_book_meta( $post->ID, 'amazonca' );
+	$buy_amazon_uk = insprvw_book_meta( $post->ID, 'amazonuk' );
+	$buy_bn = insprvw_book_meta( $post->ID, 'bn' );
+	$buy_kobo = insprvw_book_meta( $post->ID, 'kobo' );
+	$buy_ibook = insprvw_book_meta( $post->ID, 'ibook' );
+	$buy_gplay = insprvw_book_meta( $post->ID, 'gplay' );
+	$buy_smashwords = insprvw_book_meta( $post->ID, 'smashwords' );
 
-		
-		$book_list_item .= insprvw_term_list( $post->ID, 'insprvw-book-author', '<li><span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	// Create list of buy links
+	$buy_links = $buy_amazon ? insprvw_create_link( 'amazon', $buy_amazon, 'Amazon' ) : '';
+	$buy_links .= $buy_amazon_paperback ? insprvw_create_link( 'amazon-paperback', $buy_amazon_paperback, 'Amazon Paperback' ) : '';
+	$buy_links .= $buy_amazon_canada ? insprvw_create_link( 'amazon-canada', $buy_amazon_canada, 'Amazon Canada' ) : '';
+	$buy_links .= $buy_amazon_uk ? insprvw_create_link( 'amazon-uk', $buy_amazon_uk, 'Amazon UK' ) : '';
+	$buy_links .= $buy_bn ? insprvw_create_link( 'bn', $buy_bn, 'Barnes & Noble' ) : '';
+	$buy_links .= $buy_kobo ? insprvw_create_link( 'kobo', $buy_kobo, 'Kobo' ) : '';
+	$buy_links .= $buy_ibook ? insprvw_create_link( 'ibook', $buy_ibook, 'iBook' ) : '';
+	$buy_links .= $buy_gplay ? insprvw_create_link( 'gplay', $buy_gplay, 'Google Play' ) : '';
+	$buy_links .= $buy_smashwords ? insprvw_create_link( 'smashwords', $buy_smashwords, 'Smashwords' ) : '';
 
-		// Update format of date
-		if ( $book_pub_date ) {
-			$book_pub_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $book_pub_date, $date_match );
-			$book_pub_date_formatted = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];
-		}
-		
-		// Continue list items of book information
-		$book_list_item .= $book_isbn ? insprvw_item_details( 'ISBN', $book_isbn ) : '';
-		$book_list_item .= insprvw_term_list( $post->ID, 'insprvw-book-genre', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
-		$book_list_item .= $book_length ? insprvw_item_details( 'Length', $book_length ) : '';
-		$book_list_item .= $book_binding ? insprvw_item_details( 'Binding', $book_binding ) : '';
-		$book_list_item .= $book_pub_date ? insprvw_item_details( 'Publication Date', $book_pub_date_formatted ) : '';
-		$book_list_item .= insprvw_term_list( $post->ID, 'insprvw-book-publisher', '<li><span class="review-label">' . __( 'Publisher', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	// Create buy links list item
+	if ( strlen( $buy_links ) > 0 ) {
+		$buy_list_item = '<li>';
+		$buy_list_item .= '<span class="review-label">' . __( 'Buy', 'inspire-reviews' ) . ':</span> ';
+		$buy_list_item .= '<span class="review-value">' . rtrim( $buy_links, ', ' ) . '</span>';
+		$buy_list_item .= '</li>';
+	} else {
+		$buy_list_item = '';
+	}
 
-		// Add goodreads link
-		if ( $book_goodreads ) {
-			$book_list_item .= '<li>';
-			$book_list_item .= '<span class="review-label">' . __( 'Goodreads', 'inspire-reviews' ) . ':</span> ';
-			$book_list_item .= '<span class="review-value"><a href="' . esc_url( $book_goodreads ) . '" target="_blank">Link</a></span>';
-			$book_list_item .= '</li>';
-		}
-
-		// Create buy links
-		$book_buy_links = $book_buy_amazon ? insprvw_create_link( 'amazon', $book_buy_amazon, 'Amazon' ) : '';
-		$book_buy_links .= $book_buy_amazon_paperback ? insprvw_create_link( 'amazon-paperback', $book_buy_amazon_paperback, 'Amazon Paperback' ) : '';
-		$book_buy_links .= $book_buy_amazon_canada ? insprvw_create_link( 'amazon-canada', $book_buy_amazon_canada, 'Amazon Canada' ) : '';
-		$book_buy_links .= $book_buy_amazon_uk ? insprvw_create_link( 'amazon-uk', $book_buy_amazon_uk, 'Amazon UK' ) : '';
-		$book_buy_links .= $book_buy_bn ? insprvw_create_link( 'bn', $book_buy_bn, 'Barnes & Noble' ) : '';
-		$book_buy_links .= $book_buy_kobo ? insprvw_create_link( 'kobo', $book_buy_kobo, 'Kobo' ) : '';
-		$book_buy_links .= $book_buy_ibook ? insprvw_create_link( 'ibook', $book_buy_ibook, 'iBook' ) : '';
-		$book_buy_links .= $book_buy_gplay ? insprvw_create_link( 'gplay', $book_buy_gplay, 'Google Play' ) : '';
-		$book_buy_links .= $book_buy_smashwords ? insprvw_create_link( 'smashwords', $book_buy_smashwords, 'Smashwords' ) : '';
-
-		// Create buy links list item
-		$book_buy_list_item = '<li>';
-		$book_buy_list_item .= '<span class="review-label">' . __( 'Buy', 'inspire-reviews' ) . ':</span> ';
-		$book_buy_list_item .= '<span class="review-value">';
-		$book_buy_list_item .= rtrim( $book_buy_links, ', ' );
-		$book_buy_list_item .= '</span>';
-		$book_buy_list_item .= '</li>';
+	// Create book information block
+	$book_information = '<ul class="book-information review-information">';
+	$book_information .= $title;
+	$book_information .= $series;
+	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-author', '<li><span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	$book_information .= $isbn;
+	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-genre', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );;
+	$book_information .= $length;
+	$book_information .= $binding;
+	$book_information .= $pub_date;
+	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-publisher', '<li><span class="review-label">' . __( 'Publisher', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	$book_information .= $goodreads;
+	$book_information .= $buy_list_item;
+	$book_information .= '</ul>';
 	
-		// Display book information
-		$book_info_list = '<ul class="book-information review-information">';
-		$book_info_list .= $book_list_item;
-		$book_info_list .= ( strlen( $book_buy_links ) > 0 ) ? $book_buy_list_item : '';
-		$book_info_list .= '</ul>';
-		echo $book_info_list;
+	// Display book information block
+	echo $book_information;
 
-		// Display book synopsis
-		echo $book_synopsis ? '<div class="book-synopsis review-synopsis"><h4>' . __( 'Synopsis', 'inspire-reviews' ) . '</h4>' . insprvw_display_shortcodes( wpautop( esc_textarea ( $book_synopsis ) ) ) . '</div>' : '';
-	}
-?>
+	// Display book synopsis
+	$book_synopsis = insprvw_book_meta( $post->ID, 'synopsis' );
+	echo $book_synopsis ? '<div class="book-synopsis review-synopsis"><h4>' . __( 'Synopsis', 'inspire-reviews' ) . '</h4>' . insprvw_display_shortcodes( wpautop( esc_textarea ( $book_synopsis ) ) ) . '</div>' : '';
