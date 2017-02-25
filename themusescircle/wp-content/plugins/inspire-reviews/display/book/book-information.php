@@ -68,13 +68,12 @@
 	$buy_links .= $buy_smashwords ? insprvw_create_link( 'smashwords', $buy_smashwords, 'Smashwords' ) : '';
 
 	// Create buy links list item
+	$buy_list_item = '';
 	if ( strlen( $buy_links ) > 0 ) {
 		$buy_list_item = '<li>';
 		$buy_list_item .= '<span class="review-label">' . __( 'Buy', 'inspire-reviews' ) . ':</span> ';
 		$buy_list_item .= '<span class="review-value">' . rtrim( $buy_links, ', ' ) . '</span>';
 		$buy_list_item .= '</li>';
-	} else {
-		$buy_list_item = '';
 	}
 
 	// Create book information block
@@ -83,7 +82,7 @@
 	$book_information .= $series;
 	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-author', '<li><span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
 	$book_information .= $isbn;
-	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-genre', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );;
+	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-genre', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
 	$book_information .= $length;
 	$book_information .= $binding;
 	$book_information .= $pub_date;
@@ -96,5 +95,5 @@
 	echo $book_information;
 
 	// Display book synopsis
-	$book_synopsis = insprvw_book_meta( $post->ID, 'synopsis' );
-	echo $book_synopsis ? '<div class="book-synopsis review-synopsis"><h4>' . __( 'Synopsis', 'inspire-reviews' ) . '</h4>' . insprvw_display_shortcodes( wpautop( esc_textarea ( $book_synopsis ) ) ) . '</div>' : '';
+	$synopsis = insprvw_book_meta( $post->ID, 'synopsis' );
+	echo $synopsis ? '<div class="book-synopsis review-synopsis"><h4>' . __( 'Synopsis', 'inspire-reviews' ) . '</h4>' . insprvw_display_shortcodes( wpautop( esc_textarea ( $synopsis ) ) ) . '</div>' : '';

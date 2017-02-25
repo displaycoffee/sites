@@ -54,9 +54,7 @@
 									the_title( $title_before, $title_after );
 								?>
 								<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>	
-								<div class="entry-content">
-									<?php echo insprvw_excerpt( true ); ?>
-								</div>
+								<div class="entry-content"><?php echo insprvw_excerpt( true ); ?></div>
 							</div>
 						</div>
 						<?php 

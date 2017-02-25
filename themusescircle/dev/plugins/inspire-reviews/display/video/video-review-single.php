@@ -8,33 +8,41 @@
 
 	// Include header	
 	get_header();
+
+	// Create empty json-ld string to store data
+	$json_block = '';	
 ?>
 <?php include INSPRVW_DIR . 'display/partials/review-title.php'; ?>
 <section class="content">
 	<div class="wrapper">
 		<article>
-			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
+			<?php if ( have_posts() ) : ?>
 				<div class="entry-single">
-					<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_video_type( false ); ?>-review" itemscope itemtype="http://schema.org/Review">
-						<meta itemprop="name" content="<?php echo esc_attr( get_the_title() ); ?>"/>
-						<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
-						<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
-						<div class="entry-item-reviewed" itemprop="itemReviewed" itemscope itemtype="<?php echo insprvw_video_type( true ); ?>">							
-							<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>							
-							<div class="entry-details">
-								<?php include INSPRVW_DIR . 'display/video/' . insprvw_video_type( false ) . '-information.php'; ?>
-							</div>						
+					<?php while ( have_posts() ) : the_post(); ?>	
+						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_video_type( false ); ?>-review">
+							<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
+							<div class="entry-item-reviewed">							
+								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>							
+								<div class="entry-details">
+									<?php include INSPRVW_DIR . 'display/video/' . insprvw_video_type( false ) . '-information.php'; ?>
+								</div>						
+							</div>
+							<div class="entry-content"><?php the_content(); ?></div>
+							<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>															
 						</div>
-						<div class="entry-content">
-							<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
-							<?php the_content(); ?>
-						</div>
-						<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>															
-					</div>
-				</div>				
+						<?php 
+							// Create json-ld string for blog schema
+							$json_block .= insprvw_movie_json( $post ) . ',';
+						?>											
+					<?php endwhile; ?>
+					<script type="application/ld+json">
+						{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	
+					</script>
+				</div>			
 				<?php comments_template(); ?>
 				<?php include INSPRVW_DIR . 'display/partials/review-navigation.php'; ?>
-			<?php endwhile; wp_reset_postdata(); endif; ?>
+				<?php wp_reset_postdata(); ?>	
+			<?php endif; ?>
 		</article>
 		<?php get_sidebar(); ?>
 	</div>
