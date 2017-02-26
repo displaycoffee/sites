@@ -91,7 +91,7 @@
 	}
 
 	// entry.scss {
-	.entry-single .entry.insprvw-review .entry-item-reviewed .entry-thumbnail {
+	.entry-single .entry.insprvw-review .entry-thumbnail {
 		max-width: 250px;
 	}
 }
@@ -173,16 +173,14 @@
 					display: block;
 				}
 			}
-			.entry-item-reviewed {
-				.entry-thumbnail {
-					max-width: 200px;
+			.entry-thumbnail {
+				max-width: 200px;
+			}
+			.entry-details {
+				margin: 0 0 20px 0;
+				.review-synopsis {
+					clear: left;
 				}
-				.entry-details {
-					margin: 0 0 20px 0;
-					.review-synopsis {
-						clear: left;
-					}
-				}				
 			}
 		}	
 	}
@@ -462,15 +460,14 @@
 	}	
 
 	// entry.scss 
-	.entry-multiple .entry.post .entry-thumbnail, .entry-multiple .entry.insprvw-review .entry-item-reviewed,
-	.archive .author-wrapper .author-thumbnail, .single .author-wrapper .author-thumbnail {
+	.entry-multiple .entry .entry-thumbnail, .archive .author-wrapper .author-thumbnail, .single .author-wrapper .author-thumbnail {
 		flex: 0 0 125px;
 	}
 	.entry-single {
 		.entry .entry-content img[class*='wp-image-'] {
 			max-width: 250px;
 		}
-		.entry.insprvw-review .entry-item-reviewed .entry-thumbnail {
+		.entry.insprvw-review .entry-thumbnail {
 			max-width: 150px;
 		}	
 	}
@@ -565,19 +562,14 @@
 	.entry-multiple	.entry, .author-wrapper {
 		display: block;
 	}
-	.entry-multiple .entry.post .entry-thumbnail, .entry-multiple .entry.insprvw-review .entry-item-reviewed,
-	.author-wrapper .author-thumbnail {
+	.entry-multiple .entry .entry-thumbnail, .author-wrapper .author-thumbnail {
 		margin: 0 0 10px 0;
 		.image-wrap {
 			max-height: 200px;	
 		}			
 	}
-	.entry-multiple {
-		.entry.post .entry-thumbnail, .entry.insprvw-review .entry-item-reviewed {
-			.image-wrap img {
-				margin: -30% 0 0 0;;
-			}			
-		}		
+	.entry-multiple .entry .entry-thumbnail .image-wrap img {
+		margin: -30% 0 0 0;
 	}
 	.author-wrapper .author-thumbnail .image-wrap img {
 		margin: -20% 0 0 0;
@@ -598,7 +590,7 @@
 				}
 			}
 		}
-		.entry.insprvw-review .entry-item-reviewed {
+		.entry.insprvw-review {
 			.entry-thumbnail {
 				float: none;
 				margin: 0 auto 20px auto;
@@ -608,7 +600,6 @@
 				}
 			}
 			.entry-details {
-				margin: 0 0 20px 0;
 				.review-information {
 					overflow: visible;
 				}

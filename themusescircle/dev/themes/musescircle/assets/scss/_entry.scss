@@ -21,15 +21,11 @@
 /* Entry - Thumbnail
 ========================================================================== */
 
-.entry-multiple .entry {
-	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed {
-		flex: 0 0 150px;
-		margin: 0 20px 0 0;			
-	}
-	&.post .entry-thumbnail, &.insprvw-review .entry-item-reviewed .entry-thumbnail {
-		.image-wrap img {
-			width: 100%;
-		}	
+.entry-multiple .entry .entry-thumbnail {
+	flex: 0 0 150px;
+	margin: 0 20px 0 0;
+	.image-wrap img {
+		width: 100%;
 	}	
 } 
 
@@ -47,17 +43,10 @@
 			}
 		}
 	}
-	&.insprvw-review .entry-item-reviewed {
-		&:before, &:after {
-			content: '';
-			display: block;
-			clear: both;
-		}
-		.entry-thumbnail {
-			float: left;
-			max-width: 300px;
-			margin: 0 20px 20px 0;
-		}
+	&.insprvw-review .entry-thumbnail {
+		float: left;
+		max-width: 300px;
+		margin: 0 20px 20px 0;
 	}
 }
 
@@ -191,28 +180,26 @@
 /* Entry - Review Details
 ========================================================================== */
 
-.entry-single .entry.insprvw-review .entry-item-reviewed {
-	.entry-details {
-		margin: 0 0 20px 20px;
-		.review-information {
-			overflow: hidden;
-			margin: 0 0 20px 0;
-			padding: 0 0 0 20px;
-			li .review-label {
-				font-weight: bold;
-			}
+.entry-single .entry.insprvw-review .entry-details {
+	margin: 0 0 20px 20px;
+	.review-information {
+		overflow: hidden;
+		margin: 0 0 20px 0;
+		padding: 0 0 0 20px;
+		li .review-label {
+			font-weight: bold;
 		}
-		.review-synopsis {
-			@include muses-bg(true);				
-			padding: 20px;
-			p:last-child {
-				margin: 0;
-			}
+	}
+	.review-synopsis {
+		@include muses-bg(true);				
+		padding: 20px;
+		p:last-child {
+			margin: 0;
 		}
 	}
 }
 
-.no-thumbnail .entry-single .entry.insprvw-review .entry-item-reviewed .entry-details {
+.no-thumbnail .entry-single .entry.insprvw-review .entry-details {
 	margin: 0 0 20px 0;
 }
 
@@ -232,14 +219,19 @@
 	}
 }
 
-.entry-single .entry .entry-content {
-	&:before, &:after {
-		content: '';
-		display: block;
-		clear: both;
-	}	
-	img[class*='wp-image-'] {
-		display: block;
+.entry-single .entry {
+	&.insprvw-review .entry-content {
+		clear: both;		
+	}
+	.entry-content {
+		&:before, &:after {
+			content: '';
+			display: block;
+			clear: both;
+		}	
+		img[class*='wp-image-'] {
+			display: block;
+		}
 	}
 }
 
