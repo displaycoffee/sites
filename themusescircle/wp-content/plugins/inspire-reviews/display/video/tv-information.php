@@ -83,9 +83,9 @@
 	$tv_information .= $creator;
 	$tv_information .= $seasons;
 	$tv_information .= $episodes;
-	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-actor', '<li><span class="review-label">' . __( 'Actors', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
-	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-genre', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
-	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-theme', '<li><span class="review-label">' . __( 'Themes', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );	
+	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-actor', ', ', '<li><span class="review-label">' . __( 'Actors', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );
+	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-genre', ', ', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );
+	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-theme', ', ', '<li><span class="review-label">' . __( 'Themes', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );	
 	$tv_information .= $rated;
 	$tv_information .= $link;
 	$tv_information .= $release_date;

@@ -84,11 +84,11 @@
 		}
 
 		// Set a comma sepator if there are category terms
-		$categories = insprvw_term_list( $post->ID, 'insprvw-book-category', '', ', ', '' );
+		$categories = insprvw_term_list( $post->ID, 'insprvw-book-category', ', ' );
 		$categories = $categories ? $categories . ', ' : '';
 
 		// Get category and tags for keywords
-		$keywords = $categories . insprvw_term_list( $post->ID, 'insprvw-book-tag', '', ', ', '' );
+		$keywords = $categories . insprvw_term_list( $post->ID, 'insprvw-book-tag', ', ' );
 
 		// Update synopsis to remove possible shortcodes and shorten it
 		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
@@ -125,17 +125,17 @@
 		//  Item type - Book - author
 		$json_ld .= '"author": {';
 		$json_ld .= '"@type": "Person",';
-		$json_ld .= '"name": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-author', '', ', ', '' ) ) . '",';
+		$json_ld .= '"name": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-author', ', ' ) ) . '",';
 		$json_ld .= '"sameAs": "' . esc_html( join( ', ', $author_websites ) ) . '"';
 		$json_ld .= '},';
 
 		// Item type - Book
 		$json_ld .= '"isbn": "' . esc_html( insprvw_book_meta( $post->ID, 'isbn' ) ) . '",';
-		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-genre', '', ', ', '' ) ) . '",';
+		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-genre', ', ' ) ) . '",';
 		$json_ld .= '"numberOfPages": "' . esc_html( insprvw_book_meta( $post->ID, 'length' ) ) . '",';
 		$json_ld .= '"bookFormat": "' . esc_html( insprvw_book_meta( $post->ID, 'binding' ) ) . '",';
 		$json_ld .= '"datePublished": "' . esc_html( insprvw_book_meta( $post->ID, 'date' ) ) . '",';
-		$json_ld .= '"publisher": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-publisher', '', ', ', '' ) ) . '",';
+		$json_ld .= '"publisher": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-publisher', ', ' ) ) . '",';
 		$json_ld .= '"description": "' . esc_html( $synopsis ) . '"';
 		$json_ld .= '}';
 
@@ -148,15 +148,15 @@
     // Generate json-ld data for book schema
     function insprvw_movie_json( $post ) {
 		// Set a comma sepator if there are category terms
-		$categories = insprvw_term_list( $post->ID, 'insprvw-video-category', '', ', ', '' );
+		$categories = insprvw_term_list( $post->ID, 'insprvw-video-category', ', ' );
 		$categories = $categories ? $categories . ', ' : '';
 
 		// Set a comma sepator if there are theme terms
-		$themes = insprvw_term_list( $post->ID, 'insprvw-video-theme', '', ', ', '' );
+		$themes = insprvw_term_list( $post->ID, 'insprvw-video-theme', ', ' );
 		$themes = $themes ? $themes . ', ' : '';
 
 		// Get category and tags for keywords
-		$keywords = $categories . $themes . insprvw_term_list( $post->ID, 'insprvw-video-tag', '', ', ', '' );
+		$keywords = $categories . $themes . insprvw_term_list( $post->ID, 'insprvw-video-tag', ', ' );
 
 		// Update synopsis to remove possible shortcodes and shorten it
 		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
@@ -190,8 +190,8 @@
 		$json_ld .= '"image": "' . esc_url( insprvw_json_thumbnail( $post->ID ) ) . '",';
 		$json_ld .= '"director": "' . esc_html( insprvw_movie_meta( $post->ID, 'director' ) ) . '",';
 		$json_ld .= '"author": "' . esc_html( insprvw_movie_meta( $post->ID, 'screenwriter' ) ) . '",';
-		$json_ld .= '"actor": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-actor', '', ', ', '' ) ) . '",';
-		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-genre', '', ', ', '' ) ) . '",';
+		$json_ld .= '"actor": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-actor', ', ' ) ) . '",';
+		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-genre', ', ' ) ) . '",';
 		$json_ld .= '"contentRating": "' . esc_html( insprvw_movie_meta( $post->ID, 'rated' ) ) . '",';
 		$json_ld .= '"sameAs": "' . esc_html( insprvw_movie_meta( $post->ID, 'link' ) ) . '",';
 		$json_ld .= '"dateCreated": "' . esc_html( insprvw_movie_meta( $post->ID, 'release-date' ) ) . '",';
@@ -218,15 +218,15 @@
     // Generate json-ld data for book schema
     function insprvw_tv_json( $post ) {
 		// Set a comma sepator if there are category terms
-		$categories = insprvw_term_list( $post->ID, 'insprvw-video-category', '', ', ', '' );
+		$categories = insprvw_term_list( $post->ID, 'insprvw-video-category', ', ' );
 		$categories = $categories ? $categories . ', ' : '';
 
 		// Set a comma sepator if there are theme terms
-		$themes = insprvw_term_list( $post->ID, 'insprvw-video-theme', '', ', ', '' );
+		$themes = insprvw_term_list( $post->ID, 'insprvw-video-theme', ', ' );
 		$themes = $themes ? $themes . ', ' : '';
 
 		// Get category and tags for keywords
-		$keywords = $categories . $themes . insprvw_term_list( $post->ID, 'insprvw-video-tag', '', ', ', '' );
+		$keywords = $categories . $themes . insprvw_term_list( $post->ID, 'insprvw-video-tag', ', ' );
 
 		// Update synopsis to remove possible shortcodes and shorten it
 		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
@@ -261,8 +261,8 @@
 		$json_ld .= '"creator": "' . esc_html( insprvw_tv_meta( $post->ID, 'creator' ) ) . '",';
 		$json_ld .= '"numberOfSeasons": "' . esc_html( insprvw_tv_meta( $post->ID, 'seasons' ) ) . '",';
 		$json_ld .= '"numberOfEpisodes": "' . esc_html( insprvw_tv_meta( $post->ID, 'episodes' ) ) . '",';
-		$json_ld .= '"actor": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-actor', '', ', ', '' ) ) . '",';
-		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-genre', '', ', ', '' ) ) . '",';
+		$json_ld .= '"actor": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-actor', ', ' ) ) . '",';
+		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-genre', ', ' ) ) . '",';
 		$json_ld .= '"contentRating": "' . esc_html( insprvw_tv_meta( $post->ID, 'rated' ) ) . '",';
 		$json_ld .= '"sameAs": "' . esc_html( insprvw_tv_meta( $post->ID, 'link' ) ) . '",';
 		$json_ld .= '"dateCreated": "' . esc_html( insprvw_tv_meta( $post->ID, 'release-date' ) ) . '",';

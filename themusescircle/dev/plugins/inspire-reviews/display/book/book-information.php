@@ -80,13 +80,13 @@
 	$book_information = '<ul class="book-information review-information">';
 	$book_information .= $title;
 	$book_information .= $series;
-	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-author', '<li><span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-author', ', ', '<li><span class="review-label">' . __( 'Author', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );
 	$book_information .= $isbn;
-	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-genre', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-genre', ', ', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );
 	$book_information .= $length;
 	$book_information .= $binding;
 	$book_information .= $pub_date;
-	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-publisher', '<li><span class="review-label">' . __( 'Publisher', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	$book_information .= insprvw_term_list( $post->ID, 'insprvw-book-publisher', ', ', '<li><span class="review-label">' . __( 'Publisher', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );
 	$book_information .= $goodreads;
 	$book_information .= $buy_list_item;
 	$book_information .= '</ul>';

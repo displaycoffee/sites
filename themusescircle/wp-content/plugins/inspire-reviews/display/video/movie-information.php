@@ -74,9 +74,9 @@
 	$movie_information .= $title;
 	$movie_information .= $director;
 	$movie_information .= $screenwriter;
-	$movie_information .= insprvw_term_list( $post->ID, 'insprvw-video-actor', '<li><span class="review-label">' . __( 'Actors', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
-	$movie_information .= insprvw_term_list( $post->ID, 'insprvw-video-genre', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
-	$movie_information .= insprvw_term_list( $post->ID, 'insprvw-video-theme', '<li><span class="review-label">' . __( 'Themes', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );	
+	$movie_information .= insprvw_term_list( $post->ID, 'insprvw-video-actor', ', ', '<li><span class="review-label">' . __( 'Actors', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );
+	$movie_information .= insprvw_term_list( $post->ID, 'insprvw-video-genre', ', ', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );
+	$movie_information .= insprvw_term_list( $post->ID, 'insprvw-video-theme', ', ', '<li><span class="review-label">' . __( 'Themes', 'inspire-reviews' ) . ':</span> <span class="review-value">', '</span>' );	
 	$movie_information .= $rated;
 	$movie_information .= $link;
 	$movie_information .= $release_date;
