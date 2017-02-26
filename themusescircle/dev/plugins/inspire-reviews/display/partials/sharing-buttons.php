@@ -7,7 +7,7 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }	
 ?>
 <div class="sharing-buttons menu-social-container">
-    <?php _e( '<strong>Share On:</strong>', 'musescircle' ); ?>
+    <?php _e( '<strong>Share On:</strong>', 'inspire-reviews' ); ?>
     <ul class="menu">
 		<li>			    
 		    <a href="http://www.facebook.com/sharer.php?u=<?php echo get_permalink(); ?>" target="_blank">Facebook</a>	    
