@@ -36,6 +36,10 @@
 			<?php if ( have_posts() ) : ?>	
 				<div class="entry-multiple">
 					<?php while ( have_posts() ) : the_post(); ?>
+						<?php 
+							// Create json-ld string for blog schema
+							$json_block .= insprvw_book_json( $post ) . ',';
+						?>						
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review">
 							<?php 
 								// If there's not a thumbnail, don't add thumbnail class
@@ -56,11 +60,7 @@
 								<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>	
 								<div class="entry-content"><?php echo insprvw_excerpt( true ); ?></div>
 							</div>
-						</div>
-						<?php 
-							// Create json-ld string for blog schema
-							$json_block .= insprvw_book_json( $post ) . ',';
-						?>						
+						</div>						
 					<?php endwhile; ?>		
 					<script type="application/ld+json">
 						{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	

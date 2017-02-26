@@ -19,6 +19,10 @@
 			<?php if ( have_posts() ) : ?>
 				<div class="entry-single">
 					<?php while ( have_posts() ) : the_post(); ?>	
+						<?php 
+							// Create json-ld string for blog schema
+							$json_block .= insprvw_book_json( $post ) . ',';
+						?>						
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review">
 							<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
 							<div class="entry-item-reviewed">
@@ -36,11 +40,7 @@
 								echo do_shortcode( '[book-author names="' . $author_names . '"]' );
 							?>
 							<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>						
-						</div>
-						<?php 
-							// Create json-ld string for blog schema
-							$json_block .= insprvw_book_json( $post ) . ',';
-						?>											
+						</div>										
 					<?php endwhile; ?>
 					<script type="application/ld+json">
 						{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	

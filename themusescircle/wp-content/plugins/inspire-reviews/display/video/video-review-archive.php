@@ -9,16 +9,6 @@
 	// Include header	
 	get_header(); 	
 
-	// Get post type to generate dyanmic categories
-	$post_type = get_post_type();
-
-	// Check what type of post we're viewing and sreate json-ld string for blog schema
-	if ( $post_type == 'insprvw-movie-review' ) {
-		$post_type = 'movie';
-	} else if ( $post_type == 'insprvw-tv-review' ) {
-		$post_type = 'tv';
-	} 
-
 	// Create empty json-ld string to store data
 	$json_block = '';	
 ?>
@@ -29,7 +19,20 @@
 			<?php the_archive_description( '<div class="category-description">', '</div>' ); ?>	
 			<?php if ( have_posts() ) : ?>	
 				<div class="entry-multiple">
-					<?php while ( have_posts() ) : the_post(); ?>				
+					<?php while ( have_posts() ) : the_post(); ?>	
+						<?php 
+							// Get post type to generate dyanmic content
+							$post_type = get_post_type();
+
+							// Check what type of post we're viewing and set type variable and json-ld schema
+							if ( $post_type == 'insprvw-movie-review' ) {
+								$post_type = 'movie';
+								$json_block .= insprvw_movie_json( $post ) . ',';
+							} else if ( $post_type == 'insprvw-tv-review' ) {
+								$post_type = 'tv';
+								$json_block .= insprvw_tv_json( $post ) . ',';
+							}
+						?>
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo $post_type; ?>-review">
 							<?php 
 								// If there's not a thumbnail, don't add thumbnail class
@@ -50,15 +53,7 @@
 								<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
 								<div class="entry-content"><?php echo insprvw_excerpt( true ); ?></div>
 							</div>						
-						</div>
-						<?php 
-							// Check what type of post we're viewing and sreate json-ld string for blog schema
-							if ( $post_type == 'movie' ) {
-								$json_block .= insprvw_movie_json( $post ) . ',';
-							} else if ( $post_type == 'tv' ) {
-								$json_block .= insprvw_tv_json( $post ) . ',';
-							} 
-						?>							
+						</div>							
 					<?php endwhile; ?>
 					<script type="application/ld+json">
 						{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	

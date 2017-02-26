@@ -7,7 +7,10 @@
 	if ( !defined( 'ABSPATH' ) ) { exit; }
 
 	// Include header	
-	get_header(); 	
+	get_header(); 
+
+	// Create empty json-ld string to store data
+	$json_block = '';	
 ?>
 <?php include INSPRVW_DIR . 'display/partials/review-title.php'; ?>
 <section class="content">
@@ -27,47 +30,47 @@
 			<?php if ( $insprvw_query->have_posts() ) : ?>	
 				<div class="entry-multiple">
 					<?php while ( $insprvw_query->have_posts() ) : $insprvw_query->the_post(); ?>
-						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_review_type( true ); ?>-review" itemscope itemtype="http://schema.org/Review">
-							<meta itemprop="url" content="<?php echo esc_url( get_the_permalink() ); ?>"/>
+						<?php 
+							// Get post type to generate dyanmic content
+							$post_type = get_post_type();
+
+							// Check what type of post we're viewing and set type variable and json-ld schema
+							if ( $post_type == 'insprvw-book-review' ) {
+								$post_type = 'book';
+								$json_block .= insprvw_book_json( $post ) . ',';
+							} else if ( $post_type == 'insprvw-movie-review' ) {
+								$post_type = 'movie';
+								$json_block .= insprvw_movie_json( $post ) . ',';
+							} else if ( $post_type == 'insprvw-tv-review' ) {
+								$post_type = 'tv';
+								$json_block .= insprvw_tv_json( $post ) . ',';
+							}
+						?>
+						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo $post_type; ?>-review">
 							<?php 
 								// If there's not a thumbnail, don't add thumbnail class
 								$item_reviewed_class = has_post_thumbnail() ? 'class="entry-item-reviewed"' : '';
-
-								// Schema link for book versus movies/tv	
-								if ( get_post_type() == 'insprvw-book-review' ) {
-									$schema_link = 'http://schema.org/Book';
-								} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
-									$schema_link = insprvw_video_type( true );
-								}
 							?>		
-							<div <?php echo $item_reviewed_class; ?> itemprop="itemReviewed" itemscope itemtype="<?php echo $schema_link; ?>">
+							<div <?php echo $item_reviewed_class; ?>>
 								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>
-								<?php 
-									// Include for book versus movies/tv	
-									if ( get_post_type() == 'insprvw-book-review' ) {
-										include INSPRVW_DIR . 'display/book/book-information.php';
-									} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
-										include INSPRVW_DIR . 'display/video/' . insprvw_video_type( false ) . '-information.php';
-									}
-								?>
 							</div>
 							<div class="entry-wrapper">
 								<?php 
 									// Since the string is long, create variables for title before/after
-									$title_before = '<header class="entry-header"><h3 itemprop="name"><a href="' . esc_url( get_the_permalink() ) . '">';
+									$title_before = '<header class="entry-header"><h3><a href="' . esc_url( get_the_permalink() ) . '">';
 									$title_after = '</a></h3></header>';
 
 									// Display the title
 									the_title( $title_before, $title_after );
 								?>	
 								<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
-								<div class="entry-content">
-									<meta itemprop="description" content="<?php echo esc_attr( substr( strip_tags( get_the_content() ), 0, 197 ) . '...' ); ?>"/>
-									<?php echo insprvw_excerpt( true ); ?>
-								</div>
+								<div class="entry-content"><?php echo insprvw_excerpt( true ); ?></div>
 							</div>	
-						</div>
-					<?php endwhile; wp_reset_postdata(); ?>
+						</div>						
+					<?php endwhile; ?>
+					<script type="application/ld+json">
+						{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	
+					</script>	
 				</div>
 				<?php 
 					// Check if pages are greater than 1
@@ -87,6 +90,7 @@
 						echo '<nav class="pagination">' . paginate_links( $args ) . '</nav>';
 					}
 				?>
+				<?php wp_reset_postdata(); ?>
 			<?php else : ?>
 				<?php include '/partials/review-no-posts.php'; ?>
 			<?php endif; ?>	
