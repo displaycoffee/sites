@@ -59,6 +59,15 @@
 		return $thumbnail_src;
 	}
 
+	// Data for synopsis
+	function insprvw_json_synopsis( $synopsis ) {
+		// Update synopsis to remove possible shortcodes and shorten it
+		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
+		$synopsis_replace = '';
+		$synopsis = wp_trim_words( str_replace( $synopsis_remove, $synopsis_replace, $synopsis ), 40 ); 
+
+		return $synopsis;		
+	}
 
     // Generate json-ld data for book schema
     function insprvw_book_json( $post ) {
@@ -89,11 +98,6 @@
 
 		// Get category and tags for keywords
 		$keywords = $categories . insprvw_term_list( $post->ID, 'insprvw-book-tag', ', ' );
-
-		// Update synopsis to remove possible shortcodes and shorten it
-		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
-		$synopsis_replace = '';
-		$synopsis = wp_trim_words( str_replace( $synopsis_remove, $synopsis_replace, insprvw_book_meta( $post->ID, 'synopsis' ) ), 40 ); 
 		   	
 		// Create json-ld block - START
 		$json_ld = '{';
@@ -136,7 +140,7 @@
 		$json_ld .= '"bookFormat": "' . esc_html( insprvw_book_meta( $post->ID, 'binding' ) ) . '",';
 		$json_ld .= '"datePublished": "' . esc_html( insprvw_book_meta( $post->ID, 'date' ) ) . '",';
 		$json_ld .= '"publisher": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-book-publisher', ', ' ) ) . '",';
-		$json_ld .= '"description": "' . esc_html( $synopsis ) . '"';
+		$json_ld .= '"description": "' . esc_html( insprvw_json_synopsis( insprvw_book_meta( $post->ID, 'synopsis' ) ) ) . '"';
 		$json_ld .= '}';
 
 		// Create json-ld block - END		
@@ -158,11 +162,6 @@
 		// Get category and tags for keywords
 		$keywords = $categories . $themes . insprvw_term_list( $post->ID, 'insprvw-video-tag', ', ' );
 
-		// Update synopsis to remove possible shortcodes and shorten it
-		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
-		$synopsis_replace = '';
-		$synopsis = wp_trim_words( str_replace( $synopsis_remove, $synopsis_replace, insprvw_movie_meta( $post->ID, 'synopsis' ) ), 40 ); 
-		   	
 		// Create json-ld block - START
 		$json_ld = '{';
 		$json_ld .= '"@type": "Review",';
@@ -206,7 +205,7 @@
 
 		// Item type - Movie
 		$json_ld .= '"duration": "' . esc_html( $hours . $minutes ) . '",';
-		$json_ld .= '"description": "' . esc_html( $synopsis ) . '"';
+		$json_ld .= '"description": "' . esc_html( insprvw_json_synopsis( insprvw_movie_meta( $post->ID, 'synopsis' ) ) ) . '"';
 		$json_ld .= '}';
 
 		// Create json-ld block - END		
@@ -228,11 +227,6 @@
 		// Get category and tags for keywords
 		$keywords = $categories . $themes . insprvw_term_list( $post->ID, 'insprvw-video-tag', ', ' );
 
-		// Update synopsis to remove possible shortcodes and shorten it
-		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
-		$synopsis_replace = '';
-		$synopsis = wp_trim_words( str_replace( $synopsis_remove, $synopsis_replace, insprvw_tv_meta( $post->ID, 'synopsis' ) ), 40 ); 
-		   	
 		// Create json-ld block - START
 		$json_ld = '{';
 		$json_ld .= '"@type": "Review",';
@@ -268,7 +262,7 @@
 		$json_ld .= '"dateCreated": "' . esc_html( insprvw_tv_meta( $post->ID, 'release-date' ) ) . '",';
 
 		// Item type - TVSeries
-		$json_ld .= '"description": "' . esc_html( $synopsis ) . '"';
+		$json_ld .= '"description": "' . esc_html( insprvw_json_synopsis( insprvw_tv_meta( $post->ID, 'synopsis' ) ) ) . '"';
 		$json_ld .= '}';
 
 		// Create json-ld block - END		
