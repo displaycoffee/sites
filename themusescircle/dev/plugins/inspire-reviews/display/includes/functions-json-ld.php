@@ -151,8 +151,12 @@
 		$categories = insprvw_term_list( $post->ID, 'insprvw-video-category', '', ', ', '' );
 		$categories = $categories ? $categories . ', ' : '';
 
+		// Set a comma sepator if there are theme terms
+		$themes = insprvw_term_list( $post->ID, 'insprvw-video-theme', '', ', ', '' );
+		$themes = $themes ? $themes . ', ' : '';
+
 		// Get category and tags for keywords
-		$keywords = $categories . insprvw_term_list( $post->ID, 'insprvw-video-tag', '', ', ', '' );
+		$keywords = $categories . $themes . insprvw_term_list( $post->ID, 'insprvw-video-tag', '', ', ', '' );
 
 		// Update synopsis to remove possible shortcodes and shorten it
 		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
@@ -188,7 +192,6 @@
 		$json_ld .= '"author": "' . esc_html( insprvw_movie_meta( $post->ID, 'screenwriter' ) ) . '",';
 		$json_ld .= '"actor": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-actor', '', ', ', '' ) ) . '",';
 		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-genre', '', ', ', '' ) ) . '",';
-		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-theme', '', ', ', '' ) ) . '",';
 		$json_ld .= '"contentRating": "' . esc_html( insprvw_movie_meta( $post->ID, 'rated' ) ) . '",';
 		$json_ld .= '"sameAs": "' . esc_html( insprvw_movie_meta( $post->ID, 'link' ) ) . '",';
 		$json_ld .= '"dateCreated": "' . esc_html( insprvw_movie_meta( $post->ID, 'release-date' ) ) . '",';
@@ -218,8 +221,12 @@
 		$categories = insprvw_term_list( $post->ID, 'insprvw-video-category', '', ', ', '' );
 		$categories = $categories ? $categories . ', ' : '';
 
+		// Set a comma sepator if there are theme terms
+		$themes = insprvw_term_list( $post->ID, 'insprvw-video-theme', '', ', ', '' );
+		$themes = $themes ? $themes . ', ' : '';
+
 		// Get category and tags for keywords
-		$keywords = $categories . insprvw_term_list( $post->ID, 'insprvw-video-tag', '', ', ', '' );
+		$keywords = $categories . $themes . insprvw_term_list( $post->ID, 'insprvw-video-tag', '', ', ', '' );
 
 		// Update synopsis to remove possible shortcodes and shorten it
 		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
@@ -254,7 +261,6 @@
 		$json_ld .= '"creator": "' . esc_html( insprvw_tv_meta( $post->ID, 'creator' ) ) . '",';
 		$json_ld .= '"actor": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-actor', '', ', ', '' ) ) . '",';
 		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-genre', '', ', ', '' ) ) . '",';
-		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-theme', '', ', ', '' ) ) . '",';
 		$json_ld .= '"contentRating": "' . esc_html( insprvw_tv_meta( $post->ID, 'rated' ) ) . '",';
 		$json_ld .= '"sameAs": "' . esc_html( insprvw_tv_meta( $post->ID, 'link' ) ) . '",';
 		$json_ld .= '"dateCreated": "' . esc_html( insprvw_tv_meta( $post->ID, 'release-date' ) ) . '",';
