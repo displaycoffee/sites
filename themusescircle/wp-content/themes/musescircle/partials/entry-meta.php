@@ -22,11 +22,11 @@
 
 			// Check what type of post we're viewing and display the right categories (mostly setup for search archive)
 			if ( $post_type == 'post' ) {
-				echo musescircle_term_list( $post->ID, 'category', '<p class="categories"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
+				echo musescircle_term_list( $post->ID, 'category', ', ', '<p class="categories"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', '</p>' );
 			} else if ( $post_type == 'insprvw-book-review' ) {
-				echo musescircle_term_list( $post->ID, 'insprvw-book-category', '<p class="categories"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
+				echo musescircle_term_list( $post->ID, 'insprvw-book-category', ', ', '<p class="categories"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', '</p>' );
 			} else if ( $post_type == 'insprvw-movie-review' ||  $post_type == 'insprvw-tv-review' ) {
-				echo musescircle_term_list( $post->ID, 'insprvw-video-category', '<p class="categories"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', ', ', '</p>' );
+				echo musescircle_term_list( $post->ID, 'insprvw-video-category', ', ', '<p class="categories"><strong>' . __( 'Categories', 'musescircle' ) . ':</strong> ', '</p>' );
 			} 
 		}
 	?>

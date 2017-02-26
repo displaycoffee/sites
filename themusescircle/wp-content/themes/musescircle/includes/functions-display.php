@@ -204,7 +204,7 @@
 	}
 
 	// Create taxonomy lists
-	function musescircle_term_list( $id, $taxonomy, $before, $separator, $after ) {
+	function musescircle_term_list( $id, $taxonomy, $separator, $before = '', $after = '' ) {
 		// Loop through categories and push to array
 		$terms = get_the_terms( $id, $taxonomy ); 
 		$display = '';
