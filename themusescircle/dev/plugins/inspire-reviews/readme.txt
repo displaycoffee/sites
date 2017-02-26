@@ -23,6 +23,9 @@ In WordPress, do the following:
 
 == Changelog ==
 
+= 9.0 =
+Major updates including changing HTML schema markup to json-ld markup.
+
 = 8.5 =
 Add new book buy links, author amazon profile link, and bold and italic shortcodes. Enabled those shortcodes for display on the synopsis.
 
