@@ -259,6 +259,8 @@
 		$json_ld .= '"name": "' . esc_html( insprvw_tv_meta( $post->ID, 'title' ) ) . '",';
 		$json_ld .= '"image": "' . esc_url( insprvw_json_thumbnail( $post->ID ) ) . '",';
 		$json_ld .= '"creator": "' . esc_html( insprvw_tv_meta( $post->ID, 'creator' ) ) . '",';
+		$json_ld .= '"numberOfSeasons": "' . esc_html( insprvw_tv_meta( $post->ID, 'seasons' ) ) . '",';
+		$json_ld .= '"numberOfEpisodes": "' . esc_html( insprvw_tv_meta( $post->ID, 'episodes' ) ) . '",';
 		$json_ld .= '"actor": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-actor', '', ', ', '' ) ) . '",';
 		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-genre', '', ', ', '' ) ) . '",';
 		$json_ld .= '"contentRating": "' . esc_html( insprvw_tv_meta( $post->ID, 'rated' ) ) . '",';
