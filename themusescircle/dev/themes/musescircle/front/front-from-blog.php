@@ -28,15 +28,15 @@
 			<?php if ( $home_query->have_posts() ) : ?>
 				<div class="entry-multiple">
 					<?php while ( $home_query->have_posts() ) : $home_query->the_post(); ?>	
-						<?php get_template_part( 'partials/entry', 'multiple' ); ?>
 						<?php 
 							// Create json-ld string for blog schema
 							$json_block .= musescircle_blog_json( $post ) . ',';
-						?>					
+						?>						
+						<?php get_template_part( 'partials/entry', 'multiple' ); ?>			
 					<?php endwhile; ?>
 					<script type="application/ld+json">
 						{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	
-					</script>						
+					</script>							
 				</div>
 				<?php wp_reset_postdata(); ?>	
 			<?php else : ?>

@@ -12,11 +12,11 @@
 <?php if ( have_posts() ) : ?>
 	<div class="entry-multiple">
 		<?php while ( have_posts() ) : the_post(); ?>	
-			<?php get_template_part( 'partials/entry', 'multiple' ); ?>		
 			<?php 
 				// Create json-ld string for blog schema
 				$json_block .= musescircle_blog_json( $post ) . ',';
 			?>
+			<?php get_template_part( 'partials/entry', 'multiple' ); ?>		
 		<?php endwhile; ?>
 		<script type="application/ld+json">
 			{"@context": "http://schema.org","@graph": [<?php echo rtrim( $json_block, ',' ); ?>]}	

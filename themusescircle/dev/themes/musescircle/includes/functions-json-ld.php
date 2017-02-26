@@ -19,8 +19,12 @@
 			$thumbnail_height = 700;					
 		}		
 
+		// Set a comma sepator if there are category terms
+		$categories = musescircle_term_list( $post->ID, 'category', '', ', ', '' );
+		$categories = $categories ? $categories . ', ' : '';
+
 		// Get category and tags for keywords
-		$keywords = musescircle_term_list( $post->ID, 'category', '', ', ', '' ) . ', ' . musescircle_term_list( $post->ID, 'post_tag', '', ', ', '' );
+		$keywords = $categories . musescircle_term_list( $post->ID, 'post_tag', '', ', ', '' );
 
 		// Create json-ld block - START
 		$json_ld = '{';
