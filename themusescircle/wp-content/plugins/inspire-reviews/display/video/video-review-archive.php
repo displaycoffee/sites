@@ -34,13 +34,7 @@
 							}
 						?>
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo $post_type; ?>-review">
-							<?php 
-								// If there's not a thumbnail, don't add thumbnail class
-								$item_reviewed_class = has_post_thumbnail() ? 'class="entry-item-reviewed"' : '';
-							?>
-							<div <?php echo $item_reviewed_class; ?>>
-								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>
-							</div>
+							<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>
 							<div class="entry-wrapper">
 								<?php 
 									// Since the string is long, create variables for title before/after

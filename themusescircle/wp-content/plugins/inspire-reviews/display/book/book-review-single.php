@@ -25,12 +25,10 @@
 						?>						
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-book-review">
 							<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
-							<div class="entry-item-reviewed">
-								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>						
-								<div class="entry-details">
-									<?php include INSPRVW_DIR . 'display/book/book-information.php'; ?>
-								</div>						
-							</div>
+							<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>						
+							<div class="entry-details">
+								<?php include INSPRVW_DIR . 'display/book/book-information.php'; ?>
+							</div>	
 							<div class="entry-content"><?php the_content(); ?></div>
 							<?php 
 								// Get author names without html

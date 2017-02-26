@@ -34,11 +34,9 @@
 						?>
 						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo $post_type; ?>-review">
 							<?php include INSPRVW_DIR . 'display/partials/review-meta.php'; ?>
-							<div class="entry-item-reviewed">							
-								<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>							
-								<div class="entry-details">
-									<?php include INSPRVW_DIR . 'display/video/' . $post_type . '-information.php'; ?>
-								</div>						
+							<?php include INSPRVW_DIR . 'display/partials/review-thumbnail.php'; ?>							
+							<div class="entry-details">
+								<?php include INSPRVW_DIR . 'display/video/' . $post_type . '-information.php'; ?>
 							</div>
 							<div class="entry-content"><?php the_content(); ?></div>
 							<?php include INSPRVW_DIR . 'display/partials/review-footer.php'; ?>															
