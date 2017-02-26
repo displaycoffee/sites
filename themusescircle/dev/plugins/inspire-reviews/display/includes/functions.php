@@ -36,46 +36,6 @@
 	}
 	add_filter( 'template_include', 'insprvw_all_reviews_template' );
 
-	// Create review type based on get_post_type
-	function insprvw_review_type( $all_types ) {
-		if ( get_post_type() == 'insprvw-book-review' ) {
-			$review_type = 'book'; 			
-		} else if ( get_post_type() == 'insprvw-movie-review' || get_post_type() == 'insprvw-tv-review' ) {
-			if ( $all_types == true ) {
-				if ( get_post_type() == 'insprvw-movie-review' ) {
-					$review_type = 'movie';
-				} else if ( get_post_type() == 'insprvw-tv-review' ) {
-					$review_type = 'tv';
-				}
-			} else {
-				$review_type = 'video';
-			}
-		} else {
-			$review_type = null;
-		}
-		return $review_type;		
-	}
-
-	// Create video type based on get_post_type
-	function insprvw_video_type( $schema ) {
-		if ( get_post_type() == 'insprvw-movie-review' ) {
-			if ( $schema == true ) {
-				$video_type = 'http://schema.org/Movie';
-			} else {
-				$video_type = 'movie';
-			}
-		} else if ( get_post_type() == 'insprvw-tv-review' ) {
-			if ( $schema == true ) {
-				$video_type = 'http://schema.org/TVSeries';
-			} else {
-				$video_type = 'tv';
-			}
-		} else {
-			$video_type = null;
-		}
-		return $video_type;		
-	}
-
 	// Display certain shortcodes
 	function insprvw_display_shortcodes( $content ) {
 		$pattern = get_shortcode_regex( array(

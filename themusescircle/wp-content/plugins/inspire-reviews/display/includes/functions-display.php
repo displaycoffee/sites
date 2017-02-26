@@ -59,36 +59,7 @@
 
 		// Return list item
 		return $review_item_details;
-	}
-
-	// Create list items (with schema)
-	function insprvw_item_details_schema( $label, $itemprop, $value ) {
-		// Create list item with details about review item
-		$review_item_details_schema = '<li>';
-		$review_item_details_schema .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
-		$review_item_details_schema .= '<span class="review-value" itemprop="' . $itemprop . '">' . esc_html( $value ) . '</span>';
-		$review_item_details_schema .= '</li>';
-
-		// Return list item
-		return $review_item_details_schema;
-	}
-
-	// Create list of book terms
-	function insprvw_item_terms( $pid, $term, $label, $itemprop ) {
-		// Get the list of linked terns
-		$term_list = get_the_term_list( $pid, $term, '', ', ' );
-
-		// Create list item HTML
-		$term_list_item = '<li>';
-		$term_list_item .= '<span class="review-label">' . __( $label, 'inspire-reviews' ) . ':</span> ';
-		$term_list_item .= '<span class="review-value" itemprop="' . $itemprop . '">' . $term_list . '</span>';
-		$term_list_item .= '</li>';
-
-		// Return term list item is there is terms
-		if ( strlen( $term_list ) > 0 ) {
-			return $term_list_item;
-		}
-	}	
+	} 
 
 	// Create links
 	function insprvw_create_link( $class, $url, $text ) {
