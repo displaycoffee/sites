@@ -4,81 +4,98 @@
 	*/
 
 	// Exit if accessed directly
-	if ( !defined( 'ABSPATH' ) ) { exit; }	
+	if ( !defined( 'ABSPATH' ) ) { exit; }
 
-	// Include tv meta
-	include INSPRVW_DIR . 'display/video/tv-post-meta.php';
-?>
-<?php 
-	// Check if we're on an archive versus single post	
-	if ( is_archive() || is_page( 'All Reviews' ) || is_page( 'all-reviews' ) ) {
-		// Add title
-		$tv_schema = $tv_title ? '<meta itemprop="name" content="' . esc_attr( $tv_title ) . '">' : '';
-		$tv_schema .= $tv_creator ? '<meta itemprop="creator" content="' . esc_attr( $tv_creator ) . '">' : '';
-		$tv_schema .= $tv_link ? '<meta itemprop="sameAs" content="' . esc_url( $tv_link ) . '">' : '';
-		$tv_schema .= $tv_release_date ? '<meta itemprop="dateCreated" content="' . esc_attr( $tv_release_date ) . '">' : '';
+	// Title
+	$title = insprvw_tv_meta( $post->ID, 'title' );
+	$title = $title ? insprvw_item_details( 'Title', $title ) : '';
 
-		// Display movie information
-		echo $tv_schema;
-	} elseif ( is_single() ) {
-		// Create list items of tv information
-		$tv_list_item = $tv_title ? insprvw_item_details_schema( 'Title', 'name', $tv_title ) : '';
-		$tv_list_item .= $tv_creator ? insprvw_item_details_schema( 'Creator', 'creator', $tv_creator ) : '';
-		$tv_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-actor', 'Actors', 'actor' );
-		$tv_list_item .= $tv_seasons ? insprvw_item_details_schema( 'Seasons', 'numberOfSeasons', $tv_seasons ) : '';
-		$tv_list_item .= $tv_episodes ? insprvw_item_details_schema( 'Episodes', 'numberOfEpisodes', $tv_episodes ) : '';
-		$tv_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-genre', 'Genres', 'genre' );
-		$tv_list_item .= insprvw_item_terms( $post->ID, 'insprvw-video-theme', 'Themes', 'genre' );
-		$tv_list_item .= $tv_rated ? insprvw_item_details_schema( 'Rated', 'contentRating', $tv_rated ) : '';	
+	// Creator
+	$creator = insprvw_tv_meta( $post->ID, 'creator' );
+	$creator = $creator ? insprvw_item_details( 'Creator', $creator ) : '';
 
-		// Add tv link
-		if ( $tv_link ) {
-			$tv_list_item .= '<li>';
-			$tv_list_item .= '<span class="review-label">' . __( 'Link', 'inspire-reviews' ) . ':</span> ';
-			$tv_list_item .= '<span class="review-value"><a itemprop="sameAs" href="' . esc_url( $tv_link ) . '" target="_blank">Link</a></span>';
-			$tv_list_item .= '</li>';
-		}
+	// Seasons
+	$seasons = insprvw_tv_meta( $post->ID, 'seasons' );
+	$seasons = $seasons ? insprvw_item_details( 'Seasons', $seasons ) : '';
 
-		// Update format of date
-		if ( $tv_release_date ) {
-			$tv_release_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $tv_release_date, $date_match );
-			$tv_release_date_formatted = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];		
-		}
+	// Episodes
+	$episodes = insprvw_tv_meta( $post->ID, 'episodes' );
+	$episodes = $episodes ? insprvw_item_details( 'Episodes', $episodes ) : '';
 
-		// Continue list items of tv information
-		$tv_list_item .= $tv_release_date ? insprvw_item_details_schema( 'Release Date', 'dateCreated', $tv_release_date_formatted ) : '';
-		$tv_list_item .= $tv_network ? insprvw_item_details( 'Network', $tv_network ) : '';
+	// Rated
+	$rated = insprvw_tv_meta( $post->ID, 'rated' );
+	$rated = $rated ? insprvw_item_details( 'Rated', $rated ) : '';	
 
-		// Add tv runtime
-		if ( $tv_hours || $tv_minutes ) {
-			// Plural and singular time conversions
-			$hours = ( $tv_hours > 1 ) ? __( 'hours', 'inspire-reviews' ) : __( 'hour', 'inspire-reviews' );
-			$minutes = ( $tv_minutes > 1 ) ? __( 'minutes', 'inspire-reviews' ) : __( 'minute', 'inspire-reviews' );
-
-			// Conditional space if hours and minutes are available
-			$spacing = ( $tv_hours || $tv_minutes ) ? ' ' : '';
-
-			// Hours for display
-			$tv_hours_display = $tv_hours ? $tv_hours . ' ' . $hours : '';
-
-			// Minutes for display
-			$tv_minutes_display = $tv_minutes ? $tv_minutes . ' ' . $minutes : '';
-
-			// Display tv runtime block
-			$tv_list_item .= '<li>';
-			$tv_list_item .= '<span class="review-label">' . __( 'Runtime', 'inspire-reviews' ) . ':</span> ';
-			$tv_list_item .= '<span class="review-value">' . esc_html( $tv_hours_display ) . $spacing . esc_html( $tv_minutes_display ) . '</span>';
-			$tv_list_item .= '</li>';
-		}
-			
-		// Display tv information
-		$tv_info_list = '<ul class="tv-information review-information">';
-		$tv_info_list .= $tv_list_item;
-		$tv_info_list .= '</ul>';
-		echo $tv_info_list;
-
-		// Display tv synopsis
-		echo $tv_synopsis ? '<div class="tv-synopsis review-synopsis" itemprop="description"><h4>' . __( 'Synopsis', 'inspire-reviews' ) . '</h4>' . insprvw_display_shortcodes( wpautop( esc_textarea ( $tv_synopsis ) ) ) . '</div>' : '';
-
+	// TV link
+	$link = insprvw_tv_meta( $post->ID, 'insprvw-tv-link' );
+	if ( $link ) {
+		$link = '<li>';
+		$link .= '<span class="review-label">' . __( 'Link', 'inspire-reviews' ) . ':</span> ';
+		$link .= '<span class="review-value"><a href="' . esc_url( $link ) . '" target="_blank">Link</a></span>';
+		$link .= '</li>';
 	}
-?>
+
+	// Release date
+	$release_date = insprvw_tv_meta( $post->ID, 'release-date' );
+
+	// Update format of date
+	if ( $release_date ) {
+		$release_date_match = preg_match( '/(\d{2})\/(\d{2})\/(\d{4})/', $release_date, $date_match );
+		$release_date = date( 'F', mktime( 0, 0, 0, $date_match[1] ) ) . ' ' . date( 'j', mktime( 0, 0, 0, $date_match[1], $date_match[2] ) ) . ', ' . $date_match[3];
+		$release_date = insprvw_item_details( 'Release Date', $release_date );
+	}
+
+	// Network
+	$network = insprvw_tv_meta( $post->ID, 'network' );
+	$network = $network ? insprvw_item_details( 'Network', $network ) : '';	
+
+	// Runtime - Hours
+	$hours = insprvw_tv_meta( $post->ID, 'hours' );
+	if ( $hours && $hours > 1 ) {
+		$hours = $hours . ' ' . __( 'hours', 'inspire-reviews' );
+	} else if ( $hours ) {
+		$hours = $hours . ' ' . __( 'hour', 'inspire-reviews' );
+	}
+
+	// Runtime - Minutes
+	$minutes = insprvw_tv_meta( $post->ID, 'minutes' );
+	if ( $minutes && $minutes > 1 ) {
+		$minutes = $minutes . ' ' . __( 'minutes', 'inspire-reviews' );
+	} else if ( $minutes ) {
+		$minutes = $minutes . ' ' . __( 'minute', 'inspire-reviews' );
+	}
+
+	// Runtime joined
+	$runtime = '';
+	if ( $hours || $minutes ) {
+		// Conditional space if hours and minutes are available
+		$spacing = ( $hours || $minutes ) ? ' ' : '';
+
+		$runtime .= '<li>';
+		$runtime .= '<span class="review-label">' . __( 'Runtime', 'inspire-reviews' ) . ':</span> ';
+		$runtime .= '<span class="review-value">' . esc_html( $hours ) . $spacing . esc_html( $minutes ) . '</span>';
+		$runtime .= '</li>';		
+	}
+
+	// Create mobie information block
+	$tv_information = '<ul class="tv-information review-information">';
+	$tv_information .= $title;
+	$tv_information .= $creator;
+	$tv_information .= $seasons;
+	$tv_information .= $episodes;
+	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-actor', '<li><span class="review-label">' . __( 'Actors', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-genre', '<li><span class="review-label">' . __( 'Genres', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );
+	$tv_information .= insprvw_term_list( $post->ID, 'insprvw-video-theme', '<li><span class="review-label">' . __( 'Themes', 'inspire-reviews' ) . ':</span> <span class="review-value">', ', ', '</span>' );	
+	$tv_information .= $rated;
+	$tv_information .= $link;
+	$tv_information .= $release_date;
+	$tv_information .= $network;
+	$tv_information .= $runtime;
+	$tv_information .= '</ul>';
+	
+	// Display TV information block
+	echo $tv_information;
+
+	// Display TV synopsis
+	$synopsis = insprvw_tv_meta( $post->ID, 'synopsis' );
+	echo $synopsis ? '<div class="tv-synopsis review-synopsis"><h4>' . __( 'Synopsis', 'inspire-reviews' ) . '</h4>' . insprvw_display_shortcodes( wpautop( esc_textarea ( $synopsis ) ) ) . '</div>' : '';

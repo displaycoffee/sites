@@ -211,3 +211,60 @@
 
 		return $json_ld;
 	}
+
+    // Generate json-ld data for book schema
+    function insprvw_tv_json( $post ) {
+		// Set a comma sepator if there are category terms
+		$categories = insprvw_term_list( $post->ID, 'insprvw-video-category', '', ', ', '' );
+		$categories = $categories ? $categories . ', ' : '';
+
+		// Get category and tags for keywords
+		$keywords = $categories . insprvw_term_list( $post->ID, 'insprvw-video-tag', '', ', ', '' );
+
+		// Update synopsis to remove possible shortcodes and shorten it
+		$synopsis_remove = array( 'review-bold-italic', 'review-italic', 'review-bold', '[]', '[/]' );
+		$synopsis_replace = '';
+		$synopsis = wp_trim_words( str_replace( $synopsis_remove, $synopsis_replace, insprvw_tv_meta( $post->ID, 'synopsis' ) ), 40 ); 
+		   	
+		// Create json-ld block - START
+		$json_ld = '{';
+		$json_ld .= '"@type": "Review",';
+		$json_ld .= insprvw_json_name_url();
+		$json_ld .= insprvw_json_post_author();
+		$json_ld .= insprvw_json_publisher();
+		$json_ld .= insprvw_json_dates();
+		$json_ld .= insprvw_json_description();
+
+		// Rating
+		$json_ld .= '"reviewRating": {';
+		$json_ld .= '"@type": "Rating",';
+		$json_ld .= '"ratingValue": "' . esc_html( insprvw_tv_meta( $post->ID, 'rating' ) ) . '",';
+		$json_ld .= '"worstRating": "0",';
+		$json_ld .= '"bestRating": "5"';
+		$json_ld .= '},';
+
+		// Keywords
+		$json_ld .= '"keywords": "' . esc_html( rtrim( $keywords, ', ' ) ) . '",';
+
+		// Item type - TVSeries
+		$json_ld .= '"itemReviewed": {';
+		$json_ld .= '"@type": "http://schema.org/TVSeries",';
+		$json_ld .= '"name": "' . esc_html( insprvw_tv_meta( $post->ID, 'title' ) ) . '",';
+		$json_ld .= '"image": "' . esc_url( insprvw_json_thumbnail( $post->ID ) ) . '",';
+		$json_ld .= '"creator": "' . esc_html( insprvw_tv_meta( $post->ID, 'creator' ) ) . '",';
+		$json_ld .= '"actor": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-actor', '', ', ', '' ) ) . '",';
+		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-genre', '', ', ', '' ) ) . '",';
+		$json_ld .= '"genre": "' . esc_html( insprvw_term_list( $post->ID, 'insprvw-video-theme', '', ', ', '' ) ) . '",';
+		$json_ld .= '"contentRating": "' . esc_html( insprvw_tv_meta( $post->ID, 'rated' ) ) . '",';
+		$json_ld .= '"sameAs": "' . esc_html( insprvw_tv_meta( $post->ID, 'link' ) ) . '",';
+		$json_ld .= '"dateCreated": "' . esc_html( insprvw_tv_meta( $post->ID, 'release-date' ) ) . '",';
+
+		// Item type - TVSeries
+		$json_ld .= '"description": "' . esc_html( $synopsis ) . '"';
+		$json_ld .= '}';
+
+		// Create json-ld block - END		
+		$json_ld .= '}';
+
+		return $json_ld;
+	}

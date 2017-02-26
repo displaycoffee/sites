@@ -9,6 +9,16 @@
 	// Include header	
 	get_header(); 	
 
+	// Get post type to generate dyanmic categories
+	$post_type = get_post_type();
+
+	// Check what type of post we're viewing and sreate json-ld string for blog schema
+	if ( $post_type == 'insprvw-movie-review' ) {
+		$post_type = 'movie';
+	} else if ( $post_type == 'insprvw-tv-review' ) {
+		$post_type = 'tv';
+	} 
+
 	// Create empty json-ld string to store data
 	$json_block = '';	
 ?>
@@ -20,7 +30,7 @@
 			<?php if ( have_posts() ) : ?>	
 				<div class="entry-multiple">
 					<?php while ( have_posts() ) : the_post(); ?>				
-						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo insprvw_video_type( false ); ?>-review">
+						<div id="entry-<?php esc_attr( the_ID() ); ?>" class="entry insprvw-review insprvw-<?php echo $post_type; ?>-review">
 							<?php 
 								// If there's not a thumbnail, don't add thumbnail class
 								$item_reviewed_class = has_post_thumbnail() ? 'class="entry-item-reviewed"' : '';
@@ -42,8 +52,12 @@
 							</div>						
 						</div>
 						<?php 
-							// Create json-ld string for blog schema
-							$json_block .= insprvw_movie_json( $post ) . ',';
+							// Check what type of post we're viewing and sreate json-ld string for blog schema
+							if ( $post_type == 'movie' ) {
+								$json_block .= insprvw_movie_json( $post ) . ',';
+							} else if ( $post_type == 'tv' ) {
+								$json_block .= insprvw_tv_json( $post ) . ',';
+							} 
 						?>							
 					<?php endwhile; ?>
 					<script type="application/ld+json">
