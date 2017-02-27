@@ -47,298 +47,278 @@
     cursor: url($images + 'grabbing.png') 8 8, move;
 }
 
-/* Swipebox v1.3.0 | Constantin Saguin csag.co | MIT License | github.com/brutaldesign/swipebox
+/* Featherlight – ultra slim jQuery lightbox
+ * Version 1.7.1 - http://noelboss.github.io/featherlight/ 
+ * Copyright 2017, Noël Raoul Bossart (http://www.noelboss.com) 
+ * MIT Licensed. 
 ========================================================================== */
 
-// Gradient mixin
-@mixin css-gradient($from: #dfdfdf, $to: #f8f8f8) {
-	background-color: $from;
-	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
-	background-image: -webkit-linear-gradient(top, $from, $to);
-	background-image: -moz-linear-gradient(top, $from, $to);
-	background-image: -o-linear-gradient(top, $from, $to);
-	background-image: linear-gradient(to bottom, $from, $to);
-}
-
-// Bar mixin
-@mixin bar($color) {
-	background-color:$color;
-	@include css-gradient( $color, darken($color, 20%) ); 
-}
-
-html.swipebox-html.swipebox-touch {
-	overflow: hidden!important;
-}
-
-#swipebox-overlay img {
-	border: none!important;
-}
-
-#swipebox-overlay {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 99999!important;
-	overflow: hidden;
-	user-select: none;
-}
-
-#swipebox-container {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-#swipebox-slider {
-	transition : transform 0.4s ease;
-	height: 100%;
-	left: 0;
-	top: 0;
-	width: 100%;
-	white-space: nowrap;
-	position: absolute;
-	display: none;
-	cursor: pointer;	
-	.slide {
-		height: 100%;
-		width: 100%;
-		line-height: 1px;
+@media all {
+	.featherlight {
+		display: none;
+		/* dimensions: spanning the background from edge to edge */
+		position: fixed;
+		top: 0; 
+		right: 0; 
+		bottom: 0; 
+		left: 0;
+		z-index: 2147483647; /* z-index needs to be >= elements on the site. */
+		/* position: centering content */
 		text-align: center;
-		display: inline-block;		
+		/* insures that the ::before pseudo element doesn't force wrap with fixed width content; */
+		white-space: nowrap;
+		/* styling */
+		cursor: pointer;
+		//background: #333;
+		/* IE8 "hack" for nested featherlights */
+		//background: rgba(0, 0, 0, 0);
+		/* support for nested featherlights. Does not work in IE8 (use JS to fix) */
+		// &:last-of-type {
+		// 	background: rgba(0, 0, 0, 0.8);
+		// }
 		&:before {
+			/* position: trick to center content vertically */
 			content: '';
 			display: inline-block;
-			height: 50%;
-			width: 1px;
-			margin-right: -1px;
-		}
-		img, .swipebox-video-container, .swipebox-inline-container {
-			display: inline-block;
-			max-height: 100%;
-			max-width: 100%;
-			margin: 0;
-			padding: 0;
-			width: auto;
-			height: auto;
+			height: 100%;
 			vertical-align: middle;
 		}
-		.swipebox-video-container {
-			background:none;
-			max-width: 1140px;
-			max-height: 100%;
-			width: 100%;
-			padding:5%;
-			box-sizing: border-box;
-			.swipebox-video {
-				width: 100%;
-				height: 0;
-				padding-bottom: 56.25%;
-				overflow: hidden;
-				position: relative; 
-				iframe {
-					width: 100%!important; 
-					height: 100%!important;
-					position: absolute;
-					top: 0; left: 0;
-				}
+		.featherlight-content {
+			/* make content container for positioned elements (close button) */
+			position: relative;
+			/* position: centering vertical and horizontal */
+			text-align: left;
+			vertical-align: middle;
+			display: inline-block;
+			/* dimensions: cut off images */
+			overflow: auto;
+			//padding: 25px 25px 0;
+			//border-bottom: 25px solid transparent;
+			/* dimensions: handling large content */
+			//margin-left: 5%;
+			//margin-right: 5%;
+			//max-height: 95%;
+			/* styling */
+			//background: #fff;
+			cursor: auto;
+			/* reset white-space wrapping */
+			white-space: normal;
+			@include sizing(100%, 100%);
+			background: $color-03;
+			&:before {
+				content: '';
+				display: block;
+				@include sizing(100%, 50px);
+				background: $color-04;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
 			}
 		}
-	}	
-	.slide-loading {
-		background: url($images + 'loader.gif') no-repeat center center;
-	}
-}
-
-#swipebox-bottom-bar, #swipebox-top-bar {
-	transition : 0.5s;
-	position: absolute;
-	left: 0;
-	z-index: 999;
-	height: 50px;
-	width: 100%;
-}
-
-#swipebox-bottom-bar {
-	//bottom: -50px;
-	bottom: 0;
-	// &.visible-bars {
-	// 	transform: translate3d(0,-50px,0);
-	// }
-}
-
-#swipebox-top-bar {
-	//top: -50px;	
-	top: 0;
-	// &.visible-bars {
-	// 	transform: translate3d(0,50px,0);
-	// }
-}
-
-#swipebox-title {
-	display:block;
-	width: 100%;
-	text-align: center;
-}
-
-#swipebox-prev, #swipebox-next, #swipebox-close {
-	background-image: url($images + 'swipebox-icons.png');
-	background-repeat: no-repeat;
-	border: none!important;
-	text-decoration: none!important;
-	cursor: pointer;
-	//position: absolute;
-	width: 50px;
-	height: 50px;
-	top: 0;
-}
-
-#swipebox-arrows {
-	display: block;
-	margin: 0 auto;
-	//width: 100%;
-	width: 95%;
-	height: 50px;
-}
-
-#swipebox-prev {
-	background-position: -32px 13px;
-	float: left;
-}
-
-#swipebox-next {
-	//background-position: -78px 13px;
-	background-position: -98px 13px;
-	float: right;
-}
-
-#swipebox-close {
-	top: 0;
-	//right: 0;
-	right: 10px;
-	position: absolute;
-	z-index: 9999;
-	background-position: 15px 12px;
-}
-
-.swipebox-no-close-button #swipebox-close {
-	display: none;
-}
-
-#swipebox-prev, #swipebox-next {
-	&.disabled {
-		opacity: 0.3;
-	}
-}
-
-.swipebox-no-touch {
-	#swipebox-overlay.rightSpring #swipebox-slider {
-		animation : rightSpring 0.3s;
-	}
-	#swipebox-overlay.leftSpring  #swipebox-slider {
-		animation : leftSpring 0.3s;
-	}
-}
-
-.swipebox-touch {
-	#swipebox-container {
-		&:before, &:after {
-			backface-visibility:hidden;
-			transition : all .3s ease;
-			content : ' ';
+		/* contains the content */
+		.featherlight-inner {
+			/* make sure its visible */
+			display: block;
+		}		
+		.featherlight-close-icon {
+			/* position: centering vertical and horizontal */
 			position: absolute;
-			z-index: 999;
+			z-index: 9999;
 			top: 0;
-			height: 100%;
-			width: 20px;
-			opacity: 0;
+			right: 20px;
+			/* dimensions: 25px x 25px */
+			// line-height: 25px;
+			//width: 25px;
+			/* styling */
+			cursor: pointer;
+			text-align: center;
+			font-family: Arial, sans-serif;
+			//background: #fff; /* Set the background in case it overlaps the content */
+			//background: rgba(255, 255, 255, 0.3);
+			color: $color-01;
+			border: none;
+			padding: 0;
+			height: auto;
+			line-height: 50px;
+			background: none;
+			.icon {
+				font-size: rem(25px);
+			}
 		}
-		&:before {
+		/* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
+		.featherlight-close-icon::-moz-focus-inner {
+			border: 0;
+			padding: 0;
+		}
+		.featherlight-image {
+			/* styling */
+			//width: 100%;
+			max-width: 100%;
+			max-height: 100%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
 			left: 0;
-			box-shadow: inset 10px 0px 10px -8px #656565;
-		}
-		&:after {
 			right: 0;
-			box-shadow: inset -10px 0px 10px -8px #656565;
+			margin: auto;
+			padding: 70px 20px;
+			width: auto !important;
+			height: auto !important;
 		}
+		// * { /* See https://github.com/noelboss/featherlight/issues/42 */
+		// 	-webkit-box-sizing: border-box;
+		// 	-moz-box-sizing: border-box;
+		// 	box-sizing: border-box;
+		// }
 	}
-	#swipebox-overlay.leftSpringTouch #swipebox-container {
-		&:before {
-			opacity: 1;
-		}
-	}		
-	#swipebox-overlay.rightSpringTouch #swipebox-container {
-		&:after {
-			opacity: 1;
+
+	.featherlight-iframe .featherlight-content {
+		/* removed the border for image croping since iframe is edge to edge */
+		border-bottom: 0;
+		padding: 0;
+		-webkit-overflow-scrolling: touch;
+		overflow-y: scroll;
+	}
+	.featherlight iframe {
+		/* styling */
+		border: none;
+	}
+}
+
+@include respond(em(768)) {
+	.featherlight .featherlight-image {
+		padding: 70px 0;
+	}
+}
+
+.featherlight-open {
+	position: relative;
+    overflow: hidden;	
+}
+
+html.featherlight-open {
+	height: 100%;
+}
+
+/* handling phones and small screens */
+//@media only screen and (max-width: 1024px) {
+	//.featherlight .featherlight-content {
+		/* dimensions: maximize lightbox with for small screens */
+		// margin-left: 0;
+		// margin-right: 0;
+		// max-height: 98%;
+		// padding: 10px 10px 0;
+		// border-bottom: 10px solid transparent;
+	//}
+//}
+
+/* Featherlight Gallery – an extension for the ultra slim jQuery lightbox
+ * Version 1.7.1 - http://noelboss.github.io/featherlight/
+ * Copyright 2017, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+========================================================================== */
+
+@media all {
+	.featherlight-next,	.featherlight-previous {
+		display: block;
+		@include sizing(50%, 50px);
+		line-height: 50px;
+		position: absolute;
+		//top: 25px;
+		//right: 25px;
+		bottom: 0;
+		//left: 80%;
+		cursor: pointer;
+		/* preventing text selection */
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		/* IE9 hack, otherwise navigation doesn't appear */
+		//background: rgba(0,0,0,0);
+		background: $color-04;
+		padding: 0 20px;
+		// & > span {
+		// 	display: none;
+		// 	position: absolute;
+		// 	top: 50%;
+		// 	left: 5%;
+		// 	width: 82%;
+		// 	/* center horizontally */
+		// 	text-align: center;
+		// 	font-size: 80px;
+		// 	line-height: 80px;
+		// 	/* center vertically */
+		// 	margin-top: -40px;
+		// 	//text-shadow: 0px 0px 5px #fff;
+		// 	color: #fff;
+		// 	font-style: normal;
+		// 	font-weight: normal;			
+		// }
+		// &:hover {
+		// 	background: rgba(255,255,255,0.25);
+		// 	& > span {
+		// 		display: inline-block;
+		// 	}
+		// }	
+		.icon {
+			font-size: rem(25px);
+		}	
+	}
+	.featherlight-previous {
+		left: 0;
+		// left: 25px;
+		// right: 80%;
+	}
+	.featherlight-next {
+		right: 0;	
+		text-align: right;	
+	}
+	// .featherlight-next & > span {
+	// 	right: 5%;
+	// 	left: auto;
+	// }
+	// .featherlight-swipe-aware {
+	// 	.featherlight-next, .featherlight-previous {
+	// 		display: none;
+	// 	}
+	// }
+	/* Hide navigation while loading */
+	.featherlight-loading {
+		.featherlight-next, .featherlight-previous {
+			display:none;
 		}
 	}
 }
 
-@keyframes rightSpring {
-	0% {
-		left:0;
-	}
-	50% {
-		left:-30px;
-	}
-	100% {
-		left:0;
-	}
-}
-
-@keyframes leftSpring {
-	0% {
-		left:0;
-	}
-	50% {
-		left:30px;
-	}
-	100% {
-		left:0;
-	}
-}
-
-// @media screen and (min-width: 800px) {
-// 	#swipebox-close {
-// 		right: 10px;
-// 	}
-// 	#swipebox-arrows {
-// 		width: 92%;
-// 		max-width: 800px;
+/* Always display arrows on touch devices */
+// @media only screen and (max-device-width: 1024px){
+// 	.featherlight-next,	.featherlight-previous {
+// 		& > span {
+// 			display: block;
+// 		}
+// 		&:hover {
+// 			background: none;
+// 		}
 // 	}
 // }
 
-/* Skin 
---------------------------*/
-
-#swipebox-overlay {
-	//background: #0d0d0d;
-	background: $color-03;
-}
-
-#swipebox-bottom-bar, #swipebox-top-bar {
-	text-shadow: 1px 1px 1px black;
-	//background: #000;
-	background: $color-04;
-	opacity: 0.95;
-	//@include bar(#0d0d0d);
-}
-
-#swipebox-bottom-bar {
-	//border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-#swipebox-top-bar {
-	//border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-	color: white !important;
-	//font-size: 15px;
-	font-size: rem(16px);
-	//line-height: 43px;
-	line-height: 50px;
-	//font-family: Helvetica, Arial, sans-serif;
-}
-
-#swipebox-slider {
-	padding: 50px 0;
-}
+/* handling phones and small screens */
+// @media only screen and (max-width: 1024px) {
+// 	.featherlight-next,	.featherlight-previous {
+// 		top: 10px;
+// 		right: 10px;
+// 		left: 85%;		
+// 		& > span {
+// 			margin-top: -30px;
+// 			font-size: 40px;
+// 		}
+// 	}
+// 	.featherlight-previous {
+// 		left: 10px;
+// 		right: 85%;
+// 	}
+// }

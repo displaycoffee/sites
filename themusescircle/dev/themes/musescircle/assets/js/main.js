@@ -15,12 +15,12 @@ function toggleNavSubMenus( selector ) {
 			var subMenu = currentNav.find( '.sub-menu' );
 
 			// Toggle show/hide class if search button is clicked on
-		    jQuery( subMenuButton ).click( function() {
-		        jQuery( subMenu ).toggleClass( 'show' );
-		        jQuery( subMenuButton ).toggleClass( 'show' );
-		    });
+			jQuery( subMenuButton ).click( function() {
+				jQuery( subMenu ).toggleClass( 'show' );
+				jQuery( subMenuButton ).toggleClass( 'show' );
+			});
 
-		    // If anything outside search-button is clicked on, hide the search bar
+			// If anything outside search-button is clicked on, hide the search bar
 			jQuery( document ).on( 'click', function( event ) {
 				if ( !jQuery( event.target ).closest( currentNav ).length ) {
 					jQuery( subMenu ).removeClass( 'show' );
@@ -52,56 +52,49 @@ function hideNavigation( selector ) {
 	}
 }
 
-// Convert WordPress galleries with images into a swipebox gallery
-function addSwipeBoxGallery( selector ) {
-    jQuery( selector ).each( function() {
-        // Get variables for the galleries  
-        var currentGallery = jQuery( this );
-        var galleryID = currentGallery.attr( 'id' );
-        var galleryImageLink = currentGallery.find( '.gallery-item .gallery-icon a' );
-        var galleryValid;
+// Convert WordPress galleries with images into a featherlight gallery
+function addFeatherLightGallery( selector ) {
+	jQuery( selector ).each( function() {
+		// Get variables for the galleries  
+		var currentGallery = jQuery( this );
+		var galleryID = currentGallery.attr( 'id' );
+		var galleryImageLink = currentGallery.find( '.gallery-item .gallery-icon a' );
+		var galleryValid;
 
-        // Check all links in a gallery to see if they link to valid image file extensions
-        jQuery( galleryImageLink ).each( function() {
-            // Get the current image link
-            var currentImageLink = jQuery( this );
+		// Check all links in a gallery to see if they link to valid image file extensions
+		jQuery( galleryImageLink ).each( function() {
+			// Get the current image link
+			var currentImageLink = jQuery( this );
 
-            // Check if the link has a valid image extension
-            var srcCheck = ( /\.(gif|jpg|jpeg|tiff|png|bmp|svg)$/i ).test( currentImageLink.attr( 'href' ) ); 
+			// Check if the link has a valid image extension
+			var srcCheck = ( /\.(gif|jpg|jpeg|tiff|png|bmp|svg)$/i ).test( currentImageLink.attr( 'href' ) ); 
 
-            // If gallery has all valid links, set gallery to valid
-            if ( srcCheck == false ) {
-                galleryValid = false;
-                return false;
-            } else {
-                galleryValid = galleryID;
-            }
-        });
+			// If gallery has all valid links, set gallery to valid
+			if ( srcCheck == false ) {
+				galleryValid = false;
+				return false;
+			} else {
+				galleryValid = galleryID;
+			}
+		});
 
-        // If the gallery is valid...
-        if ( galleryValid == galleryID ) {                    
-            // Loop through links and add necessary elements for swipebox
-            jQuery( galleryImageLink ).each( function() {
-                // Get the current image link
-                currentImageLink = jQuery( this );
-
-                // Add rel attribute for image links to galleries can be connected
-                currentImageLink.attr( 'rel', galleryID );
-
-                // Add swipebox class to add swipebox
-                currentImageLink.attr( 'class', 'swipebox' );
-
-                // Get the alt attribute on the image element and add as a title to the link for a caption
-                var galleryCaption = currentImageLink.find( 'img' ).attr( 'alt' );
-                currentImageLink.attr( 'title', galleryCaption );
-
-	            // Intitalize swipebox
-	            jQuery( '.swipebox' ).swipebox({
-	                loopAtEnd     : true
-	            });
-            });
-        }
-    });
+		// If the gallery is valid...
+		if ( galleryValid == galleryID ) {
+			jQuery( galleryImageLink ).featherlightGallery({
+				previousIcon  : '<span class="icon icon-chevron-left"></span>',
+				nextIcon	  : '<span class="icon icon-chevron-right"></span>',
+				closeIcon	  : '<span class="icon icon-close"></span>',
+				galleryFadeIn : 300,
+				openSpeed	  : 300,
+				afterOpen	  : function(event){
+					jQuery( 'body, html' ).addClass( 'featherlight-open' );
+				},
+				afterClose	  : function(event){
+					jQuery( 'body, html' ).removeClass( 'featherlight-open' );
+				}										
+			});
+		}
+	});
 }
 
 // Check url function from http://stackoverflow.com/a/22519594
@@ -128,8 +121,8 @@ function getRemainingTime( endTime ) {
 	// Create object to store time data
 	return {
 		'remaining' : remainingTime,
-		'days'      : Math.floor( totalSeconds / 60 / 60 / 24 ),
-		'hours'     : Math.floor( totalSeconds / 60 / 60 ) % 24,
+		'days'	  : Math.floor( totalSeconds / 60 / 60 / 24 ),
+		'hours'	 : Math.floor( totalSeconds / 60 / 60 ) % 24,
 		'minutes'   : Math.floor( totalSeconds / 60 ) % 60,
 		'seconds'   : totalSeconds % 60
 	};

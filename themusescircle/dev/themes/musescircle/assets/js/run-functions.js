@@ -11,7 +11,7 @@ var baseFontSize = 16;
 jQuery( document ).ready( function( $ ) {
     toggleNavSubMenus( '#header-nav .menu-main-container .menu > li' );
     hideNavigation( 'body.attachment .navigation-links' );
-    addSwipeBoxGallery( '.gallery' );
+    addFeatherLightGallery( '.gallery' );
     initializeCountdown();
     hideCountdown();
     scrollOnPage( '.scroll-to-top', 100, 0 );
