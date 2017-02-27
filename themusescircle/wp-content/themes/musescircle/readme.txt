@@ -2,7 +2,7 @@
 Contributors: displaycoffee
 Requires at least: 4.0
 Tested up to: WordPress 4.5
-Version: 4.0
+Version: 4.0s
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: custom base wordpress theme
