@@ -11,6 +11,7 @@ sitemap.xml.gz
 wp-admin/
 wp-includes/
 wp-content/*
+wp-snapshots/
 !wp-content/plugins
 !wp-content/themes
 
