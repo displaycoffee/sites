@@ -2,7 +2,7 @@
 Contributors: displaycoffee
 Requires at least: 4.0
 Tested up to: WordPress 4.5
-Version: 3.0
+Version: 4.0
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: custom base wordpress theme
@@ -20,6 +20,9 @@ This theme uses:
 * normalize
 
 == Changelog ==
+
+= 4.0 =
+Switched out swipebox for featherlight gallery.
 
 = 3.0 =
 Major updates including changing HTML schema markup to json-ld markup.
