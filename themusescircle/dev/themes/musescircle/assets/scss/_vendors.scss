@@ -51,10 +51,13 @@
  * Version 1.7.1 - http://noelboss.github.io/featherlight/ 
  * Copyright 2017, Noël Raoul Bossart (http://www.noelboss.com) 
  * MIT Licensed. 
+ * Modified by Adria 
 ========================================================================== */
 
 @media all {
 	.featherlight {
+		-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+		backface-visibility: hidden;
 		display: none;
 		/* dimensions: spanning the background from edge to edge */
 		position: fixed;
@@ -217,6 +220,7 @@ html.featherlight-open {
  * Version 1.7.1 - http://noelboss.github.io/featherlight/
  * Copyright 2017, Noël Raoul Bossart (http://www.noelboss.com)
  * MIT Licensed.
+ * Modified by Adria
 ========================================================================== */
 
 @media all {

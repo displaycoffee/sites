@@ -24,6 +24,9 @@
 .entry-multiple .entry .entry-thumbnail {
 	flex: 0 0 150px;
 	margin: 0 20px 0 0;
+	a {
+		display: block;
+	}
 	.image-wrap img {
 		width: 100%;
 	}	

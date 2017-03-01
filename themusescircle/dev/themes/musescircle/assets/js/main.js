@@ -411,6 +411,6 @@ function initializeMobileMenu( options ) {
 	// Then run mobile menu on resizing using debounce
 	var resizeForMobile = debounce(function() { 
 		mobileResizeAction(); 
-	}, 200 );
+	}, 100 );
 	window.addEventListener( 'resize', resizeForMobile );
 }
