@@ -45,6 +45,11 @@
 ========================================================================== */
 
 @include respond(em(1099)) {
+	// base.scss
+	blockquote {
+		width: 90%;
+	}
+
 	// wordpress.scss 
 	.gallery {
 		&.gallery-columns-8, &.gallery-columns-9 {
@@ -502,6 +507,14 @@
 ========================================================================== */
 
 @include respond(em(499)) {
+	blockquote {
+		padding: 0 30px;
+		width: auto;
+		&:before, &:after {
+			@include muses-icons(18px);
+		}
+	}
+
 	// wordpress.scss
 	.alignleft, .alignright {
 		float: none;
