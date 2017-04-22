@@ -1,0 +1,71 @@
+// Colors ----------------------------------------------------------------------
+
+$primary-c:     #5D5AFF;
+$primary-c-l:   #3B86FF;
+$primary-c-d:   #4947D8;
+$primary-c-z:   #363E96;
+
+$accent-c:      #F44336;
+$accent-c-l:    #FF5722;
+$accent-c-d:    #E03225;
+
+$white:         #FFF;
+$white-1:       darken($white, 2%);
+$white-2:       darken($white, 5%);
+$white-3:       darken($white, 7.5%);
+
+$black:         #000;
+
+$border-c:      #DDD;
+$border-c-l:    lighten($border-c, 6.5%);
+$border-c-d:    transparentize($border-c, .25);
+$border-c-x:    darken($border-c-d, 6.5%);
+
+$text:          #444;
+$text-dull:     transparentize($text, .2);
+$text-duller:   transparentize($text, .5);
+$text-header:   $white-2;
+$text-footer:   lighten( $text, 50% );
+
+$link:          $text;
+$link-hover:    $primary-c;
+
+// Contextual colors
+$footer:        darken(desaturate(adjust-hue($primary-c, -20deg), 90%), 50%);
+$footer-alt:    darken($footer, 5%);
+$topbar-c:      darken(desaturate($primary-c, 25%), 5%);
+$tabs-active:   lighten($black, 26.5%);
+$tabs-alt:      $white-3;
+$input:         $white;
+$input-alt:     $white-2;
+$post-btns:     transparent;
+$post-btns-alt: $white-2;
+
+
+// Misc ------------------------------------------------------------------------
+
+$gutter:   30px;
+
+$radius:   4px;
+$radius-s: ($radius / 2);
+$radius-i: 45%;
+
+$shadow:   0 1px 3px rgba(black, 0.15);
+$shadow-l: 0 1px 2.5px rgba(black, 0.075);
+
+$trans:    all 0.25s ease-in-out;
+$trans-c:  color 0.25s ease-in-out;
+$trans-op: opacity 0.35s ease-in-out;
+
+
+// Media queries breakpoints ---------------------------------------------------
+$screen-xs:     480px;  // phone
+$screen-sm:     768px;
+$screen-md-min: 992px;  // desktop
+$screen-lg-min: 1200px; // wide desktop
+
+$screen-sm-max: ($screen-md-min - 1);
+$screen-md-max: ($screen-lg-min - 1);
+
+// FontAwesome -----------------------------------------------------------------
+$fa-font-path: '../../eles/theme/fonts';
