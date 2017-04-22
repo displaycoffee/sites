@@ -30,13 +30,18 @@ var distCSS = dist + '/theme';
 /* JavaScript
    ---------------------------------------------- */
 var jsSources = [		
-	devJS + '/main.js',
+	devJS + '/bootstrap.js',
+	devJS + '/smooth-scroll.js',
+	devJS + '/SmoothScroll.js',
+	devJS + '/particles.js',
+	devJS + '/scripts.js',
+	devJS + '/custom.js',
 	devJS + '/run-functions.js'
 ];
 
 gulp.task('js', function() {
 	gulp.src(jsSources)
-		.pipe(concat('glowbug_v1.js'))
+		.pipe(concat('scripts.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest(distJS));
 });
@@ -44,10 +49,7 @@ gulp.task('js', function() {
 /* SASS
    ---------------------------------------------- */
 
-var sassSources = [
-	devSass + '/stylesheet.scss',
-	devSass + '/partials/**.scss'
-];
+var sassSources = [devSass + '/stylesheet.scss'];
 
 gulp.task('sass', function() {
 	gulp.src(sassSources)
@@ -74,6 +76,7 @@ gulp.task('css', function() {
 var staticSources = [
 	dev + '/**/*.cfg',
 	dev + '/**/*.php',
+	dev + '/**/*.html',
 	dev + '/**/*.txt',
 	dev + '/**/images/*.*'
 ];

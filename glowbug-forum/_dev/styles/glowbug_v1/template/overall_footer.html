@@ -1,0 +1,82 @@
+		<!-- EVENT overall_footer_content_after -->
+	</div>
+	<!-- page-body -->
+
+	<!-- EVENT overall_footer_page_body_after -->
+
+	<footer id="page-footer" role="contentinfo">
+
+		{% if C_THEME_ON %}
+			{% include "@eles_coreframe/inc/footer.html" %}
+		{% else %}
+			{% include "inc/footer.html" %}
+		{% endif %}
+
+	</footer>
+
+</div>
+<!-- #wrap -->
+
+<a href="#top" id="back2topMain" data-scroll><i class="fa fa-angle-up"></i></a>
+
+<div class="modal-alert">
+	<div id="darkenwrapper" class="darkenwrapper" data-ajax-error-title="{L_AJAX_ERROR_TITLE}" data-ajax-error-text="{L_AJAX_ERROR_TEXT}" data-ajax-error-text-abort="{L_AJAX_ERROR_TEXT_ABORT}" data-ajax-error-text-timeout="{L_AJAX_ERROR_TEXT_TIMEOUT}" data-ajax-error-text-parsererror="{L_AJAX_ERROR_TEXT_PARSERERROR}">
+		<div id="darken" class="darken">&nbsp;</div>
+	</div>
+
+	<div id="phpbb_alert" class="phpbb_alert" data-l-err="{L_ERROR}" data-l-timeout-processing-req="{L_TIMEOUT_PROCESSING_REQ}">
+		<a href="#" class="alert_close"></a>
+		<h3 class="alert_title">&nbsp;</h3><p class="alert_text"></p>
+	</div>
+
+	<div id="phpbb_confirm" class="phpbb_alert">
+		<a href="#" class="alert_close"></a>
+		<div class="alert_text"></div>
+	</div>
+</div>
+
+<div class="hidden">
+	<a id="bottom" class="anchor" accesskey="z"></a>
+	<!-- IF not S_IS_BOT -->{RUN_CRON_TASK}<!-- ENDIF -->
+</div>
+
+<script src="{ROOT_PATH}styles/eles/template/js/jquery.js?assets_version={T_ASSETS_VERSION}"></script>
+<script src="{ROOT_PATH}styles/eles/template/js/core.js?assets_version={T_ASSETS_VERSION}"></script>
+<script src="{ROOT_PATH}styles/eles/template/js/forum_fn.js?assets_version={T_ASSETS_VERSION}"></script>
+<script src="{ROOT_PATH}styles/eles/template/js/ajax.js?assets_version={T_ASSETS_VERSION}"></script>
+
+<!-- IF S_COOKIE_NOTICE -->
+	<script src="{T_ASSETS_PATH}/cookieconsent/cookieconsent.min.js?assets_version={T_ASSETS_VERSION}"></script>
+	<script>
+		window.addEventListener("load", function(){
+			window.cookieconsent.initialise({
+				"palette": {
+					"popup": {
+						"background": "#0F538A"
+					},
+					"button": {
+						"background": "#E5E5E5"
+					}
+				},
+				"theme": "classic",
+				"content": {
+					"message": "{LA_COOKIE_CONSENT_MSG}",
+					"dismiss": "{LA_COOKIE_CONSENT_OK}",
+					"link": "{LA_COOKIE_CONSENT_INFO}"
+				}
+			})});
+	</script>
+<!-- ENDIF -->
+
+<!-- EVENT overall_footer_after -->
+
+<!-- INCLUDEJS js/scripts.js -->
+
+<!-- IF S_PLUPLOAD --><!-- INCLUDE plupload.html --><!-- ENDIF -->
+
+{$SCRIPTS}
+
+<!-- EVENT overall_footer_body_after -->
+
+</body>
+</html>

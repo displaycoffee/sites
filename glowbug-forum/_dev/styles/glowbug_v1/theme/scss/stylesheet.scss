@@ -44,9 +44,9 @@
  */
 
 // SCSS VARIABLES
-@import "partials/vars";
-@import "partials/classes";
-@import "../vendor/components-font-awesome/scss/font-awesome";
+@import 'vars';
+@import 'classes';
+@import 'fa/font-awesome';
 
 /* 1.0 CSS Reset http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
 ---------------------------------------- */
@@ -7884,4 +7884,6 @@
     }
   }
 
-@import "partials/custom";
+// Start custom glowbug forum css
+
+@import 'custom';
