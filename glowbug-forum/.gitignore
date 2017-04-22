@@ -1,0 +1,30 @@
+# Files
+.htaccess
+/*.php
+/*.json
+/*.lock
+/*.config
+
+# Folders
+adm/
+assets/
+bin/
+cache/
+config/
+docs/
+download/
+ext/
+files/
+images/
+includes/
+install/
+language/
+phpbb/
+store/
+styles/*
+vendor/
+
+# Extensions
+
+# Themes
+!styles/glowbug_v1
