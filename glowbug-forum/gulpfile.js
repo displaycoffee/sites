@@ -95,7 +95,7 @@ gulp.task('watch', function() {
         open: false
     })
 	gulp.watch(jsSources, ['js']);
-	gulp.watch(sassSources, ['sass']);
+	gulp.watch(devSass + '/*.scss', ['sass']);
 	gulp.watch(cssSources, ['css']);
 	gulp.watch(staticSources, ['static']);
 });

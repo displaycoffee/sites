@@ -1,0 +1,122 @@
+// Also includes functions in addition to mixins
+
+// Clearfix
+@mixin clearfix($selector) {
+	#{$selector}:before, #{$selector}:after {
+		content: "";
+		display: table;
+		zoom: 1;
+	}
+	#{$selector}:after {
+		clear: both;
+	}
+}
+
+// PX to EM conversion
+// From https://css-tricks.com/snippets/sass/px-to-em-functions
+@function em($pixels, $context: $base-font-size) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1em;
+}
+
+// PX to REM conversion
+// Modified from https://css-tricks.com/snippets/sass/px-to-em-functions
+@function rem($pixels, $context: $base-font-size) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1rem;
+}
+
+// Set flex flow property
+// flex: grow - shrink - basis
+@mixin flex($type: '') {
+	@if $type == grow {
+		flex: 1 0 auto; 
+	} @else if $type == base {
+		flex: 1 1 0%; 
+	} @else if $type == full {
+		flex: 1 1 100%;
+	} @else if $type == max {
+		flex: 0 0 auto;
+	} @else {
+		flex: 0 1 auto; 
+	}
+}
+
+// Flex flow
+@mixin flex-flow($flow) {
+	display: flex;
+	flex-flow: $flow;
+}
+
+// Flex flow inline 
+@mixin flex-flow-inline($flow) {
+	display: inline-flex;
+	flex-flow: $flow;
+}
+
+// Responsive reset for flex
+@mixin flex-reset($selector) {
+	display: block;
+	#{$selector} {
+		width: auto;
+	}
+}
+
+// Font Awesome icons
+@mixin fa-icon() {
+	font: normal normal normal $base-font-size + px/1 FontAwesome; // shortening font declaration
+	font-size: inherit; // can't have font-size inherit on line above, so need to override
+	text-rendering: auto; // optimizelegibility throws things off #1094
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Inline block
+@mixin inline-block($vertical-align) {
+	display: inline-block;
+	vertical-align: $vertical-align;
+}
+
+// Placeholder 
+// Examples: @include placeholder {}, :focus{@include placeholder {}}, or input {@include placeholder {}}
+@mixin placeholder {
+	&::-webkit-input-placeholder {@content}
+	&:-moz-placeholder           {@content}
+	&::-moz-placeholder          {@content}
+	&:-ms-input-placeholder      {@content}  
+}
+
+// Responsive max-width media query
+@mixin respond($breakpoint) {
+	@media only screen and (max-width: $breakpoint) {
+		@content;
+	}
+}
+
+// Sizing for elements
+@mixin sizing($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+// Transition
+@mixin transition($value) {
+	-webkit-transition: $value;	
+	-moz-transition: $value;	
+	-o-transition: $value;	
+	transition: $value;
+}

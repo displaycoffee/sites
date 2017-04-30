@@ -1,0 +1,20 @@
+/* Forums */
+
+.glowbug {
+	li.row .subforums-wrapper {
+		border-left: 0;
+		margin-left: 0;
+	}
+	ul.topiclist li.row dt a.subforum {
+		padding-left: em(25px);
+		margin-right: em(25px);
+		@include inline-block(top);
+		&:before {
+			width: auto;
+			border-top: 0;
+			@include fa-icon;
+			content: '\f07b';
+			top: em(7px);
+		}
+	}
+} 
