@@ -1,0 +1,48 @@
+<div class="sharing-buttons">
+	<!-- DEFINE $SHARE_URL = '{BOARD_URL}viewtopic.php?f={FORUM_ID}&amp;t={TOPIC_ID}&#35;p{postrow.POST_ID}' -->
+	<strong>Share On:</strong>
+    <!-- Facebook -->
+    <a href="//www.facebook.com/sharer.php?u={$SHARE_URL}" target="_blank">
+        <i class="fa fa-facebook"></i>
+    </a>
+    <!-- Twitter -->
+    <a href="//twitter.com/share?url={$SHARE_URL}&amp;text={postrow.POST_SUBJECT}&amp;hashtags=glowbugentertainment" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>  
+    <!-- Google+ -->
+    <a href="//plus.google.com/share?url={$SHARE_URL}" target="_blank">
+        <i class="fa fa-google-plus"></i>
+    </a>    
+    <!-- LinkedIn -->
+    <a href="//www.linkedin.com/shareArticle?mini=true&amp;url={$SHARE_URL}" target="_blank">
+        <i class="fa fa-linkedin"></i>
+    </a> 
+    <!-- Tumblr-->
+    <a href="//www.tumblr.com/share/link?url={$SHARE_URL}&amp;title={postrow.POST_SUBJECT}" target="_blank">
+        <i class="fa fa-tumblr"></i>
+    </a>   
+    <!-- Pinterest -->
+    <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+        <i class="fa fa-pinterest-p"></i>
+    </a>              
+    <!-- Digg -->
+    <a href="//www.digg.com/submit?url={$SHARE_URL}" target="_blank">
+        <i class="fa fa-digg"></i>
+    </a>
+    <!-- Reddit -->
+    <a href="//reddit.com/submit?url={$SHARE_URL}&amp;title={postrow.POST_SUBJECT}" target="_blank">
+        <i class="fa fa-reddit"></i>
+    </a>
+    <!-- VK -->
+    <a href="//vkontakte.ru/share.php?url={$SHARE_URL}" target="_blank">
+        <i class="fa fa-vk"></i>
+    </a>
+    <!-- StumbleUpon-->
+    <a href="//www.stumbleupon.com/submit?url={$SHARE_URL}&amp;title={postrow.POST_SUBJECT}" target="_blank">
+        <i class="fa fa-stumbleupon"></i>
+    </a>    
+    <!-- Email -->
+    <a href="mailto:?Subject={postrow.POST_SUBJECT}&amp;Body=Here's%20a%20link%20from%20glowbugentertainment:%20 {$SHARE_URL}">
+        <i class="fa fa-envelope"></i>
+    </a>
+</div>

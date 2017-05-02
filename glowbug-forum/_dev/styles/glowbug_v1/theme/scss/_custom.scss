@@ -18,3 +18,23 @@
 		}
 	}
 } 
+
+/* Topics */ 
+
+.glowbug {
+	.post .postbody .sharing-buttons {
+		text-align: right;
+		margin: 0 -4px;
+		strong, a {
+			@include inline-block(middle);
+			padding: 0 4px;
+		}
+		strong {
+			margin-top: -4px;
+		}
+		i {
+			font-size: rem(18px);
+			width: auto;
+		}
+	}
+}
