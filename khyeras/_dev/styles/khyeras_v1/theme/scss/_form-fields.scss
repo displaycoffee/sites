@@ -1,0 +1,48 @@
+/* Form fields
+========================================================================== */
+
+@include placeholder {
+	color: $color-02;
+	font-style: italic;
+	@include transition(color 0.3s ease-in-out);
+}
+
+:focus{@include placeholder {
+	color: $color-02;
+}}
+
+input[type='text'], input[type='password'], input[type='email'], input[type='url'], input[type='button'], input[type='reset'], input[type='submit'], button, textarea {
+	outline: 0;
+}
+
+input[type='text'], input[type='password'], input[type='email'], input[type='url'], input[type='button'], input[type='reset'], input[type='submit'], select, button {
+	line-height: 35px;
+	height: 35px;
+	border: 0;
+}
+
+input[type='text'], input[type='password'], input[type='email'], input[type='url'], select, textarea {
+	background: $color-12;
+	border-radius: 4px;
+	color: $color-02;
+	width: 100%;
+	margin: 0 0 20px 0;
+}
+
+input[type='text'], input[type='password'], input[type='email'], input[type='url'], select {
+	padding: 0 10px;
+}
+
+textarea {
+	padding: 10px;
+	border: 0;
+}
+
+select option {
+	color: $color-02;
+}
+
+label {
+	display: block;
+	margin: 0 0 5px 0;
+}

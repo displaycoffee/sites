@@ -1,0 +1,61 @@
+/* Resets
+========================================================================== */
+
+* {
+	box-sizing: border-box;
+}
+
+/* Base styles
+========================================================================== */
+
+html, body {
+	min-height: 100%; 
+}
+
+body { 
+	height: 100%;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	backface-visibility: hidden;
+	background: url($images + 'background.png') 0 0 repeat;	
+}
+
+img {
+	max-width: 100%;
+	@include sizing(auto, auto);
+}
+
+h1, h2, h3, h4, h5, h6, p, figure, pre, code {
+    margin: 0 0 20px 0;
+}
+
+ul, ol, dl {
+	padding: 0;
+	margin: 0 0 20px 40px;
+}
+
+pre, code {
+	white-space: normal;
+	display: block;
+	font-size: rem(14px);
+	font-family: 'Courier New', monospace;
+	background: $color-14;	
+	color: $color-02;
+	border: 2px solid $color-06;
+	padding: 20px;
+}
+
+blockquote {
+	width: 75%;
+	margin: 0 auto 20px auto;
+	padding: 0 50px;
+	font-style: italic;
+	position: relative;
+}
+
+hr {
+	margin: 30px 0; 
+	@include sizing(100%, 0);
+	border: 0;
+	border-bottom: 1px dashed $color-05;
+	clear: both;
+}

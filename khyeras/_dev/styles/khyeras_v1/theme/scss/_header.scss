@@ -1,0 +1,64 @@
+/* Header
+========================================================================== */
+
+header {
+	background: url($images + 'header.jpg') center 0 no-repeat;	
+	background-size: cover;
+	height: 550px;
+	overflow: hidden;
+	position: relative;
+	nav {
+		padding: 10px;
+		background: rgba(13,23,27,0.75);
+		border-top: 1px solid $color-03;
+		border-bottom: 1px solid $color-04;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 20;
+		ul {
+			list-style: none;
+			margin: 0 -5px;
+			text-align: center;
+			li {
+				@include inline-block(middle);
+				margin: 0 5px;
+			}
+		}
+	}
+	.header-content, .header-overlay {
+		position: absolute;
+	}
+	.header-content {
+		text-align: center;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		height: 135px;
+		h1, h3 {
+			margin: 0;
+		}
+		h1 {
+			font-family: $font-03;
+			font-size: 90px;
+			font-variant: none;
+			line-height: 1;
+			text-shadow: 3px 2px 0 rgba(0,0,0,0.65);
+		}
+		h3 {
+			font-size: 30px;
+			text-shadow: 2px 1px 0 rgba(0,0,0,0.85);
+			letter-spacing: 2px;
+		}
+	}
+	.header-overlay {
+		@include sizing(100%, 375px);
+		background: url($images + 'header-background.png') center 0 repeat-x;	
+		bottom: -200px;
+		left: 0;
+		right: 0;
+	}
+}

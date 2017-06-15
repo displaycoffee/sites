@@ -1,0 +1,39 @@
+/* Paths
+========================================================================== */
+
+$assets: '../theme';
+$fonts: $assets + '/fonts/';
+$images: $assets + '/images/';
+
+/* Colors
+========================================================================== */
+
+$color-01: #ffffff; // white
+$color-02: #000000; // black
+$color-03: #0d1619; // blueish
+$color-04: #1e2f43; // blueish
+$color-05: #15212c; // blueish
+$color-06: #333333; // 
+$color-07: #333333; // 
+$color-08: #333333; // 
+$color-09: #333333; // 
+$color-10: #333333; // 
+$color-11: #333333; // 
+$color-12: #333333; // 
+$color-13: #333333; // 
+$color-14: #333333; // 
+
+/* Fonts
+========================================================================== */
+
+$base-font-size: 16;
+$serif-fb: garamond, times new roman, serif;
+$sans-serif-fb: arial, sans-serif;
+$font-01: 'Alegreya Sans', $sans-serif-fb;
+$font-02: 'Alegreya', $serif-fb;
+$font-03: 'Selima', $sans-serif-fb;
+
+/* Other
+========================================================================== */
+
+$mobile-menu-width: 300px;

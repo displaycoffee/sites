@@ -1,0 +1,205 @@
+/* Font kits
+========================================================================== */
+
+@font-face {
+	font-family: 'Selima';
+	src: url($fonts + 'selima.woff2') format('woff2'),
+		 url($fonts + 'selima.woff') format('woff'),
+		 url($fonts + 'selima.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url($fonts + 'alegreya-sans-light.woff2') format('woff2'),
+		 url($fonts + 'alegreya-sans-light.woff') format('woff'),
+		 url($fonts + 'alegreya-sans-light.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url($fonts + 'alegreya-sans-light-italic.woff2') format('woff2'),
+		 url($fonts + 'alegreya-sans-light-italic.woff') format('woff'),
+		 url($fonts + 'alegreya-sans-light-italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url($fonts + 'alegreya-sans-bold.woff2') format('woff2'),
+		 url($fonts + 'alegreya-sans-bold.woff') format('woff'),
+		 url($fonts + 'alegreya-sans-bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Alegreya Sans';
+	src: url($fonts + 'alegreya-sans-bold-italic.woff2') format('woff2'),
+		 url($fonts + 'alegreya-sans-bold-italic.woff') format('woff'),
+		 url($fonts + 'alegreya-sans-bold-italic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Alegreya';
+	src: url($fonts + 'alegreya.woff2') format('woff2'),
+		 url($fonts + 'alegreya.woff') format('woff'),
+		 url($fonts + 'alegreya.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Khyeras Icons';
+	src: url($fonts + 'khyeras-icons.woff2') format('woff2'),
+		 url($fonts + 'khyeras-icons.woff') format('woff'),
+		 url($fonts + 'khyeras-icons.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* General text elements
+========================================================================== */
+
+html {
+	font-size: $base-font-size + px;
+}
+
+body {
+	font-family: $font-01;
+	font-size: rem(16px);
+	line-height: 1.5;
+	font-weight: normal;
+	color: $color-01;
+}
+
+a {
+	color: $color-01;
+	@include transition(color 0.3s ease-in-out);
+	text-decoration: none;
+	&:hover {
+		color: $color-07;
+	}
+}
+
+/* Headers
+========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $font-02;  
+	font-weight: normal;  
+	line-height: 1.1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	a {
+		color: $color-01;
+		&:hover {
+			color: $color-07;
+		}
+	}
+}
+
+h1 {
+	font-size: rem(50px);
+}
+
+h2 {
+	font-size: rem(45px);
+}
+
+h3 {
+	font-size: rem(40px);
+}
+
+h4 {
+	font-size: rem(35px);
+}
+
+h5, h6 {
+	font-size: rem(30px);
+}
+
+/* Font Awesome - From phpBB styles
+========================================================================== */
+
+.icon, .button .icon  {
+	display: inline-block;
+  	font-weight: normal;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-family: 'FontAwesome';
+  	font-size: rem(14px);
+  	line-height: 1;
+  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon:before { 
+	padding-right: 2px; 
+}
+
+.button .icon:before {
+	padding-right: 0;
+}
+
+/* Icon size classes - Default size is 14px, use these for small variations */
+
+.icon.icon-xl {
+	font-size: rem(20px);
+}
+
+.icon.icon-lg {
+	font-size: rem(16px);
+}
+
+.icon.icon-md {
+	font-size: rem(10px);
+}
+
+.icon.icon-sm {
+	font-size: rem(8px);
+}
+
+/* Icon modifiers */
+
+.icon-tiny {
+	width: 12px;
+	transform: scale(0.65, 0.75);
+	vertical-align: text-bottom;
+	font-size: rem(16px);
+}
+
+.arrow-left:hover .icon {
+	margin-left: -5px;
+	margin-right: 5px;
+}
+
+.arrow-right .icon {
+	float: right;
+}
+
+.arrow-right:hover .icon {
+	margin-left: 5px;
+	margin-right: -5px;
+}
+
+.post-buttons .dropdown-contents .icon {
+    float: right;
+    margin-left: 5px;
+}
+
+.alert_close .icon:before {
+	padding: 0;
+    border-radius: 50%;
+    @include sizing(11px, 12px);
+    display: block;
+    line-height: .9;
+}
