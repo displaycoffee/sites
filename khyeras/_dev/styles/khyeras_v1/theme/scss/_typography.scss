@@ -80,12 +80,18 @@ body {
 }
 
 a {
-	color: $color-01;
+	direction: ltr;
+	unicode-bidi: embed;	
+	color: $color-06;
 	@include transition(color 0.3s ease-in-out);
 	text-decoration: none;
 	&:hover {
 		color: $color-07;
 	}
+}
+
+p.right {
+	text-align: right;
 }
 
 /* Headers
@@ -94,6 +100,7 @@ a {
 h1, h2, h3, h4, h5, h6 {
 	font-family: $font-02;  
 	font-weight: normal;  
+	font-variant: small-caps;
 	line-height: 1.1;
 }
 
@@ -107,99 +114,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+	// Forum name
 	font-size: rem(50px);
 }
 
 h2 {
+	// Forum header titles
 	font-size: rem(45px);
 }
 
 h3 {
+	// Sub-headers (also used as post headers, but defined later)
 	font-size: rem(40px);
 }
 
 h4 {
+	// Forum and topic list titles
 	font-size: rem(35px);
 }
 
 h5, h6 {
 	font-size: rem(30px);
-}
-
-/* Font Awesome - From phpBB styles
-========================================================================== */
-
-.icon, .button .icon  {
-	display: inline-block;
-  	font-weight: normal;
-  	font-style: normal;
-  	font-variant: normal;
-  	font-family: 'FontAwesome';
-  	font-size: rem(14px);
-  	line-height: 1;
-  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
-  	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-}
-
-.icon:before { 
-	padding-right: 2px; 
-}
-
-.button .icon:before {
-	padding-right: 0;
-}
-
-/* Icon size classes - Default size is 14px, use these for small variations */
-
-.icon.icon-xl {
-	font-size: rem(20px);
-}
-
-.icon.icon-lg {
-	font-size: rem(16px);
-}
-
-.icon.icon-md {
-	font-size: rem(10px);
-}
-
-.icon.icon-sm {
-	font-size: rem(8px);
-}
-
-/* Icon modifiers */
-
-.icon-tiny {
-	width: 12px;
-	transform: scale(0.65, 0.75);
-	vertical-align: text-bottom;
-	font-size: rem(16px);
-}
-
-.arrow-left:hover .icon {
-	margin-left: -5px;
-	margin-right: 5px;
-}
-
-.arrow-right .icon {
-	float: right;
-}
-
-.arrow-right:hover .icon {
-	margin-left: 5px;
-	margin-right: -5px;
-}
-
-.post-buttons .dropdown-contents .icon {
-    float: right;
-    margin-left: 5px;
-}
-
-.alert_close .icon:before {
-	padding: 0;
-    border-radius: 50%;
-    @include sizing(11px, 12px);
-    display: block;
-    line-height: .9;
 }

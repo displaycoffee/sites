@@ -14,6 +14,7 @@ html, body {
 
 body { 
 	height: 100%;
+	-webkit-print-color-adjust: exact;
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	backface-visibility: hidden;
 	background: url($images + 'background.png') 0 0 repeat;	
@@ -56,6 +57,59 @@ hr {
 	margin: 30px 0; 
 	@include sizing(100%, 0);
 	border: 0;
-	border-bottom: 1px dashed $color-05;
+	border-bottom: 1px solid $color-05;
 	clear: both;
+	&.dashed {
+		border-bottom-style: dashed;
+	}
+	&.divider {
+		display: none;
+	}
+}
+
+[tabindex="-1"]:focus { 
+	outline: none !important;
+}
+
+abbr[title] {
+	text-decoration: none;
+}
+
+/* Utilities (from prosilver utilities.css)
+   Notes: did not add things like pull-left/right, hide, show, invisible, text-hide, affix
+========================================================================== */
+
+.sr-only {
+	position: absolute;
+	@include sizing(1px, 1px);
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.sr-only-focusable {
+	&:active, &:focus {
+		position: static;
+		@include sizing(auto, auto);;
+		margin: 0;
+		overflow: visible;
+		clip: auto;
+	}
+}
+
+.clearfix {
+	// TO DO: ADD THESE MAYBE? .container, .container-fluid, .row
+	@include clearfix('&');
+}
+
+.hidden {
+	display: none;
+}
+
+.skiplink {
+	position: absolute;
+	left: -999px;
+	width: 990px;
 }

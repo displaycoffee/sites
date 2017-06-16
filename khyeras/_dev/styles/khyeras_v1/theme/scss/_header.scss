@@ -1,44 +1,30 @@
 /* Header
 ========================================================================== */
 
-header {
+header#page-header {
+	margin: 0 0 100px 0;
+}
+
+/* Header - Header bar
+========================================================================== */
+
+header#page-header .headerbar {
 	background: url($images + 'header.jpg') center 0 no-repeat;	
 	background-size: cover;
 	height: 550px;
 	overflow: hidden;
 	position: relative;
-	nav {
-		padding: 10px;
-		background: rgba(13,23,27,0.75);
-		border-top: 1px solid $color-03;
-		border-bottom: 1px solid $color-04;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		z-index: 20;
-		ul {
-			list-style: none;
-			margin: 0 -5px;
-			text-align: center;
-			li {
-				@include inline-block(middle);
-				margin: 0 5px;
-			}
-		}
+	.inner {
+		padding: 0 20px;
 	}
-	.header-content, .header-overlay {
-		position: absolute;
+	.inner, .site-description {
+		height: 100%;
 	}
-	.header-content {
+	.site-description {
+		@include flex-flow(column nowrap);
+		justify-content: center;
 		text-align: center;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		margin: auto;
-		height: 135px;
-		h1, h3 {
+		h1, p {
 			margin: 0;
 		}
 		h1 {
@@ -47,18 +33,76 @@ header {
 			font-variant: none;
 			line-height: 1;
 			text-shadow: 3px 2px 0 rgba(0,0,0,0.65);
+			a:hover {
+				color: $color-01;
+			}
 		}
 		h3 {
+			font-family: $font-02;  
 			font-size: 30px;
 			text-shadow: 2px 1px 0 rgba(0,0,0,0.85);
 			letter-spacing: 2px;
-		}
+		}		
 	}
-	.header-overlay {
+ 	.header-overlay {
+		position: absolute;
 		@include sizing(100%, 375px);
 		background: url($images + 'header-background.png') center 0 repeat-x;	
 		bottom: -200px;
 		left: 0;
 		right: 0;
-	}
+	}	
+}
+
+/* Header - Nav top
+========================================================================== */
+
+header#page-header .headerbar .nav-top {
+	background: rgba(13,23,27,0.75);
+	border-top: 1px solid $color-03;
+	border-bottom: 1px solid $color-04;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 20;	
+	 & > ul {
+		margin: 0;
+		list-style: none;
+		text-align: center;
+		justify-content: center;
+		@include flex-flow(row nowrap);
+		li {			
+			a {
+				padding: 10px 20px;
+				display: block;
+				color: $color-01;
+			}
+			.icon {
+				display: block;
+				@include sizing(20px, 20px);
+				line-height: 20px;
+				position: absolute;
+				top: 11px;
+				right: 5px;
+				z-index: 10;
+				cursor: pointer;
+				// Setting the variable here to use multiple transitions
+				$transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
+				@include transition($transform);
+				transform: rotate(0deg);
+			}
+			a:hover, .icon:hover {
+				color: $color-06;
+			}
+			&.dropdown-container {
+				a {
+					padding: 10px 40px 10px 20px;
+				}
+			}
+			&.dropdown-visible .icon {
+				transform: rotate(180deg);
+			}
+		}
+	}	
 }
