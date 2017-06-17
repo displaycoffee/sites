@@ -1,0 +1,127 @@
+<nav class="navbar" role="navigation">
+	<ul>
+		<li class="dropdown-container">
+			<a href="http://google.com"><span>About</span></a>
+			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Rules</span></a>
+					</li>				
+					<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
+						<!-- IF U_TEAM -->
+							<li>
+								<a href="{U_TEAM}" role="menuitem"><span>{L_THE_TEAM}</span></a>
+							</li>
+						<!-- ENDIF -->
+					<!-- ENDIF -->				
+					<!-- IF U_CONTACT_US -->
+						<li>
+							<a href="{U_CONTACT_US}" role="menuitem"><span>{L_CONTACT_US}</span></a>
+						</li>
+					<!-- ENDIF -->	
+					<li>
+						<a href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}" role="menuitem"><span>{L_FORUM} {L_FAQ}</span></a>
+					</li>															
+				</ul>			
+			</div>
+		</li>
+		<li class="dropdown-container">
+			<a href="http://google.com"><span>Game Play &amp; Lore</span></a>
+			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					<li>
+						<a href="http://google.com" role="menuitem"><span>History</span></a>
+					</li>
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Short History</span></a>
+					</li>					
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Timeline</span></a>
+					</li>
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Races</span></a>
+					</li>					
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Religion</span></a>
+					</li>
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Magic</span></a>
+					</li>
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Leveling</span></a>
+					</li>
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Classes</span></a>
+					</li>
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Glossary</span></a>
+					</li>																										
+				</ul>
+			</div>
+		</li>		
+		<li class="dropdown-container">
+			<a href="http://google.com"><span>Setting</span></a>
+			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Map</span></a>
+					</li>				
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Tviyr</span></a>
+					</li>
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Ninraih</span></a>
+					</li>
+					<li>
+						<a href="http://google.com" role="menuitem"><span>Irtuen Reaches</span></a>
+					</li>				
+				</ul>
+			</div>
+		</li>
+		<li class="dropdown-container">
+			<a href="#"><span>Community</span></a>
+			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					<!-- EVENT navbar_header_quick_links_before -->	
+					<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
+						<!-- IF S_DISPLAY_MEMBERLIST -->
+							<li>
+								<a href="{U_MEMBERLIST}" role="menuitem"><span>{L_MEMBERLIST}</span></a>
+							</li>
+						<!-- ENDIF -->
+					<!-- ENDIF -->					
+					<!-- IF S_DISPLAY_SEARCH -->
+						<!-- IF S_REGISTERED_USER -->
+							<li>
+								<a href="{U_SEARCH_SELF}" role="menuitem"><span>{L_SEARCH_SELF}</span></a>
+							</li>
+						<!-- ENDIF -->
+						<!-- IF S_USER_LOGGED_IN -->
+							<li>
+								<a href="{U_SEARCH_NEW}" role="menuitem"><span>{L_SEARCH_NEW}</span></a>
+							</li>
+						<!-- ENDIF -->
+						<!-- IF S_LOAD_UNREADS -->
+							<li>
+								<a href="{U_SEARCH_UNREAD}" role="menuitem"><span>{L_SEARCH_UNREAD}</span></a>
+							</li>
+						<!-- ENDIF -->
+							<li>
+								<a href="{U_SEARCH_UNANSWERED}" role="menuitem"><span>{L_SEARCH_UNANSWERED}</span></a>
+							</li>
+							<li>
+								<a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem"><span>{L_SEARCH_ACTIVE_TOPICS}</span></a>
+							</li>
+					<!-- ENDIF -->
+					<!-- EVENT navbar_header_quick_links_after -->
+				</ul>
+			</div>
+		</li>
+		<!-- EVENT overall_header_navigation_prepend -->
+		<!-- EVENT overall_header_navigation_append -->
+	</ul>
+</nav>

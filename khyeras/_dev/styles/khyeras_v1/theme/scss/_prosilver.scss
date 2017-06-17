@@ -18,11 +18,6 @@
 /* Round cornered boxes and backgrounds
 ---------------------------------------- */
 
-.navbar {
-	padding: 3px 10px;
-	border-radius: 7px;
-}
-
 .forabg {
 	margin-bottom: 4px;
 	padding: 5px;
@@ -58,31 +53,13 @@
 
 /* Horizontal lists
 ----------------------------------------*/
-.navbar ul.linklist {
-	padding: 2px 0;
-	list-style-type: none;
-}
 
-ul.linklist {
-	display: block;
-	margin: 0;
-}
 
 .cp-main .panel {
 	padding: 5px 10px;
 }
 
-ul.linklist > li {
-	float: left;
-	font-size: 1.1em;
-	line-height: 2.2em;
-	list-style-type: none;
-	margin-right: 7px;
-	padding-top: 1px;
-	width: auto;
-}
-
-ul.linklist > li.rightside, p.rightside, a.rightside {
+p.rightside, a.rightside {
 	float: right;
 	margin-right: 0;
 	margin-left: 7px;
@@ -107,19 +84,6 @@ ul.rightside {
 	text-align: right;
 }
 
-ul.linklist li.responsive-menu {
-	position: relative;
-	margin: 0 5px 0 0;
-}
-
-.hasjs ul.linklist.leftside, .hasjs ul.linklist.rightside {
-	max-width: 48%;
-}
-
-.hasjs ul.linklist.fullwidth {
-	max-width: none;
-}
-
 li.responsive-menu.dropdown-right .dropdown {
 	left: -9px;
 }
@@ -128,33 +92,8 @@ li.responsive-menu.dropdown-left .dropdown {
 	right: -6px;
 }
 
-ul.linklist .dropdown {
-	top: 22px;
-}
-
-ul.linklist .dropdown-up .dropdown {
-	bottom: 18px;
-	top: auto;
-}
-
 /* Bulletin icons for list items
 ----------------------------------------*/
-ul.linklist.bulletin > li:before {
-	display: inline-block;
-	content: "\2022";
-	font-size: inherit;
-	line-height: inherit;
-	padding-right: 4px;
-}
-
-ul.linklist.bulletin > li:first-child:before,
-ul.linklist.bulletin > li.rightside:last-child:before {
-	content: none;
-}
-
-ul.linklist.bulletin > li.no-bulletin:before {
-	content: none;
-}
 
 .responsive-menu:before {
 	display: none !important;
@@ -868,7 +807,6 @@ form > p.post-notice strong {
 
 /* Inner box-model clearing */
 .inner:after,
-ul.linklist:after,
 .action-bar:after,
 .notification_text:after,
 .tabs-container:after,
@@ -1070,14 +1008,6 @@ ul.linklist:after,
 
 /* Navbar specific list items
 ----------------------------------------*/
-
-.linklist .quick-links {
-	margin: 0 7px 0 0;
-}
-
-.linklist.compact .rightside > a > span span {
-	display: none;
-}
 
 .dropdown-page-jump .dropdown {
 	top: 20px;
@@ -2267,11 +2197,6 @@ button::-moz-focus-inner {
 .small-icon > a {
 	padding: 0 0 0 18px;
 }
-
-ul.linklist.bulletin > li.small-icon:before {
-	display: none;
-}
-
 .dropdown .small-icon > a {
 	display: block;
 }
@@ -2371,11 +2296,6 @@ ul.cplist {
 .cp-main .buttons {
 	margin-left: 0;
 }
-
-.cp-main ul.linklist {
-	margin: 0;
-}
-
 /* MCP Specific tweaks */
 .mcp-main .postbody {
 	width: 100%;
@@ -3080,8 +3000,6 @@ input.button1:focus, input.button2:focus, input.button3:focus {
 
 .search-header .inputbox { border: 0; }
 
-.navbar .linklist > li.responsive-search { display: none; }
-
 input.search {
 	background-image: none;
 	background-repeat: no-repeat;
@@ -3247,10 +3165,6 @@ Colours and backgrounds for links.css
 	background-image: -webkit-linear-gradient(top, #6ACEFF 0%, #12A3EB 2px, #0076B1 92px, #0076B1 100%);
 	background-image: linear-gradient(to bottom, #6ACEFF 0%,#12A3EB 2px,#0076B1 92px,#0076B1 100%);
 	background-repeat: repeat-x;
-}
-
-.navbar {
-	background-color: #CADCEB;
 }
 
 .panel {
@@ -4440,7 +4354,7 @@ li.notification-reported strong, li.notification-disapproved strong {
 
 	/* Common block wrappers
 	----------------------------------------*/
-	.navbar, .forabg, .forumbg, .post, .panel {
+	.forabg, .forumbg, .post, .panel {
 		border-radius: 0;
 		margin-left: -5px;
 		margin-right: -5px;
@@ -4455,12 +4369,6 @@ li.notification-reported strong, li.notification-disapproved strong {
 
 	.search-header {
 		display: none;
-	}
-
-	/* Navigation
-	----------------------------------------*/
-	.headerbar + .navbar {
-		margin-top: -5px;
 	}
 
 	/* Search

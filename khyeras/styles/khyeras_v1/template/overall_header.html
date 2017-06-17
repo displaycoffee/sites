@@ -74,11 +74,11 @@
 <div id="wrap" class="wrap">
 	<a id="top" class="top-anchor" accesskey="t"></a>
 	<header id="page-header">
-		<div class="headerbar" role="banner">
-		<!-- EVENT overall_header_headerbar_before -->
-			<div class="inner">
-				<!-- INCLUDE navbar_top.html -->
-
+		<div class="inner">
+			<!-- EVENT overall_header_navbar_before -->
+			<!-- INCLUDE navbar_header.html -->	
+			<div class="headerbar" role="banner">
+				<!-- EVENT overall_header_headerbar_before -->
 				<div id="site-description" class="site-description">
 					<h1>
 						<a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->" title="<!-- IF U_SITE_HOME -->{L_SITE_HOME}<!-- ELSE -->{L_INDEX}<!-- ENDIF -->">{SITENAME}</a>
@@ -86,7 +86,6 @@
 					<h3>{SITE_DESCRIPTION}</h3>
 					<p class="skiplink"><a href="#start_here">{L_SKIP}</a></p>
 				</div>
-
 				<!-- EVENT overall_header_searchbox_before -->
 				<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
 				<div id="search-box" class="search-box search-header" role="search">
@@ -105,16 +104,133 @@
 				</div>
 				<!-- ENDIF -->
 				<!-- EVENT overall_header_searchbox_after -->
-
 				<div class="header-overlay"></div>
 
 			</div>
 			<!-- EVENT overall_header_headerbar_after -->
-		</div>
-		<!-- EVENT overall_header_navbar_before -->
+		</div>		
 	</header>
 
-	<!-- INCLUDE navbar_header.html -->	
+
+<!-- MOVED FROM NAVBAR_HEADER -->
+<div>
+	<ul>
+		<!-- IF U_ACP -->
+			<li>
+				<a href="{U_ACP}" title="{L_ACP}" role="menuitem">
+					<i class="icon fa-cogs fa-fw" aria-hidden="true"></i><span>{L_ACP_SHORT}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+		<!-- IF U_MCP -->
+			<li>
+				<a href="{U_MCP}" title="{L_MCP}" role="menuitem">
+					<i class="icon fa-gavel fa-fw" aria-hidden="true"></i><span>{L_MCP_SHORT}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+
+		<!-- IF S_REGISTERED_USER -->
+			<!-- EVENT navbar_header_user_profile_prepend -->
+			<li id="username_logged_in" class="rightside <!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF -->">
+				<!-- EVENT navbar_header_username_prepend -->
+				<div class="header-profile dropdown-container">
+					<a href="{U_PROFILE}" class="header-avatar dropdown-trigger"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR} <!-- ENDIF --> {CURRENT_USERNAME_SIMPLE}</a>
+					<div class="dropdown">
+						<div class="pointer"><div class="pointer-inner"></div></div>
+						<ul class="dropdown-contents" role="menu">
+							<!-- IF U_RESTORE_PERMISSIONS -->
+								<li>
+									<a href="{U_RESTORE_PERMISSIONS}">
+										<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
+									</a>
+								</li>
+							<!-- ENDIF -->
+
+						<!-- EVENT navbar_header_profile_list_before -->
+
+							<li>
+								<a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem">
+									<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_PROFILE}</span>
+								</a>
+							</li>
+							<li>
+								<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem">
+									<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
+								</a>
+							</li>
+
+							<!-- EVENT navbar_header_profile_list_after -->
+
+							<li>
+								<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">
+									<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- EVENT navbar_header_username_append -->
+			</li>
+			<!-- IF S_DISPLAY_PM -->
+				<li class="rightside">
+					<a href="{U_PRIVATEMSGS}" role="menuitem">
+						<i class="icon fa-inbox fa-fw" aria-hidden="true"></i><span>{L_PRIVATE_MESSAGES} </span><strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
+					</a>
+				</li>
+			<!-- ENDIF -->
+			<!-- IF S_NOTIFICATIONS_DISPLAY -->
+				<li class="dropdown-container dropdown-{S_CONTENT_FLOW_END} rightside">
+					<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger">
+						<i class="icon fa-bell fa-fw" aria-hidden="true"></i><span>{L_NOTIFICATIONS} </span><strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
+					</a>
+					<!-- INCLUDE notification_dropdown.html -->
+				</li>
+			<!-- ENDIF -->
+			<!-- EVENT navbar_header_user_profile_append -->
+		<!-- ELSE -->
+			<li class="rightside">
+				<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">
+					<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
+				</a>
+			</li>
+			<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+				<li class="rightside">
+					<a href="{U_REGISTER}" role="menuitem">
+						<i class="icon fa-pencil-square-o  fa-fw" aria-hidden="true"></i><span>{L_REGISTER}</span>
+					</a>
+				</li>
+			<!-- ENDIF -->
+			<!-- EVENT navbar_header_logged_out_content -->
+		<!-- ENDIF -->
+	</ul>
+
+	<ul id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
+		<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
+		<!-- EVENT overall_header_breadcrumbs_before -->
+		<li class="breadcrumbs">
+			<!-- IF U_SITE_HOME -->
+				<span class="crumb" {$MICRODATA}><a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home"><i class="icon fa-home fa-fw" aria-hidden="true"></i><span itemprop="title">{L_SITE_HOME}</span></a></span>
+			<!-- ENDIF -->
+			<!-- EVENT overall_header_breadcrumb_prepend -->
+				<span class="crumb" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><!-- IF not U_SITE_HOME --><i class="icon fa-home fa-fw"></i><!-- ENDIF --><span itemprop="title">{L_INDEX}</span></a></span>
+
+			<!-- BEGIN navlinks -->
+				<!-- EVENT overall_header_navlink_prepend -->
+				<span class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><a href="{navlinks.U_VIEW_FORUM}" itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a></span>
+				<!-- EVENT overall_header_navlink_append -->
+			<!-- END navlinks -->
+			<!-- EVENT overall_header_breadcrumb_append -->
+		</li>
+		<!-- EVENT overall_header_breadcrumbs_after -->
+
+	</ul>
+</div>
+<!-- MOVED FROM NAVBAR_HEADER -->
+
+
+
+
 
 	<!-- EVENT overall_header_page_body_before -->
 
