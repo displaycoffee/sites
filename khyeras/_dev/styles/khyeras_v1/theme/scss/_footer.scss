@@ -1,14 +1,103 @@
 /* Footer
 ========================================================================== */
 
-footer {
+footer#page-footer {
 	background: url($images + 'footer-background.png') center -30px repeat-x;
-	padding: 130px 0 0 0;
+	padding: 150px 0 0 0;
 	.footer-inner {
-		background: $color-05;
+		background: $color-04;
 		padding: 0 0 30px 0;
+		.row .column {
+			h4 {
+				margin: 0 0 10px 0;
+			}
+			.copyright, .bottom-line {
+				font-size: rem(14px);
+			}
+			.bottom-line {
+				text-align: center;
+			}
+			.button-link {
+				display: inline-block;
+				line-height: 0;
+			}
+			.button-wrapper {
+				margin: 0 -2.5px 20px -2.5px;
+				.button-link {
+					vertical-align: middle;
+					margin: 0 2.5px 5px 2.5px;
+				}
+			}
+		}
 	}
-	p:last-child {
-		margin: 0;
+}
+
+/* Darken wrapper
+========================================================================== */
+
+.darkenwrapper {
+	display: none;
+	position: relative;
+	z-index: 44;
+	.darken {
+		position: fixed;
+		left: 0;
+		top: 0;
+		@include sizing(100%, 100%);
+		z-index: 45;
+		background: rgba($color-02, 0.65);
+	}
+}
+
+/* phpBB Alert
+========================================================================== */
+
+.phpbb_alert {
+	display: none;
+	position: fixed;
+	right: 0;
+	top: 150px;
+	left: 0;
+	z-index: 50;
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	background: $color-01;
+	border: 2px solid $color-03;
+	color: $color-08;
+	.alert_close {
+		float: right;
+		position: relative;
+		margin: -30px -30px 0 0;
+		@include sizing(20px, 20px);
+		&:before, &:after, .icon {
+			display: block;		
+			@include sizing(100%, 100%);	
+			position: absolute;
+		}
+		&:before, &:after {			
+			content: '';	
+			
+			background: $color-01;			
+		}
+		&:before {			
+			border: 2px solid $color-03;
+			z-index: 2;
+			border-radius: 100%;	
+			top: 0;
+			right: 0;
+		}
+		&:after {
+			z-index: 2;
+			top: 10px;
+			right: 10px;			
+		}
+		.icon {
+			z-index: 3;
+			top: 2.5px;
+			right: 1px;
+			color: $color-03;
+		}
 	}
 }

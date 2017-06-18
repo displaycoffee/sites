@@ -15,7 +15,7 @@ html, body {
 body { 
 	height: 100%;
 	-webkit-print-color-adjust: exact;
-	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-tap-highlight-color: rgba($color-01, 0);
 	backface-visibility: hidden;
 	background: url($images + 'background.png') 0 0 repeat;	
 }
@@ -57,7 +57,7 @@ hr {
 	margin: 30px 0; 
 	@include sizing(100%, 0);
 	border: 0;
-	border-bottom: 1px solid $color-05;
+	border-bottom: 1px solid $color-04;
 	clear: both;
 	&.dashed {
 		border-bottom-style: dashed;
@@ -73,6 +73,16 @@ hr {
 
 abbr[title] {
 	text-decoration: none;
+}
+
+.bullet {
+	display: inline-block;
+	padding: 0 5px;
+	font-family: $sans-serif-fb;
+	font-size: rem(18px);
+	line-height: 1;
+	position: relative;
+	top: 2px;
 }
 
 /* Utilities (from prosilver utilities.css)

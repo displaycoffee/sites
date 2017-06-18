@@ -11,6 +11,12 @@
 	color: $color-02;
 }}
 
+fieldset {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
 input[type='text'], input[type='password'], input[type='email'], input[type='url'], input[type='button'], input[type='reset'], input[type='submit'], button, textarea {
 	outline: 0;
 }
