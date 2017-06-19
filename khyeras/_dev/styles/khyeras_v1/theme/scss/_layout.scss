@@ -26,6 +26,11 @@
 	}
 }
 
+.image-wrap {
+	line-height: 0;
+	overflow: hidden;
+}
+
 /* Browser Upgrade / Browse Happy
 ========================================================================== */
 
@@ -99,4 +104,62 @@
 	left: 50%;
 	top: 50%;
 	z-index: 51;	
+}
+
+/* Page welcome
+========================================================================== */
+
+#page-welcome {
+	font-size: rem(15px);
+	.welcome-inner {
+		padding: 20px 20px 0 20px;
+		background: rgba($color-02, 0.20);
+		border: 1px solid $color-04;
+		box-shadow: 3px 3px 6px rgba(0,0,0,0.30);
+	}
+	.introduction {
+		p:first-child:first-line {
+			font-family: $font-02;
+			font-variant: small-caps;
+			font-size: rem(18px);
+			line-height: 1.3;
+		}
+	}
+	.user-information {
+		position: relative;	
+		&:before, &:after {
+			content: '';
+			display: block;
+		}	
+		&:before {
+			@include sizing(85px, 95px);
+			float: right;
+		}
+		&:after {
+			clear: both;
+		}
+		.user-avatar {
+			position: absolute;
+			right: -65px;
+			top: -65px;		
+			border-radius: 100%;
+			border: 5px solid $color-04;
+			box-shadow: 2px 2px 4px rgba(0,0,0,0.30);
+			overflow: hidden;
+			width: 150px;
+			.image-wrap {
+				height: 0;	
+				padding: 0 0 100% 0;				
+			}
+		}
+		ul {
+			list-style: none;
+			margin: 0 0 20px 0;
+		}
+		.cp-links {
+			.bullet:last-child {
+				display: none;
+			}
+		}
+	}
 }

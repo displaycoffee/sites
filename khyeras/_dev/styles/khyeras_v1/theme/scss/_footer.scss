@@ -1,16 +1,13 @@
 /* Footer
 ========================================================================== */
 
-footer#page-footer {
+#page-footer {
 	background: url($images + 'footer-background.png') center -30px repeat-x;
 	padding: 150px 0 0 0;
 	.footer-inner {
 		background: $color-04;
 		padding: 0 0 30px 0;
 		.row .column {
-			h4 {
-				margin: 0 0 10px 0;
-			}
 			.copyright, .bottom-line {
 				font-size: rem(14px);
 			}

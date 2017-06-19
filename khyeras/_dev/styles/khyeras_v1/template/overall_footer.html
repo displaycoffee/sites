@@ -1,7 +1,9 @@
 				<!-- EVENT overall_footer_content_after -->
 			</div>
 		</section>
+
 		<!-- EVENT overall_footer_page_body_after -->
+
 		<footer id="page-footer" class="page-footer" role="contentinfo">
 			<div class="footer-inner">
 				<div class="wrapper">
@@ -93,34 +95,41 @@
 				</div>
 			</div>
 		</footer>
+
 		<div id="darkenwrapper" class="darkenwrapper" data-ajax-error-title="{L_AJAX_ERROR_TITLE}" data-ajax-error-text="{L_AJAX_ERROR_TEXT}" data-ajax-error-text-abort="{L_AJAX_ERROR_TEXT_ABORT}" data-ajax-error-text-timeout="{L_AJAX_ERROR_TEXT_TIMEOUT}" data-ajax-error-text-parsererror="{L_AJAX_ERROR_TEXT_PARSERERROR}">
 			<div id="darken" class="darken">&nbsp;</div>
 		</div>
+
 		<div id="phpbb_alert" class="phpbb_alert" data-l-err="{L_ERROR}" data-l-timeout-processing-req="{L_TIMEOUT_PROCESSING_REQ}">
 			<a href="#" class="alert_close">
 				<i class="icon fa-times-circle fa-fw" aria-hidden="true"></i>
 			</a>
 			<h3 class="alert_title">&nbsp;</h3><p class="alert_text"></p>
 		</div>
+
 		<div id="phpbb_confirm" class="phpbb_alert">
 			<a href="#" class="alert_close">
 				<i class="icon fa-times-circle fa-fw" aria-hidden="true"></i>
 			</a>
 			<div class="alert_text"></div>
 		</div>
+
 	</div>
+
 	<div class="bottom-hidden">
 		<a id="bottom" class="anchor" accesskey="z"></a>
 		<!-- IF not S_IS_BOT -->{RUN_CRON_TASK}<!-- ENDIF -->
 	</div>
+
 	<script type="text/javascript" src="{T_JQUERY_LINK}"></script>
 	<!-- IF S_ALLOW_CDN -->
-	<script type="text/javascript">window.jQuery || document.write('\x3Cscript src="{T_ASSETS_PATH}/javascript/jquery.min.js?assets_version={T_ASSETS_VERSION}">\x3C/script>');</script>
+		<script type="text/javascript">window.jQuery || document.write('\x3Cscript src="{T_ASSETS_PATH}/javascript/jquery.min.js?assets_version={T_ASSETS_VERSION}">\x3C/script>');</script>
 	<!-- ENDIF -->
 	<script type="text/javascript" src="{T_ASSETS_PATH}/javascript/core.js?assets_version={T_ASSETS_VERSION}"></script>
 	<!-- INCLUDEJS forum_fn.js -->
 	<!-- INCLUDEJS ajax.js -->
 	<script type="text/javascript" src="{T_TEMPLATE_PATH}/functions.js?assets_version={T_ASSETS_VERSION}"></script>
+
 	<!-- IF S_ALLOW_CDN -->
 		<script type="text/javascript">
 			(function($){
@@ -134,6 +143,7 @@
 			})(jQuery);
 		</script>
 	<!-- ENDIF -->
+
 	<!-- IF S_COOKIE_NOTICE -->
 		<script src="{T_ASSETS_PATH}/cookieconsent/cookieconsent.min.js?assets_version={T_ASSETS_VERSION}"></script>
 		<script>
@@ -156,9 +166,13 @@
 				})});
 		</script>
 	<!-- ENDIF -->
+
 	<!-- EVENT overall_footer_after -->
+
 	<!-- IF S_PLUPLOAD --><!-- INCLUDE plupload.html --><!-- ENDIF -->
+
 	{$SCRIPTS}
+
 	<!-- EVENT overall_footer_body_after -->
 </body>
 </html>

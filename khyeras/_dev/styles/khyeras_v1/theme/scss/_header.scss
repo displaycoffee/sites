@@ -1,14 +1,14 @@
 /* Header
 ========================================================================== */
 
-header#page-header {
+#page-header {
 	margin: 0 0 100px 0;
 }
 
 /* Header - Header bar
 ========================================================================== */
 
-header#page-header .headerbar {
+#page-header .headerbar {
 	background: url($images + 'header.jpg') center 0 no-repeat;	
 	background-size: cover;
 	height: 550px;
@@ -53,7 +53,7 @@ header#page-header .headerbar {
 /* Header - Nav top
 ========================================================================== */
 
-header#page-header .navbar {
+#page-header .navbar {
 	background: rgba($color-05, 0.75);
 	border-bottom: 1px solid $color-03;
 	position: fixed;
