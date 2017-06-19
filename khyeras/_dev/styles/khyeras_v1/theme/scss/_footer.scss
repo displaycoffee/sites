@@ -67,37 +67,33 @@ footer#page-footer {
 	border: 2px solid $color-03;
 	color: $color-08;
 	.alert_close {
-		float: right;
-		position: relative;
-		margin: -30px -30px 0 0;
-		@include sizing(20px, 20px);
-		&:before, &:after, .icon {
-			display: block;		
-			@include sizing(100%, 100%);	
-			position: absolute;
-		}
-		&:before, &:after {			
-			content: '';	
-			
-			background: $color-01;			
-		}
-		&:before {			
-			border: 2px solid $color-03;
-			z-index: 2;
-			border-radius: 100%;	
-			top: 0;
-			right: 0;
-		}
-		&:after {
-			z-index: 2;
-			top: 10px;
-			right: 10px;			
-		}
+		position: absolute;
+		top: -10px;
+		right: -10px;
+		z-index: 2;
+		@include sizing(24px, 24px);
+		background: $color-03;	
+		border-radius: 100%;
+		text-align: center;
 		.icon {
-			z-index: 3;
-			top: 2.5px;
-			right: 1px;
-			color: $color-03;
+			color: $color-01;	
+			line-height: 24px;
 		}
 	}
+	.alert_text {		
+		h3 {
+			color: $color-01;
+			background: $color-03;
+			padding: 5px 10px;
+			margin: -20px -20px 20px -20px;
+		}
+	}
+}
+
+/* Bottom hidden
+========================================================================== */
+
+.bottom-hidden {
+	height: 0;
+	overflow: hidden;
 }

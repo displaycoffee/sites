@@ -1,4 +1,4 @@
-/* Layout
+/* General layout
 ========================================================================== */
 
 .wrapper {
@@ -22,6 +22,30 @@
 		margin: 0 -20px;
 		.column {
 			padding: 0 20px;
+		}
+	}
+}
+
+/* Browser Upgrade / Browse Happy
+========================================================================== */
+
+.browserupgrade {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	background: $color-09;
+	border-bottom: 2px solid $color-09 - #333;
+	padding: 20px;
+	color: $color-08;
+	text-align: center;
+	font-size: rem(18px);
+	a {
+		color: $color-07;
+		font-weight: bold;
+		&:hover {
+			color: $color-08;
 		}
 	}
 }
@@ -59,4 +83,20 @@
 		opacity: 1;
 		z-index: 2;
 	}
+}
+
+/* Loading Indicator
+========================================================================== */
+
+.loading_indicator {
+	background: rgba($color-02, 0.65) url($images + 'loading.gif') center center no-repeat;
+	border-radius: 5px;
+	display: none;
+	margin-top: -50px;
+	margin-left: -50px;
+	@include sizing(50px, 50px);
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	z-index: 51;	
 }

@@ -447,24 +447,6 @@ fieldset.fields1 dl.pmlist dd.recipients {
 	margin-top: 0.3em;
 }
 
-/* jQuery popups
----------------------------------------- */
-
-.loading_indicator {
-	background: center center no-repeat;
-	border-radius: 5px;
-	display: none;
-	opacity: 0.8;
-	margin-top: -50px;
-	margin-left: -50px;
-	height: 50px;
-	width: 50px;
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	z-index: 51;
-}
-
 /* Miscellaneous styles
 ---------------------------------------- */
 
@@ -781,10 +763,6 @@ a.lastsubject:hover {
 a.feed-icon-forum {
 	float: right;
 	margin: 3px;
-}
-
-a.anchor {
-	display: block;
 }
 
 /* Content
@@ -3575,14 +3553,6 @@ input.button1:focus, input.button2:focus, input.button3:focus {
 
 input.disabled {
 	color: #666666;
-}
-
-/* jQuery popups
----------------------------------------- */
-
-.loading_indicator {
-	background-color: #000000;
-	background-image: url("./images/loading.gif");
 }
 
 /* Notifications
