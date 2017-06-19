@@ -152,6 +152,23 @@
 				padding: 0 0 100% 0;				
 			}
 		}
+		.welcome-buttons {
+			text-align: center;
+			@include flex-flow(row wrap);
+			margin: 0 -2.5px 15px -2.5px;
+			li {
+				width: 50%;
+				@include flex(grow);
+				a {
+					color: $color-01;
+					background: #547c45;
+					border-bottom: 3px solid #547c45 - #333;
+					display: block;
+					padding: 5px 10px;
+					margin: 0 2.5px 5px 2.5px;
+				}				
+			}
+		}
 		ul {
 			list-style: none;
 			margin: 0 0 20px 0;

@@ -151,6 +151,23 @@
 								<!-- EVENT navbar_header_username_append -->
 								{$DISPLAY_AVATAR}
 								{$DISPLAY_TIME}
+								<ul class="welcome-buttons">
+									<li>
+										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
+									</li>
+									<li>
+										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
+									</li>
+									<li>
+										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
+									</li>
+									<li>
+										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
+									</li>
+									<li>
+										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
+									</li>
+								</ul>
 								<ul>
 									<li>
 										<!-- IF S_DISPLAY_PM -->
@@ -163,7 +180,7 @@
 											<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger">
 												<i class="icon fa-bell fa-fw" aria-hidden="true"></i>{L_NOTIFICATIONS}<strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
 											</a>
-											<!-- INCLUDE notification_dropdown.html -->
+											<div style="display: none;"><!-- INCLUDE notification_dropdown.html --></div>
 										<!-- ENDIF -->
 									</li>
 									<li class="cp-links">
