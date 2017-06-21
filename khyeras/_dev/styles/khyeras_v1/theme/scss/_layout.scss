@@ -155,7 +155,7 @@
 		.welcome-buttons {
 			text-align: center;
 			@include flex-flow(row wrap);
-			margin: 0 -2.5px 15px -2.5px;
+			margin: 0 -3.5px 15px -3.5px;
 			li {
 				width: 50%;
 				@include flex(grow);
@@ -163,9 +163,15 @@
 					color: $color-01;
 					background: $color-10;
 					text-shadow: 2px 1px 0 rgba($color-02, 1.0);
-					display: block;
+					border: 5px solid transparent;
+					outline: 1px solid $color-11;
 					padding: 5px 10px;
-					margin: 0 2.5px 5px 2.5px;
+					background-clip: padding-box;
+					display: block;
+					margin: 0 3.5px 7px 3.5px;
+					&:hover {
+						outline: 1px solid $color-04;
+					}
 				}				
 			}
 		}
