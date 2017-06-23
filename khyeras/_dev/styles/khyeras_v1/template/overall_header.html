@@ -151,62 +151,78 @@
 								<!-- EVENT navbar_header_username_append -->
 								{$DISPLAY_AVATAR}
 								{$DISPLAY_TIME}
-								<ul class="welcome-buttons style02">
-									<li>
-										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
-									</li>
-									<li>
-										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
-									</li>
-									<li>
-										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
-									</li>
-									<li>
-										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
-									</li>
-									<li>
-										<a href="google.com"><i class="icon fa-cogs fa-fw" aria-hidden="true"></i>Text</a>
-									</li>
-								</ul>
-								<ul>
-									<li class="cp-links">
-										<!-- IF S_DISPLAY_PM -->
-											<a href="{U_PRIVATEMSGS}">
-												<i class="icon fa-inbox fa-fw" aria-hidden="true"></i>{L_PRIVATE_MESSAGES}<strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
+								<ul class="welcome-buttons">									
+									<!-- EVENT navbar_header_profile_list_before -->
+									<!-- IF S_DISPLAY_PM -->
+										<li>
+											<a class="button" href="{U_PRIVATEMSGS}">
+												<i class="icon fa-inbox fa-fw" aria-hidden="true"></i><span>{L_PRIVATE_MESSAGES}</span>
+												<strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
 											</a>
-										<!-- ENDIF -->
-										<span class="bullet">&bull;</span> 
-										<!-- IF S_NOTIFICATIONS_DISPLAY -->
-											<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger">
-												<i class="icon fa-bell fa-fw" aria-hidden="true"></i>{L_NOTIFICATIONS}<strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
+										</li>
+									<!-- ENDIF -->
+									<!-- IF S_NOTIFICATIONS_DISPLAY -->
+										<li class="dropdown-container">
+											<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="button dropdown-trigger dropdown-toggle">
+												<i class="icon fa-bell fa-fw" aria-hidden="true"></i><span>{L_NOTIFICATIONS}</span>
+												<strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
 											</a>
-											<div style="display: none;"><!-- INCLUDE notification_dropdown.html --></div>
-											<span class="bullet">&bull;</span> 
-										<!-- ENDIF -->
-									</li>
-									<li class="cp-links">
-										<!-- IF U_ACP -->
-											<a href="{U_ACP}" title="{L_ACP}">
-												<i class="icon fa-cogs fa-fw" aria-hidden="true"></i>{L_ACP_SHORT}
-											</a><span class="bullet">&bull;</span> 
-										<!-- ENDIF -->		
-										<!-- IF U_MCP -->
-											<a href="{U_MCP}" title="{L_MCP}">
-												<i class="icon fa-gavel fa-fw" aria-hidden="true"></i>{L_MCP_SHORT}
-											</a><span class="bullet">&bull;</span> 
-										<!-- ENDIF -->
-										<!-- IF S_REGISTERED_USER -->
-											<a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem">
-												<i class="icon fa-sliders fa-fw" aria-hidden="true"></i>{L_PROFILE}
-											</a><span class="bullet">&bull;</span> 
-										<!-- ENDIF -->
-									</li>
+											<!-- INCLUDE notification_dropdown.html -->
+										</li>
+									<!-- ENDIF -->
+									<!-- IF U_ACP -->
+										<li>
+											<a class="button" href="{U_ACP}" title="{L_ACP}">
+												<i class="icon fa-cogs fa-fw" aria-hidden="true"></i><span>{L_ACP_SHORT}</span>
+											</a>
+										</li>
+									<!-- ENDIF -->	
+									<!-- IF U_MCP -->
+										<li>
+											<a class="button" href="{U_MCP}" title="{L_MCP}">
+												<i class="icon fa-gavel fa-fw" aria-hidden="true"></i><span>{L_MCP_SHORT}</span>
+											</a> 
+										</li>	
+									<!-- ENDIF -->
+									<!-- IF S_REGISTERED_USER -->
+										<li>
+											<a class="button" href="{U_PROFILE}" title="{L_PROFILE}">
+												<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_PROFILE}</span>
+											</a>
+										</li>
+									<!-- ENDIF -->
+									<li>
+										<a class="button" href="{U_USER_PROFILE}" title="{L_READ_PROFILE}">
+											<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
+										</a>
+									</li>									
+									<li>
+										<a class="button" href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">
+											<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
+										</a>
+									</li>									
+									<!-- EVENT navbar_header_profile_list_after -->
 								</ul>
 								<!-- EVENT navbar_header_user_profile_append -->
 							<!-- ELSE -->
 								<h5>Welcome, {L_GUEST}.</h5>
 								{$DISPLAY_AVATAR}
 								{$DISPLAY_TIME}
+								<ul class="welcome-buttons">
+									<li>
+										<a class="button" href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">
+											<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
+										</a>
+									</li>	
+									<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+										<li>
+											<a class="button" href="{U_REGISTER}">
+												<i class="icon fa-pencil-square-o fa-fw" aria-hidden="true"></i><span>{L_REGISTER}</span>
+											</a>
+										</li>
+									<!-- ENDIF -->
+								</ul>
+								<!-- EVENT navbar_header_logged_out_content -->	
 							<!-- ENDIF -->
 						</div>
 					</div>					
@@ -224,36 +240,12 @@
 												</a>
 											</li>
 										<!-- ENDIF -->
-										<!-- EVENT navbar_header_profile_list_before -->
-										<li>
-											<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem">
-												<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
-											</a>
-										</li>
-										<!-- EVENT navbar_header_profile_list_after -->
-										<li>
-											<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">
-												<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
-											</a>
-										</li>
 									</ul>
 								</div>
 							</div>							
 						</li>						
 					<!-- ELSE -->
-						<li class="rightside">
-							<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">
-								<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
-							</a>
-						</li>
-						<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
-							<li class="rightside">
-								<a href="{U_REGISTER}" role="menuitem">
-									<i class="icon fa-pencil-square-o  fa-fw" aria-hidden="true"></i><span>{L_REGISTER}</span>
-								</a>
-							</li>
-						<!-- ENDIF -->
-						<!-- EVENT navbar_header_logged_out_content -->
+
 					<!-- ENDIF -->
 				</ul>
 				<ul id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">

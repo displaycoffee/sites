@@ -23,6 +23,7 @@ body {
 img {
 	max-width: 100%;
 	@include sizing(auto, auto);
+	display: block;
 }
 
 h1, h2, h3, h4, h5, h6, p, figure, pre, code {

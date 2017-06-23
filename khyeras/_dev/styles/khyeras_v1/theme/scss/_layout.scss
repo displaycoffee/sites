@@ -73,14 +73,18 @@
 		z-index: -1;
 		margin: 0 !important;
 		padding: 10px 20px;
+		text-align: left;
 		.dropdown-contents {
 			list-style: none;
 			margin: 0 0 -3px 0;
 			min-width: 100px;
 			li a {
 				display: block;
-				padding: 0 0 3px 0;
-				white-space: nowrap; 
+				padding: 0 0 3px 0; 
+				color: $color-01;
+				&:hover {
+					color: $color-06;
+				}				
 			}
 		}
 	}
@@ -115,7 +119,7 @@
 		padding: 20px 20px 0 20px;
 		background: rgba($color-02, 0.20);
 		border: 1px solid $color-04;
-		box-shadow: 3px 3px 6px rgba(0,0,0,0.30);
+		box-shadow: 3px 3px 6px rgba($color-02, 0.30);
 	}
 	.introduction {
 		p:first-child:first-line {
@@ -127,24 +131,23 @@
 	}
 	.user-information {
 		position: relative;	
-		&:before, &:after {
-			content: '';
-			display: block;
-		}	
 		&:before {
-			@include sizing(85px, 95px);
+			content: '';
+			display: block;			
+			@include sizing(90px, 100px);
 			float: right;
 		}
-		&:after {
-			clear: both;
-		}
+		ul {
+			list-style: none;
+			margin: 0 0 20px 0;
+		}		
 		.user-avatar {
 			position: absolute;
 			right: -65px;
 			top: -65px;		
 			border-radius: 100%;
 			border: 5px solid $color-04;
-			box-shadow: 2px 2px 4px rgba(0,0,0,0.30);
+			box-shadow: 2px 2px 4px rgba($color-02, 0.30);
 			overflow: hidden;
 			width: 150px;
 			.image-wrap {
@@ -153,123 +156,85 @@
 			}
 		}
 		.welcome-buttons {
+			clear: both;
 			text-align: center;
 			@include flex-flow(row wrap);
-			li {
+			margin: 0 -2.5px 15px -2.5px;
+			& > li {
 				width: 50%;
 				@include flex(grow);
-				a {
-					i {
-						margin: 0 5px 0 0;
-					}
+				& > a {
+					display: block;
+					margin: 0 2.5px 7px 2.5px;
 				}				
-			}
-			&.style01 {
-				margin: 0 -3.5px 15px -3.5px;
-				li {
-
-					a {
-						color: $color-01;
-						background: $color-10;
-						text-shadow: 2px 1px 0 $color-02;
-						border: 5px solid transparent;
-						outline: 1px solid $color-11;
-						padding: 5px 10px;
-						background-clip: padding-box;
-						display: block;
-						margin: 0 3.5px 7px 3.5px;
-						&:hover {
-							outline: 1px solid $color-04;
-						}
-					}				
-				}
-			}
-			&.style02 {
-				margin: 0 -2.5px 15px -2.5px;
-				li {
-					a {
-						color: $color-01;
-						background: $color-10;
-						text-shadow: 2px 1px 0 $color-02;
-						border: 1px solid $color-11;
-						padding: 8px 10px;
-						display: block;
-						margin: 0 2.5px 7px 2.5px;
-						&:hover {
-							border: 1px solid $color-04;
-						}
-					}				
-				}
-			}
-			&.style03 {
-				margin: 0 -2.5px 15px -2.5px;
-				li {
-					a {
-						color: $color-01;
-						background: $color-10;
-						text-shadow: 2px 1px 0 $color-02;
-						padding: 10px;
-						display: block;
-						margin: 0 2.5px 7px 2.5px;
-					}				
-				}
-			}
-			&.style04 {
-				margin: 0 -2.5px 15px -2.5px;
-				li {
-					a {
-						color: $color-01;
-						background: $color-10;
-						text-shadow: 2px 1px 0 $color-02;
-						//border: 1px solid $color-10 + #000;
-						border-radius: 3px;
-						padding: 10px;
-						display: block;
-						margin: 0 2.5px 7px 2.5px;						
-					}				
-				}
-			}				
-			&.style05 {
-				margin: 0 -2.5px 15px -2.5px;
-				li {
-					a {
-						color: $color-01;
-						background: $color-10;
-						text-shadow: 2px 1px 0 $color-02;
-						border: 1px solid $color-10 + #000;
-						padding: 8px 10px;
-						display: block;
-						margin: 0 2.5px 7px 2.5px;
-						box-shadow: inset 0 0 20px 1px rgba($color-02, 0.70);
-						&:hover {
-							border: 1px solid $color-04;
-						}
-					}				
-				}
-			}	
-			&.style06 {
-				margin: 0 -2.5px 15px -2.5px;
-				li {
-					a {
-						color: $color-01;
-						background: $color-10;
-						border-bottom: 4px solid $color-11;
-						padding: 8px 10px;
-						display: block;
-						margin: 0 2.5px 7px 2.5px;
-					}				
-				}
 			}																														
 		}
-		ul {
-			list-style: none;
-			margin: 0 0 20px 0;
-		}
-		.cp-links {
+	}
+}
+
+/* Notifications
+========================================================================== */
+
+.badge {
+	background-color: $color-11;
+	color: $color-01;
+	border-radius: 3px;
+	text-align: center;
+	font-weight: normal;
+	display: inline-block;
+	text-shadow: none;
+	padding: 0 5px;
+	margin: 0 0 0 5px;
+	height: 20px;
+	line-height: 20px;
+	&.hidden {
+		display: none;
+	}
+}
+
+#notification_list {
+	background: $color-05;
+	border: 1px solid $color-02;
+	top: 45px;
+	left: auto;
+	right: 0;
+	.pointer {
+		display: none;
+	}
+	.header {
+		font-family: $font-02;
+		font-variant: small-caps;
+		font-size: rem(20px);
+		.header_settings {
+			display: block;
+			font-family: $font-01;
+			font-variant: none;
+			font-size: rem(15px);
 			margin: 0 0 10px 0;
-			.bullet:last-child {
-				display: none;
+			& > a, & > span {
+				@include inline-block(middle);
 			}
 		}
 	}
+	ul li {
+		.notification-block {
+			@include flex-flow(row nowrap);			
+			img {
+				flex: 0 0 auto;
+				max-width: 75px;
+				max-height: 75px;
+			}
+			.notification_text {
+				@include flex(base);
+				margin: 0 0 0 10px;
+				p {
+					margin: 0 0 2px 0;
+				}
+				.notification-time {
+					text-align: right;
+					font-style: italic;
+				}
+			}
+		}
+	}	
 }

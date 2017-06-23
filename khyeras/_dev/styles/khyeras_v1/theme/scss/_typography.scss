@@ -80,8 +80,6 @@ body {
 }
 
 a {
-	direction: ltr;
-	unicode-bidi: embed;	
 	color: $color-06;
 	@include transition(color 0.3s ease-in-out);
 	text-decoration: none;
@@ -135,4 +133,51 @@ h4 {
 
 h5, h6 {
 	font-size: rem(22px);
+}
+
+/* Icons
+========================================================================== */
+
+.icon  {
+	display: inline-block;
+  	font-weight: normal;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-family: 'FontAwesome';
+  	font-size: rem(16px);
+  	line-height: 1;
+  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon.rpg-icon {
+	font-family: 'Khyeras Icons'; 
+}
+
+.icon.icon-xl {
+	font-size: rem(20px);
+}
+
+.icon.icon-lg {
+	font-size: rem(16px);
+}
+
+.icon.icon-md {
+	font-size: rem(10px);
+}
+
+.icon.icon-sm {
+	font-size: rem(8px);
+}
+
+.icon-tiny {
+	width: 12px;
+	transform: scale(0.65, 0.75);
+	vertical-align: text-bottom;
+	font-size: rem(16px);
+}
+
+.icon + span, span + .icon {
+	margin: 0 0 0 5px;
 }
