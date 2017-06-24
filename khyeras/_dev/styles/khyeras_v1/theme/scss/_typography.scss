@@ -178,6 +178,6 @@ h5, h6 {
 	font-size: rem(16px);
 }
 
-.icon + span, span + .icon {
+.icon + span:not(.sr-only), span:not(.sr-only) + .icon {
 	margin: 0 0 0 5px;
 }

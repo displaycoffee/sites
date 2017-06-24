@@ -99,7 +99,12 @@
 			.dropdown {
 				top: 45px;
 				background: $color-03;
-				border-bottom: 3px solid $color-04;
+				border: 0;
+				border-radius: 0;
+			}
+			&.dropdown-left .dropdown {
+				left: 0;
+				right: auto;
 			}
 		}
 	}	
