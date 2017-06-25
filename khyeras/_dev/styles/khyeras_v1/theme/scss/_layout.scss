@@ -116,6 +116,7 @@
 			}
 			&.dropdown-nonscroll {
 				max-height: none;
+				overflow: visible;
 				padding: 0;
 			}
 		}

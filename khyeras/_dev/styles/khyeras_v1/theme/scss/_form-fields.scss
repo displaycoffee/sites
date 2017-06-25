@@ -3,7 +3,6 @@
 
 @include placeholder {
 	color: $color-02;
-	font-style: italic;
 	@include transition(color 0.3s ease-in-out);
 }
 
@@ -17,55 +16,43 @@ fieldset {
 	border: 0;
 }
 
-input[type='text'], input[type='password'], input[type='email'], input[type='url'], input[type='button'], input[type='reset'], input[type='submit'], button, textarea {
+.inputbox, select, .button, .button1, .button2 {	
 	outline: 0;
-}
-
-input[type='text'], input[type='password'], input[type='email'], input[type='url'], select {
-	line-height: 35px;
-	height: 35px;
 	border: 0;
+	border-radius: 3px;	
+	line-height: rem(20px);
 }
 
-input[type='text'], input[type='password'], input[type='email'], input[type='url'], select, textarea {
-	background: $color-03;
-	border-radius: 3px;
-	color: $color-02;
+.inputbox, select {
+	background: $color-01;
+	color: $color-08;
 	width: 100%;
 	margin: 0 0 20px 0;
-}
-
-input[type='text'], input[type='password'], input[type='email'], input[type='url'], select {
-	padding: 0 10px;
-}
-
-textarea {
 	padding: 10px;
-	border: 0;
 }
 
 select option {
-	color: $color-02;
+	color: $color-08;
+	min-height: 0;
+	padding: 0 0 2px 0;
 }
 
-input[type='submit'], input[type='button'], .button {
+.button, .button1, .button2 {
+	display: inline-block;
 	background: $color-10;
-	color: $color-01;
-	border-radius: 3px;
-	border: 0;
-	padding: 10px 20px;
+	color: $color-01;	
 	text-shadow: 1px 1px 0 rgba($color-02, 0.95);
+	text-align: center;
 	@include transition(background 0.3s ease-in-out);
+	padding: 10px 20px;
+	&, .icon {
+		font-size: rem(15px);
+	}
 	&:hover {
 		background: $color-04;
-	}
-}
-
-a.button {
-	display: inline-block;
-	line-height: normal;
-	&:hover {
-		color: inherit;
+		&, .icon {
+			color: $color-01;
+		}
 	}
 }
 

@@ -65,10 +65,8 @@
 		margin: 0;
 		list-style: none;
 		text-align: center;
-		justify-content: center;
-		@include flex-flow(row nowrap);
 		& > li {	
-			position: relative;		
+			@include inline-block(middle);
 			& > a {
 				padding: 10px 20px;
 				display: block;
@@ -109,4 +107,35 @@
 			}
 		}
 	}	
+}
+
+/* Header - Nav top - Search Box
+========================================================================== */
+
+#page-header .navbar #search-box {
+	min-width: 400px;
+	right: 0;
+	left: auto;
+	.dropdown-contents form fieldset {
+		position: relative;
+		padding: 0 130px 0 0;
+		input[type="search"] {
+			margin: 0;
+		}
+		.button {
+			width: 60px;
+			position: absolute;
+			top: 0;
+			z-index: 2;
+			&:hover {
+				background: $color-03;
+			}
+		}
+		button {
+			right: 65px;
+		}
+		a.button {
+			right: 0;
+		}
+	}
 }
