@@ -1,6 +1,18 @@
 /* General layout
 ========================================================================== */
 
+.test {
+	width: 500px;
+	padding: 20px;
+	margin: 0 auto;
+	background: gray;
+	.inside {
+		max-height: 300px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+}
+
 .wrapper {
 	max-width: 1300px;
 	margin: 0 auto;
@@ -87,6 +99,7 @@
 			max-height: 300px;
 			overflow-y: auto;
 			overflow-x: hidden;
+			padding: 0 20px 0 0;
 			&, .icon {
 				font-size: rem(15px);
 			}
@@ -100,6 +113,10 @@
 				display: block;
 				padding: 0 0 3px 0; 
 				white-space: nowrap;				
+			}
+			&.dropdown-nonscroll {
+				max-height: none;
+				padding: 0;
 			}
 		}
  	}
