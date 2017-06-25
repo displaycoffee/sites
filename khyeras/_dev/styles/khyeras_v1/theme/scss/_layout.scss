@@ -80,8 +80,7 @@
 		padding: 20px;
 		text-align: left;
 		background: $color-05;
-		border: 1px solid $color-12;	
-		border-radius: 3px;		
+		border: 1px solid $color-03;	
 		.dropdown-contents {
 			list-style: none;
 			margin: 0 0 -3px 0;			
@@ -135,6 +134,31 @@
 	z-index: 51;	
 }
 
+/* Breadcrumbs
+========================================================================== */
+
+#nav-breadcrumbs {
+	margin: 0 0 20px 0;
+	ul {
+		list-style: none;
+		margin: 0 -2.5px;
+		padding: 0 150px 0 0;
+		li {
+			@include inline-block(middle);
+			padding: 0 2.5px;
+			span {
+				margin: 0;
+			}
+			.icon {
+				margin: 0 5px 0 0;
+			}
+			.fa-chevron-right {
+				font-size: rem(12px);
+			}
+		}
+	}
+}
+
 /* Page welcome
 ========================================================================== */
 
@@ -163,8 +187,7 @@
 			float: right;
 		}
 		ul {
-			list-style: none;
-			margin: 0 0 20px 0;
+			list-style: none;			
 		}		
 		.user-avatar {
 			position: absolute;
@@ -190,14 +213,14 @@
 				@include flex(grow);
 				& > a {
 					display: block;
-					margin: 0 2.5px 7px 2.5px;
+					margin: 0 2.5px 5px 2.5px;
 				}				
 			}																														
 		}
 	}
 }
 
-/* Notifications
+/* Badge
 ========================================================================== */
 
 .badge {
@@ -217,16 +240,19 @@
 	}
 }
 
+/* Notifications
+========================================================================== */
+
 #notification_list {
-	min-width: 400px;
+	min-width: 450px;
 	.dropdown-contents {
-		margin: 35px 0 0 0;
+		margin: 40px 0 0 0;
 	}
 	.header {
 		font-family: $font-02;
 		font-variant: small-caps;
 		font-size: rem(20px);
-		background: $color-03;
+		background: $color-04;
 		padding: 0 150px 0 10px;
 		height: 40px;
 		line-height: 40px;
@@ -245,47 +271,54 @@
 			font-size: rem(14px);
 		}
 	}
-	ul li {
-		position: relative;
-		margin: 0 0 10px 0;
-		.notification-block {
-			@include flex-flow(row nowrap);				
-			img {
-				flex: 0 0 auto;
-				max-width: 50px;
-				max-height: 50px;
-				border: 1px solid $color-12;
-			}
-			.notification_text {
-				@include flex(base);
-				margin: 0 0 0 10px;
-				p {
-					margin: 0 0 2px 0;
+	ul {
+		margin: 0;
+		li {
+			position: relative;
+			padding: 0 0 10px 0;
+			margin: 0 0 10px 0;
+			border-bottom: 1px solid $color-03;
+			.notification-block {
+				@include flex-flow(row nowrap);				
+				img {
+					flex: 0 0 auto;
+					max-width: 50px;
+					max-height: 50px;
+					border: 1px solid $color-03;
 				}
-				.notification-time {
-					text-align: right;
-					font-style: italic;
+				.notification_text {
+					@include flex(base);
+					margin: 0 0 0 10px;
+					p {
+						margin: 0 0 2px 0;
+						&:last-child {
+							margin: 0;
+						}
+					}
+					.notification-time {
+						text-align: right;
+						font-size: rem(13px);
+					}
 				}
 			}
-		}
-		.icon-mark {
-			display: none;
-			position: absolute;
-			top: 2px;
-			right: 2px;
-			color: $color-06;
-			text-align: center;		
-			.icon {
-				font-size: rem(16px);
-			}
-			&:hover {
-				color: $color-07;
-			}
-		}
-		&:hover {
 			.icon-mark {
+				display: none;
+				position: absolute;
+				top: 2px;
+				right: 2px;
+				z-index: 2;
+				color: $color-06;
+				text-align: center;		
+				.icon {
+					font-size: rem(16px);
+				}
+			}
+			&:hover .icon-mark {
 				display: block;
 			}
 		}
+	}
+	.footer {
+		text-align: center;
 	}
 }

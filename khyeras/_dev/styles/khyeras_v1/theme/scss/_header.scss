@@ -2,16 +2,16 @@
 ========================================================================== */
 
 #page-header {
-	margin: 0 0 100px 0;
+	margin: 0 0 60px 0;
 }
 
 /* Header - Header bar
 ========================================================================== */
 
 #page-header .headerbar {
-	background: url($images + 'header.jpg') center 0 no-repeat;	
+	background: url($images + 'header.jpg') center -50px no-repeat;	
 	background-size: cover;
-	height: 550px;
+	height: 500px;
 	overflow: hidden;
 	position: relative;
 	padding: 0 20px;
@@ -55,7 +55,7 @@
 
 #page-header .navbar {
 	background: rgba($color-05, 0.75);
-	border-bottom: 1px solid $color-03;
+	border-bottom: 1px solid $color-04;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -98,8 +98,9 @@
 			}
 			.dropdown {
 				top: 45px;
-				background: $color-03;
-				border: 0;
+				background: $color-04;
+				border: 1px solid $color-03;
+				border-top: 0;
 				border-radius: 0;
 			}
 			&.dropdown-left .dropdown {

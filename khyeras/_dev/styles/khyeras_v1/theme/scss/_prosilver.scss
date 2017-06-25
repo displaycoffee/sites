@@ -131,41 +131,6 @@ a.header-avatar span:after {
 	width: 20px;
 }
 
-/* Responsive breadcrumbs
-----------------------------------------*/
-.breadcrumbs .crumb {
-	float: left;
-	font-weight: bold;
-	word-wrap: normal;
-}
-
-.breadcrumbs .crumb:before {
-	content: '\2039';
-	font-weight: bold;
-	padding: 0 0.5em;
-}
-
-.breadcrumbs .crumb:first-child:before {
-	content: none;
-}
-
-.breadcrumbs .crumb a {
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	vertical-align: bottom;
-	overflow: hidden;
-}
-
-.breadcrumbs.wrapped .crumb a { letter-spacing: -.3px; }
-.breadcrumbs.wrapped .crumb.wrapped-medium a { letter-spacing: -.4px; }
-.breadcrumbs.wrapped .crumb.wrapped-tiny a { letter-spacing: -.5px; }
-
-.breadcrumbs .crumb.wrapped-max a { max-width: 120px; }
-.breadcrumbs .crumb.wrapped-wide a { max-width: 100px; }
-.breadcrumbs .crumb.wrapped-medium a { max-width: 80px; }
-.breadcrumbs .crumb.wrapped-small a { max-width: 60px; }
-.breadcrumbs .crumb.wrapped-tiny a { max-width: 40px; }
-
 /* Table styles
 ----------------------------------------*/
 table.table1 {
@@ -523,62 +488,6 @@ form > p.post-notice strong {
 .member-search strong {
 	font-size: 0.95em;
 }
-
-// .notification_list ul li img {
-// 	float: left;
-// 	max-height: 50px;
-// 	max-width: 50px;
-// 	width: auto !important;
-// 	height: auto !important;
-// 	margin-right: 5px;
-// }
-
-// .notification_list ul li p {
-// 	margin-bottom: 4px;
-// 	font-size: 1em;
-// }
-
-// .notification_list p.notification-reference,
-// .notification_list p.notification-location,
-// .notification_list li a p.notification-reason {
-// 	overflow: hidden;
-// 	text-overflow: ellipsis;
-// 	white-space: nowrap;
-// }
-
-// .notification_list p.notification-time {
-// 	font-size: 0.9em;
-// 	margin: 0;
-// 	text-align: right;
-// }
-
-// .notification_list div.notifications {
-// 	margin-left: 50px;
-// 	padding: 5px;
-// }
-
-// .notification_list div.notifications a {
-// 	display: block;
-// }
-
-// .notification_list p.notifications_title {
-// 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-// 	font-size: 1.2em !important;
-// }
-
-// .notification_list p.notifications_title strong {
-// 	font-weight: bold;
-// }
-
-// .notification_list p.notifications_time {
-// 	font-size: 0.9em !important;
-// }
-
-// .notification_text {
-// 	margin-left: 58px;
-// }
-
-
 
 /* Links
 ========================================================================== */
@@ -3153,20 +3062,6 @@ fieldset.quick-login input.inputbox {
 input.disabled {
 	color: #666666;
 }
-
-/* Notifications
----------------------------------------- */
-
-// .notification_list p.notification-time {
-// 	color: #4C5D77;
-// }
-
-// li.notification-reported strong, li.notification-disapproved strong {
-// 	color: #D31141;
-// }
-
-
-
 
 /* Responsive
 ========================================================================== */

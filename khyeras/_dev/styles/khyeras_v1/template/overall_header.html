@@ -117,6 +117,27 @@
 			<!-- EVENT overall_header_headerbar_after -->
 		</header>
 
+		<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
+			<div class="wrapper">
+				<ul>
+					<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
+					<!-- EVENT overall_header_breadcrumbs_before -->
+					<!-- IF U_SITE_HOME -->
+						<li class="crumb" {$MICRODATA}><a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home"><i class="icon fa-home fa-fw" aria-hidden="true"></i><span itemprop="title">{L_SITE_HOME}</span></a></li>
+					<!-- ENDIF -->
+					<!-- EVENT overall_header_breadcrumb_prepend -->
+						<li class="crumb" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><!-- IF not U_SITE_HOME --><i class="icon fa-home fa-fw"></i><!-- ENDIF --><span itemprop="title">{L_INDEX}</span></a></li>
+					<!-- BEGIN navlinks -->
+						<!-- EVENT overall_header_navlink_prepend -->
+						<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><i class="icon fa-chevron-right fa-fw"></i><a href="{navlinks.U_VIEW_FORUM}" itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a></li>
+						<!-- EVENT overall_header_navlink_append -->
+					<!-- END navlinks -->
+					<!-- EVENT overall_header_breadcrumb_append -->
+					<!-- EVENT overall_header_breadcrumbs_after -->
+				</ul>	
+			</div>		
+		</nav>
+
 		<section id="page-welcome" class="page-welcome">
 			<div class="wrapper">
 				<div class="welcome-inner">
@@ -126,8 +147,18 @@
 							<p><a href="//google.com">Read more...</a></p>
 						</div>
 						<div class="column">
-							<h5>Something</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex vel, labore. Illo modi voluptatibus laborum incidunt atque ratione tenetur adipisci, culpa sit totam, tempore beatae sint laboriosam reiciendis magnam quis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex vel, labore. Illo modi voluptatibus laborum incidunt atque ratione tenetur adipisci, culpa sit totam, tempore beatae sint laboriosam reiciendis magnam quis.</p>
+							<h5>Announcements</h5>
+							<ul>
+								<li><a href="/">Announcement #01</a></li>
+								<li><a href="/">Announcement #02</a></li>
+								<li><a href="/">Announcement #03</a></li>
+							</ul>
+							<h5>Events</h5>
+							<ul>
+								<li><a href="/">Event #01</a></li>
+								<li><a href="/">Event #02</a></li>
+								<li><a href="/">Event #03</a></li>
+							</ul>							
 						</div>
 						<div class="user-information column">
 							<!-- DEFINE $DISPLAY_TIME -->
@@ -200,7 +231,14 @@
 										<a class="button" href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">
 											<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
 										</a>
-									</li>									
+									</li>	
+									<!-- IF U_RESTORE_PERMISSIONS -->
+										<li>
+											<a class="button" href="{U_RESTORE_PERMISSIONS}" title="{L_RESTORE_PERMISSIONS}">
+												<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
+											</a>
+										</li>
+									<!-- ENDIF -->	
 									<!-- EVENT navbar_header_profile_list_after -->
 								</ul>
 								<!-- EVENT navbar_header_user_profile_append -->
@@ -227,47 +265,6 @@
 						</div>
 					</div>					
 				</div>
-				<ul>
-					<!-- IF S_REGISTERED_USER -->						
-						<li id="username_logged_in" class="rightside <!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF -->">							
-							<div class="header-profile">
-								<div>
-									<ul>
-										<!-- IF U_RESTORE_PERMISSIONS -->
-											<li>
-												<a href="{U_RESTORE_PERMISSIONS}">
-													<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
-												</a>
-											</li>
-										<!-- ENDIF -->
-									</ul>
-								</div>
-							</div>							
-						</li>						
-					<!-- ELSE -->
-
-					<!-- ENDIF -->
-				</ul>
-				<ul id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
-					<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
-					<!-- EVENT overall_header_breadcrumbs_before -->
-					<li class="breadcrumbs">
-						<!-- IF U_SITE_HOME -->
-							<span class="crumb" {$MICRODATA}><a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home"><i class="icon fa-home fa-fw" aria-hidden="true"></i><span itemprop="title">{L_SITE_HOME}</span></a></span>
-						<!-- ENDIF -->
-						<!-- EVENT overall_header_breadcrumb_prepend -->
-							<span class="crumb" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><!-- IF not U_SITE_HOME --><i class="icon fa-home fa-fw"></i><!-- ENDIF --><span itemprop="title">{L_INDEX}</span></a></span>
-
-						<!-- BEGIN navlinks -->
-							<!-- EVENT overall_header_navlink_prepend -->
-							<span class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><a href="{navlinks.U_VIEW_FORUM}" itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a></span>
-							<!-- EVENT overall_header_navlink_append -->
-						<!-- END navlinks -->
-						<!-- EVENT overall_header_breadcrumb_append -->
-					</li>
-					<!-- EVENT overall_header_breadcrumbs_after -->
-
-				</ul>
 			</div>
 		</section>
 
