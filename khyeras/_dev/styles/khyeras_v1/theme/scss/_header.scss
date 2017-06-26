@@ -112,7 +112,7 @@
 /* Header - Nav top - Search Box
 ========================================================================== */
 
-#page-header .navbar #search-box {
+#page-header .navbar > ul > li.dropdown-container .search-box {
 	min-width: 400px;
 	right: 0;
 	left: auto;

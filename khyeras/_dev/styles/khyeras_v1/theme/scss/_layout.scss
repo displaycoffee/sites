@@ -1,38 +1,26 @@
 /* General layout
 ========================================================================== */
 
-.test {
-	width: 500px;
-	padding: 20px;
-	margin: 0 auto;
-	background: gray;
-	.inside {
-		max-height: 300px;
-		overflow-y: auto;
-		overflow-x: hidden;
-	}
-}
-
 .wrapper {
 	max-width: 1300px;
 	margin: 0 auto;
 	padding: 0 20px;
 }
 
-.row {
+.flex-row {
 	@include flex-flow(row wrap);
-	.column {
+	.flex-column {
 		@include flex(base);
 	}
-	&.row-10 {
+	&.flex-row-10 {
 		margin: 0 -10px;
 		.column {
 			padding: 0 10px;
 		}
 	}
-	&.row-20 {
+	&.flex-row-20 {
 		margin: 0 -20px;
-		.column {
+		.flex-column {
 			padding: 0 20px;
 		}
 	}
@@ -177,17 +165,24 @@
 	}
 }
 
+/* Main Boxes (Inner)
+========================================================================== */
+
+#page-welcome, .forabg, .forumbg, .panel {
+	.inner {
+		padding: 20px 20px 0 20px;
+		background: rgba($color-02, 0.20);
+		border: 1px solid $color-04;
+		box-shadow: 3px 3px 6px rgba($color-02, 0.30);	
+		margin: 0 0 30px 0;	
+	}
+}
+
 /* Page welcome
 ========================================================================== */
 
 #page-welcome {
 	font-size: rem(15px);
-	.welcome-inner {
-		padding: 20px 20px 0 20px;
-		background: rgba($color-02, 0.20);
-		border: 1px solid $color-04;
-		box-shadow: 3px 3px 6px rgba($color-02, 0.30);
-	}
 	.introduction {
 		p:first-child:first-line {
 			font-family: $font-02;
@@ -339,4 +334,11 @@
 	.footer {
 		text-align: center;
 	}
+}
+
+/* Action Bar
+========================================================================== */
+
+.action-bar {
+	margin: 0 0 10px 0;
 }
