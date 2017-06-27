@@ -188,23 +188,6 @@ table.info tbody th {
 }
 
 /* General classes for placing floating blocks */
-.left-box {
-	float: left;
-	width: auto;
-	text-align: left;
-	max-width: 100%;
-}
-
-.left-box.profile-details {
-	width: 80%;
-}
-
-.right-box {
-	float: right;
-	width: auto;
-	text-align: right;
-	max-width: 100%;
-}
 
 dl.details dt {
 	float: left;
@@ -322,12 +305,6 @@ fieldset.fields1 dl.pmlist dd.recipients {
 	padding: 1px 3px;
 }
 
-.topic-poster {
-	float: left;
-	padding-right: 0.5em;
-	margin-top: 0.3em;
-}
-
 /* Miscellaneous styles
 ---------------------------------------- */
 
@@ -420,14 +397,6 @@ form > p.post-notice strong {
 
 /* Link Styles
 ---------------------------------------- */
-
-/* Coloured usernames */
-.username-coloured {
-	font-weight: bold;
-	display: inline !important;
-	padding: 0 !important;
-}
-
 /* Links on gradient backgrounds */
 th a {
 	text-decoration: none;
@@ -439,36 +408,6 @@ th a:hover {
 
 .jumpbox-cat-link,
 .jumpbox-forum-link { font-weight: bold; }
-
-
-/* Links for forum/topic lists */
-a.forumtitle {
-	font-weight: bold;
-	text-decoration: none;
-}
-
-a.forumtitle:hover {
-	text-decoration: underline;
-}
-
-a.topictitle {
-	font-weight: bold;
-	text-decoration: none;
-	display: inline;
-}
-
-a.topictitle:hover {
-	text-decoration: underline;
-}
-
-a.lastsubject {
-	font-weight: bold;
-	text-decoration: none;
-}
-
-a.lastsubject:hover {
-	text-decoration: underline;
-}
 
 /* Post body links */
 .postlink {
@@ -568,11 +507,7 @@ a.feed-icon-forum {
 	margin-right: 5px;
 }
 
-li.row strong {
-	font-weight: normal;
-}
-
-dl a.row-item-link {						/* topic row icon links */
+dl a.row-item-link {
 	display: block;
 	width: 30px;
 	height: 30px;
@@ -1843,34 +1778,34 @@ dl.details dd {
 /* Icon styles
 ---------------------------------------- */
 .icon.icon-blue, a:hover .icon.icon-blue {
-	color: #196db5;
+	color: $color-07;
 }
 
-.icon.icon-green, a:hover .icon.icon-green{
-	color: #1b9A1B;
+.icon.icon-green, a:hover .icon.icon-green {
+	color: $color-06;
 }
 
-.icon.icon-red, a:hover .icon.icon-red{
-	color: #BC2A4D;
+.icon.icon-red, a:hover .icon.icon-red {
+	color: $color-11;
 }
 
-.icon.icon-orange, a:hover .icon.icon-orange{
+.icon.icon-orange, a:hover .icon.icon-orange {
 	color: #FF6600;
 }
 
-.icon.icon-bluegray, a:hover .icon.icon-bluegray{
+.icon.icon-bluegray, a:hover .icon.icon-bluegray {
 	color: #536482;
 }
 
-.icon.icon-gray, a:hover .icon.icon-gray{
-	color: #777777;
+.icon.icon-gray, a:hover .icon.icon-gray {
+	color: $color-12;
 }
 
-.icon.icon-lightgray, a:hover .icon.icon-lightgray{
-	color: #999999;
+.icon.icon-lightgray, a:hover .icon.icon-lightgray {
+	color: $color-13;
 }
 
-.icon.icon-black, a:hover .icon.icon-black{
+.icon.icon-black, a:hover .icon.icon-black {
 	color: #333333;
 }
 
@@ -1937,19 +1872,6 @@ p.post-notice {
 --------------------------------------------------------------
 Colours and backgrounds for content.css
 -------------------------------------------------------------- */
-
-li.row strong {
-	color: #000000;
-}
-
-li.row:hover dd {
-	border-left-color: #CCCCCC;
-}
-
-.rtl li.row:hover dd {
-	border-right-color: #CCCCCC;
-	border-left-color: transparent;
-}
 
 /* Post body styles
 ----------------------------------------*/
@@ -2659,13 +2581,6 @@ input.disabled {
 		display: inline-block;
 		text-align: right;
 		min-width: 50%;
-	}
-
-	/* User profile
-	----------------------------------------*/
-	.column1, .column2, .left-box.profile-details {
-		float: none;
-		width: auto;
 	}
 
 	/* Polls

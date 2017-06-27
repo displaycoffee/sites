@@ -181,3 +181,7 @@ h5, h6 {
 .icon + span:not(.sr-only), span:not(.sr-only) + .icon {
 	margin: 0 0 0 5px;
 }
+
+.fa-fw {
+	width: auto;
+}
