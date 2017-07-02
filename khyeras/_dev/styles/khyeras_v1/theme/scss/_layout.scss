@@ -164,7 +164,7 @@
 /* Main Boxes (Inner)
 ========================================================================== */
 
-#page-welcome, .forabg, .forumbg, .panel {
+#page-welcome, #featured-content, .forabg, .forumbg, .panel {
 	.inner {
 		padding: 20px 20px 0 20px;
 		background: rgba($color-02, 0.20);
@@ -327,6 +327,60 @@
 	}
 	.footer {
 		text-align: center;
+	}
+}
+
+/* Featured Content
+========================================================================== */
+
+#featured-content {
+	.flex-row {
+		align-items: center;
+		.flex-column {
+			position: relative;
+			margin: 0 0 20px 0;
+			h5, p {
+				margin: 0;
+			}
+			&.featured-title {
+				flex: 0 0 150px;
+			}
+			a {
+				display: block;
+				border: 1px solid $color-04;
+				color: $color-01;				
+				&:hover {
+					color: $color-07;
+					img {
+						transform: scale(1.2,1.2);
+					}
+				}				
+			}
+			.image-wrap {				
+				@include sizing(100%, 0);
+				overflow: hidden;
+				padding: 0 0 55% 0;
+				position: relative;
+				img {
+					margin: -25px 0 0 0;
+					@include transition(transform 0.5s ease-in-out);
+				}
+			}
+			p {
+				position: absolute;
+				left: 11px;
+				right: 11px;				
+				bottom: 1px;
+				padding: 0 10px;
+				height: 30px;
+				line-height: 30px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				background: rgba($color-02, 0.65);
+				text-align: center;
+			}
+		}
 	}
 }
 
