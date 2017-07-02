@@ -120,29 +120,29 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-// h1 {
-// 	// Forum name
-// 	font-size: rem(40px);
-// }
+h1 {
+	// Forum name
+	font-size: rem(32px);
+}
 
-// h2 {
-// 	// Forum header titles
-// 	font-size: rem(35px);
-// }
+h2 {
+	// Forum header titles
+	font-size: rem(28px);
+}
 
-// h3 {
-// 	// Sub-headers (also used as post headers, but defined later)
-// 	font-size: rem(30px);
-// }
+h3 {
+	// Sub-headers (also used as post headers, but defined later)
+	font-size: rem(24px);
+}
 
-// h4 {
-// 	// Forum and topic list titles
-// 	font-size: rem(25px);
-// }
+h4 {
+	// Forum and topic list titles
+	font-size: rem(22px);
+}
 
-// h5, h6 {
-// 	font-size: rem(22px);
-// }
+h5, h6 {
+	font-size: rem(20px);
+}
 
 /* Icons
 ========================================================================== */
@@ -189,8 +189,4 @@ h1, h2, h3, h4, h5, h6 {
 
 .icon + span:not(.sr-only), span:not(.sr-only) + .icon {
 	margin: 0 0 0 5px;
-}
-
-.fa-fw {
-	width: auto;
 }

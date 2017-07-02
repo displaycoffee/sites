@@ -38,11 +38,11 @@ ul, ol, dl {
 pre, code {
 	white-space: normal;
 	display: block;
-	//font-size: rem(14px);
 	font-family: 'Courier New', monospace;
-	background: $color-14;	
-	color: $color-02;
-	border: 2px solid $color-06;
+	font-size: rem(15px);
+	background: $color-01;	
+	color: $color-08;
+	border: 2px solid $color-04;
 	padding: 20px;
 }
 
@@ -80,7 +80,7 @@ abbr[title] {
 	display: inline-block;
 	padding: 0 5px;
 	font-family: $sans-serif-fb;
-	//font-size: rem(18px);
+	font-size: rem(20px);
 	line-height: 1;
 	position: relative;
 	top: 2px;

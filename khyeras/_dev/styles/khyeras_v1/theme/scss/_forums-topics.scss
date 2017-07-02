@@ -42,11 +42,12 @@
 			.row-item {
 				background: $color-04;
 				padding: 10px;
+				align-items: center;
 				dt {
 					a {
 						font-family: $font-02;
 						font-variant: small-caps;
-//						font-size: rem(20px);
+						font-size: rem(22px);
 						color: $color-01;
 						&:hover {
 							color: $color-06;

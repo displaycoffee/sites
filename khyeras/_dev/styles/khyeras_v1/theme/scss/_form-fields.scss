@@ -41,13 +41,9 @@ select option {
 	display: inline-block;
 	background: $color-10;
 	color: $color-01;	
-	text-shadow: 1px 1px 0 rgba($color-02, 0.95);
 	text-align: center;
 	@include transition(background 0.3s ease-in-out);
 	padding: 10px 20px;
-	&, .icon {
-//		font-size: rem(15px);
-	}
 	&:hover {
 		background: $color-04;
 		&, .icon {
