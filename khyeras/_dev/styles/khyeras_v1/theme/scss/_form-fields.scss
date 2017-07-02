@@ -46,7 +46,7 @@ select option {
 	@include transition(background 0.3s ease-in-out);
 	padding: 10px 20px;
 	&, .icon {
-		font-size: rem(15px);
+//		font-size: rem(15px);
 	}
 	&:hover {
 		background: $color-04;

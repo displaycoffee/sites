@@ -42,7 +42,7 @@
 			}
 			h3 {
 				font-family: $font-02;  
-				font-size: rem(33px);
+//				font-size: rem(33px);
 				text-shadow: 2px 1px 0 rgba($color-02, 0.65), 2px 1px 5px rgba($color-02, 0.85);
 				letter-spacing: 2px;
 			}		
@@ -50,9 +50,9 @@
 		.site-quotes {
 			font-family: $font-02;
 			text-shadow: 1px 1px 0 rgba($color-02, 0.65), 1px 1px 5px rgba($color-02, 0.85);
-			font-size: rem(15px);
+//			font-size: rem(15px);
 			span {
-				font-size: rem(40px);
+//				font-size: rem(40px);
 				@include inline-block(middle);
 				@include sizing(12px, 12px);
 				line-height: 24px;
