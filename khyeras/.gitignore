@@ -21,10 +21,12 @@ install/
 language/
 phpbb/
 store/
-styles/*
+!styles/
 vendor/
 
 # Extensions
 
 # Themes
+styles/*
 !styles/khyeras_v1
+!styles/khyeras_v1/*

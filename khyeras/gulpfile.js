@@ -78,6 +78,7 @@ var staticSources = [
 	dev + '/**/*.html',
 	dev + '/**/*.txt',
 	dev + '/**/images/*.*',
+	dev + '/**/images/**/*.*',
 	dev + '/**/fonts/*.*'
 ];
 
