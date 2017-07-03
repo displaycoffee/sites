@@ -390,3 +390,63 @@
 .action-bar {
 	margin: 0 0 10px 0;
 }
+
+/* Contact Icons
+   Note: User profile on viewtopic and viewpm
+========================================================================== */
+
+.contact-icons {
+	a {
+		@include inline-block(middle);
+		@include sizing(20px, 20px);
+		line-height: 20px;
+		margin: 0 2.5px 5px 2.5px;
+		text-align: center;
+		.contact-icon {
+			@include font-awesome;
+			font-size: 0;
+			&:before {				
+				font-size: rem(16px);
+			}
+			&.pm-icon:before {
+				content: '\f01c';
+			}
+			&.email-icon:before {
+				content: '\f0e0';
+			}
+			&.jabber-icon:before {
+				content: '\f004';
+			}			
+			&.phpbb_website-icon:before {
+				content: '\f0ac';
+			}
+			&.phpbb_aol-icon:before {
+				content: '\f004';
+			}
+			&.phpbb_icq-icon:before {
+				content: '\f004';
+			}
+			&.phpbb_yahoo-icon:before {
+				content: '\f19e';
+			}
+			&.phpbb_facebook-icon:before {
+				content: '\f09a';
+			}
+			&.phpbb_twitter-icon:before {
+				content: '\f099';
+			}
+			&.phpbb_skype-icon:before {
+				content: '\f17e';
+			}
+			&.phpbb_youtube-icon:before {
+				content: '\f16a';
+			}
+			&.phpbb_googleplus-icon:before {
+				content: '\f0d5';
+			}
+			&.phpbb_wlm-icon:before {
+				content: '\f004';
+			}																				
+		}
+	}
+}

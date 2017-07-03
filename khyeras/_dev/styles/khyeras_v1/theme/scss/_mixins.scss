@@ -76,6 +76,20 @@
 	}
 }
 
+// FontAwesome properties
+
+@mixin font-awesome {
+	display: inline-block;
+  	font-weight: normal;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-family: 'FontAwesome';
+  	line-height: 1;
+  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;	
+}
+
 // Inline block
 @mixin inline-block($vertical-align) {
 	display: inline-block;

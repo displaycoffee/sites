@@ -148,16 +148,8 @@ h5, h6 {
 ========================================================================== */
 
 .icon  {
-	display: inline-block;
-  	font-weight: normal;
-  	font-style: normal;
-  	font-variant: normal;
-  	font-family: 'FontAwesome';
-  	font-size: rem(16px);
-  	line-height: 1;
-  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
-  	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
+	@include font-awesome;
+	font-size: rem(16px);
 }
 
 .icon.rpg-icon {
