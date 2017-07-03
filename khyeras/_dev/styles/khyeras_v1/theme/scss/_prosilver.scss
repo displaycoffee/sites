@@ -38,33 +38,6 @@ ul.rightside {
 	display: none !important;
 }
 
-/* Profile in overall_header.html */
-.header-profile {
-	display: inline-block;
-	vertical-align: top;
-}
-
-a.header-avatar,
-a.header-avatar:hover {
-	text-decoration: none;
-}
-
-a.header-avatar img {
-	margin-bottom: 2px;
-	max-height: 20px;
-	vertical-align: middle;
-	width: auto;
-}
-
-a.header-avatar span:after {
-	content: '\f0dd';
-	display: inline-block;
-	font: normal normal normal 14px/1 FontAwesome;
-	padding-left: 6px;
-	padding-top: 2px;
-	vertical-align: top;
-}
-
 .jumpbox {
 	margin: 5px 0;
 }
