@@ -30,3 +30,6 @@ vendor/
 styles/*
 !styles/khyeras_v1
 !styles/khyeras_v1/*
+!styles/khyeras_v1/theme
+!styles/khyeras_v1/theme/images/*
+!_dev/styles/khyeras_v1/theme/images
