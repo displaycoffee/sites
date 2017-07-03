@@ -56,3 +56,29 @@ label {
 	display: block;
 	margin: 0 0 5px 0;
 }
+
+/* Search Box
+========================================================================== */
+
+.search-box form fieldset {
+	position: relative;
+	padding: 0 130px 0 0;
+	input[type="search"] {
+		margin: 0;
+	}
+	.button {
+		width: 60px;
+		position: absolute;
+		top: 0;
+		z-index: 2;
+		&:hover {
+			background: $color-03;
+		}
+	}
+	button {
+		right: 65px;
+	}
+	a.button {
+		right: 0;
+	}	
+}
