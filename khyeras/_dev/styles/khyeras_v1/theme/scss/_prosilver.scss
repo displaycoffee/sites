@@ -1,7 +1,6 @@
 /* Horizontal lists
 ----------------------------------------*/
 
-
 .cp-main .panel {
 	padding: 5px 10px;
 }
@@ -137,22 +136,6 @@ fieldset.fields1 dl.pmlist > dt {
 
 fieldset.fields1 dl.pmlist dd.recipients {
 	margin-left: 0 !important;
-}
-
-/* Pagination
----------------------------------------- */
-.row .pagination {
-	display: block;
-	margin-top: 0.3em;
-}
-
-.row .pagination > ul {
-	margin: 0;
-}
-
-.row .pagination li a, .row .pagination li span {
-	border-radius: 2px;
-	padding: 1px 3px;
 }
 
 /* Miscellaneous styles
@@ -915,15 +898,7 @@ table.fixed-width-table {
 	table-layout: fixed;
 }
 
-.caret {
-	border-left: 1px solid;
-	position: relative;
-	right: -6px;
-}
 
-.caret i {
-	vertical-align: top;
-}
 
 /* Post control buttons
 --------------------------------------------- */
@@ -1592,20 +1567,6 @@ input.disabled {
 		font-weight: bold;
 		color: inherit;
 	}
-	/* Pagination
-	----------------------------------------*/
-	.pagination > ul {
-		margin: 5px 0 0;
-	}
-
-	.row .pagination {
-		margin-top: 2px;
-		margin-bottom: 2px;
-	}
-
-	.row .pagination .ellipsis + li {
-		display: none !important;
-	}
 
 	/* Responsive tables
 	----------------------------------------*/
@@ -1854,11 +1815,4 @@ input.disabled {
 
 @media (max-width: 850px) {
 	.postprofile { width: 28%; }
-}
-
-@media (min-width: 701px) and (max-width: 950px) {
-	.row .pagination {
-		margin-top: 2px;
-		margin-bottom: 2px;
-	}
 }

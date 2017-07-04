@@ -3,41 +3,33 @@
 
 .topiclist {
 	list-style-type: none;
-	margin: 0;	
-	li {
-		&.row, &.header {
-			margin: 0 0 20px 0;
-			.row-item {
-				@include flex-flow(row nowrap);
-				justify-content: flex-end;			
-				margin: 0 -10px;
-				dt, dd {
-					padding: 0 10px;
+	margin: 0;
+	& > li {		
+		.row-item {
+			@include flex-flow(row nowrap);
+			justify-content: flex-end;			
+			margin: 0 -10px;
+			dt, dd {
+				padding: 0 10px;
+			}	
+			dt {
+				@include flex(base);
+			}	
+			dd {
+				margin: 0;
+				dfn {
+					font-style: normal;
+					position: absolute;
+					top: -9999px;
+					left: -9999px;
 				}
-				dt {
-					@include flex(base);
-					.forumtitle, .topictitle {
-						font-weight: bold;
-						@include inline-block(baseline);
-						margin: 0 0 5px 0;
-					}
+				&.topics, &.posts, &.views {
+					flex: 0 0 100px;	
 				}
-				dd {
-					margin: 0;
-					dfn {
-						font-style: normal;
-						position: absolute;
-						top: -9999px;
-						left: -9999px;
-					}
-					&.topics, &.posts, &.views {
-						flex: 0 0 100px;					
-					}
-					&.lastpost {
-						flex: 0 0 250px;
-					}
+				&.lastpost {
+					flex: 0 0 250px;
 				}
-			}
+			}							
 		}
 		&.header {
 			margin: -20px -10px 20px -10px;
@@ -45,35 +37,39 @@
 				background: $color-04;
 				padding: 10px;
 				align-items: center;
-				dt {
-					a {
-						font-family: $font-02;
-						font-variant: small-caps;
-						font-size: rem(22px);
-						color: $color-01;
-						&:hover {
-							color: $color-06;
-						}
+				dt a {
+					font-family: $font-02;
+					font-variant: small-caps;
+					font-size: rem(22px);
+					color: $color-01;
+					&:hover {
+						color: $color-06;
 					}					
 				}
 			}
-		}
-	}
-	&.forums, &.topics {
-		li.row {
+		}				
+		&.row {
+			margin: 0 0 20px 0;
 			padding: 0 0 20px 0;
-			border-bottom: 1px solid $color-04;
+			border-bottom: 1px solid $color-04;		
 			.row-item {
 				background-repeat: no-repeat;
 				background-position: 10px 5px;
-				dt .list-inner {
-					padding: 0 0 0 45px;
-				}		
+				dt {
+					.list-inner {
+						padding: 0 0 0 45px;
+					}
+					.forumtitle, .topictitle {
+						font-weight: bold;
+						@include inline-block(baseline);
+						margin: 0 0 5px 0;
+					}
+				}					
 			}
 			&:last-child {
 				padding: 0;
 				border-bottom: 0;
-			}
+			}				
 		}
 	}
 }
@@ -85,7 +81,7 @@
 	margin: 0 0 30px 0;
 }
 
-.topiclist.forums li.row .row-item dt {
+.topiclist.forums > li.row .row-item dt {
 	br + strong, .subforum {
 		@include inline-block(baseline);
 		margin: 5px 0 0 0;
@@ -102,6 +98,24 @@
 
 .forumbg {
 	margin: 0 0 10px 0;
+}
+
+.topiclist.topics > li.row .row-item dt {
+	.topic-poster, .pagination {
+		display: inline-block;
+		width: 49%;
+	}
+	.pagination {
+		text-align: right;
+		& > span:after {
+			content: 'Pages: ';
+			font-weight: bold;
+			padding: 0 0 0 5px;
+		}
+		ul {
+			margin: 0;
+		}		
+	}
 }
 
 /* Forums & Topic Icons

@@ -161,6 +161,9 @@
 	min-width: 400px;
 	right: 0;
 	left: auto;
+	&.dropdown .button:hover {
+		background: $color-03;
+	}
 }
 
 /* Page welcome

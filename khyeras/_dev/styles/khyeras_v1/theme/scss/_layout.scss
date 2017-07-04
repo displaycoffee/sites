@@ -214,29 +214,49 @@
 .action-bar {
 	margin: 0 0 10px 0;
 	@include flex-flow(row nowrap);	
+	align-items: center;
 	& > * {
 		margin: 0 10px 0 0;
 	}
 	&.compact .mark-read {
 		margin: 0 0 0 auto;
 	}
-	&.bar-top {
-		align-items: flex-end;
-	}
-	&.bar-bottom {
-		align-items: flex-start;
+	&.bar-top .search-box {
+		flex: 0 0 300px;
 	}
 	&.bar-top, &.bar-bottom {
 		.pagination {
 			margin: 0 -5px 0 auto
 		}
 	}
-	&.actions-jump {
-		align-items: center;
+	&.actions-jump {		
+		.jumpbox-return .icon {
+			width: auto;
+			margin: 0 5px 0 0;
+		}
 		.jumpbox {
 			margin: 0 0 0 auto;
 		}
 	}
+}
+
+/* Caret
+   Note: Used on drop down menus buttons
+========================================================================== */
+
+.caret {
+	border-left: 1px solid $color-01;
+	padding: 0 0 0 5px;
+	line-height: 1;
+	font-size: rem(16px);
+	i {
+		position: relative;
+		top: -2px;
+	}	
+}
+
+.jumpbox .caret {
+	margin: 0 0 0 5px;
 }
 
 /* Contact Icons
