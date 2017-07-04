@@ -71,9 +71,6 @@ label {
 		position: absolute;
 		top: 0;
 		z-index: 2;
-		&:hover {
-			background: $color-03;
-		}
 	}
 	button {
 		right: 65px;
@@ -81,4 +78,8 @@ label {
 	a.button {
 		right: 0;
 	}	
+}
+
+.search-box.dropdown .button:hover {
+	background: $color-03;
 }

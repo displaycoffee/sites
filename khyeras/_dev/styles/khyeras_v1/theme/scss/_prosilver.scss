@@ -6,49 +6,8 @@
 	padding: 5px 10px;
 }
 
-p.rightside, a.rightside {
-	float: right;
-	margin-right: 0;
-	margin-left: 7px;
-	text-align: right;
-}
-
 ul.navlinks {
 	border-top: 1px solid transparent;
-}
-
-ul.leftside {
-	float: left;
-	margin-left: 0;
-	margin-right: 5px;
-	text-align: left;
-}
-
-ul.rightside {
-	float: right;
-	margin-left: 5px;
-	margin-right: -5px;
-	text-align: right;
-}
-
-/* Bulletin icons for list items
-----------------------------------------*/
-
-.responsive-menu:before {
-	display: none !important;
-}
-
-.jumpbox {
-	margin: 5px 0;
-}
-
-.jumpbox .spacer {
-	display: inline-block;
-	width: 0px;
-}
-
-.jumpbox .spacer + .spacer {
-	width: 20px;
 }
 
 /* Table styles
@@ -182,64 +141,6 @@ fieldset.fields1 dl.pmlist dd.recipients {
 
 /* Pagination
 ---------------------------------------- */
-.pagination {
-	float: right;
-	text-align: right;
-	width: auto;
-}
-
-.action-bar.bar-bottom .pagination {
-	margin-top: 0;
-}
-
-
-.pagination > ul {
-	display: inline-block;
-	list-style: none !important;
-	margin-left: 5px;
-}
-
-.pagination > ul > li {
-	display: inline-block !important;
-	padding: 0;
-	line-height: normal;
-	vertical-align: middle;
-}
-
-.pagination li a, .pagination li span {
-	border-radius: 2px;
-	padding: 2px 5px;
-}
-
-.pagination li.active span {
-	display: inline-block;
-	font-weight: normal;
-	line-height: 1.4;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-	border: 1px solid transparent;
-}
-
-.pagination li.ellipsis span {
-	border: none;
-	padding: 0;
-}
-
-.pagination li.page-jump {
-	margin-right: 5px;
-}
-
-.pagination li.page-jump a {
-	padding: 0 8px;
-}
-
-
-.pagination .arrow a {
-	padding: 2px 0;
-}
-
-/* Pagination in viewforum for multipage topics */
 .row .pagination {
 	display: block;
 	margin-top: 0.3em;
@@ -309,7 +210,6 @@ form > p.post-notice strong {
 
 /* Inner box-model clearing */
 .inner:after,
-.action-bar:after,
 .tabs-container:after,
 .tabs > ul:after,
 .minitabs > ul:after,
@@ -354,9 +254,6 @@ th a {
 th a:hover {
 	text-decoration: underline;
 }
-
-.jumpbox-cat-link,
-.jumpbox-forum-link { font-weight: bold; }
 
 /* Post body links */
 .postlink {
@@ -1606,7 +1503,7 @@ input.disabled {
 }
 
 .icon.icon-black, a:hover .icon.icon-black {
-	color: #333333;
+	color: $color-01;
 }
 
 .online {
@@ -1653,25 +1550,6 @@ input.disabled {
 		float: none;
 		text-align: center;
 		margin-bottom: 5px;
-	}
-
-	.action-bar > div {
-		margin-bottom: 5px;
- 	}
-
-	.action-bar > .pagination {
-		float: none;
-		clear: both;
-		padding-bottom: 1px;
-		text-align: center;
-	}
-
-	.action-bar > .pagination li.page-jump {
-		margin: 0 2px;
-	}
-
-	p.jumpbox-return {
-		display: none;
 	}
 
 	.display-options > label:nth-child(1) {
@@ -1939,10 +1817,6 @@ input.disabled {
 	p {
 		margin-bottom: .5em;
 		overflow: hidden;
-	}
-
-	p.rightside {
-		margin-bottom: 0;
 	}
 
 	fieldset.display-options label {

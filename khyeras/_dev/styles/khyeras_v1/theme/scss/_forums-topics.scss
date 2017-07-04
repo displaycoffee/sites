@@ -5,35 +5,37 @@
 	list-style-type: none;
 	margin: 0;	
 	li {
-		margin: 0 0 20px 0;
-		.row-item {
-			@include flex-flow(row nowrap);
-			justify-content: flex-end;			
-			margin: 0 -10px;
-			dt, dd {
-				padding: 0 10px;
-			}
-			dt {
-				@include flex(base);
-				.forumtitle, .topictitle {
-					font-weight: bold;
-					@include inline-block(baseline);
-					margin: 0 0 5px 0;
+		&.row, &.header {
+			margin: 0 0 20px 0;
+			.row-item {
+				@include flex-flow(row nowrap);
+				justify-content: flex-end;			
+				margin: 0 -10px;
+				dt, dd {
+					padding: 0 10px;
 				}
-			}
-			dd {
-				margin: 0;
-				dfn {
-					font-style: normal;
-					position: absolute;
-					top: -9999px;
-					left: -9999px;
+				dt {
+					@include flex(base);
+					.forumtitle, .topictitle {
+						font-weight: bold;
+						@include inline-block(baseline);
+						margin: 0 0 5px 0;
+					}
 				}
-				&.topics, &.posts, &.views {
-					flex: 0 0 100px;					
-				}
-				&.lastpost {
-					flex: 0 0 250px;
+				dd {
+					margin: 0;
+					dfn {
+						font-style: normal;
+						position: absolute;
+						top: -9999px;
+						left: -9999px;
+					}
+					&.topics, &.posts, &.views {
+						flex: 0 0 100px;					
+					}
+					&.lastpost {
+						flex: 0 0 250px;
+					}
 				}
 			}
 		}
@@ -58,7 +60,7 @@
 		}
 	}
 	&.forums, &.topics {
-		li {
+		li.row {
 			padding: 0 0 20px 0;
 			border-bottom: 1px solid $color-04;
 			.row-item {
@@ -79,18 +81,27 @@
 /* Forums
 ========================================================================== */
 
-.topiclist.forums li .row-item dt {
+.forabg {
+	margin: 0 0 30px 0;
+}
+
+.topiclist.forums li.row .row-item dt {
 	br + strong, .subforum {
 		@include inline-block(baseline);
 		margin: 5px 0 0 0;
-	}
-	br + strong {
 	}
 	.subforum .icon {
 		position: relative;
 		top: -1px;
 		margin: 0 5px;
 	}
+}
+
+/* Topics
+========================================================================== */
+
+.forumbg {
+	margin: 0 0 10px 0;
 }
 
 /* Forums & Topic Icons

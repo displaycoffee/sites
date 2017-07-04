@@ -169,8 +169,42 @@
 		padding: 20px 20px 0 20px;
 		background: rgba($color-02, 0.20);
 		border: 1px solid $color-04;
-		box-shadow: 3px 3px 6px rgba($color-02, 0.30);	
-		margin: 0 0 30px 0;	
+		box-shadow: 3px 3px 6px rgba($color-02, 0.30);
+	}
+}
+
+/* Pagination
+========================================================================== */
+
+.pagination {	
+	.icon {
+		font-size: rem(12px);
+		width: auto;
+	}
+	ul {
+		margin: 0 0 0 10px;
+		list-style: none;
+		@include inline-block(bottom);
+		li {
+			@include inline-block(middle);			
+			&.active span {
+				display: inline-block;
+				background: $color-10;
+				border-radius: 3px;	
+				line-height: rem(20px);
+				padding: 1px 5px;
+			}
+			.button {
+				background: none;
+				padding: 0 5px;
+				&, & .icon {
+					@include transition(color 0.3s ease-in-out);
+					&:hover {
+						color: $color-06;
+					}				
+				}
+			}
+		}
 	}
 }
 
@@ -179,6 +213,30 @@
 
 .action-bar {
 	margin: 0 0 10px 0;
+	@include flex-flow(row nowrap);	
+	& > * {
+		margin: 0 10px 0 0;
+	}
+	&.compact .mark-read {
+		margin: 0 0 0 auto;
+	}
+	&.bar-top {
+		align-items: flex-end;
+	}
+	&.bar-bottom {
+		align-items: flex-start;
+	}
+	&.bar-top, &.bar-bottom {
+		.pagination {
+			margin: 0 -5px 0 auto
+		}
+	}
+	&.actions-jump {
+		align-items: center;
+		.jumpbox {
+			margin: 0 0 0 auto;
+		}
+	}
 }
 
 /* Contact Icons
