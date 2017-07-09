@@ -1,9 +1,87 @@
-.profile-contact .dropdown-container {
-	display: inline-block;
-	.dropdown {
-		left: 0;
-		right: auto;
-		top: em(30px);
+/* View Topic - Topic & PM
+========================================================================== */
+
+.post {
+	margin: 0 0 20px 0;
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid $color-04;
+	&.last {
+		border-bottom: 0;
+		padding: 0;
+	}
+	.inner {
+		@include flex-flow(row wrap);
+		align-items: flex-start;
+	}
+	.postprofile, .postbody, .back2top {
+		min-width: 1px;
+	}
+	.postprofile {
+		flex: 0 0 231px;
+		margin: 0 20px 0 0;
+		padding: 0 20px 0 0;
+	}
+	.postbody {
+		@include flex(base);
+	}
+	.back2top {
+		@include flex(full);
+		text-align: right;
+		margin: 20px 0 0 0;
 	}
 }
+
+/* View Topic - Profile
+========================================================================== */
+
+.post .postprofile {
+	border-right: 1px solid $color-04;
+	dt .username-coloured, dd.profile-rank {
+		font-family: $font-02;
+	}
+	dt {
+		text-align: center;
+		&, &.has-avatar .avatar-container {
+			margin: 0 0 10px 0;
+		}
+		&.has-avatar {			
+			.avatar-container {
+				display: inline-block;
+				overflow: hidden;
+				border: 5px solid $color-04;
+				border-radius: 100%;
+				a.avatar {
+					display: block;
+					@include sizing(100%, 0);
+					padding: 0 0 100% 0;
+				}
+			}
+		}
+		.username-coloured {
+			display: block;
+			font-size: rem(22px);
+			font-variant: small-caps;
+		}
+	}
+	dd {
+		margin: 0 0 3px 0;
+		&.profile-rank {
+			text-align: center;
+			margin: -10px 0 10px 0;			
+			font-style: italic;
+		}
+		&.profile-contact .dropdown-container {
+			display: inline-block;
+			.dropdown {
+				left: 0;
+				right: auto;
+				top: em(30px);
+			}
+		}		
+	}
+}
+
+/* View Topic - Body
+========================================================================== */
+
 

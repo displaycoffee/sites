@@ -198,8 +198,7 @@ form > p.post-notice strong {
 .inner:after,
 .tabs-container:after,
 .tabs > ul:after,
-.minitabs > ul:after,
-.postprofile .avatar-container:after {
+.minitabs > ul:after {
 	clear: both;
 	content: '';
 	display: block;
@@ -257,16 +256,6 @@ th a:hover {
 	text-decoration: underline;
 }
 
-/* Profile links */
-.postprofile a, .postprofile dt.author a {
-	font-weight: bold;
-	text-decoration: none;
-}
-
-.postprofile a:hover, .postprofile dt.author a:hover {
-	text-decoration: underline;
-}
-
 /* Profile searchresults */
 .search .postprofile a {
 	text-decoration: none;
@@ -275,22 +264,6 @@ th a:hover {
 
 .search .postprofile a:hover {
 	text-decoration: underline;
-}
-
-.top {
-	text-decoration: none;
-	margin-top: 10px;
-}
-
-/* Back to top of page */
-.back2top {
-	clear: both;
-}
-
-.back2top .top {
-	float: right;
-	margin-right: -10px;
-	margin-top: 0;
 }
 
 /* Arrow links  */
@@ -388,13 +361,6 @@ dd.option {
 
 /* Post body styles
 ----------------------------------------*/
-.postbody {
-	padding: 0;
-	line-height: 1.48em;
-	width: 76%;
-	float: left;
-	position: relative;
-}
 
 .postbody h3 {
 	/* Postbody requires a different h3 format - so change it here */
@@ -497,14 +463,6 @@ dl.faq dt {
 
 .posthilit {
 	padding: 0 2px 1px 2px;
-}
-
-/* Post author */
-p.author {
-	margin-bottom: 0.6em;
-	padding: 0 0 5px 0;
-	line-height: 1.2em;
-	clear: both;
 }
 
 /* Post signature */
@@ -775,66 +733,9 @@ fieldset.polls dd div {
 
 /* Poster profile block
 ----------------------------------------*/
-.postprofile {
-	margin: 5px 0 10px 0;
-	min-height: 80px;
-	border: 1px solid transparent;
-	border-width: 0 0 0 1px;
-	width: 22%;
-	float: right;
-	display: inline;
-}
-
-.postprofile dd, .postprofile dt {
-	line-height: 1.2em;
-	margin-left: 8px;
-}
-
-.postprofile dd {
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.postprofile strong {
-	font-weight: normal;
-}
-
-.postprofile dt.no-profile-rank, .postprofile dd.profile-rank, .postprofile .search-result-date {
-	margin-bottom: 10px;
-}
-
-/* Post-profile avatars */
-.postprofile .has-avatar .avatar-container {
-	margin-bottom: 3px;
-	overflow: hidden;
-}
-
-.postprofile .avatar {
-	display: block;
-	float: left;
-	max-width: 100%;
-}
-
-.postprofile .avatar img {
-	display: block;
-	height: auto !important;
-	max-width: 100%;
-}
-
-.postprofile .profile-posts a {
-	font-weight: normal;
-}
 
 dd.profile-warnings {
 	font-weight: bold;
-}
-
-dd.profile-contact {
-	overflow: visible;
-}
-
-.profile-contact .icon_contact {
-	vertical-align: middle;
 }
 
 .online {
@@ -1692,7 +1593,7 @@ input.disabled {
 		position: inherit;
 	}
 
-	.postprofile, .postbody, .search .postbody {
+	.postbody, .search .postbody {
 		display: block;
 		width: auto;
 		float: none;
@@ -1700,42 +1601,9 @@ input.disabled {
 		min-height: 0;
 	}
 
-	.post .postprofile {
-		width: auto;
-		border-width: 0 0 1px 0;
-		padding-bottom: 5px;
-		margin: 0;
-		margin-bottom: 5px;
-		min-height: 40px;
-		overflow: hidden;
-	}
-
-	.postprofile dd {
-		display: none;
-	}
-
-	.postprofile dt, .postprofile dd.profile-rank, .search .postprofile dd {
+	.search .postprofile dd {
 		display: block;
 		margin: 0;
-	}
-
-	.postprofile .has-avatar .avatar-container {
-		margin: 0;
-		overflow: inherit;
-	}
-
-	.postprofile .avatar-container:after {
-		clear: none;
-	}
-
-	.postprofile .avatar {
-		margin-right: 5px;
-	}
-
-	.postprofile .avatar img {
-		width: auto !important;
-		height: auto !important;
-		max-height: 32px;
 	}
 
 	.has-profile .postbody h3 {
@@ -1780,16 +1648,4 @@ input.disabled {
 	.attach-comment dfn {
 		width: 100%;
 	}
-}
-
-@media (min-width: 700px) {
-	.postbody { width: 70%; }
-}
-
-@media (min-width: 850px) {
-	.postbody { width: 76%; }
-}
-
-@media (max-width: 850px) {
-	.postprofile { width: 28%; }
 }
