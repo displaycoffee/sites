@@ -14,6 +14,9 @@ fieldset {
 	padding: 0;
 	margin: 0;
 	border: 0;
+	&.submit-buttons {
+		margin: 0 0 20px 0;
+	}
 }
 
 .inputbox, select, .button, .button1, .button2 {	
