@@ -96,6 +96,11 @@ table.info tbody th {
 
 /* General classes for placing floating blocks */
 
+
+dl.details {
+	@include clearfix('&');
+}
+
 dl.details dt {
 	float: left;
 	clear: left;

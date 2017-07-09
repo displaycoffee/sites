@@ -77,10 +77,6 @@
 /* Forums
 ========================================================================== */
 
-.forabg {
-	margin: 0 0 30px 0;
-}
-
 .topiclist.forums > li.row .row-item dt {
 	br + strong, .subforum {
 		@include inline-block(baseline);
@@ -96,13 +92,9 @@
 /* Topics
 ========================================================================== */
 
-.forumbg {
-	margin: 0 0 10px 0;
-}
-
 .topiclist.topics > li.row .row-item dt {
-	.topic-poster, .pagination {
-		display: inline-block;
+	.responsive-hide, .pagination {
+		@include inline-block(top);
 		width: 49%;
 	}
 	.pagination {
