@@ -60,12 +60,14 @@ hr {
 	border: 0;
 	border-bottom: 1px solid $color-04;
 	clear: both;
-	&.dashed {
-		border-bottom-style: dashed;
-	}
 	&.divider {
 		display: none;
 	}
+}
+
+.dropdown-contents hr {
+	border-bottom: 1px solid $color-03;
+	margin: 10px 0;
 }
 
 [tabindex="-1"]:focus { 

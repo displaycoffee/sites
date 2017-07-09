@@ -174,9 +174,7 @@ form > p.post-notice strong {
 	line-height: 20px;
 }
 
-.stat-block {
-	clear: both;
-}
+
 
 .top-anchor {
 	display: block;
@@ -1364,21 +1362,6 @@ fieldset.quick-login label {
 	padding-right: 2px;
 }
 
-/* Display options on viewtopic/viewforum pages  */
-fieldset.display-options {
-	text-align: center;
-	margin: 3px 0 5px 0;
-}
-
-fieldset.display-options label {
-	white-space: nowrap;
-	padding-right: 2px;
-}
-
-fieldset.display-options a {
-	margin-top: 3px;
-}
-
 /* Display actions for ucp and mcp pages */
 fieldset.display-actions {
 	text-align: right;
@@ -1524,11 +1507,6 @@ input.disabled {
 	p.responsive-center {
 		float: none;
 		text-align: center;
-		margin-bottom: 5px;
-	}
-
-	.display-options > label:nth-child(1) {
-		display: block;
 		margin-bottom: 5px;
 	}
 
@@ -1778,12 +1756,6 @@ input.disabled {
 	p {
 		margin-bottom: .5em;
 		overflow: hidden;
-	}
-
-	fieldset.display-options label {
-		display: block;
-		clear: both;
-		margin-bottom: 5px;
 	}
 
 	dl.mini dd.pm-legend {

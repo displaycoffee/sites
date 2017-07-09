@@ -240,6 +240,44 @@
 	}
 }
 
+/* Jumpbox
+========================================================================== */
+
+.jumpbox .dropdown .dropdown-contents li {
+	.jumpbox-cat-link {
+		padding: 0 0 10px 0;
+		margin: 10px 0;
+		border-bottom: 1px solid $color-03;
+		font-weight: bold;
+	}
+	&:first-child .jumpbox-cat-link {
+		margin: 0 0 10px 0;
+	}
+}
+
+/* Sort Tools
+========================================================================== */
+
+.sort-tools .dropdown {
+	.display-options {
+		label {
+			position: relative;
+			padding: 8px 130px 8px 0;
+			margin: 0 0 10px 0;
+			select {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 120px;
+				margin: 0;
+			}
+		}
+		.button2 {
+			width: 100%;
+		}
+	}
+}
+
 /* Caret
    Note: Used on drop down menus buttons
 ========================================================================== */
@@ -316,5 +354,15 @@
 				content: '\f004';
 			}																				
 		}
+	}
+}
+
+/* Stat Blocks
+========================================================================== */
+
+.stat-block {
+	margin: 0 0 30px 0;
+	&.online-list {
+		margin: 40px 0 30px 0;
 	}
 }
