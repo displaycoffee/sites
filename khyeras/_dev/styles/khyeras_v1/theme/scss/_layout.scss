@@ -382,3 +382,57 @@
 		margin: 40px 0 30px 0;
 	}
 }
+
+/* Online
+========================================================================== */
+
+.online {
+	position: relative;
+	&:before, &:after {
+		display: block;
+		position: absolute;
+		z-index: 10;
+	}
+	&:before {
+		content: '\f004\0000A0\0000A0 Online';
+		@include sizing(80px, 0);
+		font-family: 'FontAwesome', $font-01;	
+		font-size: rem(13px);	
+		border-right: 8px inset transparent;
+		border-bottom: 12px solid $color-10;
+		border-top: 12px solid $color-10;		
+		line-height: 0;
+		padding: 0 10px;
+		text-align: center;
+	}
+	&:after {
+		content: '';
+		@include sizing(0, 0);	
+		border-left: 12px inset transparent;
+		border-top: 8px solid $color-14;
+	}
+}
+
+.post.online {
+	&:before, &:after {
+		left: -32px;
+	}
+	&:before {
+		top: -5px;
+	}
+	&:after {
+		top: 19px;
+	}
+}
+
+#viewprofile .panel.online {
+	&:before, &:after {
+		left: -11px;
+	}
+	&:before {
+		top: 15px;
+	}
+	&:after {
+		top: 39px;
+	}	
+}

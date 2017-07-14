@@ -738,12 +738,6 @@ dd.profile-warnings {
 	font-weight: bold;
 }
 
-.online {
-	background-image: none;
-	background-position: 100% 0;
-	background-repeat: no-repeat;
-}
-
 /* Poster profile used by search*/
 .search .postprofile {
 	width: 30%;
@@ -1370,10 +1364,6 @@ input.disabled {
 	color: $color-01;
 }
 
-.online {
-	background-image: url("./en/icon_user_online.gif");
-}
-
 option.disabled-option {
 	color: graytext;
 }
@@ -1614,10 +1604,6 @@ input.disabled {
 	.has-profile .post-buttons {
 		right: 30px;
 		top: 15px;
-	}
-
-	.online {
-		background-size: 40px;
 	}
 
 	/* Misc stuff
