@@ -117,21 +117,89 @@
 	}
 }
 
-/* View Topic - Body - BBCode
+/* View Topic - Body - BBCode & Attachments
 ========================================================================== */
 
 .post .postbody .content {
-	blockquote {
+	ol, ul {
+		margin-top: 20px;
+	}
+	blockquote, .codebox {
 		margin: 20px auto;
-		cite {
-			position: relative;
-			padding: 0 200px 10px 0;
-			.responsive-hide {
-				position: absolute;
-				top: 2px;
-				right: 0;						
-				font-size: rem(13px);		
+	}
+	blockquote cite {
+		position: relative;
+		padding: 0 200px 10px 0;
+		.responsive-hide {
+			position: absolute;
+			top: 2px;
+			right: 0;						
+			font-size: rem(13px);		
+		}
+	}
+	.codebox {
+		& > p, pre {
+			margin: 0;
+		}
+		& > p {
+			margin: 0;
+			padding: 10px 20px;
+			background: $color-04;
+			color: $color-01;			
+		}
+	}	
+}
+
+/* View Topic - Body - Attachments
+========================================================================== */
+
+.post .postbody {
+	.inline-attachment .file .attach-image, .attachbox .file dt, .attachbox .file dd {
+		max-width: 200px;	
+	}
+	.inline-attachment, .attachbox {
+		margin: 20px auto;
+		.file .attach-image {
+			cursor: pointer;
+			margin: 0 0 5px 0;
+			line-height: 0;				
+			& + dd:first-of-type:before {
+				content: 'Click to expand image';
+				display: block;
+				font-size: rem(13px);
+				font-style: italic;
 			}
-		} 
+		}		
+	}
+	.inline-attachment .file {
+		margin: 0;
+		.attach-image[style*="height: auto"] {
+			max-width: 100%;
+		}
+	}
+	.attachbox {
+		border: 1px solid $color-04;
+		padding: 20px 20px 10px 20px;
+		& > dt {
+			background: $color-04;
+			color: $color-01;
+			padding: 10px 20px;
+			margin: -20px -20px 20px -20px;
+		}
+		& > dd {
+			@include inline-block(top);
+			.file {
+				margin: 0 0 10px 0;
+				dt, dd {
+					padding: 0 10px 0 0;
+				}
+				.attach-image[style*="height: auto"] {
+					&, & ~ dd {
+						max-width: 100%;
+						padding: 0;
+					}
+				}
+			}
+		}
 	}
 }

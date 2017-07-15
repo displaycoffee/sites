@@ -240,17 +240,6 @@ th a:hover {
 	text-decoration: underline;
 }
 
-/* Post body links */
-.postlink {
-	text-decoration: none;
-	border-bottom: 1px solid transparent;
-	padding-bottom: 0;
-}
-
-.postlink:hover {
-	text-decoration: none;
-}
-
 .signature a, .signature a:hover {
 	border: none;
 	text-decoration: underline;
@@ -362,13 +351,6 @@ dd.option {
 /* Post body styles
 ----------------------------------------*/
 
-.postbody img.postimage {
-	max-width: 100%;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
 .search .postbody {
 	width: 68%
 }
@@ -428,14 +410,6 @@ dl.faq dt {
 	margin-bottom: 0.5em;
 }
 
-.content li {
-	list-style-type: inherit;
-}
-
-.content ul, .content ol {
-	margin: 0.8em 0 0.9em 3em;
-}
-
 .posthilit {
 	padding: 0 2px 1px 2px;
 }
@@ -486,126 +460,6 @@ ul.searchresults {
 	list-style: none;
 	text-align: right;
 	clear: both;
-}
-
-/* BB Code styles
-----------------------------------------*/
-
-/* Code block */
-.codebox {
-	padding: 3px;
-	border: 1px solid transparent;
-	margin: 1em 0 1.2em 0;
-}
-
-.codebox p {
-	text-transform: uppercase;
-	border-bottom: 1px solid transparent;
-	margin-bottom: 3px;
-	font-weight: bold;
-	display: block;
-}
-
-.codebox code {
-	overflow: auto;
-	display: block;
-	height: auto;
-	max-height: 200px;
-	padding-top: 5px;
-	line-height: 1.3em;
-	margin: 2px 0;
-}
-
-/* Attachments
-----------------------------------------*/
-.attachbox {
-	float: left;
-	width: auto;
-	max-width: 100%;
-	margin: 5px 5px 5px 0;
-	padding: 6px;
-	border: 1px dashed transparent;
-	clear: left;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.attachbox dt {
-	text-transform: uppercase;
-}
-
-.attachbox dd {
-	margin-top: 4px;
-	padding-top: 4px;
-	clear: left;
-	border-top: 1px solid transparent;
-	overflow-x: auto;
-}
-
-.attachbox dd dd {
-	border: none;
-}
-
-.attachbox p {
-	line-height: 110%;
-	font-weight: normal;
-	clear: left;
-}
-
-.attachbox p.stats
-{
-	line-height: 110%;
-	font-weight: normal;
-	clear: left;
-}
-
-.attach-image {
-	margin: 3px 0;
-	max-width: 100%;
-}
-
-.attach-image img {
-	border: 1px solid transparent;
-/*	cursor: move; */
-	cursor: default;
-}
-
-/* Inline image thumbnails */
-div.inline-attachment dl.thumbnail, div.inline-attachment dl.file {
-	display: block;
-	margin-bottom: 4px;
-}
-
-dl.file {
-	display: block;
-}
-
-dl.file dt {
-	text-transform: none;
-	margin: 0;
-	padding: 0;
-	font-weight: bold;
-}
-
-dl.file dd {
-	margin: 0;
-	padding: 0;
-}
-
-dl.thumbnail img {
-	padding: 3px;
-	border: 1px solid transparent;
-	box-sizing: border-box;
-}
-
-dl.thumbnail dd {
-	font-style: italic;
-}
-
-
-dl.thumbnail dt a:hover img {
-	border: 1px solid transparent;
 }
 
 /* Post poll styles

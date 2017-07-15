@@ -72,7 +72,7 @@
 		min-width: 160px;
 		position: absolute;
 		top: em(50px);
-		left: 0;
+		left: -999px;
 		z-index: -1;
 		margin: 0 !important;
 		padding: 20px;
@@ -105,19 +105,21 @@
 			}
 		}
  	}
-	&.dropdown-up .dropdown {
-		top: auto;
-		bottom: em(50px);
-	} 	
-	&.dropdown-left .dropdown {
-		left: auto;
-		right: 0;
-	}	
 	&.dropdown-visible .dropdown {
 		visibility: visible;
 		opacity: 1;
 		z-index: 2;
-	} 		
+		left: 0;
+	} 
+	&.dropdown-up .dropdown {
+		top: auto;
+		bottom: em(50px);
+	} 	
+	&.dropdown-left.dropdown-visible .dropdown {
+		left: auto;
+		right: 0;
+	}	
+		
 }
 
 /* Loading Indicator

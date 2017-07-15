@@ -127,7 +127,6 @@
 }
 
 // Quote characters
-
 @mixin quotes {
 	font-size: rem(30px);	
 	@include inline-block(middle);
