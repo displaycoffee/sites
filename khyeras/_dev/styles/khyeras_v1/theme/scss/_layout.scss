@@ -196,7 +196,7 @@
 
 .pagination {	
 	.icon {
-		font-size: rem(12px);
+		font-size: rem(13px);
 		width: auto;
 	}
 	ul {
@@ -300,7 +300,7 @@
 	padding: 0 0 0 5px;
 	line-height: 1;
 	font-size: rem(16px);
-	i {
+	.icon {
 		position: relative;
 		top: -2px;
 	}	
@@ -308,6 +308,11 @@
 
 .jumpbox .caret {
 	margin: 0 0 0 5px;
+}
+
+.dropdown-visible .caret .icon {
+	transform: rotate(-180deg);
+	top: 5px;
 }
 
 /* Contact Icons
@@ -325,7 +330,7 @@
 			@include font-awesome;
 			font-size: 0;
 			&:before {				
-				font-size: rem(16px);
+				font-size: rem(14px);
 			}
 			&.pm-icon:before {
 				content: '\f01c';
@@ -397,7 +402,7 @@
 		content: '\f004\0000A0\0000A0 Online';
 		@include sizing(80px, 0);
 		font-family: 'FontAwesome', $font-01;	
-		font-size: rem(13px);	
+		font-size: rem(14px);	
 		border-right: 8px inset transparent;
 		border-bottom: 12px solid $color-10;
 		border-top: 12px solid $color-10;		

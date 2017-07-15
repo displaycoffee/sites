@@ -153,7 +153,7 @@ h5, h6 {
 
 .icon  {
 	@include font-awesome;
-	font-size: rem(16px);
+	font-size: rem(14px);
 }
 
 .icon.rpg-icon {
@@ -161,7 +161,7 @@ h5, h6 {
 }
 
 .icon.icon-xl {
-	font-size: rem(20px);
+	font-size: rem(18px);
 }
 
 .icon.icon-lg {
@@ -169,20 +169,17 @@ h5, h6 {
 }
 
 .icon.icon-md {
-	font-size: rem(10px);
+	font-size: rem(14px);
 }
 
 .icon.icon-sm {
-	font-size: rem(8px);
+	font-size: rem(12px);
 }
 
 .icon-tiny {
-	width: 12px;
-	transform: scale(0.65, 0.75);
-	vertical-align: text-bottom;
-	font-size: rem(16px);
+	font-size: rem(10px);
 }
 
-.icon + span:not(.sr-only), span:not(.sr-only) + .icon {
+.icon + span:not(.sr-only), .icon + .sr-only + span:not(.sr-only), span:not(.sr-only) + .icon {
 	margin: 0 0 0 5px;
 }
