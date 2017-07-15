@@ -50,11 +50,32 @@ pre, code {
 }
 
 blockquote {
-	width: 75%;
+	max-width: 90%;
 	margin: 0 auto 20px auto;
-	padding: 0 50px;
-	font-style: italic;
+	padding: 0 30px;
 	position: relative;
+	&:before {
+		position: absolute;
+		top: 0;
+		left: 10px;
+		font-family: $font-02;
+		@include quotes;
+		content: '\00201C';
+		margin: 0 10px 0 0;
+	}
+	blockquote {
+		max-width: none;
+		padding: 0 0 0 20px;
+		&:before {
+			left: 0;
+		}
+	}	
+	cite {
+		border-bottom: 1px solid $color-04;
+		display: block;
+		margin: 0 0 10px 0;
+		padding: 0 0 10px 0;
+	}	
 }
 
 hr {

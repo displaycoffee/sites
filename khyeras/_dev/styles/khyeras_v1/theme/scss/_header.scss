@@ -57,10 +57,7 @@
 				}
 			}
 			span {
-				font-size: rem(30px);
-				@include inline-block(middle);
-				@include sizing(12px, 12px);
-				line-height: 1.2;
+				@include quotes;
 				position: relative;
 				top: -5px;
 				&.quote-left {

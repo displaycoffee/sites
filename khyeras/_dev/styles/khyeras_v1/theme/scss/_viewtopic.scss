@@ -84,4 +84,57 @@
 /* View Topic - Body
 ========================================================================== */
 
+.post .postbody {
+	position: relative;
+	& > div > h3 {
+		padding: 0 225px 0 0;
+		margin: 0 0 5px 0;
+	}
+	.post-buttons {
+		list-style: none;
+		margin: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		&, li {
+			@include inline-block(middle);
+		}
+		li {
+			.button {
+				padding: 5px;
+				line-height: 1;
+				.icon {
+					font-size: rem(14px);
+				}
+			}
+			&.responsive-menu {
+				display: none;
+			}
+		}
+	}
+	.author {
+		font-size: rem(13px);
+	}
+	.content {
+		margin: 30px 0;
+	}
+}
 
+/* View Topic - Body - BBCode
+========================================================================== */
+
+.post .postbody .content {
+	blockquote {
+		margin: 20px auto;
+		cite {
+			position: relative;
+			padding: 0 200px 10px 0;
+			.responsive-hide {
+				position: absolute;
+				top: 2px;
+				right: 0;						
+				font-size: rem(13px);		
+			}
+		} 
+	}
+}
