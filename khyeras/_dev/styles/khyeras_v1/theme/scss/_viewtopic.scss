@@ -100,10 +100,6 @@
 			@include inline-block(middle);
 		}
 		li {
-			.button {
-				padding: 5px;
-				line-height: 1;
-			}
 			&.responsive-menu {
 				display: none;
 			}
@@ -111,6 +107,17 @@
 	}
 	.author {
 		font-size: rem(13px);
+	}
+	.post-notice {
+		background: mix(white, $color-11, 75%);
+		padding: 5px;
+		border-radius: 3px;
+		a {
+			color: $color-08;
+			&:hover {
+				color: $color-07;
+			}
+		}
 	}
 	.content {
 		margin: 30px 0;
@@ -233,9 +240,6 @@
 		dt {
 			flex: 0 0 20%;
 		}
-		// .poll_option_select input[type='radio'] {
-		// 	margin-top: 4px;
-		// }
 		.resultbar {
 			flex: 0 0 60%;
 			div[class*='pollbar'] {

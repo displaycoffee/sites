@@ -87,6 +87,11 @@ input[type='checkbox'], input[type='radio']  {
 	}
 }
 
+.button-icon-only {
+	padding: 5px;
+	line-height: 1;
+}
+
 fieldset.submit-buttons, fieldset dl dd {
 	.button, .button1, .button2 {
 		margin: 0 0 20px 0;

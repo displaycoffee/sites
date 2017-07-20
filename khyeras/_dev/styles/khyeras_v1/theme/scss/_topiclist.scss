@@ -64,6 +64,14 @@
 						@include inline-block(baseline);
 						margin: 0 0 5px 0;
 					}
+					a .icon.fa-exclamation {
+						background: mix(white, $color-11, 75%);
+						@include sizing(18px, 18px);
+						line-height: 18px;
+						border-radius: 100%;
+						text-align: center;
+						margin: 0 0 0 5px;
+					}
 				}					
 			}
 			&:last-child {
