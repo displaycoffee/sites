@@ -14,48 +14,36 @@ fieldset {
 	padding: 0;
 	margin: 0;
 	border: 0;
-	&.submit-buttons {
-		margin: 0 0 20px 0;
-	}
 }
 
 .inputbox, select, .button, .button1, .button2 {	
 	outline: 0;
 	border: 0;
 	border-radius: 3px;	
-	line-height: rem(20px);
+	line-height: rem(20px);	
 }
 
 .inputbox, select {
 	background: $color-01;
 	color: $color-08;
-	width: 100%;
-	margin: 0 0 20px 0;
+	width: 100%;	
 	padding: 10px;
+	margin: 0 0 20px 0;
 }
 
 select option {
 	color: $color-08;
 }
 
-.button, .button1, .button2 {
-	display: inline-block;
-	background: $color-10;
-	color: $color-01;	
-	text-align: center;
-	@include transition(background 0.3s ease-in-out);
-	padding: 10px 20px;
-	&:hover {
-		background: $color-04;
-		&, .icon {
-			color: $color-01;
-		}
-	}
-}
-
 label {
 	display: block;
 	margin: 0 0 5px 0;
+}
+
+input[type='checkbox'], input[type='radio']  {
+	position: relative;
+	top: 2px;
+	margin: 0 5px 0 0;
 }
 
 /* Search Box
@@ -81,35 +69,87 @@ label {
 	}	
 }
 
-/* Fieldset DL
+/* Buttons
 ========================================================================== */
 
-fieldset {
+.button, .button1, .button2 {
+	display: inline-block;
+	background: $color-10;
+	color: $color-01;	
+	text-align: center;
+	@include transition(background 0.3s ease-in-out);
+	padding: 10px 20px;
+	&:hover {
+		background: $color-04;
+		&, .icon {
+			color: $color-01;
+		}
+	}
+}
+
+fieldset.submit-buttons, fieldset dl dd {
+	.button, .button1, .button2 {
+		margin: 0 0 20px 0;
+	}		
+}
+
+/* Fieldset - DL
+========================================================================== */
+
+fieldset dl {
+	@include flex-flow(row wrap);
+	margin: 0 -5px;
+	dt, dd {
+		padding: 0 5px;
+		min-width: 1px;
+	}
+}
+
+fieldset:not(.polls) {
 	dl {
-		@include flex-flow(row wrap);
-		margin: 0 -5px 20px -5px;
-		dt, dd {
-			padding: 0 5px;
+		dd {
+			@include flex(full);	
+			margin: 0 0 0 25%;
 		}
 		dt {
-			flex: 0 0 20%;
+			flex: 0 0 25%;
 			label {
+				& + br {
+					display: none;
+				}
+				& ~ span {
+					font-style: italic;
+					font-size: rem(13px);
+					display: block;
+					margin: 0 0 20px 0;
+				}
+			}
+			& + dd {
+				@include flex(base);
 				margin: 0;
 			}
 		}
 	}
 	&.fields1 dl {
+		dd {		
+			margin: 0 0 0 200px;
+		}		
 		dt {
 			flex: 0 0 200px;
 			& + dd {
-				@include flex(grow);
 				margin: 0;
 			}
 		}
-		dd {
-			min-width: 1px;
-			@include flex(full);			
-			margin: 0 0 0 200px;
-		}
 	}
+	&.fields2 dl {
+		dd {		
+			margin: 0 0 0 250px;
+		}		
+		dt {
+			flex: 0 0 250px;
+			& + dd {
+				margin: 0;
+			}
+		}
+	}	
 }
