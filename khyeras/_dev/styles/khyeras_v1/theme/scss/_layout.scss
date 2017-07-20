@@ -237,13 +237,14 @@
 	align-items: center;
 	& > * {
 		margin: 0 10px 0 0;
+		@include flex;
 	}	
 	&.bar-top .search-box {
 		flex: 0 0 300px;
 	}
 	&.bar-top, &.bar-bottom {
 		.pagination {
-			margin: 0 0 0 auto
+			margin: 0 0 0 auto;
 		}
 	}
 	&.actions-jump {		

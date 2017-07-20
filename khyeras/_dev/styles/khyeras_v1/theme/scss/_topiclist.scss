@@ -7,7 +7,6 @@
 	& > li {		
 		.row-item {
 			@include flex-flow(row nowrap);
-			justify-content: flex-end;			
 			margin: 0 -10px;
 			dt, dd {
 				padding: 0 10px;
