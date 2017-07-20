@@ -185,7 +185,7 @@
 	margin: 0 0 10px 0;
 }
 
-.panel .inner .inner {
+.inner .inner {
 	padding: 0;
 	background: none;
 	border: 0;
@@ -416,7 +416,7 @@
 		content: '';
 		@include sizing(0, 0);	
 		border-left: 12px inset transparent;
-		border-top: 8px solid $color-14;
+		border-top: 8px solid mix(black, $color-10, 35%);
 	}
 }
 

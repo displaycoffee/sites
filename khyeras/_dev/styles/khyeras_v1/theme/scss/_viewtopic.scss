@@ -203,3 +203,67 @@
 		}
 	}
 }
+
+/* View Topic - Poll Vote
+========================================================================== */
+
+.topic_poll {
+	.content {
+		.author {
+			br {
+				display: none;
+			}
+			br + .poll_max_votes:before {
+				content: '.\0000A0';
+			}
+			.poll_max_votes:after {
+				content: '.';
+			}
+		}
+		.polls {
+			dl {
+				&.voted {
+					font-weight: bold;		
+				}
+				dt {
+					flex: 0 0 30%;
+				}
+				.poll_option_select input[type='radio'] {
+					margin-top: 4px;
+				}
+				.resultbar {
+					@include flex;
+					width: 50%;
+					div[class*='pollbar'] {
+						padding: 0 10px;
+					}
+					div[style='width:0%;'] {
+						width: 20px !important;
+						padding: 0;
+						text-align: center;
+					}
+					.pollbar5 {
+						background: mix(white, $color-10, 10%);
+					}
+					.pollbar4 {
+						background: $color-10;
+					}
+					.pollbar3 {
+						background: mix(black, $color-10, 10%);
+					}
+					.pollbar2 {
+						background: mix(black, $color-10, 20%);
+					}
+					.pollbar1 {
+						background: mix(black, $color-10, 30%);
+					}																				
+				}
+			}
+		}
+		.vote-submitted {
+			margin: 0 0 20px 30%;
+			padding: 0 5px;
+			font-style: italic;
+		}
+	}
+}

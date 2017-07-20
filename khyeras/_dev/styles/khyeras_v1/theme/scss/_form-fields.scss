@@ -80,3 +80,36 @@ label {
 		right: 0;
 	}	
 }
+
+/* Fieldset DL
+========================================================================== */
+
+fieldset {
+	dl {
+		@include flex-flow(row wrap);
+		margin: 0 -5px 20px -5px;
+		dt, dd {
+			padding: 0 5px;
+		}
+		dt {
+			flex: 0 0 20%;
+			label {
+				margin: 0;
+			}
+		}
+	}
+	&.fields1 dl {
+		dt {
+			flex: 0 0 200px;
+			& + dd {
+				@include flex(grow);
+				margin: 0;
+			}
+		}
+		dd {
+			min-width: 1px;
+			@include flex(full);			
+			margin: 0 0 0 200px;
+		}
+	}
+}

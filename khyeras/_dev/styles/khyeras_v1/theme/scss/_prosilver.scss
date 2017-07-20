@@ -119,7 +119,7 @@ dl.details dd {
 	text-overflow: ellipsis;
 }
 
-.clearfix, fieldset dl, dl.polls {
+.clearfix {
 	overflow: hidden;
 }
 
@@ -460,65 +460,6 @@ ul.searchresults {
 	list-style: none;
 	text-align: right;
 	clear: both;
-}
-
-/* Post poll styles
-----------------------------------------*/
-
-
-fieldset.polls dl {
-	margin-top: 5px;
-	border-top: 1px solid transparent;
-	padding: 5px 0 0 0;
-	line-height: 120%;
-}
-
-fieldset.polls dl.voted {
-	font-weight: bold;
-}
-
-fieldset.polls dt {
-	text-align: left;
-	float: left;
-	display: block;
-	width: 30%;
-	border-right: none;
-	padding: 0;
-	margin: 0;
-}
-
-fieldset.polls dd {
-	float: left;
-	width: 10%;
-	border-left: none;
-	padding: 0 5px;
-	margin-left: 0;
-}
-
-fieldset.polls dd.resultbar {
-	width: 50%;
-}
-
-fieldset.polls dd input {
-	margin: 2px 0;
-}
-
-fieldset.polls dd div {
-	text-align: right;
-	font-weight: bold;
-	padding: 2px 2px 0 2px;
-	overflow: visible;
-	min-width: 8px;
-}
-
-.pollbar1, .pollbar2, .pollbar3, .pollbar4, .pollbar5 {
-	border-bottom: 1px solid transparent;
-	border-right: 1px solid transparent;
-}
-
-.vote-submitted {
-	font-weight: bold;
-	text-align: center;
 }
 
 /* Poster profile block
@@ -948,52 +889,11 @@ ol.def-rules li {
 
 /* Definition list layout for forms
 ---------------------------------------- */
-fieldset dl {
-	padding: 4px 0;
-}
 
-fieldset dt {
-	float: left;
-	width: 40%;
-	text-align: left;
-	display: block;
-}
-
-fieldset dd {
-	margin-left: 41%;
-	vertical-align: top;
-	margin-bottom: 3px;
-}
-
-/* Specific layout 1 */
-fieldset.fields1 dt {
-	width: 15em;
-	border-right-width: 0;
-}
-
-fieldset.fields1 dd {
-	margin-left: 15em;
-	border-left-width: 0;
-}
-
-fieldset.fields1 div {
-	margin-bottom: 3px;
-}
 
 /* Set it back to 0px for the reCaptcha divs: PHPBB3-9587 */
 fieldset.fields1 .live-search div {
 	margin-bottom: 0;
-}
-
-/* Specific layout 2 */
-fieldset.fields2 dt {
-	width: 15em;
-	border-right-width: 0;
-}
-
-fieldset.fields2 dd {
-	margin-left: 16em;
-	border-left-width: 0;
 }
 
 /* Hover effects */
@@ -1316,24 +1216,6 @@ input.disabled {
 		display: inline-block;
 		text-align: right;
 		min-width: 50%;
-	}
-
-	/* Polls
-	----------------------------------------*/
-	fieldset.polls dt {
-		width: 90%;
-	}
-
-	fieldset.polls dd.resultbar {
-		padding-left: 20px;
-	}
-
-	fieldset.polls dd.poll_option_percent {
-		width: 20%;
-	}
-
-	fieldset.polls dd.resultbar, fieldset.polls dd.poll_option_percent {
-		margin-top: 5px;
 	}
 
 	/* Post
