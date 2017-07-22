@@ -166,7 +166,7 @@
 /* Main Boxes (Inner)
 ========================================================================== */
 
-#page-welcome, #featured-content, .forabg, .forumbg, .panel {
+#page-welcome, #featured-content, .forabg, .forumbg, .post, .panel {
 	.inner {
 		padding: 20px 20px 0 20px;
 		background: rgba($color-02, 0.20);
@@ -175,7 +175,7 @@
 	}
 }
 
-#page-welcome, #featured-content, .forabg, .panel {
+#page-welcome, #featured-content, .forabg, .post, .panel {
 	.inner {
 		margin: 0 0 40px 0;
 	}

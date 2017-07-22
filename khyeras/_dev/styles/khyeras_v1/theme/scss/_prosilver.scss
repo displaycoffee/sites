@@ -1,10 +1,6 @@
 /* Horizontal lists
 ----------------------------------------*/
 
-.cp-main .panel {
-	padding: 5px 10px;
-}
-
 ul.navlinks {
 	border-top: 1px solid transparent;
 }
@@ -227,11 +223,6 @@ th a:hover {
 	text-decoration: underline;
 }
 
-.signature a, .signature a:hover {
-	border: none;
-	text-decoration: underline;
-}
-
 /* Profile searchresults */
 .search .postprofile a {
 	text-decoration: none;
@@ -250,18 +241,9 @@ th a:hover {
 	border-bottom-width: 0;
 }
 
-.arrow-up:hover {
-
-}
-
 .arrow-down {
 	padding-right: 10px;
 }
-
-.arrow-down:hover {
-
-}
-
 .arrow-left:hover {
 	text-decoration: none;
 }
@@ -399,37 +381,6 @@ dl.faq dt {
 
 .posthilit {
 	padding: 0 2px 1px 2px;
-}
-
-/* Post signature */
-.signature {
-	margin-top: 1.5em;
-	padding-top: 0.2em;
-	border-top: 1px solid transparent;
-	clear: left;
-	line-height: 140%;
-	overflow: hidden;
-	width: 100%;
-}
-
-.signature.standalone {
-	border-top-width: 0;
-	margin-top: 0;
-}
-
-dd .signature {
-	margin: 0;
-	padding: 0;
-	clear: none;
-	border: none;
-}
-
-.signature li {
-	list-style-type: inherit;
-}
-
-.signature ul, .signature ol {
-	margin: 0.8em 0 0.9em 3em;
 }
 
 /* Post noticies */
@@ -745,11 +696,6 @@ ul.cplist {
 
 /* Preferences pane layout
 ----------------------------------------*/
-.cp-main h2 {
-	border-bottom: none;
-	padding: 0;
-	margin-left: 10px;
-}
 
 /* Friends list */
 .cp-mini {

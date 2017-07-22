@@ -1,7 +1,11 @@
-/* View Topic - Topic & PM
+/* NOTE: Contains styles for viewing and previewing topics / PMs...
+   Including signature previews
 ========================================================================== */
 
-.post {
+/* View Topic - Topic & PM - Does not include preview
+========================================================================== */
+
+.viewtopic .post, .pm.post {
 	margin: 0 0 20px 0;
 	padding: 0 0 20px 0;
 	border-bottom: 1px solid $color-04;
@@ -31,148 +35,169 @@
 	}
 }
 
-/* View Topic - Profile
+/* View Topic - Profile - Does not include preview
 ========================================================================== */
 
-.post .postprofile {
-	border-right: 1px solid $color-04;
-	dt .username-coloured, dd.profile-rank {
-		font-family: $font-02;
-	}
-	dt {
-		text-align: center;
-		margin: 0 0 10px 0;
-		&.has-avatar .avatar-container {
-			display: inline-block;
-			overflow: hidden;
-			border: 5px solid $color-04;
-			border-radius: 100%;
-			a.avatar {
-				display: block;
-				@include sizing(100%, 0);
-				padding: 0 0 100% 0;
-			}
+.viewtopic .post, .pm.post {
+	.postprofile {
+		border-right: 1px solid $color-04;
+		dt .username-coloured, dd.profile-rank {
+			font-family: $font-02;
 		}
-		.username-coloured {
-			display: block;
-			font-size: rem(22px);
-			font-variant: small-caps;
-		}
-	}
-	dd {
-		margin: 0 0 3px 0;
-		&.profile-rank {
+		dt {
 			text-align: center;
-			margin: -10px 0 10px 0;			
-			font-style: italic;
-		}
-		&.profile-contact .dropdown-container {
-			display: inline-block;
-			.dropdown {
-				left: 0;
-				right: auto;
-				top: em(30px);
+			margin: 0 0 10px 0;
+			&.has-avatar .avatar-container {
+				display: inline-block;
+				overflow: hidden;
+				border: 5px solid $color-04;
+				border-radius: 100%;
+				a.avatar {
+					display: block;
+					@include sizing(100%, 0);
+					padding: 0 0 100% 0;
+				}
 			}
-		}		
+			.username-coloured {
+				display: block;
+				font-size: rem(22px);
+				font-variant: small-caps;
+			}
+		}
+		dd {
+			margin: 0 0 3px 0;
+			&.profile-rank {
+				text-align: center;
+				margin: -10px 0 10px 0;			
+				font-style: italic;
+			}
+			&.profile-contact .dropdown-container {
+				display: inline-block;
+				.dropdown {
+					left: 0;
+					right: auto;
+					top: em(30px);
+				}
+			}		
+		}
 	}
 }
 
-.post.online .postprofile dt.no-avatar {
-	margin-top: 30px;
+.viewtopic .post, .pm.post {
+	&.online .postprofile dt.no-avatar {
+		margin-top: 30px;
+	}
+}
+
+/* View Topic - Body - Does not include preview
+========================================================================== */
+
+.viewtopic .post, .pm.post {
+	.postbody {
+		position: relative;
+		& > div > h3 {
+			padding: 0 225px 0 0;
+			margin: 0 0 5px 0;
+		}
+		.post-buttons {
+			list-style: none;
+			margin: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			&, li {
+				@include inline-block(middle);
+			}
+			li {
+				&.responsive-menu {
+					display: none;
+				}
+			}
+		}
+		.author {
+			font-size: rem(13px);
+		}
+		.post-notice {
+			background: $color-09;
+			padding: 10px;
+			border-radius: 3px;
+			&, a {
+				color: $color-08
+			}
+			a:hover {
+				color: $color-07;
+			}
+			&.reported {
+				background: mix(white, $color-11, 80%);
+			}
+			&.unapproved {
+				background: mix(white, $color-07, 80%);
+				.icon-red {
+					color: $color-07;
+				}
+				.button2 {
+					margin: 0 5px;
+				}
+			}
+		}
+	}
 }
 
 /* View Topic - Body
 ========================================================================== */
 
-.post .postbody {
-	position: relative;
-	& > div > h3 {
-		padding: 0 225px 0 0;
-		margin: 0 0 5px 0;
-	}
-	.post-buttons {
-		list-style: none;
-		margin: 0;
-		position: absolute;
-		top: 0;
-		right: 0;
-		&, li {
-			@include inline-block(middle);
-		}
-		li {
-			&.responsive-menu {
-				display: none;
-			}
-		}
-	}
-	.author {
-		font-size: rem(13px);
-	}
-	.post-notice {
-		background: $color-09;
-		padding: 10px;
-		border-radius: 3px;
-		&, a {
-			color: $color-08
-		}
-		a:hover {
-			color: $color-07;
-		}
-		&.reported {
-			background: mix(white, $color-11, 80%);
-		}
-		&.unapproved {
-			background: mix(white, $color-07, 80%);
-			.icon-red {
-				color: $color-07;
-			}
-			.button2 {
-				margin: 0 5px;
-			}
-		}
-	}
-	.content {
+.postbody {
+	.content, .signature {
 		margin: 30px 0;
+	}
+	.signature {
+		border-top: 1px solid $color-04;
+		padding: 30px 0 0 0;
+	}
+	.signature.standalone {
+		border-bottom: 1px solid $color-04;
 	}
 }
 
-/* View Topic - Body - BBCode & Attachments
+/* View Topic - Body - BBCode
 ========================================================================== */
 
-.post .postbody .content {
-	ol, ul {
-		margin-top: 20px;
-	}
-	blockquote, .codebox {
-		margin: 20px auto;
-	}
-	blockquote cite {
-		position: relative;
-		padding: 0 200px 10px 0;
-		.responsive-hide {
-			position: absolute;
-			top: 2px;
-			right: 0;						
-			font-size: rem(13px);		
+ .postbody {
+	.content, .signature {
+		ol, ul {
+			margin-top: 20px;
+		}
+		blockquote, .codebox {
+			margin: 20px auto;
+		}
+		blockquote cite {
+			position: relative;
+			padding: 0 200px 10px 0;
+			.responsive-hide {
+				position: absolute;
+				top: 2px;
+				right: 0;						
+				font-size: rem(13px);		
+			}
+		}
+		.codebox {
+			& > p, pre {
+				margin: 0;
+			}
+			& > p {
+				margin: 0;
+				padding: 10px 20px;
+				background: $color-04;
+				color: $color-01;			
+			}
 		}
 	}
-	.codebox {
-		& > p, pre {
-			margin: 0;
-		}
-		& > p {
-			margin: 0;
-			padding: 10px 20px;
-			background: $color-04;
-			color: $color-01;			
-		}
-	}	
 }
 
 /* View Topic - Body - Attachments
 ========================================================================== */
 
-.post .postbody {
+.postbody {
 	.inline-attachment .file .attach-image, .attachbox .file dt, .attachbox .file dd {
 		max-width: 200px;	
 	}
@@ -199,6 +224,7 @@
 	.attachbox {
 		border: 1px solid $color-04;
 		padding: 20px 20px 10px 20px;
+		background: $color-03;
 		& > dt {
 			background: $color-04;
 			color: $color-01;
@@ -226,66 +252,72 @@
 /* View Topic - Poll Vote
 ========================================================================== */
 
-.topic_poll .panel {
-	min-height: 0 !important;
+.content .author {
+	&:after {
+		content: '.';
+	}
+	br {
+		display: none;
+		& + .poll_max_votes:before {
+			content: '.\0000A0';
+		}
+	}
 }
 
-.topic_poll .content {
-	.author {
-		&:after {
-			content: '.';
-		}
-		br {
-			display: none;
-			& + .poll_max_votes:before {
-				content: '.\0000A0';
-			}
-		}
+fieldset.polls dl {
+	margin-bottom: 20px;
+	dd:not(.resultbar) {
+		@include flex;
 	}
-	.polls dl {
-		margin-bottom: 20px;
-		&.voted {
-			font-weight: bold;		
-		}
-		dd:not(.resultbar) {
-			@include flex;
-		}
-		dt {
-			flex: 0 0 20%;
-		}
-		.resultbar {
-			flex: 0 0 60%;
-			div[class*='pollbar'] {
-				padding: 0 10px;
-			}
-			div[style='width:0%;'], div[style='width: 0%;'] {
-				width: 20px !important;
-				padding: 0;
-				text-align: center;
-			}
-			.pollbar5 {
-				background: mix(white, $color-10, 10%);
-			}
-			.pollbar4 {
-				background: $color-10;
-			}
-			.pollbar3 {
-				background: mix(black, $color-10, 10%);
-			}
-			.pollbar2 {
-				background: mix(black, $color-10, 20%);
-			}
-			.pollbar1 {
-				background: mix(black, $color-10, 30%);
-			}																				
-		}
-		.button1 {
-			margin: 0;
-		}
+	dt {
+		flex: 0 0 20%;
 	}
-	.vote-submitted {
-		margin: 0 0 20px 20%;
-		padding: 0 5px;
-		font-style: italic;
+}
+
+.topic_poll .panel {
+	min-height: 0 !important;
+	.content {
+		fieldset.polls dl {
+			&.voted {
+				font-weight: bold;		
+			}
+			.resultbar {
+				flex: 0 0 60%;
+				div[class*='pollbar'] {
+					padding: 0 10px;
+					border-radius: 3px;
+					height: 22px;
+					line-height: 22px;
+				}
+				div[style='width:0%;'], div[style='width: 0%;'] {
+					width: 20px !important;
+					padding: 0;
+					text-align: center;
+				}
+				.pollbar5 {
+					background: mix(white, $color-10, 10%);
+				}
+				.pollbar4 {
+					background: $color-10;
+				}
+				.pollbar3 {
+					background: mix(black, $color-10, 10%);
+				}
+				.pollbar2 {
+					background: mix(black, $color-10, 20%);
+				}
+				.pollbar1 {
+					background: mix(black, $color-10, 30%);
+				}																				
+			}
+			.button1 {
+				margin: 0;
+			}
+		}		
+		.vote-submitted {
+			margin: 0 0 20px 20%;
+			padding: 0 5px;
+			font-style: italic;
+		}
 	}
 }

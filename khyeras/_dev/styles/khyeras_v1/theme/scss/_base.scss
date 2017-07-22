@@ -89,9 +89,7 @@ hr {
 	border: 0;
 	border-bottom: 1px solid $color-04;
 	clear: both;
-	&.divider {
-		display: none;
-	}
+	display: none;
 }
 
 .dropdown-contents hr {

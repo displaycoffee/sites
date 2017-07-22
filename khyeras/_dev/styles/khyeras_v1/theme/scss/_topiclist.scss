@@ -55,7 +55,27 @@
 				background-repeat: no-repeat;
 				background-position: 10px 0;
 				background-size: 32px;
+				a .icon {
+					&.fa-exclamation, &.fa-question {
+						background: $color-09;
+						@include sizing(18px, 18px);
+						line-height: 18px;
+						border-radius: 100%;
+						text-align: center;												
+					}
+					&.fa-exclamation {
+						background: mix(white, $color-11, 80%);
+					}
+					&.fa-question {
+						background: mix(white, $color-07, 80%);
+					}
+				}
 				dt {
+					a .icon {
+						&.fa-exclamation, &.fa-question {
+							margin: 0 0 0 3px;	
+						}
+					}					
 					.list-inner {
 						padding: 0 0 0 45px;
 					}
@@ -64,23 +84,12 @@
 						@include inline-block(baseline);
 						margin: 0 0 5px 0;
 					}
-					a .icon {
-						&.fa-exclamation, &.fa-question {
-							background: $color-09;
-							@include sizing(18px, 18px);
-							line-height: 18px;
-							border-radius: 100%;
-							text-align: center;
-							margin: 0 0 0 5px;							
-						}
-						&.fa-exclamation {
-							background: mix(white, $color-11, 80%);
-						}
-						&.fa-question {
-							background: mix(white, $color-07, 80%);
-						}
+				}	
+				dd a .icon {
+					&.fa-exclamation, &.fa-question {
+						margin: 0 3px 0 0;	
 					}
-				}					
+				}								
 			}
 			&:last-child {
 				padding: 0;
