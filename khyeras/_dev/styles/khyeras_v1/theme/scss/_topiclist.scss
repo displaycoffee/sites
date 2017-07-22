@@ -73,6 +73,12 @@
 							text-align: center;
 							margin: 0 0 0 5px;							
 						}
+						&.fa-exclamation {
+							background: mix(white, $color-11, 80%);
+						}
+						&.fa-question {
+							background: mix(white, $color-07, 80%);
+						}
 					}
 				}					
 			}

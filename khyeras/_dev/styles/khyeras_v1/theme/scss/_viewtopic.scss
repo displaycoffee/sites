@@ -118,7 +118,11 @@
 		a:hover {
 			color: $color-07;
 		}
+		&.reported {
+			background: mix(white, $color-11, 80%);
+		}
 		&.unapproved {
+			background: mix(white, $color-07, 80%);
 			.icon-red {
 				color: $color-07;
 			}
