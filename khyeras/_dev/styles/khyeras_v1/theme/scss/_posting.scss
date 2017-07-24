@@ -1,0 +1,80 @@
+/* NOTE: Contains styles for posting topics, PMs, and signatures
+========================================================================== */
+
+/* Posting Box
+========================================================================== */
+
+#postform {
+	fieldset {
+		@include clearfix('&');
+		dl dd label[for*='icon'] img {
+			@include sizing(20px, 20px);
+			position: relative;
+			top: 4px;
+		}
+	}
+	#colour_palette, #format-buttons {
+		margin: 0 0 20px 0;
+	}
+	#colour_palette #color_palette_placeholder table tr td {
+		@include sizing(16px !important, 16px !important);
+	}
+	#format-buttons select {
+		width: auto;
+		display: inline-block;
+		margin: 0;
+		padding: 5px 10px;			
+		line-height: 1;
+		font-size: rem(13px);
+	}
+	#smiley-box {
+		margin: 0 -2.5px;
+		padding: 0 0 0 20px;
+		float: right;
+		width: 230px;
+		& > a {
+			margin: 0 2.5px;
+			&, img {
+				@include inline-block(middle);
+			}
+		}
+		.bbcode-status {
+			margin: 20px 0 0 0;
+		}
+	}
+	#message-box {
+		overflow: hidden;
+	}
+}
+
+/* Options Panel
+========================================================================== */
+
+#options-panel fieldset > div:last-of-type {
+	margin: 0 0 20px 0;
+}
+
+/* Attach Panel
+========================================================================== */
+
+#attach-panel {
+	#attach-panel-multi {
+		margin: 0 0 20px 0;
+	}
+}
+
+/* Post Topic
+========================================================================== */
+
+.section-posting #postingbox {
+	.inner {
+		border-bottom: none;
+		box-shadow: 3px 0 6px rgba($color-02, 0.30);		
+	}
+	& + .panel {
+		margin: -60px 0 0 0;
+		.inner {
+			border-top: none;
+		}
+	}
+}

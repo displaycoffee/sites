@@ -217,7 +217,7 @@
 	}
 	.inline-attachment .file {
 		margin: 0;
-		.attach-image[style*="height: auto"] {
+		.attach-image[style*='height: auto'] {
 			max-width: 100%;
 		}
 	}
@@ -238,7 +238,7 @@
 				dt, dd {
 					padding: 0 10px 0 0;
 				}
-				.attach-image[style*="height: auto"] {
+				.attach-image[style*='height: auto'] {
 					&, & ~ dd {
 						max-width: 100%;
 						padding: 0;
@@ -252,20 +252,7 @@
 /* View Topic - Poll Vote
 ========================================================================== */
 
-.content .author {
-	&:after {
-		content: '.';
-	}
-	br {
-		display: none;
-		& + .poll_max_votes:before {
-			content: '.\0000A0';
-		}
-	}
-}
-
 fieldset.polls dl {
-	margin-bottom: 20px;
 	dd:not(.resultbar) {
 		@include flex;
 	}
@@ -280,6 +267,9 @@ fieldset.polls dl {
 		fieldset.polls dl {
 			&.voted {
 				font-weight: bold;		
+			}
+			.poll_option_select input[type='radio'] {
+				margin: 0;
 			}
 			.resultbar {
 				flex: 0 0 60%;

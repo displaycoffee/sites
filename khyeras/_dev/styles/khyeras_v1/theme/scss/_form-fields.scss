@@ -92,7 +92,7 @@ input[type='checkbox'], input[type='radio']  {
 	line-height: 1;
 }
 
-fieldset.submit-buttons, fieldset dl dd {
+fieldset.submit-buttons {
 	.button, .button1, .button2 {
 		margin: 0 0 20px 0;
 	}		
@@ -103,19 +103,21 @@ fieldset.submit-buttons, fieldset dl dd {
 
 fieldset dl {
 	@include flex-flow(row wrap);
-	margin: 0 -5px;
+	margin: 0 -10px 20px -10px;
 	dt, dd {
-		padding: 0 5px;
+		padding: 0 10px;
 		min-width: 1px;
+		.inputbox, select {
+			margin-bottom: 0;
+		}
+	}
+	dd label {
+		margin-bottom: 0;
 	}
 }
 
 fieldset:not(.polls) {
 	dl {
-		dd {
-			@include flex(full);	
-			margin: 0 0 0 25%;
-		}
 		dt {
 			flex: 0 0 25%;
 			label {
@@ -126,35 +128,61 @@ fieldset:not(.polls) {
 					font-style: italic;
 					font-size: rem(13px);
 					display: block;
-					margin: 0 0 20px 0;
 				}
 			}
 			& + dd {
 				@include flex(base);
-				margin: 0;
+				margin-left: 0;
 			}
 		}
+		dd {
+			@include flex(full);
+			margin-left: 25%;
+			margin-bottom: 5px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}		
 	}
 	&.fields1 dl {
-		dd {		
-			margin: 0 0 0 200px;
-		}		
 		dt {
 			flex: 0 0 200px;
 			& + dd {
-				margin: 0;
+				margin-left: 0;
 			}
+		}
+		dd {
+			margin-left: 200px;
 		}
 	}
 	&.fields2 dl {
-		dd {		
-			margin: 0 0 0 250px;
-		}		
 		dt {
 			flex: 0 0 250px;
 			& + dd {
-				margin: 0;
+				margin-left: 0;
 			}
 		}
+		dd {
+			margin-left: 250px;
+		}
 	}	
+}
+
+/* Inline Block Form Content
+========================================================================== */
+
+fieldset dl dd {
+	label, img {
+		@include inline-block(baseline);
+	}
+	label {
+		margin: 0 10px 0 0;
+	}
+}
+
+/* Auto Width Form Elements
+========================================================================== */
+
+input[type='number'].inputbox {
+	width: auto;
 }
