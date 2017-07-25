@@ -166,32 +166,45 @@
 /* Main Boxes (Inner)
 ========================================================================== */
 
-#page-welcome, #featured-content, .forabg, .forumbg, .post, .panel {
-	.inner {
-		padding: 20px 20px 0 20px;
-		background: rgba($color-02, 0.20);
-		border: 1px solid $color-04;
-		box-shadow: 3px 3px 6px rgba($color-02, 0.30);
-	}
+.forabg, .forumbg {
+	padding: 20px 20px 0 20px;
+	background: rgba($color-02, 0.20);
+	border: 1px solid $color-04;
+	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
+} 
+
+.forabg {
+	margin: 0 0 40px 0;
 }
 
-#page-welcome, #featured-content, .forabg, .post, .panel {
-	.inner {
-		margin: 0 0 40px 0;
-	}
-}
-
-.forumbg .inner {
+.forumbg {
 	margin: 0 0 10px 0;
 }
 
-.inner .inner {
-	padding: 0;
-	background: none;
-	border: 0;
-	box-shadow: none;
-	margin: 0;
-}
+// #page-welcome, #featured-content, .forabg, .forumbg, .post, .panel {
+// 	.inner {
+// 		padding: 20px 20px 0 20px;
+// 		background: rgba($color-02, 0.20);
+// 		border: 1px solid $color-04;
+// 		box-shadow: 3px 3px 6px rgba($color-02, 0.30);
+// 	}
+// }
+
+// #page-welcome, #featured-content, .forabg, .post, .panel {
+// 	.inner {
+// 		margin: 0 0 40px 0;
+// 	}
+// }
+
+
+
+// .inner .inner {
+// 	padding: 0;
+// 	background: none;
+// 	border: 0;
+// 	box-shadow: none;
+// 	margin: 0;
+// }
 
 /* Pagination
 ========================================================================== */
