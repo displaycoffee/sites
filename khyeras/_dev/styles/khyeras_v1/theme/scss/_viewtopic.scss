@@ -5,7 +5,7 @@
 /* View Topic - Topic & PM - Does not include preview
 ========================================================================== */
 
-.viewtopic .post, .pm.post {
+.topic-wrapper .post, .pm.post {
 	margin: 0 0 20px 0;
 	padding: 0 0 20px 0;
 	border-bottom: 1px solid $color-04;
@@ -38,7 +38,7 @@
 /* View Topic - Profile - Does not include preview
 ========================================================================== */
 
-.viewtopic .post, .pm.post {
+.topic-wrapper .post, .pm.post {
 	.postprofile {
 		border-right: 1px solid $color-04;
 		dt .username-coloured, dd.profile-rank {
@@ -83,7 +83,7 @@
 	}
 }
 
-.viewtopic .post, .pm.post {
+.topic-wrapper .post, .pm.post {
 	&.online .postprofile dt.no-avatar {
 		margin-top: 30px;
 	}
@@ -92,7 +92,7 @@
 /* View Topic - Body - Does not include preview
 ========================================================================== */
 
-.viewtopic .post, .pm.post {
+.topic-wrapper .post, .pm.post {
 	.postbody {
 		position: relative;
 		& > div > h3 {
@@ -310,4 +310,11 @@ fieldset.polls dl {
 			font-style: italic;
 		}
 	}
+}
+
+/* View Topic - Quick Reply & Similar Topics
+========================================================================== */
+
+#qr_postform .panel, .section-viewtopic .forumbg {
+	margin-top: 40px;
 }
