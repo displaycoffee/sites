@@ -174,7 +174,8 @@
 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
 } 
 
-.forabg, .panel, .section-posting #preview, .section-posting #topicreview, .section-posting #preview + .post {
+.forabg, .panel, .section-posting #preview, .section-posting #preview + .post, 
+.section-posting #topicreview {
 	margin: 0 0 $main-margin 0;
 }
 
