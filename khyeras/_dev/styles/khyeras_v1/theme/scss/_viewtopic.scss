@@ -315,6 +315,6 @@ fieldset.polls dl {
 /* View Topic - Quick Reply & Similar Topics
 ========================================================================== */
 
-#qr_postform .panel, .section-viewtopic .forumbg {
-	margin-top: 40px;
+#qr_postform, .section-viewtopic .forumbg {
+	margin-top: $main-margin;
 }
