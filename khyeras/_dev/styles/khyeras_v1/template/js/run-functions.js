@@ -14,6 +14,13 @@ jQuery( document ).ready( function( $ ) {
 		noTopics.closest( '.panel' ).addClass( 'no-topics' );
 	}
 
+	// If there are posting buttons, add a wrapper for button adjustments
+	var postingButtons = $( '.section-posting #postform .submit-buttons' );
+
+	if ( postingButtons.length ) {
+		postingButtons.closest( '.panel' ).add( '.section-posting #postform #postingbox' ).wrapAll('<div class="posting-wrapper panel"></div>');
+	} 
+
 	// addFeatherLightGallery( '.gallery' );
 	// scrollOnPage( '.scroll-to-top', 100, 0 );
 	// scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );

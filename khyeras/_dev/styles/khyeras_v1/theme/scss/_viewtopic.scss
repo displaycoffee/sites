@@ -5,9 +5,16 @@
 /* View Topic - Topic & PM - Does not include preview
 ========================================================================== */
 
-.topic-wrapper .post, .pm.post {
+.topic-wrapper .post {
 	margin: 0 0 20px 0;
 	padding: 0 0 20px 0;
+}
+
+.pm.post {
+	margin: 0 0 30px 0;
+}
+
+.topic-wrapper .post, .pm.post {
 	border-bottom: 1px solid $color-04;
 	&.last {
 		border-bottom: 0;

@@ -180,7 +180,6 @@ div.rules ul, div.rules ol {
 /* Inner box-model clearing */
 .inner:after,
 .tabs-container:after,
-.tabs > ul:after,
 .minitabs > ul:after {
 	clear: both;
 	content: '';
@@ -573,25 +572,52 @@ ul.cplist {
 
 /* CP tabs shared
 ----------------------------------------*/
-.tabs, .minitabs {
+// .tabs, .minitabs {
+// 	line-height: normal;
+// }
+
+// .tabs > ul, .minitabs > ul {
+// 	list-style: none;
+// 	margin: 0;
+// 	padding: 0;
+// 	position: relative;
+// }
+
+// .tabs .tab, .minitabs .tab {
+// 	display: block;
+// 	float: left;
+// 	font-weight: bold;
+// 	line-height: 1.4em;
+// }
+
+// .tabs .tab > a, .minitabs .tab > a {
+// 	display: block;
+// 	padding: 5px 9px;
+// 	position: relative;
+// 	text-decoration: none;
+// 	white-space: nowrap;
+// 	cursor: pointer;
+// }
+
+.minitabs {
 	line-height: normal;
 }
 
-.tabs > ul, .minitabs > ul {
+.minitabs > ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 	position: relative;
 }
 
-.tabs .tab, .minitabs .tab {
+.minitabs .tab {
 	display: block;
 	float: left;
 	font-weight: bold;
 	line-height: 1.4em;
 }
 
-.tabs .tab > a, .minitabs .tab > a {
+.minitabs .tab > a {
 	display: block;
 	padding: 5px 9px;
 	position: relative;
@@ -602,20 +628,20 @@ ul.cplist {
 
 /* CP tabbed menu
 ----------------------------------------*/
-.tabs {
-	margin: 20px 0 0 7px;
-}
+// .tabs {
+// 	margin: 20px 0 0 7px;
+// }
 
-.tabs .tab > a {
-	border: 1px solid transparent;
-	border-radius: 4px 4px 0 0;
-	margin: 1px 1px 0 0;
-}
+// .tabs .tab > a {
+// 	border: 1px solid transparent;
+// 	border-radius: 4px 4px 0 0;
+// 	margin: 1px 1px 0 0;
+// }
 
-.tabs .activetab > a {
-	margin-top: 0;
-	padding-bottom: 7px;
-}
+// .tabs .activetab > a {
+// 	margin-top: 0;
+// 	padding-bottom: 7px;
+// }
 
 /* Mini tabbed menu used in MCP
 ----------------------------------------*/
@@ -780,7 +806,7 @@ ol.def-rules li {
 ----------------------------------------*/
 @media only screen and (max-width: 900px), only screen and (max-device-width: 900px)
 {
-	.nojs .tabs a span, .nojs .minitabs a span {
+	.nojs .minitabs a span {
 		max-width: 40px;
 		overflow: hidden;
 		text-overflow: ellipsis;
