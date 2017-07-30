@@ -157,3 +157,10 @@ a.anchor {
 	left: -999px;
 	width: 990px;
 }
+
+.ellipsis-text {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

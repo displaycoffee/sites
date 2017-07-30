@@ -61,4 +61,30 @@
 	#attach-panel-multi {
 		margin: 0 0 20px 0;
 	}
+	#file-list-container table.table1 {
+		.attach-name {
+			width: 50%;
+		}
+		.attach-comment {
+			width: 30%;
+		}
+		td {
+			vertical-align: middle;
+			&.attach-name {
+				.file-name, .attach-controls {
+					@include inline-block(middle);
+					position: relative;
+				}
+				.file-name {
+					width: 39%;
+					left: -1%;
+				}
+				.attach-controls {
+					width: 59%;
+					right: -1%;
+					text-align: right;
+				}
+			}
+		}
+	}
 }
