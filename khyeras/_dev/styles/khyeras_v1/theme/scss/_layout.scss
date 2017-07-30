@@ -264,7 +264,7 @@
 	.jumpbox-cat-link {
 		padding: 0 0 10px 0;
 		margin: 10px 0;
-		border-bottom: 1px solid $color-03;
+		border-bottom: 1px dashed $color-03;
 		font-weight: bold;
 	}
 	&:first-child .jumpbox-cat-link {
@@ -487,13 +487,12 @@ table {
 			font-weight: normal;
 			background: $color-04;
 			border: 1px solid $color-04;
-		}
-		th, td {
-			padding: 10px;
+			padding: 5px 10px;
 		}
 		td {
 			border: 1px dashed $color-04;
 			vertical-align: top;
+			padding: 10px;
 			.inputbox, select {
 				margin: 0;
 			}
@@ -506,6 +505,6 @@ table {
 		}
 		tr:first-child td {
 			border-top-color: transparent;
-		}
+		}		
 	}
 }

@@ -15,7 +15,7 @@
 }
 
 .topic-wrapper .post, .pm.post {
-	border-bottom: 1px solid $color-04;
+	border-bottom: 1px dashed $color-04;
 	&.last {
 		border-bottom: 0;
 		padding: 0;
@@ -47,7 +47,7 @@
 
 .topic-wrapper .post, .pm.post {
 	.postprofile {
-		border-right: 1px solid $color-04;
+		border-right: 1px dashed $color-04;
 		dt .username-coloured, dd.profile-rank {
 			font-family: $font-02;
 		}
@@ -158,11 +158,11 @@
 		margin: 30px 0;
 	}
 	.signature {
-		border-top: 1px solid $color-04;
+		border-top: 1px dashed $color-04;
 		padding: 30px 0 0 0;
 	}
 	.signature.standalone {
-		border-bottom: 1px solid $color-04;
+		border-bottom: 1px dashed $color-04;
 	}
 }
 
