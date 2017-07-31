@@ -281,27 +281,6 @@ dd.option {
 	margin-top: 2em;
 }
 
-.topicreview {
-	padding-right: 5px;
-	overflow: auto;
-	height: 300px;
-}
-
-.topicreview .postbody {
-	width: auto;
-	float: none;
-	margin: 0;
-	height: auto;
-}
-
-.topicreview .post {
-	height: auto;
-}
-
-.topicreview h2 {
-	border-bottom-width: 0;
-}
-
 .post-ignore .postbody {
 	display: none;
 }
@@ -1002,11 +981,6 @@ input.disabled {
 	dl.mini dd.pm-legend {
 		float: left;
 		min-width: 200px;
-	}
-
-	.topicreview {
-		margin: 0 -5px;
-		padding: 0 5px;
 	}
 
 	fieldset.display-actions {

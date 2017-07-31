@@ -2,158 +2,52 @@
    Including signature previews
 ========================================================================== */
 
-/* View Topic - Topic & PM - Does not include preview
-========================================================================== */
-
-.topic-wrapper .post {
-	margin: 0 0 20px 0;
-	padding: 0 0 20px 0;
-}
-
-.pm.post {
-	margin: 0 0 30px 0;
-}
-
-.topic-wrapper .post, .pm.post {
-	border-bottom: 1px dashed $color-04;
-	&.last {
-		border-bottom: 0;
-		padding: 0;
-	}
-	.inner {
-		@include flex-flow(row wrap);
-		align-items: flex-start;
-	}
-	.postprofile, .postbody, .back2top {
-		min-width: 1px;
-	}
-	.postprofile {
-		flex: 0 0 231px;
-		margin: 0 20px 0 0;
-		padding: 0 20px 0 0;
-	}
-	.postbody {
-		@include flex(base);
-	}
-	.back2top {
-		@include flex(full);
-		text-align: right;
-		margin: 20px 0 0 0;
-	}
-}
-
-/* View Topic - Profile - Does not include preview
-========================================================================== */
-
-.topic-wrapper .post, .pm.post {
-	.postprofile {
-		border-right: 1px dashed $color-04;
-		dt .username-coloured, dd.profile-rank {
-			font-family: $font-02;
-		}
-		dt {
-			text-align: center;
-			margin: 0 0 10px 0;
-			&.has-avatar .avatar-container {
-				display: inline-block;
-				overflow: hidden;
-				border: 5px solid $color-04;
-				border-radius: 100%;
-				a.avatar {
-					display: block;
-					@include sizing(100%, 0);
-					padding: 0 0 100% 0;
-				}
-			}
-			.username-coloured {
-				display: block;
-				font-size: rem(22px);
-				font-variant: small-caps;
-			}
-		}
-		dd {
-			margin: 0 0 3px 0;
-			&.profile-rank {
-				text-align: center;
-				margin: -10px 0 10px 0;			
-				font-style: italic;
-			}
-			&.profile-contact .dropdown-container {
-				display: inline-block;
-				.dropdown {
-					left: 0;
-					right: auto;
-					top: em(30px);
-				}
-			}		
-		}
-	}
-}
-
-.topic-wrapper .post, .pm.post {
-	&.online .postprofile dt.no-avatar {
-		margin-top: 30px;
-	}
-}
-
-/* View Topic - Body - Does not include preview
-========================================================================== */
-
-.topic-wrapper .post, .pm.post {
-	.postbody {
-		position: relative;
-		& > div > h3 {
-			padding: 0 225px 0 0;
-			margin: 0 0 5px 0;
-		}
-		.post-buttons {
-			list-style: none;
-			margin: 0;
-			position: absolute;
-			top: 0;
-			right: 0;
-			&, li {
-				@include inline-block(middle);
-			}
-			li {
-				&.responsive-menu {
-					display: none;
-				}
-			}
-		}
-		.author {
-			font-size: rem(13px);
-		}
-		.post-notice {
-			background: $color-09;
-			padding: 10px;
-			border-radius: 3px;
-			&, a {
-				color: $color-08
-			}
-			a:hover {
-				color: $color-07;
-			}
-			&.reported {
-				background: mix(white, $color-11, 80%);
-			}
-			&.unapproved {
-				background: mix(white, $color-07, 80%);
-				.icon-red {
-					color: $color-07;
-				}
-				.button2 {
-					margin: 0 5px;
-				}
-			}
-		}
-	}
-}
-
 /* View Topic - Body
 ========================================================================== */
 
 .postbody {
+	position: relative;
+	.post-buttons {
+		list-style: none;
+		margin: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		&, li {
+			@include inline-block(middle);
+		}
+		li {
+			&.responsive-menu {
+				display: none;
+			}
+		}
+	}
+	.author {
+		font-size: rem(13px);
+	}
+	.post-notice {
+		background: $color-09;
+		padding: 10px;
+		border-radius: 3px;
+		&, a {
+			color: $color-08
+		}
+		a:hover {
+			color: $color-07;
+		}
+		&.reported {
+			background: mix(white, $color-11, 80%);
+		}
+		&.unapproved {
+			background: mix(white, $color-07, 80%);
+			.icon-red {
+				color: $color-07;
+			}
+			.button2 {
+				margin: 0 5px;
+			}
+		}
+	}	
 	.content, .signature {
 		margin: 30px 0;
 	}
@@ -166,10 +60,26 @@
 	}
 }
 
+/* View Topic - Body - Title
+========================================================================== */
+
+.topic-wrapper .post .postbody > div > h3, .pm.post .postbody > h3, 
+.topicreview .post .postbody h3 {
+	margin: 0 0 5px 0;	
+}
+
+.topic-wrapper .post .postbody > div > h3 {
+	padding: 0 225px 0 0;
+}
+
+.pm.post .postbody > h3, .topicreview .post .postbody h3 {
+	padding: 0 125px 0 0;
+}
+
 /* View Topic - Body - BBCode
 ========================================================================== */
 
- .postbody {
+.postbody {
 	.content, .signature {
 		ol, ul {
 			margin-top: 20px;
@@ -208,8 +118,7 @@
 	.inline-attachment .file .attach-image, .attachbox .file dt, .attachbox .file dd {
 		max-width: 200px;	
 	}
-	.inline-attachment, .attachbox {
-		margin: 20px auto;
+	.inline-attachment, .attachbox {		
 		.file .attach-image {
 			cursor: pointer;
 			margin: 0 0 5px 0;
@@ -222,15 +131,19 @@
 			}
 		}		
 	}
-	.inline-attachment .file {
-		margin: 0;
-		.attach-image[style*='height: auto'] {
-			max-width: 100%;
+	.inline-attachment {
+		margin: 20px auto;
+		.file {
+			margin: 0;
+			.attach-image[style*='height: auto'] {
+				max-width: 100%;
+			}
 		}
 	}
 	.attachbox {
 		border: 1px solid $color-04;
 		padding: 20px 20px 10px 20px;
+		margin: 30px auto;
 		background: $color-03;
 		& > dt {
 			background: $color-04;
@@ -256,7 +169,7 @@
 	}
 }
 
-/* View Topic - Poll Vote
+/* View Topic - Polls
 ========================================================================== */
 
 fieldset.polls dl {
@@ -315,6 +228,126 @@ fieldset.polls dl {
 			margin: 0 0 20px 20%;
 			padding: 0 5px;
 			font-style: italic;
+		}
+	}
+}
+
+/* View Topic - Profile
+========================================================================== */
+
+.postprofile {
+	border-right: 1px dashed $color-04;
+	dt .username-coloured, dd.profile-rank {
+		font-family: $font-02;
+	}
+	dt {
+		text-align: center;
+		margin: 0 0 10px 0;
+		&.has-avatar .avatar-container {
+			display: inline-block;
+			overflow: hidden;
+			border: 5px solid $color-04;
+			border-radius: 100%;
+			a.avatar {
+				display: block;
+				@include sizing(100%, 0);
+				padding: 0 0 100% 0;
+			}
+		}
+		.username-coloured {
+			display: block;
+			font-size: rem(22px);
+			font-variant: small-caps;
+		}
+	}
+	dd {
+		margin: 0 0 3px 0;
+		&.profile-rank {
+			text-align: center;
+			margin: -10px 0 10px 0;			
+			font-style: italic;
+		}
+		&.profile-contact .dropdown-container {
+			display: inline-block;
+			.dropdown {
+				left: 0;
+				right: auto;
+				top: em(30px);
+			}
+		}		
+	}
+}
+
+.topic-wrapper .post, .pm.post {
+	&.online .postprofile dt.no-avatar {
+		margin-top: 30px;
+	}
+}
+
+/* View Topic - Topic & PM Layout (not preview or review)
+========================================================================== */
+
+.topic-wrapper .post {
+	margin: 0 0 20px 0;
+	padding: 0 0 20px 0;
+}
+
+.pm.post {
+	margin: 0 0 30px 0;
+}
+
+.topic-wrapper .post, .pm.post {
+	border-bottom: 1px dashed $color-04;
+	&.last {
+		border-bottom: 0;
+		padding: 0;
+	}
+	.inner {
+		@include flex-flow(row wrap);
+		align-items: flex-start;
+	}
+	.postprofile, .postbody, .back2top {
+		min-width: 1px;
+	}
+	.postprofile {
+		flex: 0 0 231px;
+		margin: 0 20px 0 0;
+		padding: 0 20px 0 0;
+	}
+	.postbody {
+		@include flex(base);
+	}
+	.back2top {
+		@include flex(full);
+		text-align: right;
+		margin: 20px 0 0 0;
+	}
+}
+
+/* View Topic - Topic Review
+========================================================================== */
+
+.topicreview {
+	.topicreview-wrapper {
+		max-height: 400px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		margin: 0 0 20px 0;
+		padding: 0 20px 0 0;		
+	}
+	.post {
+		border-bottom: 1px dashed $color-04;
+		margin: 0 0 30px 0;
+		&:last-child {
+			border-bottom: none;
+		}
+		.postbody {
+			.post-buttons {
+				margin: 0 -2px;
+				li {
+					margin: 0 2px;
+				}
+			}
 		}
 	}
 }

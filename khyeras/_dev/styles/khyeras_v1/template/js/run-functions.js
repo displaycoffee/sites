@@ -21,6 +21,13 @@ jQuery( document ).ready( function( $ ) {
 		postingButtons.closest( '.panel' ).add( '.section-posting #postform #postingbox' ).wrapAll('<div class="posting-wrapper panel"></div>');
 	} 
 
+	// Add wrapper around topic review if height is bigger than 400px
+	var topicReview = $( '.topicreview' );
+
+	if ( topicReview.length && topicReview[0].scrollHeight > 400 ) {
+		topicReview.wrapInner( '<div class="topicreview-wrapper"></div>' );
+	}
+
 	// addFeatherLightGallery( '.gallery' );
 	// scrollOnPage( '.scroll-to-top', 100, 0 );
 	// scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
