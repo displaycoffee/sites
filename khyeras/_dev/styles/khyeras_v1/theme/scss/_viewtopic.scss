@@ -35,6 +35,9 @@
 		a:hover {
 			color: $color-07;
 		}
+		.button2 {
+			margin: 0 5px;
+		}		
 		&.reported {
 			background: mix(white, $color-11, 80%);
 		}
@@ -43,16 +46,14 @@
 			.icon-red {
 				color: $color-07;
 			}
-			.button2 {
-				margin: 0 5px;
-			}
 		}
 	}	
-	.content, .signature {
-		margin: 30px 0;
+	.content {
+		margin: 0 0 20px 0;
 	}
 	.signature {
 		border-top: 1px dashed $color-04;
+		margin: 30px 0 20px 0;
 		padding: 30px 0 0 0;
 	}
 	.signature.standalone {
@@ -143,7 +144,7 @@
 	.attachbox {
 		border: 1px solid $color-04;
 		padding: 20px 20px 10px 20px;
-		margin: 30px auto;
+		margin: 0 auto 20px auto;
 		background: $color-03;
 		& > dt {
 			background: $color-04;
@@ -287,16 +288,9 @@ fieldset.polls dl {
 /* View Topic - Topic & PM Layout (not preview or review)
 ========================================================================== */
 
-.topic-wrapper .post {
-	margin: 0 0 20px 0;
-	padding: 0 0 20px 0;
-}
-
-.pm.post {
-	margin: 0 0 30px 0;
-}
-
 .topic-wrapper .post, .pm.post {
+	margin: 0 0 20px 0;
+	padding: 0 0 20px 0;	
 	border-bottom: 1px dashed $color-04;
 	&.last {
 		border-bottom: 0;
@@ -320,7 +314,6 @@ fieldset.polls dl {
 	.back2top {
 		@include flex(full);
 		text-align: right;
-		margin: 20px 0 0 0;
 	}
 }
 
@@ -337,7 +330,7 @@ fieldset.polls dl {
 	}
 	.post {
 		border-bottom: 1px dashed $color-04;
-		margin: 0 0 30px 0;
+		margin: 0 0 20px 0;
 		&:last-child {
 			border-bottom: none;
 		}
