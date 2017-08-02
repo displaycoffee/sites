@@ -29,8 +29,8 @@ jQuery( document ).ready( function( $ ) {
 	}
 
 	// addFeatherLightGallery( '.gallery' );
-	// scrollOnPage( '.scroll-to-top', 100, 0 );
-	// scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
+	scrollOnPage( '.scroll-to-top', 100, 0 );
+	scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 	// toggleSpoilerContent();
 
 	// initializeMobileMenu({

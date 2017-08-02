@@ -95,3 +95,33 @@
 	height: 0;
 	overflow: hidden;
 }
+
+/* Scroll to top/bottom
+========================================================================== */
+
+.scroll-to-top, .scroll-to-bottom {
+	display: none;
+	position: fixed;
+	right: 30px;
+	z-index: 100;
+	@include sizing(40px, 40px);
+	border-radius: 100%;
+	background: $color-10;
+	padding: 10px;
+	text-align: center;
+	@include transition(background 0.3s ease-in-out);
+	&, &:hover {
+		color: $color-01;
+	}
+	&:hover {
+		background: $color-04;		
+	}	
+}
+
+.scroll-to-top {
+	bottom: 80px;
+}
+
+.scroll-to-bottom {
+	bottom: 30px;	
+}
