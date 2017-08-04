@@ -5,7 +5,7 @@
 	list-style-type: none;
 	margin: 0;
 	& > li {		
-		.row-item {
+		dl {
 			@include flex-flow(row nowrap);
 			margin: 0 -10px;
 			dt, dd {
@@ -31,10 +31,10 @@
 			}							
 		}
 		&.header {
-			margin: -20px -10px 20px -10px;
-			.row-item {
-				background: $color-04;
-				padding: 10px;
+			background: $color-04;
+			padding: 10px 20px;	
+			margin: 0 0 20px 0;		
+			dl {
 				align-items: center;
 				dt a {
 					font-family: $font-02;
@@ -47,14 +47,19 @@
 				}
 			}
 		}				
-		&.row {
-			margin: 0 0 20px 0;
+		&.row {	
+			margin: 0 20px 20px 20px;
 			padding: 0 0 20px 0;
-			border-bottom: 1px dashed $color-04;		
-			.row-item {
-				background-repeat: no-repeat;
-				background-position: 10px 0;
-				background-size: 32px;
+			border-bottom: 1px dashed $color-04;			
+			dl {									
+				&.row-item {
+					background-repeat: no-repeat;
+					background-position: 10px 0;
+					background-size: 32px;
+					dt .list-inner {
+						padding: 0 0 0 45px;
+					}
+				}
 				a .icon {
 					&.fa-exclamation, &.fa-question {
 						background: $color-09;
@@ -76,9 +81,6 @@
 							margin: 0 0 0 3px;	
 						}
 					}					
-					.list-inner {
-						padding: 0 0 0 45px;
-					}
 					.forumtitle, .topictitle {
 						font-weight: bold;
 						@include inline-block(baseline);
@@ -102,7 +104,7 @@
 /* Forums
 ========================================================================== */
 
-.topiclist.forums > li.row .row-item dt {
+.topiclist.forums > li.row dl dt {
 	br + strong, .subforum {
 		@include inline-block(baseline);
 		margin: 5px 0 0 0;
@@ -122,10 +124,14 @@
 	margin: 0 0 20px 0;
 }
 
+.panel.no-topics + .action-bar.bottom {
+	margin-top: -20px;
+}
+
 /* Topics
 ========================================================================== */
 
-.topiclist.topics > li.row .row-item dt {
+.topiclist.topics > li.row dl dt {
 	.responsive-hide, .pagination {
 		@include inline-block(top);
 		width: 49%;

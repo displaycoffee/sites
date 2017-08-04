@@ -168,11 +168,15 @@
 
 .forabg, .forumbg, .panel, .topic-wrapper, .section-posting #preview, .section-posting #preview + .post, 
 .section-posting #topicreview {
-	padding: 20px 20px 0 20px;
 	background: rgba($color-02, 0.20);
 	border: 1px solid $color-04;
 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
 } 
+
+.panel, .topic-wrapper, .section-posting #preview, .section-posting #preview + .post, 
+.section-posting #topicreview {
+	padding: 20px 20px 0 20px;
+}
 
 .forabg, .panel, .section-posting #preview, .section-posting #preview + .post, 
 .section-posting #topicreview {
@@ -237,7 +241,7 @@
 		margin: 0 10px 0 0;
 		@include flex;
 	}	
-	&.bar-top, &.bar-bottom {
+	&.bar-top, &.bar-bottom, &.bottom {
 		.pagination {
 			margin: 0 0 0 auto;
 		}
@@ -478,45 +482,5 @@
 			padding: 7px 12px;
 			font-weight: bold;
 		}
-	}
-}
-
-/* Tables
-========================================================================== */
-
-table {	
-	&.table-fioxed-width-table {
-		table-layout: fixed;
-	}
-	&.table1:not(.memberlist) {
-		width: 100%;
-		margin: 0 0 20px 0;
-		th {
-			text-align: left;
-			font-family: $font-02;
-			font-variant: small-caps;
-			font-size: rem(20px);
-			font-weight: normal;
-			background: $color-04;
-			border: 1px solid $color-04;
-			padding: 5px 10px;
-		}
-		td {
-			border: 1px dashed $color-04;
-			vertical-align: top;
-			padding: 10px;
-			.inputbox, select {
-				margin: 0;
-			}
-			&:first-child {
-				border-left-color: transparent;
-			}
-			&:last-child {
-				border-right-color: transparent;
-			}
-		}
-		tr:first-child td {
-			border-top-color: transparent;
-		}		
 	}
 }

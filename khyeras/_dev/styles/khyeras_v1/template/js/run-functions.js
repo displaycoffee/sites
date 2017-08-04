@@ -7,19 +7,12 @@ var baseFontSize = 16;
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
 	// Check forum listing for no topics and add a class
-	var noTopics = $( '.section-viewforum .forum-title ~ .panel > .inner > strong' );
+	var noTopics = $( '.action-bar.bar-top + .panel > .inner > strong' );
 	var noTopicsText = noTopics.text();
-
-	if ( noTopicsText == 'There are no topics or posts in this forum.' ) {
+	
+	if ( noTopicsText == 'There are no topics or posts in this forum.' || noTopicsText == 'No suitable matches were found.' ) {
 		noTopics.closest( '.panel' ).addClass( 'no-topics' );
 	}
-
-	// If there are posting buttons, add a wrapper for button adjustments
-	var postingButtons = $( '.section-posting #postform .submit-buttons' );
-
-	if ( postingButtons.length ) {
-		postingButtons.closest( '.panel' ).add( '.section-posting #postform #postingbox' ).wrapAll('<div class="posting-wrapper panel"></div>');
-	} 
 
 	// Add wrapper around topic review if height is bigger than 400px
 	var topicReview = $( '.topicreview' );
