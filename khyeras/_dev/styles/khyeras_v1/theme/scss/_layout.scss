@@ -173,8 +173,9 @@
 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
 } 
 
-.panel, .topic-wrapper, .section-posting #preview, .section-posting #preview + .post, 
+.panel, .section-posting #preview, .section-posting #preview + .post, 
 .section-posting #topicreview {
+	margin: 0 0 $main-margin 0;
 	padding: 20px 20px 0 20px;
 }
 
