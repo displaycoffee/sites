@@ -29,22 +29,6 @@ table.info tbody th {
 
 /* Misc layout styles
 ---------------------------------------- */
-/* column[1-2] styles are containers for two column layouts */
-.column1 {
-	float: left;
-	clear: left;
-	width: 49%;
-}
-
-.column2 {
-	float: right;
-	clear: right;
-	width: 49%;
-}
-
-/* General classes for placing floating blocks */
-
-
 dl.details {
 	@include clearfix('&');
 }
@@ -296,19 +280,6 @@ dd.option {
 
 /* Content container styles
 ----------------------------------------*/
-dl.faq {
-	margin-top: 1em;
-	margin-bottom: 2em;
-	line-height: 1.4em;
-}
-
-dl.faq dt {
-	font-weight: bold;
-}
-
-.content dl.faq {
-	margin-bottom: 0.5em;
-}
 
 .posthilit {
 	padding: 0 2px 1px 2px;

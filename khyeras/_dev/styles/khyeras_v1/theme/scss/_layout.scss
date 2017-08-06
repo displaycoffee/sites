@@ -26,6 +26,19 @@
 	}
 }
 
+.column1, .column2 {
+	@include inline-block(top);
+	width: 49%;
+}
+
+.column1, .column2 {
+	padding: 0 10px 0 0;
+}
+
+.column1 + .column2, .column2 + .column1 {
+	padding: 0 0 0 10px;
+}
+
 .image-wrap {
 	line-height: 0;
 	overflow: hidden;

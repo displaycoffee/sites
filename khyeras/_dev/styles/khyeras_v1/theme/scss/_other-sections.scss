@@ -1,0 +1,33 @@
+/* The Team
+========================================================================== */
+
+#team th.name, td:first-child {
+	@include clearfix('&');		
+	.rank-img {
+		float: right;
+		text-align: right;
+	}
+}
+
+/* Forum FAQ
+========================================================================== */
+
+dl.faq {
+	dt {
+		margin: 0 0 5px 0;
+	}
+	& + .top {
+		display: inline-block;
+		margin: 0 0 10px 0;
+		position: relative;
+		top: -10px;	
+		left: -2px;
+	}
+}
+
+#faqlinks dl.faq dd {
+	margin: 0 0 5px 0;
+	&:last-child {
+		margin: 0;
+	}
+}

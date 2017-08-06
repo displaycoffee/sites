@@ -233,6 +233,9 @@ table {
 		th {
 			font-weight: normal;
 			padding: 10px;
+			&.info {
+				width: 30%;
+			}			
 			a {
 				color: $color-01;
 				&:hover {
@@ -242,6 +245,9 @@ table {
 		}		
 		td {
 			padding: 20px 10px;
+			.inputbox, select {
+				margin-bottom: 0;
+			}			
 			dfn {
 				font-style: normal;
 				position: absolute;
