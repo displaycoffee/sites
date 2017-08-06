@@ -422,11 +422,6 @@ div.dl_links {
 	margin-left: 2em;
 }
 
-.panel-container .panel li.row {
-	border-bottom: 1px solid transparent;
-	border-top: 1px solid transparent;
-}
-
 ul.cplist {
 	margin-bottom: 5px;
 	border-top: 1px solid transparent;
@@ -627,8 +622,6 @@ ol.def-rules li {
 .pmlist li.pm_friend_colour, .pm_friend_colour,
 .pmlist li.pm_foe_colour, .pm_foe_colour {
 	padding: 0;
-	border: solid 3px transparent;
-	border-width: 0 3px;
 }
 
 .pm-legend {
@@ -810,6 +803,29 @@ option.disabled-option {
 }
 input.disabled {
 	color: #666666;
+}
+
+// Attach stuff
+
+.file-total-progress {
+	height: 2px;
+	display: block;
+	position: relative;
+	margin: 4px -10px -6px -10px;
+}
+
+.file-progress {
+	background-color: #CCCCCC;
+	display:inline-block;
+	height: 8px;
+	width: 50px;
+}
+
+.file-progress-bar, .file-total-progress-bar {
+	background-color: green;
+	display: block;
+	height: 100%;
+	width: 0;
 }
 
 /* Responsive

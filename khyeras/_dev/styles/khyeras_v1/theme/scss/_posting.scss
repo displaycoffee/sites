@@ -60,13 +60,20 @@
 #attach-panel {
 	#attach-panel-multi {
 		margin: 0 0 20px 0;
+		display: none;
 	}
 	#file-list-container table.table1 {
-		.attach-name {
-			width: 50%;
+		margin: 0;
+		tbody tr:last-child {
+			border-bottom-color: transparent;
 		}
-		.attach-comment {
-			width: 30%;
+		th {
+			&.attach-name {
+				width: 50%;
+			}
+			&.attach-comment {
+				width: 30%;
+			}
 		}
 		td {
 			vertical-align: middle;
@@ -77,14 +84,36 @@
 				}
 				.file-name {
 					width: 39%;
-					left: -1%;
 				}
 				.attach-controls {
 					width: 59%;
+					position: relative;
 					right: -1%;
 					text-align: right;
 				}
 			}
+			&.attach-comment .inputbox {
+				margin-bottom: 0;
+				position: relative;
+				top: 3px;
+			}
+			&.attach-status .file-status {
+				display: inline-block;
+				@include sizing(16px, 16px);
+				&.file-working {
+					background: url('./images/plupload/throbber.gif');
+				}
+				&.file-uploaded {
+					background: url('./images/plupload/done.gif');
+				}
+				&.file-error {
+					background: url('./images/plupload/error.gif');
+				}				
+			}
 		}
 	}
+}
+
+.nojs .file-inline-bbcode {
+	display: none;
 }

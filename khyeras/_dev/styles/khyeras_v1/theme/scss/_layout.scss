@@ -171,21 +171,18 @@
 	background: rgba($color-02, 0.20);
 	border: 1px solid $color-04;
 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
+	padding: 20px 20px 0 20px;
+	margin: 0 0 $main-margin 0;
 } 
 
-.panel, .section-posting #preview, .section-posting #preview + .post, 
-.section-posting #topicreview {
-	margin: 0 0 $main-margin 0;
-	padding: 20px 20px 0 20px;
-}
-
-.forabg, .panel, .section-posting #preview, .section-posting #preview + .post, 
-.section-posting #topicreview {
-	margin: 0 0 $main-margin 0;
-}
-
 .forumbg, .topic-wrapper {
-	margin: 0 0 10px 0;
+	margin-bottom: 10px;
+}
+
+.forabg, .forumbg {
+	.inner {
+		margin: -20px -20px 0 -20px;
+	}
 }
 
 .panel .panel {
