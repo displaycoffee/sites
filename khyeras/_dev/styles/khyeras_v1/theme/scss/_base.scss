@@ -84,12 +84,15 @@ blockquote {
 }
 
 hr {
-	margin: $main-margin 0; 
+	margin: 20px 0; 
 	@include sizing(100%, 0);
 	border: 0;
 	border-bottom: 1px solid $color-04;
 	clear: both;
 	display: none;
+	&.dashed {
+		border-bottom-style: dashed;
+	}
 }
 
 .dropdown-contents hr {

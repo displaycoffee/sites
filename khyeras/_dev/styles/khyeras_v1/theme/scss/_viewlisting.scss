@@ -223,6 +223,12 @@ table {
 			border-bottom: 1px dashed $color-04;
 		}
 		th, td {
+			&.active {
+				width: 15%;
+			}
+			&.info {
+				width: 30%;
+			}			
 			&:first-child {
 				padding-left: 20px;
 			}
@@ -232,10 +238,7 @@ table {
 		}
 		th {
 			font-weight: normal;
-			padding: 10px;
-			&.info {
-				width: 30%;
-			}			
+			padding: 10px;		
 			a {
 				color: $color-01;
 				&:hover {

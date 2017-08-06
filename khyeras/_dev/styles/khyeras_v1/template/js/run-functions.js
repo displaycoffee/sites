@@ -21,6 +21,23 @@ jQuery( document ).ready( function( $ ) {
 		topicReview.wrapInner( '<div class="topicreview-wrapper"></div>' );
 	}
 
+	// If search has no results, hide "0 matches" pagination text
+	var pagination = $( '.section-search .pagination' );
+
+	jQuery( pagination ).each( function() {
+		var paginationText = $( this ).text();
+
+		if ( paginationText.indexOf( 'Search found 0 matches' ) >= 0 ) {
+			$( this ).parent( '.action-bar' ).hide();
+		}
+
+		console.log( paginationText );
+
+
+	});
+
+	//console.log(pagination);
+
 	// addFeatherLightGallery( '.gallery' );
 	scrollOnPage( '.scroll-to-top', 100, 0 );
 	scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );

@@ -31,3 +31,37 @@ dl.faq {
 		margin: 0;
 	}
 }
+
+/* Search Page
+========================================================================== */
+
+.section-search {
+	form[data-focus='keywords'] {
+		hr.dashed {
+			display: block;
+		}
+		fieldset dl dd {
+			#sk, #st, select[name='ch'] {
+				width: auto;
+				min-width: 33.33%;				
+			}
+			#sk {
+				margin-right: 5px;
+			}
+			select[name='ch'] {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
+/* Search Results
+========================================================================== */
+
+.searchresults-title ~ .advanced-search-link {
+	margin: 0 0 $main-margin 0;
+	.icon {
+		width: auto;
+		margin: 0 5px 0 0;		
+	}
+}
