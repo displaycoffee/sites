@@ -805,29 +805,6 @@ input.disabled {
 	color: #666666;
 }
 
-// Attach stuff
-
-.file-total-progress {
-	height: 2px;
-	display: block;
-	position: relative;
-	margin: 4px -10px -6px -10px;
-}
-
-.file-progress {
-	background-color: #CCCCCC;
-	display:inline-block;
-	height: 8px;
-	width: 50px;
-}
-
-.file-progress-bar, .file-total-progress-bar {
-	background-color: green;
-	display: block;
-	height: 100%;
-	width: 0;
-}
-
 /* Responsive
 ========================================================================== */
 

@@ -98,17 +98,23 @@
 				top: 3px;
 			}
 			&.attach-status .file-status {
-				display: inline-block;
-				@include sizing(16px, 16px);
-				&.file-working {
-					background: url('./images/plupload/throbber.gif');
+				&:before {
+					@include font-awesome;
+					font-size: rem(20px);
 				}
-				&.file-uploaded {
-					background: url('./images/plupload/done.gif');
+				&.file-uploaded:before {
+					content: '\f058';
+					color: $color-06;
 				}
-				&.file-error {
-					background: url('./images/plupload/error.gif');
+				&.file-error:before {
+					content: '\f071';
+					color: $color-11;
 				}				
+				&.file-working:before {
+					content: '\f110';
+					color: $color-07;
+					animation: fa-spin 2s infinite linear;
+				}
 			}
 		}
 	}
@@ -116,4 +122,34 @@
 
 .nojs .file-inline-bbcode {
 	display: none;
+}
+
+/* File Progress Bars (for attachments)
+========================================================================== */
+
+.file-progress, .file-progress .file-progress-bar, 
+.file-total-progress, .file-total-progress-bar {
+	display: block;
+}
+
+.file-progress-bar, .file-total-progress-bar {	
+	@include sizing(0, 100%);
+	border-radius: 3px;
+}
+
+.file-progress {
+	@include sizing(100%, 10px);
+}
+
+.file-progress-bar {
+	background-color: $color-10;	
+}
+
+.file-total-progress {
+	@include sizing(100%, 4px);
+	margin: 0 0 -4px 0;
+}
+
+.file-total-progress-bar {
+	background-color: $color-06;
 }
