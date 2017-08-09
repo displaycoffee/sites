@@ -155,15 +155,6 @@ div.rules ul, div.rules ol {
 
 /* Link Styles
 ---------------------------------------- */
-/* Profile searchresults */
-.search .postprofile a {
-	text-decoration: none;
-	font-weight: normal;
-}
-
-.search .postprofile a:hover {
-	text-decoration: underline;
-}
 
 /* Arrow links  */
 
@@ -177,10 +168,6 @@ div.rules ul, div.rules ol {
 	padding-right: 10px;
 }
 .arrow-left:hover {
-	text-decoration: none;
-}
-
-.arrow-right:hover {
 	text-decoration: none;
 }
 
@@ -249,13 +236,6 @@ dd.option {
 	text-align: center;
 }
 
-/* Post body styles
-----------------------------------------*/
-
-.search .postbody {
-	width: 68%
-}
-
 /* Topic review panel
 ----------------------------------------*/
 .panel .review {
@@ -281,23 +261,11 @@ dd.option {
 	padding: 0 2px 1px 2px;
 }
 
-/* Jump to post link for now */
-ul.searchresults {
-	list-style: none;
-	text-align: right;
-	clear: both;
-}
-
 /* Poster profile block
 ----------------------------------------*/
 
 dd.profile-warnings {
 	font-weight: bold;
-}
-
-/* Poster profile used by search*/
-.search .postprofile {
-	width: 30%;
 }
 
 /* Profile used on view-profile */
@@ -897,25 +865,6 @@ input.disabled {
 		display: inline-block;
 		text-align: right;
 		min-width: 50%;
-	}
-
-	/* Post
-	----------------------------------------*/
-	.postbody {
-		position: inherit;
-	}
-
-	.postbody, .search .postbody {
-		display: block;
-		width: auto;
-		float: none;
-		padding: 0;
-		min-height: 0;
-	}
-
-	.search .postprofile dd {
-		display: block;
-		margin: 0;
 	}
 
 	/* Misc stuff

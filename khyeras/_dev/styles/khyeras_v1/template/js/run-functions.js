@@ -10,7 +10,7 @@ jQuery( document ).ready( function( $ ) {
 	var noTopics = $( '.action-bar.bar-top + .panel > .inner > strong' );
 	var noTopicsText = noTopics.text();
 	
-	if ( noTopicsText == 'There are no topics or posts in this forum.' || noTopicsText == 'No suitable matches were found.' ) {
+	if ( noTopicsText == 'There are no topics or posts in this forum.' ) {
 		noTopics.closest( '.panel' ).addClass( 'no-topics' );
 	}
 
@@ -30,10 +30,6 @@ jQuery( document ).ready( function( $ ) {
 		if ( paginationText.indexOf( 'Search found 0 matches' ) >= 0 ) {
 			$( this ).parent( '.action-bar' ).hide();
 		}
-
-		console.log( paginationText );
-
-
 	});
 
 	//console.log(pagination);

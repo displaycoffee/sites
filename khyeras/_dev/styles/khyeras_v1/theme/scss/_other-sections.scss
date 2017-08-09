@@ -58,10 +58,22 @@ dl.faq {
 /* Search Results
 ========================================================================== */
 
-.searchresults-title ~ .advanced-search-link {
-	margin: 0 0 $main-margin 0;
-	.icon {
-		width: auto;
-		margin: 0 5px 0 0;		
+.section-search {
+	.searchresults-title ~ .advanced-search-link {
+		margin: $main-margin 0;
+		.icon {
+			width: auto;
+			margin: 0 5px 0 0;		
+		}
+	}
+	.postprofile dt .username-coloured {
+		display: inline;
+	}
+	.topic-wrapper .post ul.searchresults {
+		list-style: none;
+		margin: 20px 0 0 0;
+		min-width: 1px;
+		@include flex(full);
+		text-align: right;			
 	}
 }
