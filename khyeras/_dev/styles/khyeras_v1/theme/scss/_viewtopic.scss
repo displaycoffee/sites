@@ -56,9 +56,6 @@
 		margin: 30px 0 20px 0;
 		padding: 30px 0 0 0;
 	}
-	.signature.standalone {
-		border-bottom: 1px dashed $color-04;
-	}
 }
 
 /* View Topic - Body - Title
@@ -344,6 +341,12 @@ fieldset.polls dl {
 		margin: 0 0 20px 0;
 		&:last-child {
 			border-bottom: none;
+		}
+		&.post-ignore {
+			padding: 0 0 20px 0px;
+			.postbody {
+				display: none;
+			}
 		}
 		.postbody {
 			.post-buttons {

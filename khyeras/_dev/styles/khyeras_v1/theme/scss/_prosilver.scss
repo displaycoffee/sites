@@ -29,27 +29,6 @@ table.info tbody th {
 
 /* Misc layout styles
 ---------------------------------------- */
-dl.details {
-	@include clearfix('&');
-}
-
-dl.details dt {
-	float: left;
-	clear: left;
-	width: 30%;
-	text-align: right;
-	display: block;
-}
-
-dl.details dd {
-	margin-left: 0;
-	padding-left: 5px;
-	margin-bottom: 5px;
-	float: left;
-	width: 65%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
 
 .clearfix {
 	overflow: hidden;
@@ -223,16 +202,6 @@ dd.option {
 	text-align: center;
 }
 
-/* Topic review panel
-----------------------------------------*/
-.panel .review {
-	margin-top: 2em;
-}
-
-.post-ignore .postbody {
-	display: none;
-}
-
 /* MCP Post details
 ----------------------------------------*/
 .post_details {
@@ -244,15 +213,6 @@ dd.option {
 
 /* Poster profile block
 ----------------------------------------*/
-
-dd.profile-warnings {
-	font-weight: bold;
-}
-
-/* Profile used on view-profile */
-.profile-avatar img {
-	max-width: 100%;
-}
 
 /* pm list in compose message if mass pm is enabled */
 dl.pmlist dt {
@@ -738,16 +698,6 @@ input.disabled {
 
 	.captcha-panel dd.captcha-image img {
 		width: 100%;
-	}
-
-	dl.details dt, dl.details dd {
-		width: auto;
-		float: none;
-		text-align: left;
-	}
-
-	dl.details dd {
-		margin-left: 20px;
 	}
 
 	p.responsive-center {

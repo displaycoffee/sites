@@ -27,15 +27,18 @@
 }
 
 .column1, .column2 {
-	@include inline-block(top);
-	width: 49%;
+	width: 50%;
 }
 
-.column1, .column2 {
+.column1 {
+	float: left;
+	clear: left;
 	padding: 0 10px 0 0;
 }
 
-.column1 + .column2, .column2 + .column1 {
+.column2 {
+	float: right;
+	clear: right;
 	padding: 0 0 0 10px;
 }
 
@@ -493,5 +496,24 @@
 			padding: 7px 12px;
 			font-weight: bold;
 		}
+	}
+}
+
+/* Details
+========================================================================== */
+
+dl.details {
+	@include clearfix('&');
+	margin: 0 -10px 15px -10px;
+	dt, dd {
+		padding: 0 10px;
+		margin: 0 0 5px 0;
+	}
+	dt {
+		float: left;
+		width: 200px;
+	}
+	dd {
+		margin-left: 200px;
 	}
 }

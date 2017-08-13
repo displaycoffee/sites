@@ -42,8 +42,7 @@ dl.faq {
 		}
 		fieldset dl dd {
 			#sk, #st, select[name='ch'] {
-				width: auto;
-				min-width: 33.33%;				
+				width: 33.33%;			
 			}
 			#sk {
 				margin-right: 5px;
@@ -135,5 +134,57 @@ dl.faq {
 	box-shadow: none;
 	strong {
 		font-weight: normal;
+	}
+}
+
+/* View Profile
+========================================================================== */
+
+#viewprofile {
+	.panel:first-child {
+		&.online .left-box.profile-details:first-child {
+			margin-top: 35px;
+		}
+		.inner {
+			@include flex-flow(row nowrap);
+			.left-box:not(.profile-details) {
+			    flex: 0 0 231px;
+				margin: 0 20px 20px 0;
+				padding: 0 20px 0 0;	
+				border-right: 1px dashed $color-04;	    
+				.profile-avatar {
+					overflow: hidden;
+					border: 5px solid $color-04;
+					border-radius: 100%;				
+					@include sizing(100%, 0);
+					padding: 0 0 95.24% 0;
+					margin: 0 0 10px 0;
+					& + dd {
+						font-style: italic;
+						font-family: $font-02;
+					}
+				}			
+			}
+			.left-box.profile-details {
+				@include flex(base);
+				dd {
+					select[name='g'] {
+						width: auto;
+						min-width: 33.33%;
+						margin: 0 5px 0 0;
+					}
+					span[style*='color'] {
+						font-family: $font-02;
+						font-size: rem(22px);
+						font-weight: normal !important;
+						font-variant: small-caps;
+					}
+				}			
+			}
+		}
+	}
+	.panel .signature {
+		margin-top: 20px;
+		padding-top: 20px;
 	}
 }
