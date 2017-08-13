@@ -255,7 +255,7 @@
 		margin: 0 10px 0 0;
 		@include flex;
 	}	
-	&.bar-top, &.bar-bottom, &.bottom {
+	&.bar-top, &.bar-bottom, &.top, &.bottom {
 		.pagination {
 			margin: 0 0 0 auto;
 		}
@@ -296,8 +296,10 @@
 .sort-tools .dropdown .display-options {
 	label {
 		position: relative;
-		padding: 8px 130px 8px 0;
+		padding: 0 130px 0 0;
 		margin: 0 0 10px 0;
+		height: 40px;
+		line-height: 40px;
 		select {
 			position: absolute;
 			top: 0;
@@ -471,32 +473,42 @@
 	}
 }
 
-/* Tabs
+/* Tabs & Minitabs
 ========================================================================== */
 
-.tabs & > ul {
-	list-style: none;
-	margin: 0;
-	@include flex-flow(row nowrap);
-	align-items: flex-end;
-	.tab {
-		margin: 0 2px 0 0;
-		a {
-			display: block;
-			padding: 5px 10px;
-			color: $color-01;
-			background: $color-10; 
-			border-radius: 3px 3px 0 0;
-			@include transition(background 0.3s ease-in-out);
+.tabs, .minitabs {
+	& > ul {
+		list-style: none;
+		margin: 0;
+		@include flex-flow(row nowrap);
+		align-items: flex-end;
+		.tab {
+			margin: 0 2px 0 0;
+			a {
+				display: block;
+				padding: 5px 10px;
+				color: $color-01;
+				background: $color-10; 				
+				@include transition(background 0.3s ease-in-out);
+			}
+			a:hover, &.activetab a {
+				background: $color-04;
+			}
+			&.activetab a {
+				padding: 7px 12px;
+				font-weight: bold;
+			}
 		}
-		a:hover, &.activetab a {
-			background: $color-04;
-		}
-		&.activetab a {
-			padding: 7px 12px;
-			font-weight: bold;
-		}
-	}
+	}	
+}
+
+.tabs > ul .tab a {
+	border-radius: 3px 3px 0 0;
+}
+
+.minitabs > ul .tab a {
+	border-radius: 3px;
+	font-size: rem(13px);
 }
 
 /* Details

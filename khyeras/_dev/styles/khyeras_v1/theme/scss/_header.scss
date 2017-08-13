@@ -276,15 +276,16 @@
 			margin: 0 0 10px 0;
 			border-bottom: 1px dashed $color-03;			
 			.notification-block {
-				@include flex-flow(row nowrap);				
+				@include flex-flow(row nowrap);	
+				align-items: flex-start;
+				img, .notification_text {
+					@include flex(base);
+				}			
 				img {
-					flex: 0 0 auto;
 					max-width: 50px;
-					max-height: 50px;
 					border: 1px solid $color-03;
 				}
-				.notification_text {
-					@include flex(base);
+				.notification_text {					
 					margin: 0 0 0 10px;
 					p {
 						margin: 0 0 2px 0;

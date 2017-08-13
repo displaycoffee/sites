@@ -1,3 +1,70 @@
+/* CP - Layout
+========================================================================== */
+
+.section-ucp, .section-mcp {
+	.tabs + .panel > .inner > div {
+		@include flex-flow(row wrap);
+		align-items: flex-start;
+	}
+}
+
+.cp-menu {
+	flex: 0 0 201px;
+	margin: 0 20px 20px 0;
+	padding: 0 20px 0 0;
+	border-right: 1px dashed $color-04;
+	min-height: 150px;
+	.navigation {
+		ul {
+			margin: 0;
+			list-style: none;
+			li {
+				margin: 0 0 5px 0;
+				&.active-subsection {
+					a {
+						font-weight: bold;
+						color: $color-07;
+					}
+				}
+			}
+		}	
+	}
+}
+
+.cp-main {
+	@include flex(base);
+}
+
+/* CP - Display Actions
+========================================================================== */
+
+fieldset.display-actions {
+	text-align: right;
+	margin: 30px -10px 20px -10px;
+	direction: rtl;
+	input, div {
+		@include inline-block(middle);
+	}
+	div {
+		margin: 0 10px;
+	}
+}
+
+/* CP - Attachments
+========================================================================== */
+
+.cp-main .topiclist {
+	& > li.header dl dt a {
+		font-family: $font-01;
+		font-variant: none;
+		font-size: rem(14px);
+	}
+	& > li.row dl dt .topictitle.attachment-filename {
+		margin: 0;
+		display: inline;
+	}
+}
+
 /* MCP - Front 
 ========================================================================== */
 

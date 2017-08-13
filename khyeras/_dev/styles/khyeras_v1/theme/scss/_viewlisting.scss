@@ -21,10 +21,10 @@
 					left: -9999px;
 				}
 				&.mark {
-					flex: 0 0 80px;
+					flex: 0 0 85px;
 				}
 				&.topics, &.posts, &.views, &.extra {
-					flex: 0 0 100px;	
+					flex: 0 0 120px;	
 				}
 				&.option {
 					flex: 0 0 125px;
@@ -49,13 +49,12 @@
 			margin: 0 0 20px 0;		
 			dl {
 				align-items: center;
+				dt, dd {
+					@include sortable-headers;
+				}
 				dt a {
 					@include spectral-common;
-					font-size: rem(22px);
-					color: $color-01;
-					&:hover {
-						color: $color-06;
-					}					
+					font-size: rem(22px);					
 				}
 			}
 		}				
@@ -298,12 +297,7 @@ table {
 		th {
 			font-weight: normal;
 			padding: 10px;		
-			a {
-				color: $color-01;
-				&:hover {
-					color: $color-06;
-				}				
-			}
+			@include sortable-headers;			
 		}		
 		td {
 			padding: 20px 10px;

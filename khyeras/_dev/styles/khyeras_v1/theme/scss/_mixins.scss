@@ -117,6 +117,29 @@
 	height: $height;
 }
 
+// Sortable headers
+@mixin sortable-headers {
+	a {
+		color: $color-01;
+		&:hover {
+			color: $color-06;
+		}				
+		&[href*='mode=']:after {
+			@include font-awesome;			
+			margin: 0 0 0 10px;
+			position: relative;
+		}
+		&[href*='mode='][href*='sd=d']:after {
+			content: '\f0dd';
+			top: -2px;
+		}
+		&[href*='mode='][href*='sd=a']:after {
+			content: '\f0de';
+			top: 4px;
+		}
+	}		
+}
+
 // Common spectral font styles
 @mixin spectral-common {
 	font-family: $font-02;

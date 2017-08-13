@@ -60,9 +60,7 @@ fieldset.fields1 dl.pmlist dd.recipients {
 }
 
 /* Inner box-model clearing */
-.inner:after,
-.tabs-container:after,
-.minitabs > ul:after {
+.inner:after {
 	clear: both;
 	content: '';
 	display: block;
@@ -158,41 +156,11 @@ div.dl_links {
 	display: inline-block;
 }
 
-.attachment-filename {
-	width: 100%;
-}
-
 /* CP
 ========================================================================== */
 
 /* Main CP box
 ----------------------------------------*/
-.cp-menu {
-	float:left;
-	width: 19%;
-	margin-top: 1em;
-	margin-bottom: 5px;
-}
-
-.cp-main {
-	float: left;
-	width: 81%;
-}
-
-.cp-main .content {
-	padding: 0;
-}
-
-
-.panel-container .panel ol {
-	margin-left: 2em;
-}
-
-ul.cplist {
-	margin-bottom: 5px;
-	border-top: 1px solid transparent;
-}
-
 .cp-main .pm-message {
 	border: 1px solid transparent;
 	margin: 10px 0;
@@ -218,56 +186,6 @@ ul.cplist {
 	margin-bottom: 0px;
 }
 
-/* CP tabs shared
-----------------------------------------*/
-
-.minitabs {
-	line-height: normal;
-}
-
-.minitabs > ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	position: relative;
-}
-
-.minitabs .tab {
-	display: block;
-	float: left;
-	font-weight: bold;
-	line-height: 1.4em;
-}
-
-.minitabs .tab > a {
-	display: block;
-	padding: 5px 9px;
-	position: relative;
-	text-decoration: none;
-	white-space: nowrap;
-	cursor: pointer;
-}
-
-/* Mini tabbed menu used in MCP
-----------------------------------------*/
-.minitabs {
-	float: right;
-	margin: 15px 7px 0 0;
-	max-width: 50%;
-}
-
-.minitabs .tab {
-	float: right;
-}
-
-.minitabs .tab > a {
-	border-radius: 5px 5px 0 0;
-	margin-left: 2px;
-}
-
-.minitabs .tab > a:hover {
-	text-decoration: none;
-}
 
 /* Responsive tabs
 ----------------------------------------*/
@@ -292,37 +210,6 @@ ul.cplist {
 	width: 14px;
 	border-bottom: 0.125em solid transparent;
 	border-top: 0.375em double transparent;
-}
-/* UCP navigation menu
-----------------------------------------*/
-/* Container for sub-navigation list */
-.navigation {
-	width: 100%;
-	padding-top: 36px;
-}
-
-.navigation ul {
-	list-style: none;
-}
-
-/* Default list state */
-.navigation li {
-	display: inline;
-	font-weight: bold;
-	margin: 1px 0;
-	padding: 0;
-}
-
-/* Link styles for the sub-section links */
-.navigation a {
-	display: block;
-	padding: 5px;
-	margin: 1px 0;
-	text-decoration: none;
-}
-
-.navigation a:hover {
-	text-decoration: none;
 }
 
 /* Preferences pane layout
@@ -472,19 +359,6 @@ fieldset.quick-login input.inputbox {
 }
 
 fieldset.quick-login label {
-	white-space: nowrap;
-	padding-right: 2px;
-}
-
-/* Display actions for ucp and mcp pages */
-fieldset.display-actions {
-	text-align: right;
-	line-height: 2em;
-	white-space: nowrap;
-	padding-right: 1em;
-}
-
-fieldset.display-actions label {
 	white-space: nowrap;
 	padding-right: 2px;
 }
@@ -672,10 +546,6 @@ input.disabled {
 	dl.mini dd.pm-legend {
 		float: left;
 		min-width: 200px;
-	}
-
-	fieldset.display-actions {
-		white-space: normal;
 	}
 
 	.attach-comment dfn {
