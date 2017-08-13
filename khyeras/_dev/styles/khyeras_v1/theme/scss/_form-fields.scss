@@ -30,6 +30,11 @@ fieldset {
 	margin: 0 0 20px 0;
 }
 
+select {
+	min-height: 40px;	
+	background: #fff;
+}
+
 select option {
 	color: $color-08;
 }
@@ -115,9 +120,6 @@ fieldset dl {
 	dt {
 		float: left;
 	}
-	dd {
-		overflow: auto;
-	}
 }
 
 fieldset:not(.polls) {
@@ -134,9 +136,6 @@ fieldset:not(.polls) {
 					display: block;
 				}
 			}
-			& + dd {
-				margin-left: 0;
-			}
 		}
 		dd {
 			margin-left: 250px;
@@ -149,9 +148,6 @@ fieldset:not(.polls) {
 	&.fields1 dl {
 		dt {
 			width: 200px;
-			& + dd {
-				margin-left: 0;
-			}
 		}
 		dd {
 			margin-left: 200px;

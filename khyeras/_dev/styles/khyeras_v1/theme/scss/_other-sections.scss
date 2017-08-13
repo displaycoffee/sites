@@ -2,11 +2,11 @@
 ========================================================================== */
 
 #team th.name, td:first-child {
-	@include clearfix('&');		
-	.rank-img {
-		float: right;
-		text-align: right;
-	}
+	// @include clearfix('&');		
+	// .rank-img {
+	// 	float: right;
+	// 	text-align: right;
+	// }
 }
 
 /* Forum FAQ
@@ -88,5 +88,52 @@ dl.faq {
 			@include flex(full);
 			text-align: right;			
 		}
+	}
+}
+
+/* Memberlist
+========================================================================== */
+
+#search_memberlist {
+	.dropdown-container .dropdown.live-search {
+		&[style*='block'] {
+			visibility: visible;
+			opacity: 1;
+			z-index: 2;
+			left: 0;				
+		}
+		.dropdown-contents.search-results li .search-result {
+			cursor: pointer;
+			display: block;
+			padding: 0 0 3px 0;			
+		}
+	}
+	fieldset.fields1 dl dd {
+		@include clearfix('&');
+		select:not(#search_group_id) {
+			&, & + .inputbox {
+				float: left;
+				width: 49%;
+			}
+		}
+		select:not(#search_group_id):first-child {
+			margin-right: 1%;
+		}
+		select:not(#search_group_id) + .inputbox, select[name='sd'] {
+			margin-left: 1%;
+		}
+		input[type='number'].inputbox {
+			margin-right: 0;
+		}
+	}
+}
+
+.member-search.panel {
+	padding: 0;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	strong {
+		font-weight: normal;
 	}
 }

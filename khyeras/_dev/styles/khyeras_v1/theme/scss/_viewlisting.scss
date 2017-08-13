@@ -223,7 +223,10 @@ table {
 			border-bottom: 1px dashed $color-04;
 		}
 		th, td {
-			&.active {
+			&.posts, &.mark {
+				width: 7%;
+			}
+			&.active, &.joined, &.reportby {
 				width: 15%;
 			}
 			&.info {
@@ -234,7 +237,7 @@ table {
 			}
 			&:last-child {
 				padding-right: 20px;
-			}			
+			}	
 		}
 		th {
 			font-weight: normal;
@@ -248,6 +251,7 @@ table {
 		}		
 		td {
 			padding: 20px 10px;
+			vertical-align: top;
 			.inputbox, select {
 				margin-bottom: 0;
 			}			
@@ -257,6 +261,11 @@ table {
 				top: -9999px;
 				left: -9999px;				
 			}			
+		}
+		.rank-img {
+			float: right;
+			clear: right;
+			text-align: right;
 		}
 	}
 }
