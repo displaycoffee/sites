@@ -1,0 +1,12 @@
+/* MCP - Front 
+========================================================================== */
+
+.mcp-main {
+	#mcp_queue .topiclist>li.header dl:after {
+		display: block;
+		content: 'Mark';
+		flex: 0 0 80px;
+		padding: 0 10px;
+		box-sizing: border-box;
+	}
+}

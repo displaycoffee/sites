@@ -170,8 +170,7 @@
 	font-size: rem(13px);
 	.introduction {
 		p:first-child:first-line {
-			font-family: $font-02;
-			font-variant: small-caps;
+			@include spectral-common;
 			font-size: rem(20px);
 			line-height: 1.3;
 		}
@@ -248,8 +247,7 @@
 		margin: 40px 0 0 0;
 	}
 	.header {
-		font-family: $font-02;
-		font-variant: small-caps;
+		@include spectral-common;
 		font-size: rem(18px);
 		background: $color-04;
 		padding: 0 150px 0 10px;

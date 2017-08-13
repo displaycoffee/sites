@@ -77,7 +77,6 @@
 }
 
 // FontAwesome properties
-
 @mixin font-awesome {
 	display: inline-block;
   	font-weight: normal;
@@ -116,6 +115,12 @@
 @mixin sizing($width, $height) {
 	width: $width;
 	height: $height;
+}
+
+// Common spectral font styles
+@mixin spectral-common {
+	font-family: $font-02;
+	font-variant: small-caps;	
 }
 
 // Transition

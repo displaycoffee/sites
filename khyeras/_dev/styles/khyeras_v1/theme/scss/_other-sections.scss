@@ -174,10 +174,9 @@ dl.faq {
 						margin: 0 5px 0 0;
 					}
 					span[style*='color'] {
-						font-family: $font-02;
+						@include spectral-common;
 						font-size: rem(22px);
 						font-weight: normal !important;
-						font-variant: small-caps;
 					}
 				}			
 			}

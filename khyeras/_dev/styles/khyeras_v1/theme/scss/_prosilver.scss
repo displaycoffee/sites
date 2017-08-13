@@ -1,30 +1,7 @@
-/* Horizontal lists
-----------------------------------------*/
-
-ul.navlinks {
-	border-top: 1px solid transparent;
-}
-
 /* Table styles
 ----------------------------------------*/
 .ucp-main table.table1 {
 	padding: 2px;
-}
-
-table.info td {
-	padding: 3px;
-}
-
-table.info tbody th {
-	padding: 3px;
-	text-align: right;
-	vertical-align: top;
-	font-weight: normal;
-}
-
-.color_palette_placeholder table {
-	border-collapse: separate;
-	border-spacing: 1px;
 }
 
 /* Misc layout styles
@@ -67,16 +44,6 @@ fieldset.fields1 dl.pmlist dd.recipients {
 
 .error {
 	font-weight: bold;
-}
-
-div.rules {
-	margin: 10px 0;
-	padding: 5px 10px;
-	border-radius: 7px;
-}
-
-div.rules ul, div.rules ol {
-	margin-left: 20px;
 }
 
 .top-anchor {
@@ -146,62 +113,6 @@ a.feed-icon-forum {
 /* Content
 ========================================================================== */
 
-/* Content Styles
----------------------------------------- */
-
-.forum-image {
-	float: left;
-	padding-top: 5px;
-	margin-right: 5px;
-}
-
-dl a.row-item-link {
-	display: block;
-	width: 30px;
-	height: 30px;
-	padding: 0;
-	position: absolute;
-	top: 50%;
-	left: 0;
-	margin-top: -15px;
-	margin-left: 9px;
-}
-
-dd.extra, dd.mark {
-	width: 80px;
-	text-align: center;
-	line-height: 2.2em;
-}
-
-/* List in forum description */
-
-dd.redirect, dd.moderation, dd.time, dd.info {
-	width: 250px;
-}
-
-dd.redirect {
-	line-height: 2.5em;
-}
-
-dd.time {
-	line-height: 200%;
-}
-
-dd.redirect > span, dd.moderation > span {
-	display: block;
-	padding-left: 5px;
-}
-
-dd.extra, dd.mark {
-	line-height: 200%;
-}
-
-dd.option {
-	width: 125px;
-	line-height: 200%;
-	text-align: center;
-}
-
 /* MCP Post details
 ----------------------------------------*/
 .post_details {
@@ -251,27 +162,6 @@ div.dl_links {
 	width: 100%;
 }
 
-/* Deprecated as of version 3.2
--------------------------------------------------*/
-.small-icon {
-	background-position: 0 50%;
-	background-repeat: no-repeat;
-	background-image: none;
-}
-
-.small-icon > a {
-	padding: 0 0 0 18px;
-}
-
-.rtl .small-icon {
-	background-position: 100% 50%;
-}
-
-.rtl .small-icon > a {
-	padding-left: 0;
-	padding-right: 19px;
-}
-
 /* CP
 ========================================================================== */
 
@@ -301,10 +191,6 @@ div.dl_links {
 ul.cplist {
 	margin-bottom: 5px;
 	border-top: 1px solid transparent;
-}
-
-.panel-container .panel li.header dd, .panel-container .panel li.header dt {
-	margin-bottom: 2px;
 }
 
 .cp-main .pm-message {
@@ -611,11 +497,17 @@ fieldset.sort-options {
 fieldset.forum-selection {
 	margin: 5px 0 3px 0;
 	float: right;
+	& + h2 {
+		clear: both;
+	}
 }
 
 fieldset.forum-selection2 {
 	margin: 13px 0 3px 0;
 	float: right;
+	& + h2 {
+		clear: both;
+	}
 }
 
 /* Input field styles
@@ -642,38 +534,6 @@ input.disabled {
 
 /* Icon styles
 ---------------------------------------- */
-.icon.icon-blue, a:hover .icon.icon-blue {
-	color: $color-07;
-}
-
-.icon.icon-green, a:hover .icon.icon-green {
-	color: $color-06;
-}
-
-.icon.icon-red, a:hover .icon.icon-red {
-	color: $color-11;
-}
-
-.icon.icon-orange, a:hover .icon.icon-orange {
-	color: #FF6600;
-}
-
-.icon.icon-bluegray, a:hover .icon.icon-bluegray {
-	color: #536482;
-}
-
-.icon.icon-gray, a:hover .icon.icon-gray {
-	color: $color-12;
-}
-
-.icon.icon-lightgray, a:hover .icon.icon-lightgray {
-	color: $color-13;
-}
-
-.icon.icon-black, a:hover .icon.icon-black {
-	color: $color-01;
-}
-
 option.disabled-option {
 	color: graytext;
 }

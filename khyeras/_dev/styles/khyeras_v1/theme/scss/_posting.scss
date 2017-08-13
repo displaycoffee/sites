@@ -16,8 +16,15 @@
 	#colour_palette, #format-buttons {
 		margin: 0 0 20px 0;
 	}
-	#colour_palette #color_palette_placeholder table tr td {
-		@include sizing(16px !important, 16px !important);
+	#colour_palette #color_palette_placeholder table {
+		border-collapse: separate;
+		border-spacing: 1px;		
+		tr td {
+			@include sizing(16px !important, 16px !important);
+			a {
+				@include sizing(100% !important, 100% !important);
+			}
+		}
 	}
 	#format-buttons select {
 		width: auto;

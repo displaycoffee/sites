@@ -10,7 +10,7 @@ jQuery( document ).ready( function( $ ) {
 	var noTopics = $( '.action-bar.bar-top + .panel > .inner > strong' );
 	var noTopicsText = noTopics.text();
 	
-	if ( noTopicsText == 'There are no topics or posts in this forum.' ) {
+	if ( noTopicsText == 'There are no topics or posts in this forum.' || noTopicsText == 'Forum is locked' ) {
 		noTopics.closest( '.panel' ).addClass( 'no-topics' );
 	}
 

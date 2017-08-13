@@ -20,12 +20,27 @@
 					top: -9999px;
 					left: -9999px;
 				}
-				&.topics, &.posts, &.views {
+				&.mark {
+					flex: 0 0 80px;
+				}
+				&.topics, &.posts, &.views, &.extra {
 					flex: 0 0 100px;	
 				}
-				&.lastpost {
+				&.option {
+					flex: 0 0 125px;
+				}
+				&.lastpost, &.time, &.info {
 					flex: 0 0 250px;
 				}
+				&.moderation {
+					flex: 0 0 350px;
+				}
+				&.redirect {
+					flex: 0 0 450px;
+				}
+			}
+			&.forum_link dd:not(.redirect) {
+				display: none;
 			}							
 		}
 		&.header {
@@ -35,8 +50,7 @@
 			dl {
 				align-items: center;
 				dt a {
-					font-family: $font-02;
-					font-variant: small-caps;
+					@include spectral-common;
 					font-size: rem(22px);
 					color: $color-01;
 					&:hover {
@@ -74,9 +88,51 @@
 					}
 				}
 				dt {
+					position: relative;
+					.row-item-link {
+						display: block;
+						@include sizing(32px, 32px);
+						position: absolute;
+						top: 0;
+						left: 10px;
+						z-index: 2;
+					}					
 					a .icon {
 						&.fa-exclamation, &.fa-question {
 							margin: 0 0 0 3px;	
+						}
+					}
+					.forum-image {
+						display: block;
+						height: 110px;
+						overflow: hidden;
+						position: relative;
+						z-index: 1;
+						border: 5px solid $color-04;
+						img {
+							position: absolute;
+							top: 0;
+							left: 0;
+							right: 0;
+							bottom: 0;
+							margin: auto;							
+						}
+						& + .forumtitle {
+							display: block;
+							height: 40px;
+							line-height: 40px;
+							margin: -45px 5px -5px 5px;
+							padding: 0 10px;
+							position: relative;
+							z-index: 2;
+							background: rgba($color-02, 0.65);
+							@include spectral-common;
+							font-weight: normal;
+							font-size: rem(22px);
+							color: $color-01;
+							&:hover {
+								color: $color-07;								
+							}
 						}
 					}					
 					.forumtitle, .topictitle {
@@ -275,6 +331,21 @@ table {
 		margin: 0;
 		tbody tr:last-child {
 			border-bottom-color: transparent;
+		}
+	}
+}
+
+/* Forum Rules
+========================================================================== */
+
+.rules {
+	margin: 0 0 20px 0;
+	.inner strong:first-child {
+		display: block;
+		margin: 0 0 20px 0;
+		font-size: rem(16px);
+		& + br {
+			display: none;
 		}
 	}
 }

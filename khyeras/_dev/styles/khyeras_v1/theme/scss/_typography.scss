@@ -109,9 +109,8 @@ p.right {
 ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: $font-02;  
+	@include spectral-common; 
 	font-weight: normal;  
-	font-variant: small-caps;
 	line-height: 1.1;
 }
 
@@ -182,4 +181,36 @@ h5, h6 {
 
 .icon + span:not(.sr-only), .icon + .sr-only + span:not(.sr-only), span:not(.sr-only) + .icon {
 	margin: 0 0 0 5px;
+}
+
+.icon.icon-blue, a:hover .icon.icon-blue {
+	color: $color-07;
+}
+
+.icon.icon-green, a:hover .icon.icon-green {
+	color: $color-06;
+}
+
+.icon.icon-red, a:hover .icon.icon-red {
+	color: $color-11;
+}
+
+.icon.icon-orange, a:hover .icon.icon-orange {
+	color: $color-14;
+}
+
+.icon.icon-bluegray, a:hover .icon.icon-bluegray {
+	color: $color-15;
+}
+
+.icon.icon-gray, a:hover .icon.icon-gray {
+	color: $color-12;
+}
+
+.icon.icon-lightgray, a:hover .icon.icon-lightgray {
+	color: $color-13;
+}
+
+.icon.icon-black, a:hover .icon.icon-black {
+	color: $color-01;
 }
