@@ -9,7 +9,7 @@ jQuery( document ).ready( function( $ ) {
 	// Check forum listing for no topics and add a class
 	var noTopics = $( '.action-bar.bar-top + .panel > .inner > strong' );
 	var noTopicsText = noTopics.text();
-	
+
 	if ( noTopicsText == 'There are no topics or posts in this forum.' || noTopicsText == 'Forum is locked' ) {
 		noTopics.closest( '.panel' ).addClass( 'no-topics' );
 	}
@@ -32,7 +32,14 @@ jQuery( document ).ready( function( $ ) {
 		}
 	});
 
-	//console.log(pagination);
+	// Add wrapper around control panel elements
+	var cpMenu = $( '.cp-menu' );
+	var cpMain = $( '.cp-main' );
+
+	if ( cpMenu || cpMain ) {
+		cpMenu.parent().addClass('cp-wrapper');
+		cpMain.parent().addClass('cp-wrapper');
+	}
 
 	// addFeatherLightGallery( '.gallery' );
 	scrollOnPage( '.scroll-to-top', 100, 0 );

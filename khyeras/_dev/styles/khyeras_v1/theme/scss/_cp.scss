@@ -1,11 +1,9 @@
 /* CP - Layout
 ========================================================================== */
 
-.section-ucp, .section-mcp {
-	.tabs + .panel > .inner > div {
-		@include flex-flow(row wrap);
-		align-items: flex-start;
-	}
+.cp-wrapper {
+	@include flex-flow(row wrap);
+	align-items: flex-start;
 }
 
 .cp-menu {
@@ -27,7 +25,7 @@
 					}
 				}
 			}
-		}	
+		}
 	}
 }
 
@@ -50,10 +48,10 @@ fieldset.display-actions {
 	}
 }
 
-/* CP - Attachments
+/* UCP - Attachments
 ========================================================================== */
 
-.cp-main .topiclist {
+.ucp-main .topiclist {
 	& > li.header dl dt a {
 		font-family: $font-01;
 		font-variant: none;
@@ -65,7 +63,67 @@ fieldset.display-actions {
 	}
 }
 
-/* MCP - Front 
+/* UCP - Notifications
+   Note: UCP area only. Header notifications in header.scss
+========================================================================== */
+
+.ucp-main .notification_list .topiclist > li.row dl dt .list-inner {
+	@include clearfix('&');
+	img {
+		float: left;
+		max-width: 100px;
+		max-height: 100px;
+	}
+	.notifications {
+		margin: 0 0 0 120px;
+		p {
+			margin: 0 0 5px 0;
+		}
+		& > p:last-child {
+			margin: 0;
+		}
+	}
+}
+
+/* UCP - Profile
+========================================================================== */
+
+.ucp-main fieldset dl dd label[for*='bday'] select {
+	width: auto;
+	margin: 0 0 0 5px;
+}
+
+/* UCP - Signature
+========================================================================== */
+
+.ucp-main .signature.standalone {
+	margin-bottom: 30px;
+	&:after {
+		content: '';
+		display: block;
+		@include sizing(100%, 1px);
+		border-bottom: 1px dashed $color-04;
+		margin: 20px 0 0 0;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MCP - Front
 ========================================================================== */
 
 .mcp-main {

@@ -7,7 +7,7 @@
    3. Removed rules for h1 (this will be overriden most likely)
    4. Removed rules for fieldset (will style if needed)
    5. Remove box-sizing rules on elements
-========================================================================== */ 
+========================================================================== */
 
 /* General
 ========================================================================== */
@@ -22,7 +22,7 @@ body {
 	margin: 0;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, 
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 nav, section, summary {
 	display: block;
 }
