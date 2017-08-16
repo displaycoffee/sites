@@ -51,7 +51,7 @@ fieldset.display-actions {
 /* UCP - Attachments
 ========================================================================== */
 
-.ucp-main .topiclist {
+.ucp-main form[action*='mode=attachments'] .topiclist {
 	& > li.header dl dt a {
 		font-family: $font-01;
 		font-variant: none;
@@ -88,15 +88,16 @@ fieldset.display-actions {
 /* UCP - Profile
 ========================================================================== */
 
-.ucp-main fieldset dl dd label[for*='bday'] select {
+.ucp-main form[action*='mode=profile_info'] fieldset dl dd label[for*='bday'] select {
 	width: auto;
+	min-width: 80px;
 	margin: 0 0 0 5px;
 }
 
 /* UCP - Signature
 ========================================================================== */
 
-.ucp-main .signature.standalone {
+.ucp-main form[action*='mode=signature'] .signature.standalone {
 	margin-bottom: 30px;
 	&:after {
 		content: '';
@@ -104,6 +105,58 @@ fieldset.display-actions {
 		@include sizing(100%, 1px);
 		border-bottom: 1px dashed $color-04;
 		margin: 20px 0 0 0;
+	}
+}
+
+/* UCP - Avatar
+========================================================================== */
+
+.cp-main form[action*='mode=avatar'] {
+	.avatar {
+		border: 5px solid $color-04;
+		margin: 0 0 10px 0;
+	}
+	#avatar_option_avatar_driver_gravatar, #avatar_option_avatar_driver_local,
+	#avatar_option_avatar_driver_remote, #avatar_option_avatar_driver_upload {
+		& > p {
+			margin: -10px 0 20px 250px;
+			font-style: italic;
+			font-size: rem(13px);
+		}
+	}
+	.gallery {
+		@include flex-flow(row wrap);
+		margin: 0 -5px 10px -5px;
+		label {
+			@include flex;
+			width: 16.6666%;
+			margin: 0 0 10px 0;
+			padding: 0 5px;
+			text-align: center;
+			position: relative;	
+			img {
+				margin: 0 auto;
+				padding: 10px;				
+			}
+			input[type='radio'], &:before {
+				position: absolute;
+			}
+			input[type='radio'] {				
+				top: 100%;
+				margin: -20px 0 0 0;
+			}
+			&:before {				
+				content: '';
+				display: block;
+				background: $color-04;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: -1;				
+				margin: 0 5px;				
+			}
+		}
 	}
 }
 

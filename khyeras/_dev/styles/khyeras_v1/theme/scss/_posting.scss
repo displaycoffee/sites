@@ -11,6 +11,7 @@
 			@include sizing(20px, 20px);
 			position: relative;
 			top: 4px;
+			@include inline-block(baseline);
 		}
 	}
 	#colour_palette, #format-buttons {
@@ -18,7 +19,7 @@
 	}
 	#colour_palette #color_palette_placeholder table {
 		border-collapse: separate;
-		border-spacing: 1px;		
+		border-spacing: 1px;
 		tr td {
 			@include sizing(16px !important, 16px !important);
 			a {
@@ -30,9 +31,10 @@
 		width: auto;
 		display: inline-block;
 		margin: 0;
-		padding: 5px 10px;			
+		padding: 5px 10px;
 		line-height: 1;
 		font-size: rem(13px);
+		min-height: 0;
 	}
 	#smiley-box {
 		margin: 0 -2.5px;
@@ -115,7 +117,7 @@
 				&.file-error:before {
 					content: '\f071';
 					color: $color-11;
-				}				
+				}
 				&.file-working:before {
 					content: '\f110';
 					color: $color-07;
@@ -133,12 +135,12 @@
 /* File Progress Bars (for attachments)
 ========================================================================== */
 
-.file-progress, .file-progress .file-progress-bar, 
+.file-progress, .file-progress .file-progress-bar,
 .file-total-progress, .file-total-progress-bar {
 	display: block;
 }
 
-.file-progress-bar, .file-total-progress-bar {	
+.file-progress-bar, .file-total-progress-bar {
 	@include sizing(0, 100%);
 	border-radius: 3px;
 }
@@ -148,7 +150,7 @@
 }
 
 .file-progress-bar {
-	background-color: $color-10;	
+	background-color: $color-10;
 }
 
 .file-total-progress {

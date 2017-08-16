@@ -34,7 +34,7 @@ select {
 	min-height: 40px;
 	option {
 		color: $color-08;
-	}	
+	}
 }
 
 label {
@@ -117,6 +117,10 @@ fieldset dl {
 	dt {
 		float: left;
 	}
+	label {
+		margin: 0 10px 0 0;
+		@include inline-block(baseline);
+	}
 }
 
 fieldset:not(.polls) {
@@ -149,18 +153,6 @@ fieldset:not(.polls) {
 		dd {
 			margin-left: 200px;
 		}
-	}
-}
-
-/* Inline Block Form Content
-========================================================================== */
-
-fieldset dl dd {
-	label, img {
-		@include inline-block(baseline);
-	}
-	label {
-		margin: 0 10px 0 0;
 	}
 }
 
