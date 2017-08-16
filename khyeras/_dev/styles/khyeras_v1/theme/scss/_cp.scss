@@ -124,7 +124,31 @@ fieldset.display-actions {
 			font-size: rem(13px);
 		}
 	}
+	#avatar_option_avatar_driver_local {
+		fieldset {
+			@include clearfix('&');
+			label[for='category'] {
+				float: left;
+				@include flex-flow(row nowrap);
+				width: 85%;
+				font-size: 0;
+				&:before, select {
+					font-size: rem(14px);
+				}
+				&:before {
+					content: 'Category:';
+					flex: 0 0 250px;
+				}
+			}
+			input[type='submit'][name='avatar_local_go'] {
+				float: right;
+				width: 14%;
+				margin: 0 0 0 1%;
+			}
+		}
+	}
 	.gallery {
+		clear: both;
 		@include flex-flow(row wrap);
 		margin: 0 -5px 10px -5px;
 		label {
@@ -133,19 +157,19 @@ fieldset.display-actions {
 			margin: 0 0 10px 0;
 			padding: 0 5px;
 			text-align: center;
-			position: relative;	
+			position: relative;
 			img {
 				margin: 0 auto;
-				padding: 10px;				
+				padding: 10px;
 			}
 			input[type='radio'], &:before {
 				position: absolute;
 			}
-			input[type='radio'] {				
+			input[type='radio'] {
 				top: 100%;
 				margin: -20px 0 0 0;
 			}
-			&:before {				
+			&:before {
 				content: '';
 				display: block;
 				background: $color-04;
@@ -153,8 +177,8 @@ fieldset.display-actions {
 				bottom: 0;
 				left: 0;
 				right: 0;
-				z-index: -1;				
-				margin: 0 5px;				
+				z-index: -1;
+				margin: 0 5px;
 			}
 		}
 	}
