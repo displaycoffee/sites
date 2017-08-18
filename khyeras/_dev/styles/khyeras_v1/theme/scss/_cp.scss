@@ -119,31 +119,35 @@ fieldset.display-actions {
 	#avatar_option_avatar_driver_gravatar, #avatar_option_avatar_driver_local,
 	#avatar_option_avatar_driver_remote, #avatar_option_avatar_driver_upload {
 		& > p {
-			margin: -10px 0 20px 250px;
+			margin: -10px 0 20px $form-field-indent1;
 			font-style: italic;
 			font-size: rem(13px);
 		}
 	}
 	#avatar_option_avatar_driver_local {
 		fieldset {
-			@include clearfix('&');
+			position: relative;
 			label[for='category'] {
-				float: left;
 				@include flex-flow(row nowrap);
-				width: 85%;
+				align-items: flex-start;
 				font-size: 0;
+				margin: 0 70px 0 0;
 				&:before, select {
 					font-size: rem(14px);
 				}
 				&:before {
 					content: 'Category:';
-					flex: 0 0 250px;
+					flex: 0 0 $form-field-indent1;
+				}
+				select {
+					@include flex(base);
 				}
 			}
 			input[type='submit'][name='avatar_local_go'] {
-				float: right;
-				width: 14%;
-				margin: 0 0 0 1%;
+				width: 60px;
+				position: absolute;
+				top: 0;
+				right: 0;
 			}
 		}
 	}
@@ -184,9 +188,22 @@ fieldset.display-actions {
 	}
 }
 
+/* UCP - Global Settings
+========================================================================== */
 
-
-
+.cp-main form[action*='mode=personal'] {
+	#tz_select_date {
+		display: flex !important;
+		flex-flow: row nowrap;
+		align-items: flex-start;
+		select, .button2 {
+			@include flex;
+		}
+		.button2 {
+			margin: 0 0 5px 10px;
+		}
+	}
+}
 
 
 

@@ -4,14 +4,14 @@
 .topiclist {
 	list-style-type: none;
 	margin: 0;
-	& > li {		
+	& > li {
 		dl {
 			@include flex-flow(row nowrap);
 			margin: 0 -10px;
 			dt, dd {
 				padding: 0 10px;
 				@include flex(base);
-			}	
+			}
 			dd {
 				margin: 0;
 				dfn {
@@ -24,7 +24,7 @@
 					flex: 0 0 85px;
 				}
 				&.topics, &.posts, &.views, &.extra {
-					flex: 0 0 120px;	
+					flex: 0 0 120px;
 				}
 				&.option {
 					flex: 0 0 125px;
@@ -41,12 +41,12 @@
 			}
 			&.forum_link dd:not(.redirect) {
 				display: none;
-			}							
+			}
 		}
 		&.header {
 			background: $color-04;
-			padding: 10px 20px;	
-			margin: 0 0 20px 0;		
+			padding: 10px 20px;
+			margin: 0 0 20px 0;
 			dl {
 				align-items: center;
 				dt, dd {
@@ -54,15 +54,15 @@
 				}
 				dt a {
 					@include spectral-common;
-					font-size: rem(22px);					
+					font-size: rem(22px);
 				}
 			}
-		}				
-		&.row {	
+		}
+		&.row {
 			margin: 0 0 20px 0;
 			padding: 0 20px 20px 20px;
-			border-bottom: 1px dashed $color-04;			
-			dl {									
+			border-bottom: 1px dashed $color-04;
+			dl {
 				&.row-item {
 					background-repeat: no-repeat;
 					background-position: 10px 0;
@@ -77,7 +77,7 @@
 						@include sizing(18px, 18px);
 						line-height: 18px;
 						border-radius: 100%;
-						text-align: center;												
+						text-align: center;
 					}
 					&.fa-exclamation {
 						background: mix(white, $color-11, 80%);
@@ -95,10 +95,10 @@
 						top: 0;
 						left: 10px;
 						z-index: 2;
-					}					
+					}
 					a .icon {
 						&.fa-exclamation, &.fa-question {
-							margin: 0 0 0 3px;	
+							margin: 0 0 0 3px;
 						}
 					}
 					.forum-image {
@@ -114,7 +114,7 @@
 							left: 0;
 							right: 0;
 							bottom: 0;
-							margin: auto;							
+							margin: auto;
 						}
 						& + .forumtitle {
 							display: block;
@@ -130,22 +130,22 @@
 							font-size: rem(22px);
 							color: $color-01;
 							&:hover {
-								color: $color-07;								
+								color: $color-07;
 							}
 						}
-					}					
+					}
 					.forumtitle, .topictitle {
 						font-weight: bold;
 						@include inline-block(baseline);
 						margin: 0 0 5px 0;
 					}
-				}	
+				}
 				dd a .icon {
 					&.fa-exclamation, &.fa-question {
-						margin: 0 3px 0 0;	
+						margin: 0 3px 0 0;
 					}
-				}								
-			}				
+				}
+			}
 		}
 	}
 }
@@ -202,7 +202,7 @@
 		}
 		ul {
 			margin: 0;
-		}		
+		}
 	}
 }
 
@@ -270,12 +270,21 @@ table {
 	}
 	&.table1 {
 		margin: 0 0 20px 0;
-		thead tr {			
+		thead tr {
 			background: $color-04;
 			text-align: left;
 		}
 		tbody tr {
 			border-bottom: 1px dashed $color-04;
+			&.big-column {
+				background: $color-05;
+				border-bottom-style: solid;
+				border-top: 1px solid $color-04;
+				td {
+					padding-top: 10px;
+					padding-bottom: 10px;
+				}
+			}
 		}
 		th, td {
 			&.posts, &.mark {
@@ -286,31 +295,31 @@ table {
 			}
 			&.info {
 				width: 30%;
-			}			
+			}
 			&:first-child {
 				padding-left: 20px;
 			}
 			&:last-child {
 				padding-right: 20px;
-			}	
+			}
 		}
 		th {
 			font-weight: normal;
-			padding: 10px;		
-			@include sortable-headers;			
-		}		
+			padding: 10px;
+			@include sortable-headers;
+		}
 		td {
 			padding: 20px 10px;
 			vertical-align: top;
 			.inputbox, select {
 				margin-bottom: 0;
-			}			
+			}
 			dfn {
 				font-style: normal;
 				position: absolute;
 				top: -9999px;
-				left: -9999px;				
-			}			
+				left: -9999px;
+			}
 		}
 		.rank-img {
 			float: right;

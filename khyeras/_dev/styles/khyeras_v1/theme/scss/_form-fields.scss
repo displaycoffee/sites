@@ -126,7 +126,7 @@ fieldset dl {
 fieldset:not(.polls) {
 	dl {
 		dt {
-			width: 250px;
+			width: $form-field-indent1;
 			label {
 				& + br {
 					display: none;
@@ -139,7 +139,7 @@ fieldset:not(.polls) {
 			}
 		}
 		dd {
-			margin-left: 250px;
+			margin-left: $form-field-indent1;
 			margin-bottom: 5px;
 			&:last-child {
 				margin-bottom: 0;
@@ -148,10 +148,10 @@ fieldset:not(.polls) {
 	}
 	&.fields1 dl {
 		dt {
-			width: 200px;
+			width: $form-field-indent2;
 		}
 		dd {
-			margin-left: 200px;
+			margin-left: $form-field-indent2;
 		}
 	}
 }
