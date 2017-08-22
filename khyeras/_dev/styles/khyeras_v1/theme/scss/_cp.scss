@@ -12,18 +12,27 @@
 	padding: 0 20px 0 0;
 	border-right: 1px dashed $color-04;
 	min-height: 150px;
-	.navigation {
-		ul {
-			margin: 0;
-			list-style: none;
-			li {
-				margin: 0 0 5px 0;
-				&.active-subsection {
-					a {
-						font-weight: bold;
-						color: $color-07;
-					}
+	.navigation ul {
+		margin: 0;
+		list-style: none;
+		li {
+			margin: 0 0 5px 0;
+			&.active-subsection {
+				a {
+					font-weight: bold;
+					color: $color-07;
 				}
+			}
+		}
+	}
+	.cp-mini {
+		margin: 15px 0 0 0;
+		.mini {
+			dt, dd {
+				margin: 0 0 5px 0;
+			}
+			dt {
+				font-weight: bold;
 			}
 		}
 	}
@@ -31,27 +40,44 @@
 
 .cp-main {
 	@include flex(base);
+	.panel .inner > .action-bar.bottom:last-child {
+		margin-bottom: 20px;
+	}
 }
 
 /* CP - Display Actions
 ========================================================================== */
 
 fieldset.display-actions {
+	@include clearfix('&');
 	text-align: right;
-	margin: 30px -10px 20px -10px;
-	direction: rtl;
-	input, div {
-		@include inline-block(middle);
+	margin: 30px 0 20px 0;
+	label, select {
+		margin: 0;
 	}
-	div {
-		margin: 0 10px;
+	select {
+		width: auto;
 	}
+	& > div {
+		margin: 10px 0 0 0;
+	}
+	.left-box {
+		float: left;
+		margin: 0;
+		label {
+			display: inline-block;
+		}
+	}
+}
+
+fieldset.display-actions + fieldset.display-actions {
+	margin-top: -20px;
 }
 
 /* UCP - Attachments
 ========================================================================== */
 
-.ucp-main form[action*='mode=attachments'] .topiclist {
+.ucp-main form[action*='ucp.php'][action*='attachments'] .topiclist {
 	& > li.header dl dt a {
 		font-family: $font-01;
 		font-variant: none;
@@ -88,7 +114,7 @@ fieldset.display-actions {
 /* UCP - Profile
 ========================================================================== */
 
-.ucp-main form[action*='mode=profile_info'] fieldset dl dd label[for*='bday'] select {
+.ucp-main form[action*='ucp.php'][action*='profile_info'] fieldset dl dd label[for*='bday'] select {
 	width: auto;
 	min-width: 80px;
 	margin: 0 0 0 5px;
@@ -97,7 +123,7 @@ fieldset.display-actions {
 /* UCP - Signature
 ========================================================================== */
 
-.ucp-main form[action*='mode=signature'] .signature.standalone {
+.ucp-main form[action*='ucp.php'][action*='signature'] .signature.standalone {
 	margin-bottom: 30px;
 	&:after {
 		content: '';
@@ -111,7 +137,7 @@ fieldset.display-actions {
 /* UCP - Avatar
 ========================================================================== */
 
-.cp-main form[action*='mode=avatar'] {
+.cp-main form[action*='ucp.php'][action*='avatar'] {
 	.avatar {
 		border: 5px solid $color-04;
 		margin: 0 0 10px 0;
@@ -191,7 +217,7 @@ fieldset.display-actions {
 /* UCP - Global Settings
 ========================================================================== */
 
-.cp-main form[action*='mode=personal'] {
+.cp-main form[action*='ucp.php'][action*='personal'] {
 	#tz_select_date {
 		display: flex !important;
 		flex-flow: row nowrap;
@@ -205,9 +231,51 @@ fieldset.display-actions {
 	}
 }
 
+/* UCP - Private Messages - Legend
+========================================================================== */
 
+.cp-menu .cp-mini .mini .pm-legend {
+	.imageset {
+		@include inline-block(top);
+		@include sizing(16px, 16px);
+		margin: 0 5px 0 0;
+		border-radius: 3px;
+	}
+	&.pm_marked_colour .imageset {
+		background: $color-06;
+	}
+	&.pm_replied_colour .imageset {
+		background: $color-07;
+	}
+	&.pm_friend_colour .imageset {
+		background: $color-14;
+	}
+	&.pm_foe_colour .imageset {
+		background: $color-11;
+	}
+}
 
+/* UCP - Private Messages - Inbox
+========================================================================== */
 
+.cp-main form[action*='ucp.php'][action*='view'] .topiclist > li.row {
+	dl.row-item {
+		border-width: 0 5px;
+		border-style: solid;
+	}
+	&.pm_marked_colour dl.row-item {
+		border-color: $color-06;
+	}
+	&.pm_replied_colour dl.row-item {
+		border-color: $color-07;
+	}
+	&.pm_friend_colour dl.row-item {
+		border-color: $color-14;
+	}
+	&.pm_foe_colour dl.row-item {
+		border-color: $color-11;
+	}
+}
 
 
 

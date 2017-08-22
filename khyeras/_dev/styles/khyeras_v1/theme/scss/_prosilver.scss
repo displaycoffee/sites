@@ -23,14 +23,6 @@ fieldset.fields1 dd.recipients {
 	margin-left: 1em;
 }
 
-fieldset.fields1 dl.pmlist > dt {
-	width: auto !important;
-}
-
-fieldset.fields1 dl.pmlist dd.recipients {
-	margin-left: 0 !important;
-}
-
 /* Miscellaneous styles
 ---------------------------------------- */
 
@@ -124,15 +116,6 @@ a.feed-icon-forum {
 ----------------------------------------*/
 
 /* pm list in compose message if mass pm is enabled */
-dl.pmlist dt {
-	width: 60% !important;
-}
-
-dl.pmlist dd {
-	margin-left: 61% !important;
-	margin-bottom: 2px;
-}
-
 .action-bar div.dl_links {
 	padding: 10px 0 0 10px;
 }
@@ -215,23 +198,6 @@ div.dl_links {
 /* Preferences pane layout
 ----------------------------------------*/
 
-/* Friends list */
-.cp-mini {
-	margin: 10px 15px 10px 5px;
-	max-height: 200px;
-	overflow-y: auto;
-	padding: 5px 10px;
-	border-radius: 7px;
-}
-
-dl.mini dt {
-	font-weight: bold;
-}
-
-dl.mini dd {
-	padding-top: 4px;
-}
-
 .friend-online {
 	font-weight: bold;
 }
@@ -251,47 +217,6 @@ ol.def-rules li {
 	line-height: 180%;
 	padding: 1px;
 }
-
-/* PM marking colours */
-.pmlist li.bg1 {
-	padding: 0 3px;
-}
-
-.pmlist li.bg2 {
-	padding: 0 3px;
-}
-
-.pmlist li.pm_message_reported_colour, .pm_message_reported_colour {
-	border-left-color: transparent;
-	border-right-color: transparent;
-}
-
-.pmlist li.pm_marked_colour, .pm_marked_colour,
-.pmlist li.pm_replied_colour, .pm_replied_colour,
-.pmlist li.pm_friend_colour, .pm_friend_colour,
-.pmlist li.pm_foe_colour, .pm_foe_colour {
-	padding: 0;
-}
-
-.pm-legend {
-	border-left-width: 10px;
-	border-left-style: solid;
-	border-right-width: 0;
-	margin-bottom: 3px;
-	padding-left: 3px;
-}
-
-/* Avatar gallery */
-// .gallery label {
-// 	position: relative;
-// 	float: left;
-// 	margin: 10px;
-// 	padding: 5px;
-// 	width: auto;
-// 	border: 1px solid transparent;
-// 	text-align: center;
-// }
-
 /* Responsive *CP navigation
 ----------------------------------------*/
 @media only screen and (max-width: 900px), only screen and (max-device-width: 900px)
@@ -473,19 +398,6 @@ input.disabled {
 
 	/* Forms
 	----------------------------------------*/
-	dl.pmlist dt {
-		width: auto !important;
-		margin-bottom: 5px;
-	}
-
-	dl.pmlist dd {
-		display: inline-block;
-		margin-left: 0 !important;
-	}
-
-	dl.pmlist dd:first-of-type {
-		padding-left: 20px;
-	}
 
 	.bbcode-status {
 		display: none;
@@ -537,12 +449,6 @@ input.disabled {
 		margin-bottom: .5em;
 		overflow: hidden;
 	}
-
-	dl.mini dd.pm-legend {
-		float: left;
-		min-width: 200px;
-	}
-
 	.attach-comment dfn {
 		width: 100%;
 	}
