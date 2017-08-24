@@ -327,9 +327,21 @@ fieldset.display-actions + fieldset.display-actions {
 	}
 }
 
+/* UCP - Private Messages - Rules, folders, and settings
+========================================================================== */
 
-
-
+.cp-main form[action*='ucp.php'][action*='options'] {
+	fieldset dl {
+		dd {
+			select[name='full_move_to'] {
+				width: auto;
+				min-height: 0;
+				padding: 5px 10px;
+				font-size: rem(13px);
+			}
+		}
+	}
+}
 
 
 
