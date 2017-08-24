@@ -51,7 +51,7 @@
 fieldset.display-actions {
 	@include clearfix('&');
 	text-align: right;
-	margin: 30px 0 20px 0;
+	margin: 20px 0;
 	label, select {
 		margin: 0;
 	}
@@ -71,7 +71,7 @@ fieldset.display-actions {
 }
 
 fieldset.display-actions + fieldset.display-actions {
-	margin-top: -20px;
+	margin-top: -10px;
 }
 
 /* UCP - Attachments
@@ -255,13 +255,63 @@ fieldset.display-actions + fieldset.display-actions {
 	}
 }
 
+/* UCP - Private Messages - Compose
+========================================================================== */
+
+.cp-main {
+	#pmheader-postingbox {
+		.inputbox {
+			height: 100px;
+		}
+		label[for='group_list'] ~ br {
+			display: none;
+		}
+		dl.pmlist dt label {
+			.inputbox {
+				margin: 0;
+			}
+			strong {
+				margin: 0 0 5px 0;
+				display: block;
+			}
+		}
+		.column1 + hr {
+			& ~ .column1, & ~ .column2 {
+				float: none;
+				width: auto;
+				padding: 0;
+			}
+		}
+		ul.recipients {
+			list-style: none;
+			margin: 0 -5px -5px -5px;
+			li {
+				@include inline-block(middle);
+				margin: 0 5px 5px 5px;
+				.button2 {
+					padding: 0;
+					@include sizing(20px, 20px);
+					line-height: 20px;
+					margin: 0 5px 0 0;
+					font-weight: bold;
+				}
+				a strong {
+					font-weight: normal;
+				}
+			}
+		}
+	}
+}
+
 /* UCP - Private Messages - Inbox
 ========================================================================== */
 
-.cp-main form[action*='ucp.php'][action*='view'] .topiclist > li.row {
-	dl.row-item {
-		border-width: 0 5px;
-		border-style: solid;
+.cp-main #viewfolder .topiclist > li.row {
+	&.pm_marked_colour, &.pm_replied_colour, &.pm_friend_colour, &.pm_foe_colour {
+		dl.row-item {
+			border-width: 0 5px;
+			border-style: solid;
+		}
 	}
 	&.pm_marked_colour dl.row-item {
 		border-color: $color-06;
