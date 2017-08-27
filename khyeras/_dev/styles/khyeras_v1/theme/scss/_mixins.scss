@@ -44,15 +44,15 @@
 // flex: grow - shrink - basis
 @mixin flex($type: '') {
 	@if $type == grow {
-		flex: 1 0 auto; 
+		flex: 1 0 auto;
 	} @else if $type == base {
-		flex: 1 1 0%; 
+		flex: 1 1 0%;
 	} @else if $type == full {
 		flex: 1 1 100%;
 	} @else if $type == max {
 		flex: 0 0 auto;
 	} @else {
-		flex: 0 1 auto; 
+		flex: 0 1 auto;
 	}
 }
 
@@ -62,7 +62,7 @@
 	flex-flow: $flow;
 }
 
-// Flex flow inline 
+// Flex flow inline
 @mixin flex-flow-inline($flow) {
 	display: inline-flex;
 	flex-flow: $flow;
@@ -86,7 +86,7 @@
   	line-height: 1;
   	text-rendering: auto; /* optimizelegibility throws things off #1094 */
   	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;	
+  	-moz-osx-font-smoothing: grayscale;
 }
 
 // Inline block
@@ -95,13 +95,13 @@
 	vertical-align: $vertical-align;
 }
 
-// Placeholder 
+// Placeholder
 // Examples: @include placeholder {}, :focus{@include placeholder {}}, or input {@include placeholder {}}
 @mixin placeholder {
 	&::-webkit-input-placeholder {@content}
 	&:-moz-placeholder           {@content}
 	&::-moz-placeholder          {@content}
-	&:-ms-input-placeholder      {@content}  
+	&:-ms-input-placeholder      {@content}
 }
 
 // Responsive max-width media query
@@ -117,15 +117,21 @@
 	height: $height;
 }
 
+// Smaller sized form elements
+@mixin small-form-ele {
+	padding: 5px 10px;
+	line-height: 1;
+}
+
 // Sortable headers
 @mixin sortable-headers {
 	a {
 		color: $color-01;
 		&:hover {
 			color: $color-06;
-		}				
+		}
 		&[href*='mode=']:after {
-			@include font-awesome;			
+			@include font-awesome;
 			margin: 0 0 0 10px;
 			position: relative;
 		}
@@ -137,27 +143,27 @@
 			content: '\f0de';
 			top: 4px;
 		}
-	}		
+	}
 }
 
 // Common spectral font styles
 @mixin spectral-common {
 	font-family: $font-02;
-	font-variant: small-caps;	
+	font-variant: small-caps;
 }
 
 // Transition
 @mixin transition($value) {
-	-webkit-transition: $value;	
-	-moz-transition: $value;	
-	-o-transition: $value;	
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-o-transition: $value;
 	transition: $value;
 }
 
 // Quote characters
 @mixin quotes {
-	font-size: rem(30px);	
+	font-size: rem(30px);
 	@include inline-block(middle);
 	@include sizing(12px, 12px);
-	line-height: 1.2;	
+	line-height: 1.2;
 }
