@@ -260,7 +260,7 @@
 .topic_unread_locked				{ background-image: url('./images/topic_unread_locked.gif'); }
 .topic_unread_locked_mine			{ background-image: url('./images/topic_unread_locked_mine.gif'); }
 
-/* Tbale Listings
+/* Table Listings
 ========================================================================== */
 
 table {
@@ -276,15 +276,6 @@ table {
 		}
 		tbody tr {
 			border-bottom: 1px dashed $color-04;
-			&.big-column {
-				background: $color-05;
-				border-bottom-style: solid;
-				border-top: 1px solid $color-04;
-				td {
-					padding-top: 10px;
-					padding-bottom: 10px;
-				}
-			}
 		}
 		th, td {
 			&.posts, &.mark {

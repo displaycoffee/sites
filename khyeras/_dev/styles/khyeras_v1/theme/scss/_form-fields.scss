@@ -90,8 +90,7 @@ input[type='checkbox'], input[type='radio']  {
 }
 
 .button-icon-only {
-	padding: 5px;
-	line-height: 1;
+	@include small-form-ele($padding: 5px);
 }
 
 fieldset.submit-buttons {

@@ -118,9 +118,11 @@
 }
 
 // Smaller sized form elements
-@mixin small-form-ele {
-	padding: 5px 10px;
-	line-height: 1;
+@mixin small-form-ele($padding: 5px 10px, $lh: '') {
+	padding: $padding;
+	@if ($lh != false) {
+		line-height: 1;
+	}
 }
 
 // Sortable headers

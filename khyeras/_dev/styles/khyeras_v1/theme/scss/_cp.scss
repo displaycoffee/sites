@@ -45,6 +45,19 @@
 	}
 }
 
+/* CP - Big Column Table
+========================================================================== */
+
+.cp-main table.table1 tbody tr.big-column {
+	background: $color-05;
+	border-bottom-style: solid;
+	border-top: 1px solid $color-04;
+	td {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
+
 /* CP - Display Actions
 ========================================================================== */
 

@@ -31,8 +31,7 @@
 		width: auto;
 		display: inline-block;
 		margin: 0;
-		padding: 5px 10px;
-		line-height: 1;
+		@include small-form-ele;
 		font-size: rem(13px);
 		min-height: 0;
 	}

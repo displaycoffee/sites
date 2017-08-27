@@ -1,14 +1,3 @@
-/* The Team
-========================================================================== */
-
-#team th.name, td:first-child {
-	// @include clearfix('&');		
-	// .rank-img {
-	// 	float: right;
-	// 	text-align: right;
-	// }
-}
-
 /* Forum FAQ
 ========================================================================== */
 
@@ -20,7 +9,7 @@ dl.faq {
 		display: inline-block;
 		margin: 0 0 10px 0;
 		position: relative;
-		top: -10px;	
+		top: -10px;
 		left: -2px;
 	}
 }
@@ -42,13 +31,10 @@ dl.faq {
 		}
 		fieldset dl dd {
 			#sk, #st, select[name='ch'] {
-				width: 33.33%;			
-			}
-			#sk {
-				margin-right: 5px;
+				width: 33.33%;
 			}
 			select[name='ch'] {
-				margin-right: 10px;
+				margin-right: 5px;
 			}
 		}
 	}
@@ -62,7 +48,7 @@ dl.faq {
 		margin: $main-margin 0;
 		.icon {
 			width: auto;
-			margin: 0 5px 0 0;		
+			margin: 0 5px 0 0;
 		}
 	}
 	.postprofile dt .username-coloured {
@@ -78,14 +64,14 @@ dl.faq {
 			h3 .posthilit {
 				padding-top: 0;
 				padding-bottom: 0;
-			}			
+			}
 		}
 		ul.searchresults {
 			list-style: none;
 			margin: 20px 0 0 0;
 			min-width: 1px;
 			@include flex(full);
-			text-align: right;			
+			text-align: right;
 		}
 	}
 }
@@ -99,12 +85,12 @@ dl.faq {
 			visibility: visible;
 			opacity: 1;
 			z-index: 2;
-			left: 0;				
+			left: 0;
 		}
 		.dropdown-contents.search-results li .search-result {
 			cursor: pointer;
 			display: block;
-			padding: 0 0 3px 0;			
+			padding: 0 0 3px 0;
 		}
 	}
 	fieldset.fields1 dl dd {
@@ -150,12 +136,12 @@ dl.faq {
 			.left-box:not(.profile-details) {
 			    flex: 0 0 231px;
 				margin: 0 20px 20px 0;
-				padding: 0 20px 0 0;	
-				border-right: 1px dashed $color-04;	    
+				padding: 0 20px 0 0;
+				border-right: 1px dashed $color-04;
 				.profile-avatar {
 					overflow: hidden;
 					border: 5px solid $color-04;
-					border-radius: 100%;				
+					border-radius: 100%;
 					@include sizing(100%, 0);
 					padding: 0 0 95.24% 0;
 					margin: 0 0 10px 0;
@@ -163,7 +149,7 @@ dl.faq {
 						font-style: italic;
 						font-family: $font-02;
 					}
-				}			
+				}
 			}
 			.left-box.profile-details {
 				@include flex(base);
@@ -178,7 +164,7 @@ dl.faq {
 						font-size: rem(22px);
 						font-weight: normal !important;
 					}
-				}			
+				}
 			}
 		}
 	}
