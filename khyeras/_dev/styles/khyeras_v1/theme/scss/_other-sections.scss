@@ -24,19 +24,12 @@ dl.faq {
 /* Search Page
 ========================================================================== */
 
-.section-search {
-	form[data-focus='keywords'] {
-		hr.dashed {
-			display: block;
-		}
-		fieldset dl dd {
-			#sk, #st, select[name='ch'] {
-				width: 33.33%;
-			}
-			select[name='ch'] {
-				margin-right: 5px;
-			}
-		}
+.section-search form[data-focus='keywords'] fieldset dl dd {
+	#sk, #st, select[name='ch'] {
+		width: 33.33%;
+	}
+	select[name='ch'] {
+		margin-right: 5px;
 	}
 }
 
@@ -171,5 +164,22 @@ dl.faq {
 	.panel .signature {
 		margin-top: 20px;
 		padding-top: 20px;
+	}
+}
+
+/* Pop Up - Find member, etc...
+========================================================================== */
+
+.popup-wrap {
+	padding: 30px;
+	.memberlist .username-coloured {
+		margin: 0 5px 0 0;
+		& + br {
+			display: none;
+		}
+	}
+	.copyright {
+		text-align: center;
+		font-size: rem(13px);
 	}
 }

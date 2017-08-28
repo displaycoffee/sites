@@ -35,6 +35,10 @@
 				font-weight: bold;
 			}
 		}
+		.friend-offline {
+			font-style: italic;
+			opacity: 0.5;
+		}
 	}
 }
 
@@ -43,18 +47,14 @@
 	.panel .inner > .action-bar.bottom:last-child {
 		margin-bottom: 20px;
 	}
-}
-
-/* CP - Big Column Table
-========================================================================== */
-
-.cp-main table.table1 tbody tr.big-column {
-	background: $color-05;
-	border-bottom-style: solid;
-	border-top: 1px solid $color-04;
-	td {
-		padding-top: 10px;
-		padding-bottom: 10px;
+	table.table1 tbody tr.big-column {
+		background: $color-05;
+		border-bottom-style: solid;
+		border-top: 1px solid $color-04;
+		td {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
 	}
 }
 
@@ -87,76 +87,19 @@ fieldset.display-actions + fieldset.display-actions {
 	margin-top: -10px;
 }
 
-/* UCP - Attachments
+/* UCP - Avatar (User & Groups)
 ========================================================================== */
 
-.ucp-main form[action*='ucp_attachments'][action*='attachments'] .topiclist {
-	& > li.header dl dt a {
-		font-family: $font-01;
-		font-variant: none;
-		font-size: rem(14px);
-	}
-	& > li.row dl dt .topictitle.attachment-filename {
-		margin: 0;
-		display: inline;
-	}
-}
-
-/* UCP - Notifications
-   Note: UCP area only. Header notifications in header.scss
-========================================================================== */
-
-.ucp-main .notification_list .topiclist > li.row dl dt .list-inner {
-	@include clearfix('&');
-	img {
-		float: left;
-		max-width: 100px;
-		max-height: 100px;
-	}
-	.notifications {
-		margin: 0 0 0 120px;
-		p {
-			margin: 0 0 5px 0;
-		}
-		& > p:last-child {
-			margin: 0;
-		}
-	}
-}
-
-/* UCP - Profile
-========================================================================== */
-
-.ucp-main form[action*='ucp_profile'][action*='profile_info'] fieldset dl dd label[for*='bday'] {
-	margin: 0;
-	select {
-		width: auto;
-		min-width: 80px;
-		margin: 0 5px;
-	}
-}
-
-/* UCP - Signature
-========================================================================== */
-
-.ucp-main form[action*='ucp_profile'][action*='signature'] .signature.standalone {
-	margin-bottom: 30px;
-	&:after {
-		content: '';
-		display: block;
-		@include sizing(100%, 1px);
-		border-bottom: 1px dashed $color-04;
-		margin: 20px 0 0 0;
-	}
-}
-
-/* UCP - Avatar
-========================================================================== */
-
-.cp-main form[action*='ucp_profile'][action*='avatar'] {
-	.avatar {
+.cp-main {
+	.avatar, img[src*='no_avatar.gif'] {
 		border: 5px solid $color-04;
 		margin: 0 0 10px 0;
+	}
+	img[src*='no_avatar.gif'] {
+		max-height: 200px;
+	}
+	label[for*='_width'], label[for*='_height'] {
+		margin: 0 5px 0 0;
 	}
 	#avatar_option_avatar_driver_gravatar, #avatar_option_avatar_driver_local,
 	#avatar_option_avatar_driver_remote, #avatar_option_avatar_driver_upload {
@@ -227,6 +170,69 @@ fieldset.display-actions + fieldset.display-actions {
 				margin: 0 5px;
 			}
 		}
+	}
+}
+
+/* UCP - Attachments
+========================================================================== */
+
+.ucp-main form[action*='ucp_attachments'][action*='attachments'] .topiclist {
+	& > li.header dl dt a {
+		font-family: $font-01;
+		font-variant: none;
+		font-size: rem(14px);
+	}
+	& > li.row dl dt .topictitle.attachment-filename {
+		margin: 0;
+		display: inline;
+	}
+}
+
+/* UCP - Notifications
+   Note: UCP area only. Header notifications in header.scss
+========================================================================== */
+
+.ucp-main .notification_list .topiclist > li.row dl dt .list-inner {
+	@include clearfix('&');
+	img {
+		float: left;
+		max-width: 100px;
+		max-height: 100px;
+	}
+	.notifications {
+		margin: 0 0 0 120px;
+		p {
+			margin: 0 0 5px 0;
+		}
+		& > p:last-child {
+			margin: 0;
+		}
+	}
+}
+
+/* UCP - Profile
+========================================================================== */
+
+.ucp-main form[action*='ucp_profile'][action*='profile_info'] fieldset dl dd label[for*='bday'] {
+	margin: 0;
+	select {
+		width: auto;
+		min-width: 80px;
+		margin: 0 5px;
+	}
+}
+
+/* UCP - Signature
+========================================================================== */
+
+.ucp-main form[action*='ucp_profile'][action*='signature'] .signature.standalone {
+	margin-bottom: 30px;
+	&:after {
+		content: '';
+		display: block;
+		@include sizing(100%, 1px);
+		border-bottom: 1px dashed $color-04;
+		margin: 20px 0 0 0;
 	}
 }
 
@@ -391,9 +397,52 @@ fieldset.display-actions + fieldset.display-actions {
 	}
 }
 
+/* UCP - Edit memberships/groups
+========================================================================== */
 
+.cp-main form[action*='ucp_groups'][action*='membership'] {
+	fieldset {
+		@include clearfix('&');
+		margin: 0 0 20px 0;
+		.left-box, .right-box {
+			width: 50%;
+			float: left;
+		}
+		.right-box {
+			text-align: right;
+			label, select, .button2 {
+				vertical-align: middle;
+			}
+			label, select {
+				display: inline-block;
+				margin: 0;
+			}
+			select {
+				width: auto;
+			}
+			.button2 {
+				margin: 0 0 0 -3px;
+			}
+		}
+	}
+}
 
+/* UCP - Manage groups
+========================================================================== */
 
+.cp-main form[action*='ucp_groups'][action*='manage'] {
+	#group_colour {
+		width: auto;
+		margin: 0 5px 0 0;
+	}
+	span[style*='background-color'] {
+		@include sizing(16px, 16px);
+		display: inline-block;
+	}
+	#color_palette_placeholder {
+		margin: 10px 0 0 0;
+	}
+}
 
 /* MCP - Front
 ========================================================================== */
