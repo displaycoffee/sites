@@ -208,3 +208,22 @@ dl.faq {
 		}
 	}
 }
+
+/* Registration
+========================================================================== */
+
+#register {
+	.panel:first-child fieldset dl:first-child dd {
+		margin-left: 0;
+	}
+	.captcha-panel .captcha.captcha-image + dd {
+		@include flex-flow(row nowrap);
+		.inputbox {
+			@include flex(base);
+		}
+		.button2 {
+			@include flex;
+			margin: 0 0 0 5px;
+		}
+	}
+}

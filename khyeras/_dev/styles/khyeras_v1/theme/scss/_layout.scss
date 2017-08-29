@@ -76,7 +76,7 @@
 	position: relative;
 	.dropdown-toggle {
 		cursor: pointer;
-	}	
+	}
 	.pointer {
 		display: none;
 	}
@@ -94,10 +94,10 @@
 		padding: 20px;
 		text-align: left;
 		background: $color-05;
-		border: 1px solid $color-03;	
+		border: 1px solid $color-03;
 		.dropdown-contents {
 			list-style: none;
-			margin: 0 0 -3px 0;			
+			margin: 0 0 -3px 0;
 			max-height: 300px;
 			overflow-y: auto;
 			overflow-x: hidden;
@@ -107,12 +107,12 @@
 				color: $color-01;
 				&:hover {
 					color: $color-06;
-				}				
+				}
 			}
 			& > li > a {
 				display: block;
-				padding: 0 0 3px 0; 
-				white-space: nowrap;				
+				padding: 0 0 3px 0;
+				white-space: nowrap;
 			}
 			&.dropdown-nonscroll {
 				max-height: none;
@@ -126,16 +126,15 @@
 		opacity: 1;
 		z-index: 2;
 		left: 0;
-	} 
+	}
 	&.dropdown-up .dropdown {
 		top: auto;
 		bottom: em(50px);
-	} 	
+	}
 	&.dropdown-left.dropdown-visible .dropdown {
 		left: auto;
 		right: 0;
-	}	
-		
+	}
 }
 
 /* Loading Indicator
@@ -151,7 +150,7 @@
 	position: fixed;
 	left: 50%;
 	top: 50%;
-	z-index: 51;	
+	z-index: 51;
 }
 
 /* Breadcrumbs
@@ -182,14 +181,14 @@
 /* Main Boxes (Inner)
 ========================================================================== */
 
-.forabg, .forumbg, .panel, .topic-wrapper, .section-posting #preview, .section-posting #preview + .post, 
-.section-posting #topicreview {
+.forabg, .forumbg, .panel, .topic-wrapper, .section-posting #preview, .section-posting #preview + .post,
+.section-posting #topicreview, #agreement {
 	background: rgba($color-02, 0.20);
 	border: 1px solid $color-04;
 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
 	padding: 20px 20px 0 20px;
 	margin: 0 0 $main-margin 0;
-} 
+}
 
 .forumbg, .topic-wrapper {
 	margin-bottom: 10px;
@@ -201,7 +200,7 @@
 	}
 }
 
-.panel .panel {
+.panel .panel, #agreement .panel {
 	padding: 0;
 	margin: 0;
 	background: none;
@@ -212,7 +211,7 @@
 /* Pagination
 ========================================================================== */
 
-.pagination {	
+.pagination {
 	.icon {
 		font-size: rem(13px);
 		width: auto;
@@ -222,11 +221,11 @@
 		list-style: none;
 		@include inline-block(bottom);
 		li {
-			@include inline-block(middle);			
+			@include inline-block(middle);
 			&.active span {
 				display: inline-block;
 				background: $color-10;
-				border-radius: 3px;	
+				border-radius: 3px;
 				line-height: rem(20px);
 				padding: 1px 5px;
 			}
@@ -237,7 +236,7 @@
 					@include transition(color 0.3s ease-in-out);
 					&:hover {
 						color: $color-06;
-					}				
+					}
 				}
 			}
 		}
@@ -249,12 +248,12 @@
 
 .action-bar {
 	margin: 0 0 10px 0;
-	@include flex-flow(row nowrap);	
+	@include flex-flow(row nowrap);
 	align-items: center;
 	& > * {
 		margin: 0 10px 0 0;
 		@include flex;
-	}	
+	}
 	&.bar-top, &.bar-bottom, &.top, &.bottom {
 		.pagination {
 			margin: 0 0 0 auto;
@@ -264,7 +263,7 @@
 		flex: 0 0 300px;
 	}
 	&.actions-jump {
-		margin: $main-margin 0;		
+		margin: $main-margin 0;
 		.jumpbox-return .icon {
 			width: auto;
 			margin: 0 5px 0 0;
@@ -325,7 +324,7 @@
 	.icon {
 		position: relative;
 		top: -2px;
-	}	
+	}
 }
 
 .jumpbox .caret {
@@ -351,7 +350,7 @@
 		.contact-icon {
 			@include font-awesome;
 			font-size: 0;
-			&:before {				
+			&:before {
 				font-size: rem(14px);
 			}
 			&.pm-icon:before {
@@ -362,7 +361,7 @@
 			}
 			&.jabber-icon:before {
 				content: '\f004';
-			}			
+			}
 			&.phpbb_website-icon:before {
 				content: '\f0ac';
 			}
@@ -392,7 +391,7 @@
 			}
 			&.phpbb_wlm-icon:before {
 				content: '\f004';
-			}																				
+			}
 		}
 	}
 }
@@ -420,18 +419,18 @@
 	&:before {
 		content: '\f004\0000A0\0000A0 Online';
 		@include sizing(80px, 0);
-		font-family: 'FontAwesome', $font-01;	
-		font-size: rem(14px);	
+		font-family: 'FontAwesome', $font-01;
+		font-size: rem(14px);
 		border-right: 8px inset transparent;
 		border-bottom: 12px solid $color-10;
-		border-top: 12px solid $color-10;		
+		border-top: 12px solid $color-10;
 		line-height: 0;
 		padding: 0 10px;
 		text-align: center;
 	}
 	&:after {
 		content: '';
-		@include sizing(0, 0);	
+		@include sizing(0, 0);
 		border-left: 12px inset transparent;
 		border-top: 8px solid mix(black, $color-10, 35%);
 	}
@@ -458,19 +457,26 @@
 	}
 	&:after {
 		top: 39px;
-	}	
+	}
 }
 
-/* Notice
+/* Notice & Error
 ========================================================================== */
+
+.notice, .error {
+	margin: 0 0 20px 0;
+}
 
 .notice {
 	font-size: rem(13px);
-	margin: 0 0 20px 0;
 	&:before {
 		content: 'Note:';
 		font-weight: bold;
 	}
+}
+
+.error {
+	font-weight: bold;
 }
 
 /* Tabs & Minitabs
@@ -488,7 +494,7 @@
 				display: block;
 				padding: 5px 10px;
 				color: $color-01;
-				background: $color-10; 				
+				background: $color-10;
 				@include transition(background 0.3s ease-in-out);
 			}
 			a:hover, &.activetab a {
@@ -499,7 +505,7 @@
 				font-weight: bold;
 			}
 		}
-	}	
+	}
 }
 
 .tabs > ul .tab a {

@@ -9,15 +9,15 @@
 ========================================================================== */
 
 html, body {
-	min-height: 100%; 
+	min-height: 100%;
 }
 
-body { 
+body {
 	height: 100%;
 	-webkit-print-color-adjust: exact;
 	-webkit-tap-highlight-color: rgba($color-01, 0);
 	backface-visibility: hidden;
-	background: url($images + 'background.png') 0 0 repeat;	
+	background: url($images + 'background.png') 0 0 repeat;
 }
 
 img {
@@ -42,7 +42,7 @@ pre, code {
 	white-space: normal;
 	display: block;
 	font-family: 'Courier New', monospace;
-	background: $color-03;	
+	background: $color-03;
 	color: $color-01;
 	border: 1px solid $color-04;
 	padding: 20px;
@@ -74,17 +74,17 @@ blockquote {
 		&:before {
 			left: 0;
 		}
-	}	
+	}
 	cite {
 		border-bottom: 1px solid $color-04;
 		display: block;
 		margin: 0 0 10px 0;
 		padding: 0 0 10px 0;
-	}	
+	}
 }
 
 hr {
-	margin: 20px 0; 
+	margin: 20px 0;
 	@include sizing(100%, 0);
 	border: 0;
 	border-bottom: 1px solid $color-04;
@@ -93,11 +93,6 @@ hr {
 	&.dashed {
 		border-bottom-style: dashed;
 	}
-}
-
-.dropdown-contents hr {
-	border-bottom: 1px solid $color-03;
-	margin: 10px 0;
 }
 
 [tabindex="-1"]:focus { 

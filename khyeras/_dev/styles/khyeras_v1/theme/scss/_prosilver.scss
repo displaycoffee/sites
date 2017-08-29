@@ -1,9 +1,3 @@
-/* Table styles
-----------------------------------------*/
-.ucp-main table.table1 {
-	padding: 2px;
-}
-
 /* Misc layout styles
 ---------------------------------------- */
 
@@ -13,18 +7,6 @@
 
 /* Miscellaneous styles
 ---------------------------------------- */
-
-.titlespace {
-	margin-bottom: 15px;
-}
-
-.headerspace {
-	margin-top: 20px;
-}
-
-.error {
-	font-weight: bold;
-}
 
 .top-anchor {
 	display: block;
@@ -63,30 +45,6 @@
 
 /* Links
 ========================================================================== */
-
-/* Link Styles
----------------------------------------- */
-
-/* Arrow links  */
-
-.arrow-up {
-	padding-left: 10px;
-	text-decoration: none;
-	border-bottom-width: 0;
-}
-
-.arrow-down {
-	padding-right: 10px;
-}
-.arrow-left:hover {
-	text-decoration: none;
-}
-
-/* Feed icon in forumlist_body.html */
-a.feed-icon-forum {
-	float: right;
-	margin: 3px;
-}
 
 /* Content
 ========================================================================== */
@@ -223,15 +181,6 @@ div.dl_links {
 
 /* Forms
 ========================================================================== */
-
-/* Set it back to 0px for the reCaptcha divs: PHPBB3-9587 */
-fieldset.fields1 .live-search div {
-	margin-bottom: 0;
-}
-
-fieldset.sort-options {
-	line-height: 2em;
-}
 
 /* MCP forum selection*/
 fieldset.forum-selection {
