@@ -183,3 +183,28 @@ dl.faq {
 		font-size: rem(13px);
 	}
 }
+
+/* Quick Login
+========================================================================== */
+
+.quick-login {
+	margin: 0 -2.5px 30px -2.5px;
+	label, a, span, .inputbox, .button2 {
+		@include inline-block(middle);
+	}
+	label, a, .responsive-hide, .button2 {
+		margin: 0 2.5px;
+	}
+	.inputbox {
+		width: 200px;
+		margin: 0;
+	}
+	label {
+		span {
+			margin: 0 5px 0 0;
+		}
+		input[type='checkbox'] {
+			margin: 0 0 0 5px;
+		}
+	}
+}

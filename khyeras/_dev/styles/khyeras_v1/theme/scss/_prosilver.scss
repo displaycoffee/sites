@@ -229,26 +229,6 @@ fieldset.fields1 .live-search div {
 	margin-bottom: 0;
 }
 
-/* Quick-login on index page */
-fieldset.quick-login {
-	margin-top: 5px;
-}
-
-fieldset.quick-login input {
-	width: auto;
-}
-
-fieldset.quick-login input.inputbox {
-	width: 15%;
-	vertical-align: middle;
-	margin-right: 5px;
-}
-
-fieldset.quick-login label {
-	white-space: nowrap;
-	padding-right: 2px;
-}
-
 fieldset.sort-options {
 	line-height: 2em;
 }
@@ -380,29 +360,6 @@ input.disabled {
 
 	.horizontal-palette td:nth-child(2n), .vertical-palette tr:nth-child(2n) {
 		display: none;
-	}
-
-	fieldset.quick-login label {
-		display: block;
-		margin-bottom: 5px;
-		white-space: normal;
-	}
-
-	fieldset.quick-login label > span {
-		display: inline-block;
-		min-width: 100px;
-	}
-
-	fieldset.quick-login input.inputbox {
-		width: 85%;
-		max-width: 300px;
-		margin-left: 20px;
-	}
-
-	fieldset.quick-login label[for="autologin"] {
-		display: inline-block;
-		text-align: right;
-		min-width: 50%;
 	}
 
 	/* Misc stuff
