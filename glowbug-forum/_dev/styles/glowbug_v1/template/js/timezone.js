@@ -1,0 +1,1 @@
+!function($){"use strict";$("#tz_date").change(function(){phpbb.timezoneSwitchDate(!1)}),$("#tz_select_date_suggest").click(function(){phpbb.timezonePreselectSelect(!0)}),$(function(){phpbb.timezoneEnableDateSelection(),phpbb.timezonePreselectSelect("true"===$("#tz_select_date_suggest").attr("timezone-preselect"))})}(jQuery);
