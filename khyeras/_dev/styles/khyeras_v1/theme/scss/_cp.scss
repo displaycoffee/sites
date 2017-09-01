@@ -71,8 +71,26 @@ fieldset.display-actions {
 	select {
 		width: auto;
 	}
-	& > div {
-		margin: 10px 0 0 0;
+	.button2, .button1 {
+		& + div {
+			float: right;
+			font-size: 0;
+			margin: -1px 0 0 10px;
+			a {
+				font-size: rem(14px);
+				display: block;
+				&:before {
+					@include font-awesome;
+					margin: 0 5px 0 0;
+				}
+				&[onclick*="false"]:before {
+					content: '\f00d';
+				}
+				&[onclick*="true"]:before {
+					content: '\f00c';
+				}
+			}
+		}
 	}
 	.left-box {
 		float: left;
@@ -328,24 +346,29 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Private Messages - Inbox
 ========================================================================== */
 
-.cp-main #viewfolder .topiclist > li.row {
-	&.pm_marked_colour, &.pm_replied_colour, &.pm_friend_colour, &.pm_foe_colour {
-		dl.row-item {
-			border-width: 0 5px;
-			border-style: solid;
+.cp-main #viewfolder {
+	.action-bar.bar-top + p {
+		margin: 20px 0 0 0;
+	}
+	.topiclist > li.row {
+		&.pm_marked_colour, &.pm_replied_colour, &.pm_friend_colour, &.pm_foe_colour {
+			dl.row-item {
+				border-width: 0 5px;
+				border-style: solid;
+			}
 		}
-	}
-	&.pm_marked_colour dl.row-item {
-		border-color: $color-06;
-	}
-	&.pm_replied_colour dl.row-item {
-		border-color: $color-07;
-	}
-	&.pm_friend_colour dl.row-item {
-		border-color: $color-14;
-	}
-	&.pm_foe_colour dl.row-item {
-		border-color: $color-11;
+		&.pm_marked_colour dl.row-item {
+			border-color: $color-06;
+		}
+		&.pm_replied_colour dl.row-item {
+			border-color: $color-07;
+		}
+		&.pm_friend_colour dl.row-item {
+			border-color: $color-14;
+		}
+		&.pm_foe_colour dl.row-item {
+			border-color: $color-11;
+		}
 	}
 }
 
@@ -447,12 +470,74 @@ fieldset.display-actions + fieldset.display-actions {
 /* MCP - Front
 ========================================================================== */
 
-.mcp-main {
-	#mcp_queue .topiclist>li.header dl:after {
+.mcp-main #mcp_queue {
+	.topiclist > li.header dl:after {
 		display: block;
 		content: 'Mark';
 		flex: 0 0 80px;
 		padding: 0 10px;
 		box-sizing: border-box;
+	}
+	& ~ .panel table.table1 {
+		th, td {
+			&:first-child {
+				width: 40.33%;
+			}
+		}
+	}
+}
+
+/* MCP - Forum Selection & Jumpbox
+========================================================================== */
+
+.mcp-main {
+	position: relative;
+	.forum-selection, .action-bar.actions-jump {
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 40px;
+	}
+	.forum-selection {
+		label {
+			display: inline-block;
+			&, select {
+				margin: 0;
+			}
+			select {
+				width: auto;
+				max-width: 200px;
+			}
+		}
+		label, .button2 {
+			vertical-align: middle;
+		}
+		& + h2 {
+			padding: 5px 325px 5px 0;
+		}
+	}
+	.action-bar.actions-jump {
+		margin: 0;
+		& + h2 {
+			padding: 5px 200px 5px 0;
+		}
+	}
+}
+
+/* MCP - Moderator Logs
+========================================================================== */
+
+.mcp-main form[action*='mcp_logs'] .action-bar.bar-top .inputbox[type='search'] {
+	width: auto;
+	margin: 0 3px 0 5px;
+}
+
+/* MCP - Banning
+========================================================================== */
+
+.mcp-main form[action*='mcp_ban'] {
+	dd label[for='ban'], dd label[for='banlength'], dd#banlengthother label {
+		display: block;
+		margin: 0;
 	}
 }
