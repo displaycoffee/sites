@@ -4,16 +4,18 @@ var bottomDistance =  jQuery( document ).height() + jQuery( window ).height();
 // Base font size for responsive comparisons
 var baseFontSize = 16;
 
+// Add class to body tag
+var body = document.getElementsByTagName( 'body' );
+if ( body[0].getAttribute( 'data-class' ) ) {
+	var bodyClass = body[0].getAttribute( 'data-class' ).replace( /[^a-zA-Z ]/g,'' ).trim().replace( / /g,'-' ).replace( /-+/g,'-' );
+}
+
+if ( bodyClass ) {
+	body[0].className = body[0].className + (' ' + bodyClass);
+}
+
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
-	// Check forum listing for no topics and add a class
-	var noTopics = $( '.action-bar.bar-top + .panel > .inner > strong' );
-	var noTopicsText = noTopics.text();
-
-	if ( noTopicsText == 'There are no topics or posts in this forum.' || noTopicsText == 'Forum is locked' ) {
-		noTopics.closest( '.panel' ).addClass( 'no-topics' );
-	}
-
 	// Add wrapper around topic review if height is bigger than 400px
 	var topicReview = $( '.topicreview' );
 

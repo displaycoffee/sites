@@ -2,7 +2,7 @@
 <html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {META}
 <title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
@@ -64,7 +64,8 @@
 <!-- EVENT overall_header_stylesheets_after -->
 
 </head>
-<body id="phpbb" class="nojs notouch section-{SCRIPT_NAME} {S_CONTENT_DIRECTION} {BODY_CLASS}">
+
+<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS}<!-- IF SCRIPT_NAME == 'viewforum' or SCRIPT_NAME == 'search' --><!-- IF TOTAL_PAGES == 0 --> no-topics<!-- ENDIF--><!-- ENDIF--> section-{SCRIPT_NAME}" data-class="section {SCRIPT_NAME} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
 
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
@@ -80,7 +81,7 @@
 
 		<header id="page-header">
 			<!-- EVENT overall_header_navbar_before -->
-			<!-- INCLUDE navbar_header.html -->	
+			<!-- INCLUDE navbar_header.html -->
 			<div class="headerbar" role="banner">
 				<!-- EVENT overall_header_headerbar_before -->
 				<div class="header-content">
@@ -122,8 +123,8 @@
 					<!-- END navlinks -->
 					<!-- EVENT overall_header_breadcrumb_append -->
 					<!-- EVENT overall_header_breadcrumbs_after -->
-				</ul>	
-			</div>		
+				</ul>
+			</div>
 		</nav>
 
 		<section id="page-welcome" class="page-welcome">
@@ -146,7 +147,7 @@
 								<li><a href="/">Event #01</a></li>
 								<li><a href="/">Event #02</a></li>
 								<li><a href="/">Event #03</a></li>
-							</ul>							
+							</ul>
 						</div>
 						<div class="user-information flex-column">
 							<!-- DEFINE $DISPLAY_TIME -->
@@ -161,7 +162,7 @@
 											<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
 										<!-- ENDIF -->
 									</div>
-								</div>							
+								</div>
 							<!-- ENDDEFINE -->
 							<!-- IF S_REGISTERED_USER -->
 								<!-- EVENT navbar_header_user_profile_prepend -->
@@ -170,7 +171,7 @@
 								<!-- EVENT navbar_header_username_append -->
 								{$DISPLAY_AVATAR}
 								{$DISPLAY_TIME}
-								<ul class="welcome-buttons">									
+								<ul class="welcome-buttons">
 									<!-- EVENT navbar_header_profile_list_before -->
 									<!-- IF S_DISPLAY_PM -->
 										<li>
@@ -195,13 +196,13 @@
 												<i class="icon fa-cogs fa-fw" aria-hidden="true"></i><span>{L_ACP_SHORT}</span>
 											</a>
 										</li>
-									<!-- ENDIF -->	
+									<!-- ENDIF -->
 									<!-- IF U_MCP -->
 										<li>
 											<a class="button" href="{U_MCP}" title="{L_MCP}">
 												<i class="icon fa-gavel fa-fw" aria-hidden="true"></i><span>{L_MCP_SHORT}</span>
-											</a> 
-										</li>	
+											</a>
+										</li>
 									<!-- ENDIF -->
 									<!-- IF S_REGISTERED_USER -->
 										<li>
@@ -214,19 +215,19 @@
 										<a class="button" href="{U_USER_PROFILE}" title="{L_READ_PROFILE}">
 											<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
 										</a>
-									</li>									
+									</li>
 									<li>
 										<a class="button" href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">
 											<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
 										</a>
-									</li>	
+									</li>
 									<!-- IF U_RESTORE_PERMISSIONS -->
 										<li>
 											<a class="button" href="{U_RESTORE_PERMISSIONS}" title="{L_RESTORE_PERMISSIONS}">
 												<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
 											</a>
 										</li>
-									<!-- ENDIF -->	
+									<!-- ENDIF -->
 									<!-- EVENT navbar_header_profile_list_after -->
 								</ul>
 								<!-- EVENT navbar_header_user_profile_append -->
@@ -239,7 +240,7 @@
 										<a class="button" href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">
 											<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
 										</a>
-									</li>	
+									</li>
 									<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
 										<li>
 											<a class="button" href="{U_REGISTER}">
@@ -248,19 +249,19 @@
 										</li>
 									<!-- ENDIF -->
 								</ul>
-								<!-- EVENT navbar_header_logged_out_content -->	
+								<!-- EVENT navbar_header_logged_out_content -->
 							<!-- ENDIF -->
 						</div>
-					</div>					
+					</div>
 				</div>
 			</div>
 		</section>
-		
+
 		<section id="featured-content" class="featured-content">
 			<div class="wrapper">
 				<div class="panel">
 					<div class="flex-row flex-row-10">
-						<div class="flex-column featured-title"><h5>Featured</h5></div>				
+						<div class="flex-column featured-title"><h5>Featured</h5></div>
 						<div class="flex-column featured-mvp">
 							<a href="//google.com">
 								<div class="image-wrap">
@@ -268,7 +269,7 @@
 								</div>
 								<p>MVP: Deanna DiCorvino</p>
 							</a>
-						</div>	
+						</div>
 						<div class="flex-column featured-story">
 							<a href="//google.com">
 								<div class="image-wrap">
@@ -276,7 +277,7 @@
 								</div>
 								<p>Story: Best Thread Ever</p>
 							</a>
-						</div>	
+						</div>
 						<div class="flex-column featured-lore">
 							<a href="//google.com">
 								<div class="image-wrap">
@@ -284,7 +285,7 @@
 								</div>
 								<p>Lore: Dragons</p>
 							</a>
-						</div>	
+						</div>
 						<div class="flex-column featured-event">
 							<a href="//google.com">
 								<div class="image-wrap">
@@ -292,13 +293,13 @@
 								</div>
 								<p>Event: It's An Event</p>
 							</a>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- EVENT overall_header_page_body_before -->	
+		<!-- EVENT overall_header_page_body_before -->
 
 		<section id="page-body" class="page-body" role="main">
 			<div class="wrapper">

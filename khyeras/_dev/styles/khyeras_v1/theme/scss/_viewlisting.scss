@@ -176,13 +176,23 @@
 /* Forums - No Topics
 ========================================================================== */
 
-.panel.no-topics .inner strong {
-	display: block;
-	margin: 0 0 20px 0;
-}
-
-.panel.no-topics + .action-bar.bottom {
-	margin-top: -20px;
+.no-topics {
+	.action-bar {
+		&.bar-top, &.bottom {
+			.pagination {
+				display: none;
+			}
+		}
+	}
+	.action-bar.bar-top {
+		+ .panel > .inner > strong {
+			display: block;
+			margin: 0 0 20px 0;
+		}
+	}
+	.action-bar.bottom {
+		margin-top: -20px;
+	}
 }
 
 /* Topics

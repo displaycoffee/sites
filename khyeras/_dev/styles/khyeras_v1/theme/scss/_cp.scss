@@ -194,7 +194,7 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Attachments
 ========================================================================== */
 
-.ucp-main form[action*='ucp_attachments'][action*='attachments'] .topiclist {
+.section-ucp-attachments .ucp-main .topiclist {
 	& > li.header dl dt a {
 		font-family: $font-01;
 		font-variant: none;
@@ -210,7 +210,7 @@ fieldset.display-actions + fieldset.display-actions {
    Note: UCP area only. Header notifications in header.scss
 ========================================================================== */
 
-.ucp-main .notification_list .topiclist > li.row dl dt .list-inner {
+.section-ucp-manage-notifications .ucp-main .notification_list .topiclist > li.row dl dt .list-inner {
 	@include clearfix('&');
 	img {
 		float: left;
@@ -231,7 +231,7 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Profile
 ========================================================================== */
 
-.ucp-main form[action*='ucp_profile'][action*='profile_info'] fieldset dl dd label[for*='bday'] {
+.section-ucp-edit-profile .ucp-main fieldset dl dd label[for*='bday'] {
 	margin: 0;
 	select {
 		width: auto;
@@ -243,7 +243,7 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Signature
 ========================================================================== */
 
-.ucp-main form[action*='ucp_profile'][action*='signature'] .signature.standalone {
+.section-ucp-edit-signature .ucp-main .signature.standalone {
 	margin-bottom: 30px;
 	&:after {
 		content: '';
@@ -257,17 +257,15 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Global Settings
 ========================================================================== */
 
-.cp-main form[action*='ucp_prefs'][action*='personal'] {
-	#tz_select_date {
-		display: flex !important;
-		flex-flow: row nowrap;
-		align-items: flex-start;
-		select, .button2 {
-			@include flex;
-		}
-		.button2 {
-			margin: 0 0 0 5px;
-		}
+.section-ucp-edit-global-settings .cp-main #tz_select_date {
+	display: flex !important;
+	flex-flow: row nowrap;
+	align-items: flex-start;
+	select, .button2 {
+		@include flex;
+	}
+	.button2 {
+		margin: 0 0 0 5px;
 	}
 }
 
@@ -375,7 +373,7 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Private Messages - Rules, folders, and settings
 ========================================================================== */
 
-.cp-main form[action*='ucp_pm'][action*='options'] {
+.section-ucp-rules-folders-settings .cp-main {
 	.def-rules {
 		display: inline-block;
 		li {
@@ -423,29 +421,27 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Edit memberships/groups
 ========================================================================== */
 
-.cp-main form[action*='ucp_groups'][action*='membership'] {
-	fieldset {
-		@include clearfix('&');
-		margin: 0 0 20px 0;
-		.left-box, .right-box {
-			width: 50%;
-			float: left;
+.section-ucp-edit-memberships .cp-main fieldset {
+	@include clearfix('&');
+	margin: 0 0 20px 0;
+	.left-box, .right-box {
+		width: 50%;
+		float: left;
+	}
+	.right-box {
+		text-align: right;
+		label, select, .button2 {
+			vertical-align: middle;
 		}
-		.right-box {
-			text-align: right;
-			label, select, .button2 {
-				vertical-align: middle;
-			}
-			label, select {
-				display: inline-block;
-				margin: 0;
-			}
-			select {
-				width: auto;
-			}
-			.button2 {
-				margin: 0 0 0 -3px;
-			}
+		label, select {
+			display: inline-block;
+			margin: 0;
+		}
+		select {
+			width: auto;
+		}
+		.button2 {
+			margin: 0 0 0 -3px;
 		}
 	}
 }
@@ -453,7 +449,7 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Manage groups
 ========================================================================== */
 
-.cp-main form[action*='ucp_groups'][action*='manage'] {
+.section-ucp-manage-groups .cp-main {
 	#group_colour {
 		width: auto;
 		margin: 0 5px 0 0;
@@ -527,7 +523,7 @@ fieldset.display-actions + fieldset.display-actions {
 /* MCP - Moderator Logs
 ========================================================================== */
 
-.mcp-main form[action*='mcp_logs'] .action-bar.bar-top .inputbox[type='search'] {
+.section-mcp-moderator-logs .mcp-main .action-bar.bar-top .inputbox[type='search'] {
 	width: auto;
 	margin: 0 3px 0 5px;
 }
@@ -535,7 +531,7 @@ fieldset.display-actions + fieldset.display-actions {
 /* MCP - Banning
 ========================================================================== */
 
-.mcp-main form[action*='mcp_ban'] {
+body[class*='section-mcp-ban'] .mcp-main {
 	dd label[for='ban'], dd label[for='banlength'], dd#banlengthother label {
 		display: block;
 		margin: 0;
