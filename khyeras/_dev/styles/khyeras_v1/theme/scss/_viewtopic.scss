@@ -285,9 +285,16 @@ fieldset.polls dl dt {
 	}
 }
 
-.topic-wrapper .post, .pm.post {
-	&.online .postprofile dt.no-avatar {
-		margin-top: 30px;
+.topic-wrapper .post.online .postprofile dt.no-avatar {
+	margin-top: 30px;
+}
+
+.pm.post.online .postprofile dt {
+	&.has-avatar {
+		margin-top: 10px;
+	}
+	&.no-avatar {
+		margin-top: 40px;
 	}
 }
 
@@ -295,9 +302,6 @@ fieldset.polls dl dt {
 ========================================================================== */
 
 .topic-wrapper .post, .pm.post {
-	margin: 0 0 20px 0;
-	padding: 0 0 20px 0;
-	border-bottom: 1px dashed $color-04;
 	&.last {
 		border-bottom: 0;
 		padding: 0;
@@ -321,6 +325,16 @@ fieldset.polls dl dt {
 		@include flex(full);
 		text-align: right;
 	}
+}
+
+.topic-wrapper .post {
+	margin: 0 0 20px 0;
+	padding: 0 0 20px 0;
+	border-bottom: 1px dashed $color-04;
+}
+
+.post.pm {
+	padding: 20px 0;
 }
 
 /* View Topic - Topic Review

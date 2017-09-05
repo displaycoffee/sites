@@ -436,7 +436,7 @@
 	}
 }
 
-.post.online {
+.topic-wrapper .post.online {
 	&:before, &:after {
 		left: -32px;
 	}
@@ -445,6 +445,16 @@
 	}
 	&:after {
 		top: 19px;
+	}
+}
+
+.pm.post.online {
+	&:before {
+		left: 0;
+		top: 20px;
+	}
+	&:after {
+		display: none;
 	}
 }
 

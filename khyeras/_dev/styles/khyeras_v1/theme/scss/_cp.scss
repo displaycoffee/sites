@@ -108,14 +108,19 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Avatar (User & Groups)
 ========================================================================== */
 
+.section-ucp-edit-avatar, .section-ucp-manage-groups {
+	.cp-main {
+		.avatar, img[src*='no_avatar.gif'] {
+			border: 5px solid $color-04;
+			margin: 0 0 10px 0;
+		}
+		img[src*='no_avatar.gif'] {
+			max-height: 200px;
+		}
+	}
+}
+
 .cp-main {
-	.avatar, img[src*='no_avatar.gif'] {
-		border: 5px solid $color-04;
-		margin: 0 0 10px 0;
-	}
-	img[src*='no_avatar.gif'] {
-		max-height: 200px;
-	}
 	label[for*='_width'], label[for*='_height'] {
 		margin: 0 5px 0 0;
 	}
@@ -296,8 +301,8 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Private Messages - Compose
 ========================================================================== */
 
-.cp-main {
-	#pmheader-postingbox {
+.section-ucp-compose-message .cp-main {
+	 #pmheader-postingbox {
 		.inputbox {
 			height: 100px;
 		}
@@ -339,33 +344,87 @@ fieldset.display-actions + fieldset.display-actions {
 			}
 		}
 	}
+	.review {
+		border-top: 1px solid $color-04;
+		padding: 20px 0 0 0;
+	}
 }
 
 /* UCP - Private Messages - Inbox
 ========================================================================== */
 
-.cp-main #viewfolder {
-	.action-bar.bar-top + p {
-		margin: 20px 0 0 0;
-	}
-	.topiclist > li.row {
-		&.pm_marked_colour, &.pm_replied_colour, &.pm_friend_colour, &.pm_foe_colour {
-			dl.row-item {
-				border-width: 0 5px;
-				border-style: solid;
+.section-ucp-view-messages .cp-main {
+	#viewfolder {
+		.action-bar.bar-top {
+			margin: 0 0 20px 0;
+			& + p {
+				margin-top: 20px;
 			}
 		}
-		&.pm_marked_colour dl.row-item {
-			border-color: $color-06;
+		.display-options {
+			text-align: center;
+			padding: 10px 20px;
+			background: $color-04;
+			a {
+				color: $color-01;
+				.icon {
+					@include transition(color 0.3s ease-in-out);
+				}
+				&:hover, &:hover .icon {
+					color: $color-06;
+				}
+			}
+			&, .right-box {
+				@include clearfix('&');
+			}
+			a.left-box, a.right-box {
+				display: block;
+			}
+			.left-box {
+				float: left;
+				text-align: left;
+			}
+			.right-box {
+				float: right;
+				text-align: right;
+				direction: rtl;
+			}
+			label, select {
+				display: inline-block;
+				margin: 0;
+			}
+			select {
+				width: auto;
+			}
 		}
-		&.pm_replied_colour dl.row-item {
-			border-color: $color-07;
+		.pm.post + .display-options {
+			margin: 0 0 20px 0;
+			.left-box, .right-box {
+				line-height: 40px;
+			}
 		}
-		&.pm_friend_colour dl.row-item {
-			border-color: $color-14;
+		.panel + .post.pm {
+			border-top: 1px solid $color-04;
 		}
-		&.pm_foe_colour dl.row-item {
-			border-color: $color-11;
+		.topiclist > li.row {
+			&.pm_marked_colour, &.pm_replied_colour, &.pm_friend_colour, &.pm_foe_colour {
+				dl.row-item {
+					border-width: 0 5px;
+					border-style: solid;
+				}
+			}
+			&.pm_marked_colour dl.row-item {
+				border-color: $color-06;
+			}
+			&.pm_replied_colour dl.row-item {
+				border-color: $color-07;
+			}
+			&.pm_friend_colour dl.row-item {
+				border-color: $color-14;
+			}
+			&.pm_foe_colour dl.row-item {
+				border-color: $color-11;
+			}
 		}
 	}
 }
