@@ -17,10 +17,19 @@ if ( bodyClass ) {
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
 	// Add wrapper around topic review if height is bigger than 400px
-	var topicReview = $( '.topicreview' );
+	var topicReview = $( '.section-posting .topicreview' );
 
 	if ( topicReview.length && topicReview[0].scrollHeight > 400 ) {
 		topicReview.wrapInner( '<div class="topicreview-wrapper"></div>' );
+	}
+
+	// Check if topic review in ucp/mcp should be scrollable
+	var ucpTopicReview = $( '.cp-main .topicreview' );
+
+	if ( ucpTopicReview.length && ucpTopicReview[0].scrollHeight > 375 ) {		
+		ucpTopicReview.addClass( 'scrollable' );
+	} else {
+		$( '.cp-main .review .right-box' ).hide();
 	}
 
 	// If search has no results, hide "0 matches" pagination text
