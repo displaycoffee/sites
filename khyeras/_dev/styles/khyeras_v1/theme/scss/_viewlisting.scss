@@ -46,7 +46,6 @@
 		&.header {
 			background: $color-04;
 			padding: 10px 20px;
-			margin: 0 0 20px 0;
 			dl {
 				align-items: center;
 				dt, dd {
@@ -59,8 +58,7 @@
 			}
 		}
 		&.row {
-			margin: 0 0 20px 0;
-			padding: 0 20px 20px 20px;
+			padding: 20px;
 			border-bottom: 1px dashed $color-04;
 			dl {
 				&.row-item {
@@ -152,7 +150,6 @@
 
 .forabg, .forumbg {
 	.topiclist  > li.row:last-child {
-		padding-bottom: 0;
 		border-bottom: 0;
 	}
 }

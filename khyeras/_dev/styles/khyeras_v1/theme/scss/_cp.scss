@@ -7,10 +7,9 @@
 }
 
 .cp-menu {
-	flex: 0 0 201px;
+	flex: 0 0 200px;
 	margin: 0 20px 20px 0;
 	padding: 0 20px 0 0;
-	border-right: 1px dashed $color-04;
 	min-height: 150px;
 	.navigation ul {
 		margin: 0;
@@ -44,8 +43,20 @@
 
 .cp-main {
 	@include flex(base);
-	.panel .inner > .action-bar.bottom:last-child {
-		margin-bottom: 20px;
+	.panel {
+		width: 100%;
+		display: inline-block;
+		background: $color-05;
+		padding: 20px 20px 0 20px;
+		.inner > .action-bar.bottom:last-child {
+			margin-bottom: 20px;
+		}
+	}
+	.topiclist.cplist {
+		margin: 0 0 20px 0;
+	}
+	.topiclist > li.row, table.table1 tbody tr {
+		border-bottom-color: $color-13;
 	}
 	table.table1 tbody tr.big-column {
 		background: $color-05;

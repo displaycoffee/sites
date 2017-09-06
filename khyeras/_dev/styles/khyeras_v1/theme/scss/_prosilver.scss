@@ -7,20 +7,6 @@
 	top: -20px;
 }
 
-.clear {
-	display: block;
-	clear: both;
-	line-height: 1px;
-	background: transparent;
-}
-
-/* Inner box-model clearing */
-.inner:after {
-	clear: both;
-	content: '';
-	display: block;
-}
-
 .emoji {
 	min-height: 18px;
 	min-width: 18px;
