@@ -43,23 +43,26 @@
 
 .cp-main {
 	@include flex(base);
-	.panel {
+	.panel, #viewfolder .post.pm, #preview, .topicreview {
 		width: 100%;
 		display: inline-block;
 		background: $color-05;
 		padding: 20px 20px 0 20px;
-		.inner > .action-bar.bottom:last-child {
+		margin: 0 0 20px 0;
+	}
+	.panel .inner {
+		& > .action-bar.bar-bottom:last-child, & > .action-bar.bottom:last-child {
 			margin-bottom: 20px;
 		}
 	}
 	.topiclist.cplist {
 		margin: 0 0 20px 0;
-	}
-	.topiclist > li.row, table.table1 tbody tr {
-		border-bottom-color: $color-13;
+		& + br {
+			display: none;
+		}
 	}
 	table.table1 tbody tr.big-column {
-		background: $color-05;
+		background: rgba($color-02, 0.20);
 		border-bottom-style: solid;
 		border-top: 1px solid $color-04;
 		td {
@@ -68,35 +71,24 @@
 		}
 	}
 	.review {
-		border-top: 1px solid $color-04;
-		border-bottom: 1px solid $color-04;
-		padding: 10px 125px 10px 20px;
+		padding: 0 120px 0 0;
 		position: relative;
-		background: $color-05;
 		.right-box {
 			position: absolute;
-			top: 16px;
-			right: 20px;
+			top: 6px;
+			right: 0;
 			font-family: $font-01;
 			font-variant: none;
 			font-size: rem(14px);
 		}
 	}
 	.topicreview {
-		margin: 0 0 20px 0;
 		&.scrollable {
 			max-height: 350px;
 			overflow-x: hidden;
 			overflow-y: auto;
-			padding: 0 20px 0 0;
-		}
-		&[style*='max-height: none'] {
-			padding: 0;
 		}
 		.post {
-			.inner {
-				padding: 0 20px;
-			}
 			.post-buttons {
 				label[for*='post_id_list_select'] {
 					margin: 2px 0 0 0;
@@ -106,12 +98,8 @@
 				}
 			}
 			&.post-ignore:last-child {
-
 				padding: 0;
 			}
-		}
-		& + hr {
-			display: block;
 		}
 	}
 }
@@ -122,7 +110,7 @@
 fieldset.display-actions {
 	@include clearfix('&');
 	text-align: right;
-	margin: 20px 0;
+	margin: 0 0 20px 0;
 	label, select {
 		margin: 0;
 	}
@@ -230,25 +218,30 @@ fieldset.display-actions + fieldset.display-actions {
 			position: relative;
 			img {
 				margin: 0 auto;
-				padding: 10px;
+				border: 5px solid $color-04;
 			}
 			input[type='radio'], &:before {
 				position: absolute;
 			}
 			input[type='radio'] {
-				top: 100%;
-				margin: -20px 0 0 0;
+				@include sizing(14px, 14px);
+				top: 13px;
+				right: 17px;
+				z-index: 2;
+				margin: 0;
 			}
 			&:before {
 				content: '';
 				display: block;
+				@include sizing(19px, 19px);
+				border-radius: 100%;
 				background: $color-04;
-				top: 0;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				z-index: -1;
-				margin: 0 5px;
+				top: 10px;
+				right: 15px;
+				z-index: 1;
+			}
+			br {
+				display: none;
 			}
 		}
 	}
@@ -306,15 +299,8 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Signature
 ========================================================================== */
 
-.section-ucp-edit-signature .ucp-main .signature.standalone {
-	margin-bottom: 30px;
-	&:after {
-		content: '';
-		display: block;
-		@include sizing(100%, 1px);
-		border-bottom: 1px dashed $color-04;
-		margin: 20px 0 0 0;
-	}
+.section-ucp-edit-signature .ucp-main fieldset.fields1 + h3 + fieldset {
+	margin: 0 0 20px 0;
 }
 
 /* UCP - Global Settings
@@ -362,7 +348,7 @@ fieldset.display-actions + fieldset.display-actions {
 .section-ucp-compose-message .cp-main {
 	 #pmheader-postingbox {
 		.inputbox {
-			height: 100px;
+			height: 110px;
 		}
 		label[for='group_list'] ~ br {
 			display: none;
@@ -402,6 +388,11 @@ fieldset.display-actions + fieldset.display-actions {
 			}
 		}
 	}
+	.panel.bg2 {
+		background: none;
+		padding: 0;
+		margin: 0;
+	}
 }
 
 /* UCP - Private Messages - Inbox
@@ -415,33 +406,30 @@ fieldset.display-actions + fieldset.display-actions {
 				margin-top: 20px;
 			}
 		}
-		.display-options {
+		& > .display-options {
 			text-align: center;
-			padding: 10px 20px;
-			background: $color-04;
-			a {
-				color: $color-01;
+			margin: 0 0 20px 0;
+			@include clearfix('&');
+			.left-box, .right-box {
 				.icon {
-					@include transition(color 0.3s ease-in-out);
+					width: auto;
 				}
-				&:hover, &:hover .icon {
-					color: $color-06;
-				}
-			}
-			&, .right-box {
-				@include clearfix('&');
-			}
-			a.left-box, a.right-box {
-				display: block;
 			}
 			.left-box {
 				float: left;
-				text-align: left;
+				.icon {
+					margin: 0 5px 0 0;
+				}
 			}
 			.right-box {
 				float: right;
-				text-align: right;
 				direction: rtl;
+				span {
+					margin: 0 5px 0 0;
+				}
+				.icon {
+					margin: 0 0 0 5px;
+				}
 			}
 			label, select {
 				display: inline-block;
@@ -450,15 +438,6 @@ fieldset.display-actions + fieldset.display-actions {
 			select {
 				width: auto;
 			}
-		}
-		.pm.post + .display-options {
-			margin: 0 0 20px 0;
-			.left-box, .right-box {
-				line-height: 40px;
-			}
-		}
-		.panel + .post.pm {
-			border-top: 1px solid $color-04;
 		}
 		.topiclist > li.row {
 			&.pm_marked_colour, &.pm_replied_colour, &.pm_friend_colour, &.pm_foe_colour {

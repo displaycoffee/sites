@@ -36,14 +36,14 @@
 .darkenwrapper {
 	display: none;
 	position: relative;
-	z-index: 44;
+	z-index: 125;
 	.darken {
 		position: fixed;
 		left: 0;
 		top: 0;
 		@include sizing(100%, 100%);
 		z-index: 45;
-		background: rgba($color-02, 0.65);
+		background: rgba($color-02, 0.50);
 	}
 }
 
@@ -56,7 +56,7 @@
 	right: 0;
 	top: 150px;
 	left: 0;
-	z-index: 50;
+	z-index: 150;
 	width: 100%;
 	max-width: 600px;
 	margin: 0 auto;
@@ -69,11 +69,11 @@
 		right: -10px;
 		z-index: 2;
 		@include sizing(24px, 24px);
-		background: $color-05;	
+		background: $color-03;
 		border-radius: 100%;
 		text-align: center;
 		color: $color-01;
-		.icon {				
+		.icon {
 			line-height: 24px;
 		}
 		&:hover {
@@ -115,7 +115,7 @@
 	@include transition(background 0.3s ease-in-out);
 	&, &:hover {
 		color: $color-01;
-	}	
+	}
 }
 
 .scroll-to-top {
@@ -123,5 +123,5 @@
 }
 
 .scroll-to-bottom {
-	bottom: 30px;	
+	bottom: 30px;
 }

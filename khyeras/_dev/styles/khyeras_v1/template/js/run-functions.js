@@ -26,10 +26,17 @@ jQuery( document ).ready( function( $ ) {
 	// Check if topic review in ucp/mcp should be scrollable
 	var ucpTopicReview = $( '.cp-main .topicreview' );
 
-	if ( ucpTopicReview.length && ucpTopicReview[0].scrollHeight > 375 ) {		
+	if ( ucpTopicReview.length && ucpTopicReview[0].scrollHeight > 375 ) {
 		ucpTopicReview.addClass( 'scrollable' );
 	} else {
 		$( '.cp-main .review .right-box' ).hide();
+	}
+
+	// If postingbox in ucp is empty, hide it
+	var pmPostBox = $( '#pmheader-postingbox' );
+
+	if ( $( pmPostBox ).find( 'fieldset.fields1' ).children().length == 0 ) {
+		$( pmPostBox ).hide();
 	}
 
 	// If search has no results, hide "0 matches" pagination text

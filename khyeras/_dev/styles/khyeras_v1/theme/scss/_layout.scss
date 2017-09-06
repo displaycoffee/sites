@@ -449,12 +449,14 @@
 }
 
 .pm.post.online {
+	&:before, &:after {
+		left: -12px;
+	}
 	&:before {
-		left: 0;
-		top: 20px;
+		top: 15px;
 	}
 	&:after {
-		display: none;
+		top: 39px;
 	}
 }
 

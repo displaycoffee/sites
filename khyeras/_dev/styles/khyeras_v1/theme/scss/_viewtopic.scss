@@ -139,10 +139,9 @@
 		}
 	}
 	.attachbox {
-		border: 1px solid $color-04;
 		padding: 20px 20px 10px 20px;
 		margin: 0 auto 20px auto;
-		background: $color-03;
+		background: $color-05;
 		& > dt {
 			background: $color-04;
 			color: $color-01;
@@ -285,16 +284,9 @@ fieldset.polls dl dt {
 	}
 }
 
-.topic-wrapper .post.online .postprofile dt.no-avatar {
-	margin-top: 30px;
-}
-
-.pm.post.online .postprofile dt {
-	&.has-avatar {
-		margin-top: 10px;
-	}
-	&.no-avatar {
-		margin-top: 40px;
+.topic-wrapper .post, .pm.post {
+	&.online .postprofile dt.no-avatar {
+		margin-top: 30px;
 	}
 }
 
@@ -335,6 +327,9 @@ fieldset.polls dl dt {
 
 .post.pm {
 	padding: 20px 0;
+	.back2top {
+		margin: 0 0 20px 0;
+	}
 }
 
 /* View Topic - Topic Review

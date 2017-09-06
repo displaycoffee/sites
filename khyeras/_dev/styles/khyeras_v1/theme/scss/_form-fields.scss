@@ -16,7 +16,7 @@ fieldset {
 	border: 0;
 }
 
-.inputbox, select, .button, .button1, .button2 {
+.inputbox, select, .button, .button1, .button2, .cp-main #viewfolder .display-options .left-box, .cp-main #viewfolder .display-options .right-box {
 	border: 0;
 	border-radius: 3px;
 	line-height: rem(20px);
@@ -78,7 +78,7 @@ button[disabled], html input[disabled] {
 /* Buttons
 ========================================================================== */
 
-.button, .button1, .button2 {
+.button, .button1, .button2, .cp-main #viewfolder .display-options .left-box, .cp-main #viewfolder .display-options .right-box {
 	display: inline-block;
 	background: $color-10;
 	color: $color-01;
