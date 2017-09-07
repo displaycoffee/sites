@@ -143,7 +143,7 @@ fieldset.display-actions + fieldset.display-actions {
 /* UCP - Avatar (User & Groups)
 ========================================================================== */
 
-.section-ucp-edit-avatar, .section-ucp-manage-groups {
+.section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details {
 	.cp-main {
 		.avatar, img[src*='no_avatar.gif'] {
 			border: 5px solid $color-04;
@@ -566,6 +566,10 @@ fieldset.display-actions + fieldset.display-actions {
 			padding: 0;
 		}
 	}
+	.action-bar.bar-top .inputbox[type='search'] {
+		width: auto;
+		margin: 0 3px 0 5px;
+	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
 		position: absolute;
 		right: 0;
@@ -670,7 +674,7 @@ fieldset.display-actions + fieldset.display-actions {
 	}
 }
 
-/* MCP - Reports details
+/* MCP - Report Details
 ========================================================================== */
 
 .section-mcp-reported-messages, .section-mcp-reported-pms {
@@ -679,13 +683,42 @@ fieldset.display-actions + fieldset.display-actions {
 	}
 }
 
-
-/* MCP - Moderator Logs
+/* MCP - User Notes & Warning Profiles
 ========================================================================== */
 
-.section-mcp-moderator-logs .mcp-main .action-bar.bar-top .inputbox[type='search'] {
-	width: auto;
-	margin: 0 3px 0 5px;
+.section-mcp-user-details, .section-mcp-warnings {
+	.mcp-main h2 + .panel h3 + div {
+		@include flex-flow(row nowrap);
+		.column1, .column2 {
+			width: auto;
+			float: none;
+			padding: 0;
+			@include flex;
+		}
+		.column1 {
+			.avatar {
+				margin: 0 20px 20px 0;
+				max-width: 200px;
+			}
+		}
+	}
+}
+
+/* MCP - Warnings
+========================================================================== */
+
+.section-mcp-warnings #warning {
+	& ~ br, & ~ .panel dt {
+		display: none;
+	}
+	& ~ .panel {
+		width: auto;
+		display: block;
+		padding: 0;
+		dd {
+			margin-left: -10px;
+		}
+	}
 }
 
 /* MCP - Banning
