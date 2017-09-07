@@ -32,6 +32,15 @@ jQuery( document ).ready( function( $ ) {
 		$( '.cp-main .review .right-box' ).hide();
 	}
 
+	// Check if post details in mcp should be scrollable
+	var mcpPostDetails = $( '.mcp-main #post_details' );
+
+	if ( mcpPostDetails.length && mcpPostDetails[0].scrollHeight > 375 ) {
+		mcpPostDetails.addClass( 'scrollable' );
+	} else {
+		$( '.mcp-main .post-buttons #expand' ).hide();
+	}
+
 	// If postingbox in ucp is empty, hide it
 	var pmPostBox = $( '#pmheader-postingbox' );
 
@@ -39,6 +48,13 @@ jQuery( document ).ready( function( $ ) {
 		$( pmPostBox ).hide();
 	}
 
+	// If pagination in mcp is empty, hide it
+	var mcpPagination = $( '.mcp-main .pagination' );
+
+	if ( $( mcpPagination ).find( 'ul' ).children().length == 0 ) {
+		$( mcpPagination ).hide();
+	}
+	
 	// If search has no results, hide "0 matches" pagination text
 	var pagination = $( '.section-search .pagination' );
 

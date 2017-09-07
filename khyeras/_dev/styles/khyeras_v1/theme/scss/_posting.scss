@@ -5,15 +5,6 @@
 ========================================================================== */
 
 #postform {
-	fieldset {
-		@include clearfix('&');
-		dl dd label[for*='icon'] img {
-			@include sizing(20px, 20px);
-			position: relative;
-			top: 4px;
-			@include inline-block(baseline);
-		}
-	}
 	#colour_palette, #format-buttons {
 		margin: 0 0 20px 0;
 	}
@@ -43,6 +34,18 @@
 	#message-box {
 		overflow: hidden;
 		line-height: 0;
+	}
+}
+
+/* Topic Icons
+========================================================================== */
+
+#postform fieldset, fieldset#split-panel {
+	dl dd label[for*='icon'] img {
+		@include sizing(20px, 20px);
+		position: relative;
+		top: 4px;
+		@include inline-block(baseline);
 	}
 }
 

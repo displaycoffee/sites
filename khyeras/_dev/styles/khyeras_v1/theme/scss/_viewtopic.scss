@@ -61,17 +61,20 @@
 /* View Topic - Body - Title
 ========================================================================== */
 
-.topic-wrapper .post .postbody > div > h3, .pm.post .postbody > h3,
-.topicreview .post .postbody h3 {
-	margin: 0 0 5px 0;
+.postbody {
+	& > div > h3, & > h3 {
+		margin: 0 0 5px 0;
+		padding: 0 150px 0 0;
+	}
 }
 
 .topic-wrapper .post .postbody > div > h3 {
-	padding: 0 225px 0 0;
+	padding-right: 200px;
 }
 
-.pm.post .postbody > h3, .topicreview .post .postbody h3 {
-	padding: 0 125px 0 0;
+#preview.post .postbody > h3 {
+	margin-bottom: 20px;
+	padding-right: 0;
 }
 
 /* View Topic - Body - BBCode

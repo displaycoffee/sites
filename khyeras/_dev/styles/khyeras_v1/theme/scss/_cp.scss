@@ -61,15 +61,6 @@
 			display: none;
 		}
 	}
-	table.table1 tbody tr.big-column {
-		background: rgba($color-02, 0.20);
-		border-bottom-style: solid;
-		border-top: 1px solid $color-04;
-		td {
-			padding-top: 10px;
-			padding-bottom: 10px;
-		}
-	}
 	.review {
 		padding: 0 120px 0 0;
 		position: relative;
@@ -84,9 +75,7 @@
 	}
 	.topicreview {
 		&.scrollable {
-			max-height: 350px;
-			overflow-x: hidden;
-			overflow-y: auto;
+			@include ucp-scrollable;
 		}
 		.post {
 			.post-buttons {
@@ -262,7 +251,7 @@ fieldset.display-actions + fieldset.display-actions {
 	}
 }
 
-/* UCP - Notifications
+/* UCP - Notifications - Manage & Edit
    Note: UCP area only. Header notifications in header.scss
 ========================================================================== */
 
@@ -281,6 +270,16 @@ fieldset.display-actions + fieldset.display-actions {
 		& > p:last-child {
 			margin: 0;
 		}
+	}
+}
+
+.section-ucp-edit-notification-options .ucp-main table.table1 tbody tr.big-column {
+	background: rgba($color-02, 0.20);
+	border-bottom-style: solid;
+	border-top: 1px solid $color-04;
+	td {
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 }
 
@@ -555,31 +554,18 @@ fieldset.display-actions + fieldset.display-actions {
 	}
 }
 
-/* MCP - Front
-========================================================================== */
-
-.mcp-main #mcp_queue {
-	.topiclist > li.header dl:after {
-		display: block;
-		content: 'Mark';
-		flex: 0 0 80px;
-		padding: 0 10px;
-		box-sizing: border-box;
-	}
-	& ~ .panel table.table1 {
-		th, td {
-			&:first-child {
-				width: 40.33%;
-			}
-		}
-	}
-}
-
-/* MCP - Forum Selection, Tabs Container, Jumpbox
+/* MCP - Layout
 ========================================================================== */
 
 .mcp-main {
 	position: relative;
+	#post_details.scrollable {
+		@include ucp-scrollable;
+		padding: 0 20px 0 0;
+		&[style*='max-height: none'] {
+			padding: 0;
+		}
+	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
 		position: absolute;
 		right: 0;
@@ -617,17 +603,53 @@ fieldset.display-actions + fieldset.display-actions {
 	}
 }
 
-/* MCP - Moderation Queue
+/* MCP - Front
 ========================================================================== */
 
-.section-mcp-moderation-queue #mcp fieldset dl dd {
-	@include flex-flow(row nowrap);
-	align-items: flex-start;
-	select, .button2 {
-		@include flex;
+.mcp-main #mcp_queue {
+	.topiclist > li.header dl:after {
+		display: block;
+		content: 'Mark';
+		flex: 0 0 80px;
+		padding: 0 10px;
+		box-sizing: border-box;
 	}
-	.button2 {
-		margin: 0 0 0 5px;
+	& ~ .panel table.table1 {
+		th, td {
+			&:first-child {
+				width: 40.33%;
+			}
+		}
+	}
+}
+
+/* MCP - Moderation Queue & Post Details
+========================================================================== */
+
+.section-mcp-moderation-queue, .section-mcp-post-details {
+	form[id*='mcp'] fieldset dl dd {
+		@include flex-flow(row wrap);
+		align-items: flex-start;
+		select, .inputbox {
+			@include flex(base);
+			width: auto;
+		}
+	 	.button2 {
+			@include flex;
+			margin: 0 0 0 5px;
+		}
+	}
+	#mcp_chgposter fieldset dl dd {
+		margin-top: 0 !important;
+		br {
+			display: none;
+			& + span {
+				@include flex(full);
+				min-width: 1px;
+				display: block;
+				margin: 5px 0 0 0;
+			}
+		}
 	}
 }
 
@@ -639,7 +661,7 @@ fieldset.display-actions + fieldset.display-actions {
 		select {
 			width: auto;
 			&#sk {
-				margin: 0 4px 0 0;
+				margin: 0 4px;
 			}
 		}
 		label {
@@ -647,6 +669,16 @@ fieldset.display-actions + fieldset.display-actions {
 		}
 	}
 }
+
+/* MCP - Reports details
+========================================================================== */
+
+.section-mcp-reported-messages, .section-mcp-reported-pms {
+	.mcp-main .post_details + hr + div {
+		margin: 0 0 20px 0;
+	}
+}
+
 
 /* MCP - Moderator Logs
 ========================================================================== */
