@@ -1,16 +1,8 @@
 /* Font Awesome */
 
 .icon[class*='fa'] {
-	display: inline-block;
-    font-weight: normal;
-    font-style: normal;
-    font-variant: normal;
-    font-family: FontAwesome;
+	@include font-awesome;
     font-size: 14px;
-    line-height: 1;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Forums */
@@ -66,7 +58,36 @@
 }
 
 body[class*='section-app/directory'] {
-	.return-link .arrow-left .icon {
+	dl.icon_cat dt {
+		position: relative;
+		&:before {
+			@include font-awesome;
+			font-size: rem(50px);
+			content: '\f005';
+			position: absolute;
+			top: 10px;
+			left: 15px;
+		}
+		&[title*='Art']:before {
+			content: '\f1fc';
+		}
+		&[title*='Writing']:before {
+			content: '\f040';
+		}
+		&[title*='Sound']:before {
+			content: '\f001';
+		}
+		&[title*='Film']:before {
+			content: '\f008';
+		}
+		&[title*='Coding']:before {
+			content: '\f121';
+		}
+	}
+	a.username {
+		color: $color-05;
+	}
+	.return-link .arrow-left .icon, .advanced-search-link .arrow-left .icon {
 		display: none;
 	}
 	.action-bar.bar-top .search-box {
@@ -91,6 +112,10 @@ body[class*='section-app/directory'] {
 	}
 	.topiclist .header dt img[src*='no_flag.png'] {
 		display: none;
+	}
+	.forabg .topiclist li.bg1 dl dd {
+		padding: 10px 15px;
+		margin: -2px;
 	}
 	.forumbg {
 		overflow: visible;
@@ -206,6 +231,11 @@ body[class*='section-app/directory'] {
 		}
 		.back2top .commentlink {
 			margin-left: 0;
+		}
+	}
+	@include respond(768px) {
+		.forabg .topiclist li.bg1 dl dd {
+			display: block;
 		}
 	}
 }
