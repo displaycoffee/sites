@@ -90,6 +90,9 @@
 				padding: 0;
 			}
 		}
+		.postbody .attachbox, pre, code {
+			background: $color-03;
+		}
 	}
 }
 

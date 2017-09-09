@@ -38,13 +38,18 @@ dt, dd {
 	margin: 0;
 }
 
+code {
+	white-space: pre;
+	overflow: auto;
+}
+
 pre, code {
-	white-space: normal;
 	display: block;
 	font-family: 'Courier New', monospace;
 	background: $color-05;
 	color: $color-01;
 	padding: 20px;
+	white-space: pre-wrap;
 }
 
 pre code, code pre {
