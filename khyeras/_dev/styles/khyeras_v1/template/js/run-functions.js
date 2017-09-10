@@ -14,19 +14,6 @@ if ( bodyClass ) {
 	body[0].className = body[0].className + (' ' + bodyClass);
 }
 
-// Check if submit buttons have a parent "panel" class and if so, remove it
-var submitButtons = document.querySelectorAll( '.submit-buttons' );
-
-for ( var i = 0; i < submitButtons.length; i++ ) {
-	var inner = submitButtons[i].parentNode.className;
-	var panel = submitButtons[i].parentNode.parentNode.className;
-
-	// Do the parent elements have an inner or panel class?
-	if ( inner.indexOf( 'inner' ) >= 0 || panel.indexOf( 'panel' ) >= 0 ) {
-		submitButtons[i].parentNode.parentNode.classList.remove( 'panel' );
-	}
-}
-
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
 	// Add wrapper around topic review if height is bigger than 400px
