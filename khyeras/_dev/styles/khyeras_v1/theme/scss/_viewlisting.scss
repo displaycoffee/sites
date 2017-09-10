@@ -182,13 +182,14 @@
 		}
 	}
 	.action-bar.bar-top {
-		+ .panel > .inner > strong {
-			display: block;
-			margin: 0 0 20px 0;
+		& + .panel {
+			&, & > .inner > strong {
+				margin: 0 0 20px 0;
+			}
+			& > .inner > strong {
+				display: block;				
+			}
 		}
-	}
-	.action-bar.bottom {
-		margin-top: -20px;
 	}
 }
 

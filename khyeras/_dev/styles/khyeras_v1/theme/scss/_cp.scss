@@ -50,11 +50,6 @@
 		padding: 20px 20px 0 20px;
 		margin: 0 0 20px 0;
 	}
-	.panel .inner {
-		& > .action-bar.bar-bottom:last-child, & > .action-bar.bottom:last-child {
-			margin-bottom: 20px;
-		}
-	}
 	.topiclist.cplist {
 		margin: 0 0 20px 0;
 		& + br {
@@ -402,12 +397,6 @@ fieldset.display-actions + fieldset.display-actions {
 
 .section-ucp-view-messages .cp-main {
 	#viewfolder {
-		.action-bar.bar-top {
-			margin: 0 0 20px 0;
-			& + p {
-				margin-top: 20px;
-			}
-		}
 		& > .display-options {
 			text-align: center;
 			margin: 0 0 20px 0;
