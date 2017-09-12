@@ -46,7 +46,7 @@ dl.faq {
 	.postprofile dt .username-coloured {
 		display: inline;
 	}
-	.topic-wrapper .post {
+	.post {
 		.postbody {
 			.posthilit {
 				background: $color-09;
@@ -60,10 +60,17 @@ dl.faq {
 		}
 		ul.searchresults {
 			list-style: none;
-			margin: 20px 0 0 0;
-			min-width: 1px;
-			@include flex(full);
-			text-align: right;
+			li {
+				direction: rtl;
+				a {
+					span {
+						margin: 0 10px 0 0;
+					}
+					.icon {
+						width: auto;
+					}
+				}
+			}
 		}
 	}
 }

@@ -4,6 +4,10 @@
 /* Posting Box
 ========================================================================== */
 
+#preview ~ #postingbox {
+	margin-top: 30px;
+}
+
 #postform {
 	#colour_palette, #format-buttons {
 		margin: 0 0 20px 0;

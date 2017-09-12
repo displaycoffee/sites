@@ -181,32 +181,51 @@
 /* Main Boxes (Inner)
 ========================================================================== */
 
-.forabg, .forumbg, .panel, .topic-wrapper, .section-posting #preview, .section-posting #preview + .post,
-.section-posting #topicreview, #agreement {
+.post, .topicreview {
 	background: rgba($color-02, 0.20);
 	border: 1px solid $color-04;
 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
 	padding: 20px 20px 0 20px;
-	margin: 0 0 $main-margin 0;
 }
 
-.forumbg, .topic-wrapper {
-	margin-bottom: 10px;
+.post, .topicreview {
+	margin: 0 0 20px 0;
 }
 
-.forabg, .forumbg {
-	.inner {
-		margin: -20px -20px 0 -20px;
-	}
-}
-
-.panel .panel, #agreement .panel {
+.topicreview .post {
 	padding: 0;
 	margin: 0;
 	background: none;
 	border: 0;
 	box-shadow: none;
 }
+
+// .forabg, .forumbg, .panel, .topic-wrapper, .section-posting #preview, .section-posting #preview + .post,
+// .section-posting #topicreview, #agreement {
+// 	background: rgba($color-02, 0.20);
+// 	border: 1px solid $color-04;
+// 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
+// 	padding: 20px 20px 0 20px;
+// 	margin: 0 0 $main-margin 0;
+// }
+//
+// .forumbg, .topic-wrapper {
+// 	margin-bottom: 10px;
+// }
+//
+// .forabg, .forumbg {
+// 	.inner {
+// 		margin: -20px -20px 0 -20px;
+// 	}
+// }
+//
+// .panel .panel, #agreement .panel {
+// 	padding: 0;
+// 	margin: 0;
+// 	background: none;
+// 	border: 0;
+// 	box-shadow: none;
+// }
 
 /* Pagination
 ========================================================================== */
@@ -436,15 +455,15 @@
 	}
 }
 
-.topic-wrapper .post.online {
+.section-viewtopic .post.online {
 	&:before, &:after {
-		left: -32px;
+		left: -12px;
 	}
 	&:before {
-		top: -5px;
+		top: 20px;
 	}
 	&:after {
-		top: 19px;
+		top: 44px;
 	}
 }
 

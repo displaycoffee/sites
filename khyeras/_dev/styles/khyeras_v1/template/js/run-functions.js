@@ -20,14 +20,14 @@ jQuery( document ).ready( function( $ ) {
 	var topicReview = $( '.section-posting .topicreview' );
 
 	if ( topicReview.length && topicReview[0].scrollHeight > 400 ) {
-		topicReview.wrapInner( '<div class="topicreview-wrapper"></div>' );
+		addScrollableArea( topicReview );
 	}
 
 	// Check if topic review in ucp/mcp should be scrollable
 	var ucpTopicReview = $( '.cp-main .topicreview' );
 
-	if ( ucpTopicReview.length && ucpTopicReview[0].scrollHeight > 375 ) {
-		ucpTopicReview.addClass( 'scrollable' );
+	if ( ucpTopicReview.length && ucpTopicReview[0].scrollHeight > 400 ) {
+		addScrollableArea( ucpTopicReview );
 	} else {
 		$( '.cp-main .review .right-box' ).hide();
 	}
@@ -35,8 +35,8 @@ jQuery( document ).ready( function( $ ) {
 	// Check if post details in mcp should be scrollable
 	var mcpPostDetails = $( '.mcp-main #post_details' );
 
-	if ( mcpPostDetails.length && mcpPostDetails[0].scrollHeight > 375 ) {
-		mcpPostDetails.addClass( 'scrollable' );
+	if ( mcpPostDetails.length && mcpPostDetails[0].scrollHeight > 400 ) {
+		addScrollableArea( mcpPostDetails );
 	} else {
 		$( '.mcp-main .post-buttons #expand' ).hide();
 	}

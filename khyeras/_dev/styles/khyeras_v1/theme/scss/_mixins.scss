@@ -171,8 +171,8 @@
 }
 
 // Scrollable ucp containers
-@mixin ucp-scrollable {
-	max-height: 350px;
+@mixin scrollable {
+	max-height: 400px;
 	overflow-x: hidden;
 	overflow-y: auto;
 }

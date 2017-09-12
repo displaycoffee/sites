@@ -68,7 +68,7 @@
 	}
 }
 
-.topic-wrapper .post .postbody > div > h3 {
+.section-viewtopic .post .postbody > div > h3 {
 	padding-right: 200px;
 }
 
@@ -287,25 +287,19 @@ fieldset.polls dl dt {
 	}
 }
 
-.topic-wrapper .post, .pm.post {
-	&.online .postprofile dt.no-avatar {
-		margin-top: 30px;
-	}
+.post .online .postprofile dt.no-avatar {
+	margin-top: 30px;
 }
 
 /* View Topic - Topic & PM Layout (not preview or review)
 ========================================================================== */
 
-.topic-wrapper .post, .pm.post {
-	&.last {
-		border-bottom: 0;
-		padding: 0;
-	}
+.post {
 	.inner {
 		@include flex-flow(row wrap);
 		align-items: flex-start;
 	}
-	.postprofile, .postbody, .back2top {
+	.postprofile, .postbody, .back2top, ul.searchresults {
 		min-width: 1px;
 	}
 	.postprofile {
@@ -316,21 +310,9 @@ fieldset.polls dl dt {
 	.postbody {
 		@include flex(base);
 	}
-	.back2top {
+	.back2top, ul.searchresults {
 		@include flex(full);
 		text-align: right;
-	}
-}
-
-.topic-wrapper .post {
-	margin: 0 0 20px 0;
-	padding: 0 0 20px 0;
-	border-bottom: 1px dashed $color-04;
-}
-
-.post.pm {
-	padding: 20px 0;
-	.back2top {
 		margin: 0 0 20px 0;
 	}
 }
@@ -339,12 +321,8 @@ fieldset.polls dl dt {
 ========================================================================== */
 
 .topicreview {
-	.topicreview-wrapper {
-		max-height: 400px;
-		overflow-x: hidden;
-		overflow-y: auto;
-		margin: 0 0 20px 0;
-		padding: 0 20px 0 0;
+	&.scrollable {
+		@include scrollable;
 	}
 	.post {
 		border-bottom: 1px dashed $color-04;

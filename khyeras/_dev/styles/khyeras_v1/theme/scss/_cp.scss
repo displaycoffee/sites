@@ -69,9 +69,6 @@
 		}
 	}
 	.topicreview {
-		&.scrollable {
-			@include ucp-scrollable;
-		}
 		.post {
 			.post-buttons {
 				label[for*='post_id_list_select'] {
@@ -552,11 +549,7 @@ fieldset.display-actions + fieldset.display-actions {
 .mcp-main {
 	position: relative;
 	#post_details.scrollable {
-		@include ucp-scrollable;
-		padding: 0 20px 0 0;
-		&[style*='max-height: none'] {
-			padding: 0;
-		}
+		@include scrollable;
 	}
 	.action-bar.bar-top .inputbox[type='search'] {
 		width: auto;
