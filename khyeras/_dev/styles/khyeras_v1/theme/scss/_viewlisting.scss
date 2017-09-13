@@ -1,6 +1,12 @@
 /* Forums & Topics
 ========================================================================== */
 
+.forabg, .forumbg {
+	.inner {
+		margin: -20px -20px 0 -20px;
+	}
+}
+
 .topiclist {
 	list-style-type: none;
 	margin: 0;
@@ -187,7 +193,7 @@
 				margin: 0 0 20px 0;
 			}
 			& > .inner > strong {
-				display: block;				
+				display: block;
 			}
 		}
 	}

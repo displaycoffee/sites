@@ -320,6 +320,19 @@ fieldset.polls dl dt {
 /* View Topic - Topic Review
 ========================================================================== */
 
+.review {
+	padding: 0 120px 0 0;
+	position: relative;
+	.right-box {
+		position: absolute;
+		top: 6px;
+		right: 0;
+		font-family: $font-01;
+		font-variant: none;
+		font-size: rem(14px);
+	}
+}
+
 .topicreview {
 	&.scrollable {
 		@include scrollable;
@@ -327,8 +340,12 @@ fieldset.polls dl dt {
 	.post {
 		border-bottom: 1px dashed $color-04;
 		margin: 0 0 20px 0;
+		&.post-ignore .inner {
+			display: block;
+		}
 		&:last-child {
 			border-bottom: none;
+			margin: 0;
 		}
 		&.post-ignore {
 			padding: 0 0 20px 0px;
@@ -347,9 +364,9 @@ fieldset.polls dl dt {
 	}
 }
 
-/* View Topic - Quick Reply & Similar Topics
+/* View Topic - Similar Topics
 ========================================================================== */
 
-#qr_postform, .section-viewtopic .forumbg {
+.section-viewtopic .forumbg {
 	margin-top: $main-margin;
 }

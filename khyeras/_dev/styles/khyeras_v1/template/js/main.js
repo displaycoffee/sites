@@ -1,7 +1,11 @@
-// Function for scrollable areas
-function addScrollableArea( selector ) {
-	selector.addClass( 'scrollable' );
-	selector.wrapInner( '<div class="scrollable-wrapper"></div>' );
+// Check if area should be scrollable
+function addScrollableArea( selector, selectorHeight, selectorHide ) {
+	if ( selector.length && selector[0].scrollHeight > selectorHeight ) {
+		selector.addClass( 'scrollable' );
+		selector.wrapInner( '<div class="scrollable-wrapper"></div>' );
+	} else {
+		selectorHide.hide();
+	}
 }
 
 // Convert WordPress galleries with images into a featherlight gallery

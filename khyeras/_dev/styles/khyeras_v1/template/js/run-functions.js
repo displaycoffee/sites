@@ -17,29 +17,12 @@ if ( bodyClass ) {
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
 	// Add wrapper around topic review if height is bigger than 400px
-	var topicReview = $( '.section-posting .topicreview' );
-
-	if ( topicReview.length && topicReview[0].scrollHeight > 400 ) {
-		addScrollableArea( topicReview );
-	}
-
-	// Check if topic review in ucp/mcp should be scrollable
-	var ucpTopicReview = $( '.cp-main .topicreview' );
-
-	if ( ucpTopicReview.length && ucpTopicReview[0].scrollHeight > 400 ) {
-		addScrollableArea( ucpTopicReview );
-	} else {
-		$( '.cp-main .review .right-box' ).hide();
-	}
+	var topicReview = $( '.topicreview' );
+	addScrollableArea( topicReview, 400, $( '.review .right-box' ) );
 
 	// Check if post details in mcp should be scrollable
 	var mcpPostDetails = $( '.mcp-main #post_details' );
-
-	if ( mcpPostDetails.length && mcpPostDetails[0].scrollHeight > 400 ) {
-		addScrollableArea( mcpPostDetails );
-	} else {
-		$( '.mcp-main .post-buttons #expand' ).hide();
-	}
+	addScrollableArea( mcpPostDetails, 400, $( '.mcp-main .post-buttons #expand' ) );
 
 	// If postingbox in ucp is empty, hide it
 	var pmPostBox = $( '#pmheader-postingbox' );
