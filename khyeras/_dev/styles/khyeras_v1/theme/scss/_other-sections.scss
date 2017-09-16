@@ -78,6 +78,20 @@ dl.faq {
 /* Memberlist
 ========================================================================== */
 
+#memberlist_search {
+	h2, #search_memberlist {
+		background: rgba($color-02, 0.20);
+	}
+	h2 {
+		margin: 1px 1px 0 1px;
+		padding: 20px;
+	}
+	#search_memberlist {
+		margin: 0 1px 1px 1px;
+		padding: 0 20px;
+	}
+}
+
 #search_memberlist {
 	.dropdown-container .dropdown.live-search {
 		&[style*='block'] {
@@ -113,10 +127,7 @@ dl.faq {
 }
 
 .member-search.panel {
-	padding: 0;
-	background: none;
 	border: 0;
-	box-shadow: none;
 	strong {
 		font-weight: normal;
 	}

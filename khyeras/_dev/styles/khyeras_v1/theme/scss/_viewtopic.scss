@@ -338,13 +338,10 @@ fieldset.polls dl dt {
 		@include scrollable;
 	}
 	.post {
-		border-bottom: 1px dashed $color-04;
-		margin: 0 0 20px 0;
 		&.post-ignore .inner {
 			display: block;
 		}
 		&:last-child {
-			border-bottom: none;
 			margin: 0;
 		}
 		&.post-ignore {

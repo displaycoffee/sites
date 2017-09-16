@@ -38,6 +38,9 @@
 			font-style: italic;
 			opacity: 0.5;
 		}
+		.inner {
+			@include reset-inner;
+		}
 	}
 }
 
@@ -57,7 +60,15 @@
 		}
 	}
 	.topicreview {
+		&.scrollable {
+			padding-bottom: 20px;
+		}
+		&[style*='max-height'][style*='none'] {
+			padding-bottom: 0;
+		}
 		.post {
+			border-bottom: 1px dashed $color-04;
+			margin: 0 0 20px 0;
 			.post-buttons {
 				label[for*='post_id_list_select'] {
 					margin: 2px 0 0 0;
@@ -68,6 +79,10 @@
 			}
 			&.post-ignore:last-child {
 				padding: 0;
+			}
+			&:last-child {
+				border: 0;
+				margin: 0;
 			}
 		}
 		.postbody .attachbox, pre, code {

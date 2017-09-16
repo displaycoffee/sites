@@ -181,30 +181,58 @@
 /* Main Boxes (Inner)
 ========================================================================== */
 
-.post, .topicreview, .forabg, .forumbg, .panel {
-	background: rgba($color-02, 0.20);
-	border: 1px solid $color-04;
-	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
-	padding: 20px 20px 0 20px;
+.forabg, .forumbg, .post, .panel {
+	border: 20px solid rgba($color-02, 0.30);
+	.inner {
+		background: rgba($color-02, 0.20);
+		margin: 1px;
+		padding: 20px 20px 0 20px;
+	}
 }
 
-.forabg, .panel, #agreement {
+// .post, .topicreview, .forabg, .forumbg, .panel {
+// 	background: rgba($color-02, 0.20);
+// 	border: 1px solid $color-04;
+// 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
+// 	padding: 20px 20px 0 20px;
+// }
+
+// .post {
+// 	border: 20px solid rgba($color-02, 0.30);
+// 	.inner {
+// 		background: rgba($color-02, 0.20);
+// 		margin: 1px;
+// 		//border: 1px solid $color-04;
+// 		padding: 20px 20px 0 20px;
+// 	}
+// }
+
+.forabg, .panel {
 	margin: 0 0 $main-margin 0;
 }
 
-.post, .topicreview, .forumbg, #qr_postform .panel, .topic_poll .panel {
+.post, .topicreview, .forumbg, #qr_postform .panel, #agreement .panel, .topic_poll .panel {
 	margin: 0 0 20px 0;
 }
 
-.topicreview .post {
-	@include reset-inner;
-}
-
-.panel {
-	.panel, .post, .topicreview {
+.panel .panel, .panel .post {
+	border: 0;
+	margin: 0;
+	.inner {
 		@include reset-inner;
 	}
 }
+
+
+// .topicreview .post {
+// 	@include reset-inner;
+// }
+//
+// .panel {
+// 	.panel, .post, .topicreview {
+// 		@include reset-inner;
+// 	}
+// }
 
 /* Pagination
 ========================================================================== */
