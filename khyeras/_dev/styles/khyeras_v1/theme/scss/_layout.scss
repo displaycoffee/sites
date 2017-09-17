@@ -190,23 +190,6 @@
 	}
 }
 
-// .post, .topicreview, .forabg, .forumbg, .panel {
-// 	background: rgba($color-02, 0.20);
-// 	border: 1px solid $color-04;
-// 	box-shadow: 3px 3px 6px rgba($color-02, 0.30);
-// 	padding: 20px 20px 0 20px;
-// }
-
-// .post {
-// 	border: 20px solid rgba($color-02, 0.30);
-// 	.inner {
-// 		background: rgba($color-02, 0.20);
-// 		margin: 1px;
-// 		//border: 1px solid $color-04;
-// 		padding: 20px 20px 0 20px;
-// 	}
-// }
-
 .forabg, .panel {
 	margin: 0 0 $main-margin 0;
 }
@@ -222,17 +205,6 @@
 		@include reset-inner;
 	}
 }
-
-
-// .topicreview .post {
-// 	@include reset-inner;
-// }
-//
-// .panel {
-// 	.panel, .post, .topicreview {
-// 		@include reset-inner;
-// 	}
-// }
 
 /* Pagination
 ========================================================================== */
