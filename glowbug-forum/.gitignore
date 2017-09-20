@@ -13,7 +13,7 @@ cache/
 config/
 docs/
 download/
-ext/
+!ext/
 files/
 images/
 includes/
@@ -25,6 +25,20 @@ store/
 vendor/
 
 # Extensions
+ext/*
+!ext/ernadoo/
+
+ext/ernadoo/*
+!ext/ernadoo/phpbbdirectory/
+
+ext/ernadoo/phpbbdirectory/*
+!ext/ernadoo/phpbbdirectory/styles/
+
+ext/ernadoo/phpbbdirectory/styles/*
+!ext/ernadoo/phpbbdirectory/styles/glowbug_v1/
+
+ext/ernadoo/phpbbdirectory/styles/glowbug_v1/*
+!ext/ernadoo/phpbbdirectory/styles/glowbug_v1/template/
 
 # Themes
 styles/*
