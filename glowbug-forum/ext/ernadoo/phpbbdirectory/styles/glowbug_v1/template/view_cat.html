@@ -1,0 +1,199 @@
+{% include 'overall_header.html' %}
+	<h2 class="forum-title">
+		<a href="{{ U_VIEW_CAT }}">{{ CAT_NAME }}</a>
+	</h2>
+	{% if S_HAS_SUBCAT %}
+		{% include 'catlist.html' %}
+	{% endif %}
+	<div class="action-bar top">
+		{% if S_AUTH_ADD %}
+			<div class="buttons">
+				<a href="{{ U_NEW_SITE }}" class="button icon-button reply-icon" title="{{ lang('DIR_NEW_SITE') }}">
+					{{ lang('DIR_BUTTON_NEW_SITE') }}
+				</a>
+			</div>
+		{% endif %}
+		{% include 'cat_tools.html' %}
+		{% if S_AUTH_SEARCH %}
+			<div class="search-box" role="search">
+				<form method="get" id="forum-search" action="{{ U_MAKE_SEARCH }}">
+					<fieldset>
+						<input class="inputbox search tiny" type="text" name="keywords" size="20" placeholder="{{ lang('DIR_MAKE_SEARCH') }}" />
+						<button class="button icon-button search-icon" type="submit" title="{{ lang('SEARCH') }}">
+							{{ lang('SEARCH') }}
+						</button>
+						<a href="{{ U_MAKE_SEARCH }}" class="button icon-button search-adv-icon" title="{{ lang('SEARCH_ADV') }}">
+							{{ lang('SEARCH_ADV') }}
+						</a>
+						<input type="hidden" name="cat_id" value="{{ S_CAT_ID }}" />
+					</fieldset>
+				</form>
+			</div>
+		{% endif %}
+		{% if site %}
+			<div class="pagination">
+				<span class="dir_total_links">{{ TOTAL_LINKS }}</span>
+				{% if pagination %}
+					{% include 'pagination.html' %}
+				{% else %}
+					&bull; {{ PAGE_NUMBER }}
+				{% endif %}
+			</div>
+		{% endif %}
+	</div>
+	{% if site %}
+	{% for site in site %}
+	<div id="l{{ site.LINK_ID }}" class="forumbg">
+		<div class="inner">
+			<ul class="topiclist">
+				<li class="header">
+					<dl>
+						<dt>
+							{% if 'no_flag' not in site.IMG_FLAG %}
+								<img class="site-flag" src="{{ site.IMG_FLAG }}" title="{{ site.NAME }}" />
+							{% endif %}
+							{{ site.NAME }}
+						</dt>
+						<dd>&nbsp;</dd>
+					</dl>
+				</li>
+			</ul>
+			<div id="p{{ site.LINK_ID }}" class="post has-profile bg2 {% if site.S_NEW_LINK %}new{% endif %}">
+				<div class="inner">
+					<dl class="postprofile" id="profile{{ site.LINK_ID }}">
+						<dt>
+							<div class="avatar-container">
+								<a href="{{ site.U_LINK }}" class="avatar" {{ site.ON_CLICK }} >
+									<img src="{{ site.U_THUMB }}" class="avatar" alt="{{ lang('DIR_THUMB') }}" />
+								</a>
+							</div>
+							<p class="submitted-by">{{ lang('DIR_USER_PROP') }} {{ site.USER }}</p>
+						</dt>
+						{% if site.NOTE %}
+							<dd class="profile-custom-field">
+								<strong>{{ lang('DIR_NOTE') }}{{ lang('COLON') }}</strong> <span id="dir_note{{ site.LINK_ID }}">{{ site.NOTE }}</span>
+							</dd>
+						{% endif %}
+						{% if site.U_COMMENT %}
+							<dd class="profile-custom-field">
+								<a href="{{ site.U_COMMENT }}" class="commentlink">
+									<span>{{ site.NB_COMMENT }}</span>
+								</a>
+							</dd>
+						{% endif %}
+						{% if site.NOTE %}
+							<dd class="profile-custom-field responsive-hide">
+								<span id="dir_vote{{ site.LINK_ID }}">{{ site.NB_VOTE }}</span>
+							</dd>
+						{% endif %}
+						{% if site.VOTE_LIST %}
+							<dd class="profile-custom-field">
+								<div id="form_vote">
+									<form action="{{ site.U_FORM_VOTE }}" method="post" data-ajax="phpbbdirectory.add_vote" data-refresh="true">
+										<div>{{ site.VOTE_LIST }}&nbsp;<input type="submit" name="submit_vote" value="{{ lang('DIR_VOTE') }}" class="button2" /></div>
+									</form>
+								</div>
+							</dd>
+						{% endif %}
+					</dl>
+					<div class="postbody">
+						<div id="post_content{{ site.LINK_ID }}">
+							<h3>
+								<a href="{{ site.U_LINK }}" {{ site.ON_CLICK }} title="{{ site.NAME }}">
+									{{ site.NAME }}
+								</a>
+								<span class="responsive-hide">&nbsp;({{ site.U_LINK }})</span>
+								&nbsp;({{ site.COUNT }})
+							</h3>
+							{% if not S_IS_BOT %}
+								<ul class="post-buttons">
+									{% if site.RSS %}
+										<li>
+											<a href="{{ site.RSS }}" class="button icon-button feed-icon" title="{{ lang('FEED') }} - {{ site.NAME }}"><span>{{ lang('FEED') }} - {{ site.NAME }}</span></a>
+										</li>
+									{% endif %}
+									{% if site.U_EDIT %}
+										<li>
+											<a href="{{ site.U_EDIT }}" title="{{ lang('DIR_EDIT_SITE') }}" class="button icon-button edit-icon"><span>{{ lang('DIR_EDIT_SITE') }}</span></a>
+										</li>
+									{% endif %}
+									{% if site.U_DELETE %}
+										<li>
+											<a href="{{ site.U_DELETE }}" title="{{ lang('DIR_DELETE_SITE') }}" class="button icon-button delete-icon" data-ajax="phpbbdirectory.delete_site"><span>{{ lang('DIR_DELETE_SITE') }}</span></a>
+										</li>
+									{% endif %}
+								</ul>
+							{% endif %}
+							<p class="author">
+								{% if site.TIME %}{{ site.TIME }}{% endif %}
+							</p>
+							<div class="content">{{ site.DESCRIPTION }}</div>
+							{% if site.BANNER %}
+								<div id="sig{{ site.LINK_ID }}" class="signature">{{ site.BANNER }}</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="back2top">
+						<a href="#top" class="top" title="{{ lang('BACK_TO_TOP') }}" data-original-title="{{ lang('BACK_TO_TOP') }}">{{ lang('BACK_TO_TOP') }}</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+	{% endif %}
+
+	{% if no_draw_link %}
+		<div class="panel">
+			<div class="inner">
+				<strong>{{ lang('DIR_NO_DRAW_LINK') }}</strong>
+			</div>
+		</div>
+	{% endif %}
+
+	{% if (site or pagination) and not S_IS_BOT  %}
+		<!-- IF S_SELECT_SORT_DAYS and not S_IS_BOT -->
+			<form method="post" action="{{ S_PAGE_ACTION }}">
+				<fieldset class="display-options">
+				<!-- IF S_SORT_OPTIONS -->
+					<label>{L_SORT_BY}{L_COLON} <select name="sk" id="sk">{S_SORT_OPTIONS}</select></label>
+					<label>{L_SORT_DIRECTION}{L_COLON} <select name="sd" id="sd">{S_ORDER_SELECT}</select></label>
+					<input type="submit" class="button2" name="sort" value="{L_SORT}" />
+				<!-- ELSE -->
+					<label>{L_DISPLAY}{L_COLON} {S_SELECT_SORT_DAYS}</label>
+					<!-- IF S_SELECT_SORT_KEY -->
+					<label>{L_SORT_BY}{L_COLON} {S_SELECT_SORT_KEY}</label>
+					<label>{L_SORT_DIRECTION}{L_COLON} {S_SELECT_SORT_DIR}</label>
+					<!-- ENDIF -->
+					<input type="submit" class="button2" name="sort" value="{L_GO}" />
+				<!-- ENDIF -->
+				</fieldset>
+			</form>
+		<!-- ENDIF -->
+	{% endif %}
+
+	<div class="action-bar bottom">
+		{% if S_AUTH_ADD %}
+			<div class="buttons">
+				<a href="{{ U_NEW_SITE }}" class="button icon-button reply-icon" title="{{ lang('DIR_NEW_SITE') }}">
+					{{ lang('DIR_BUTTON_NEW_SITE') }}
+				</a>
+			</div>
+		{% endif %}
+		{% include 'cat_tools.html' %}
+		{% if site %}
+			<div class="pagination">
+				<span class="dir_total_links">{{ TOTAL_LINKS }}</span>
+				{% if pagination %}
+					{% include 'pagination.html' %}
+				{% else %}
+					&bull; {{ PAGE_NUMBER }}
+				{% endif %}
+			</div>
+		{% endif %}
+	</div>
+	{% if not S_IS_BOT %}
+		{% include 'jumpbox.html' %}
+	{% endif %}
+{% include 'footer.html' %}

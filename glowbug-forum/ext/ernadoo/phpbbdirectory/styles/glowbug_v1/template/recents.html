@@ -1,0 +1,37 @@
+{% if block %}
+	{% for block in block %}
+		<div class="forumbg recent-sites">
+			<div class="inner">
+				<ul class="topiclist">
+					<li class="header">
+						<dl class="row-item">
+							<dt>{{ lang('RECENT_LINKS') }}</dt>
+						</dl>
+					</li>
+				</ul>
+				<div class="dir_grid">
+					{% for row in block.row %}
+						{% for col in row.col %}
+							<div class="dir_grid_block">
+								<div class="recent-thumbnail">
+									<div class="image-wrapper">
+										{{ col.UC_THUMBNAIL }}
+									</div>
+								</div>
+								<div class="recent-info">
+									<h3>{{ col.NAME }}</h3>
+									<strong>{{ lang('DIR_USER_PROP') }}{{ lang('COLON') }}</strong> {{ col.USER }}<br />
+									{% if col.TIME %}{{ col.TIME }}<br />{% endif %}
+									<strong>{{ lang('DIR_CAT') }}{{ lang('COLON') }}</strong> <a href="{{ col.U_CAT }}">{{ col.CAT }}</a><br />
+									<strong>{{ col.L_DIR_SEARCH_NB_CLICKS }}{{ lang('COLON') }}</strong> {{ col.COUNT }}<br />
+									<strong>{{ col.L_DIR_SEARCH_NB_COMMS }}{{ lang('COLON') }}</strong> <a href="{{ col.U_COMMENT }}" onclick="window.open('{{ col.U_COMMENT }}', 'phpBB_dir_commentaire', 'height=600, resizable=yes, scrollbars=yes, width=905');return false;">{{ col.COMMENT }}</a><br />
+								</div>
+							</div>
+						{% endfor %}
+						{% for col2 in row.col2 %}{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+{% endif %}

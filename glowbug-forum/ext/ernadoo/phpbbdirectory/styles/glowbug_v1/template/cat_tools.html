@@ -1,0 +1,17 @@
+{% if not S_IS_BOT and U_WATCH_CAT %}
+	<div class="dropdown-container dropdown-button-control topic-tools dropdown-right dropdown-up">
+		<span title="{{ lang('DIR_CAT_TOOLS') }}" class="button icon-button tools-icon dropdown-trigger dropdown-select dropdown-toggle"></span>
+		<div class="dropdown">
+			<div class="pointer"><div class="pointer-inner"></div></div>
+			<ul class="dropdown-contents dropdown-nonscroll">
+				{% if U_WATCH_CAT %}
+					<li class="small-icon icon-subscribe">
+						<a href="{{ U_WATCH_CAT }}" class="watch-cat-link" title="{{ S_WATCH_CAT_TITLE }}" data-ajax="toggle_link" data-toggle-class="icon {% if S_WATCHING_CAT %}fa-check-square-o{% else %}fa-square-o{% endif %} fa-fw" data-toggle-text="{{ S_WATCH_CAT_TOGGLE }}" data-toggle-url="{{ U_WATCH_CAT_TOGGLE }}" data-update-all=".watch-cat-link">
+							{{ S_WATCH_CAT_TITLE }}
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+{% endif %}
