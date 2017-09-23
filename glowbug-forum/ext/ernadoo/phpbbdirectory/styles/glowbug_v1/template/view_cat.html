@@ -8,7 +8,7 @@
 	<div class="action-bar top">
 		{% if S_AUTH_ADD %}
 			<div class="buttons">
-				<a href="{{ U_NEW_SITE }}" class="button icon-button reply-icon" title="{{ lang('DIR_NEW_SITE') }}">
+				<a href="{{ U_NEW_SITE }}" class="button icon-button post-icon" title="{{ lang('DIR_NEW_SITE') }}">
 					{{ lang('DIR_BUTTON_NEW_SITE') }}
 				</a>
 			</div>
@@ -155,20 +155,7 @@
 	{% if (site or pagination) and not S_IS_BOT  %}
 		<!-- IF S_SELECT_SORT_DAYS and not S_IS_BOT -->
 			<form method="post" action="{{ S_PAGE_ACTION }}">
-				<fieldset class="display-options">
-				<!-- IF S_SORT_OPTIONS -->
-					<label>{L_SORT_BY}{L_COLON} <select name="sk" id="sk">{S_SORT_OPTIONS}</select></label>
-					<label>{L_SORT_DIRECTION}{L_COLON} <select name="sd" id="sd">{S_ORDER_SELECT}</select></label>
-					<input type="submit" class="button2" name="sort" value="{L_SORT}" />
-				<!-- ELSE -->
-					<label>{L_DISPLAY}{L_COLON} {S_SELECT_SORT_DAYS}</label>
-					<!-- IF S_SELECT_SORT_KEY -->
-					<label>{L_SORT_BY}{L_COLON} {S_SELECT_SORT_KEY}</label>
-					<label>{L_SORT_DIRECTION}{L_COLON} {S_SELECT_SORT_DIR}</label>
-					<!-- ENDIF -->
-					<input type="submit" class="button2" name="sort" value="{L_GO}" />
-				<!-- ENDIF -->
-				</fieldset>
+				{% include 'directory_display_options.html' %}
 			</form>
 		<!-- ENDIF -->
 	{% endif %}
@@ -176,7 +163,7 @@
 	<div class="action-bar bottom">
 		{% if S_AUTH_ADD %}
 			<div class="buttons">
-				<a href="{{ U_NEW_SITE }}" class="button icon-button reply-icon" title="{{ lang('DIR_NEW_SITE') }}">
+				<a href="{{ U_NEW_SITE }}" class="button icon-button post-icon" title="{{ lang('DIR_NEW_SITE') }}">
 					{{ lang('DIR_BUTTON_NEW_SITE') }}
 				</a>
 			</div>

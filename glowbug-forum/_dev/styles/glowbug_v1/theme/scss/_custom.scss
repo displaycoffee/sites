@@ -1,10 +1,3 @@
-/* Font Awesome */
-
-.icon[class*='fa'] {
-	@include font-awesome;
-    font-size: 14px;
-}
-
 /* Forums */
 
 .glowbug {
@@ -46,7 +39,44 @@
 	}
 }
 
+/* Search Results */
+
+#page-body > .search.post {
+	& + form {
+		margin-top: 15px;
+	}
+	&.bg2 {
+		background: $color-01 !important;
+	}
+	.postprofile:before {
+		border-left: 1px dotted $color-06;
+		content: ' ';
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+	}
+	.postbody {
+		width: 70%;
+		padding: 0 15px 15px 0;
+	}
+	h3 {
+		border-bottom: dotted 1px $color-06;
+		float: none;
+		margin: 0 -15px;
+	    padding: 0 15px 10px;
+	}
+	.content {
+		box-shadow: none;
+	}
+}
+
 /* Directory */
+
+.icon-directory a:before {
+	font-family: FontAwesome;
+    content: '\f07b';
+}
 
 body[class*='section-app/directory'] {
 	.search-website-link {
@@ -158,5 +188,34 @@ body[class*='section-app/directory'] {
 	}
 	.post .signature, #postingbox {
 		padding-top: 15px;
+	}
+	form[data-focus='keywords'] .bg2 {
+		background: none;
+	}
+}
+
+.directory-comments {
+	font-size: 13px;
+	#message-box textarea {
+		width: 100%;
+		min-width: 1px;
+		box-sizing: border-box;
+	}
+	.comments-title {
+		border-top: 1px solid $color-07;
+		margin: 0 -30px;
+		padding: 22px 30px 0 30px;
+	}
+	.action-bar + .post {
+		margin-top: 0 !important;
+	}
+	.postbody {
+		float: none;
+		width: auto;
+	}
+	.post {
+		border-left: 1px solid $color-06;
+		border-right: 1px solid $color-06;
+		margin: 0;
 	}
 }
