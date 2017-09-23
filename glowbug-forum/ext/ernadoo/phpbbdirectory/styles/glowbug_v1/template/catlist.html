@@ -10,40 +10,34 @@
 			</li>
 			{% if S_AUTH_SEARCH and S_ROOT %}
 				<li class="search-website-link">
-					<dl>
-						<dd><a href="{{ U_MAKE_SEARCH }}"><strong>{{ lang('DIR_MAKE_SEARCH') }}</strong></a></dd>
-					</dl>
+					<p><a href="{{ U_MAKE_SEARCH }}"><strong>{{ lang('DIR_MAKE_SEARCH') }}</strong></a></p>
 				</li>
 			{% endif %}
 		</ul>
 		{% if cat %}
-		<ul class="topiclist forums collapse">
-			<li>
-				<div class="dir_grid">
-					{% for cat in cat %}
-						<div class="dir_grid_block dir_cat_{% if cat.S_ROW_COUNT is even %}left{% else %}right{% endif %}">
-							<div class="icon_cat">
-								{% if 'icons/icon' in cat.CAT_IMG %}
-									<img src="{{ cat.CAT_IMG }}" title="{{ cat.CAT_NAME }}" />
-								{% elseif 'icons/fa' in cat.CAT_IMG %}
-									{% set fa_icon = cat.CAT_IMG|replace({ './../ext/ernadoo/phpbbdirectory/images/icons/': '', '.gif': '' }) %}
-									<i class="fa {{ fa_icon }}" aria-hidden="true"></i>
-								{% else %}
-									<i class="fa fa-star" aria-hidden="true"></i>
-								{% endif %}
-							</div>
-							<div class="icon_info" title="{{ cat.CAT_NAME }}">
-								<a href="{{ cat.U_CAT }}" class="forumtitle" title="{{ cat.CAT_NAME }}"><b>{{ cat.CAT_NAME }}</b></a>&nbsp;({{ cat.CAT_LINKS }})<br />
-								{{ cat.CAT_DESC }}
-								{% for subcat in cat.subcat %}
-									<br /><br />
-									<a href="{{ subcat.U_CAT }}" class="sub_cat">{{ subcat.CAT_NAME }}</a>({{ subcat.CAT_LINKS }})
-								{% endfor %}
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-			</li>
+		<ul class="topiclist forums collapse directory-grid">
+			{% for cat in cat %}
+				<li class="directory-grid-block dir_cat_{% if cat.S_ROW_COUNT is even %}left{% else %}right{% endif %} clearfix">
+					<div class="icon_cat">
+						{% if 'icons/icon' in cat.CAT_IMG %}
+							<img src="{{ cat.CAT_IMG }}" title="{{ cat.CAT_NAME }}" />
+						{% elseif 'icons/fa' in cat.CAT_IMG %}
+							{% set fa_icon = cat.CAT_IMG|replace({ './../ext/ernadoo/phpbbdirectory/images/icons/': '', '.gif': '' }) %}
+							<i class="fa {{ fa_icon }}" aria-hidden="true"></i>
+						{% else %}
+							<i class="fa fa-star" aria-hidden="true"></i>
+						{% endif %}
+					</div>
+					<div class="icon_info" title="{{ cat.CAT_NAME }}">
+						<a href="{{ cat.U_CAT }}" class="forumtitle" title="{{ cat.CAT_NAME }}"><b>{{ cat.CAT_NAME }}</b></a>&nbsp;({{ cat.CAT_LINKS }})<br />
+						{{ cat.CAT_DESC }}
+						{% for subcat in cat.subcat %}
+							<br /><br />
+							<a href="{{ subcat.U_CAT }}" class="sub_cat">{{ subcat.CAT_NAME }}</a>({{ subcat.CAT_LINKS }})
+						{% endfor %}
+					</div>
+				</li>
+			{% endfor %}
 		</ul>
 		{% endif %}
 	</div>

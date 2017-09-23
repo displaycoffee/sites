@@ -9,10 +9,10 @@
 						</dl>
 					</li>
 				</ul>
-				<div class="dir_grid">
+				<ul class="topiclist forums directory-grid">
 					{% for row in block.row %}
 						{% for col in row.col %}
-							<div class="dir_grid_block">
+							<li class="directory-grid-block clearfix">
 								<div class="recent-thumbnail">
 									<div class="image-wrapper">
 										{{ col.UC_THUMBNAIL }}
@@ -24,13 +24,13 @@
 									{% if col.TIME %}{{ col.TIME }}<br />{% endif %}
 									<strong>{{ lang('DIR_CAT') }}{{ lang('COLON') }}</strong> <a href="{{ col.U_CAT }}">{{ col.CAT }}</a><br />
 									<strong>{{ col.L_DIR_SEARCH_NB_CLICKS }}{{ lang('COLON') }}</strong> {{ col.COUNT }}<br />
-									<strong>{{ col.L_DIR_SEARCH_NB_COMMS }}{{ lang('COLON') }}</strong> <a href="{{ col.U_COMMENT }}" onclick="window.open('{{ col.U_COMMENT }}', 'phpBB_dir_commentaire', 'height=600, resizable=yes, scrollbars=yes, width=905');return false;">{{ col.COMMENT }}</a><br />
+									<strong>{{ col.L_DIR_SEARCH_NB_COMMS }}{{ lang('COLON') }}</strong> <a href="{{ col.U_COMMENT }}">{{ col.COMMENT }}</a><br />
 								</div>
-							</div>
+							</li>
 						{% endfor %}
 						{% for col2 in row.col2 %}{% endfor %}
 					{% endfor %}
-				</div>
+				</ul>
 			</div>
 		</div>
 	{% endfor %}

@@ -45,9 +45,6 @@
 				{% if result.S_TIME %}
 					<dd class="search-result-date">{{ result.S_TIME }}</dd>
 				{% endif %}
-				{% if result.IMG_FLAG %}
-					<dd><img src="{{ result.IMG_FLAG }}" alt="" /></dd>
-				{% endif %}
 				<dd>
 					<strong>{{ lang('DIR_CAT') }}{{ lang('COLON') }}</strong> {{ result.S_CAT }}
 				</dd>
@@ -55,11 +52,14 @@
 					<strong>{{ result.L_DIR_SEARCH_NB_CLICKS }}{{ lang('COLON') }}</strong> {{ result.S_COUNT }}
 				</dd>
 				<dd>
-					<strong>{{ result.L_DIR_SEARCH_NB_COMMS }}{{ lang('COLON') }}</strong> <a href="{{ result.U_COMMENT }}" class="commentlink" style="font-weight: normal;">{{ result.S_COMMENT }}</a>
+					<strong>{{ result.L_DIR_SEARCH_NB_COMMS }}{{ lang('COLON') }}</strong> <a href="{{ result.U_COMMENT }}">{{ result.S_COMMENT }}</a>
 				</dd>
 			</dl>
 			<div class="postbody">
 				<h3>
+					{% if result.IMG_FLAG and 'no_flag' not in result.IMG_FLAG %}
+						<img class="site-flag" src="{{ result.IMG_FLAG }}" />
+					{% endif %}
 					<a href="{{ result.U_SITE }}" {{ result.ON_CLICK }} class="gen">{{ result.S_SITE }}</a>
 				</h3>
 				<div class="content">

@@ -1,3 +1,17 @@
+/* Other */
+
+.glowbug span.select-parent {
+	display: inline-block;
+	&:before {
+		top: 0;
+		height: 100%;
+	}
+	&:after{
+		top: 15px;
+		right: 8px;
+	}
+}
+
 /* Forums */
 
 .glowbug {
@@ -87,37 +101,47 @@ body[class*='section-app/directory'] {
 	    content: '\f09e';
 		font-family: FontAwesome;
 	}
-	.site-flag {
-		margin: 0 5px 0 0;
-	}
-	.dir_grid {
+	.directory-grid {
 		margin: 0 -15px;
 		padding: 15px 15px 0 15px;
 		@include clearfix('&');
-		.dir_grid_block {
+		.directory-grid-block {
 			float: left;
 			padding: 0 15px;
 			margin: 0 0 15px 0;
 		}
 	}
-	.cat-list .dir_grid .dir_grid_block {
-		.icon_cat {
-			width: 80px;
-			float: left;
-			margin: 0 10px 0 0;
-			i.fa {
-				font-size: rem(50px);
+	.cat-list {
+		.topiclist.collapse:not(.in) {
+			padding-top: 0;
+			height: 0 !important;
+		}
+		.directory-grid .directory-grid-block {
+			&:nth-child(2n+1) {
+				clear: both;
+			}
+			.icon_cat {
+				width: 80px;
+				float: left;
+				margin: 0 20px 0 0;
+				i.fa {
+					font-size: rem(50px);
+					text-align: left;
+				}
+				img {
+					max-width: 100%;
+				}
+			}
+			.icon_info {
+				overflow: hidden;
 			}
 		}
-		.icon_info {
-			overflow: hidden;
-		}
-		&:nth-child(2n+1) {
+	}
+	.recent-sites .directory-grid .directory-grid-block {
+		width: 25%;
+		&:nth-child(4n+1) {
 			clear: both;
 		}
-	}
-	.recent-sites .dir_grid .dir_grid_block {
-		width: 25%;
 		.recent-thumbnail {
 			width: 100%;
 			height: 120px;
@@ -164,23 +188,21 @@ body[class*='section-app/directory'] {
 				font-weight: 600;
 				position: absolute;
 				top: 15px;
-				right: 0;
+				right: 15px;
+				z-index: 20;
 			}
+		}
+		.site-flag {
+			margin: 0 5px 0 0;
+			position: relative;
+			top: -2px;
 		}
 		.postbody {
 			padding: 0 15px 15px 0;
 		    margin: 0;
 		}
-		.avatar-container, .submitted-by, .profile-custom-field {
-			margin: 0 0 5px 0;
-		}
-		.profile-custom-field {
-			a {
-				font-weight: normal;
-			}
-			strong {
-				font-weight: bold;
-			}
+		.avatar-container, .submitted-by {
+			margin: 0 0 10px 0;
 		}
 		#form_vote {
 			margin: 10px 0 0 0;
@@ -196,6 +218,7 @@ body[class*='section-app/directory'] {
 
 .directory-comments {
 	font-size: 13px;
+	margin-top: -31px;
 	#message-box textarea {
 		width: 100%;
 		min-width: 1px;
@@ -212,10 +235,108 @@ body[class*='section-app/directory'] {
 	.postbody {
 		float: none;
 		width: auto;
+		.author {
+			margin-right: -30px;
+		}
 	}
 	.post {
 		border-left: 1px solid $color-06;
 		border-right: 1px solid $color-06;
 		margin: 0;
+	}
+}
+
+/* Responsive */
+
+@include respond($respond-01) {
+	body[class*='section-app/directory'] .recent-sites .directory-grid .directory-grid-block {
+		width: 33.3333%;
+		&:nth-child(4n+1) {
+			clear: none;
+		}
+		&:nth-child(3n+1) {
+			clear: left;
+		}
+	}
+}
+
+@include respond($respond-02) {
+	#page-body > .search.pos .postbody {
+		width: auto;
+	}
+	body[class*='section-app/directory'] {
+		.post {
+			&.new {
+				&:before {
+					top: 80px;
+				}
+				.postbody {
+					h3, .author {
+						padding-right: 70px;
+					}
+				}
+			}
+			&.search {
+				@include clearfix('&');
+				.postprofile {
+					.author {
+						width: 100px;
+						float: left;
+						margin: 0 20px 0 0;
+						.avatar-container img {
+							max-width: 100px;
+						}
+					}
+					dd {
+						overflow: hidden;
+					}
+				}
+			}
+		}
+		.recent-sites .directory-grid .directory-grid-block {
+			width: 50%;
+			&:nth-child(3n+1) {
+				clear: none;
+			}
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+		}
+	}
+	.directory-comments {
+		margin-top: -16px;
+		.postbody .author {
+			margin-right: -15px;
+		}
+	}
+}
+
+@include respond($respond-03) {
+	body[class*='section-app/directory'] {
+		.cat-list, .recent-sites {
+			.directory-grid .directory-grid-block {
+				float: none;
+				width: auto;
+			}
+		}
+		.cat-list .directory-grid .directory-grid-block .icon_cat {
+			width: 50px;
+		}
+		.recent-sites .directory-grid .directory-grid-block {
+			.recent-thumbnail {
+				float: left;
+				margin: 0 20px 0 0;
+				@include sizing(100px, auto);
+				.image-wrapper img {
+					max-width: 100%;
+					position: relative;
+					top: 4px;
+				}
+			}
+			.recent-info {
+				overflow: hidden;
+				text-align: left;
+			}
+		}
 	}
 }
