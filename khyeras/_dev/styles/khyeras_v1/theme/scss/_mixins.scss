@@ -3,7 +3,7 @@
 // Clearfix
 @mixin clearfix($selector) {
 	#{$selector}:before, #{$selector}:after {
-		content: "";
+		content: '';
 		display: table;
 		zoom: 1;
 	}
@@ -152,11 +152,11 @@
 			position: relative;
 		}
 		&[href*='mode='][href*='sd=d']:after {
-			content: '\f0dd';
+			content: unicode($icon-sort-desc);
 			top: -2px;
 		}
 		&[href*='mode='][href*='sd=a']:after {
-			content: '\f0de';
+			content: unicode($icon-sort-asc);
 			top: 4px;
 		}
 	}
@@ -192,4 +192,11 @@
 			padding: 0;
 		}
 	}
+}
+
+// Unicode mixin
+// Mostly for making sure icons output correctly
+// https://github.com/sass/sass/issues/1395#issuecomment-65548751
+@function unicode($str){
+    @return unquote("\'") + $str + unquote("\'");
 }

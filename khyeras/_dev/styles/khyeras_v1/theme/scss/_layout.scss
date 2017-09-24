@@ -352,43 +352,39 @@
 				font-size: rem(14px);
 			}
 			&.pm-icon:before {
-				content: '\f01c';
+				content: unicode($icon-inbox);
 			}
 			&.email-icon:before {
-				content: '\f0e0';
-			}
-			&.jabber-icon:before {
-				content: '\f004';
+				content: unicode($icon-envelope);
 			}
 			&.phpbb_website-icon:before {
-				content: '\f0ac';
-			}
-			&.phpbb_aol-icon:before {
-				content: '\f004';
-			}
-			&.phpbb_icq-icon:before {
-				content: '\f004';
+				content: unicode($icon-world);
 			}
 			&.phpbb_yahoo-icon:before {
-				content: '\f19e';
+				content: unicode($icon-yahoo);
 			}
 			&.phpbb_facebook-icon:before {
-				content: '\f09a';
+				content: unicode($icon-facebook);
 			}
 			&.phpbb_twitter-icon:before {
-				content: '\f099';
+				content: unicode($icon-twitter);
 			}
 			&.phpbb_skype-icon:before {
-				content: '\f17e';
+				content: unicode($icon-skype);
 			}
 			&.phpbb_youtube-icon:before {
-				content: '\f16a';
+				content: unicode($icon-youtube);
 			}
 			&.phpbb_googleplus-icon:before {
-				content: '\f0d5';
+				content: unicode($icon-gplus);
 			}
 			&.phpbb_wlm-icon:before {
-				content: '\f004';
+				content: unicode($icon-windows);
+			}
+			&.jabber-icon, &.phpbb_aol-icon, &.phpbb_icq-icon {
+				&:before {
+					content: unicode($icon-heart);
+				}
 			}
 		}
 	}

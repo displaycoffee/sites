@@ -107,22 +107,7 @@ fieldset.display-actions {
 	.button2, .button1 {
 		& + div {
 			float: right;
-			font-size: 0;
 			margin: -1px 0 0 10px;
-			a {
-				font-size: rem(14px);
-				display: block;
-				&:before {
-					@include font-awesome;
-					margin: 0 5px 0 0;
-				}
-				&[onclick*="false"]:before {
-					content: '\f00d';
-				}
-				&[onclick*="true"]:before {
-					content: '\f00c';
-				}
-			}
 		}
 	}
 	.left-box {
@@ -134,8 +119,38 @@ fieldset.display-actions {
 	}
 }
 
-fieldset.display-actions + fieldset.display-actions {
-	margin-top: -10px;
+.section-mcp-user-details #mcp {
+	position: relative;
+	.display-actions {
+		padding-right: 95px;
+		& + .display-actions {
+			width: 95px;
+			padding-right: 0;
+			margin: 0;
+			position: absolute;
+			bottom: 0;
+			right: 0;			
+		}
+	}
+}
+
+fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div,
+.section-mcp-user-details #mcp .display-actions + .display-actions div {
+	font-size: 0;
+	a {
+		font-size: rem(14px);
+		display: block;
+		&:before {
+			@include font-awesome;
+			margin: 0 5px 0 0;
+		}
+		&[onclick*='false']:before {
+			content: unicode($icon-x);
+		}
+		&[onclick*='true']:before {
+			content: unicode($icon-check);
+		}
+	}
 }
 
 /* UCP - Avatar (User & Groups)

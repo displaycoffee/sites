@@ -122,15 +122,15 @@
 					font-size: rem(20px);
 				}
 				&.file-uploaded:before {
-					content: '\f058';
+					content: unicode($icon-check-circle);
 					color: $color-06;
 				}
 				&.file-error:before {
-					content: '\f071';
+					content: unicode($icon-exclamation-triangle);
 					color: $color-11;
 				}
 				&.file-working:before {
-					content: '\f110';
+					content: unicode($icon-spinner);
 					color: $color-07;
 					animation: fa-spin 2s infinite linear;
 				}
