@@ -1,14 +1,62 @@
 /* Other */
 
-.glowbug span.select-parent {
-	display: inline-block;
-	&:before {
-		top: 0;
-		height: 100%;
+.glowbug {
+	&.section-index .stats-blocks {
+		display: none;
 	}
-	&:after{
-		top: 15px;
-		right: 8px;
+	.topbar .inner, #page-header {
+		color: $color-04;
+	}
+	.topbar .inner a:hover, .topbar .inner a:focus, .topbar .inner a.header-avatar:hover > span, .topbar .inner a.header-avatar:focus > span {
+		text-shadow: none;
+	}
+	.topbar .inner a:hover, .topbar .inner a:focus {
+		color: $color-03;
+	}
+	.topbar .inner a.header-avatar:hover > span, .topbar .inner a.header-avatar:focus > span {
+		color: $color-03 !important;
+	}
+	#page-header .header-bg {
+		background-size: auto;
+	}
+	#site-description .logo {
+		float: none;
+		display: block;
+		.imageset.site_logo {
+			padding: 0;
+			@include sizing(100%, 160px);
+			background-repeat: no-repeat;
+			background-size: auto 100%;
+			background-position: 0 center;
+		}
+		h1 {
+			font-size: 0;
+		}
+		p {
+			text-align: left;
+			margin-top: 10px;
+			font-style: italic;
+		}
+		&:hover {
+			opacity: 1;
+		}
+	}
+	#page-footer {
+		background: mix(black, $color-03, 80%);
+		.endbar {
+			color: $color-04;
+		}
+	}
+	span.select-parent {
+		display: inline-block;
+		&:before {
+			top: 0;
+			height: 100%;
+		}
+		&:after{
+			top: 15px;
+			right: 8px;
+		}
 	}
 }
 
@@ -27,7 +75,7 @@
 			width: auto;
 			border-top: 0;
 			@include fa-icon;
-			content: '\f07b';
+			content: unicode($folder-icon);
 			top: em(7px);
 		}
 	}
@@ -89,7 +137,7 @@
 
 .icon-directory a:before {
 	font-family: FontAwesome;
-    content: '\f07b';
+    content: unicode($folder-icon);
 }
 
 body[class*='section-app/directory'] {
@@ -98,7 +146,7 @@ body[class*='section-app/directory'] {
 		border-bottom: 1px solid $color-06;
 	}
 	.post-buttons .feed-icon:before {
-	    content: '\f09e';
+	    content: unicode($feed-icon);
 		font-family: FontAwesome;
 	}
 	.directory-grid {
@@ -201,6 +249,15 @@ body[class*='section-app/directory'] {
 			padding: 0 15px 15px 0;
 		    margin: 0;
 		}
+		&.profile-left {
+			&.new:before {
+				right: auto;
+				left: 10px;
+			}
+			.postbody {
+				padding-left: 15px;
+			}
+		}
 		.avatar-container, .submitted-by {
 			margin: 0 0 10px 0;
 		}
@@ -275,6 +332,10 @@ body[class*='section-app/directory'] {
 						padding-right: 70px;
 					}
 				}
+			}
+			&.profile-left.new:before {
+				right: 15px;
+				left: auto;
 			}
 			&.search {
 				@include clearfix('&');

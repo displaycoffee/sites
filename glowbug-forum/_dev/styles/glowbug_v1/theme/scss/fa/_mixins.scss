@@ -24,3 +24,8 @@
       -ms-transform: scale($horiz, $vert);
           transform: scale($horiz, $vert);
 }
+
+// Unicode function
+@function unicode($str){
+    @return unquote("\"") + $str + unquote("\"");
+}
