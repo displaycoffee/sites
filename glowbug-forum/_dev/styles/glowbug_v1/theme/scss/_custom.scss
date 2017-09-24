@@ -23,11 +23,12 @@
 		float: none;
 		display: block;
 		.imageset.site_logo {
-			padding: 0;
-			@include sizing(100%, 160px);
+			padding: 0 0 17.5% 0;
+			@include sizing(100%, 0);
 			background-repeat: no-repeat;
 			background-size: auto 100%;
 			background-position: 0 center;
+			display: block !important;
 		}
 		h1 {
 			font-size: 0;
@@ -306,6 +307,9 @@ body[class*='section-app/directory'] {
 /* Responsive */
 
 @include respond($respond-01) {
+	.glowbug #site-description .logo .imageset.site_logo {
+	    padding: 0 0 20% 0;
+	}
 	body[class*='section-app/directory'] .recent-sites .directory-grid .directory-grid-block {
 		width: 33.3333%;
 		&:nth-child(4n+1) {
@@ -318,6 +322,9 @@ body[class*='section-app/directory'] {
 }
 
 @include respond($respond-02) {
+	.glowbug #site-description .logo .imageset.site_logo {
+	    padding: 0 0 25% 0;
+	}
 	#page-body > .search.pos .postbody {
 		width: auto;
 	}
@@ -373,6 +380,9 @@ body[class*='section-app/directory'] {
 }
 
 @include respond($respond-03) {
+	.glowbug #site-description .logo .imageset.site_logo {
+	    padding: 0 0 30% 0;
+	}
 	body[class*='section-app/directory'] {
 		.cat-list, .recent-sites {
 			.directory-grid .directory-grid-block {
@@ -399,5 +409,12 @@ body[class*='section-app/directory'] {
 				text-align: left;
 			}
 		}
+	}
+}
+
+@include respond($respond-04) {
+	.glowbug #site-description .logo .imageset.site_logo {
+		padding: 0 0 33.33% 0;
+		background-position: center center;
 	}
 }
