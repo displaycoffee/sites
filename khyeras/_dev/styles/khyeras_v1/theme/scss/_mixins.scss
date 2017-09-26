@@ -51,6 +51,8 @@
 		flex: 1 1 100%;
 	} @else if $type == max {
 		flex: 0 0 auto;
+	} @else if $type == adapt {
+		flex: 1 1 auto;
 	} @else {
 		flex: 0 1 auto;
 	}

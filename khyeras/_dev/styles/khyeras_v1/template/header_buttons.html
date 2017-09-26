@@ -1,0 +1,72 @@
+<!-- DEFINE $DISPLAY_LOGIN_LOGOUT -->
+	<li>
+		<a class="button" href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">
+			<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
+		</a>
+	</li>
+<!-- ENDDEFINE -->
+
+<ul class="welcome-buttons">
+	<!-- IF S_REGISTERED_USER -->
+		<!-- EVENT navbar_header_profile_list_before -->
+		<!-- IF S_DISPLAY_PM -->
+			<li>
+				<a class="button" href="{U_PRIVATEMSGS}">
+					<i class="icon fa-inbox fa-fw" aria-hidden="true"></i><span>{L_PRIVATE_MESSAGES}</span>
+					<strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
+				</a>
+			</li>
+		<!-- ENDIF -->
+		<!-- IF S_NOTIFICATIONS_DISPLAY -->
+			<li class="dropdown-container">
+				<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="button dropdown-trigger dropdown-toggle">
+					<i class="icon fa-bell fa-fw" aria-hidden="true"></i><span>{L_NOTIFICATIONS}</span>
+					<strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
+				</a>
+				<!-- INCLUDE notification_dropdown.html -->
+			</li>
+		<!-- ENDIF -->
+		<!-- IF U_ACP -->
+			<li>
+				<a class="button" href="{U_ACP}" title="{L_ACP}">
+					<i class="icon fa-cogs fa-fw" aria-hidden="true"></i><span>{L_ACP_SHORT}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+		<!-- IF U_MCP -->
+			<li>
+				<a class="button" href="{U_MCP}" title="{L_MCP}">
+					<i class="icon fa-gavel fa-fw" aria-hidden="true"></i><span>{L_MCP_SHORT}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+		<li>
+			<a class="button" href="{U_PROFILE}" title="{L_PROFILE}">
+				<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_PROFILE}</span>
+			</a>
+		</li>
+		<li>
+			<a class="button" href="{U_USER_PROFILE}" title="{L_READ_PROFILE}">
+				<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
+			</a>
+		</li>
+		{$DISPLAY_LOGIN_LOGOUT}
+		<!-- IF U_RESTORE_PERMISSIONS -->
+			<li>
+				<a class="button" href="{U_RESTORE_PERMISSIONS}" title="{L_RESTORE_PERMISSIONS}">
+					<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+		<!-- EVENT navbar_header_profile_list_after -->
+	<!-- ELSE -->
+		{$DISPLAY_LOGIN_LOGOUT}
+		<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+			<li>
+				<a class="button" href="{U_REGISTER}">
+					<i class="icon fa-pencil-square-o fa-fw" aria-hidden="true"></i><span>{L_REGISTER}</span>
+				</a>
+			</li>
+		<!-- ENDIF -->
+	<!-- ENDIF  -->
+</ul>
