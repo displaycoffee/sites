@@ -168,37 +168,39 @@
 
 #page-welcome {
 	font-size: rem(13px);
-	.introduction {
-		p:first-child:first-line {
+	.site-callouts {
+		.introduction:first-line {
 			@include spectral-common;
-			font-size: rem(20px);
+			font-size: rem(17px);
 			line-height: 1.3;
 		}
-	}
-	.user-information {
-		position: relative;
-		&:before {
-			content: '';
-			display: block;
-			@include sizing(90px, 100px);
-			float: right;
+		.read-more {
+			font-style: italic;
 		}
+		.flex-row .flex-column {
+			ul {
+				margin: 0 0 20px 15px;
+			}
+		}
+	}
+	.user-profile {
+		text-align: center;
 		.user-avatar {
-			position: absolute;
-			right: -65px;
-			top: -65px;
 			border-radius: 100%;
 			border: 5px solid $color-04;
 			overflow: hidden;
 			width: 150px;
+			margin: -75px auto 15px auto;
 			.image-wrap {
 				height: 0;
 				padding: 0 0 100% 0;
 			}
 		}
+		h5, p {
+			margin: 0 0 15px 0;
+		}
 	}
-	.welcome-buttons {
-		clear: both;
+	.user-buttons {
 		text-align: center;
 		@include flex-flow(row wrap);
 		margin: 0 -2.5px 15px -2.5px;
