@@ -121,8 +121,7 @@ a.anchor {
 	display: block;
 }
 
-/* Utilities (from prosilver utilities.css)
-   Notes: did not add things like pull-left/right, hide, show, invisible, text-hide, affix
+/* Utilities
 ========================================================================== */
 
 .sr-only {
@@ -164,4 +163,24 @@ a.anchor {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.top-anchor {
+	display: block;
+	position: absolute;
+	top: -20px;
+}
+
+/* Smilies and Emojis
+========================================================================== */
+
+.emoji, .smilies {
+	@include inline-block(text-bottom);
+	max-width: 20px;
+	max-height: 20px;
+}
+
+.emoji {
+	min-height: 16px;
+	min-width: 16px;
 }

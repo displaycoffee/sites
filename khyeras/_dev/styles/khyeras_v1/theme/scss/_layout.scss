@@ -494,33 +494,60 @@
 		margin: 0;
 		@include flex-flow(row nowrap);
 		align-items: flex-end;
-		.tab {
+		& > .tab {
 			margin: 0 2px 0 0;
-			a {
+			&:last-child {
+				margin: 0;
+			}
+			& > a {
 				display: block;
 				padding: 5px 10px;
 				color: $color-01;
 				background: $color-10;
 				@include transition(background 0.3s ease-in-out);
 			}
-			a:hover, &.activetab a {
+			& > a:hover, &.activetab > a {
 				background: $color-04;
 			}
-			&.activetab a {
+			&.activetab > a, &.responsive-tab > .responsive-tab-link {
 				padding: 7px 12px;
 				font-weight: bold;
+			}
+			&.responsive-tab > .responsive-tab-link {
+				font-size: 0;
 			}
 		}
 	}
 }
 
-.tabs > ul .tab a {
+.tabs > ul > .tab > a {
 	border-radius: 3px 3px 0 0;
 }
 
-.minitabs > ul .tab a {
+.minitabs > ul > .tab > a {
 	border-radius: 3px;
 	font-size: rem(13px);
+}
+
+.responsive-tab {
+	position: relative;
+	& > .responsive-tab-link {
+		&:before, &:after {
+			content: '';
+			display: block;
+			@include sizing(16px, 2px);
+		}
+		&:before {
+			border-bottom: 2px solid $color-01;
+			border-top: 2px solid $color-01;
+		}
+		&:after {
+			border-bottom: 2px solid $color-01;
+		}
+	}
+	.dropdown {
+		top: 24px;
+	}
 }
 
 /* Details
