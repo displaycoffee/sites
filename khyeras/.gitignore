@@ -12,8 +12,7 @@ bin/
 cache/
 config/
 docs/
-download/
-!ext/
+download
 files/
 images/
 includes/
@@ -27,15 +26,6 @@ vendor/
 # Extensions
 ext/*
 !ext/displaycoffee/
-
-ext/displaycoffee/*
-!ext/displaycoffee/khyeras/
-
-ext/displaycoffee/khyeras/config/*
-ext/displaycoffee/khyeras/event/*
-
-!ext/displaycoffee/khyeras/config/
-!ext/displaycoffee/khyeras/event/
 
 # Themes
 styles/*
