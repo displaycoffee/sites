@@ -23,11 +23,11 @@ store/
 vendor/
 
 # Extensions
-ext/*
+ext/
 !ext/displaycoffee/
 
 # Config folders
-config/*
+config/
 !ext/displaycoffee/config/
 
 # Themes
