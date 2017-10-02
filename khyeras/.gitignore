@@ -10,9 +10,8 @@ adm/
 assets/
 bin/
 cache/
-config/
 docs/
-download
+download/
 files/
 images/
 includes/
@@ -26,6 +25,10 @@ vendor/
 # Extensions
 ext/*
 !ext/displaycoffee/
+
+# Config folders
+config/*
+!ext/displaycoffee/config/
 
 # Themes
 styles/*
