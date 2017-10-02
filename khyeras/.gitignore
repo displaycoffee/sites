@@ -33,6 +33,7 @@ ext/displaycoffee/*
 
 ext/displaycoffee/khyeras/config/*
 ext/displaycoffee/khyeras/event/*
+
 !ext/displaycoffee/khyeras/config/
 !ext/displaycoffee/khyeras/event/
 
