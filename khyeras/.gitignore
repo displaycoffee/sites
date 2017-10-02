@@ -28,7 +28,7 @@ ext/
 
 # Config folders
 config/
-!ext/displaycoffee/config/
+!ext/displaycoffee/khyeras/config/
 
 # Themes
 styles/*
