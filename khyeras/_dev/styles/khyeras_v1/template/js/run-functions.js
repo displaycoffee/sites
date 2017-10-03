@@ -14,6 +14,15 @@ if ( bodyClass ) {
 	body[0].className = body[0].className + (' ' + bodyClass);
 }
 
+// If forum has image, add a class to parent
+var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
+
+if ( forumImage.length ) {
+	for ( var i = 0; i < forumImage.length; i++ ) {
+		forumImage[i].parentNode.className = forumImage[i].parentNode.className + (' has-forum-image');
+	}
+}
+
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
 	// Add wrapper around topic review if height is bigger than 400px

@@ -196,8 +196,32 @@
 				padding: 0 0 100% 0;
 			}
 		}
-		h5, p {
-			margin: 0 0 15px 0;
+		h5, .character-level {
+			margin: 0 0 10px 0
+		}
+		h5 {
+			font-family: $font-03;
+			font-variant: none;
+			font-size: rem(40px);
+		}
+		p {
+			font-size: rem(14px);
+		}
+		.character-level {
+			text-transform: uppercase;
+			@include spectral-common;
+		}
+		.character-stats {
+			.icon, .separator {
+				vertical-align: middle;
+			}
+			.icon {
+				font-size: rem(22px);
+			}
+			.separator {
+				display: inline-block;
+				font-weight: bold;
+			}
 		}
 	}
 	.user-buttons {

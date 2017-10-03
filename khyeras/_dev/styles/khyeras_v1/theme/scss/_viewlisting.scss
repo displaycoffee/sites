@@ -68,11 +68,25 @@
 			border-bottom: 1px dashed $color-04;
 			dl {
 				&.row-item {
-					background-repeat: no-repeat;
-					background-position: 10px 0;
-					background-size: 32px;
-					dt .list-inner {
-						padding: 0 0 0 45px;
+					&[class*='_read'], &[class*='_unread'],
+					&[class*='_link'], &[class*='_moved'] {
+						&:before {
+							content: '';
+							flex: 0 0 42px;
+							background-repeat: no-repeat;
+							background-position: 0 0;
+							background-size: 32px auto;
+							position: relative;
+							z-index: 2;
+						}
+						dt {
+							.has-forum-image {
+								padding-left: 98px;
+							}
+							.forum-image {
+								left: -42px;
+							}
+						}
 					}
 				}
 				a .icon {
@@ -92,51 +106,32 @@
 				}
 				dt {
 					position: relative;
+					z-index: 1;
 					.row-item-link {
 						display: block;
 						@include sizing(32px, 32px);
 						position: absolute;
 						top: 0;
 						left: 10px;
-						z-index: 2;
 					}
 					a .icon {
 						&.fa-exclamation, &.fa-question {
 							margin: 0 0 0 3px;
 						}
 					}
+					.has-forum-image {
+						padding-left: 140px;
+						min-height: 130px;
+					}
 					.forum-image {
 						display: block;
-						height: 110px;
+						@include sizing(130px, 130px);
+						border-radius: 100%;
 						overflow: hidden;
-						position: relative;
-						z-index: 1;
+						position: absolute;
+						top: 0;
+						left: 0;
 						border: 5px solid $color-04;
-						img {
-							position: absolute;
-							top: 0;
-							left: 0;
-							right: 0;
-							bottom: 0;
-							margin: auto;
-						}
-						& + .forumtitle {
-							display: block;
-							height: 40px;
-							line-height: 40px;
-							margin: -45px 5px -5px 5px;
-							padding: 0 10px;
-							position: relative;
-							z-index: 2;
-							background: rgba($color-02, 0.65);
-							@include spectral-common;
-							font-weight: normal;
-							font-size: rem(22px);
-							color: $color-01;
-							&:hover {
-								color: $color-07;
-							}
-						}
 					}
 					.forumtitle, .topictitle {
 						font-weight: bold;
@@ -223,56 +218,56 @@
 /* Forums & Topic Icons
 ========================================================================== */
 
-.global_read						{ background-image: url('./images/announce_read.gif'); }
-.global_read_mine					{ background-image: url('./images/announce_read_mine.gif'); }
-.global_read_locked					{ background-image: url('./images/announce_read_locked.gif'); }
-.global_read_locked_mine			{ background-image: url('./images/announce_read_locked_mine.gif'); }
-.global_unread						{ background-image: url('./images/announce_unread.gif'); }
-.global_unread_mine					{ background-image: url('./images/announce_unread_mine.gif'); }
-.global_unread_locked				{ background-image: url('./images/announce_unread_locked.gif'); }
-.global_unread_locked_mine			{ background-image: url('./images/announce_unread_locked_mine.gif'); }
+.global_read:before						{ background-image: url('./images/announce_read.gif'); }
+.global_read_mine:before					{ background-image: url('./images/announce_read_mine.gif'); }
+.global_read_locked:before					{ background-image: url('./images/announce_read_locked.gif'); }
+.global_read_locked_mine:before			{ background-image: url('./images/announce_read_locked_mine.gif'); }
+.global_unread:before						{ background-image: url('./images/announce_unread.gif'); }
+.global_unread_mine:before					{ background-image: url('./images/announce_unread_mine.gif'); }
+.global_unread_locked:before				{ background-image: url('./images/announce_unread_locked.gif'); }
+.global_unread_locked_mine:before			{ background-image: url('./images/announce_unread_locked_mine.gif'); }
 
-.announce_read						{ background-image: url('./images/announce_read.gif'); }
-.announce_read_mine					{ background-image: url('./images/announce_read_mine.gif'); }
-.announce_read_locked				{ background-image: url('./images/announce_read_locked.gif'); }
-.announce_read_locked_mine			{ background-image: url('./images/announce_read_locked_mine.gif'); }
-.announce_unread					{ background-image: url('./images/announce_unread.gif'); }
-.announce_unread_mine				{ background-image: url('./images/announce_unread_mine.gif'); }
-.announce_unread_locked				{ background-image: url('./images/announce_unread_locked.gif'); }
-.announce_unread_locked_mine		{ background-image: url('./images/announce_unread_locked_mine.gif'); }
+.announce_read:before						{ background-image: url('./images/announce_read.gif'); }
+.announce_read_mine:before					{ background-image: url('./images/announce_read_mine.gif'); }
+.announce_read_locked:before				{ background-image: url('./images/announce_read_locked.gif'); }
+.announce_read_locked_mine:before			{ background-image: url('./images/announce_read_locked_mine.gif'); }
+.announce_unread:before					{ background-image: url('./images/announce_unread.gif'); }
+.announce_unread_mine:before				{ background-image: url('./images/announce_unread_mine.gif'); }
+.announce_unread_locked:before				{ background-image: url('./images/announce_unread_locked.gif'); }
+.announce_unread_locked_mine:before		{ background-image: url('./images/announce_unread_locked_mine.gif'); }
 
-.forum_link							{ background-image: url('./images/forum_link.gif'); }
-.forum_read							{ background-image: url('./images/forum_read.gif'); }
-.forum_read_locked					{ background-image: url('./images/forum_read_locked.gif'); }
-.forum_read_subforum				{ background-image: url('./images/forum_read_subforum.gif'); }
-.forum_unread						{ background-image: url('./images/forum_unread.gif'); }
-.forum_unread_locked				{ background-image: url('./images/forum_unread_locked.gif'); }
-.forum_unread_subforum				{ background-image: url('./images/forum_unread_subforum.gif'); }
+.forum_link:before							{ background-image: url('./images/forum_link.gif'); }
+.forum_read:before							{ background-image: url('./images/forum_read.gif'); }
+.forum_read_locked:before					{ background-image: url('./images/forum_read_locked.gif'); }
+.forum_read_subforum:before				{ background-image: url('./images/forum_read_subforum.gif'); }
+.forum_unread:before						{ background-image: url('./images/forum_unread.gif'); }
+.forum_unread_locked:before				{ background-image: url('./images/forum_unread_locked.gif'); }
+.forum_unread_subforum:before				{ background-image: url('./images/forum_unread_subforum.gif'); }
 
-.sticky_read						{ background-image: url('./images/sticky_read.gif'); }
-.sticky_read_mine					{ background-image: url('./images/sticky_read_mine.gif'); }
-.sticky_read_locked					{ background-image: url('./images/sticky_read_locked.gif'); }
-.sticky_read_locked_mine			{ background-image: url('./images/sticky_read_locked_mine.gif'); }
-.sticky_unread						{ background-image: url('./images/sticky_unread.gif'); }
-.sticky_unread_mine					{ background-image: url('./images/sticky_unread_mine.gif'); }
-.sticky_unread_locked				{ background-image: url('./images/sticky_unread_locked.gif'); }
-.sticky_unread_locked_mine			{ background-image: url('./images/sticky_unread_locked_mine.gif'); }
+.sticky_read:before						{ background-image: url('./images/sticky_read.gif'); }
+.sticky_read_mine:before					{ background-image: url('./images/sticky_read_mine.gif'); }
+.sticky_read_locked:before					{ background-image: url('./images/sticky_read_locked.gif'); }
+.sticky_read_locked_mine:before			{ background-image: url('./images/sticky_read_locked_mine.gif'); }
+.sticky_unread:before						{ background-image: url('./images/sticky_unread.gif'); }
+.sticky_unread_mine:before					{ background-image: url('./images/sticky_unread_mine.gif'); }
+.sticky_unread_locked:before				{ background-image: url('./images/sticky_unread_locked.gif'); }
+.sticky_unread_locked_mine:before			{ background-image: url('./images/sticky_unread_locked_mine.gif'); }
 
-.topic_moved						{ background-image: url('./images/topic_moved.gif'); }
-.pm_read,
-.topic_read							{ background-image: url('./images/topic_read.gif'); }
-.topic_read_mine					{ background-image: url('./images/topic_read_mine.gif'); }
-.topic_read_hot						{ background-image: url('./images/topic_read_hot.gif'); }
-.topic_read_hot_mine				{ background-image: url('./images/topic_read_hot_mine.gif'); }
-.topic_read_locked					{ background-image: url('./images/topic_read_locked.gif'); }
-.topic_read_locked_mine				{ background-image: url('./images/topic_read_locked_mine.gif'); }
-.pm_unread,
-.topic_unread						{ background-image: url('./images/topic_unread.gif'); }
-.topic_unread_mine					{ background-image: url('./images/topic_unread_mine.gif'); }
-.topic_unread_hot					{ background-image: url('./images/topic_unread_hot.gif'); }
-.topic_unread_hot_mine				{ background-image: url('./images/topic_unread_hot_mine.gif'); }
-.topic_unread_locked				{ background-image: url('./images/topic_unread_locked.gif'); }
-.topic_unread_locked_mine			{ background-image: url('./images/topic_unread_locked_mine.gif'); }
+.topic_moved:before						{ background-image: url('./images/topic_moved.gif'); }
+.pm_read:before,
+.topic_read:before							{ background-image: url('./images/topic_read.gif'); }
+.topic_read_mine:before					{ background-image: url('./images/topic_read_mine.gif'); }
+.topic_read_hot:before						{ background-image: url('./images/topic_read_hot.gif'); }
+.topic_read_hot_mine:before				{ background-image: url('./images/topic_read_hot_mine.gif'); }
+.topic_read_locked:before					{ background-image: url('./images/topic_read_locked.gif'); }
+.topic_read_locked_mine:before				{ background-image: url('./images/topic_read_locked_mine.gif'); }
+.pm_unread:before,
+.topic_unread:before						{ background-image: url('./images/topic_unread.gif'); }
+.topic_unread_mine:before					{ background-image: url('./images/topic_unread_mine.gif'); }
+.topic_unread_hot:before					{ background-image: url('./images/topic_unread_hot.gif'); }
+.topic_unread_hot_mine:before				{ background-image: url('./images/topic_unread_hot_mine.gif'); }
+.topic_unread_locked:before				{ background-image: url('./images/topic_unread_locked.gif'); }
+.topic_unread_locked_mine:before			{ background-image: url('./images/topic_unread_locked_mine.gif'); }
 
 /* Table Listings
 ========================================================================== */

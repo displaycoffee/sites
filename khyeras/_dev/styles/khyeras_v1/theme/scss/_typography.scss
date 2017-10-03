@@ -109,8 +109,8 @@ p.right {
 ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
-	@include spectral-common; 
-	font-weight: normal;  
+	@include spectral-common;
+	font-weight: normal;
 	line-height: 1.1;
 }
 
@@ -156,7 +156,7 @@ h5, h6 {
 }
 
 .icon.rpg-icon {
-	font-family: 'Khyeras Icons'; 
+	font-family: 'Khyeras Icons';
 }
 
 .icon.icon-xl {
