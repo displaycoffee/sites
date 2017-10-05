@@ -94,6 +94,7 @@
 					position: relative;
 					&:before {
 						@include sizing(40px, 40px);
+						line-height: 40px;
 						z-index: 2;
 						@include rpg-icons;
 						text-align: center;
@@ -101,15 +102,14 @@
 						background: $color-04;
 						border: 1px solid mix($color-01, $color-04, 5%);
 						border-radius: 100%;
-						line-height: 40px;
 					}
 					dt .list-inner {
 						padding-left: 60px;
 					}
 				}
 				&[class*='hot']:before {
-					background: mix($color-02, $color-11, 40%);
-					border: 1px solid mix($color-02, $color-11, 20%);
+					background: $color-16;
+					border: 1px solid mix($color-01, $color-16, 5%);
 				}
 				&[class*='unread']:before {
 					background: $color-10;
@@ -271,34 +271,29 @@
 	}
 }
 
-.global_read:before						{ background-image: url('./images/announce_read.gif'); }
-.global_read_mine:before					{ background-image: url('./images/announce_read_mine.gif'); }
-.global_read_locked:before					{ background-image: url('./images/announce_read_locked.gif'); }
-.global_read_locked_mine:before			{ background-image: url('./images/announce_read_locked_mine.gif'); }
-.global_unread:before						{ background-image: url('./images/announce_unread.gif'); }
-.global_unread_mine:before					{ background-image: url('./images/announce_unread_mine.gif'); }
-.global_unread_locked:before				{ background-image: url('./images/announce_unread_locked.gif'); }
-.global_unread_locked_mine:before			{ background-image: url('./images/announce_unread_locked_mine.gif'); }
+.global_read, .global_read_mine, .global_read_locked,
+.global_read_locked_mine,.global_unread, .global_unread_mine,
+.global_unread_locked, .global_unread_locked_mine {
+	&:before {
+		content: unicode($icon-compass);
+	}
+}
 
-.announce_read:before						{ background-image: url('./images/announce_read.gif'); }
-.announce_read_mine:before					{ background-image: url('./images/announce_read_mine.gif'); }
-.announce_read_locked:before				{ background-image: url('./images/announce_read_locked.gif'); }
-.announce_read_locked_mine:before			{ background-image: url('./images/announce_read_locked_mine.gif'); }
-.announce_unread:before					{ background-image: url('./images/announce_unread.gif'); }
-.announce_unread_mine:before				{ background-image: url('./images/announce_unread_mine.gif'); }
-.announce_unread_locked:before				{ background-image: url('./images/announce_unread_locked.gif'); }
-.announce_unread_locked_mine:before		{ background-image: url('./images/announce_unread_locked_mine.gif'); }
+.announce_read, .announce_read_mine, .announce_read_locked,
+.announce_read_locked_mine, .announce_unread, .announce_unread_mine,
+.announce_unread_locked, .announce_unread_locked_mine {
+	&:before {
+		content: unicode($icon-hunting-horn);
+	}
+}
 
-
-.sticky_read:before						{ background-image: url('./images/sticky_read.gif'); }
-.sticky_read_mine:before					{ background-image: url('./images/sticky_read_mine.gif'); }
-.sticky_read_locked:before					{ background-image: url('./images/sticky_read_locked.gif'); }
-.sticky_read_locked_mine:before			{ background-image: url('./images/sticky_read_locked_mine.gif'); }
-.sticky_unread:before						{ background-image: url('./images/sticky_unread.gif'); }
-.sticky_unread_mine:before					{ background-image: url('./images/sticky_unread_mine.gif'); }
-.sticky_unread_locked:before				{ background-image: url('./images/sticky_unread_locked.gif'); }
-.sticky_unread_locked_mine:before			{ background-image: url('./images/sticky_unread_locked_mine.gif'); }
-
+.sticky_read, .sticky_read_mine, .sticky_read_locked,
+.sticky_read_locked_mine, .sticky_unread, .sticky_unread_mine,
+.sticky_unread_locked, .sticky_unread_locked_mine {
+	&:before {
+		content: unicode($icon-stabbed-note);
+	}
+}
 
 /* Table Listings
 ========================================================================== */
