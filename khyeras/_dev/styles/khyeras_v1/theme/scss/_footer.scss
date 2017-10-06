@@ -8,12 +8,12 @@
 	.footer-inner {
 		background: $color-04;
 		padding: 0 0 30px 0;
+		.flex-row .flex-column .copyright, .bottom-line {
+			font-size: rem(13px);
+		}		
 		.flex-row .flex-column {
 			.copyright, .bottom-line {
 				font-size: rem(13px);
-			}
-			.bottom-line {
-				text-align: center;
 			}
 			.button-link {
 				display: inline-block;
@@ -26,6 +26,9 @@
 					margin: 0 2.5px 8px 2.5px;
 				}
 			}
+		}
+		.bottom-line {
+			text-align: center;
 		}
 	}
 }

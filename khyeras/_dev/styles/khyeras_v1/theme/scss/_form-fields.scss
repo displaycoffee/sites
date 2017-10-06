@@ -67,18 +67,29 @@ input[type='search']::-webkit-search-cancel-button {
 
 .search-box form fieldset {
 	position: relative;
-	padding: 0 130px 0 0;
+	padding: 0 100px 0 0;
+	background: $color-01;
+	border-radius: 3px;
 	input[type='search'] {
 		margin: 0;
 	}
 	.button {
-		width: 60px;
+		width: 40px;
 		position: absolute;
 		top: 0;
 		z-index: 2;
+		padding: 10px 0;
+		background: $color-01;
+		.icon {
+			color: $color-12;
+			@include transition(color 0.3s ease-in-out);
+		}
+		&:hover .icon {
+			color: $color-13;
+		}
 	}
 	button {
-		right: 65px;
+		right: 40px;
 	}
 	a.button {
 		right: 0;

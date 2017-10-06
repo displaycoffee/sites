@@ -158,9 +158,6 @@
 	min-width: 400px;
 	right: 0;
 	left: auto;
-	&.dropdown .button:hover {
-		background: $color-03;
-	}
 }
 
 /* Page welcome
@@ -169,6 +166,7 @@
 #page-welcome {
 	font-size: rem(13px);
 	.site-callouts {
+		order: -1;
 		.introduction:first-line {
 			@include spectral-common;
 			font-size: rem(17px);
