@@ -11,7 +11,7 @@ if ( body[0].getAttribute( 'data-class' ) ) {
 }
 
 if ( bodyClass ) {
-	body[0].className = body[0].className + (' ' + bodyClass);
+	body[0].className = body[0].className + ( ' ' + bodyClass );
 }
 
 // If forum has image, add a class to parent
@@ -19,7 +19,7 @@ var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
 
 if ( forumImage.length ) {
 	for ( var i = 0; i < forumImage.length; i++ ) {
-		forumImage[i].parentNode.className = forumImage[i].parentNode.className + (' has-forum-image');
+		forumImage[i].parentNode.className = forumImage[i].parentNode.className + ( ' has-forum-image' );
 	}
 }
 
@@ -47,17 +47,6 @@ jQuery( document ).ready( function( $ ) {
 		$( mcpPagination ).hide();
 	}
 
-	// If search has no results, hide "0 matches" pagination text
-	var pagination = $( '.section-search .pagination' );
-
-	jQuery( pagination ).each( function() {
-		var paginationText = $( this ).text();
-
-		if ( paginationText.indexOf( 'Search found 0 matches' ) >= 0 ) {
-			$( this ).parent( '.action-bar' ).hide();
-		}
-	});
-
 	// Add wrapper around control panel elements
 	var cpMenu = $( '.cp-menu' );
 	var cpMain = $( '.cp-main' );
@@ -67,10 +56,8 @@ jQuery( document ).ready( function( $ ) {
 		cpMain.parent().addClass('cp-wrapper');
 	}
 
-	// addFeatherLightGallery( '.gallery' );
 	scrollOnPage( '.scroll-to-top', 100, 0 );
 	scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
-	// toggleSpoilerContent();
 
 	// initializeMobileMenu({
 	//     menu          : '#header-nav .menu-main-container',

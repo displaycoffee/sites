@@ -73,6 +73,11 @@ dl.faq {
 			}
 		}
 	}
+	&.no-topics .action-bar {
+		&.bar-top, &.bottom {
+			display: none;
+		}
+	}
 }
 
 /* Memberlist

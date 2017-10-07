@@ -8,51 +8,6 @@ function addScrollableArea( selector, selectorHeight, selectorHide ) {
 	}
 }
 
-// Convert WordPress galleries with images into a featherlight gallery
-function addFeatherLightGallery( selector ) {
-	jQuery( selector ).each( function() {
-		// Get variables for the galleries
-		var currentGallery = jQuery( this );
-		var galleryID = currentGallery.attr( 'id' );
-		var galleryImageLink = currentGallery.find( '.gallery-item .gallery-icon a' );
-		var galleryValid;
-
-		// Check all links in a gallery to see if they link to valid image file extensions
-		jQuery( galleryImageLink ).each( function() {
-			// Get the current image link
-			var currentImageLink = jQuery( this );
-
-			// Check if the link has a valid image extension
-			var srcCheck = ( /\.(gif|jpg|jpeg|tiff|png|bmp|svg)$/i ).test( currentImageLink.attr( 'href' ) );
-
-			// If gallery has all valid links, set gallery to valid
-			if ( srcCheck == false ) {
-				galleryValid = false;
-				return false;
-			} else {
-				galleryValid = galleryID;
-			}
-		});
-
-		// If the gallery is valid...
-		if ( galleryValid == galleryID ) {
-			jQuery( galleryImageLink ).featherlightGallery({
-				previousIcon  : '<span class="icon icon-chevron-left"></span>',
-				nextIcon	  : '<span class="icon icon-chevron-right"></span>',
-				closeIcon	  : '<span class="icon icon-close"></span>',
-				galleryFadeIn : 300,
-				openSpeed	  : 300,
-				afterOpen	  : function(event){
-					jQuery( 'body, html' ).addClass( 'featherlight-open' );
-				},
-				afterClose	  : function(event){
-					jQuery( 'body, html' ).removeClass( 'featherlight-open' );
-				}
-			});
-		}
-	});
-}
-
 // Scroll to top functionality
 // Modified from https://paulund.co.uk/how-to-create-an-animated-scroll-to-top-with-jquery
 function scrollOnPage( selector, distance, position ) {
@@ -71,34 +26,6 @@ function scrollOnPage( selector, distance, position ) {
 			scrollTop : position
 		}, 1000 );
 		return false;
-	});
-}
-
-// Spoiler toggle functionality
-function toggleSpoilerContent() {
-	// Loop through any spoiler codes on page
-	jQuery( '.spoiler' ).each( function() {
-		// Get variables for spoiler
-		var currentSpoiler = jQuery( this );
-		var spoilerClose = currentSpoiler.find( '.spoiler-close' );
-		var spoilerOpen = currentSpoiler.find( '.spoiler-open' );
-		var spoilerContent = currentSpoiler.find( '.spoiler-content' );
-
-		// Hide spoiler close tag and content by default
-		spoilerClose.add( spoilerContent ).addClass( 'spoiler-hide' );
-
-		// Click event for showing spoiler content
-		jQuery( spoilerOpen ).click( function() {
-			spoilerClose.add( spoilerContent ).addClass( 'spoiler-show' ).removeClass( 'spoiler-hide' );
-			spoilerOpen.addClass( 'spoiler-hide' ).removeClass( 'spoiler-show' );
-		});
-
-		// Click event for hiding spoiler content
-		jQuery( spoilerClose ).click( function() {
-			spoilerClose.add( spoilerContent ).addClass( 'spoiler-hide' ).removeClass( 'spoiler-show' );
-			spoilerOpen.addClass( 'spoiler-show' ).removeClass( 'spoiler-hide' );
-		});
-
 	});
 }
 
@@ -121,7 +48,6 @@ function debounce( func, wait, immediate ) {
 		}
 	};
 };
-
 // Initialize Mobile Menu
 function initializeMobileMenu( options ) {
 	// Variables from mobile object
