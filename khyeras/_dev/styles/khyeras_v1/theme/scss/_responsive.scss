@@ -2,4 +2,15 @@
 ========================================================================== */
 
 @include respond(em(768)) {
+	// header.scss
+	.mobile-menu-button, #mobile-menu {
+		display: block;
+	}
+	.mobile-open {
+		position: relative;
+		overflow: hidden;
+	}
+	html.mobile-open {
+	    height: 100%;
+	}
 }

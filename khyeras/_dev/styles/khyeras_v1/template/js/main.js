@@ -88,38 +88,24 @@ function initializeMobileMenu( options ) {
 		if ( ( windowWidth || docWidth || bodyWidth ) <= responseWidth ) {
 			// Check if mobile ones is false, meaning we haven't activated the mobile menu yet
 			if ( !mobileOnce ) {
-				// Create a mobile header and insert it at the top
-				var mobileButton = '<header class="mobile-menu-header"><span class="mobile-header">Menu</span><span class="icon icon-remove"></span></header>';
-				jQuery( mobileButton ).appendTo( mobileMenu );
-
 				// Close menu when button is clicked on
-				jQuery( '.mobile-menu-header .icon-remove' ).click( function() {
+				jQuery( '.mobile-menu-header .fa-times' ).click( function() {
 					toggleMobileMenu();
 				});
 
 				// Move menu to menu container
 				menu.detach().appendTo( mobileMenu );
 
-				// In that mobile menu container, look for first level list and its items
-				menu.children( 'ul' ).children( 'li' ).each( function() {
-					// Get current selector and check if there are any second level lists
-					var current = jQuery( this );
-					var children = current.children( 'ul' );
-
-					// If there is a second level list, add a menu toggle icon
-					if ( children.length > 0 ) {
-						jQuery('<span class="icon icon-chevron-right slide-submenu"></span>').insertBefore( children );
-					}
-				});
-
 				// Add/remove classes to slide second level menu open
-				jQuery( '.slide-submenu' ).click( function() {
-					if ( jQuery( this ).next().hasClass( 'slide-open' ) ) {
-						menu.children( 'ul' ).children( 'li' ).removeClass( 'slide-close' );
-						jQuery( this ).next().add( jQuery( this ).parent() ).removeClass( 'slide-open' );
+				var mainMenuLinks = jQuery( options.mobileMenu + ' > ul > li' );
+				mainMenuLinks.find( ' .icon' ).click( function() {
+					var parentElement = jQuery( this ).parent();
+					if ( parentElement.hasClass( 'dropdown-open' ) ) {
+						mainMenuLinks.removeClass( 'dropdown-close' );
+						parentElement.removeClass( 'dropdown-open' );
 					} else {
-						menu.children( 'ul' ).children( 'li' ).addClass( 'slide-close' );
-						jQuery( this ).next().add( jQuery( this ).parent() ).addClass( 'slide-open' ).removeClass('slide-close');
+						mainMenuLinks.addClass( 'dropdown-close' );
+						parentElement.removeClass( 'dropdown-close' ).addClass( 'dropdown-open' );
 					}
 				});
 
@@ -133,8 +119,7 @@ function initializeMobileMenu( options ) {
 				jQuery( '.mobile-menu-header' ).remove()
 				menu.detach().appendTo( menuContainer );
 				jQuery( '.slide-submenu' ).remove();
-				jQuery( 'ul, li' ).removeClass( 'slide-open' );
-				jQuery( 'li' ).removeClass( 'slide-close' );
+				jQuery( 'li' ).removeClass( 'dropdown-close' );
 				jQuery( 'body, html' ).removeClass( 'mobile-open' );
 				mobileMenu.removeClass( 'show' );
 

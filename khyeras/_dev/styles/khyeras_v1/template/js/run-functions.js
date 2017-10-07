@@ -59,11 +59,11 @@ jQuery( document ).ready( function( $ ) {
 	scrollOnPage( '.scroll-to-top', 100, 0 );
 	scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 
-	// initializeMobileMenu({
-	//     menu          : '#header-nav .menu-main-container',
-	//     menuContainer : '#header-nav .wrapper',
-	//     mobileButton  : '.mobile-menu-button',
-	//     mobileMenu    : '#mobile-menu',
-	//     width         : 768
-	// });
+	initializeMobileMenu({
+	    menu          : '#page-header .navbar > ul',
+	    menuContainer : '#page-header .navbar',
+	    mobileButton  : '.mobile-menu-button',
+	    mobileMenu    : '#mobile-menu',
+	    width         : 768
+	});
 });
