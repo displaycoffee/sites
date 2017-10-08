@@ -1,3 +1,18 @@
+<!-- DEFINE $DISPLAY_TOGGLE -->
+	<li class="toggle toggle-links">
+		<a class="button">
+			<i class="icon fa-commenting fa-fw" aria-hidden="true"></i><span>Announcements &amp; Events</span>
+		</a>
+	</li>
+	<!-- IF SCRIPT_NAME == 'index' -->
+		<li class="toggle toggle-featured">
+			<a class="button">
+				<i class="icon fa fa-star fa-fw" aria-hidden="true"></i><span>Featured</span>
+			</a>
+		</li>
+	<!-- ENDIF -->
+<!-- ENDDEFINE -->
+
 <!-- DEFINE $DISPLAY_LOGIN_LOGOUT -->
 	<li>
 		<a class="button" href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">
@@ -50,6 +65,7 @@
 				<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
 			</a>
 		</li>
+		{$DISPLAY_TOGGLE}
 		{$DISPLAY_LOGIN_LOGOUT}
 		<!-- IF U_RESTORE_PERMISSIONS -->
 			<li>
@@ -60,6 +76,7 @@
 		<!-- ENDIF -->
 		<!-- EVENT navbar_header_profile_list_after -->
 	<!-- ELSE -->
+		{$DISPLAY_TOGGLE}
 		{$DISPLAY_LOGIN_LOGOUT}
 		<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
 			<li>

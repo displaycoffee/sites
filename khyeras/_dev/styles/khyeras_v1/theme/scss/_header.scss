@@ -16,7 +16,7 @@
 	position: relative;
 	padding: 0 20px;
 	.header-content {
-		@include flex-flow(row nowrap);
+		@include flex-flow(row wrap);
 		justify-content: center;
 		align-items: center;
 		align-content: center;
@@ -74,11 +74,16 @@
 			}
 		}
 		.header-divider {
-			background: $color-01;
 			flex: 0 0 1px;
-			height: 33.33%;
 			margin: 0 40px;
-			box-shadow: 1px 1px 0 0 rgba($color-02, 0.30);
+			height: 40%;
+			&:before {
+				content: '';
+				display: block;
+				background: $color-01;
+				@include sizing(100%, 100%);
+				box-shadow: 1px 1px 0 0 rgba($color-02, 0.30);
+			}
 		}
 	}
  	.header-overlay {
@@ -230,6 +235,12 @@
 		list-style: none;
 		& > li {
 			@include flex(adapt);
+			&.toggle {
+				display: none;
+				a {
+					cursor: pointer;
+				}
+			}
 			& > a {
 				display: block;
 				margin: 0 2.5px 5px 2.5px;
@@ -373,7 +384,8 @@
 				padding: 0 0 55% 0;
 				position: relative;
 				img {
-					margin: -25px 0 0 0;
+					margin: -25% 0 0 0;
+					width: 100%;
 					@include transition(transform 0.5s ease-in-out);
 				}
 			}

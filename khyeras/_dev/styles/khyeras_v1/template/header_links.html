@@ -30,20 +30,22 @@
 } %}
 {% if headerlinks %}
 	{% set textlimit = (headerlinks|length > 1) ? '25' : '55' %}
-	<div class="flex-row flex-row-10">		
-		{% for key, link in headerlinks %}
-			<div class="flex-column">
-				<h5>{{ key }}</h5>
-				<ul>
-					{% for detail in link %}
-						<li>
-							<a href="{{ detail.url }}">
-								{{ (detail.name|length > textlimit) ? (detail.name[:textlimit] ~ '...') : detail.name }}
-							</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-		{% endfor %}
+	<div class="site-links">
+		<div class="flex-row flex-row-10">
+			{% for key, link in headerlinks %}
+				<div class="flex-column">
+					<h5>{{ key }}</h5>
+					<ul>
+						{% for detail in link %}
+							<li>
+								<a href="{{ detail.url }}">
+									{{ (detail.name|length > textlimit) ? (detail.name[:textlimit] ~ '...') : detail.name }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 {% endif %}

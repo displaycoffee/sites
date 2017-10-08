@@ -59,6 +59,9 @@ jQuery( document ).ready( function( $ ) {
 	scrollOnPage( '.scroll-to-top', 100, 0 );
 	scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 
+	toggleMobileContent( '.toggle-links a', '#page-welcome .site-callouts .site-links' );
+	toggleMobileContent( '.toggle-featured a', '#featured-content' );
+
 	initializeMobileMenu({
 	    menu          : '#page-header .navbar > ul',
 	    menuContainer : '#page-header .navbar',

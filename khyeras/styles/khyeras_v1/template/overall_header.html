@@ -80,7 +80,7 @@
 		<a id="top" class="top-anchor" accesskey="t"></a>
 
 		<header id="page-header">
-			<!-- EVENT overall_header_navbar_before -->			
+			<!-- EVENT overall_header_navbar_before -->
 			<nav id="mobile-menu">
 				<header class="mobile-menu-header">
 					<span class="mobile-header">Menu</span>
@@ -112,33 +112,35 @@
 			<!-- EVENT overall_header_headerbar_after -->
 		</header>
 
-		<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
-			<div class="wrapper">
-				<ul>
-					<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
-					<!-- EVENT overall_header_breadcrumbs_before -->
-					<!-- IF U_SITE_HOME -->
-						<li class="crumb" {$MICRODATA}><a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home"><i class="icon fa-home fa-fw" aria-hidden="true"></i><span itemprop="title">{L_SITE_HOME}</span></a></li>
-					<!-- ENDIF -->
-					<!-- EVENT overall_header_breadcrumb_prepend -->
-						<li class="crumb" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><!-- IF not U_SITE_HOME --><i class="icon fa-home fa-fw"></i><!-- ENDIF --><span itemprop="title">{L_INDEX}</span></a></li>
-					<!-- BEGIN navlinks -->
-						<!-- EVENT overall_header_navlink_prepend -->
-						<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><i class="icon fa-chevron-right fa-fw"></i><a href="{navlinks.U_VIEW_FORUM}" itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a></li>
-						<!-- EVENT overall_header_navlink_append -->
-					<!-- END navlinks -->
-					<!-- EVENT overall_header_breadcrumb_append -->
-					<!-- EVENT overall_header_breadcrumbs_after -->
-				</ul>
-			</div>
-		</nav>
-
 		<!-- INCLUDE header_define.html -->
 
 		<!-- INCLUDE header_welcome.html -->
 
 		<!-- IF SCRIPT_NAME == 'index' -->
 			<!-- INCLUDE header_featured.html -->
+		<!-- ENDIF -->
+
+		<!-- IF SCRIPT_NAME != 'index' -->
+			<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
+				<div class="wrapper">
+					<ul>
+						<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
+						<!-- EVENT overall_header_breadcrumbs_before -->
+						<!-- IF U_SITE_HOME -->
+							<li class="crumb" {$MICRODATA}><a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home"><i class="icon fa-home fa-fw" aria-hidden="true"></i><span itemprop="title">{L_SITE_HOME}</span></a></li>
+						<!-- ENDIF -->
+						<!-- EVENT overall_header_breadcrumb_prepend -->
+							<li class="crumb" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><!-- IF not U_SITE_HOME --><i class="icon fa-home fa-fw"></i><!-- ENDIF --><span itemprop="title">{L_INDEX}</span></a></li>
+						<!-- BEGIN navlinks -->
+							<!-- EVENT overall_header_navlink_prepend -->
+							<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><i class="icon fa-chevron-right fa-fw"></i><a href="{navlinks.U_VIEW_FORUM}" itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a></li>
+							<!-- EVENT overall_header_navlink_append -->
+						<!-- END navlinks -->
+						<!-- EVENT overall_header_breadcrumb_append -->
+						<!-- EVENT overall_header_breadcrumbs_after -->
+					</ul>
+				</div>
+			</nav>
 		<!-- ENDIF -->
 
 		<!-- EVENT overall_header_page_body_before -->

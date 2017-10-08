@@ -1,7 +1,51 @@
+/* 1200 Breakpoint
+========================================================================== */
+
+@include respond(em(1200)) {
+	// layout.scss
+	.flex-row .flex-column {
+		@include flex(grow);
+		width: 33.33%;
+	}
+
+	// header.scss
+	#featured-content .flex-row .flex-column {
+		width: 25%;
+		&.featured-title {
+			min-width: 1px;
+			flex: 1 1 100%;
+			text-align: center;
+		}
+	}
+}
+
+/* 1000 Breakpoint
+========================================================================== */
+
+@include respond(em(1000)) {
+	// layout.scss
+	.flex-row .flex-column {
+		width: 50%;
+	}
+
+	// header.scss
+	#page-welcome .user-profile {
+		order: -2;
+	}
+}
+
 /* 768 Breakpoint
 ========================================================================== */
 
 @include respond(em(768)) {
+	// layout.scss
+	.flex-row {
+		display: block;
+		.flex-column {
+			width: auto;
+		}
+	}
+
 	// header.scss
 	.mobile-open {
 		position: relative;
@@ -16,7 +60,118 @@
 	#mobile-menu {
 		display: block;
 	}
-	#page-header .navbar {
-		text-align: center;
+	#page-header {
+		.navbar {
+			text-align: center;
+		}
+		.headerbar .header-content {
+			.site-description, .header-divider, .site-quotes {
+				min-width: 1px;
+				flex: 1 1 100%;
+			}
+			.site-description, .site-quotes, .site-quotes .quote-author {
+				text-align: center;
+			}
+			.site-description, .site-quotes {
+				max-width: 90%;
+			}
+			.site-description {
+				h1 {
+					font-size: rem(60px);
+					margin-bottom: 10px;
+				}
+				h3 {
+					font-size: rem(24px);
+				}
+			}
+			.header-divider {
+				height: 1px;
+				margin: 20px 0;
+				&:before {
+					width: 50%;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+	#page-welcome {
+		.user-buttons > li {
+			&.toggle {
+				display: block;
+			}
+			& > a {
+				padding: 5px 10px;
+				.icon {
+					font-size: rem(12px);
+				}
+			}
+		}
+		.user-profile {
+			position: relative;
+			.user-avatar {
+				width: 125px;
+			}
+			h5 {
+				font-size: rem(35px);
+			}
+		}
+		.user-information p:first-child {
+			text-align: center;
+		}
+		.site-callouts {
+			.introduction, .site-links {
+				display: none;
+			}
+			.site-links.toggle-show {
+				display: block;
+			}
+			.flex-row {
+				display: flex;
+				.flex-column {
+					width: 50%;
+				}
+			}
+		}
+	}
+	#featured-content {
+		display: none;
+		&.toggle-show {
+			display: block;
+		}
+		.flex-row {
+			display: flex;
+			.flex-column {
+				width: 50%;
+				.image-wrap {
+					padding: 0 0 30% 0;
+				}
+			}
+		}
+	}
+}
+
+/* 600 Breakpoint
+========================================================================== */
+
+@include respond(em(600)) {
+	// header.scss
+	#featured-content .flex-row .flex-column .image-wrap {
+		padding: 0;
+		height: 75px;
+	}
+}
+
+/* 450 Breakpoint
+========================================================================== */
+
+@include respond(em(450)) {
+	// header.scss
+	#page-welcome .site-callouts, #featured-content {
+		.flex-row {
+			display: block;
+			.flex-column {
+				width: auto;
+			}
+		}
 	}
 }

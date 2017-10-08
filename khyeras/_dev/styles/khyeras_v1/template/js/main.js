@@ -21,11 +21,22 @@ function scrollOnPage( selector, distance, position ) {
 	});
 
 	// Click event to scroll to top
-	jQuery( selector ).click( function() {
+	jQuery( selector ).on( 'click', function() {
 		jQuery( 'html, body' ).animate({
 			scrollTop : position
 		}, 1000 );
 		return false;
+	});
+}
+
+// Function to show/hide certain elements on mobile
+function toggleMobileContent( button, selector ) {
+	jQuery( button ).off().on( 'click', function() {
+		if ( jQuery( selector ).hasClass( 'toggle-show' ) ) {
+			jQuery( selector ).removeClass( 'toggle-show' );
+		} else {
+			jQuery( selector ).addClass( 'toggle-show' );
+		}
 	});
 }
 
@@ -72,7 +83,7 @@ function initializeMobileMenu( options ) {
 	}
 
 	// Add/remove classes when mobile menu button is clicked on
-	mobileButton.click( function() {
+	mobileButton.off().on( 'click', function() {
 		toggleMobileMenu();
 	});
 
@@ -89,7 +100,7 @@ function initializeMobileMenu( options ) {
 			// Check if mobile ones is false, meaning we haven't activated the mobile menu yet
 			if ( !mobileOnce ) {
 				// Close menu when button is clicked on
-				jQuery( '.mobile-menu-header .fa-times' ).click( function() {
+				jQuery( '.mobile-menu-header .fa-times' ).off().on( 'click', function() {
 					toggleMobileMenu();
 				});
 
@@ -98,7 +109,7 @@ function initializeMobileMenu( options ) {
 
 				// Add/remove classes to slide second level menu open
 				var mainMenuLinks = jQuery( options.mobileMenu + ' > ul > li' );
-				mainMenuLinks.find( ' .icon' ).click( function() {
+				mainMenuLinks.find( ' .icon' ).off().on( 'click', function() {
 					var parentElement = jQuery( this ).parent();
 					if ( parentElement.hasClass( 'dropdown-open' ) ) {
 						mainMenuLinks.removeClass( 'dropdown-close' );
@@ -116,13 +127,10 @@ function initializeMobileMenu( options ) {
 			// Check if mobile is true, meaning we're resizing and want to clean up on resize
 			if ( mobileOnce ) {
 				// Remove close button, replace menu, remove slide menu toggle, and remove any extra slide-open class
-				jQuery( '.mobile-menu-header' ).remove()
 				menu.detach().appendTo( menuContainer );
-				jQuery( '.slide-submenu' ).remove();
 				jQuery( 'li' ).removeClass( 'dropdown-close' );
 				jQuery( 'body, html' ).removeClass( 'mobile-open' );
 				mobileMenu.removeClass( 'show' );
-
 				// Then set mobile to false again so we can start over
 				mobileOnce = false;
 			}
