@@ -3,14 +3,20 @@
 
 @include respond(em(768)) {
 	// header.scss
-	.mobile-menu-button, #mobile-menu {
-		display: block;
-	}
 	.mobile-open {
 		position: relative;
 		overflow: hidden;
 	}
 	html.mobile-open {
 	    height: 100%;
+	}
+	.mobile-menu-button {
+		display: inline-block;
+	}
+	#mobile-menu {
+		display: block;
+	}
+	#page-header .navbar {
+		text-align: center;
 	}
 }

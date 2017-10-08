@@ -9,7 +9,7 @@
 ========================================================================== */
 
 #page-header .headerbar {
-	background: url($images + 'header.jpg') center -50px no-repeat;
+	background: url($images + 'header.jpg') center bottom no-repeat;
 	background-size: cover;
 	height: 500px;
 	overflow: hidden;
@@ -21,6 +21,8 @@
 		align-items: center;
 		align-content: center;
 		height: 100%;
+		position: relative;
+		z-index: 2;
 		.site-description, .site-quotes {
 			@include flex(base);
 			max-width: 310px;
@@ -81,11 +83,12 @@
 	}
  	.header-overlay {
 		position: absolute;
-		@include sizing(100%, 375px);
-		background: url($images + 'header-background.png') center 0 repeat-x;
-		bottom: -200px;
+		height: 125px;
+		background: url($images + 'header-background.png') center -65px repeat-x;
+		bottom: 0;
 		left: 0;
 		right: 0;
+		z-index: 1;
 	}
 }
 
@@ -130,7 +133,7 @@
 			&.dropdown-container > a {
 				padding: 12px 40px 12px 20px;
 			}
-			&.dropdown-open > .icon {
+			&.dropdown-visible > .icon {
 				transform: rotate(180deg);
 			}
 			.dropdown {
@@ -399,6 +402,42 @@
 	display: none;
 }
 
+.mobile-menu-button {
+	padding: 10px 20px;
+	cursor: pointer;
+	.mobile-menu-icon, .mobile-menu-text {
+		@include inline-block(middle);
+	}
+	.mobile-menu-icon {
+		@include sizing(30px, 20px);
+		position: relative;
+		.line, &:before, &:after {
+			display: block;
+			@include sizing(100%, 4px);
+			background: $color-01;
+			position: absolute;
+			left: 0;
+		}
+		&:before, &:after {
+			content: '';
+		}
+		.line {
+			top: 0;
+		}
+		&:before {
+			top: 8px;
+		}
+		&:after {
+			top: 16px;
+		}
+	}
+	.mobile-menu-text {
+		padding: 0 0 0 5px;
+		margin: 2px 0 0 0;
+		font-size: rem(16px);
+	}
+}
+
 #mobile-menu {
 	left: -($mobile-menu-width + 300);
 	background: $color-04;
@@ -464,10 +503,10 @@
 				padding-right: 70px;
 			}
 			& > .icon {
-				@include sizing(50px, 20px);
-				line-height: 20px;
+				@include sizing(50px, 100%);
+				line-height: 220%;
 				position: absolute;
-				top: 12px;
+				top: 0;
 				right: 0;
 				z-index: 10;
 				@include transition(all 0.5s ease-in-out);
