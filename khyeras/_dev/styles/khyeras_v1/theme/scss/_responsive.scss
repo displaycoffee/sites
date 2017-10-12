@@ -95,19 +95,24 @@
 		}
 	}
 	#page-welcome {
-		.user-buttons > li {
-			&.toggle {
-				display: block;
-			}
-			& > a {
-				padding: 5px 10px;
-				.icon {
-					font-size: rem(12px);
+		.user-buttons {
+			position: relative;
+			& > li {
+				&.dropdown-container {
+					position: static;
+				}
+				&.toggle {
+					display: block;
+				}
+				& > a {
+					padding: 5px 10px;
+					.icon {
+						font-size: rem(12px);
+					}
 				}
 			}
 		}
 		.user-profile {
-			position: relative;
 			.user-avatar {
 				width: 125px;
 			}
@@ -115,7 +120,7 @@
 				font-size: rem(35px);
 			}
 		}
-		.user-information p:first-child {
+		.user-information > p:first-child {
 			text-align: center;
 		}
 		.site-callouts {
@@ -132,6 +137,13 @@
 				}
 			}
 		}
+	}
+	#notification_list {
+		min-width: 0;
+		top: 35px;
+		left: 2.5px;
+		right: 2.5px;
+		width: auto !important;
 	}
 	#featured-content {
 		display: none;
@@ -173,5 +185,43 @@
 				width: auto;
 			}
 		}
+	}
+	#notification_list {
+		.header {
+			padding-right: 20px;
+			.header_settings {
+				position: static;
+				display: block;
+			}
+		}
+		ul li {
+			.notification-block {
+				img {
+					display: none;
+				}
+				.notification_text {
+					margin: 0;
+					.notification-title {
+						padding-right: 20px;
+					}
+					.notification-time {
+						text-align: left;
+					}
+				}
+			}
+			.icon-mark .icon {
+				font-size: rem(14px);
+			}
+		}
+	}
+}
+
+/* 421 Breakpoint
+========================================================================== */
+
+@include respond(em(421)) {
+	// header.scss
+	#notification_list {
+		top: 70px;
 	}
 }
