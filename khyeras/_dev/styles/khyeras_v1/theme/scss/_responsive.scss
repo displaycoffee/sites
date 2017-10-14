@@ -9,26 +9,22 @@
 	}
 
 	// viewlisting.scss
-	.has-listing .topiclist {
-		& > li {
-			dl dd {
-				&.topics, &.posts, &.views {
-					flex: 0 0 80px;
-				}
-				&.lastpost {
-					flex: 0 0 180px;
-				}
-				&.redirect {
-					flex: 0 0 340px;
-				}
-			}
+	.topiclist.forums > li.row dl.has-forum-image {
+		padding-left: 130px;
+		min-height: 110px;
+		dt .forum-image {
+			@include sizing(110px, 110px);
 		}
-		&.forums > li.row dl.has-forum-image {
-			padding-left: 130px;
-			min-height: 110px;
-			dt .forum-image {
-				@include sizing(110px, 110px);
-			}
+	}
+	.has-listing .topiclist li dl dd {
+		&.topics, &.posts, &.views {
+			flex: 0 0 80px;
+		}
+		&.lastpost {
+			flex: 0 0 180px;
+		}
+		&.redirect {
+			flex: 0 0 340px;
 		}
 	}
 
@@ -154,6 +150,109 @@
 		}
 	}
 
+	// viewlisting.scss
+	.topiclist {
+		& > li.row dl {
+			&[class*='read'], &[class*='link'], &[class*='moved'] {
+				padding-left: 0;
+				dt {
+					min-height: 43px;
+				}
+				dt:before {
+					position: static;
+					margin: 0 10px 1px 0;
+					float: left;
+					clear: right;
+				}
+			}
+		}
+		&.forums li.row dl.has-forum-image {
+			padding-left: 0;
+			min-height: 0;
+			dt {
+				padding-top: 80px;
+				.forum-image, .forumtitle {
+					top: -20px;
+					left: -10px;
+					right: -10px;
+				}
+				.forum-image {
+					@include sizing(auto, 80px);
+					border-radius: 0;
+					border: 0;
+					img {
+						width: 100%;
+					}
+				}
+				.forumtitle {
+					display: block;
+					height: 40px;
+					line-height: 40px;
+					position: absolute;
+					margin: 40px 0 0 0;
+					padding: 0 20px;
+					background: rgba($color-02, 0.5);
+					color: $color-01;
+					@include spectral-common;
+					font-size: rem(20px);
+					font-weight: normal;
+					overflow: hidden;
+					& + br {
+						display: none;
+					}
+				}
+			}
+			&[class*='read'], &[class*='link'], &[class*='moved'] {
+				dt {
+					&:before {
+						position: absolute;
+					}
+					.forumtitle {
+						padding-left: 80px;
+					}
+				}
+			}
+		}
+	}
+	.has-listing .topiclist {
+		 & > li {
+			dl {
+				display: block;
+				dd {
+					&.lastpost, &.redirect {
+						text-align: left;
+					}
+				}
+			}
+			&.header dl dd.lastpost {
+				display: none;
+			}
+			&.row dl {
+				&:before {
+					display: none;
+				}
+				dd {
+					&.topics, &.posts, &.views {
+						@include inline-block(baseline);
+					}
+					&.redirect {
+						margin: 10px 0 0 0;
+					}
+				}
+			}
+		}
+		&.forums > li.row dl dd.lastpost a[title='View the latest post'] + br,
+		&.topics > li.row dl dd.lastpost br {
+			display: none;
+		}
+		&.topics > li.row dl dd.lastpost {
+			margin: 10px 0 0 0;
+			dfn {
+				position: static;
+			}
+		}
+	}
+
 	// header.scss
 	.mobile-open {
 		position: relative;
@@ -265,51 +364,6 @@
 				.image-wrap {
 					padding: 0 0 30% 0;
 				}
-			}
-		}
-	}
-}
-
-/* 700 Breakpoint
-========================================================================== */
-
-@include respond(em(700)) {
-	// viewlisting.scss
-	.has-listing .topiclist {
-		 & > li {
-			dl {
-				display: block;
-				dd {
-					&.lastpost, &.redirect {
-						text-align: left;
-					}
-				}
-			}
-			&.header dl dd.lastpost {
-				display: none;
-			}
-			&.row dl {
-				&:before {
-					display: none;
-				}
-				dd {
-					&.topics, &.posts, &.views {
-						@include inline-block(baseline);
-					}
-					&.redirect {
-						margin: 10px 0 0 0;
-					}
-				}
-			}
-		}
-		&.forums > li.row dl dd.lastpost a[title='View the latest post'] + br,
-		&.topics > li.row dl dd.lastpost br {
-			display: none;
-		}
-		&.topics > li.row dl dd.lastpost {
-			margin: 10px 0 0 0;
-			dfn {
-				position: static;
 			}
 		}
 	}
