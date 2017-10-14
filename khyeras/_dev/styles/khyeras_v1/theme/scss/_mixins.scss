@@ -98,6 +98,14 @@
 	}
 }
 
+// Reusable positioning for forum/topic icons
+// Also use for forum-image and row-item-link
+@mixin forum-icon-position {
+	position: absolute;
+	top: 0;
+	left: 10px;
+}
+
 // Inline block
 @mixin inline-block($vertical-align) {
 	display: inline-block;

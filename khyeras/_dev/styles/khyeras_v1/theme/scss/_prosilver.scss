@@ -65,11 +65,6 @@
 }
 
 @media (max-width: 700px) {
-	.responsive-hide { display: none !important; }
-	.responsive-show { display: block !important; }
-	.responsive-show-inline { display: inline !important; }
-	.responsive-show-inline-block { display: inline-block !important; }
-
 	/* Common block wrappers
 	----------------------------------------*/
 	.post, .panel {

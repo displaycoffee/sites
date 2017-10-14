@@ -1,12 +1,6 @@
 /* Forums & Topics
 ========================================================================== */
 
-.forabg, .forumbg {
-	.inner {
-		padding: 0;
-	}
-}
-
 .topiclist {
 	list-style-type: none;
 	margin: 0;
@@ -17,6 +11,9 @@
 			dt, dd {
 				padding: 0 10px;
 				@include flex(base);
+				.icon {
+					font-size: rem(12px);
+				}
 			}
 			dd {
 				margin: 0;
@@ -82,50 +79,12 @@
 				}
 			}
 			dl {
-				&[class*='read'] dt:before, &[class*='link'] dt:before, &[class*='moved'] dt:before, &[class*='mine'] dt:after {
-					position: absolute;
-					top: 0;
-					left: 10px;
-				}
-				&[class*='read'], &[class*='link'],
-				&[class*='moved'] {
-					dt:before {
-						@include sizing(40px, 40px);
-						line-height: 40px;
-						z-index: 2;
-						@include rpg-icons;
-						text-align: center;
-						font-size: rem(22px);
-						background: $color-04;
-						border: 1px solid mix($color-01, $color-04, 5%);
-						border-radius: 100%;
-					}
-					dt .list-inner {
-						padding-left: 60px;
-					}
-				}
-				&[class*='hot'] dt:before {
-					background: $color-16;
-					border: 1px solid mix($color-01, $color-16, 5%);
-				}
-				&[class*='unread'] dt:before {
-					background: $color-10;
-					border: 1px solid mix($color-01, $color-10, 5%);
-				}
-				&[class*='mine'] dt:after {
-					@include font-awesome;
-					content: unicode($icon-star);
-					z-index: 3;
-					color: $color-14;
-				}
+				position: relative;
 				dt {
-					position: relative;
 					.row-item-link {
 						display: block;
 						@include sizing(42px, 42px);
-						position: absolute;
-						top: 0;
-						left: 10px;
+						@include forum-icon-position;
 						z-index: 10;
 					}
 					a .icon {
@@ -133,24 +92,8 @@
 							margin: 0 0 0 3px;
 						}
 					}
-					.list-inner.has-forum-image {
-						padding-left: 150px;
-						min-height: 130px;
-					}
-					.forum-image {
-						display: block;
-						@include sizing(130px, 130px);
-						border-radius: 100%;
-						overflow: hidden;
-						position: absolute;
-						top: 0;
-						left: 10px;
-						border: 5px solid $color-04;
-					}
 					.forumtitle, .topictitle {
 						font-weight: bold;
-						@include inline-block(baseline);
-						margin: 0 0 5px 0;
 					}
 				}
 				dd a .icon {
@@ -164,24 +107,137 @@
 }
 
 .forabg, .forumbg {
+	.inner {
+		padding: 0;
+	}
 	.topiclist  > li.row:last-child {
 		border-bottom: 0;
 	}
 }
 
+/* Forum & Topic Icons
+========================================================================== */
+
+.topiclist > li.row {
+	dl {
+		&[class*='read'], &[class*='link'], &[class*='moved'] {
+			padding-left: 60px;
+			dt:before {
+				@include forum-icon-position;
+				@include sizing(40px, 40px);
+				line-height: 40px;
+				z-index: 2;
+				@include rpg-icons;
+				text-align: center;
+				font-size: rem(22px);
+				background: $color-04;
+				border: 1px solid mix($color-01, $color-04, 5%);
+				border-radius: 100%;
+			}
+		}
+		&[class*='hot'] dt:before {
+			background: $color-16;
+			border: 1px solid mix($color-01, $color-16, 5%);
+		}
+		&[class*='unread'] dt:before {
+			background: $color-10;
+			border: 1px solid mix($color-01, $color-10, 5%);
+		}
+		&[class*='mine'] dt:after {
+			@include forum-icon-position;
+			@include font-awesome;
+			content: unicode($icon-star);
+			z-index: 3;
+			color: $color-14;
+		}
+	}
+	.forum_link, .topic_moved {
+		@include forum-icon($icon-direction-sign);
+	}
+	.forum_read_locked, .forum_unread_locked, .topic_read_locked, .topic_read_locked_mine, .topic_unread_locked, .topic_unread_locked_mine {
+		@include forum-icon($icon-padlock);
+	}
+	.forum_read, .forum_read_subforum {
+		@include forum-icon($icon-book-cover-02);
+	}
+	.forum_unread, .forum_unread_subforum {
+		@include forum-icon($icon-book-cover);
+	}
+	.topic_read, .topic_read_mine, .topic_read_hot, .topic_read_hot_mine, .pm_read {
+		@include forum-icon($icon-tied-scroll);
+	}
+	.topic_unread, .topic_unread_mine, .topic_unread_hot, .topic_unread_hot_mine, .pm_unread {
+		@include forum-icon($icon-scroll-unfurled);
+	}
+	.global_read, .global_read_mine, .global_read_locked,
+	.global_read_locked_mine,.global_unread, .global_unread_mine,
+	.global_unread_locked, .global_unread_locked_mine {
+		@include forum-icon($icon-compass);
+	}
+	.announce_read, .announce_read_mine, .announce_read_locked,
+	.announce_read_locked_mine, .announce_unread, .announce_unread_mine,
+	.announce_unread_locked, .announce_unread_locked_mine {
+		@include forum-icon($icon-hunting-horn);
+	}
+	.sticky_read, .sticky_read_mine, .sticky_read_locked,
+	.sticky_read_locked_mine, .sticky_unread, .sticky_unread_mine,
+	.sticky_unread_locked, .sticky_unread_locked_mine {
+		@include forum-icon($icon-stabbed-note);
+	}
+}
+
+
 
 /* Forums
 ========================================================================== */
 
-.topiclist.forums > li.row dl dt {
-	br + strong, .subforum {
-		@include inline-block(baseline);
-		margin: 5px 0 0 0;
+.topiclist.forums > li.row dl {
+	&.has-forum-image {
+		padding-left: 150px;
+		min-height: 130px;
+		dt .forum-image {
+			display: block;
+			@include sizing(130px, 130px);
+			border-radius: 100%;
+			overflow: hidden;
+			@include forum-icon-position;
+			border: 5px solid $color-04;
+		}
 	}
-	.subforum .icon {
-		position: relative;
-		top: -1px;
-		margin: 0 5px;
+	dt {
+		br + strong, .subforum {
+			@include inline-block(baseline);
+		}
+		br + strong {
+			margin: 10px 0 0 0;
+		}
+		.subforum .icon {
+			position: relative;
+			top: -1px;
+			margin: 0 5px 0 0;
+		}
+	}
+}
+
+
+/* Topics
+========================================================================== */
+
+.topiclist.topics > li.row dl dt {
+	.responsive-hide, .pagination {
+		@include inline-block(top);
+		width: 49%;
+	}
+	.pagination {
+		text-align: right;
+		& > span:after {
+			content: 'Pages: ';
+			font-weight: bold;
+			padding: 0 0 0 5px;
+		}
+		ul {
+			margin: 0;
+		}
 	}
 }
 
@@ -208,26 +264,6 @@
 	}
 }
 
-/* Topics
-========================================================================== */
-
-.topiclist.topics > li.row dl dt {
-	.responsive-hide, .pagination {
-		@include inline-block(top);
-		width: 49%;
-	}
-	.pagination {
-		text-align: right;
-		& > span:after {
-			content: 'Pages: ';
-			font-weight: bold;
-			padding: 0 0 0 5px;
-		}
-		ul {
-			margin: 0;
-		}
-	}
-}
 
 /* Table Listings
 ========================================================================== */
@@ -296,51 +332,6 @@ table {
 			border-bottom-color: transparent;
 		}
 	}
-}
-
-/* Forums & Topic Icons
-========================================================================== */
-
-.forum_link, .topic_moved {
-	@include forum-icon($icon-direction-sign);
-}
-
-.forum_read_locked, .forum_unread_locked, .topic_read_locked, .topic_read_locked_mine, .topic_unread_locked, .topic_unread_locked_mine {
-	@include forum-icon($icon-padlock);
-}
-
-.forum_read, .forum_read_subforum {
-	@include forum-icon($icon-book-cover-02);
-}
-
-.forum_unread, .forum_unread_subforum {
-	@include forum-icon($icon-book-cover);
-}
-
-.topic_read, .topic_read_mine, .topic_read_hot, .topic_read_hot_mine, .pm_read {
-	@include forum-icon($icon-tied-scroll);
-}
-
-.topic_unread, .topic_unread_mine, .topic_unread_hot, .topic_unread_hot_mine, .pm_unread {
-	@include forum-icon($icon-scroll-unfurled);
-}
-
-.global_read, .global_read_mine, .global_read_locked,
-.global_read_locked_mine,.global_unread, .global_unread_mine,
-.global_unread_locked, .global_unread_locked_mine {
-	@include forum-icon($icon-compass);
-}
-
-.announce_read, .announce_read_mine, .announce_read_locked,
-.announce_read_locked_mine, .announce_unread, .announce_unread_mine,
-.announce_unread_locked, .announce_unread_locked_mine {
-	@include forum-icon($icon-hunting-horn);
-}
-
-.sticky_read, .sticky_read_mine, .sticky_read_locked,
-.sticky_read_locked_mine, .sticky_unread, .sticky_unread_mine,
-.sticky_unread_locked, .sticky_unread_locked_mine {
-	@include forum-icon($icon-stabbed-note);
 }
 
 /* Forum Rules

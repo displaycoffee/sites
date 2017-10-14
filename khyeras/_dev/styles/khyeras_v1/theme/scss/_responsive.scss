@@ -9,8 +9,8 @@
 	}
 
 	// viewlisting.scss
-	.section-index, .section-viewforum {
-		.topiclist > li {
+	.has-listing .topiclist {
+		& > li {
 			dl dd {
 				&.topics, &.posts, &.views {
 					flex: 0 0 80px;
@@ -22,14 +22,12 @@
 					flex: 0 0 340px;
 				}
 			}
-			&.row dl dt {
-				.list-inner.has-forum-image {
-					min-height: 110px;
-					padding-left: 130px;
-				}
-				.forum-image {
-					@include sizing(110px, 110px);
-				}
+		}
+		&.forums > li.row dl.has-forum-image {
+			padding-left: 130px;
+			min-height: 110px;
+			dt .forum-image {
+				@include sizing(110px, 110px);
 			}
 		}
 	}
@@ -54,9 +52,93 @@
 		width: 50%;
 	}
 
+	// viewlisting.scss
+	.has-listing .topiclist {
+		& > li {
+			dl dd {
+				&.lastpost, &.redirect {
+					flex: 0 0 200px;
+					text-align: right;
+				}
+			}
+			&.header dl dd {
+				&.topics, &.posts, &.views {
+					display: none;
+				}
+			}
+			&.row dl {
+				dt {
+					order: -1;
+				}
+				dd {
+					&.lastpost {
+						order: 0;
+					}
+					&.topics, &.posts, &.views {
+						order: 2;
+						@include flex;
+						margin: 10px 0 0 0;
+						padding: 0 0 0 10px;
+						dfn {
+							position: static;
+						}
+					}
+				}
+				&:before {
+					content: '';
+					flex: 1 1 100%;
+					order: 1;
+				}
+			}
+		}
+		&.forums > li.row dl dd.topics, &.topics > li.row dl dd.posts {
+			&:after {
+				content: '/';
+				display: inline-block;
+				margin: 0 0 0 10px;
+			}
+		}
+		&.topics > li.row dl dt {
+			.responsive-hide, .pagination {
+				display: block;
+				width: auto;
+			}
+			.pagination {
+				text-align: left;
+				margin: 10px 0 0 0;
+			}
+		}
+	}
+
 	// header.scss
 	#page-welcome .user-profile {
 		order: -2;
+	}
+}
+
+/* 850 Breakpoint
+========================================================================== */
+
+@include respond(em(850)) {
+	// viewlisting.scss
+	.has-listing {
+		.forabg .topiclist > li.header dl dd.lastpost {
+			display: none;
+		}
+		.topiclist.forums > li.row dl dd.lastpost {
+			order: 2;
+			@include flex;
+			margin: 10px 0 0 auto;
+			dfn {
+				position: static;
+			}
+			br {
+				display: none;
+			}
+			a[title='View the latest post'] + br {
+				display: block;
+			}
+		}
 	}
 }
 
@@ -183,6 +265,51 @@
 				.image-wrap {
 					padding: 0 0 30% 0;
 				}
+			}
+		}
+	}
+}
+
+/* 700 Breakpoint
+========================================================================== */
+
+@include respond(em(700)) {
+	// viewlisting.scss
+	.has-listing .topiclist {
+		 & > li {
+			dl {
+				display: block;
+				dd {
+					&.lastpost, &.redirect {
+						text-align: left;
+					}
+				}
+			}
+			&.header dl dd.lastpost {
+				display: none;
+			}
+			&.row dl {
+				&:before {
+					display: none;
+				}
+				dd {
+					&.topics, &.posts, &.views {
+						@include inline-block(baseline);
+					}
+					&.redirect {
+						margin: 10px 0 0 0;
+					}
+				}
+			}
+		}
+		&.forums > li.row dl dd.lastpost a[title='View the latest post'] + br,
+		&.topics > li.row dl dd.lastpost br {
+			display: none;
+		}
+		&.topics > li.row dl dd.lastpost {
+			margin: 10px 0 0 0;
+			dfn {
+				position: static;
 			}
 		}
 	}

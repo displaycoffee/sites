@@ -19,7 +19,8 @@ var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
 
 if ( forumImage.length ) {
 	for ( var i = 0; i < forumImage.length; i++ ) {
-		forumImage[i].parentNode.className = forumImage[i].parentNode.className + ( ' has-forum-image' );
+		var parentRow = forumImage[i].parentNode.parentNode.parentNode;
+		parentRow.className = parentRow.className + ( ' has-forum-image' );
 	}
 }
 
