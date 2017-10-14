@@ -8,6 +8,32 @@
 		width: 33.33%;
 	}
 
+	// viewlisting.scss
+	.section-index, .section-viewforum {
+		.topiclist > li {
+			dl dd {
+				&.topics, &.posts, &.views {
+					flex: 0 0 80px;
+				}
+				&.lastpost {
+					flex: 0 0 180px;
+				}
+				&.redirect {
+					flex: 0 0 340px;
+				}
+			}
+			&.row dl dt {
+				.list-inner.has-forum-image {
+					min-height: 110px;
+					padding-left: 130px;
+				}
+				.forum-image {
+					@include sizing(110px, 110px);
+				}
+			}
+		}
+	}
+
 	// header.scss
 	#featured-content .flex-row .flex-column {
 		width: 25%;

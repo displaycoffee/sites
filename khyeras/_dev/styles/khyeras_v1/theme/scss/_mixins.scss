@@ -91,12 +91,11 @@
   	-moz-osx-font-smoothing: grayscale;
 }
 
-@mixin rpg-icons {
-	display: inline-block;
-  	font-family: 'Khyeras Icons';
-  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
-  	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
+// Icon properties for forum/topic listing
+@mixin forum-icon($icon) {
+	dt:before {
+		content: unicode($icon);
+	}
 }
 
 // Inline block
@@ -133,6 +132,15 @@
 	@media only screen and (max-width: $breakpoint) {
 		@content;
 	}
+}
+
+// RPG Theme Icons
+@mixin rpg-icons {
+	display: inline-block;
+  	font-family: 'Khyeras Icons';
+  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
 }
 
 // Sizing for elements

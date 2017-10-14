@@ -12,7 +12,7 @@
 	margin: 0;
 	& > li {
 		dl {
-			@include flex-flow(row nowrap);
+			@include flex-flow(row wrap);
 			margin: 0 -10px;
 			dt, dd {
 				padding: 0 10px;
@@ -82,17 +82,14 @@
 				}
 			}
 			dl {
-				&[class*='read']:before, &[class*='unread']:before,
-				&[class*='link']:before, &[class*='moved']:before,
-				&[class*='mine']:after {
+				&[class*='read'] dt:before, &[class*='link'] dt:before, &[class*='moved'] dt:before, &[class*='mine'] dt:after {
 					position: absolute;
 					top: 0;
 					left: 10px;
 				}
-				&[class*='read'], &[class*='unread'],
-				&[class*='link'], &[class*='moved'] {
-					position: relative;
-					&:before {
+				&[class*='read'], &[class*='link'],
+				&[class*='moved'] {
+					dt:before {
 						@include sizing(40px, 40px);
 						line-height: 40px;
 						z-index: 2;
@@ -107,15 +104,15 @@
 						padding-left: 60px;
 					}
 				}
-				&[class*='hot']:before {
+				&[class*='hot'] dt:before {
 					background: $color-16;
 					border: 1px solid mix($color-01, $color-16, 5%);
 				}
-				&[class*='unread']:before {
+				&[class*='unread'] dt:before {
 					background: $color-10;
 					border: 1px solid mix($color-01, $color-10, 5%);
 				}
-				&[class*='mine']:after {
+				&[class*='mine'] dt:after {
 					@include font-awesome;
 					content: unicode($icon-star);
 					z-index: 3;
@@ -125,10 +122,11 @@
 					position: relative;
 					.row-item-link {
 						display: block;
-						@include sizing(32px, 32px);
+						@include sizing(42px, 42px);
 						position: absolute;
 						top: 0;
 						left: 10px;
+						z-index: 10;
 					}
 					a .icon {
 						&.fa-exclamation, &.fa-question {
@@ -304,64 +302,45 @@ table {
 ========================================================================== */
 
 .forum_link, .topic_moved {
-	&:before {
-		content: unicode($icon-direction-sign);
-	}
+	@include forum-icon($icon-direction-sign);
 }
 
-.forum_read_locked, .forum_unread_locked, .topic_read_locked, .topic_read_locked_mine,
-.topic_unread_locked, .topic_unread_locked_mine {
-	&:before {
-		content: unicode($icon-padlock);
-	}
+.forum_read_locked, .forum_unread_locked, .topic_read_locked, .topic_read_locked_mine, .topic_unread_locked, .topic_unread_locked_mine {
+	@include forum-icon($icon-padlock);
 }
 
 .forum_read, .forum_read_subforum {
-	&:before {
-		content: unicode($icon-book-cover-02);
-	}
+	@include forum-icon($icon-book-cover-02);
 }
 
 .forum_unread, .forum_unread_subforum {
-	&:before {
-		content: unicode($icon-book-cover);
-	}
+	@include forum-icon($icon-book-cover);
 }
 
 .topic_read, .topic_read_mine, .topic_read_hot, .topic_read_hot_mine, .pm_read {
-	&:before {
-		content: unicode($icon-tied-scroll);
-	}
+	@include forum-icon($icon-tied-scroll);
 }
 
 .topic_unread, .topic_unread_mine, .topic_unread_hot, .topic_unread_hot_mine, .pm_unread {
-	&:before {
-		content: unicode($icon-scroll-unfurled);
-	}
+	@include forum-icon($icon-scroll-unfurled);
 }
 
 .global_read, .global_read_mine, .global_read_locked,
 .global_read_locked_mine,.global_unread, .global_unread_mine,
 .global_unread_locked, .global_unread_locked_mine {
-	&:before {
-		content: unicode($icon-compass);
-	}
+	@include forum-icon($icon-compass);
 }
 
 .announce_read, .announce_read_mine, .announce_read_locked,
 .announce_read_locked_mine, .announce_unread, .announce_unread_mine,
 .announce_unread_locked, .announce_unread_locked_mine {
-	&:before {
-		content: unicode($icon-hunting-horn);
-	}
+	@include forum-icon($icon-hunting-horn);
 }
 
 .sticky_read, .sticky_read_mine, .sticky_read_locked,
 .sticky_read_locked_mine, .sticky_unread, .sticky_unread_mine,
 .sticky_unread_locked, .sticky_unread_locked_mine {
-	&:before {
-		content: unicode($icon-stabbed-note);
-	}
+	@include forum-icon($icon-stabbed-note);
 }
 
 /* Forum Rules
