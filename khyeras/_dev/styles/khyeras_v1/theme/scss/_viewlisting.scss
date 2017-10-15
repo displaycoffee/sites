@@ -12,7 +12,7 @@
 				padding: 0 10px;
 				@include flex(base);
 				.icon {
-					font-size: rem(12px);
+					font-size: rem(13px);
 				}
 			}
 			dd {
@@ -339,9 +339,6 @@ table {
 
 .rules {
 	margin: 20px 0;
-	padding: 20px 0;
-	border-top: 1px solid $color-04;
-	border-bottom: 1px solid $color-04;
 	.inner {
 		strong:first-child {
 			margin: 0 0 20px 0;

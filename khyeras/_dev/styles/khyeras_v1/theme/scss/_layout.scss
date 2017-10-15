@@ -161,7 +161,6 @@
 	ul {
 		list-style: none;
 		margin: 0 -2.5px;
-		padding: 0 150px 0 0;
 		li {
 			@include inline-block(middle);
 			padding: 0 2.5px;
@@ -215,21 +214,23 @@
 		width: auto;
 	}
 	ul {
-		margin: 0 0 0 10px;
+		margin: 0 -5px 0 10px;
 		list-style: none;
 		@include inline-block(bottom);
+		line-height: 1;
 		li {
 			@include inline-block(middle);
+			&.active span, .button {
+				padding: 0 5px;
+			}
 			&.active span {
 				display: inline-block;
-				background: $color-10;
-				border-radius: 3px;
-				line-height: rem(20px);
-				padding: 1px 5px;
+				color: $color-06;
+				font-weight: bold;
 			}
 			.button {
 				background: none;
-				padding: 0 5px;
+				border-radius: 0;
 				&, & .icon {
 					@include transition(color 0.3s ease-in-out);
 					&:hover {
@@ -241,21 +242,37 @@
 	}
 }
 
+/* Page Jump
+========================================================================== */
+
+.page-jump .dropdown {
+	top: em(30px);
+	.page-jump-form {
+		input[type='number'].inputbox, .button2 {
+			width: 100%;
+		}
+		input[type='number'].inputbox {
+			margin: 10px 0;
+		}
+	}
+}
+
 /* Action Bar
 ========================================================================== */
 
 .action-bar {
-	margin: 0 0 20px 0;
-	@include flex-flow(row nowrap);
+	margin: -10px 0 20px 0;
+	@include flex-flow(row wrap);
 	align-items: center;
 	& > * {
-		margin: 0 10px 0 0;
+		margin: 10px 10px 0 0;
 		@include flex;
 	}
-	&.bar-top, &.bar-bottom, &.top, &.bottom {
-		.pagination {
-			margin: 0 0 0 auto;
-		}
+	& > .dropdown-container, & > form {
+		display: inline-block;
+	}
+	.pagination {
+		margin: 10px 0 0 auto;
 	}
 	&.bar-top .search-box {
 		flex: 0 0 300px;
@@ -267,7 +284,12 @@
 			margin: 0 5px 0 0;
 		}
 		.jumpbox {
-			margin: 0 0 0 auto;
+			margin: 10px 0 0 auto;
+		}
+	}
+	&.compact {
+		&, & > * {
+			margin-top: 0;
 		}
 	}
 }

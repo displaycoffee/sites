@@ -47,6 +47,18 @@
 	.flex-row .flex-column {
 		width: 50%;
 	}
+	.action-bar {
+		&.bar-top .search-box {
+			flex: 0 0 218px;
+		}
+		.pagination {
+			text-align: right;
+			ul {
+				display: block;
+				margin: 2.5px -5px 0 -5px;
+			}
+		}
+	}
 
 	// viewlisting.scss
 	.has-listing .topiclist {
@@ -74,7 +86,6 @@
 						order: 2;
 						@include flex;
 						margin: 10px 0 0 0;
-						padding: 0 0 0 10px;
 						dfn {
 							position: static;
 						}
@@ -90,8 +101,8 @@
 		&.forums > li.row dl dd.topics, &.topics > li.row dl dd.posts {
 			&:after {
 				content: '/';
-				display: inline-block;
-				margin: 0 0 0 10px;
+				position: relative;
+				right: -12.5px;
 			}
 		}
 		&.topics > li.row dl dt {
@@ -128,11 +139,8 @@
 			dfn {
 				position: static;
 			}
-			br {
+			br:first-of-type {
 				display: none;
-			}
-			a[title='View the latest post'] + br {
-				display: block;
 			}
 		}
 	}
@@ -147,6 +155,27 @@
 		display: block;
 		.flex-column {
 			width: auto;
+		}
+	}
+	.action-bar {
+		display: block;
+		&.bar-top {
+			.search-box {
+				float: right;
+				width: 218px;
+				margin-right: 0;
+			}
+			.pagination {
+				clear: both;
+			}
+		}
+		.pagination {
+			@include clearfix('&');
+			text-align: left;
+			ul {
+				float: right;
+				margin: 0 -5px;
+			}
 		}
 	}
 
@@ -182,6 +211,7 @@
 					border: 0;
 					img {
 						width: 100%;
+					    margin-top: -25%;
 					}
 				}
 				.forumtitle {
@@ -238,12 +268,11 @@
 					&.redirect {
 						margin: 10px 0 0 0;
 					}
+					&.lastpost br {
+						display: none;
+					}
 				}
 			}
-		}
-		&.forums > li.row dl dd.lastpost a[title='View the latest post'] + br,
-		&.topics > li.row dl dd.lastpost br {
-			display: none;
 		}
 		&.topics > li.row dl dd.lastpost {
 			margin: 10px 0 0 0;
@@ -269,7 +298,7 @@
 	}
 	#page-header {
 		.navbar {
-			text-align: center;
+			display: none;
 		}
 		.headerbar .header-content {
 			.site-description, .header-divider, .site-quotes {
@@ -373,6 +402,12 @@
 ========================================================================== */
 
 @include respond(em(600)) {
+	// layout.scss
+	.action-bar.bar-top .search-box {
+		float: none;
+		width: auto;
+	}
+
 	// header.scss
 	#featured-content .flex-row .flex-column .image-wrap {
 		padding: 0;
@@ -427,6 +462,12 @@
 ========================================================================== */
 
 @include respond(em(421)) {
+	// layout.scss
+	.action-bar .pagination ul {
+		float: none;
+		margin-top: 10px;
+	}
+
 	// header.scss
 	#notification_list {
 		top: 70px;
