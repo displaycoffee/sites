@@ -107,9 +107,14 @@ function initializeMobileMenu( options ) {
 				// Move menu to menu container
 				menu.detach().appendTo( mobileMenu );
 
+				// In that mobile menu container, look for first level list and its items
+				menu.children( '.dropdown-container' ).each( function() {
+					jQuery('<i class="icon fa-chevron-right slide-submenu"></i>').appendTo( this );
+				});
+
 				// Add/remove classes to slide second level menu open
 				var mainMenuLinks = jQuery( options.mobileMenu + ' > ul > li' );
-				mainMenuLinks.find( ' .icon' ).off().on( 'click', function() {
+				mainMenuLinks.find( ' .slide-submenu' ).off().on( 'click', function() {
 					var parentElement = jQuery( this ).parent();
 					if ( parentElement.hasClass( 'dropdown-open' ) ) {
 						mainMenuLinks.removeClass( 'dropdown-close' );
@@ -128,7 +133,8 @@ function initializeMobileMenu( options ) {
 			if ( mobileOnce ) {
 				// Remove close button, replace menu, remove slide menu toggle, and remove any extra slide-open class
 				menu.detach().appendTo( menuContainer );
-				jQuery( 'li' ).removeClass( 'dropdown-close' );
+				jQuery( '.slide-submenu' ).remove();
+				jQuery( 'li' ).removeClass( 'dropdown-close' ).removeClass( 'dropdown-open' );
 				jQuery( 'body, html' ).removeClass( 'mobile-open' );
 				mobileMenu.removeClass( 'show' );
 				// Then set mobile to false again so we can start over
