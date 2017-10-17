@@ -13,11 +13,9 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		&, li {
-			@include inline-block(middle);
-		}
 		li {
-			&.responsive-menu {
+			@include inline-block(middle);
+			&.hidden {
 				display: none;
 			}
 		}
