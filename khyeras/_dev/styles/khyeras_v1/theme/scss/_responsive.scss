@@ -43,6 +43,11 @@
 ========================================================================== */
 
 @include respond(em(1000)) {
+	// base.scss
+	pre, code {
+		font-size: rem(12px);
+	}
+
 	// layout.scss
 	.flex-row .flex-column {
 		width: 50%;
@@ -115,6 +120,11 @@
 				margin: 10px 0 0 0;
 			}
 		}
+	}
+
+	// viewtopic.scss
+	.post .postprofile {
+		flex: 0 0 176px;
 	}
 
 	// header.scss
@@ -278,6 +288,57 @@
 			margin: 10px 0 0 0;
 			dfn {
 				position: static;
+			}
+		}
+	}
+
+	// viewtopic.scss
+	.post {
+		 .inner {
+			 display: block;
+			 position: relative;
+		 }
+		 .postprofile {
+			 margin: 0 0 20px 0;
+			 padding: 0 0 20px 0;
+		 }
+	}
+	.postbody {
+		position: static;
+		.post-buttons {
+			top: 20px;
+			right: 20px;
+			max-width: 20%;
+		}
+	}
+	.postbody > div > h3, .postbody > h3,
+	.section-viewtopic .post .postbody > div > h3 {
+		padding-right: 0;
+	}
+	.postprofile {
+		border-right: 0;
+		border-bottom: 1px dashed $color-04;
+		@include clearfix('&');
+		dt, dd.profile-rank {
+			text-align: left;
+		}
+		dt {
+			margin: 0;
+			&.has-avatar {
+				.avatar-container {
+					float: left;
+					width: 130px;
+					margin-right: 20px;
+				}
+				& ~ dd {
+					margin-left: 150px;
+				}
+			}
+		}
+		dd {
+			&.profile-rank {
+				margin: 0 0 3px 0;
+				font-size: rem(16px);
 			}
 		}
 	}
