@@ -83,7 +83,7 @@
 				dt {
 					.row-item-link {
 						display: block;
-						@include sizing(42px, 42px);
+						@include sizing($list-icon-size + 2, $list-icon-size + 2);
 						@include forum-icon-position;
 						z-index: 10;
 					}
@@ -124,8 +124,8 @@
 			padding-left: 60px;
 			dt:before {
 				@include forum-icon-position;
-				@include sizing(40px, 40px);
-				line-height: 40px;
+				@include sizing($list-icon-size, $list-icon-size);
+				line-height: $list-icon-size;
 				z-index: 2;
 				@include rpg-icons;
 				text-align: center;
