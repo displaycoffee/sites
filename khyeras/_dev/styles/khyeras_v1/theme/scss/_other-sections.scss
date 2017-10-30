@@ -43,7 +43,7 @@ dl.faq {
 			margin: 0 5px 0 0;
 		}
 	}
-	.postprofile dt .username-coloured {
+	.postprofile dt a[class*='username'] {
 		display: inline;
 	}
 	.post {
@@ -197,7 +197,7 @@ dl.faq {
 
 .popup-wrap {
 	padding: 30px;
-	.memberlist .username-coloured {
+	.memberlist a[class*='username'] {
 		margin: 0 5px 0 0;
 		& + br {
 			display: none;

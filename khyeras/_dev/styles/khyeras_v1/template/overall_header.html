@@ -89,7 +89,7 @@
 					<span class="open">Menu</span>
 					<span class="close">Close</span>
 				</span>
-			</div>			
+			</div>
 			<!-- EVENT overall_header_navbar_before -->
 			<nav id="mobile-menu">
 				<header class="mobile-menu-header">
@@ -133,14 +133,14 @@
 		<!-- IF SCRIPT_NAME != 'index' -->
 			<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
 				<div class="wrapper">
-					<ul>
+					<ul class="breadcrumbs">
 						<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
 						<!-- EVENT overall_header_breadcrumbs_before -->
 						<!-- IF U_SITE_HOME -->
-							<li class="crumb" {$MICRODATA}><a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home"><i class="icon fa-home fa-fw" aria-hidden="true"></i><span itemprop="title">{L_SITE_HOME}</span></a></li>
+							<li class="crumb home" {$MICRODATA}><a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home"><i class="icon fa-home fa-fw" aria-hidden="true"></i><span itemprop="title">{L_SITE_HOME}</span></a></li>
 						<!-- ENDIF -->
 						<!-- EVENT overall_header_breadcrumb_prepend -->
-							<li class="crumb" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><!-- IF not U_SITE_HOME --><i class="icon fa-home fa-fw"></i><!-- ENDIF --><span itemprop="title">{L_INDEX}</span></a></li>
+							<li class="crumb home" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><!-- IF not U_SITE_HOME --><i class="icon fa-home fa-fw"></i><!-- ENDIF --><span itemprop="title">{L_INDEX}</span></a></li>
 						<!-- BEGIN navlinks -->
 							<!-- EVENT overall_header_navlink_prepend -->
 							<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><i class="icon fa-chevron-right fa-fw"></i><a href="{navlinks.U_VIEW_FORUM}" itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a></li>

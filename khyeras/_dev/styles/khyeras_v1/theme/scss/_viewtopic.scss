@@ -244,7 +244,7 @@ fieldset.polls dl dt {
 
 .postprofile {
 	border-right: 1px dashed $color-04;
-	dt .username-coloured, dd.profile-rank {
+	dt a[class*='username'], dd.profile-rank {
 		font-family: $font-02;
 	}
 	dt {
@@ -261,7 +261,7 @@ fieldset.polls dl dt {
 				padding: 0 0 100% 0;
 			}
 		}
-		.username-coloured {
+		a[class*='username'] {
 			display: block;
 			font-size: rem(22px);
 			font-variant: small-caps;

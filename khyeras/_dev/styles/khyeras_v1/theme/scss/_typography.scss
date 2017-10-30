@@ -97,7 +97,7 @@ a {
 	}
 }
 
-.username-coloured:hover {
+a[class*='username']:hover {
 	color: $color-07 !important;
 }
 

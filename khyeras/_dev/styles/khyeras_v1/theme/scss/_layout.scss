@@ -162,16 +162,39 @@
 		list-style: none;
 		margin: 0 -2.5px;
 		li {
-			@include inline-block(middle);
-			padding: 0 2.5px;
+			padding: 1.5px 2.5px;
+			&, a {
+				@include inline-block(middle);
+			}
 			span {
 				margin: 0;
+			}
+			a {
+				white-space: nowrap;
+			    text-overflow: ellipsis;
+			    vertical-align: bottom;
+			    overflow: hidden;
 			}
 			.icon {
 				margin: 0 5px 0 0;
 			}
 			.fa-chevron-right {
 				font-size: rem(13px);
+			}
+			&.wrapped-max a {
+				max-width: 120px;
+			}
+			&.wrapped-wide a {
+				max-width: 100px;
+			}
+			&.wrapped-medium a {
+				max-width: 80px;
+			}
+			&.wrapped-small a {
+				max-width: 60px;
+			}
+			&.wrapped-tiny a {
+				max-width: 40px;
 			}
 		}
 	}

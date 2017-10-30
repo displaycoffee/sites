@@ -326,6 +326,9 @@
 		}
 		dt {
 			margin: 0;
+			a[class*='username'] {
+				padding-right: 50px;
+			}
 			&.has-avatar {
 				.avatar-container {
 					float: left;
@@ -337,11 +340,9 @@
 				}
 			}
 		}
-		dd {
-			&.profile-rank {
-				margin: 0 0 3px 0;
-				font-size: rem(16px);
-			}
+		dd.profile-rank {
+			margin: 0 0 3px 0;
+			font-size: rem(16px);
 		}
 	}
 
@@ -465,10 +466,56 @@
 ========================================================================== */
 
 @include respond(em(600)) {
+	// base.scss
+	blockquote {
+		max-width: none;
+		padding: 0 0 0 20px;
+	}
+
 	// layout.scss
+	#nav-breadcrumbs ul li.home a {
+		.icon {
+			margin-right: 0;
+		}
+		span {
+			display: none;
+		}
+	}
 	.action-bar.bar-top .search-box {
 		float: none;
 		width: auto;
+	}
+
+	// viewtopics.scss
+	.postbody {
+		.content, .signature {
+			blockquote cite {
+				padding: 0 0 10px 0;
+				.responsive-hide {
+					position: static;
+					margin: 3px 0 0 0;
+				}
+			}
+		}
+	}
+	.postprofile {
+		dt.has-avatar {
+			.avatar-container {
+				width: 80px;
+			}
+			& ~ dd {
+				margin-left: 100px;
+			}
+		}
+		dd {
+			display: none;
+			&.profile-rank, &.profile-posts, &.profile-joined, &.profile-contact {
+				display: block;
+			}
+		}
+	}
+	.post.online .postprofile dt.has-avatar .avatar-container {
+		margin-top: 40px;
 	}
 
 	// header.scss
@@ -521,7 +568,7 @@
 			}
 		}
 	}
-	
+
 	// header.scss
 	#page-welcome .site-callouts, #featured-content {
 		.flex-row {
@@ -569,6 +616,33 @@
 ========================================================================== */
 
 @include respond(em(397)) {
+	// viewtopics.scss
+	.postprofile {
+		dt, dd, dd.profile-rank {
+			text-align: center;
+		}
+		dt a[class*='username'] {
+			padding-right: 0;
+		}
+		dt.has-avatar {
+			.avatar-container {
+				float: none;
+				margin-right: 0;
+			}
+			& ~ dd {
+				margin-left: 0;
+			}
+		}
+		dd {
+			&.profile-posts, &.profile-joined {
+				display: none;
+			}
+		}
+	}
+	.post.online .postprofile dt.has-avatar .avatar-container {
+		margin-top: 0;
+	}
+
 	// header.scss
 	#notification_list {
 		top: 70px;
