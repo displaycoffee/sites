@@ -498,6 +498,61 @@
 			}
 		}
 	}
+	.topic_poll .panel .content fieldset.polls {
+		border-top: 1px dashed $color-04;
+		padding-top: 10px;
+		position: relative;
+		dl {
+			margin-bottom: 10px;
+			&:after {
+				border-bottom: 1px dashed $color-04;
+				display: block;
+				height: 1px;
+				margin: 0 10px;
+				padding: 10px 0 0 0;
+			}
+			dt {
+				float: none;
+				width: auto;
+				margin-bottom: 3px;
+				padding-right: 80px;
+			}
+			.poll_option_select {
+				left: auto;
+				right: 0;
+				&:before {
+					content: 'Vote:\0000A0\0000A0';
+				}
+				& + .resultbar {
+					padding-left: 10px;
+				}
+			}
+			.resultbar {
+				width: 70%;
+			}
+			.poll_option_percent {
+				width: 30%;
+				text-align: right;
+			}
+			&.poll_total_votes, &.poll_vote {
+				dt {
+					display: none;
+				}
+			}
+			&.poll_vote {
+				&:after {
+					border: 0;
+					padding: 0;
+					height: 0;
+				}
+				.resultbar {
+					float: none;
+					width: auto;
+					text-align: right;
+				}
+			}
+		}
+	}
 	.postprofile {
 		dt.has-avatar {
 			.avatar-container {
@@ -617,6 +672,21 @@
 
 @include respond(em(397)) {
 	// viewtopics.scss
+	.topic_poll .panel .content fieldset.polls dl {
+		.resultbar, .poll_option_percent {
+			float: none;
+			width: auto;
+		}
+		.resultbar {
+			margin-bottom: 3px;
+		}
+		.poll_option_percent {
+			text-align: left;
+			&:before {
+				content: 'Count:\0000A0\0000A0';
+			}
+		}
+	}
 	.postprofile {
 		dt, dd, dd.profile-rank {
 			text-align: center;
