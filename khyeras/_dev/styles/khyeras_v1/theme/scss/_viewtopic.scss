@@ -316,6 +316,14 @@ fieldset.polls dl dt {
 		text-align: right;
 		margin: 0 0 20px 0;
 	}
+	&.deleted {
+		.postprofile[style*='none'], .postbody div[id*='post_content'][style*='none'] {
+			display: block !important;
+			position: absolute;
+			left: -9999px;
+			top: -9999px;
+		}
+	}
 }
 
 /* View Topic - Topic Review
