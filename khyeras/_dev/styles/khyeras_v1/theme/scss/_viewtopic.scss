@@ -189,7 +189,7 @@ fieldset.polls dl dt {
 				position: absolute;
 				top: 1px;
 				left: 20%;
-				input[type='checkbox'] {
+				input[type='checkbox'], input[type='radio'] {
 					margin: 0;
 				}
 				& + .resultbar {

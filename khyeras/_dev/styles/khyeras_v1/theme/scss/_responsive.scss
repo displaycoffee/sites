@@ -90,7 +90,7 @@
 					&.topics, &.posts, &.views {
 						order: 2;
 						@include flex;
-						margin: 10px 0 0 0;
+						margin-top: 5px;
 						dfn {
 							position: static;
 						}
@@ -117,7 +117,7 @@
 			}
 			.pagination {
 				text-align: left;
-				margin: 10px 0 0 0;
+				margin-top: 5px;
 			}
 		}
 	}
@@ -145,7 +145,7 @@
 		.topiclist.forums > li.row dl dd.lastpost {
 			order: 2;
 			@include flex;
-			margin: 10px 0 0 auto;
+			margin: 5px 0 0 auto;
 			dfn {
 				position: static;
 			}
@@ -184,7 +184,7 @@
 			text-align: left;
 			ul {
 				float: right;
-				margin: 0 -5px;
+				margin-top: 0;
 			}
 		}
 	}
@@ -196,12 +196,12 @@
 				padding-left: 0;
 				dt {
 					min-height: 43px;
-				}
-				dt:before {
-					position: static;
-					margin: 0 10px 1px 0;
-					float: left;
-					clear: right;
+					&:before {
+						position: static;
+						margin: 0 10px 1px 0;
+						float: left;
+						clear: right;
+					}
 				}
 			}
 		}
@@ -229,7 +229,7 @@
 					height: 40px;
 					line-height: 40px;
 					position: absolute;
-					margin: 40px 0 0 0;
+					margin-top: 40px;
 					padding: 0 20px;
 					background: rgba($color-02, 0.5);
 					color: $color-01;
@@ -278,7 +278,7 @@
 						@include inline-block(baseline);
 					}
 					&.redirect {
-						margin: 10px 0 0 0;
+						margin-top: 5px;
 					}
 					&.lastpost br {
 						display: none;
@@ -287,7 +287,7 @@
 			}
 		}
 		&.topics > li.row dl dd.lastpost {
-			margin: 10px 0 0 0;
+			margin-top: 5px;
 			dfn {
 				position: static;
 			}
@@ -325,7 +325,7 @@
 			text-align: left;
 		}
 		dt {
-			margin: 0;
+			margin-bottom: 0;
 			a[class*='username'] {
 				padding-right: 50px;
 			}
@@ -439,11 +439,11 @@
 		}
 	}
 	#notification_list {
+		width: auto !important;
 		min-width: 0;
 		top: 35px;
 		left: 2.5px;
 		right: 2.5px;
-		width: auto !important;
 	}
 	#featured-content {
 		display: none;
@@ -455,7 +455,7 @@
 			.flex-column {
 				width: 50%;
 				.image-wrap {
-					padding: 0 0 30% 0;
+					padding-bottom: 30%;
 				}
 			}
 		}
@@ -469,7 +469,7 @@
 	// base.scss
 	blockquote {
 		max-width: none;
-		padding: 0 0 0 20px;
+		padding-left: 20px;
 	}
 
 	// layout.scss
@@ -490,7 +490,7 @@
 	.postbody {
 		.content, .signature {
 			blockquote cite {
-				padding: 0 0 10px 0;
+				padding-right: 0;
 				.responsive-hide {
 					position: static;
 					margin: 3px 0 0 0;
@@ -542,7 +542,7 @@
 			&.poll_vote {
 				&:after {
 					border: 0;
-					padding: 0;
+					padding-top: 0;
 					height: 0;
 				}
 				.resultbar {
@@ -575,7 +575,7 @@
 
 	// header.scss
 	#featured-content .flex-row .flex-column .image-wrap {
-		padding: 0;
+		padding-bottom: 0;
 		height: 75px;
 	}
 }
@@ -651,7 +651,7 @@
 					display: none;
 				}
 				.notification_text {
-					margin: 0;
+					margin-left: 0;
 					.notification-title {
 						padding-right: 20px;
 					}
