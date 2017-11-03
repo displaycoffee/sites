@@ -8,6 +8,17 @@ function addScrollableArea( selector, selectorHeight, selectorHide ) {
 	}
 }
 
+// Add class for image attachments adjustments
+function addImageOverlay( selector ) {
+	jQuery( selector ).on( 'click', function( e ) {
+		if ( jQuery( this ).parent().css( 'overflow' ) == 'visible' ) {
+			jQuery( this ).closest( 'dd' ).addClass( 'image-expanded' );
+		} else {
+			jQuery( this ).closest( 'dd' ).removeClass( 'image-expanded' );
+		}
+	});
+}
+
 // Scroll to top functionality
 // Modified from https://paulund.co.uk/how-to-create-an-animated-scroll-to-top-with-jquery
 function scrollOnPage( selector, distance, position ) {

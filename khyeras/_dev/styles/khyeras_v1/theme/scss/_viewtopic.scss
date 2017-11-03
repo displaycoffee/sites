@@ -114,9 +114,6 @@
 ========================================================================== */
 
 .postbody {
-	.inline-attachment .file .attach-image, .attachbox .file dt, .attachbox .file dd {
-		max-width: 200px;
-	}
 	.inline-attachment, .attachbox {
 		.file .attach-image {
 			cursor: pointer;
@@ -134,8 +131,13 @@
 		margin: 20px auto;
 		.file {
 			margin: 0;
-			.attach-image[style*='height: auto'] {
-				max-width: 100%;
+			.attach-image {
+				img {
+					max-height: 200px;
+				}
+				&[style*='height: auto'] img {
+					max-height: none;
+				}
 			}
 		}
 	}
@@ -143,25 +145,30 @@
 		padding: 20px 20px 10px 20px;
 		margin: 0 auto 20px auto;
 		background: $color-05;
+		@include flex-flow(row wrap);
 		& > dt {
+			@include flex(full);
+			order: 1;
 			background: $color-04;
 			color: $color-01;
 			padding: 10px 20px;
 			margin: -20px -20px 20px -20px;
+			min-width: 1px;
 		}
 		& > dd {
-			@include inline-block(top);
+			text-align: center;
+			@include flex;
+			width: 25%;
+			order: 3;
+			&.image-expanded {
+				@include flex(full);
+				min-width: 1px;
+				width: auto;
+				order: 2;
+			}
 			.file {
 				margin: 0 0 10px 0;
-				dt, dd {
-					padding: 0 10px 0 0;
-				}
-				.attach-image[style*='height: auto'] {
-					&, & ~ dd {
-						max-width: 100%;
-						padding: 0;
-					}
-				}
+				padding: 0 10px;
 			}
 		}
 	}

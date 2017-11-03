@@ -34,6 +34,9 @@ jQuery( document ).ready( function( $ ) {
 	var mcpPostDetails = $( '.mcp-main #post_details' );
 	addScrollableArea( mcpPostDetails, 400, $( '.mcp-main .post-buttons #expand' ) );
 
+	addImageOverlay( '.attach-image img' );
+
+
 	// If postingbox in ucp is empty, hide it
 	var pmPostBox = $( '#pmheader-postingbox' );
 

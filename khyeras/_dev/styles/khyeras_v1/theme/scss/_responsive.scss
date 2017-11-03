@@ -123,6 +123,9 @@
 	}
 
 	// viewtopic.scss
+	.postbody .attachbox > dd {
+		width: 33.3333%;
+	}
 	.post .postprofile {
 		flex: 0 0 176px;
 	}
@@ -497,6 +500,9 @@
 				}
 			}
 		}
+		.attachbox > dd {
+			width: 50%;
+		}
 	}
 	.topic_poll .panel .content fieldset.polls {
 		border-top: 1px dashed $color-04;
@@ -621,6 +627,14 @@
 					padding-left: 62px;
 				}
 			}
+		}
+	}
+
+	// viewtopic.scss
+	.postbody .attachbox {
+		display: block;
+		& > dd {
+			width: auto;
 		}
 	}
 
