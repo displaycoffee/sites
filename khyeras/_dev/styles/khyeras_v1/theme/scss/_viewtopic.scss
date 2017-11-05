@@ -115,15 +115,39 @@
 
 .postbody {
 	.inline-attachment, .attachbox {
-		.file .attach-image {
-			cursor: pointer;
-			margin: 0 0 5px 0;
-			line-height: 0;
-			& + dd:first-of-type:before {
-				content: 'Click to expand image';
-				display: block;
-				font-size: rem(13px);
-				font-style: italic;
+		.file {
+			.icon_topic_attach:before {
+				@include font-awesome;
+				content: unicode($icon-file-o);
+			}
+			.attach-image {
+				cursor: pointer;
+				margin: 0 0 5px 0;
+				line-height: 0;
+				position: relative;
+				height: auto !important;
+				overflow: visible !important;
+				img {
+					max-height: 200px;
+				}
+				.image-open {
+					padding: 0;
+					background: none;
+					border: none;
+					position: absolute;
+					top: 10px;
+					right: 10px;
+					z-index: 2;
+					color: $color-04;
+				}
+			}
+		}
+		.image-expanded .file .attach-image {
+			img {
+				max-height: none;
+			}
+			.image-open .icon:before {
+				content: unicode($icon-search-minus);
 			}
 		}
 	}
@@ -131,13 +155,8 @@
 		margin: 20px auto;
 		.file {
 			margin: 0;
-			.attach-image {
-				img {
-					max-height: 200px;
-				}
-				&[style*='height: auto'] img {
-					max-height: none;
-				}
+			.icon_topic_attach {
+				margin-right: 5px;
 			}
 		}
 	}
@@ -160,16 +179,23 @@
 			@include flex;
 			width: 25%;
 			order: 3;
-			&.image-expanded {
-				@include flex(full);
-				min-width: 1px;
-				width: auto;
-				order: 2;
-			}
 			.file {
-				margin: 0 0 10px 0;
+				margin: 0 0 20px 0;
 				padding: 0 10px;
+				.icon_topic_attach {
+					display: block;
+					font-size: rem(20px);
+				}
+				.attach-image img {
+					margin: 0 auto;
+				}
 			}
+		}
+		.image-expanded {
+			@include flex(full);
+			min-width: 1px;
+			width: auto;
+			order: 2;
 		}
 	}
 }

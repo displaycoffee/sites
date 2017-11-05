@@ -34,8 +34,15 @@ jQuery( document ).ready( function( $ ) {
 	var mcpPostDetails = $( '.mcp-main #post_details' );
 	addScrollableArea( mcpPostDetails, 400, $( '.mcp-main .post-buttons #expand' ) );
 
-	addImageOverlay( '.attach-image img' );
+	// Add icon for image attachment expansion
+	var attachImage = '.attach-image';
+	jQuery( attachImage ).each( function() {
+		jQuery( this ).prepend( '<button class="image-open" onclick="viewableArea(this);"><i class="icon icon-xl fa-search-plus fa-fw" aria-hidden="true"></i></button>' );
+	});
 
+	// Then add more click events to image attachment expansion
+	updateaAttachmentDisplay( '.image-open' );
+	updateaAttachmentDisplay( attachImage + ' img' );
 
 	// If postingbox in ucp is empty, hide it
 	var pmPostBox = $( '#pmheader-postingbox' );

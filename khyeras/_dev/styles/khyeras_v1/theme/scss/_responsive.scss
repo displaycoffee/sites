@@ -631,10 +631,22 @@
 	}
 
 	// viewtopic.scss
-	.postbody .attachbox {
-		display: block;
-		& > dd {
-			width: auto;
+	.postbody {
+		.inline-attachment, .attachbox {
+			.file .attach-image .image-open {
+				left: 0;
+				right: 0;
+				top: auto;
+				bottom: 10px;
+				@include sizing(20px, 20px);
+				margin: auto;
+			}
+		}
+		.attachbox {
+			display: block;
+			& > dd {
+				width: auto;
+			}
 		}
 	}
 

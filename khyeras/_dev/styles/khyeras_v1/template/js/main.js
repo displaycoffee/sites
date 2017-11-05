@@ -9,12 +9,14 @@ function addScrollableArea( selector, selectorHeight, selectorHide ) {
 }
 
 // Add class for image attachments adjustments
-function addImageOverlay( selector ) {
+function updateaAttachmentDisplay( selector ) {
 	jQuery( selector ).on( 'click', function( e ) {
-		if ( jQuery( this ).parent().css( 'overflow' ) == 'visible' ) {
-			jQuery( this ).closest( 'dd' ).addClass( 'image-expanded' );
+		var parentImageContainer = jQuery( this ).closest( '.file' ).parent();
+
+		if ( parentImageContainer.hasClass( 'image-expanded' ) ) {
+			parentImageContainer.removeClass( 'image-expanded' );
 		} else {
-			jQuery( this ).closest( 'dd' ).removeClass( 'image-expanded' );
+			parentImageContainer.addClass( 'image-expanded' );
 		}
 	});
 }
