@@ -198,10 +198,10 @@
 			&[class*='read'], &[class*='link'], &[class*='moved'] {
 				padding-left: 0;
 				dt {
-					min-height: 43px;
+					min-height: ($list-icon-size + 2 + 5);
 					&:before {
 						position: static;
-						margin: 0 10px 1px 0;
+						margin: 0 10px 5px 0;
 						float: left;
 						clear: right;
 					}
@@ -503,6 +503,26 @@
 		.attachbox > dd {
 			width: 50%;
 		}
+		.post-notice {
+			&.unapproved, &.deleted {
+				position: relative;
+				strong {
+					display: block;
+				}
+				.button2 {
+					margin-left: 0;
+				}
+			}
+			&.unapproved {
+				span {
+					float: left;
+				}
+				span + strong {
+					margin: 0 0 5px 0;
+					clear: right;
+				}
+			}
+		}
 	}
 	.topic_poll .panel .content fieldset.polls {
 		border-top: 1px dashed $color-04;
@@ -516,6 +536,12 @@
 				height: 1px;
 				margin: 0 10px;
 				padding: 10px 0 0 0;
+			}
+			&:last-child:after {
+				height: 0;
+				border-bottom: 0;
+				padding-top: 0;
+				margin: 0;
 			}
 			dt {
 				float: none;
@@ -540,17 +566,12 @@
 				width: 30%;
 				text-align: right;
 			}
-			&.poll_total_votes, &.poll_vote {
+			&.poll_total_votes, &.poll_vote, &.poll_view_results {
 				dt {
 					display: none;
 				}
 			}
-			&.poll_vote {
-				&:after {
-					border: 0;
-					padding-top: 0;
-					height: 0;
-				}
+			&.poll_vote, &.poll_view_results {
 				.resultbar {
 					float: none;
 					width: auto;
@@ -608,7 +629,7 @@
 			}
 			&[class*='read'], &[class*='link'], &[class*='moved'] {
 				dt {
-					min-height: $responsive-icon-size + 1;
+					min-height: ($responsive-icon-size + 2 + 5);
 					&:before {
 						@include sizing($responsive-icon-size, $responsive-icon-size);
 						line-height: $responsive-icon-size;
@@ -646,6 +667,16 @@
 			display: block;
 			& > dd {
 				width: auto;
+			}
+		}
+	}
+	.postprofile dd.profile-contact {
+		position: relative;
+		.dropdown-container {
+			position: static;
+			.dropdown {
+				left: -100px;
+				right: 0;
 			}
 		}
 	}
@@ -732,6 +763,9 @@
 		dd {
 			&.profile-posts, &.profile-joined {
 				display: none;
+			}
+			&.profile-contact .dropdown-container .dropdown {
+				left: 0;
 			}
 		}
 	}

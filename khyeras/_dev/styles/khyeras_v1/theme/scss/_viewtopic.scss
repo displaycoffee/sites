@@ -141,8 +141,13 @@
 					color: $color-04;
 				}
 			}
+			dd {
+				font-size: rem(12px);
+			}
 		}
-		.image-expanded .file .attach-image {
+	}
+	.inline-attachment.image-expanded, .attachbox .image-expanded {
+		 .file .attach-image {
 			img {
 				max-height: none;
 			}
@@ -158,6 +163,12 @@
 			.icon_topic_attach {
 				margin-right: 5px;
 			}
+			.attach-image {
+				display: inline-block;
+			}
+		}
+		&.image-expanded .file .attach-image {
+			display: block;
 		}
 	}
 	.attachbox {
@@ -179,9 +190,9 @@
 			@include flex;
 			width: 25%;
 			order: 3;
+			padding: 0 10px;
 			.file {
 				margin: 0 0 20px 0;
-				padding: 0 10px;
 				.icon_topic_attach {
 					display: block;
 					font-size: rem(20px);
@@ -196,6 +207,7 @@
 			min-width: 1px;
 			width: auto;
 			order: 2;
+			padding: 0;
 		}
 	}
 }
@@ -316,6 +328,9 @@ fieldset.polls dl dt {
 				left: 0;
 				right: auto;
 				top: em(30px);
+				.dropdown-contents > div {
+					display: inline;
+				}
 			}
 		}
 	}
