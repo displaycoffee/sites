@@ -28,6 +28,11 @@
 		}
 	}
 
+	// cp.scss
+	.cp-menu {
+		flex: 0 0 150px;
+	}
+
 	// header.scss
 	#featured-content .flex-row .flex-column {
 		width: 25%;
@@ -130,6 +135,25 @@
 		flex: 0 0 176px;
 	}
 
+	// cp.scss
+	.cp-wrapper {
+		display: block;
+	}
+	.cp-menu {
+		margin-right: 0;
+		min-height: 0;
+		.navigation {
+			margin: 0 -10px;
+			ul {
+				display: inline;
+				li {
+					@include inline-block(top);
+					padding: 0 10px;
+				}
+			}
+		}
+	}
+
 	// header.scss
 	#page-welcome .user-profile {
 		order: -2;
@@ -140,6 +164,16 @@
 ========================================================================== */
 
 @include respond(em(850)) {
+	// form-fields.scss
+	fieldset:not(.polls) dl:not(.pmlist) {
+		dt {
+			width: $form-field-indent1 - 100;
+		}
+		dd {
+			margin-left: $form-field-indent1 - 100;
+		}
+	}
+
 	// viewlisting.scss
 	.has-listing {
 		.forabg .topiclist > li.header dl dd.lastpost {
@@ -163,6 +197,27 @@
 ========================================================================== */
 
 @include respond(em(768)) {
+	// form-field.scss
+	fieldset:not(.polls) {
+		&, &.fields1 {
+			dl:not(.pmlist) {
+				dt {
+					width: auto;
+				}
+				dd {
+					margin-left: 0;
+				}
+			}
+		}
+		dl:not(.pmlist) dt {
+			float: none;
+			margin: 0 0 5px 0;
+			label {
+				margin-right: 0;
+			}
+		}
+	}
+
 	// layout.scss
 	.flex-row {
 		display: block;
