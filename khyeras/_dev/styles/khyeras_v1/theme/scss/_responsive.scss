@@ -142,13 +142,24 @@
 	.cp-menu {
 		margin-right: 0;
 		min-height: 0;
-		.navigation {
+		.navigation, .cp-mini .mini {
 			margin: 0 -10px;
-			ul {
-				display: inline;
-				li {
-					@include inline-block(top);
-					padding: 0 10px;
+		}
+		.navigation ul li, .cp-mini .mini dt, .cp-mini .mini dd {
+			@include inline-block(baseline);
+			padding: 0 10px;
+		}
+		.navigation ul {
+			display: inline;
+		}
+		.cp-mini .mini {
+			dt {
+				width: 100%;
+			}
+			.pm-legend {
+				padding: 0 10px 0 37px;
+				.imageset {
+					left: 10px;
 				}
 			}
 		}

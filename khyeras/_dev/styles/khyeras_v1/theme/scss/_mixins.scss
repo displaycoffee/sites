@@ -146,6 +146,7 @@
 @mixin rpg-icons {
 	display: inline-block;
   	font-family: 'Khyeras Icons';
+	font-weight: normal;
   	text-rendering: auto; /* optimizelegibility throws things off #1094 */
   	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
