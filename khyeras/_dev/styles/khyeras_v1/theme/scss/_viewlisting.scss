@@ -33,6 +33,7 @@
 					flex: 0 0 120px;
 				}
 				&.option {
+					// Option should be half of info width
 					flex: 0 0 125px;
 				}
 				&.lastpost, &.time, &.info {
@@ -188,8 +189,6 @@
 		@include forum-icon($icon-stabbed-note);
 	}
 }
-
-
 
 /* Forums
 ========================================================================== */
