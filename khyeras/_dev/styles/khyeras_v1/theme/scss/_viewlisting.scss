@@ -208,29 +208,32 @@
 /* Forums
 ========================================================================== */
 
-.topiclist > li.row dl[class*='forum'] {
-	&.has-forum-image {
-		padding-left: 150px;
-		min-height: 130px;
-		dt .forum-image {
-			display: block;
-			@include sizing(130px, 130px);
-			border-radius: 100%;
-			overflow: hidden;
-			@include forum-icon-position;
-			border: 5px solid $color-04;
-		}
+.topiclist > li.row dl[class*='forum'] dt {
+	br + strong {
+		margin: 5px 0 0 0;
+		@include inline-block(baseline);
 	}
-	dt {
-		br + strong {
-			margin: 5px 0 0 0;
-			@include inline-block(baseline);
-		}
-		.subforum .icon {
-			position: relative;
-			top: -1px;
-			margin: 0 5px 0 0;
-		}
+	.subforum .icon {
+		position: relative;
+		top: -1px;
+		margin: 0 5px 0 0;
+	}
+}
+
+.simple-listing .topiclist > li.row dl[class*='forum'] dt .forum-image {
+	display: none;
+}
+
+.styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image {
+	padding-left: 150px;
+	min-height: 130px;
+	dt .forum-image {
+		display: block;
+		@include sizing(130px, 130px);
+		border-radius: 100%;
+		overflow: hidden;
+		@include forum-icon-position;
+		border: 5px solid $color-04;
 	}
 }
 
