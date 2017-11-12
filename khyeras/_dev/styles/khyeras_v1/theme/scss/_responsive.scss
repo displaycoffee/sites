@@ -192,8 +192,9 @@
 	.topiclist > li {
 		&.header dl {
 			dt {
-				max-height: 21px;
-				overflow-y: hidden;
+				max-height: 32px;
+				white-space: nowrap;
+				overflow: hidden;
 			}
 			dd.lastpost {
 				font-size: 0;
@@ -201,7 +202,7 @@
 		}
 		&.row {
 			// creating a fake header for topics
-			// there is no class differentiation between headers and topics
+			// there is no class differentiation between headers on forums and topics
 			&:first-child dl:not([class*='forum']) dd.lastpost {
 				position: relative;
 				&:before {
@@ -297,6 +298,11 @@
 		& > li {
 			dl, &.row dl dd.mark {
 				display: block;
+			}
+			&.header dl dt {
+				max-height: none;
+				white-space: normal;
+				overflow: visible;
 			}
 			&.row dl {
 				&:before {
@@ -415,6 +421,51 @@
 			}
 		}
 	}
+	table.table1 {
+		&, thead, tbody, tr, th, td {
+			display: block;
+		}
+		thead {
+			display: none;
+		}
+		tbody tr {
+			padding: 20px;
+		}
+		th, td {
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				padding-right: 0;
+			}
+			&.posts, &.mark, &.active, &.joined, &.reportby, &.info {
+				width: auto;
+			}
+		}
+		td {
+			padding: 0;
+			margin-top: 5px;
+			&:first-child {
+				margin-top: 0;
+			}
+			&.empty, strong + br {
+				display: none;
+			}
+			dfn {
+				position: static;
+				display: inline-block !important;
+				font-weight: bold;
+				&:after {
+					content: ': \0000A0';
+				}
+			}
+		}
+		.rank-img {
+			float: none;
+			text-align: left;
+			padding-right: 5px;
+		}
+	}
 
 	// viewtopic.scss
 	.post {
@@ -469,8 +520,20 @@
 	}
 
 	// cp.scss
-	.mcp-main #mcp_queue .topiclist > li.header dl:after {
-		display: none;
+	.cp-main table.table1 {
+		border-top: 1px dashed $color-04;
+	}
+	.mcp-main #mcp_queue {
+		& ~ .panel table.table1 {
+			th, td {
+				&:first-child {
+					width: auto;
+				}
+			}
+		}
+		.topiclist > li.header dl:after {
+			display: none;
+		}
 	}
 
 	// header.scss
@@ -677,7 +740,7 @@
 				left: auto;
 				right: 0;
 				&:before {
-					content: 'Vote:\0000A0\0000A0';
+					content: 'Vote: \0000A0';
 				}
 				& + .resultbar {
 					padding-left: 10px;
@@ -746,31 +809,29 @@
 
 	// viewlisting.scss
 	$responsive-icon-size: $list-icon-size - 8px;
-	.topiclist {
-		& > li.row dl {
-			dt .row-item-link {
-				@include sizing($responsive-icon-size + 2, $responsive-icon-size + 2);
-			}
-			&[class*='read'], &[class*='link'], &[class*='moved'] {
-				dt {
-					min-height: ($responsive-icon-size + 2 + 5);
-					&:before {
-						@include sizing($responsive-icon-size, $responsive-icon-size);
-						line-height: $responsive-icon-size;
-						font-size: rem(16px);
-					}
+	.topiclist > li.row dl {
+		dt .row-item-link {
+			@include sizing($responsive-icon-size + 2, $responsive-icon-size + 2);
+		}
+		&[class*='read'], &[class*='link'], &[class*='moved'] {
+			dt {
+				min-height: ($responsive-icon-size + 2 + 5);
+				&:before {
+					@include sizing($responsive-icon-size, $responsive-icon-size);
+					line-height: $responsive-icon-size;
+					font-size: rem(16px);
 				}
 			}
 		}
-		&.forums > li.row dl.has-forum-image {
-			dt .row-item-link, &[class*='read'] dt:before, &[class*='link'] dt:before,
-			&[class*='moved'] dt:before, &[class*='mine'] dt:after {
-				top: 5px;
-			}
-			&[class*='read'], &[class*='link'], &[class*='moved'] {
-				dt .forumtitle {
-					padding-left: 62px;
-				}
+	}
+	.styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image {
+		dt .row-item-link, &[class*='read'] dt:before, &[class*='link'] dt:before,
+		&[class*='moved'] dt:before, &[class*='mine'] dt:after {
+			top: 5px;
+		}
+		&[class*='read'], &[class*='link'], &[class*='moved'] {
+			dt .forumtitle {
+				padding-left: 62px;
 			}
 		}
 	}
@@ -864,7 +925,7 @@
 		.poll_option_percent {
 			text-align: left;
 			&:before {
-				content: 'Count:\0000A0\0000A0';
+				content: 'Count: \0000A0';
 			}
 		}
 	}

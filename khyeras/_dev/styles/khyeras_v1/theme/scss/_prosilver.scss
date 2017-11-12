@@ -39,34 +39,10 @@
 }
 
 @media (max-width: 700px) {
-	// .responsive-hide { display: none !important; }
-	// .responsive-show { display: block !important; }
-	// .responsive-show-inline { display: inline !important; }
-	// .responsive-show-inline-block { display: inline-block !important; }
-
-	/* Common block wrappers
-	----------------------------------------*/
-	.post, .panel {
-		border-radius: 0;
-		margin-left: -5px;
-		margin-right: -5px;
-	}
-
-	.cp-main .forumdb, .cp-main .post, .cp-main .panel {
-		border-radius: 7px;
-	}
-
 	/* Search
 	----------------------------------------*/
 	.responsive-search { display: block !important; }
 
-	/* Forums and topics lists
-	----------------------------------------*/
-
-	li.row .responsive-show strong {
-		font-weight: bold;
-		color: inherit;
-	}
 
 	/* Forms
 	----------------------------------------*/
