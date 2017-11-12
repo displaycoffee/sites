@@ -232,15 +232,10 @@
 ========================================================================== */
 
 .pagination {
-	.icon {
-		font-size: rem(13px);
-		width: auto;
-	}
 	ul {
-		margin: 0 -5px 0 10px;
+		margin: 0 -5px;
 		list-style: none;
 		@include inline-block(bottom);
-		line-height: 1;
 		li {
 			@include inline-block(middle);
 			&.active span, a {
@@ -255,7 +250,10 @@
 				background: none;
 				border-radius: 0;
 				color: $color-01;
-				line-height: normal;
+				.icon {
+					font-size: rem(13px);
+					width: auto;
+				}
 				&, & .icon {
 					@include transition(color 0.3s ease-in-out);
 					&:hover {
@@ -299,6 +297,9 @@
 	}
 	.pagination {
 		margin: 10px 0 0 auto;
+		ul {
+			margin-left: 10px;
+		}
 	}
 	&.bar-top .search-box {
 		flex: 0 0 300px;

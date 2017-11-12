@@ -14,7 +14,7 @@
 			&.topics, &.posts, &.views {
 				flex: 0 0 80px;
 			}
-			&.lastpost, &.time, &.info {
+			&.lastpost {
 				flex: 0 0 180px;
 			}
 			&.moderation {
@@ -24,7 +24,7 @@
 				flex: 0 0 340px;
 			}
 		}
-		&.forums > li.row dl.has-forum-image {
+		& > li.row dl[class*='forum'].has-forum-image {
 			padding-left: 130px;
 			min-height: 110px;
 			dt .forum-image {
@@ -40,7 +40,6 @@
 	.section-ucp-manage-groups .topiclist > li dl dd.info {
 		flex: 0 0 250px;
 	}
-
 
 	// header.scss
 	#featured-content .flex-row .flex-column {
@@ -81,30 +80,19 @@
 
 	// viewlisting.scss
 	.topiclist {
-		&.forums > li.row dl dd.topics, &.topics > li.row dl dd.posts {
-			&:after {
-				content: '/';
-				position: relative;
-				right: -12.5px;
-			}
-		}
-		&.topics > li.row dl dt {
-			.responsive-hide, .pagination {
-				display: block;
-				width: auto;
-			}
-			.pagination {
-				text-align: left;
-				margin-top: 5px;
-			}
-		}
-	}
-	.styled-listing .topiclist {
 		& > li {
-			dl dd {
-				&.lastpost, &.redirect {
-					flex: 0 0 200px;
-					text-align: right;
+			dl {
+				&[class*='forum'] dd.posts, &:not([class*='forum']) dd.views {
+					&:before {
+						content: '/';
+						position: relative;
+						left: -10px;
+					}
+				}
+				dd {
+					&.lastpost, &.redirect {
+						flex: 0 0 200px;
+					}
 				}
 			}
 			&.header dl dd {
@@ -113,27 +101,35 @@
 				}
 			}
 			&.row dl {
-				dt {
-					order: -1;
-				}
-				dd {
-					&.lastpost {
-						order: 0;
-					}
-					&.topics, &.posts, &.views {
-						order: 2;
-						@include flex;
-						margin-top: 5px;
-						dfn {
-							position: static;
-						}
-					}
-				}
 				&:before {
 					content: '';
 					flex: 1 1 100%;
 					order: 1;
 				}
+				dt {
+					order: -1;
+				}
+				dd {
+					&.topics, &.posts, &.views {
+						order: 2;
+						@include flex;
+						dfn {
+							position: static;
+						}
+					}
+				}
+			}
+		}
+	}
+	.styled-listing .topiclist > li {
+		dl dd {
+			&.lastpost, &.redirect {
+				text-align: right;
+			}
+		}
+		&.row dl dd {
+			&.topics, &.posts, &.views {
+				margin-top: 5px;
 			}
 		}
 	}
@@ -197,20 +193,51 @@
 	}
 
 	// viewlisting.scss
-	.has-listing {
-		.forabg .topiclist > li.header dl dd.lastpost {
-			display: none;
+	.topiclist > li {
+		&.header dl {
+			dt {
+				max-height: 21px;
+				overflow-y: hidden;
+			}
+			dd.lastpost {
+				font-size: 0;
+			}
 		}
-		.topiclist.forums > li.row dl dd.lastpost {
-			order: 2;
-			@include flex;
-			margin: 5px 0 0 auto;
-			dfn {
-				position: static;
+		&.row {
+			// creating a fake header for topics
+			// there is no class differentiation between headers and topics
+			&:first-child dl:not([class*='forum']) dd.lastpost {
+				position: relative;
+				&:before {
+					display: block;
+					width: 200px;
+					padding: 0 10px;
+					content: 'Last Post';
+					position: absolute;
+					top: -51px;
+					left: 0;
+				}
 			}
-			br:first-of-type {
-				display: none;
+			dl[class*='forum'] dd.lastpost {
+				order: 2;
+				@include flex;
+				margin: 5px 0 0 0;
+				dfn {
+					position: static;
+				}
+				br:first-of-type {
+					display: none;
+				}
 			}
+		}
+	}
+	.styled-listing .topiclist > li.row {
+		&:first-child dl:not([class*='forum']) dd.lastpost:before {
+			left: auto;
+			right: 0;
+		}
+		dl[class*='forum'] dd.lastpost {
+			margin-left: auto;
 		}
 	}
 }
@@ -271,108 +298,148 @@
 
 	// viewlisting.scss
 	.topiclist {
-		& > li.row dl {
-			&[class*='read'], &[class*='link'], &[class*='moved'] {
-				padding-left: 0;
-				dt {
-					min-height: ($list-icon-size + 2 + 5);
-					&:before {
-						position: static;
-						margin: 0 10px 5px 0;
-						float: left;
-						clear: right;
-					}
-				}
+		& > li {
+			dl, &.row dl dd.mark {
+				display: block;
 			}
-		}
-		&.forums li.row dl.has-forum-image {
-			padding-left: 0;
-			min-height: 0;
-			dt {
-				padding-top: 80px;
-				.forum-image, .forumtitle {
-					top: -20px;
-					left: -10px;
-					right: -10px;
-				}
-				.forum-image {
-					@include sizing(auto, 80px);
-					border-radius: 0;
-					border: 0;
-					img {
-						width: 100%;
-					    margin-top: -25%;
-					}
-				}
-				.forumtitle {
-					display: block;
-					height: 40px;
-					line-height: 40px;
-					position: absolute;
-					margin-top: 40px;
-					padding: 0 20px;
-					background: rgba($color-02, 0.5);
-					color: $color-01;
-					@include spectral-common;
-					font-size: rem(20px);
-					font-weight: normal;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
-					& + br {
-						display: none;
-					}
-				}
-			}
-			&[class*='read'], &[class*='link'], &[class*='moved'] {
-				dt {
+			&.row {
+				dd.mark {
 					&:before {
-						position: absolute;
-					}
-					.forumtitle {
-						padding-left: 80px;
+						content: 'Mark: ';
 					}
 				}
 			}
 		}
 	}
-	.has-listing .topiclist {
-		 & > li {
+	.simple-listing .topiclist {
+		& > li {
 			dl {
-				display: block;
 				dd {
-					&.lastpost, &.redirect {
-						text-align: left;
-					}
-				}
-			}
-			&.header dl dd.lastpost {
-				display: none;
-			}
-			&.row dl {
-				&:before {
 					display: none;
 				}
-				dd {
-					&.topics, &.posts, &.views {
-						@include inline-block(baseline);
-					}
-					&.redirect {
-						margin-top: 5px;
-					}
-					&.lastpost br {
-						display: none;
-					}
+			}
+			&.row dl dt {
+				.responsive-hide {
+					display: none !important;
+				}
+				.responsive-show {
+					display: block !important;
 				}
 			}
 		}
-		&.topics > li.row dl dd.lastpost {
-			margin-top: 5px;
-			dfn {
-				position: static;
+	}
+	.styled-listing .topiclist {
+		& > li {
+			&.header dl dd,
+			&.row:first-child dl:not([class*='forum']) dd.lastpost:before {
+				display: none;
 			}
 		}
 	}
+	// .topiclist {
+
+
+	// .has-listing .topiclist {
+	// & > li {
+	// 	&.row dl {
+	// 		&[class*='read'], &[class*='link'], &[class*='moved'] {
+	// 			padding-left: 0;
+	// 			dt {
+	// 				min-height: ($list-icon-size + 2 + 5);
+	// 				&:before {
+	// 					position: static;
+	// 					margin: 0 10px 5px 0;
+	// 					float: left;
+	// 					clear: right;
+	// 				}
+	// 			}
+	// 		}
+	// 		&[class*='forum'].has-forum-image {
+	// 			padding-left: 0;
+	// 			min-height: 0;
+	// 			dt {
+	// 				padding-top: 80px;
+	// 				.forum-image, .forumtitle {
+	// 					top: -20px;
+	// 					left: -10px;
+	// 					right: -10px;
+	// 				}
+	// 				.forum-image {
+	// 					@include sizing(auto, 80px);
+	// 					border-radius: 0;
+	// 					border: 0;
+	// 					img {
+	// 						width: 100%;
+	// 						margin-top: -25%;
+	// 					}
+	// 				}
+	// 				.forumtitle {
+	// 					display: block;
+	// 					height: 40px;
+	// 					line-height: 40px;
+	// 					position: absolute;
+	// 					margin-top: 40px;
+	// 					padding: 0 20px;
+	// 					background: rgba($color-02, 0.5);
+	// 					color: $color-01;
+	// 					@include spectral-common;
+	// 					font-size: rem(20px);
+	// 					font-weight: normal;
+	// 					overflow: hidden;
+	// 					text-overflow: ellipsis;
+	// 					white-space: nowrap;
+	// 					& + br {
+	// 						display: none;
+	// 					}
+	// 				}
+	// 			}
+	// 			&[class*='read'], &[class*='link'], &[class*='moved'] {
+	// 				dt {
+	// 					&:before {
+	// 						position: absolute;
+	// 					}
+	// 					.forumtitle {
+	// 						padding-left: 80px;
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// 	 & > li {
+	// 		dl {
+	// 			display: block;
+	// 			dd {
+	// 				&.lastpost, &.redirect {
+	// 					text-align: left;
+	// 				}
+	// 			}
+	// 		}
+
+	// 		&.row dl {
+	// 			&:before {
+	// 				display: none;
+	// 			}
+	// 			dd {
+	// 				&.topics, &.posts, &.views {
+	// 					@include inline-block(baseline);
+	// 				}
+	// 				&.redirect {
+	// 					margin-top: 5px;
+	// 				}
+	// 				&.lastpost br {
+	// 					display: none;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	&.topics > li.row dl dd.lastpost {
+	// 		margin-top: 5px;
+	// 		dfn {
+	// 			position: static;
+	// 		}
+	// 	}
+	// }
 
 	// viewtopic.scss
 	.post {
@@ -424,6 +491,11 @@
 			margin: 0 0 3px 0;
 			font-size: rem(16px);
 		}
+	}
+
+	// cp.scss
+	.mcp-main #mcp_queue .topiclist > li.header dl:after {
+		display: none;
 	}
 
 	// header.scss

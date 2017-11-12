@@ -11,9 +11,6 @@
 			dt, dd {
 				padding: 0 10px;
 				@include flex(base);
-				.icon {
-					font-size: rem(13px);
-				}
 			}
 			dd {
 				margin: 0;
@@ -99,6 +96,24 @@
 					.forumtitle, .topictitle {
 						font-weight: bold;
 					}
+					.pagination {
+						& > span {
+							display: none;
+						}
+						&:before {
+							@include rpg-icons;
+							content: unicode($icon-book-cover);
+							padding-right: 5px;
+							font-size: rem(16px);
+							vertical-align: bottom;
+						}
+						ul:before {
+							@include inline-block(middle);
+						    padding: 0 5px;
+							content: 'Pages:';
+							font-weight: bold;
+						}
+					}
 				}
 				dd a .icon {
 					&.fa-exclamation, &.fa-question {
@@ -174,7 +189,7 @@
 		@include forum-icon($icon-scroll-unfurled);
 	}
 	.global_read, .global_read_mine, .global_read_locked,
-	.global_read_locked_mine,.global_unread, .global_unread_mine,
+	.global_read_locked_mine, .global_unread, .global_unread_mine,
 	.global_unread_locked, .global_unread_locked_mine {
 		@include forum-icon($icon-compass);
 	}
@@ -193,7 +208,7 @@
 /* Forums
 ========================================================================== */
 
-.topiclist.forums > li.row dl {
+.topiclist > li.row dl[class*='forum'] {
 	&.has-forum-image {
 		padding-left: 150px;
 		min-height: 130px;
@@ -215,28 +230,6 @@
 			position: relative;
 			top: -1px;
 			margin: 0 5px 0 0;
-		}
-	}
-}
-
-
-/* Topics
-========================================================================== */
-
-.topiclist.topics > li.row dl dt {
-	.responsive-hide, .pagination {
-		@include inline-block(top);
-		width: 49%;
-	}
-	.pagination {
-		text-align: right;
-		& > span:after {
-			content: 'Pages: ';
-			font-weight: bold;
-			padding: 0 0 0 5px;
-		}
-		ul {
-			margin: 0;
 		}
 	}
 }

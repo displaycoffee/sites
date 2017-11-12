@@ -65,6 +65,23 @@
 			& + br {
 				display: none;
 			}
+			& > li.row dl dt {
+				.list-inner {
+					position: relative;
+				}
+				.pagination {
+					& ~ .responsive-hide, & ~ .responsive-show {
+						padding-bottom: 24px;
+					}
+				}
+				.pagination {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					height: 24px;
+					overflow: hidden;
+				}
+			}
 		}
 	}
 	.topicreview {
