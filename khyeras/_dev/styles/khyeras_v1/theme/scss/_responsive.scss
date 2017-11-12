@@ -35,7 +35,15 @@
 	.cp-menu {
 		flex: 0 0 150px;
 	}
-	.section-ucp-manage-groups .topiclist > li dl dd.info {
+	.section-ucp-front-page .cp-main .topiclist {
+		&:before {
+			padding-right: 200px;
+		}
+		&:after {
+			width: 190px;
+		}
+	}
+	.section-ucp-manage-groups .cp-main .topiclist > li dl dd.info {
 		flex: 0 0 250px;
 	}
 
@@ -138,6 +146,22 @@
 		flex: 0 0 176px;
 	}
 
+	// positing.scss
+	#attach-panel #file-list-container table.table1 td.attach-name {
+		.file-name, .attach-controls {
+			width: auto;
+		}
+		.file-name {
+			vertical-align: bottom;
+		}
+		.attach-controls {
+			display: block;
+			right: 0;
+			text-align: left;
+			margin-top: 5px;
+		}
+	}
+
 	// cp.scss
 	.cp-wrapper {
 		display: block;
@@ -165,6 +189,14 @@
 					left: 10px;
 				}
 			}
+		}
+	}
+	.section-ucp-front-page .cp-main .topiclist {
+		&:before {
+			padding-right: 220px;
+		}
+		&:after {
+			width: 210px;
 		}
 	}
 
@@ -431,9 +463,12 @@
 		tbody tr {
 			padding: 20px;
 		}
-		th, td {
+		td {
+			padding: 0;
+			margin-top: 5px;
 			&:first-child {
 				padding-left: 0;
+				margin-top: 0;
 			}
 			&:last-child {
 				padding-right: 0;
@@ -441,12 +476,8 @@
 			&.posts, &.mark, &.active, &.joined, &.reportby, &.info {
 				width: auto;
 			}
-		}
-		td {
-			padding: 0;
-			margin-top: 5px;
-			&:first-child {
-				margin-top: 0;
+			&[style*='width'] {
+				width: auto !important;
 			}
 			&.empty, strong + br {
 				display: none;
@@ -464,6 +495,18 @@
 			float: none;
 			text-align: left;
 			padding-right: 5px;
+		}
+		&.show-header {
+			thead {
+				&, th:first-child {
+					display: block;
+				}
+				th {
+					&, &:first-child .rank-img {
+						display: none;
+					}
+				}
+			}
 		}
 	}
 
@@ -519,9 +562,31 @@
 		}
 	}
 
+	// posting.scss
+	#attach-panel #file-list-container table.table1 {
+		border-top: 1px dashed $color-04;
+		td.attach-status .file-status:before {
+			font-size: rem(14px);
+		}
+	}
+
 	// cp.scss
 	.cp-main table.table1 {
 		border-top: 1px dashed $color-04;
+	}
+	.section-ucp-front-page .cp-main .topiclist {
+		&:before {
+			padding-right: 20px;
+		}
+		&:after {
+			display: none;
+		}
+	}
+	.section-mcp-warnings .cp-main table.table1 td a[href*='user_notes'] {
+		position: relative;
+		left: -10px;
+		z-index: 2;
+		background: $color-05;
 	}
 	.mcp-main #mcp_queue {
 		& ~ .panel table.table1 {
@@ -863,6 +928,21 @@
 				left: -100px;
 				right: 0;
 			}
+		}
+	}
+	.topic_poll .panel .content fieldset.polls dl {
+		dt {
+			padding-right: 0;
+		}
+		.poll_option_select {
+			position: static;
+		}
+	}
+
+	// cp.scss
+	.cp-main {
+		.panel, .post.pm, .topicreview {
+			padding: 20px 10px 0 10px;
 		}
 	}
 

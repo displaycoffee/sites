@@ -188,17 +188,19 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 			display: block;
 			background: $color-04;
 			padding: 10px 20px;
+			box-sizing: border-box;
 		}
 		&:before {
-			content: 'Title';
+			content: 'Topic';
 			padding-right: 270px;
 		}
 		&:after {
 			content: 'Last Post';
+			padding-left: 10px;
 			position: absolute;
 			top: 0;
 			right: 0;
-			width: 230px;
+			width: 260px;
 		}
 	}
 }
@@ -280,7 +282,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 				top: 13px;
 				right: 17px;
 				z-index: 2;
-				margin: 0;
+				margin-right: 0;
 			}
 			&:before {
 				content: '';
@@ -624,9 +626,14 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 	#post_details.scrollable {
 		@include scrollable;
 	}
-	.action-bar.bar-top .inputbox[type='search'] {
-		width: auto;
-		margin: 0 3px 0 5px;
+	.action-bar.bar-top {
+		.inputbox[type='search'] {
+			width: auto;
+			margin: 0 3px 0 5px;
+		}
+		.button2[value='Search'] {
+			margin-top: 0;
+		}
 	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
 		position: absolute;
@@ -672,7 +679,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 	.topiclist > li.header dl:after {
 		display: block;
 		content: 'Mark';
-		flex: 0 0 60px;
+		flex: 0 0 90px;
 		padding: 0 10px;
 		box-sizing: border-box;
 	}
