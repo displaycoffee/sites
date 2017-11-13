@@ -37,7 +37,7 @@ jQuery( document ).ready( function( $ ) {
 	// Add icon for image attachment expansion
 	var attachImage = '.attach-image';
 	jQuery( attachImage ).each( function() {
-		jQuery( this ).prepend( '<button class="image-open" onclick="viewableArea(this);"><i class="icon icon-xl fa-search-plus fa-fw" aria-hidden="true"></i></button>' );
+		jQuery( this ).prepend( '<span class="image-open" onclick="viewableArea(this);"><i class="icon icon-xl fa-search-plus fa-fw" aria-hidden="true"></i></span>' );
 	});
 
 	// Then add more click events to image attachment expansion

@@ -111,7 +111,10 @@
 			}
 		}
 		.postbody .attachbox, pre, code {
-			background: $color-03;
+			background: rgba($color-02,0.3);
+		}
+		pre code, code pre {
+			background: none;
 		}
 	}
 }
@@ -726,6 +729,13 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 ========================================================================== */
 
 .section-mcp-view-topic {
+	.panel + .panel {
+		padding: 0;
+		margin: 0;
+		background: none;
+		display: block;
+		width: auto;
+	}
 	#display-panel dl dd {
 		select {
 			width: auto;
@@ -745,6 +755,26 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 .section-mcp-reported-messages, .section-mcp-reported-pms {
 	.mcp-main .post_details + hr + div {
 		margin: 0 0 20px 0;
+	}
+}
+
+/* MCP - User Notes & Moderator Logs
+========================================================================== */
+
+.section-mcp-user-details, .section-mcp-moderator-logs {
+	.mcp-main .action-bar.bar-top {
+		font-size: 0;
+		& > *, &:before {
+			font-size: rem(14px);
+		}
+		&:before {
+			content: 'Search for keywords:';
+			display: block;
+			margin: 10px 0 0 5px;
+		}
+		.inputbox[type='search'] {
+			margin-right: 0;
+		}
 	}
 }
 
