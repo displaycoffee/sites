@@ -285,38 +285,36 @@
 ========================================================================== */
 
 .action-bar {
-	margin: -10px 0 20px 0;
+	margin: -10px -5px 20px -5px;
 	@include flex-flow(row wrap);
 	align-items: center;
+	border: 1px solid red;
 	& > * {
-		margin: 10px 10px 0 0;
+		margin: 10px 5px 0 5px;
 		@include flex;
 	}
-	& > .dropdown-container, & > form {
+	& > .dropdown-container, & > form, & > a:not(.button) {
 		display: inline-block;
 	}
-	.pagination {
-		margin: 10px 0 0 auto;
-		ul {
-			margin-left: 10px;
-		}
+	.pagination, .jumpbox {
+		@include flex(base);
+		text-align: right;
+	}
+	.pagination ul {
+		padding-left: 10px;
 	}
 	&.bar-top .search-box {
 		flex: 0 0 300px;
 	}
 	&.actions-jump {
-		margin: 20px 0 $main-margin 0;
+		margin-top: 20px;
+		margin-bottom: $main-margin;
 		.jumpbox-return .icon {
 			width: auto;
 			margin: 0 5px 0 0;
 		}
-		.jumpbox {
-			margin: 10px 0 0 auto;
-		}
-	}
-	&.compact {
-		&, & > * {
-			margin-top: 0;
+		& > br {
+			display: none;
 		}
 	}
 }

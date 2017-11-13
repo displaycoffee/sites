@@ -629,10 +629,10 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 	.action-bar.bar-top {
 		.inputbox[type='search'] {
 			width: auto;
-			margin: 0 3px 0 5px;
+			//margin: 0 3px 0 5px;
 		}
 		.button2[value='Search'] {
-			margin-top: 0;
+			//margin-top: 0;
 		}
 	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {

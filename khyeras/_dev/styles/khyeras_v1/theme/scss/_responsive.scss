@@ -75,12 +75,10 @@
 		&.bar-top .search-box {
 			flex: 0 0 218px;
 		}
-		.pagination {
-			text-align: right;
-			ul {
-				display: block;
-				margin: 2.5px -5px 0 -5px;
-			}
+		.pagination ul {
+			display: block;
+			margin-top: 2.5px;
+			padding-left: 0;
 		}
 	}
 
@@ -304,23 +302,22 @@
 		}
 	}
 	.action-bar {
-		display: block;
-		&.bar-top {
-			.search-box {
-				float: right;
-				width: 218px;
-				margin-right: 0;
-			}
-			.pagination {
-				clear: both;
+		&.bar-top .search-box {
+			@include flex(base);
+			text-align: right;
+			form {
+				display: inline-block;
+				max-width: 218px;
 			}
 		}
 		.pagination {
+			@include flex(full);
 			@include clearfix('&');
 			text-align: left;
 			ul {
 				float: right;
 				margin-top: 0;
+				padding-left: 10px;
 			}
 		}
 	}
@@ -736,9 +733,13 @@
 			display: none;
 		}
 	}
-	.action-bar.bar-top .search-box {
-		float: none;
-		width: auto;
+	.action-bar {
+		&, &.bar-top .search-box form {
+			display: block;
+		}
+		&.bar-top .search-box form {
+			max-width: none;
+		}
 	}
 
 	// viewtopics.scss
@@ -870,6 +871,7 @@
 	.action-bar .pagination ul {
 		float: none;
 		margin-top: 10px;
+		padding-left: 0;
 	}
 
 	// viewlisting.scss
