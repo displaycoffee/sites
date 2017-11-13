@@ -124,7 +124,7 @@
 	&.dropdown-visible .dropdown {
 		visibility: visible;
 		opacity: 1;
-		z-index: 2;
+		z-index: 50;
 		left: 0;
 	}
 	&.dropdown-up .dropdown {

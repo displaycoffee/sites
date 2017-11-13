@@ -474,6 +474,8 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 			margin: 0 0 20px 0;
 			@include clearfix('&');
 			.left-box, .right-box {
+				display: inline-block;
+				margin: 9.5px 0;
 				.icon {
 					width: auto;
 				}

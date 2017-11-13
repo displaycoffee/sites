@@ -864,14 +864,40 @@
 ========================================================================== */
 
 @include respond(em(450)) {
+	// form-fields.scss
+	.button, .button1, .button2 {
+		display: block;
+	}
+	input.button, input.button1, input.button2 {
+		width: 100%;
+	}
+	fieldset.submit-buttons {
+		font-size: 0;
+		& > strong {
+			display: block;
+		}
+		& > * {
+			font-size: rem(14px);
+		}
+	}
+
 	// layout.scss
 	.forabg, .forumbg, .post, .panel {
 		border-width: 10px;
 	}
-	.action-bar .pagination ul {
-		float: none;
-		margin-top: 10px;
-		padding-left: 0;
+	.action-bar {
+		@include clearfix('&');
+		.topic-tools + .search-box {
+			float: right;
+			width: 100%;
+			margin-top: -40px;
+			padding-left: 110px;
+		}
+		.pagination ul {
+			float: none;
+			margin-top: 5px;
+			padding-left: 0;
+		}
 	}
 
 	// viewlisting.scss
