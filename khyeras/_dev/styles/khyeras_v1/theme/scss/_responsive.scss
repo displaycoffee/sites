@@ -576,6 +576,27 @@
 	}
 
 	// posting.scss
+	#postform #smiley-box {
+		float: none;
+		width: auto;
+		padding: 0;
+		margin-bottom: 20px;
+		.bbcode-status {
+			br {
+				display: none;
+			}
+			em {
+				&:after {
+					content: '\002022';
+					display: inline-block;
+					padding: 0 5px 0 10px;
+				}
+				&:last-child:after {
+					display: none;
+				}
+			}
+		}
+	}
 	#attach-panel #file-list-container table.table1 {
 		border-top: 1px dashed $color-04;
 		td.attach-status .file-status:before {
@@ -871,6 +892,17 @@
 		margin-top: 40px;
 	}
 
+	// posting.scss
+	#color_palette_placeholder table {
+		max-width: none;
+		td {
+			width: 5.88% !important;
+			&:nth-child(3n) {
+				display: none;
+			}
+		}
+	}
+
 	// header.scss
 	#featured-content .flex-row .flex-column .image-wrap {
 		padding-bottom: 0;
@@ -886,8 +918,15 @@
 	.button, .button1, .button2 {
 		display: block;
 	}
-	input.button, input.button1, input.button2 {
+	input.button, input.button1, input.button2, input[type='number'].inputbox {
 		width: 100%;
+	}
+	label input[type='number'].inputbox {
+		width: auto;
+	}
+	.button-icon-only, .mcp-main .postbody .post-buttons .button {
+		display: inline-block;
+		width: auto;
 	}
 	fieldset.submit-buttons {
 		font-size: 0;
@@ -982,6 +1021,17 @@
 		}
 		.poll_option_select {
 			position: static;
+		}
+	}
+
+	// posting.scss
+	#color_palette_placeholder table td {
+		width: 7.69% !important;
+		&:nth-child(3n) {
+			display: inline-block;
+		}
+		&:nth-child(2n) {
+			display: none;
 		}
 	}
 

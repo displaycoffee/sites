@@ -127,6 +127,7 @@
 		overflow: hidden;
 		opacity: 0;
 		padding: 0;
+		visibility: hidden;
 		@include transition(all 0.5s ease);
 	}
 	& > ul {
@@ -181,6 +182,7 @@
 			padding: 0 10px 0 20px;
 			opacity: 1;
 			overflow: visible;
+			visibility: visible;
 			@include sizing(auto, auto);
 		}
 		& > ul > li .dropdown {

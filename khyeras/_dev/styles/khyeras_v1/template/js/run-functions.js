@@ -67,7 +67,8 @@ jQuery( document ).ready( function( $ ) {
 		cpMain.parent().addClass('cp-wrapper');
 	}
 
-	addStickyNav( '#page-header .navbar', '.header-overlay' );
+	addOnScroll( '#page-header .navbar', '.header-overlay', 'sticky' );
+	//addStickyNav( '#page-header .navbar', '.header-overlay' );
 	scrollOnPage( '.scroll-to-top', 100, 0 );
 	scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 

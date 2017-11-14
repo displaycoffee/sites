@@ -22,6 +22,27 @@ function updateaAttachmentDisplay( selector ) {
 }
 
 // Add sticky class to navigation when scroll
+function addOnScroll( selector, anchor, class ) {
+	// Variables for scroll logic
+	var anchor = jQuery( anchor ).offset().top;
+	var windowSelector = jQuery( window );
+	var scrollCheck = false;
+
+	windowSelector.scroll( function() {
+		if (scrollCheck == false) {
+			if ( windowSelector.scrollTop() > anchor ) {
+				jQuery( selector ).addClass( class );
+				scrollCheck = true;
+			}
+		} else {
+			if ( windowSelector.scrollTop() <= anchor ) {
+				jQuery( selector ).removeClass( class );
+				scrollCheck = false;
+			}
+		}
+	});
+}
+
 function addStickyNav( selector, anchor ) {
 	// Variables for scroll logic
 	var anchor = jQuery( anchor ).offset().top;
@@ -47,13 +68,7 @@ function addStickyNav( selector, anchor ) {
 // Modified from https://paulund.co.uk/how-to-create-an-animated-scroll-to-top-with-jquery
 function scrollOnPage( selector, distance, position ) {
 	// Check to see if the window is top if not then display button
-	jQuery( window ).scroll( function() {
-		if ( jQuery( this ).scrollTop() > distance ) {
-			jQuery( selector ).fadeIn();
-		} else {
-			jQuery( selector ).fadeOut();
-		}
-	});
+	addOnScroll( selector, '.site-description', 'scroll-to-visible' );
 
 	// Click event to scroll to top
 	jQuery( selector ).on( 'click', function() {

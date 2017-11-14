@@ -9,16 +9,21 @@
 }
 
 #postform {
-	#colour_palette, #format-buttons {
+	#colour_palette {
 		margin: 0 0 20px 0;
 	}
-	#format-buttons select {
-		width: auto;
-		display: inline-block;
-		margin: 0;
-		@include small-form-ele;
-		font-size: rem(13px);
-		min-height: 0;
+	#format-buttons {
+		margin: -5px 0 20px 0;
+		.button, select {
+			margin: 5px 0 0 0;
+		}
+		select {
+			width: auto;
+			display: inline-block;
+			@include small-form-ele;
+			font-size: rem(13px);
+			min-height: 0;
+		}
 	}
 	#smiley-box {
 		margin: 0 -2.5px;
@@ -61,12 +66,20 @@
 ========================================================================== */
 
 #color_palette_placeholder table {
-	border-collapse: separate;
-	border-spacing: 1px;
-	tr td {
-		@include sizing(16px !important, 16px !important);
+	max-width: 600px;
+	&, tbody, tr {
+		display: block;
+		line-height: 0;
+	}
+	td {
+		@include inline-block(middle);
+		@include sizing(4% !important, auto !important);
+		border-right: 1px solid $color-02;
+		border-bottom: 1px solid $color-02;
 		a {
-			@include sizing(100% !important, 100% !important);
+			@include sizing(100% !important, 0 !important);
+			padding-bottom: 100%;
+			overflow: hidden;
 		}
 	}
 }

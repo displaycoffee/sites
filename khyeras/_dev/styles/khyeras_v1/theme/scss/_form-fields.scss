@@ -45,7 +45,7 @@ input[type='checkbox'], input[type='radio']  {
 label {
 	display: block;
 	margin: 0 0 5px 0;
-	input[type='checkbox'], input[type='radio'] {
+	input[type='checkbox'], input[type='radio'], input[type='number'].inputbox {
 		margin-right: 5px;
 	}
 }
@@ -138,9 +138,6 @@ fieldset dl:not(.pmlist) {
 		padding: 0 10px;
 		.inputbox, select, label {
 			margin-bottom: 0;
-		}
-		input[type='number'].inputbox {
-			margin-right: 5px;
 		}
 	}
 	dt {
