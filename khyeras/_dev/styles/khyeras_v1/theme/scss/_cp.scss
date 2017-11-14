@@ -166,7 +166,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 .section-mcp-user-details #mcp .display-actions + .display-actions div {
 	font-size: 0;
 	a {
-		font-size: rem(14px);
+		font-size: rem($global-font-size);
 		display: block;
 		&:before {
 			@include font-awesome;
@@ -241,11 +241,8 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 			label[for='category'] {
 				@include flex-flow(row nowrap);
 				align-items: flex-start;
-				font-size: 0;
 				margin: 0 65px 0 0;
-				&:before, select {
-					font-size: rem(14px);
-				}
+				@include reset-font-size('&:before, select');
 				&:before {
 					content: 'Category:';
 					flex: 0 0 $form-field-indent1;
@@ -311,7 +308,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 	& > li.header dl dt a {
 		font-family: $font-01;
 		font-variant: none;
-		font-size: rem(14px);
+		font-size: rem($global-font-size);
 	}
 	& > li.row dl dt .topictitle.attachment-filename {
 		margin: 0;
@@ -732,9 +729,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 
 .section-mcp-view-topic {
 	.panel + .panel {
-		padding: 0;
-		margin: 0;
-		background: none;
+		@include reset-inner;
 		display: block;
 		width: auto;
 	}
@@ -765,10 +760,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 
 .section-mcp-user-details, .section-mcp-moderator-logs {
 	.mcp-main .action-bar.bar-top {
-		font-size: 0;
-		& > *, &:before {
-			font-size: rem(14px);
-		}
+		@include reset-font-size('& > *, &:before');
 		&:before {
 			content: 'Search for keywords:';
 			display: block;

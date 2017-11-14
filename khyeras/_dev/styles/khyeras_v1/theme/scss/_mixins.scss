@@ -129,6 +129,16 @@
 	line-height: 1.2;
 }
 
+// Reset font sizing for responsive button spacing
+@mixin reset-font-size($selector) {
+	font-size: 0;
+	#{$selector} {
+		font-size: rem($global-font-size);
+	}
+}
+
+
+// Reset inner element styling
 @mixin reset-inner {
 	background: none;
 	margin: 0;

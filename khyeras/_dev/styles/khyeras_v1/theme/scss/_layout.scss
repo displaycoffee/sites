@@ -83,7 +83,7 @@
 	.dropdown {
 		visibility: hidden;
 		opacity: 0;
-		@include transition(opacity 0.5s ease-in-out);
+		@include transition(opacity 0.5s ease);
 		display: block !important;
 		min-width: 160px;
 		position: absolute;
@@ -395,7 +395,7 @@
 			@include font-awesome;
 			font-size: 0;
 			&:before {
-				font-size: rem(14px);
+				font-size: rem($global-font-size);
 			}
 			&.pm-icon:before {
 				content: unicode($icon-inbox);
@@ -460,7 +460,7 @@
 		content: '\f004\0000A0\0000A0 Online';
 		@include sizing(80px, 0);
 		font-family: 'FontAwesome', $font-01;
-		font-size: rem(14px);
+		font-size: rem($global-font-size);
 		border-right: 8px inset transparent;
 		border-bottom: 12px solid $color-10;
 		border-top: 12px solid $color-10;

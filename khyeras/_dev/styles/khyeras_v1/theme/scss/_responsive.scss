@@ -509,6 +509,11 @@
 			text-align: left;
 			padding-right: 5px;
 		}
+		&:not(.show-header) {
+			tbody tr {
+				padding: 20px 0;
+			}
+		}
 		&.show-header {
 			thead {
 				&, th:first-child {
@@ -600,7 +605,7 @@
 	#attach-panel #file-list-container table.table1 {
 		border-top: 1px dashed $color-04;
 		td.attach-status .file-status:before {
-			font-size: rem(14px);
+			font-size: rem($global-font-size);
 		}
 	}
 
@@ -816,7 +821,7 @@
 			}
 		}
 	}
-	.topic_poll .panel .content fieldset.polls {
+	fieldset.polls {
 		border-top: 1px dashed $color-04;
 		padding-top: 10px;
 		position: relative;
@@ -841,16 +846,6 @@
 				margin-bottom: 3px;
 				padding-right: 80px;
 			}
-			.poll_option_select {
-				left: auto;
-				right: 0;
-				&:before {
-					content: 'Vote: \0000A0';
-				}
-				& + .resultbar {
-					padding-left: 10px;
-				}
-			}
 			.resultbar {
 				width: 70%;
 			}
@@ -870,6 +865,16 @@
 					text-align: right;
 				}
 			}
+		}
+	}
+	fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
+		left: auto;
+		right: 0;
+		&:before {
+			content: 'Vote: \0000A0';
+		}
+		& + .resultbar {
+			padding-left: 10px;
 		}
 	}
 	.postprofile {
@@ -929,12 +934,9 @@
 		width: auto;
 	}
 	fieldset.submit-buttons {
-		font-size: 0;
+		@include reset-font-size('& > *');
 		& > strong {
 			display: block;
-		}
-		& > * {
-			font-size: rem(14px);
 		}
 	}
 
@@ -1005,6 +1007,12 @@
 			}
 		}
 	}
+	fieldset.polls dl dt {
+		padding-right: 0;
+	}
+	fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
+		position: static;
+	}
 	.postprofile dd.profile-contact {
 		position: relative;
 		.dropdown-container {
@@ -1013,14 +1021,6 @@
 				left: -100px;
 				right: 0;
 			}
-		}
-	}
-	.topic_poll .panel .content fieldset.polls dl {
-		dt {
-			padding-right: 0;
-		}
-		.poll_option_select {
-			position: static;
 		}
 	}
 
@@ -1032,6 +1032,12 @@
 		}
 		&:nth-child(2n) {
 			display: none;
+		}
+	}
+	#attach-panel #file-list-container table.table1 td.attach-name .attach-controls {
+		@include reset-font-size('input');
+		input + input {
+			margin-top: 10px;
 		}
 	}
 
@@ -1057,9 +1063,9 @@
 			.header_settings a {
 				font-size: 0;
 				&:before {
+					font-size: rem($global-font-size);
 					@include font-awesome;
 					content: unicode($icon-cogs);
-					font-size: rem(14px);
 				}
 			}
 		}
@@ -1079,7 +1085,7 @@
 				}
 			}
 			.icon-mark .icon {
-				font-size: rem(14px);
+				font-size: rem($global-font-size);
 			}
 		}
 	}
@@ -1090,7 +1096,7 @@
 
 @include respond(em(397)) {
 	// viewtopics.scss
-	.topic_poll .panel .content fieldset.polls dl {
+	fieldset.polls dl {
 		.resultbar, .poll_option_percent {
 			float: none;
 			width: auto;

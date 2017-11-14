@@ -82,7 +82,7 @@ html {
 
 body {
 	font-family: $font-01;
-	font-size: rem(14px);
+	font-size: rem($global-font-size);
 	line-height: 1.5;
 	font-weight: normal;
 	color: $color-01;
@@ -100,11 +100,6 @@ a {
 a[class*='username']:hover {
 	color: $color-07 !important;
 }
-
-p.right {
-	text-align: right;
-}
-
 /* Headers
 ========================================================================== */
 
@@ -152,7 +147,7 @@ h5, h6 {
 
 .icon  {
 	@include font-awesome;
-	font-size: rem(14px);
+	font-size: rem($global-font-size);
 }
 
 .icon.rpg-icon {
@@ -168,7 +163,7 @@ h5, h6 {
 }
 
 .icon.icon-md {
-	font-size: rem(14px);
+	font-size: rem($global-font-size);
 }
 
 .icon.icon-sm {
