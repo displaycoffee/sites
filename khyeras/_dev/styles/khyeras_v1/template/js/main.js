@@ -21,6 +21,28 @@ function updateaAttachmentDisplay( selector ) {
 	});
 }
 
+// Add sticky class to navigation when scroll
+function addStickyNav( selector, anchor ) {
+	// Variables for scroll logic
+	var anchor = jQuery( anchor ).offset().top;
+	var windowSelector = jQuery( window );
+	var scrollCheck = false;
+
+	windowSelector.scroll( function() {
+		if (scrollCheck == false) {
+			if ( windowSelector.scrollTop() > anchor ) {
+				jQuery( selector ).addClass( 'sticky' );
+				scrollCheck = true;
+			}
+		} else {
+			if ( windowSelector.scrollTop() <= anchor ) {
+				jQuery( selector ).removeClass( 'sticky' );
+				scrollCheck = false;
+			}
+		}
+	});
+}
+
 // Scroll to top functionality
 // Modified from https://paulund.co.uk/how-to-create-an-animated-scroll-to-top-with-jquery
 function scrollOnPage( selector, distance, position ) {

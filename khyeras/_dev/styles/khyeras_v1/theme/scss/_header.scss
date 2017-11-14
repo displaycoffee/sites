@@ -108,23 +108,41 @@
 	left: 0;
 	right: 0;
 	z-index: 20;
+	text-align: center;
+	padding: 10px 0;
+	a {
+		color: $color-01;
+		&:hover {
+			color: $color-06;
+		}
+	}
+	.site-logo-text, & > ul, & > ul > li {
+		@include inline-block(middle);
+	}
+	.site-logo-text {
+		font-family: $font-03;
+		font-size: rem(30px);
+		line-height: 1;
+		@include sizing(0, 0);
+		overflow: hidden;
+		opacity: 0;
+		padding: 0;
+		@include transition(all 0.5s ease);
+	}
 	& > ul {
 		margin: 0;
 		list-style: none;
-		text-align: center;
 		& > li {
-			@include inline-block(middle);
 			& > a {
-				padding: 12px 20px;
+				padding: 0 20px;
 				display: block;
-				color: $color-01;
 			}
 			& > .icon {
 				display: block;
 				@include sizing(20px, 20px);
 				line-height: 20px;
 				position: absolute;
-				top: 11px;
+				top: -1.5px;
 				right: 5px;
 				z-index: 10;
 				// Setting the variable here to use multiple transitions
@@ -132,17 +150,17 @@
 				@include transition($transform);
 				transform: rotate(0deg);
 			}
-			& > a:hover, & > .icon:hover {
+			& > .icon:hover {
 				color: $color-06;
 			}
 			&.dropdown-container > a {
-				padding: 12px 40px 12px 20px;
+				padding-right: 40px;;
 			}
 			&.dropdown-visible > .icon {
 				transform: rotate(180deg);
 			}
 			.dropdown {
-				top: 45px;
+				top: 32px;
 				background: $color-04;
 				border: 1px solid $color-03;
 				border-top: 0;
@@ -155,6 +173,18 @@
 				left: 0;
 				right: auto;
 			}
+		}
+	}
+	&.sticky {
+		background: rgba($color-05, 1.0);
+		.site-logo-text {
+			padding: 0 10px 0 20px;
+			opacity: 1;
+			overflow: visible;
+			@include sizing(auto, auto);
+		}
+		& > ul > li .dropdown {
+			top: 35px;
 		}
 	}
 }
@@ -409,22 +439,17 @@
 
 .mobile-menu-button {
 	cursor: pointer;
-	text-align: center;
-	@include sizing(70px, 70px);
-	border-radius: 100%;
-	border: 0;
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	z-index: 9999;
-	background: $color-10;
+	padding: 0 20px;
 	.mobile-menu-icon, .mobile-menu-text {
 		@include inline-block(middle);
 	}
+	.mobile-menu-text {
+		font-size: rem(16px);
+	}
 	.mobile-menu-icon {
 		@include sizing(25px, 20px);
+		margin: 0 5px 0 0;
 		position: relative;
-		margin: 15px auto 0 auto;
 		.lines {
 			position: relative;
 			display: block;
@@ -449,26 +474,6 @@
 				top: 16px;
 			}
 		}
-		.fa-times {
-			font-size: rem(20px);
-			margin: 0;
-		}
-	}
-	.mobile-menu-text {
-		display: block;
-		margin: 2.5px 0 0 0;
-	}
-	.close {
-		display: none;
-	}
-}
-
-.mobile-open .mobile-menu-button {
-	.open {
-		display: none;
-	}
-	.close {
-		display: block;
 	}
 }
 

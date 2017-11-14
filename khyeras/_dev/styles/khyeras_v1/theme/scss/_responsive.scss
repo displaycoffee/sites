@@ -267,6 +267,22 @@
 			margin-left: auto;
 		}
 	}
+
+	// header.scss
+	#page-header .navbar {
+		.site-logo-text {
+			display: block;
+		}
+		&.sticky {
+			.site-logo-text {
+				padding-right: 20px;
+				margin: 0 0 10px 0;
+			}
+			& > ul > li .dropdown {
+				top: 32px;
+			}
+		}
+	}
 }
 
 /* 768 Breakpoint
@@ -603,19 +619,13 @@
 		position: relative;
 		overflow: hidden;
 	}
-	html.mobile-open {
-	    height: 100%;
-	}
 	.mobile-menu-button {
-		display: inline-block;
+		@include inline-block(middle);
 	}
 	#mobile-menu {
 		display: block;
 	}
 	#page-header {
-		.navbar {
-			display: none;
-		}
 		.headerbar .header-content {
 			.site-description, .header-divider, .site-quotes {
 				min-width: 1px;
@@ -643,6 +653,14 @@
 					width: 50%;
 					margin: 0 auto;
 				}
+			}
+		}
+		.navbar {
+			.site-logo-text {
+				display: inline-block;
+			}
+			&.sticky .site-logo-text {
+				margin-bottom: 0;
 			}
 		}
 	}
