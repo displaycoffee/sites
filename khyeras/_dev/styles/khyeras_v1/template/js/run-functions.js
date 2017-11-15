@@ -26,18 +26,27 @@ if ( forumImage.length ) {
 
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
+	// Check if the dt in fieldset contains a single empty space
+	jQuery( 'fieldset dl dt' ).each( function() {
+		var dtHTML = jQuery( this );
+
+		if ( dtHTML.html() == '&nbsp;' ) {
+			dtHTML.addClass( 'empty-space' );
+		} else {
+			dtHTML.removeClass( 'empty-space' );
+		}
+	});
+
 	// Add wrapper around topic review if height is bigger than 400px
-	var topicReview = $( '.topicreview' );
-	addScrollableArea( topicReview, 400, $( '.review .right-box' ) );
+	addScrollableArea( $( '.topicreview' ), 400, $( '.review .right-box' ) );
 
 	// Check if post details in mcp should be scrollable
-	var mcpPostDetails = $( '.mcp-main #post_details' );
-	addScrollableArea( mcpPostDetails, 400, $( '.mcp-main .post-buttons #expand' ) );
+	addScrollableArea( $( '.mcp-main #post_details' ), 400, $( '.mcp-main .post-buttons #expand' ) );
 
 	// Add icon for image attachment expansion
 	var attachImage = '.attach-image';
-	jQuery( attachImage ).each( function() {
-		jQuery( this ).prepend( '<span class="image-open" onclick="viewableArea(this);"><i class="icon icon-xl fa-search-plus fa-fw" aria-hidden="true"></i></span>' );
+	$( attachImage ).each( function() {
+		$( this ).prepend( '<span class="image-open" onclick="viewableArea(this);"><i class="icon icon-xl fa-search-plus fa-fw" aria-hidden="true"></i></span>' );
 	});
 
 	// Then add more click events to image attachment expansion
@@ -68,7 +77,6 @@ jQuery( document ).ready( function( $ ) {
 	}
 
 	addOnScroll( '#page-header .navbar', '.header-overlay', 'sticky' );
-	//addStickyNav( '#page-header .navbar', '.header-overlay' );
 	scrollOnPage( '.scroll-to-top', 100, 0 );
 	scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 

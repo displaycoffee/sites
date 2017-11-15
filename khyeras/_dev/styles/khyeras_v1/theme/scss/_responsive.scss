@@ -144,7 +144,7 @@
 		flex: 0 0 176px;
 	}
 
-	// positing.scss
+	// posting.scss
 	#attach-panel #file-list-container table.table1 td.attach-name {
 		.file-name, .attach-controls {
 			width: auto;
@@ -157,6 +157,20 @@
 			right: 0;
 			text-align: left;
 			margin-top: 5px;
+		}
+	}
+
+	// other-sections.scss
+	#search_memberlist {
+		fieldset.fields1 dl {
+			dt {
+				width: auto;
+				float: none;
+				margin: 0 0 5px 0;
+			}
+			dd {
+				margin-left: 0;
+			}
 		}
 	}
 
@@ -289,7 +303,7 @@
 ========================================================================== */
 
 @include respond(em(768)) {
-	// form-field.scss
+	// form-fields.scss
 	fieldset:not(.polls) {
 		&, &.fields1 {
 			dl:not(.pmlist) {
@@ -301,6 +315,9 @@
 				}
 			}
 		}
+		dl dt.empty-space {
+			display: none;
+		}
 		dl:not(.pmlist) dt {
 			float: none;
 			margin: 0 0 5px 0;
@@ -311,20 +328,19 @@
 	}
 
 	// layout.scss
+	.flex-row .flex-column, .column1, .column2 {
+		width: auto;
+	}
 	.flex-row {
 		display: block;
-		.flex-column {
-			width: auto;
-		}
+	}
+	.column1, .column2 {
+		float: none;
+		padding: 0;
 	}
 	.action-bar {
 		&.bar-top .search-box {
 			@include flex(base);
-			text-align: right;
-			form {
-				display: inline-block;
-				max-width: 218px;
-			}
 		}
 		.pagination {
 			@include flex(full);
@@ -778,12 +794,7 @@
 		}
 	}
 	.action-bar {
-		&, &.bar-top .search-box form {
-			display: block;
-		}
-		&.bar-top .search-box form {
-			max-width: none;
-		}
+		display: block;
 	}
 
 	// viewtopics.scss
@@ -845,6 +856,9 @@
 				width: auto;
 				margin-bottom: 3px;
 				padding-right: 80px;
+				&.empty-space {
+					display: none;
+				}
 			}
 			.resultbar {
 				width: 70%;
@@ -852,11 +866,6 @@
 			.poll_option_percent {
 				width: 30%;
 				text-align: right;
-			}
-			&.poll_total_votes, &.poll_vote, &.poll_view_results {
-				dt {
-					display: none;
-				}
 			}
 			&.poll_vote, &.poll_view_results {
 				.resultbar {
@@ -908,6 +917,19 @@
 		}
 	}
 
+	// other-sections.scss
+	.section-search form[data-focus='keywords'] fieldset dl dd {
+		#sk, #st, select[name='ch'] {
+			width: 100%;
+		}
+		#sk, select[name='ch'] {
+			margin: 0 0 5px 0;
+		}
+		#sk + label {
+			margin-left: -8px;
+		}
+	}
+
 	// header.scss
 	#featured-content .flex-row .flex-column .image-wrap {
 		padding-bottom: 0;
@@ -945,7 +967,6 @@
 		border-width: 10px;
 	}
 	.action-bar {
-		@include clearfix('&');
 		.topic-tools + .search-box {
 			float: right;
 			width: 100%;
@@ -1038,6 +1059,25 @@
 		@include reset-font-size('input');
 		input + input {
 			margin-top: 10px;
+		}
+	}
+
+	// other-sections.scss
+	#search_memberlist {
+		fieldset.fields1 dl dd {
+			select:not(#search_group_id) {
+				&, & + .inputbox {
+					width: 100%;
+					float: none;
+				}
+			}
+			select:not(#search_group_id):first-child {
+				margin-right: 0;
+			}
+			select:not(#search_group_id) + .inputbox, select[name='sd'] {
+				margin-top: 5px;
+				margin-left: 0;
+			}
 		}
 	}
 

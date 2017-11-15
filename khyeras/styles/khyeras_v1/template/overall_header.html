@@ -120,7 +120,7 @@
 			<!-- INCLUDE header_featured.html -->
 		<!-- ENDIF -->
 
-		<!-- IF SCRIPT_NAME != 'index' and SCRIPT_NAME != 'mcp' and SCRIPT_NAME != 'ucp' -->
+		{% if navlinks|length > 0 %}
 			<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
 				<div class="wrapper">
 					<ul class="breadcrumbs">
@@ -141,7 +141,7 @@
 					</ul>
 				</div>
 			</nav>
-		<!-- ENDIF -->
+		{% endif %}
 
 		<!-- EVENT overall_header_page_body_before -->
 
