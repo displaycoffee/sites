@@ -1,24 +1,19 @@
 /* Forum FAQ
 ========================================================================== */
 
-dl.faq {
-	dt {
-		margin: 0 0 5px 0;
-	}
-	& + .top {
-		display: inline-block;
-		margin: 0 0 10px 0;
-		position: relative;
-		top: -10px;
-		left: -2px;
-	}
+dl.faq dt, dl.faq + .top, #faqlinks dl.faq dd {
+	margin: 0 0 5px 0;
 }
 
-#faqlinks dl.faq dd {
-	margin: 0 0 5px 0;
-	&:last-child {
-		margin: 0;
-	}
+dl.faq + .top {
+	display: inline-block;
+	position: relative;
+	top: -15px;
+	left: -2px;
+}
+
+#faqlinks dl.faq dd:last-child {
+	margin-bottom: 0;
 }
 
 /* Search Page
@@ -213,24 +208,19 @@ dl.faq {
 ========================================================================== */
 
 .quick-login {
-	margin: 0 -2.5px 30px -2.5px;
-	label, a, span, .inputbox, .button2 {
+	margin: 0 0 20px 0;
+	& > label, & > a, span {
 		@include inline-block(middle);
 	}
-	label, a, .responsive-hide, .button2 {
-		margin: 0 2.5px;
+	& > label, & > a, & > span {
+		margin: 0 5px 0 0;
 	}
 	.inputbox {
-		width: 200px;
 		margin: 0;
+		width: 270px;
 	}
-	label {
-		span {
-			margin: 0 5px 0 0;
-		}
-		input[type='checkbox'] {
-			margin: 0 0 0 5px;
-		}
+	input[type='checkbox'] {
+		margin: 0 0 0 5px;
 	}
 }
 

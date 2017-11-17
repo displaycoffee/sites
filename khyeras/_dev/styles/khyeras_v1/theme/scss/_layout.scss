@@ -163,20 +163,22 @@
 		margin: 0 -2.5px;
 		li {
 			padding: 1.5px 2.5px;
-			&, a {
-				@include inline-block(middle);
+			&, a, i {
+				vertical-align: middle;
 			}
-			span {
-				margin: 0;
+			&, a {
+				display: inline-block;
 			}
 			a {
 				white-space: nowrap;
 			    text-overflow: ellipsis;
-			    vertical-align: bottom;
 			    overflow: hidden;
 			}
 			.icon {
 				margin: 0 5px 0 0;
+				&.fa-home + span {
+					margin-left: 0;
+				}
 			}
 			.fa-chevron-right {
 				font-size: rem(13px);

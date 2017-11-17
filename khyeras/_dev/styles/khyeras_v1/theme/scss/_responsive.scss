@@ -31,6 +31,11 @@
 		}
 	}
 
+	// other-sections.scss
+	.quick-login .inputbox {
+		width: 170px;
+	}
+
 	// cp.scss
 	.cp-menu {
 		flex: 0 0 150px;
@@ -170,6 +175,33 @@
 			}
 			dd {
 				margin-left: 0;
+			}
+		}
+	}
+	.quick-login {
+		@include clearfix('&');
+		text-align: right;
+		label {
+			&[for='username'], &[for='password'] {
+				float: left;
+				width: 50%;
+				margin: 0 0 20px 0;
+				@include flex-flow(row wrap);
+				align-items: center;
+				span {
+					@include flex;
+					margin-right: 10px;
+				}
+				.inputbox {
+					width: auto;
+					@include flex(base);
+				}
+			}
+			&[for='username'] {
+				padding-right: 5px;
+			}
+			&[for='password'] {
+				padding-left: 5px;;
 			}
 		}
 	}
@@ -622,6 +654,40 @@
 		border-top: 1px dashed $color-04;
 		td.attach-status .file-status:before {
 			font-size: rem($global-font-size);
+		}
+	}
+
+	// other-sections.scss
+	.quick-login {
+		text-align: left;
+		& > label, & > a, & > span {
+			margin-right: 0;
+		}
+		& > a, & > label, label span, label[for='username'], label[for='password'] {
+			display: block;
+		}
+		label {
+			&[for='username'], &[for='password'] {
+				padding: 0;
+				width: auto;
+				float: none;
+				span {
+					margin: 0 0 5px 0;
+				}
+				.inputbox {
+					width: 100%;
+				}
+			}
+			&[for='password'] {
+				margin-bottom: 5px;
+			}
+			&[for='autologin'] {
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+		}
+		.responsive-hide {
+			display: none;
 		}
 	}
 
@@ -1078,6 +1144,11 @@
 				margin-top: 5px;
 				margin-left: 0;
 			}
+		}
+	}
+	.section-ucp-send-password, .section-ucp-send-activation-email {
+		fieldset dl dd .button1 + .button2 {
+			margin-top: -10px;
 		}
 	}
 
