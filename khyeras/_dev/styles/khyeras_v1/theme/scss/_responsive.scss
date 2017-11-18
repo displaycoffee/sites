@@ -658,6 +658,14 @@
 	}
 
 	// other-sections.scss
+	#register .captcha-panel .captcha {
+		.g-recaptcha, &.captcha-image + dd .button2 {
+			margin: 10px 0 0 0;
+		}
+		&.captcha-image + dd {
+			display: block;
+		}
+	}
 	.quick-login {
 		text-align: left;
 		& > label, & > a, & > span {
@@ -984,6 +992,15 @@
 	}
 
 	// other-sections.scss
+	#register .captcha-panel .captcha .g-recaptcha {
+		max-width: 220px;
+		max-height: 50px;
+		transform-origin: 0 0;
+		transform: scale(0.66);
+		& > div {
+			@include sizing(auto !important, auto !important);
+		}
+	}
 	.section-search form[data-focus='keywords'] fieldset dl dd {
 		#sk, #st, select[name='ch'] {
 			width: 100%;

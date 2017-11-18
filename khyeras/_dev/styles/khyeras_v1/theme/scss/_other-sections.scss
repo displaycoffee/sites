@@ -232,6 +232,8 @@ dl.faq + .top {
 		margin-left: 0;
 	}
 	.captcha-panel .captcha.captcha-image + dd {
+		margin-top: 10px;
+		margin-bottom: 10px;
 		@include flex-flow(row nowrap);
 		.inputbox {
 			@include flex(base);
