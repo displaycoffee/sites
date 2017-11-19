@@ -13,9 +13,9 @@
 		margin: 0 0 20px 0;
 	}
 	#format-buttons {
-		margin: 0 0 15px 0;
+		margin: 0 0 $ffs-minus 0;
 		.button, select {
-			margin: 0 0 5px 0;
+			margin: 0 0 $ffs 0;
 		}
 		select {
 			width: auto;
@@ -26,12 +26,12 @@
 		}
 	}
 	#smiley-box {
-		margin: 0 -2.5px;
+		margin: 0 (-$ffs-half);
 		padding: 0 0 0 20px;
 		float: right;
 		width: 230px;
 		& > a {
-			margin: 0 2.5px;
+			margin: 0 $ffs-half;
 			&, img {
 				@include inline-block(middle);
 			}
@@ -182,8 +182,8 @@
 }
 
 .file-total-progress {
-	@include sizing(100%, 4px);
-	margin: 0 0 -4px 0;
+	@include sizing(100%, 5px);
+	margin: 0 0 -5px 0;
 }
 
 .file-total-progress-bar {

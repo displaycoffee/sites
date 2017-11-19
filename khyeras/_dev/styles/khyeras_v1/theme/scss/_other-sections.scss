@@ -24,7 +24,7 @@ dl.faq + .top {
 		width: 50%;
 	}
 	select[name='ch'] {
-		margin-right: 5px;
+		margin-right: $ffs;
 	}
 }
 
@@ -53,17 +53,14 @@ dl.faq + .top {
 				padding-bottom: 0;
 			}
 		}
-		ul.searchresults {
-			list-style: none;
-			li {
-				direction: rtl;
-				a {
-					span {
-						margin: 0 10px 0 0;
-					}
-					.icon {
-						width: auto;
-					}
+		ul.searchresults li {
+			direction: rtl;
+			a {
+				span {
+					margin: 0 10px 0 0;
+				}
+				.icon {
+					width: auto;
 				}
 			}
 		}
@@ -169,8 +166,8 @@ dl.faq + .top {
 				dd {
 					select[name='g'] {
 						width: auto;
+						margin-bottom: 0;
 						min-width: 33.33%;
-						margin: 0 5px 0 0;
 					}
 					span[style*='color'] {
 						@include spectral-common;
@@ -213,14 +210,14 @@ dl.faq + .top {
 		@include inline-block(middle);
 	}
 	& > label, & > a, & > span {
-		margin: 0 5px 0 0;
+		margin: 0 $ffs 0 0;
 	}
 	.inputbox {
 		margin: 0;
 		width: 270px;
 	}
 	input[type='checkbox'] {
-		margin: 0 0 0 5px;
+		margin: 0 0 0 $ffs;
 	}
 }
 
@@ -228,7 +225,7 @@ dl.faq + .top {
 ========================================================================== */
 
 #register {
-	.panel:first-child fieldset dl:first-child dd {
+	.panel:first-child fieldset dl dd:first-child {
 		margin-left: 0;
 	}
 	.captcha-panel .captcha.captcha-image + dd {
@@ -240,7 +237,7 @@ dl.faq + .top {
 		}
 		.button2 {
 			@include flex;
-			margin: 0 0 0 5px;
+			margin: 0 0 0 $ffs;
 		}
 	}
 }

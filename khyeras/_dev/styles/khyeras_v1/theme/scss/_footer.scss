@@ -15,15 +15,12 @@
 			.copyright, .bottom-line {
 				font-size: rem(13px);
 			}
-			.button-link {
-				display: inline-block;
-				line-height: 0;
-			}
 			.button-wrapper {
-				margin: 0 -2.5px 12px -2.5px;
+				margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
 				.button-link {
-					vertical-align: middle;
-					margin: 0 2.5px 8px 2.5px;
+					@include inline-block(middle);
+					line-height: 0;
+					margin: 0 $ffs-half $ffs $ffs-half;
 				}
 			}
 		}
@@ -93,7 +90,7 @@
 		margin: 0;
 	}
 	label #delete_permanent {
-		margin: 0 5px;
+		margin-left: $ffs;
 	}
 	label[for='delete_reason'] {
 		margin: 20px 0 0 0;

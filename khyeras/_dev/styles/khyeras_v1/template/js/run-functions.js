@@ -27,8 +27,8 @@ if ( forumImage.length ) {
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
 	// Check if the dt in fieldset contains a single empty space
-	jQuery( 'fieldset dl dt' ).each( function() {
-		var dtHTML = jQuery( this );
+	$( 'fieldset dl dt' ).each( function() {
+		var dtHTML = $( this );
 
 		if ( dtHTML.html() == '&nbsp;' ) {
 			dtHTML.addClass( 'empty-space' );
@@ -76,9 +76,11 @@ jQuery( document ).ready( function( $ ) {
 		cpMain.parent().addClass('cp-wrapper');
 	}
 
-	addOnScroll( '#page-header .navbar', '.header-overlay', 'sticky' );
-	scrollOnPage( '.scroll-to-top', 100, 0 );
-	scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
+	if ( !$( 'body' ).hasClass( 'simple-phpbb' ) ) {
+		addOnScroll( '#page-header .navbar', '.header-overlay', 'sticky' );
+		scrollOnPage( '.scroll-to-top', 100, 0 );
+		scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
+	}
 
 	toggleMobileContent( '.toggle-links a', '#page-welcome .site-callouts .site-links' );
 	toggleMobileContent( '.toggle-featured a', '#featured-content' );

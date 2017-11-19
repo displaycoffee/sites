@@ -116,6 +116,16 @@ a.anchor {
 	display: block;
 }
 
+/* Remove List Style
+========================================================================== */
+
+.dropdown .dropdown-contents, #nav-breadcrumbs ul, .pagination ul,
+.tabs ul, .minitabs ul, .topiclist, .postbody .post-buttons,
+.section-search ul.searchresults, .cp-menu ul,
+#pmheader-postingbox .recipients ul, #page-header ul, #page-welcome .user-buttons, #notification_list ul {
+	list-style: none;
+}
+
 /* Utilities
 ========================================================================== */
 

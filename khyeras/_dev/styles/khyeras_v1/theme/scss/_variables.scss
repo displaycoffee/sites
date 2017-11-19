@@ -76,11 +76,17 @@ $icon-yahoo: \f19e;
 $icon-youtube: \f16a;
 
 /* Other
+
+   ffi = form field indent	
+   ffs = form field spacing
 ========================================================================== */
 
 $alt-field-width: 50%;
-$form-field-indent1: 300px;
-$form-field-indent2: 200px;
+$ffi-01: 300px;
+$ffi-02: 200px;
+$ffs: 5px;
+$ffs-minus: (20 - $ffs);
+$ffs-half: ($ffs / 2);
 $list-icon-size: 40px;
 $main-margin: 30px;
 $mobile-menu-width: 300px;

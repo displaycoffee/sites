@@ -8,7 +8,6 @@
 .postbody {
 	position: relative;
 	.post-buttons {
-		list-style: none;
 		margin: 0;
 		position: absolute;
 		top: 0;
@@ -34,7 +33,7 @@
 			color: $color-07;
 		}
 		.button2 {
-			margin: 0 5px;
+			margin: 0 $ffs;
 		}
 		&.reported {
 			background: mix(white, $color-11, 80%);
@@ -276,20 +275,18 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 	left: 30%;
 }
 
-.topic_poll .panel {
-	.content {
-		.author {
-			margin: 0;
-			.poll_max_votes {
-				display: block;
-				margin: 0 0 20px 0;
-			}
+.topic_poll .panel .content {
+	.author {
+		margin: 0;
+		.poll_max_votes {
+			display: block;
+			margin: 0 0 20px 0;
 		}
-		.vote-submitted {
-			margin: 0 0 20px 20%;
-			padding: 0 5px;
-			font-style: italic;
-		}
+	}
+	.vote-submitted {
+		margin: 0 0 20px 30%;
+		padding: 0 5px;
+		font-style: italic;
 	}
 }
 

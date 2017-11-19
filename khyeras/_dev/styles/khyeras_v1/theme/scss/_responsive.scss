@@ -161,7 +161,7 @@
 			display: block;
 			right: 0;
 			text-align: left;
-			margin-top: 5px;
+			margin-top: $ffs;
 		}
 	}
 
@@ -171,7 +171,7 @@
 			dt {
 				width: auto;
 				float: none;
-				margin: 0 0 5px 0;
+				margin: 0 0 $ffs 0;
 			}
 			dd {
 				margin-left: 0;
@@ -190,7 +190,7 @@
 				align-items: center;
 				span {
 					@include flex;
-					margin-right: 10px;
+					margin-right: $ffs;
 				}
 				.inputbox {
 					width: auto;
@@ -198,10 +198,10 @@
 				}
 			}
 			&[for='username'] {
-				padding-right: 5px;
+				padding-right: $ffs;
 			}
 			&[for='password'] {
-				padding-left: 5px;;
+				padding-left: $ffs;
 			}
 		}
 	}
@@ -228,7 +228,7 @@
 				width: 100%;
 			}
 			.pm-legend {
-				padding: 0 10px 0 37px;
+				padding: 0 10px 0 31px;
 				.imageset {
 					left: 10px;
 				}
@@ -257,10 +257,10 @@
 	// form-fields.scss
 	fieldset:not(.polls) dl:not(.pmlist) {
 		dt {
-			width: $form-field-indent1 - 100;
+			width: $ffi-01 - 100;
 		}
 		dd {
-			margin-left: $form-field-indent1 - 100;
+			margin-left: $ffi-01 - 100;
 		}
 	}
 
@@ -352,7 +352,7 @@
 		}
 		dl:not(.pmlist) dt {
 			float: none;
-			margin: 0 0 5px 0;
+			margin: 0 0 $ffs 0;
 			label {
 				margin-right: 0;
 			}
@@ -680,14 +680,14 @@
 				width: auto;
 				float: none;
 				span {
-					margin: 0 0 5px 0;
+					margin: 0 0 $ffs 0;
 				}
 				.inputbox {
 					width: 100%;
 				}
 			}
 			&[for='password'] {
-				margin-bottom: 5px;
+				margin-bottom: $ffs;
 			}
 			&[for='autologin'] {
 				margin-top: 20px;
@@ -960,6 +960,10 @@
 			padding-left: 10px;
 		}
 	}
+	.topic_poll .panel .content .vote-submitted {
+		margin-left: 0;
+		padding: 0;
+	}
 	.postprofile {
 		dt.has-avatar {
 			.avatar-container {
@@ -1006,7 +1010,7 @@
 			width: 100%;
 		}
 		#sk, select[name='ch'] {
-			margin: 0 0 5px 0;
+			margin: 0 0 $ffs 0;
 		}
 		#sk + label {
 			margin-left: -8px;
@@ -1141,7 +1145,7 @@
 	#attach-panel #file-list-container table.table1 td.attach-name .attach-controls {
 		@include reset-font-size('input');
 		input + input {
-			margin-top: 10px;
+			margin-top: $ffs;
 		}
 	}
 
@@ -1158,14 +1162,14 @@
 				margin-right: 0;
 			}
 			select:not(#search_group_id) + .inputbox, select[name='sd'] {
-				margin-top: 5px;
+				margin-top: $ffs;
 				margin-left: 0;
 			}
 		}
 	}
 	.section-ucp-send-password, .section-ucp-send-activation-email {
 		fieldset dl dd .button1 + .button2 {
-			margin-top: -10px;
+			margin-top: (-$ffs-minus);
 		}
 	}
 
