@@ -163,6 +163,12 @@ dl.faq + .top {
 			}
 			.left-box.profile-details {
 				@include flex(base);
+				dt:first-child {
+					display: none;
+					& + dd {
+						margin-left: 0;
+					}
+				}
 				dd {
 					select[name='g'] {
 						width: auto;
@@ -198,6 +204,11 @@ dl.faq + .top {
 	.copyright {
 		text-align: center;
 		font-size: rem(13px);
+	}
+	.page-body > a[onclick*='window.close'] {
+		position: absolute;
+		top: 30px;
+		right: 30px;
 	}
 }
 
@@ -238,6 +249,44 @@ dl.faq + .top {
 		.button2 {
 			@include flex;
 			margin: 0 0 0 $ffs;
+		}
+	}
+}
+
+/* Who Is Online
+========================================================================== */
+
+.section-viewonline {
+	.viewonline-title + p, .forumbg + p,
+	.action-bar.bar-top, .action-bar.bar-bottom {
+		float: left;
+		width: 50%;
+	}
+	.viewonline-title + p, .forumbg + p {
+		padding-right: 5px;
+	}
+	.action-bar.bar-top, .action-bar.bar-bottom {
+		padding-left: 5px;
+	}
+	.forumbg, .action-bar.actions-jump {
+		clear: both;
+	}
+	table.table1 td {
+		span[style*='float'] {
+			float: none !important;
+			display: block;
+			position: relative;
+			margin: 5px 0;
+			&:before {
+				position: absolute;
+				top: 0;
+				left: 0;
+				content: 'IP:';
+				font-weight: bold;
+			}
+			& + br {
+				display: none;
+			}
 		}
 	}
 }

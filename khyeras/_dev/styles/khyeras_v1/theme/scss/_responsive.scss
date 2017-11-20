@@ -166,6 +166,9 @@
 	}
 
 	// other-sections.scss
+	#viewprofile .panel:first-child .inner .left-box:not(.profile-details) {
+		flex: 0 0 176px;
+	}
 	#search_memberlist {
 		fieldset.fields1 dl {
 			dt {
@@ -383,6 +386,14 @@
 				margin-top: 0;
 				padding-left: 10px;
 			}
+		}
+	}
+	dl.details {
+		dt {
+			width: 150px;
+		}
+		dd {
+			margin-left: 150px;
 		}
 	}
 
@@ -661,6 +672,22 @@
 	}
 
 	// other-sections.scss
+	#viewprofile .panel:first-child .inner .left-box {
+		&:not(.profile-details) {
+			border-right: 0;
+			padding-right: 0;
+			flex: 0 0 130px;
+		}
+		&.profile-details dd select[name='g'] {
+			&, & + .button2 {
+				width: 100%;
+			}
+			& + .button2 {
+				display: block;
+				margin-top: $ffs;
+			}
+		}
+	}
 	#register .captcha-panel .captcha {
 		.g-recaptcha, &.captcha-image + dd .button2 {
 			margin: 10px 0 0 0;
@@ -699,6 +726,21 @@
 		}
 		.responsive-hide {
 			display: none;
+		}
+	}
+	.popup-wrap {
+		padding: 20px;
+		.page-body > a[onclick*='window.close'] {
+			top: 20px;
+			right: 20px;
+		}
+	}
+	.section-viewonline {
+		.viewonline-title + p, .forumbg + p,
+		.action-bar.bar-top, .action-bar.bar-bottom {
+			float: none;
+			width: auto;
+			padding: 0;
 		}
 	}
 
@@ -873,6 +915,16 @@
 	.action-bar {
 		display: block;
 	}
+	dl.details {
+		dt {
+			float: none;
+			width: auto;
+			font-weight: bold;
+		}
+		dd {
+			margin-left: 20px;
+		}
+	}
 
 	// viewtopics.scss
 	.postbody {
@@ -999,6 +1051,30 @@
 	}
 
 	// other-sections.scss
+	#viewprofile .panel:first-child .inner {
+		display: block;
+		.left-box {
+			&:not(.profile-details) {
+				border-right: 0;
+				margin: 0;
+				padding: 0;
+				.profile-avatar {
+					@include sizing(80px, 80px);
+					padding-bottom: 0;
+					margin: 0 auto 10px auto;
+				}
+			}
+			&.profile-details dt:first-child + dd {
+				& > span {
+					display: block;
+					text-align: center;
+					border-bottom: 1px dashed #15212c;
+					margin: 0 0 20px 0;
+				    padding: 0 0 20px 0;
+				}
+			}
+		}
+	}
 	#register .captcha-panel .captcha .g-recaptcha {
 		max-width: 220px;
 		max-height: 50px;
@@ -1024,6 +1100,23 @@
 	#featured-content .flex-row .flex-column .image-wrap {
 		padding-bottom: 0;
 		height: 75px;
+	}
+
+	// footer.scss
+	#page-footer .footer-inner {
+		padding-bottom: 70px;
+	}
+	.scroll-to-top, .scroll-to-bottom {
+		margin: auto;
+	}
+	.scroll-to-top {
+		bottom: 20px;
+		left: 50px;
+		right: 0;
+	}
+	.scroll-to-bottom {
+		left: 0;
+		right: 50px;
 	}
 }
 
