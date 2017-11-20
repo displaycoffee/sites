@@ -599,6 +599,9 @@
 	.section-viewtopic .post .postbody > div > h3 {
 		padding-right: 0;
 	}
+	.topicreview .postbody > h3 {
+		padding-right: 80px;
+	}
 	.postprofile {
 		border-right: 0;
 		border-bottom: 1px dashed $color-04;
@@ -1097,23 +1100,14 @@
 	}
 
 	// viewtopic.scss
-	.postbody {
-		.inline-attachment, .attachbox {
-			.file .attach-image .image-open {
-				left: 0;
-				right: 0;
-				top: auto;
-				bottom: 10px;
-				@include sizing(20px, 20px);
-				margin: auto;
-			}
+	.postbody .attachbox {
+		display: block;
+		& > dd {
+			width: auto;
 		}
-		.attachbox {
-			display: block;
-			& > dd {
-				width: auto;
-			}
-		}
+	}
+	.topicreview .postbody > h3 {
+		padding-right: 50px;
 	}
 	fieldset.polls dl dt {
 		padding-right: 0;

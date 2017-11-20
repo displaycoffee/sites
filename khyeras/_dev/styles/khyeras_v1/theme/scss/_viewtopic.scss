@@ -120,6 +120,7 @@
 				content: unicode($icon-file-o);
 			}
 			.attach-image {
+				display: inline-block;
 				cursor: pointer;
 				margin: 0 0 5px 0;
 				line-height: 0;
