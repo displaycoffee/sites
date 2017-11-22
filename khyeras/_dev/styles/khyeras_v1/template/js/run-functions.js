@@ -26,16 +26,9 @@ if ( forumImage.length ) {
 
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
-	// Check if the dt in fieldset contains a single empty space
-	$( 'fieldset dl dt' ).each( function() {
-		var dtHTML = $( this );
-
-		if ( dtHTML.html() == '&nbsp;' ) {
-			dtHTML.addClass( 'empty-space' );
-		} else {
-			dtHTML.removeClass( 'empty-space' );
-		}
-	});
+	// Check if the dt contains a single empty space
+	checkForSpace( 'fieldset dl dt' );
+	checkForSpace( 'dl.details dt' );
 
 	// Add wrapper around topic review if height is bigger than 400px
 	addScrollableArea( $( '.topicreview' ), 400, $( '.review .right-box' ) );

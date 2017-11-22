@@ -1,3 +1,16 @@
+// Check for spaces inside elements
+function checkForSpace( selector ) {
+	jQuery( selector ).each( function() {
+		var selectorHTML = jQuery( this );
+
+		if ( selectorHTML.html() == '&nbsp;' ) {
+			selectorHTML.addClass( 'empty-space' );
+		} else {
+			selectorHTML.removeClass( 'empty-space' );
+		}
+	});
+}
+
 // Check if area should be scrollable
 function addScrollableArea( selector, selectorHeight, selectorHide ) {
 	if ( selector.length && selector[0].scrollHeight > selectorHeight ) {

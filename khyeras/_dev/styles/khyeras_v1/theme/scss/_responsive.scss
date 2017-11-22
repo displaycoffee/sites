@@ -86,6 +86,14 @@
 			padding-left: 0;
 		}
 	}
+	dl.details {
+		dt {
+			width: 150px;
+		}
+		dd {
+			margin-left: 150px;
+		}
+	}
 
 	// viewlisting.scss
 	.topiclist > li {
@@ -386,14 +394,6 @@
 				margin-top: 0;
 				padding-left: 10px;
 			}
-		}
-	}
-	dl.details {
-		dt {
-			width: 150px;
-		}
-		dd {
-			margin-left: 150px;
 		}
 	}
 
@@ -920,6 +920,9 @@
 			float: none;
 			width: auto;
 			font-weight: bold;
+			&.empty-space {
+				display: none;
+			}
 		}
 		dd {
 			margin-left: 20px;
