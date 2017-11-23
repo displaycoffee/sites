@@ -813,6 +813,19 @@
 			margin-left: 70px;
 		}
 	}
+	.section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
+		border: 0;
+		padding: 10px 20px;
+		background: $color-04;
+		margin-top: -1px;
+		td {
+			padding: 0;
+		}
+		& ~ tr {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
 	.section-mcp-warnings .cp-main table.table1 td a[href*='user_notes'] {
 		position: relative;
 		left: -10px;
