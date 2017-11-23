@@ -246,6 +246,9 @@
 			}
 		}
 	}
+	.cp-main .gallery label {
+		width: 20%;
+	}
 	.section-ucp-front-page .cp-main .topiclist {
 		&:before {
 			padding-right: 220px;
@@ -322,6 +325,19 @@
 		}
 		dl[class*='forum'] dd.lastpost {
 			margin-left: auto;
+		}
+	}
+
+	// cp.scss
+	.cp-main {
+		[id*='avatar_option_avatar_driver'] > p {
+			margin-left: $ffi-01 - 100;
+		}
+		#avatar_option_avatar_driver_local fieldset label[for='category']:before {
+			flex: 0 0 $ffi-01 - 100;
+		}
+		.gallery label {
+			width: 25%;
 		}
 	}
 
@@ -745,8 +761,40 @@
 	}
 
 	// cp.scss
-	.cp-main table.table1 {
-		border-top: 1px dashed $color-04;
+	.cp-main {
+		table.table1 {
+			border-top: 1px dashed $color-04;
+		}
+		[id*='avatar_option_avatar_driver'] > p {
+			margin-left: 0;
+		}
+		#avatar_option_avatar_driver_local fieldset {
+			label[for='category'] {
+				font-size: rem(14px);
+				&, select {
+					display: block;
+				}
+				select {
+					margin-top: $ffs;
+				}
+				&:before {
+					display: none;
+				}
+			}
+			input[type='submit'][name='avatar_local_go'] {
+				top: 26px;
+			}
+		}
+		.gallery label {
+			width: 33.3333%;
+		}
+	}
+	.section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details {
+		.cp-main {
+			.avatar, img[src*='no_avatar.gif'] {
+				margin-top: 10px;
+			}
+		}
 	}
 	.section-ucp-front-page .cp-main .topiclist {
 		&:before {
@@ -1117,6 +1165,9 @@
 	}
 
 	// cp.scss
+	.cp-main .gallery label {
+		width: 50%;
+	}
 	.section-ucp-edit-profile .cp-main fieldset dl dd {
 		label[for*='bday'] {
 			&, select {
@@ -1297,6 +1348,28 @@
 	.cp-main {
 		.panel, .post.pm, .topicreview {
 			padding: 20px 10px 0 10px;
+		}
+		fieldset dl dd {
+			label[for*='_width'], label[for*='_height'] {
+				margin-right: 0;
+				display: block;
+			}
+			label[for*='_width']:after {
+				content: ' in width';
+			}
+			label[for*='_height'] {
+				border-top: $ffs solid $color-05;
+				margin-top: -21px;
+				&:after {
+					content: ' in height';
+				}
+			}
+		}
+		.gallery {
+			display: block;
+			label {
+				width: auto;
+			}
 		}
 	}
 	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
