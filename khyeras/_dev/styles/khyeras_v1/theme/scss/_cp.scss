@@ -169,6 +169,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 		display: block;
 		&:before {
 			@include font-awesome;
+			color: $color-01;
 			margin: 0 5px 0 0;
 		}
 		&[onclick*='false']:before {
@@ -314,6 +315,13 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 		overflow: hidden;
 		strong {
 			font-weight: normal;
+			a:before {
+				@include font-awesome;
+				font-size: rem(12px);
+				content: unicode($icon-chevron-left);
+				margin-right: 10px;
+				color: $color-01;
+			}
 		}
 	}
 }
@@ -321,7 +329,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 /* UCP - Attachments
 ========================================================================== */
 
-.section-ucp-attachments .ucp-main .topiclist {
+.section-ucp-attachments .cp-main .topiclist {
 	& > li.header dl dt a {
 		font-family: $font-01;
 		font-variant: none;
@@ -337,12 +345,13 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
    Note: UCP area only. Header notifications in header.scss
 ========================================================================== */
 
-.section-ucp-manage-notifications .ucp-main .notification_list .topiclist > li.row dl dt .list-inner {
+.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
 	@include clearfix('&');
 	img {
 		float: left;
 		max-width: 100px;
 		max-height: 100px;
+		border: 1px solid $color-03;
 	}
 	.notifications {
 		margin: 0 0 0 120px;
@@ -355,7 +364,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 	}
 }
 
-.section-ucp-edit-notification-options .ucp-main table.table1 tbody tr.big-column {
+.section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
 	background: rgba($color-02, 0.20);
 	border-bottom-style: solid;
 	border-top: 1px solid $color-04;
@@ -368,11 +377,11 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 /* UCP - Profile
 ========================================================================== */
 
-.section-ucp-edit-profile .ucp-main fieldset dl dd label[for*='bday'] {
+.section-ucp-edit-profile .cp-main fieldset dl dd label[for*='bday'] {
 	margin: 0;
 	select {
 		width: auto;
-		min-width: 80px;
+		max-width: 75px;
 		margin: 0 $ffs;
 	}
 }
@@ -380,7 +389,7 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 /* UCP - Signature
 ========================================================================== */
 
-.section-ucp-edit-signature .ucp-main fieldset.fields1 + h3 + fieldset {
+.section-ucp-edit-signature .cp-main fieldset.fields1 + h3 + fieldset {
 	margin: 0 0 20px 0;
 }
 

@@ -13,7 +13,7 @@
 		&.topics, &.posts, &.views {
 			flex: 0 0 80px;
 		}
-		&.lastpost {
+		&.lastpost, &.time, &.info {
 			flex: 0 0 180px;
 		}
 		&.moderation {
@@ -756,6 +756,15 @@
 			display: none;
 		}
 	}
+	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
+		img {
+			max-width: 50px;
+			max-height: 50px;
+		}
+		.notifications {
+			margin-left: 70px;
+		}
+	}
 	.section-mcp-warnings .cp-main table.table1 td a[href*='user_notes'] {
 		position: relative;
 		left: -10px;
@@ -901,6 +910,14 @@
 	blockquote {
 		max-width: none;
 		padding-left: 20px;
+	}
+
+	// form-fields.scss
+	input[type='number'].inputbox {
+		width: 100%;
+	}
+	label input[type='number'].inputbox {
+		width: auto;
 	}
 
 	// layout.scss
@@ -1099,6 +1116,22 @@
 		}
 	}
 
+	// cp.scss
+	.section-ucp-edit-profile .cp-main fieldset dl dd {
+		label[for*='bday'] {
+			&, select {
+				width: 100%;
+			}
+			select {
+				max-width: none;
+				margin: $ffs 0;
+			}
+		}
+		label[for='bday_year'] select {
+			margin-bottom: 0;
+		}
+	}
+
 	// header.scss
 	#featured-content .flex-row .flex-column .image-wrap {
 		padding-bottom: 0;
@@ -1131,11 +1164,8 @@
 	.button, .button1, .button2 {
 		display: block;
 	}
-	input.button, input.button1, input.button2, input[type='number'].inputbox {
+	input.button, input.button1, input.button2 {
 		width: 100%;
-	}
-	label input[type='number'].inputbox {
-		width: auto;
 	}
 	.button-icon-only, .mcp-main .postbody .post-buttons .button {
 		display: inline-block;
@@ -1267,6 +1297,14 @@
 	.cp-main {
 		.panel, .post.pm, .topicreview {
 			padding: 20px 10px 0 10px;
+		}
+	}
+	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
+		img {
+			display: none;
+		}
+		.notifications {
+			margin-left: 0;
 		}
 	}
 
