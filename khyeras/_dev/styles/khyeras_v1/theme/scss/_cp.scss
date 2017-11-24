@@ -122,64 +122,88 @@
 ========================================================================== */
 
 fieldset.display-actions {
-	@include clearfix('&');
-	text-align: right;
-	margin: 0 0 20px 0;
-	label, select {
-		margin: 0;
+	margin: -10px 0 20px 0;
+	& > * {
+		margin: 10px 0 0 0;
+		label, select {
+			margin: 0;
+		}
+	}
+	label {
+		display: inline-block;
 	}
 	select {
 		width: auto;
 	}
-	.button2, .button1 {
-		& + div {
-			float: right;
-			margin: -1px 0 0 10px;
-		}
-	}
-	.left-box {
-		float: left;
-		margin: 0;
-		label {
-			display: inline-block;
-		}
+	br {
+		display: none;
 	}
 }
 
-.section-mcp-user-details #mcp {
-	position: relative;
-	.display-actions {
-		padding-right: 95px;
-		& + .display-actions {
-			width: 95px;
-			padding-right: 0;
-			margin: 0;
-			position: absolute;
-			bottom: 0;
-			right: 0;
-		}
-	}
-}
-
-fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div,
-.section-mcp-user-details #mcp .display-actions + .display-actions div {
-	font-size: 0;
-	a {
-		font-size: rem($global-font-size);
-		display: block;
-		&:before {
-			@include font-awesome;
-			color: $color-01;
-			margin: 0 5px 0 0;
-		}
-		&[onclick*='false']:before {
-			content: unicode($icon-x);
-		}
-		&[onclick*='true']:before {
-			content: unicode($icon-check);
-		}
-	}
-}
+// fieldset.display-actions {
+// 	@include clearfix('&');
+// 	text-align: right;
+// 	margin: -10px 0 20px 0;
+// 	& > * {
+// 		margin: 10px 0 0 0;
+// 		label, select {
+// 			margin: 0;
+// 		}
+// 	}
+// 	select {
+// 		width: auto;
+// 	}
+// 	.button2, .button1 {
+// 		& + div {
+// 			float: right;
+// 			margin-left: 10px;
+// 			max-height: 40px;
+// 			overflow-y: hidden;
+// 		}
+// 	}
+// 	.left-box {
+// 		float: left;
+// 		margin-right: 10px;
+// 		label {
+// 			display: inline-block;
+// 		}
+// 	}
+// }
+//
+// .section-mcp-user-details #mcp {
+// 	position: relative;
+// 	.display-actions {
+// 		padding-right: 95px;
+// 		& + .display-actions {
+// 			width: 95px;
+// 			padding-right: 0;
+// 			margin: 0;
+// 			position: absolute;
+// 			bottom: 0;
+// 			right: 0;
+// 		}
+// 	}
+// }
+//
+// fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div,
+// .section-mcp-user-details #mcp .display-actions + .display-actions div {
+// 	font-size: 0;
+// 	a {
+// 		font-size: rem($global-font-size);
+// 		display: block;
+// 		&:before {
+// 			@include font-awesome;
+// 			color: $color-01;
+// 			margin: 0 5px 0 0;
+// 		}
+// 		&[onclick*='false']:before {
+// 			content: unicode($icon-x);
+// 		}
+// 		&[onclick*='true']:before {
+// 			content: unicode($icon-check);
+// 		}
+// 	}
+// }
 
 /* UCP - Front Page
 ========================================================================== */
@@ -300,26 +324,31 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 	}
 }
 
-.section-ucp-manage-drafts .cp-main #postform fieldset {
-	position: relative;
-	padding-bottom: 40px;
-	#smiley-box {
-		@include sizing(auto, 20px);
-		float: none;
-		margin: 0;
-		padding: 0;
-		position: absolute;
-		bottom: 20px;
-		left: 0;
-		overflow: hidden;
-		strong {
-			font-weight: normal;
-			a:before {
-				@include font-awesome;
-				font-size: rem(12px);
-				content: unicode($icon-chevron-left);
-				margin-right: 10px;
-				color: $color-01;
+/* UCP - Drafts for Topics and PMs
+========================================================================== */
+
+.section-ucp-manage-drafts, .section-ucp-manage-pm-drafts {
+	.cp-main #postform fieldset {
+		position: relative;
+		padding-bottom: 40px;
+		#smiley-box {
+			@include sizing(auto, 20px);
+			float: none;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			bottom: 20px;
+			left: 0;
+			overflow: hidden;
+			strong {
+				font-weight: normal;
+				a:before {
+					@include font-awesome;
+					font-size: rem(12px);
+					content: unicode($icon-chevron-left);
+					margin-right: 10px;
+					color: $color-01;
+				}
 			}
 		}
 	}
@@ -440,19 +469,30 @@ fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div
 
 .section-ucp-compose-message .cp-main {
 	 #pmheader-postingbox {
+		 label strong {
+			 font-weight: normal;
+		 }
 		.inputbox {
 			height: 110px;
 		}
 		label[for='group_list'] ~ br {
 			display: none;
 		}
-		dl.pmlist dt label {
-			.inputbox {
-				margin: 0;
+		dl.pmlist {
+			dt label {
+				line-height: 0;
+				strong {
+					line-height: 1.5;
+				}
+				.inputbox {
+					margin: $ffs 0 0 0;
+				}
 			}
-			strong {
-				margin: 0 0 $ffs 0;
-				display: block;
+			dd.recipients {
+				margin: 20px 0 (-$ffs) 0;
+				.button2 {
+					margin-bottom: $ffs;
+				}
 			}
 		}
 		.column1 + hr {

@@ -34,6 +34,35 @@ function updateaAttachmentDisplay( selector ) {
 	});
 }
 
+// Function display-actions div because the markup is a mess
+// This prevents editting a number of templates
+function formatDisplayActions() {
+	jQuery( '.display-actions' ).each( function() {
+		var current = jQuery( this );
+
+		// Remove spaces
+		current.html( current.html().replace( /&nbsp;/g, '' ) );
+
+		// Find mark / unmark buttons
+		var markButtons = current.find( ' div a' );
+
+		if ( markButtons.text().toLowerCase().indexOf( 'mark' ) !== -1 ) {
+			markButtons.parent( 'div' ).addClass( 'mark-actions' );
+		}
+
+		// Find select menus with a button and wrap a div around
+		var selectMenu = current.children( 'select' );
+
+		selectMenu.each( function() {
+			jQuery( this ).next( '.button1, .button2' ).addBack().wrapAll( '<div class="select-wrapper"></div>' );
+		});
+
+		// Add a new inner wrapper
+		current.wrapInner( '<div class="display-actions-wrapper"></div>' );
+
+	});
+}
+
 // Add sticky class to navigation when scroll
 function addOnScroll( selector, anchor, class ) {
 	// Variables for scroll logic

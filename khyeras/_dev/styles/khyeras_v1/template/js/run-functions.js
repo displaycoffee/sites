@@ -46,6 +46,9 @@ jQuery( document ).ready( function( $ ) {
 	updateaAttachmentDisplay( '.image-open' );
 	updateaAttachmentDisplay( attachImage + ' img' );
 
+	// Update display-actions div formatting
+	formatDisplayActions();
+
 	// If postingbox in ucp is empty, hide it
 	var pmPostBox = $( '#pmheader-postingbox' );
 

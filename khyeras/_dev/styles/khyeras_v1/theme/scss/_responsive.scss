@@ -340,6 +340,13 @@
 			width: 25%;
 		}
 	}
+	fieldset.display-actions .left-box {
+		& select, & ~ select, & ~ * select {
+			max-width: 150px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	}
 
 	// header.scss
 	#page-header .navbar {
@@ -789,6 +796,35 @@
 			width: 33.3333%;
 		}
 	}
+	fieldset.display-actions {
+		text-align: left;
+		.button2, .button1 {
+			& + div {
+				float: left;
+				margin-left: 0;
+				margin-right: 10px;
+				width: 96px;
+			}
+		}
+		.left-box {
+			float: none;
+			margin-right: 0;
+			label[for='export_option'] {
+				@include reset-font-size('select, &:before');
+				position: relative;
+				padding-top: 26px;
+				&:before {
+					content: 'Export this view:';
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+			}
+			& select, & ~ select, & ~ * select {
+				max-width: 200px;
+			}
+		}
+	}
 	.section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details {
 		.cp-main {
 			.avatar, img[src*='no_avatar.gif'] {
@@ -1195,6 +1231,11 @@
 			margin-bottom: 0;
 		}
 	}
+	.section-ucp-edit-global-settings .cp-main #tz_select_date .button2 {
+		flex: 0 0 118px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
 
 	// header.scss
 	#featured-content .flex-row .flex-column .image-wrap {
@@ -1378,11 +1419,31 @@
 				}
 			}
 		}
+		#avatar_option_avatar_driver_local fieldset {
+			label[for='category'] {
+				margin-right: 0;
+				select {
+					margin-bottom: $ffs;
+				}
+			}
+			input[type='submit'][name='avatar_local_go']  {
+				position: static;
+				width: 100%;
+				margin: $ffs 0 20px 0;
+			}
+		}
 		.gallery {
 			display: block;
 			label {
 				width: auto;
 			}
+		}
+	}
+	.section-ucp-edit-global-settings .cp-main #tz_select_date {
+		display: block !important;
+		.button2 {
+			margin: $ffs 0 0 0;
+			overflow: visible;
 		}
 	}
 	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
