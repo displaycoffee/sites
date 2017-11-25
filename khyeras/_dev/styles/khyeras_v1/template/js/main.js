@@ -41,7 +41,7 @@ function formatDisplayActions() {
 		var current = jQuery( this );
 
 		// Remove spaces
-		current.html( current.html().replace( /&nbsp;/g, '' ) );
+		current.html( current.html().replace( /&nbsp;/g, '' ).replace( /::/g, '&bull;' ) );
 
 		// Find mark / unmark buttons
 		var markButtons = current.find( ' div a' );
@@ -54,12 +54,12 @@ function formatDisplayActions() {
 		var selectMenu = current.children( 'select' );
 
 		selectMenu.each( function() {
-			jQuery( this ).next( '.button1, .button2' ).addBack().wrapAll( '<div class="select-wrapper"></div>' );
+			jQuery( this ).next( '.button1, .button2' ).addBack().wrapAll( '<div class="select-actions"></div>' );
 		});
 
 		// Add a new inner wrapper
+		// Keep at the bottom to do this last
 		current.wrapInner( '<div class="display-actions-wrapper"></div>' );
-
 	});
 }
 

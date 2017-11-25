@@ -18,6 +18,7 @@
 				@include rpg-icons;
 				content: unicode($icon-book-cover-02);
 				margin: 0 5px 0 0;
+				color: $color-01;
 			}
 			&.active-subsection a {
 				font-weight: bold;
@@ -122,9 +123,8 @@
 ========================================================================== */
 
 fieldset.display-actions {
-	margin: -10px 0 20px 0;
+	margin: 0 0 20px 0;
 	& > * {
-		margin: 10px 0 0 0;
 		label, select {
 			margin: 0;
 		}
@@ -138,72 +138,70 @@ fieldset.display-actions {
 	br {
 		display: none;
 	}
+	// Always keep clearfix to account for weird margin collapse spacing
+	.display-actions-wrapper {
+		@include clearfix('&');
+		margin: -10px -5px 0 -5px;
+		@include flex-flow(row wrap);
+		align-items: center;
+		justify-content: flex-end;
+		& > * {
+			margin: 10px 5px 0 5px;
+			@include flex;
+		}
+		.button1 + .button2, .button2 + .button1 {
+			margin-left: 0;
+		}
+	}
+	.left-box, .select-actions {
+		@include flex-flow(row nowrap);
+		align-items: flex-end;
+		& > {
+			select, label, .button1, .button2 {
+				@include flex;
+			}
+		}
+		.button1, .button2 {
+			margin-left: $ffs;
+		}
+	}
+	.left-box {
+		margin-right: auto;
+	}
+	.mark-actions {
+		font-size: 0;
+		text-align: right;
+		a {
+			font-size: rem($global-font-size);
+			display: block;
+			&:before {
+				@include font-awesome;
+				color: $color-01;
+				margin: 0 5px 0 0;
+			}
+			&[onclick*='false']:before {
+				content: unicode($icon-x);
+			}
+			&[onclick*='true']:before {
+				content: unicode($icon-check);
+			}
+		}
+	}
 }
 
-// fieldset.display-actions {
-// 	@include clearfix('&');
-// 	text-align: right;
-// 	margin: -10px 0 20px 0;
-// 	& > * {
-// 		margin: 10px 0 0 0;
-// 		label, select {
-// 			margin: 0;
-// 		}
-// 	}
-// 	select {
-// 		width: auto;
-// 	}
-// 	.button2, .button1 {
-// 		& + div {
-// 			float: right;
-// 			margin-left: 10px;
-// 			max-height: 40px;
-// 			overflow-y: hidden;
-// 		}
-// 	}
-// 	.left-box {
-// 		float: left;
-// 		margin-right: 10px;
-// 		label {
-// 			display: inline-block;
-// 		}
-// 	}
-// }
-//
-// .section-mcp-user-details #mcp {
-// 	position: relative;
-// 	.display-actions {
-// 		padding-right: 95px;
-// 		& + .display-actions {
-// 			width: 95px;
-// 			padding-right: 0;
-// 			margin: 0;
-// 			position: absolute;
-// 			bottom: 0;
-// 			right: 0;
-// 		}
-// 	}
-// }
-//
-// fieldset.display-actions .button2 + div, fieldset.display-actions .button1 + div,
-// .section-mcp-user-details #mcp .display-actions + .display-actions div {
-// 	font-size: 0;
-// 	a {
-// 		font-size: rem($global-font-size);
-// 		display: block;
-// 		&:before {
-// 			@include font-awesome;
-// 			color: $color-01;
-// 			margin: 0 5px 0 0;
-// 		}
-// 		&[onclick*='false']:before {
-// 			content: unicode($icon-x);
-// 		}
-// 		&[onclick*='true']:before {
-// 			content: unicode($icon-check);
-// 		}
-// 	}
-// }
+.section-mcp-user-details #mcp {
+	position: relative;
+	.display-actions {
+		padding-right: 95px;
+		& + .display-actions {
+			width: 95px;
+			padding-right: 0;
+			position: absolute;
+			bottom: -20px;
+			right: 0;
+		}
+	}
+}
 
 /* UCP - Front Page
 ========================================================================== */
@@ -691,9 +689,6 @@ fieldset.display-actions {
 	#post_details.scrollable {
 		@include scrollable;
 	}
-	.action-bar.bar-top .inputbox[type='search'] {
-		width: auto;
-	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
 		position: absolute;
 		right: 0;
@@ -824,7 +819,15 @@ fieldset.display-actions {
 			margin: 10px 0 0 5px;
 		}
 		.inputbox[type='search'] {
-			margin-right: 0;
+			flex: 0 0 260px;
+			padding-right: 50px;
+			& + .button2 {
+				width: 40px;
+				background: transparent url($images + 'search-icon.png') center center no-repeat;
+				font-size: 0;
+				padding: 10px 0;
+				margin: 10px 0 0 -45px;
+			}
 		}
 	}
 }
