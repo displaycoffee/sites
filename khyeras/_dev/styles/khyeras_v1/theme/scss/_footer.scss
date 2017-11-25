@@ -12,6 +12,9 @@
 			font-size: rem(13px);
 		}
 		.flex-row .flex-column {
+			&.has-copyright {
+				order: -1;
+			}
 			.copyright, .bottom-line {
 				font-size: rem(13px);
 			}

@@ -382,7 +382,7 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 ========================================================================== */
 
 #preview .inner .content {
-	flex: 1 1 100%;
+	@include flex(full);
 }
 
 /* View Topic - Topic Review

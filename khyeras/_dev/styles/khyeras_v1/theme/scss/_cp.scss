@@ -119,90 +119,6 @@
 	}
 }
 
-/* CP - Display Actions
-========================================================================== */
-
-fieldset.display-actions {
-	margin: 0 0 20px 0;
-	& > * {
-		label, select {
-			margin: 0;
-		}
-	}
-	label {
-		display: inline-block;
-	}
-	select {
-		width: auto;
-	}
-	br {
-		display: none;
-	}
-	// Always keep clearfix to account for weird margin collapse spacing
-	.display-actions-wrapper {
-		@include clearfix('&');
-		margin: -10px -5px 0 -5px;
-		@include flex-flow(row wrap);
-		align-items: center;
-		justify-content: flex-end;
-		& > * {
-			margin: 10px 5px 0 5px;
-			@include flex;
-		}
-		.button1 + .button2, .button2 + .button1 {
-			margin-left: 0;
-		}
-	}
-	.left-box, .select-actions {
-		@include flex-flow(row nowrap);
-		align-items: flex-end;
-		& > {
-			select, label, .button1, .button2 {
-				@include flex;
-			}
-		}
-		.button1, .button2 {
-			margin-left: $ffs;
-		}
-	}
-	.left-box {
-		margin-right: auto;
-	}
-	.mark-actions {
-		font-size: 0;
-		text-align: right;
-		a {
-			font-size: rem($global-font-size);
-			display: block;
-			&:before {
-				@include font-awesome;
-				color: $color-01;
-				margin: 0 5px 0 0;
-			}
-			&[onclick*='false']:before {
-				content: unicode($icon-x);
-			}
-			&[onclick*='true']:before {
-				content: unicode($icon-check);
-			}
-		}
-	}
-}
-
-.section-mcp-user-details #mcp {
-	position: relative;
-	.display-actions {
-		padding-right: 95px;
-		& + .display-actions {
-			width: 95px;
-			padding-right: 0;
-			position: absolute;
-			bottom: -20px;
-			right: 0;
-		}
-	}
-}
-
 /* UCP - Front Page
 ========================================================================== */
 
@@ -691,8 +607,8 @@ fieldset.display-actions {
 	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
 		position: absolute;
+		top: -5px;
 		right: 0;
-		top: 0;
 	}
 	.forum-selection, .action-bar.actions-jump {
 		height: 40px;
@@ -715,11 +631,8 @@ fieldset.display-actions {
 			padding: 5px 325px 5px 0;
 		}
 	}
-	.action-bar.actions-jump {
-		margin: 0;
-		& + h2 {
-			padding: 5px 200px 5px 0;
-		}
+	.action-bar.actions-jump + h2 {
+		padding: 5px 200px 5px 0;
 	}
 	.tabs-container h2 {
 		padding: 1.5px 325px 1.5px 0;
@@ -750,27 +663,29 @@ fieldset.display-actions {
 ========================================================================== */
 
 .section-mcp-moderation-queue, .section-mcp-post-details {
-	form[id*='mcp'] fieldset dl dd {
-		@include flex-flow(row wrap);
-		align-items: flex-start;
-		select, .inputbox {
-			@include flex(base);
-			width: auto;
+	.cp-main {
+		form[id*='mcp'] fieldset dl dd {
+			@include flex-flow(row wrap);
+			align-items: flex-start;
+			select, .inputbox {
+				@include flex(base);
+				width: auto;
+			}
+		 	.button2 {
+				@include flex;
+				margin: 0 0 0 $ffs;
+			}
 		}
-	 	.button2 {
-			@include flex;
-			margin: 0 0 0 $ffs;
-		}
-	}
-	#mcp_chgposter fieldset dl dd {
-		margin-top: 0 !important;
-		br {
-			display: none;
-			& + span {
-				@include flex(full);
-				min-width: 1px;
-				display: block;
-				margin: 5px 0 0 0;
+		#mcp_chgposter fieldset dl dd {
+			margin-top: 0 !important;
+			br {
+				display: none;
+				& + span {
+					@include flex(full);
+					min-width: 1px;
+					display: block;
+					margin: 5px 0 0 0;
+				}
 			}
 		}
 	}
@@ -779,7 +694,7 @@ fieldset.display-actions {
 /* MCP - View Topic
 ========================================================================== */
 
-.section-mcp-view-topic {
+.section-mcp-view-topic .cp-main {
 	.panel + .panel {
 		@include reset-inner;
 		display: block;
@@ -802,7 +717,7 @@ fieldset.display-actions {
 ========================================================================== */
 
 .section-mcp-reported-messages, .section-mcp-reported-pms {
-	.mcp-main .post_details + hr + div {
+	.cp-main .post_details + hr + div {
 		margin: 0 0 20px 0;
 	}
 }
@@ -811,22 +726,24 @@ fieldset.display-actions {
 ========================================================================== */
 
 .section-mcp-user-details, .section-mcp-moderator-logs {
-	.mcp-main .action-bar.bar-top {
+	.cp-main .action-bar.bar-top {
 		@include reset-font-size('& > *, &:before');
 		&:before {
 			content: 'Search for keywords:';
-			display: block;
 			margin: 10px 0 0 5px;
 		}
 		.inputbox[type='search'] {
 			flex: 0 0 260px;
 			padding-right: 50px;
 			& + .button2 {
+				display: inline-block;
 				width: 40px;
 				background: transparent url($images + 'search-icon.png') center center no-repeat;
 				font-size: 0;
 				padding: 10px 0;
-				margin: 10px 0 0 -45px;
+				margin: 0 0 0 -45px;
+				position: relative;
+				top: 5px;
 			}
 		}
 	}
@@ -836,7 +753,7 @@ fieldset.display-actions {
 ========================================================================== */
 
 .section-mcp-user-details, .section-mcp-warnings {
-	.mcp-main h2 + .panel h3 + div {
+	.cp-main h2 + .panel h3 + div {
 		@include flex-flow(row nowrap);
 		.column1, .column2 {
 			width: auto;
@@ -853,10 +770,27 @@ fieldset.display-actions {
 	}
 }
 
+/* MCP - User Notes
+========================================================================== */
+
+.section-mcp-user-details .cp-main #mcp {
+	position: relative;
+	.display-actions {
+		padding-right: 95px;
+		& + .display-actions {
+			width: 95px;
+			padding-right: 0;
+			position: absolute;
+			bottom: -1px;
+			right: 0;
+		}
+	}
+}
+
 /* MCP - Warnings
 ========================================================================== */
 
-.section-mcp-warnings #warning {
+.section-mcp-warnings .cp-main #warning {
 	& ~ br, & ~ .panel .empty-space {
 		display: none;
 	}
@@ -873,7 +807,7 @@ fieldset.display-actions {
 /* MCP - Banning
 ========================================================================== */
 
-body[class*='section-mcp-ban'] .mcp-main {
+body[class*='section-mcp-ban'] .cp-main {
 	dd label[for='ban'], dd label[for='banlength'], dd#banlengthother label {
 		display: block;
 		margin: 0;

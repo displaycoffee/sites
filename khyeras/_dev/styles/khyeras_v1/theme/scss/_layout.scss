@@ -278,25 +278,46 @@
 	}
 }
 
-/* Action Bar
+/* Action Bar & Display Actions
 ========================================================================== */
 
-.action-bar {
+.action-bar, .display-actions .display-actions-wrapper {
 	// Always keep clearfix to account for weird margin collapse spacing
 	@include clearfix('&');
 	margin: -10px -5px 20px -5px;
 	@include flex-flow(row wrap);
 	align-items: center;
+	label {
+		display: inline-block;
+	}
+	select {
+		width: auto;
+	}
+	br {
+		display: none;
+	}
 	& > * {
 		margin: 10px 5px 0 5px;
 		@include flex;
+		label, select {
+			margin: 0;
+		}
 	}
+}
+
+.action-bar .pagination, .action-bar .jumpbox, .display-actions .display-actions-wrapper .mark-actions {
+	text-align: right;
+}
+
+/* Action Bar
+========================================================================== */
+
+.action-bar {
 	& > .dropdown-container, & > form, & > a:not(.button) {
 		display: inline-block;
 	}
 	.pagination, .jumpbox {
 		@include flex(base);
-		text-align: right;
 	}
 	.pagination ul {
 		padding-left: 10px;
@@ -311,15 +332,54 @@
 			width: auto;
 			margin: 0 5px 0 0;
 		}
-		& > br {
-			display: none;
-		}
 	}
 }
 
 .forabg, .panel {
 	& + .action-bar.actions-jump {
 		margin-top: -10px;
+	}
+}
+
+/* Display Actions
+========================================================================== */
+
+.display-actions .display-actions-wrapper {
+	justify-content: flex-end;
+	[class*='button'] + [class*='button'] {
+		margin-left: 0;
+	}
+	.left-box, .select-actions {
+		@include flex-flow(row nowrap);
+		& > {
+			select, label, .button1, .button2 {
+				@include flex;
+			}
+		}
+		.button1, .button2 {
+			margin-left: $ffs;
+		}
+	}
+	.left-box {
+		margin-right: auto;
+	}
+	.mark-actions {
+		font-size: 0;
+		a {
+			font-size: rem($global-font-size);
+			display: block;
+			&:before {
+				@include font-awesome;
+				color: $color-01;
+				margin: 0 5px 0 0;
+			}
+			&[onclick*='false']:before {
+				content: unicode($icon-x);
+			}
+			&[onclick*='true']:before {
+				content: unicode($icon-check);
+			}
+		}
 	}
 }
 

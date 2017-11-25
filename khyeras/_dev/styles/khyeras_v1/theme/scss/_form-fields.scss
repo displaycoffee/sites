@@ -123,7 +123,7 @@ input[type='search']::-webkit-search-cancel-button {
 fieldset.submit-buttons {
 	text-align: center;
 	margin: 0 0 $ffs-minus 0;
-	.button1, .button2, .button3 {
+	.button, .button1, .button2 {
 		margin-bottom: $ffs;
 	}
 }
