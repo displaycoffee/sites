@@ -859,6 +859,19 @@
 			padding-right: 20px;
 		}
 	}
+	.section-ucp-compose-message .cp-main #pmheader-postingbox .column1 {
+		overflow: visible;
+	}
+	.section-ucp-edit-memberships .cp-main fieldset {
+		.left-box, .right-box {
+			float: none;
+			width: auto;
+		}
+		.right-box {
+			margin-top: 10px;
+			text-align: left;
+		}
+	}
 	.mcp-main #mcp_queue {
 		& ~ .panel table.table1 {
 			th, td {
@@ -1299,6 +1312,7 @@
 	.button-icon-only, .mcp-main .postbody .post-buttons .button {
 		display: inline-block;
 		width: auto;
+		padding: 5px;
 	}
 	fieldset.submit-buttons {
 		@include reset-font-size('& > *');
@@ -1496,6 +1510,40 @@
 		}
 		.notifications {
 			margin-left: 0;
+		}
+	}
+	.section-ucp-rules-folders-settings .cp-main {
+		.def-rules li {
+			position: relative;
+			padding-bottom: 29px;
+			.right-box {
+				float: none;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				margin: 0;
+			}
+		}
+		fieldset dl dd {
+			display: block;
+			select, .inputbox {
+				& + [class*='button'] {
+					margin-top: $ffs;
+					margin-left: 0;
+				}
+			}
+			select[name='move_to'], select[name='full_move_to'] {
+				width: 100%;
+			}
+		}
+	}
+	.section-ucp-edit-memberships .cp-main fieldset .right-box {
+		@include reset-font-size('> *');
+		label, select {
+			width: 100%;
+		}
+		.button2 {
+			margin-top: $ffs;
 		}
 	}
 

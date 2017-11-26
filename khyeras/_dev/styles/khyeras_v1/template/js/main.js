@@ -3,7 +3,7 @@ function checkForSpace( selector ) {
 	jQuery( selector ).each( function() {
 		var selectorHTML = jQuery( this );
 
-		if ( selectorHTML.html() == '&nbsp;' ) {
+		if ( selectorHTML.html() == '&nbsp;' || selectorHTML.html() == '<label>&nbsp;</label>' ) {
 			selectorHTML.addClass( 'empty-space' );
 		} else {
 			selectorHTML.removeClass( 'empty-space' );

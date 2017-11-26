@@ -409,11 +409,17 @@
 				}
 			}
 		}
-		.column1 + hr {
-			& ~ .column1, & ~ .column2 {
-				float: none;
-				width: auto;
-				padding: 0;
+		.column1 {
+			width: auto;
+			float: none;
+			overflow: hidden;
+			& + hr {
+				& ~ .column1, & ~ .column2 {
+					float: none;
+					width: auto;
+					padding: 0;
+					overflow: visible;
+				}
 			}
 		}
 		.recipients ul {
@@ -480,23 +486,43 @@
 			}
 		}
 		.topiclist > li.row {
-			&.pm_marked_colour, &.pm_replied_colour, &.pm_friend_colour, &.pm_foe_colour {
-				dl.row-item {
-					border-width: 0 5px;
-					border-style: solid;
+			&[class*='pm_'] dl {
+				position: relative;
+				&:before, &:after {
+					content: '';
+					display: block;
+					@include sizing(5px, 100%);
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					background: #ff00ff;
+				}
+				&:before {
+					left: -10px;
+				}
+				&:after {
+					right: -10px;
 				}
 			}
-			&.pm_marked_colour dl.row-item {
-				border-color: $color-06;
+			&.pm_marked_colour dl {
+				&:before, &:after {
+					background: $color-06;
+				}
 			}
-			&.pm_replied_colour dl.row-item {
-				border-color: $color-07;
+			&.pm_replied_colour dl {
+				&:before, &:after {
+					background: $color-07;
+				}
 			}
-			&.pm_friend_colour dl.row-item {
-				border-color: $color-14;
+			&.pm_friend_colour dl {
+				&:before, &:after {
+					background: $color-14;
+				}
 			}
-			&.pm_foe_colour dl.row-item {
-				border-color: $color-11;
+			&.pm_foe_colour dl {
+				&:before, &:after {
+					background: $color-11;
+				}
 			}
 		}
 	}
@@ -513,7 +539,7 @@
 			.right-box {
 				float: right;
 				clear: right;
-				margin: -3px 0 0 20px;
+				margin: -3px 0 1px 20px;
 				.button2 {
 					@include small-form-ele;
 				}
@@ -523,29 +549,29 @@
 			}
 		}
 	}
-	fieldset dl {
-		dd {
-			@include flex-flow(row nowrap);
-			align-items: flex-start;
-			margin-top: 0 !important;
-			select, .inputbox {
-				@include flex(base);
-				& + .button2 {
-					margin: 0 0 0 $ffs;
-				}
+	fieldset dl dd {
+		@include flex-flow(row wrap);
+		align-items: flex-start;
+		margin-top: 0 !important;
+		select, .inputbox {
+			@include flex(base);
+			& + [class*='button'] {
+				margin: 0 0 0 $ffs;
 			}
-			.button2, select[name='move_to'], select[name='full_move_to'] {
-				@include flex;
-			}
-			label[for='remove_action1'], label[for='full_action2'] {
-				margin-top: 3px;
-			}
-			select[name='move_to'], select[name='full_move_to'] {
-				@include small-form-ele;
-				width: auto;
-				min-height: 0;
-				font-size: rem(13px);
-			}
+		}
+		.button2, select[name='move_to'], select[name='full_move_to'] {
+			@include flex;
+		}
+		label[for='remove_action1'], label[for='full_action2'] {
+			margin-top: 3px;
+			@include flex;
+		}
+		select[name='move_to'], select[name='full_move_to'] {
+			@include flex(base);
+			@include small-form-ele;
+			width: auto;
+			min-height: 0;
+			font-size: rem(13px);
 		}
 	}
 }
@@ -574,9 +600,6 @@
 		}
 		select {
 			width: auto;
-		}
-		.button2 {
-			margin: 0 0 0 -3px;
 		}
 	}
 }
