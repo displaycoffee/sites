@@ -630,7 +630,7 @@
 	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
 		position: absolute;
-		top: -5px;
+		top: 0;
 		right: 0;
 	}
 	.forum-selection, .action-bar.actions-jump {
@@ -654,8 +654,13 @@
 			padding: 5px 325px 5px 0;
 		}
 	}
-	.action-bar.actions-jump + h2 {
-		padding: 5px 200px 5px 0;
+	.action-bar.actions-jump {
+		&, .jumpbox {
+			margin: 0;
+		}
+		& + h2 {
+			padding: 5px 200px 5px 0;
+		}
 	}
 	.tabs-container h2 {
 		padding: 1.5px 325px 1.5px 0;
@@ -692,7 +697,6 @@
 			align-items: flex-start;
 			select, .inputbox {
 				@include flex(base);
-				width: auto;
 			}
 		 	.button2 {
 				@include flex;

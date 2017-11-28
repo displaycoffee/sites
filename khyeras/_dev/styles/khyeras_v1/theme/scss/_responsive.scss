@@ -345,6 +345,21 @@
 			width: 25%;
 		}
 	}
+	.mcp-main {
+		.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
+			position: static;
+			margin-bottom: 20px;
+		}
+		.forum-selection + h2, .action-bar.actions-jump + h2, .tabs-container h2 {
+			padding: 0;
+		}
+		.forum-selection, .action-bar.actions-jump {
+			height: auto;
+		}
+		.action-bar.actions-jump .jumpbox {
+			text-align: left;
+		}
+	}
 
 	// header.scss
 	#page-header .navbar {
@@ -640,7 +655,6 @@
 	.post {
 		 .inner {
 			 display: block;
-			 position: relative;
 		 }
 		 .postprofile {
 			 margin: 0 0 20px 0;
@@ -648,19 +662,29 @@
 		 }
 	}
 	.postbody {
-		position: static;
+		& > div > h3, & > h3 {
+			padding-right: 80px;
+		}
 		.post-buttons {
-			top: 20px;
-			right: 20px;
 			max-width: 20%;
 		}
 	}
-	.postbody > div > h3, .postbody > h3,
-	.section-viewtopic .post .postbody > div > h3 {
-		padding-right: 0;
-	}
-	.topicreview .postbody > h3 {
-		padding-right: 80px;
+	.section-viewtopic {
+		.post {
+			.inner {
+				position: relative;
+			}
+			.postbody > div > h3 {
+				padding-right: 0;
+			}
+		}
+		.postbody {
+			position: static;
+			.post-buttons {
+				top: 20px;
+				right: 20px;
+			}
+		}
 	}
 	.postprofile {
 		border-right: 0;
@@ -1091,9 +1115,6 @@
 				strong {
 					display: block;
 				}
-				.button2 {
-					margin-left: 0;
-				}
 			}
 			&.unapproved {
 				span {
@@ -1389,14 +1410,21 @@
 	}
 
 	// viewtopic.scss
-	.postbody .attachbox {
-		display: block;
-		& > dd {
-			width: auto;
+	.postbody {
+		.attachbox {
+			display: block;
+			& > dd {
+				width: auto;
+			}
+		}
+		.post-notice [class*='button'] + [class*='button'] {
+			margin-top: $ffs;
 		}
 	}
-	.topicreview .postbody > h3 {
-		padding-right: 50px;
+	.postbody {
+		& > div > h3, & > h3 {
+			padding-right: 50px;
+		}
 	}
 	fieldset.polls dl dt {
 		padding-right: 0;
@@ -1545,6 +1573,32 @@
 		.button2 {
 			margin-top: $ffs;
 		}
+	}
+	.mcp-main {
+		.forum-selection {
+			label {
+				display: block;
+				select {
+					width: 100%;
+					max-width: none;
+					margin: $ffs 0;
+				}
+			}
+		}
+	}
+	.section-mcp-moderation-queue, .section-mcp-post-details {
+		.cp-main {
+			form[id*='mcp'] fieldset dl dd {
+				display: block;
+			 	.button2 {
+					margin-top: $ffs;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+	.section-mcp-moderation-queue .cp-main .postbody .post-notice [class*='button'] + [class*='button'] {
+		margin-top: -15px;
 	}
 
 	// header.scss
