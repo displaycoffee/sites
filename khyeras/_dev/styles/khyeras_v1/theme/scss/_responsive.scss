@@ -921,6 +921,20 @@
 			margin-top: -10px;
 		}
 	}
+	.section-mcp-view-topic .cp-main #display-panel dl dd select#st {
+		& ~ label select {
+			width: 100%;
+		}
+		& + label {
+			max-width: 100px;
+			select {
+				margin-top: $ffs;
+			}
+			& + label {
+				max-width: 106px;
+			}
+		}
+	}
 	.section-mcp-warnings .cp-main table.table1 td a[href*='user_notes'] {
 		position: relative;
 		left: -10px;
@@ -1288,6 +1302,9 @@
 			}
 		}
 	}
+	.section-mcp-view-topic .cp-main #merge-panel dl dd input[type='number'].inputbox {
+		margin-bottom: $ffs;
+	}
 
 	// header.scss
 	#featured-content .flex-row .flex-column .image-wrap {
@@ -1405,12 +1422,11 @@
 	}
 
 	// viewtopic.scss
-	.postbody {
-		.attachbox {
-			display: block;
-			& > dd {
-				width: auto;
-			}
+	.postbod .attachbox {
+		display: block;
+		& > dd {
+			width: auto;
+			padding: 0;
 		}
 	}
 	.postbody {
@@ -1593,6 +1609,18 @@
 		&.unapproved, &.deleted {
 			[class*='button'] + [class*='button'] {
 				margin-top: -15px;
+			}
+		}
+	}
+	.section-mcp-view-topic .cp-main #display-panel dl dd select#st {
+		& ~ label {
+			display: block;
+		}
+		& + label {
+			margin-top: 0;
+			&, & + label {
+				max-width: none;
+				margin-left: 0;
 			}
 		}
 	}
