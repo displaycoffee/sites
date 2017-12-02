@@ -30,6 +30,9 @@ jQuery( document ).ready( function( $ ) {
 	checkForSpace( 'fieldset dl dt' );
 	checkForSpace( 'dl.details dt' );
 
+	// Remove spaces in fieldsets
+	removeSpaces( 'fieldset dl dd' );
+
 	// Add wrapper around topic review if height is bigger than 400px
 	addScrollableArea( $( '.topicreview' ), 400, $( '.review .right-box' ) );
 

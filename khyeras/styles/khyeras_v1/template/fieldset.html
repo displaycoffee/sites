@@ -1,0 +1,1533 @@
+<h2>fieldset test</h2>
+<div class="fieldset-test">
+<h3>captcha_default - fields2</h3>
+
+<fieldset class="fields2">
+
+<dl>
+	<dt><label for="confirm_code">{L_CONFIRM_CODE}{L_COLON}</label></dt>
+	<dd class="captcha captcha-image"><img src="{CONFIRM_IMAGE_LINK}" alt="{L_CONFIRM_CODE}" /></dd>
+	<dd><input type="text" name="confirm_code" id="confirm_code" size="8" maxlength="8" tabindex="{$CAPTCHA_TAB_INDEX}" class="inputbox narrow" title="{L_CONFIRM_CODE}" />
+	<input type="submit" name="refresh_vc" id="refresh_vc" class="button2" value="{L_VC_REFRESH}" />
+	<input type="hidden" name="confirm_id" id="confirm_id" value="{CONFIRM_ID}" /></dd>
+	<dd>{L_CONFIRM_CODE_EXPLAIN}</dd>
+</dl>
+</fieldset>
+
+<h3>captcha_qa - fields2</h3>
+
+<fieldset class="fields2">
+
+
+<dl>
+<dt><label>{QA_CONFIRM_QUESTION}{L_COLON}</label><br /><span>{L_CONFIRM_QUESTION_EXPLAIN}</span></dt>
+<dd class="captcha">
+	<input type="text" tabindex="{$CAPTCHA_TAB_INDEX}" name="qa_answer" id="answer" size="45"  class="inputbox autowidth" title="{L_ANSWER}" />
+	<input type="hidden" name="qa_confirm_id" id="qa_confirm_id" value="{QA_CONFIRM_ID}" />
+</dd>
+</dl>
+
+</fieldset>
+
+<h3>captcha_recaptcha - fields2</h3>
+
+<fieldset class="fields2">
+
+
+<dl>
+<dt><label>{L_CONFIRM_CODE}{L_COLON}</label><br /><span>{L_RECAPTCHA_EXPLAIN}</span></dt>
+<dd class="captcha">
+	<div class="g-recaptcha" data-sitekey="{RECAPTCHA_PUBKEY}" data-tabindex=""></div>
+</dd>
+</dl>
+{L_RECAPTCHA_NOT_AVAILABLE}
+
+</fieldset>
+
+<h3>confirm_delete_body - fields1</h3>
+
+<fieldset class="fields1">
+		<dl>
+			<dt><label for="delete_permanent">{L_DELETE_PERMANENTLY}{L_COLON}</label></dt>
+			<dd>
+				<label for="delete_permanent">
+					<input id="delete_permanent" name="delete_permanent" type="checkbox" value="1" {S_CHECKED_PERMANENT} />
+					{DELETE_TOPIC_PERMANENTLY_EXPLAIN}
+				</label>
+			</dd>
+		</dl>
+
+
+	<dl>
+		<dt><label for="delete_reason">{L_DELETE_REASON}{L_COLON}</label><br /><span>{L_DELETE_REASON_EXPLAIN}</span></dt>
+		<dd><input type="text" name="delete_reason" id="delete_reason" value="" class="inputbox autowidth" maxlength="120" size="45" /></dd>
+	</dl>
+</fieldset>
+
+<h3>maybe quick_login... - fields2</h3>
+
+<h3>login_body - fields1 or fields2</h3>
+
+<fieldset class="fields1">
+<div class="error">{LOGIN_ERROR}</div>
+<dl>
+	<dt><label for="{USERNAME_CREDENTIAL}">{L_USERNAME}{L_COLON}</label></dt>
+	<dd><input type="text" tabindex="1" name="{USERNAME_CREDENTIAL}" id="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" class="inputbox autowidth" /></dd>
+</dl>
+<dl>
+	<dt><label for="{PASSWORD_CREDENTIAL}">{L_PASSWORD}{L_COLON}</label></dt>
+	<dd><input type="password" tabindex="2" id="{PASSWORD_CREDENTIAL}" name="{PASSWORD_CREDENTIAL}" size="25" class="inputbox autowidth" autocomplete="off" /></dd>
+<dd><a href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a></dd>
+		<dd><a href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a></dd>
+
+</dl>
+
+
+<dl>
+	<dd><label for="autologin"><input type="checkbox" name="autologin" id="autologin" tabindex="4" /> {L_LOG_ME_IN}</label></dd>
+	<dd><label for="viewonline"><input type="checkbox" name="viewonline" id="viewonline" tabindex="5" /> {L_HIDE_ME}</label></dd>
+</dl>
+
+
+{S_LOGIN_REDIRECT}
+<dl>
+	<dt>&nbsp;</dt>
+	<dd>{S_HIDDEN_FIELDS}<input type="submit" name="login" tabindex="6" value="{L_LOGIN}" class="button1" /></dd>
+</dl>
+</fieldset>
+
+<h3>login_forum - fields1</h3>
+
+<fieldset class="fields1">
+		<dl>
+			<dt>&nbsp;</dt>
+			<dd class="error">{LOGIN_ERROR}</dd>
+		</dl>
+
+
+	<dl>
+		<dt><label for="password">{L_PASSWORD}{L_COLON}</label></dt>
+		<dd><input type="password" tabindex="1" id="password" name="password" size="25" class="inputbox narrow" autocomplete="off" /></dd>
+	</dl>
+	{S_LOGIN_REDIRECT}
+	<dl>
+		<dt>&nbsp;</dt>
+		<dd>{S_HIDDEN_FIELDS}<input type="submit" name="login" id="login" class="button1" value="{L_LOGIN}" tabindex="2" /></dd>
+	</dl>
+</fieldset>
+
+<h3>mcp_approve - class on dl.fields2</h3>
+
+<fieldset>
+	<dl class="fields2 nobg">
+		<dt>&nbsp;</dt>
+		<dd><label><input type="checkbox" name="notify_poster" checked="checked" /> {L_NOTIFY_POSTER_APPROVAL}{L_NOTIFY_POSTER_DISAPPROVAL}</label></dd>
+	</dl>
+	<dl class="fields2 nobg">
+		<dt><label>{L_DISAPPROVE_REASON}{L_COLON}</label></dt>
+		<dd><select name="reason_id">
+			<option value="{reason.ID}">{reason.DESCRIPTION}</option>
+			</select>
+		</dd>
+	</dl>
+	<dl class="fields2 nobg">
+		<dt><label for="reason">{L_MORE_INFO}{L_COLON}</label><br /><span>{L_CAN_LEAVE_BLANK}</span></dt>
+		<dd><textarea class="inputbox" name="reason" id="reason" rows="4" cols="40">{REASON}</textarea></dd>
+	</dl>
+
+
+<dl class="fields2 nobg">
+	<dt>&nbsp;</dt>
+	<dd><strong>{MESSAGE_TEXT}</strong></dd>
+</dl>
+</fieldset>
+
+<h3>mcp_ban - no class</h3>
+
+<fieldset>
+
+<dl>
+	<dt><label for="ban">{L_BAN_CELL}{L_COLON}</label></dt>
+	<dd><label for="ban"><textarea name="ban" id="ban" class="inputbox" cols="40" rows="3">{BAN_QUANTIFIER}</textarea></label></dd>
+	<dd><strong><a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a></strong></dd>
+</dl>
+<dl>
+	<dt><label for="banlength">{L_BAN_LENGTH}{L_COLON}</label></dt>
+	<dd><label for="banlength"><select name="banlength" id="banlength" onchange="if(this.value==-1){document.getElementById('banlengthother').style.display = 'block';}else{document.getElementById('banlengthother').style.display='none';}">{S_BAN_END_OPTIONS}</select></label></dd>
+	<dd id="banlengthother" style="display: none;"><label><input type="text" name="banlengthother" class="inputbox" /><br /><span>{L_YEAR_MONTH_DAY}</span></label></dd>
+</dl>
+<dl>
+	<dt><label for="banreason">{L_BAN_REASON}{L_COLON}</label></dt>
+	<dd><input name="banreason" id="banreason" type="text" class="inputbox" maxlength="255" /></dd>
+</dl>
+<dl>
+	<dt><label for="bangivereason">{L_BAN_GIVE_REASON}{L_COLON}</label></dt>
+	<dd><input name="bangivereason" id="bangivereason" type="text" class="inputbox" maxlength="255" /></dd>
+</dl>
+
+<hr />
+
+<dl>
+	<dt><label for="banexclude0">{L_BAN_EXCLUDE}{L_COLON}</label><br /><span>{L_BAN_EXCLUDE_EXPLAIN}</span></dt>
+	<dd>
+		<label for="banexclude1"><input type="radio" name="banexclude" id="banexclude1" value="1" /> {L_YES}</label>
+		<label for="banexclude0"><input type="radio" name="banexclude" id="banexclude0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+
+</fieldset>
+
+<fieldset>
+
+<dl>
+	<dt><label for="unban">{L_BAN_CELL}{L_COLON}</label></dt>
+	<dd><select name="unban[]" id="unban" multiple="multiple" size="5" onchange="if (this.selectedIndex != -1) {display_details(this.options[this.selectedIndex].value);}">{BANNED_OPTIONS}</select></dd>
+</dl>
+<dl>
+	<dt>{L_BAN_LENGTH}{L_COLON}</dt>
+	<dd><strong id="unbanlength"></strong></dd>
+</dl>
+<dl>
+	<dt>{L_BAN_REASON}{L_COLON}</dt>
+	<dd><strong id="unbanreason"></strong></dd>
+</dl>
+<dl>
+	<dt>{L_BAN_GIVE_REASON}{L_COLON}</dt>
+	<dd><strong id="unbangivereason"></strong></dd>
+</dl>
+
+</fieldset>
+
+<h3>mcp_move - class on dl.fields2</h3>
+
+<fieldset>
+<dl class="fields2">
+	<dt><label>{L_SELECT_DESTINATION_FORUM}{L_COLON}</label></dt>
+	<dd><select name="to_forum_id">{S_FORUM_SELECT}</select></dd>
+	<dd><label for="move_leave_shadow"><input type="checkbox" name="move_leave_shadow" id="move_leave_shadow" />{L_LEAVE_SHADOW}</label></dd>
+	<dd><label for="move_lock_topics"><input type="checkbox" name="move_lock_topics" id="move_lock_topics" />{L_LOCK_TOPIC}</label></dd>
+</dl>
+<dl class="fields2">
+	<dt>&nbsp;</dt>
+	<dd><strong>{MESSAGE_TEXT}</strong></dd>
+</dl>
+</fieldset>
+
+<h3>mcp_notes_front - no class</h3>
+
+<fieldset>
+<dl>
+	<dt><label for="username">{L_SELECT_USER}{L_COLON}</label></dt>
+	<dd><input name="username" id="username" type="text" class="inputbox" /></dd>
+	<dd><strong><a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a></strong></dd>
+</dl>
+</fieldset>
+
+<h3>mcp_post - no class</h3>
+
+<fieldset>
+<dl>
+	<dt><label>{L_CHANGE_POSTER}{L_COLON}</label></dt>
+	<dd><select name="u">{S_USER_SELECT}</select> <input type="submit" class="button2" name="action[chgposter_ip]" value="{L_CONFIRM}" /></dd>
+	<dd style="margin-top:3px;">
+		<input class="inputbox autowidth" type="text" name="username" value="" />
+		<input type="submit" class="button2" name="action[chgposter]" value="{L_CONFIRM}" />
+		<br />
+		<span>[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span>
+	</dd>
+</dl>
+{S_FORM_TOKEN}
+</fieldset>
+
+<fieldset>
+<dl>
+	<dt><label>{L_MOD_OPTIONS}{L_COLON}</label></dt>
+	<dd><select name="action">
+		<option value="unlock_post">{L_UNLOCK_POST} [{L_UNLOCK_POST_EXPLAIN}]</option><option value="lock_post">{L_LOCK_POST} [{L_LOCK_POST_EXPLAIN}]</option>
+		<option value="delete_post">{L_DELETE_POST}</option>
+		</select> <input class="button2" type="submit" value="{L_SUBMIT}" />
+	</dd>
+</dl>
+{S_FORM_TOKEN}
+</fieldset>
+
+<h3>mcp_topic - fields2</h3>
+
+<fieldset id="display-panel" class="fields2" role="tabpanel">
+<dl>
+	<dt><label for="posts_per_page">{L_POSTS_PER_PAGE}{L_COLON}</label><br /><span>{L_POSTS_PER_PAGE_EXPLAIN}</span></dt>
+	<dd><input class="inputbox autowidth" type="number" min="0" max="999999" name="posts_per_page" id="posts_per_page" value="{POSTS_PER_PAGE}" /></dd>
+</dl>
+<dl>
+	<dt><label>{L_DISPLAY_POSTS}{L_COLON}</label></dt>
+	<dd>{S_SELECT_SORT_DAYS}&nbsp;&nbsp;<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label><label>{S_SELECT_SORT_DIR}</label> <input type="submit" name="sort" value="{L_GO}" class="button2" /></dd>
+</dl>
+</fieldset>
+
+<fieldset id="split-panel" class="fields2" role="tabpanel">
+	<p>{L_SPLIT_TOPIC_EXPLAIN}</p>
+
+	<dl>
+		<dt><label for="icon">{L_TOPIC_ICON}{L_COLON}</label></dt>
+		<dd><label for="icon"><input type="radio" name="icon" id="icon" value="0" checked="checked" /> {L_NO_TOPIC_ICON}</label>
+		<label for="icon-{topic_icon.ICON_ID}"><input type="radio" name="icon" id="icon-{topic_icon.ICON_ID}" value="{topic_icon.ICON_ID}" {topic_icon.S_ICON_CHECKED} /><img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="" title="" /></label> </dd>
+	</dl>
+
+
+
+<dl>
+	<dt><label for="subject">{L_SPLIT_SUBJECT}{L_COLON}</label></dt>
+	<dd><input type="text" name="subject" id="subject" size="45" maxlength="124" tabindex="2" value="{SPLIT_SUBJECT}" title="{L_SPLIT_SUBJECT}" class="inputbox" /></dd>
+</dl>
+
+<dl>
+	<dt><label>{L_SPLIT_FORUM}{L_COLON}</label></dt>
+	<dd><select name="to_forum_id">{S_FORUM_SELECT}</select></dd>
+</dl>
+</fieldset>
+
+<fieldset id="merge-panel" class="fields2" role="tabpanel">
+	<p>{L_MERGE_TOPIC_EXPLAIN}</p>
+<dl>
+	<dt><label for="to_topic_id">{L_MERGE_TOPIC_ID}{L_COLON}</label></dt>
+	<dd>
+		<input class="inputbox autowidth" type="number" min="0" max="9999999999" name="to_topic_id" id="to_topic_id" value="{TO_TOPIC_ID}" />
+		<a href="{U_SELECT_TOPIC}" >{L_SELECT_TOPIC}</a>
+	</dd>
+	<dd>{TO_TOPIC_INFO}</dd>
+</dl>
+</fieldset>
+
+<h3>mcp_warn_front - no class</h3>
+
+<fieldset>
+<dl>
+	<dt><label for="username">{L_SELECT_USER}{L_COLON}</label></dt>
+	<dd><input name="username" id="username" type="text" class="inputbox" /></dd>
+	<dd><strong><a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a></strong></dd>
+</dl>
+</fieldset>
+
+<h3>mcp_warn_post - no class</h3>
+
+<fieldset>
+	<textarea name="warning" id="warning" class="inputbox" cols="40" rows="3">{L_WARNING_POST_DEFAULT}</textarea>
+	<br /><br />
+	<dl class="panel">
+		<dt>&nbsp;</dt>
+		<dd><label><input type="checkbox" name="notify_user" checked="checked" /> {L_NOTIFY_USER_WARN}</label></dd>
+	</dl>
+
+</fieldset>
+
+<h3>mcp_warn_user - no class</h3>
+
+<fieldset>
+	<textarea name="warning" id="warning" class="inputbox" cols="40" rows="3"></textarea>
+	<br /><br />
+	<dl class="panel">
+		<dt>&nbsp;</dt>
+		<dd><label><input type="checkbox" name="notify_user" checked="checked" /> {L_NOTIFY_USER_WARN}</label></dd>
+	</dl>
+
+</fieldset>
+
+<h3>memberlist_email - fields2</h3>
+
+<fieldset class="fields2">
+	<dl>
+		<dt><label>{L_RECIPIENT}{L_COLON}</label></dt>
+		<dd><strong>{USERNAME_FULL}</strong></dd>
+	</dl>
+	<dl>
+		<dt><label for="subject">{L_SUBJECT}{L_COLON}</label></dt>
+		<dd><input class="inputbox autowidth" type="text" name="subject" id="subject" size="50" tabindex="1" value="{SUBJECT}" /></dd>
+	</dl>
+
+	<dl>
+		<dt><label>{L_RECIPIENT}{L_COLON}</label></dt>
+		<dd><strong>{L_ADMINISTRATOR}</strong></dd>
+	</dl>
+	<dl>
+		<dt><label for="email">{L_SENDER_EMAIL_ADDRESS}{L_COLON}</label></dt>
+		<dd><input class="inputbox autowidth" type="text" name="email" id="email" size="50" maxlength="100" tabindex="1" value="{EMAIL}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="name">{L_SENDER_NAME}{L_COLON}</label></dt>
+		<dd><input class="inputbox autowidth" type="text" name="name" id="name" size="50" tabindex="2" value="{NAME}" /></dd>
+	</dl>
+
+	<dl>
+		<dt><label for="subject">{L_SUBJECT}{L_COLON}</label></dt>
+		<dd><input class="inputbox autowidth" type="text" name="subject" id="subject" size="50" tabindex="3" value="{SUBJECT}" /></dd>
+	</dl>
+
+	<dl>
+		<dt><label for="email">{L_EMAIL_ADDRESS}{L_COLON}</label></dt>
+		<dd><input class="inputbox autowidth" type="email" name="email" id="email" size="50" maxlength="100" tabindex="2" value="{EMAIL}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="name">{L_REAL_NAME}{L_COLON}</label></dt>
+		<dd><input class="inputbox autowidth" type="text" name="name" id="name" size="50" tabindex="3" value="{NAME}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="lang">{L_DEST_LANG}{L_COLON}</label><br />
+			<span>{L_DEST_LANG_EXPLAIN}</span></dt>
+		<dd><select name="lang">{S_LANG_OPTIONS}</select></dd>
+	</dl>
+
+<dl>
+	<dt><label for="message">{L_MESSAGE_BODY}{L_COLON}</label><br />
+	<span>{L_EMAIL_BODY_EXPLAIN}</span></dt>
+	<dd><textarea class="inputbox" name="message" id="message" rows="15" cols="76" tabindex="4">{MESSAGE}</textarea></dd>
+
+<dl>
+	<dt>&nbsp;</dt>
+	<dd><label for="cc_sender"><input type="checkbox" name="cc_sender" id="cc_sender" value="1" checked="checked" tabindex="5" /> {L_CC_SENDER}</label></dd>
+</dl>
+
+</fieldset>
+
+<h3>memberlist_im - class on dl.fields2</h3>
+
+<fieldset>
+<dl class="fields2">
+	<dt><label>{L_IM_RECIPIENT}{L_COLON}</label></dt>
+	<dd><strong>{USERNAME}</strong> [ {IM_CONTACT} ] {PRESENCE_IMG}</dd>
+</dl>
+	<dl class="fields2">
+		<dt><label for="message">{L_IM_MESSAGE}{L_COLON}</label></dt>
+		<dd><textarea class="inputbox autowidth" name="message" id="message" rows="5" cols="45"></textarea></dd>
+	</dl>
+	<dl class="fields2">
+		<dt>&nbsp;</dt>
+		<dd><input class="button1" name="submit" type="submit" value="{L_IM_SEND}" /></dd>
+	</dl>
+
+	<dl class="fields2">
+		<dt>&nbsp;</dt>
+		<dd>{L_IM_NO_JABBER}</dd>
+	</dl>
+
+{S_FORM_TOKEN}
+</fieldset>
+
+<h3>memberlist_search - fields1</h3>
+
+<fieldset class="fields1 column1">
+<dl style="overflow: visible;">
+	<dt><label for="username">{L_USERNAME}{L_COLON}</label></dt>
+	<dd>
+		<div class="dropdown-container dropdown-{S_CONTENT_FLOW_END}">
+		<input type="text" name="username" id="username" value="{USERNAME}" class="inputbox" autocomplete="off" data-filter="phpbb.search.filter" data-ajax="member_search" data-min-length="3" data-url="{U_LIVE_SEARCH}" data-results="#user-search" data-overlay="false" />
+			<div class="dropdown live-search hidden" id="user-search">
+				<div class="pointer"><div class="pointer-inner"></div></div>
+				<ul class="dropdown-contents search-results">
+					<li class="search-result-tpl"><span class="search-result"></span></li>
+				</ul>
+			</div>
+		</div>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="email">{L_EMAIL}{L_COLON}</label></dt>
+	<dd><input type="text" name="email" id="email" value="{EMAIL}" class="inputbox" /></dd>
+</dl>
+<dl>
+	<dt><label for="jabber">{L_JABBER}{L_COLON}</label></dt>
+	<dd><input type="text" name="jabber" id="jabber" value="{JABBER}" class="inputbox" /></dd>
+</dl>
+
+<dl>
+	<dt><label for="search_group_id">{L_GROUP}{L_COLON}</label></dt>
+	<dd><select name="search_group_id" id="search_group_id">{S_GROUP_SELECT}</select></dd>
+</dl>
+
+<dl>
+	<dt><label for="sk" class="label3">{L_SORT_BY}{L_COLON}</label></dt>
+	<dd><select name="sk" id="sk">{S_SORT_OPTIONS}</select> <select name="sd">{S_ORDER_SELECT}</select></dd>
+</dl>
+</fieldset>
+
+<fieldset class="fields1 column2">
+<dl>
+	<dt><label for="joined">{L_JOINED}{L_COLON}</label></dt>
+	<dd><select name="joined_select">{S_JOINED_TIME_OPTIONS}</select> <input class="inputbox medium" type="text" name="joined" id="joined" value="{JOINED}" /></dd>
+</dl>
+<dl>
+	<dt><label for="active">{L_LAST_ACTIVE}{L_COLON}</label></dt>
+	<dd><select name="active_select">{S_ACTIVE_TIME_OPTIONS}</select> <input class="inputbox medium" type="text" name="active" id="active" value="{ACTIVE}" /></dd>
+</dl>
+
+<dl>
+	<dt><label for="count">{L_POSTS}{L_COLON}</label></dt>
+	<dd><select name="count_select">{S_COUNT_OPTIONS}</select> <input class="inputbox medium" type="number" min="0" name="count" id="count" value="{COUNT}" /></dd>
+</dl>
+<dl>
+	<dt><label for="ip">{L_POST_IP}{L_COLON}</label></dt>
+	<dd><input class="inputbox medium" type="text" name="ip" id="ip" value="{IP}" /></dd>
+</dl>
+
+
+</fieldset>
+
+<h3>posting_attach_body - fields2</h3>
+
+<fieldset class="fields2" id="attach-panel-basic">
+<dl>
+	<dt><label for="fileupload">{L_FILENAME}{L_COLON}</label></dt>
+	<dd>
+		<input type="file" name="fileupload" id="fileupload" class="inputbox autowidth" />
+		<input type="submit" name="add_file" value="{L_ADD_FILE}" class="button2" onclick="upload = true;" />
+	</dd>
+</dl>
+<dl>
+	<dt><label for="filecomment">{L_FILE_COMMENT}{L_COLON}</label></dt>
+	<dd><textarea name="filecomment" id="filecomment" rows="1" cols="40" class="inputbox autowidth">{FILE_COMMENT}</textarea></dd>
+</dl>
+</fieldset>
+
+<h3>posting_editor - fields1</h3>
+
+<fieldset class="fields1">
+	<p class="error">{ERROR}</p>
+	<dl>
+		<dt><label for="icon">{L_ICON}{L_COLON}</label></dt>
+		<dd>
+			<label for="icon"><input type="radio" name="icon" id="icon" value="0" checked="checked" tabindex="1" /> {L_NO_TOPIC_ICON} {L_NO_PM_ICON}</label>
+			<label for="icon-{topic_icon.ICON_ID}"><input type="radio" name="icon" id="icon-{topic_icon.ICON_ID}" value="{topic_icon.ICON_ID}" {topic_icon.S_ICON_CHECKED} tabindex="1" /><img src="{topic_icon.ICON_IMG}" width="{topic_icon.ICON_WIDTH}" height="{topic_icon.ICON_HEIGHT}" alt="{topic_icon.ICON_ALT}" title="{topic_icon.ICON_ALT}" /></label>
+		</dd>
+	</dl>
+
+
+
+	<dl style="clear: left;">
+		<dt><label for="username">{L_USERNAME}{L_COLON}</label></dt>
+		<dd><input type="text" tabindex="1" name="username" id="username" size="25" value="{USERNAME}" class="inputbox autowidth" /></dd>
+	</dl>
+
+
+
+
+
+	<dl style="clear: left;">
+		<dt><label for="subject">{L_SUBJECT}{L_COLON}</label></dt>
+		<dd>
+
+			<input type="text" name="subject" id="subject" size="45" maxlength="120124" tabindex="2" value="{SUBJECT}{DRAFT_SUBJECT}" class="inputbox autowidth" />
+
+		</dd>
+	</dl>
+
+
+
+	<div id="smiley-box" class="smiley-box">
+
+
+			<strong>{L_SMILIES}</strong><br />
+
+				<a href="#"><img src="{smiley.SMILEY_IMG}" width="{smiley.SMILEY_WIDTH}" height="{smiley.SMILEY_HEIGHT}" alt="{smiley.SMILEY_CODE}" title="{smiley.SMILEY_DESC}" /></a>
+
+
+
+			<br /><a href="{U_MORE_SMILIES}">{L_MORE_SMILIES}</a>
+
+
+
+		<div class="bbcode-status">
+			<hr />
+			{BBCODE_STATUS}<br />
+
+				{IMG_STATUS}<br />
+				{FLASH_STATUS}<br />
+				{URL_STATUS}<br />
+
+			{SMILIES_STATUS}
+		</div>
+
+
+
+			<hr />
+			<strong><a href="{S_UCP_ACTION}">{L_BACK_TO_DRAFTS}</a></strong>
+			<strong><a href="#review">{L_TOPIC_REVIEW}</a></strong>
+
+	</div>
+
+
+
+	<div id="message-box" class="message-box">
+		<textarea name="signature" id="signature" style="height: 9em;"name="message" id="message" rows="15" cols="76" tabindex="4" class="inputbox">{MESSAGE}{DRAFT_MESSAGE}{SIGNATURE}</textarea>
+	</div>
+
+
+	</fieldset>
+
+	<fieldset class="fields1">
+
+
+			<div><label for="disable_bbcode"><input type="checkbox" name="disable_bbcode" id="disable_bbcode"{S_BBCODE_CHECKED} /> {L_DISABLE_BBCODE}</label></div>
+
+
+			<div><label for="disable_smilies"><input type="checkbox" name="disable_smilies" id="disable_smilies"{S_SMILIES_CHECKED} /> {L_DISABLE_SMILIES}</label></div>
+
+
+			<div><label for="disable_magic_url"><input type="checkbox" name="disable_magic_url" id="disable_magic_url"{S_MAGIC_URL_CHECKED} /> {L_DISABLE_MAGIC_URL}</label></div>
+
+
+			<div><label for="attach_sig"><input type="checkbox" name="attach_sig" id="attach_sig"{S_SIGNATURE_CHECKED} /> {L_ATTACH_SIG}</label></div>
+
+
+			<div><label for="notify"><input type="checkbox" name="notify" id="notify"{S_NOTIFY_CHECKED} /> {L_NOTIFY_REPLY}</label></div>
+
+
+			<div><label for="lock_topic"><input type="checkbox" name="lock_topic" id="lock_topic"{S_LOCK_TOPIC_CHECKED} /> {L_LOCK_TOPIC}</label></div>
+
+
+			<div><label for="lock_post"><input type="checkbox" name="lock_post" id="lock_post"{S_LOCK_POST_CHECKED} /> {L_LOCK_POST} [{L_LOCK_POST_EXPLAIN}]</label></div>
+
+
+
+		<hr class="dashed" />
+
+
+
+		<dl>
+			<dt><label for="topic_type-0">{L_CHANGE_TOPIC_TO}{L_POST_TOPIC_AS}{L_COLON}</label></dt>
+			<dd><label for="topic_type-{topic_type.VALUE}"><input type="radio" name="topic_type" id="topic_type-{topic_type.VALUE}" value="{topic_type.VALUE}"{topic_type.S_CHECKED} />{topic_type.L_TOPIC_TYPE}</label> </dd>
+		</dl>
+
+
+
+		<dl>
+			<dt><label for="topic_time_limit">{L_STICK_TOPIC_FOR}{L_COLON}</label></dt>
+			<dd><label for="topic_time_limit"><input type="number" min="0" max="999" name="topic_time_limit" id="topic_time_limit" value="{TOPIC_TIME_LIMIT}" class="inputbox autowidth" /> {L_DAYS}</label></dd>
+			<dd>{L_STICK_TOPIC_FOR_EXPLAIN}</dd>
+		</dl>
+
+
+
+			<hr class="dashed" />
+			<dl>
+				<dt><label for="delete">{L_DELETE_POST}{L_COLON}</label></dt>
+				<dd><label for="delete"><input type="checkbox" name="delete" id="delete" {S_SOFTDELETE_CHECKED} /> {L_DELETE_POST_WARN}</label></dd>
+
+					<dd><label for="delete_permanent"><input type="checkbox" name="delete_permanent" id="delete_permanent" /> {L_DELETE_POST_PERMANENTLY}</label></dd>
+
+			</dl>
+
+
+
+		<dl>
+			<dt><label for="edit_reason">{L_EDIT_REASON}{L_COLON}</label></dt>
+			<dd><input type="text" name="edit_reason" id="edit_reason" value="{EDIT_REASON}" class="inputbox" /></dd>
+		</dl>
+
+	</fieldset>
+
+<h3>posting_layout - fields1</h3>
+
+<fieldset class="fields1">
+	<h2>{L_SELECT_DESTINATION_FORUM}</h2>
+	<p>{L_UNGLOBALISE_EXPLAIN}</p>
+	<dl>
+		<dt><label for="to_forum_id">{L_MOVE}{L_COLON}</label></dt>
+		<dd><select id="to_forum_id" name="to_forum_id">{S_FORUM_SELECT}</select></dd>
+	</dl>
+
+	<dl>
+		<dt>&nbsp;</dt>
+		<dd><input class="button1" type="submit" name="post" value="{L_CONFIRM}" /> <input class="button2" type="submit" name="cancel_unglobalise" value="{L_CANCEL}" /></dd>
+	</dl>
+</fieldset>
+
+<h3>posting_pm_header - fields1</h3>
+
+<fieldset class="fields1">
+
+
+
+			<div class="column2">
+				<label for="group_list"><strong>{L_TO_ADD_GROUPS}{L_COLON}</strong></label><br />
+				<select name="group_list[]" id="group_list" multiple="multiple" size="3" class="inputbox">{S_GROUP_OPTIONS}</select><br />
+			</div>
+
+
+		<div class="column1">
+
+			<dl class="pmlist">
+				<dt><label><strong>{L_TO_ADD_MASS}{L_COLON}</strong><textarea id="username_list" name="username_list" class="inputbox" cols="50" rows="2" tabindex="1"></textarea></label></dt>
+				<dd class="recipients">
+				<input type="submit" name="add_to" value="{L_ADD}" class="button2" tabindex="1" />
+				<input type="submit" name="add_bcc" value="{L_ADD_BCC}" class="button2" tabindex="1" />
+
+				<span><a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a></span>
+
+				</dd>
+			</dl>
+
+		</div>
+		<hr />
+		<div class="column1">
+
+				<dl>
+					<dt><label>{L_TO_MASS}{L_COLON}</label></dt>
+					<dd class="recipients">
+					<ul class="recipients">
+
+						<li>
+							<input type="submit" name="remove_{to_recipient.TYPE}[{to_recipient.UG_ID}]" value="x" class="button2" />
+							<a href="{to_recipient.U_VIEW}"><strong>{to_recipient.NAME}</strong></a>{to_recipient.NAME_FULL}
+						</li>
+
+					</ul>
+					</dd>
+				</dl>
+
+		</div>
+
+			<div class="column2">
+				<dl>
+					<dt><label>{L_BCC}{L_COLON}</label></dt>
+					<dd class="recipients">
+					<ul class="recipients">
+
+						<li>
+							<input type="submit" name="remove_{bcc_recipient.TYPE}[{bcc_recipient.UG_ID}]" value="x" class="button2" />
+							<a href="{bcc_recipient.U_VIEW}"><strong>{bcc_recipient.NAME}</strong></a>{bcc_recipient.NAME_FULL}
+						</li>
+
+					</ul>
+					</dd>
+				</dl>
+			</div>
+
+
+		<div class="column1">
+			<dl>
+				<dt><label for="username_list">{L_TO_ADD}{L_COLON}</label><br /><span><a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false">{L_FIND_USERNAME}</a></span></dt>
+
+				<dd><input class="inputbox" type="text" name="username_list" id="username_list" size="20" value="" /> <input type="submit" name="add_to" value="{L_ADD}" class="button2" /></dd>
+
+
+					<dd class="recipients">
+					<ul class="recipients">
+
+						<li>
+							<a href="{to_recipient.U_VIEW}"><strong>{to_recipient.NAME}</strong></a>{to_recipient.NAME_FULL}&nbsp;
+							<input type="submit" name="remove_{to_recipient.TYPE}[{to_recipient.UG_ID}]" value="x" class="button2" />
+						</li>
+
+					</dd>
+
+			</dl>
+		</div>
+
+
+
+	</fieldset>
+
+<h3>posting_poll_body - fields2</h3>
+
+<fieldset class="fields2">
+
+	<dl>
+		<dt><label for="poll_delete">{L_POLL_DELETE}{L_COLON}</label></dt>
+		<dd><label for="poll_delete"><input type="checkbox" name="poll_delete" id="poll_delete" checked="checked" /> </label></dd>
+	</dl>
+
+
+
+	<dl>
+		<dt><label for="poll_title">{L_POLL_QUESTION}{L_COLON}</label></dt>
+		<dd><input type="text" name="poll_title" id="poll_title" maxlength="255" value="{POLL_TITLE}" class="inputbox" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="poll_option_text">{L_POLL_OPTIONS}{L_COLON}</label><br /><span>{L_POLL_OPTIONS_EXPLAIN}</span></dt>
+		<dd><textarea name="poll_option_text" id="poll_option_text" rows="5" cols="35" class="inputbox">{POLL_OPTIONS}</textarea></dd>
+	</dl>
+
+	<hr class="dashed" />
+
+	<dl>
+		<dt><label for="poll_max_options">{L_POLL_MAX_OPTIONS}{L_COLON}</label></dt>
+		<dd><input type="number" min="0" max="999" name="poll_max_options" id="poll_max_options" value="{POLL_MAX_OPTIONS}" class="inputbox autowidth" /></dd>
+		<dd>{L_POLL_MAX_OPTIONS_EXPLAIN}</dd>
+	</dl>
+	<dl>
+		<dt><label for="poll_length">{L_POLL_FOR}{L_COLON}</label></dt>
+		<dd><label for="poll_length"><input type="number" min="0" max="999" name="poll_length" id="poll_length" value="{POLL_LENGTH}" class="inputbox autowidth" /> {L_DAYS}</label></dd>
+		<dd>{L_POLL_FOR_EXPLAIN}</dd>
+	</dl>
+
+
+		<hr class="dashed" />
+
+		<dl>
+			<dt><label for="poll_vote_change">{L_POLL_VOTE_CHANGE}{L_COLON}</label></dt>
+			<dd><label for="poll_vote_change"><input type="checkbox" id="poll_vote_change" name="poll_vote_change"{VOTE_CHANGE_CHECKED} /> {L_POLL_VOTE_CHANGE_EXPLAIN}</label></dd>
+		</dl>
+
+
+
+
+</fieldset>
+
+<h3>quickreply_editor - fields1</h3>
+
+<fieldset class="fields1">
+
+	<dl style="clear: left;">
+		<dt><label for="subject">{L_SUBJECT}{L_COLON}</label></dt>
+		<dd><input type="text" name="subject" id="subject" size="45" maxlength="124" tabindex="2" value="{SUBJECT}" class="inputbox autowidth" /></dd>
+	</dl>
+
+<div id="message-box" class="message-box">
+	<textarea style="height: 9em;" name="message" rows="7" cols="76" tabindex="3" class="inputbox"></textarea>
+</div>
+
+</fieldset>
+
+<h3>report_body - no class</h3>
+
+<fieldset>
+<dl><dd class="error">{ERROR}</dd></dl>
+<dl class="fields2">
+	<dt><label for="reason_id">{L_REASON}{L_COLON}</label></dt>
+	<dd><select name="reason_id" id="reason_id" class="full"><option value="{reason.ID}" selected="selected">{reason.DESCRIPTION}</option></select></dd>
+</dl>
+
+	<dl class="fields2">
+		<dt><label for="notify1">{L_REPORT_NOTIFY}{L_COLON}</label><br /><span>{L_REPORT_NOTIFY_EXPLAIN}</span></dt>
+		<dd>
+			<label for="notify1"><input type="radio" name="notify" id="notify1" value="1" checked="checked" /> {L_YES}</label>
+			<label for="notify0"><input type="radio" name="notify" id="notify0" value="0" checked="checked" /> {L_NO}</label>
+		</dd>
+	</dl>
+
+<dl class="fields2">
+	<dt><label for="report_text">{L_MORE_INFO}{L_COLON}</label><br /><span>{L_CAN_LEAVE_BLANK}</span></dt>
+	<dd><textarea name="report_text" id="report_text" rows="10" cols="76" class="inputbox">{REPORT_TEXT}</textarea></dd>
+</dl>
+
+
+</fieldset>
+
+<h3>search_body - no class</h3>
+
+<fieldset>
+
+<dl>
+	<dt><label for="keywords">{L_SEARCH_KEYWORDS}{L_COLON}</label><br /><span>{L_SEARCH_KEYWORDS_EXPLAIN}</span></dt>
+	<dd><input type="search" class="inputbox" name="keywords" id="keywords" size="40" title="{L_SEARCH_KEYWORDS}" /></dd>
+	<dd><label for="terms1"><input type="radio" name="terms" id="terms1" value="all" checked="checked" /> {L_SEARCH_ALL_TERMS}</label></dd>
+	<dd><label for="terms2"><input type="radio" name="terms" id="terms2" value="any" /> {L_SEARCH_ANY_TERMS}</label></dd>
+</dl>
+<dl>
+	<dt><label for="author">{L_SEARCH_AUTHOR}{L_COLON}</label><br /><span>{L_SEARCH_AUTHOR_EXPLAIN}</span></dt>
+	<dd><input type="search" class="inputbox" name="author" id="author" size="40" title="{L_SEARCH_AUTHOR}" /></dd>
+</dl>
+
+</fieldset>
+
+<fieldset>
+
+<dl>
+	<dt><label for="search_forum">{L_SEARCH_FORUMS}{L_COLON}</label><br /><span>{L_SEARCH_FORUMS_EXPLAIN}</span></dt>
+	<dd><select name="fid[]" id="search_forum" multiple="multiple" size="8" title="{L_SEARCH_FORUMS}">{S_FORUM_OPTIONS}</select></dd>
+</dl>
+<dl>
+	<dt><label for="search_child1">{L_SEARCH_SUBFORUMS}{L_COLON}</label></dt>
+	<dd>
+		<label for="search_child1"><input type="radio" name="sc" id="search_child1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="search_child2"><input type="radio" name="sc" id="search_child2" value="0" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="sf1">{L_SEARCH_WITHIN}{L_COLON}</label></dt>
+	<dd><label for="sf1"><input type="radio" name="sf" id="sf1" value="all" checked="checked" /> {L_SEARCH_TITLE_MSG}</label></dd>
+	<dd><label for="sf2"><input type="radio" name="sf" id="sf2" value="msgonly" /> {L_SEARCH_MSG_ONLY}</label></dd>
+	<dd><label for="sf3"><input type="radio" name="sf" id="sf3" value="titleonly" /> {L_SEARCH_TITLE_ONLY}</label></dd>
+	<dd><label for="sf4"><input type="radio" name="sf" id="sf4" value="firstpost" /> {L_SEARCH_FIRST_POST}</label></dd>
+</dl>
+
+
+<hr class="dashed" />
+
+
+<dl>
+	<dt><label for="show_results1">{L_DISPLAY_RESULTS}{L_COLON}</label></dt>
+	<dd>
+		<label for="show_results1"><input type="radio" name="sr" id="show_results1" value="posts" checked="checked" /> {L_POSTS}</label>
+		<label for="show_results2"><input type="radio" name="sr" id="show_results2" value="topics" /> {L_TOPICS}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="sd">{L_RESULT_SORT}{L_COLON}</label></dt>
+	<dd>{S_SELECT_SORT_KEY}&nbsp;
+		<label for="sa"><input type="radio" name="sd" id="sa" value="a" /> {L_SORT_ASCENDING}</label>
+		<label for="sd"><input type="radio" name="sd" id="sd" value="d" checked="checked" /> {L_SORT_DESCENDING}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label>{L_RESULT_DAYS}{L_COLON}</label></dt>
+	<dd>{S_SELECT_SORT_DAYS}</dd>
+</dl>
+<dl>
+	<dt><label>{L_RETURN_FIRST}{L_COLON}</label></dt>
+	<dd><select name="ch" title="{L_RETURN_FIRST}">{S_CHARACTER_OPTIONS}</select> {L_POST_CHARACTERS}</dd>
+</dl>
+
+</fieldset>
+
+<h3>ucp_auth_link_oauth - fields2</h3>
+
+<fieldset class="fields2">
+
+		<dl>
+			<dt>{L_UCP_AUTH_LINK_ID}{L_COLON}</dt>
+			<dd>{oauth.UNIQUE_ID}</dd>
+		</dl>
+		<dl>
+			<dt>&nbsp;</dt>
+			<dd><input type="submit" name="submit" tabindex="6" value="{L_UCP_AUTH_LINK_UNLINK}" class="button1" /></dd>
+		</dl>
+
+		<dl>
+			<dd>{L_UCP_AUTH_LINK_ASK}</dd>
+		</dl>
+		<dl>
+			<dt>&nbsp;</dt>
+			<dd><input type="submit" name="submit" tabindex="6" value="{L_UCP_AUTH_LINK_LINK}" class="button1" /></dd>
+		</dl>
+
+</fieldset>
+
+<h3>ucp_avatar_options - no class</h3>
+
+<fieldset>
+<p class="error">{ERROR}</p>
+	<dl>
+		<dt><label>{L_CURRENT_IMAGE}{L_COLON}</label><br /><span>{L_AVATAR_EXPLAIN}</span></dt>
+		<dd>{AVATAR}<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="" /></dd>
+		<dd><label for="avatar_delete"><input type="checkbox" name="avatar_delete" id="avatar_delete" /> {L_DELETE_AVATAR}</label></dd>
+	</dl>
+</fieldset>
+
+<fieldset>
+	<dl>
+		<dt><label>{L_AVATAR_TYPE}{L_COLON}</label></dt>
+		<dd><select name="avatar_driver" id="avatar_driver" data-togglable-settings="true">
+
+			<option value="{avatar_drivers.DRIVER}" selected="selected" data-toggle-setting="#avatar_option_{avatar_drivers.DRIVER}">{avatar_drivers.L_TITLE}</option>
+
+		</select></dd>
+	</dl>
+</fieldset>
+
+<fieldset>
+{avatar_drivers.OUTPUT}
+</fieldset>
+
+<h3>ucp_groups_manager - no class</h3>
+
+<fieldset>
+<dl>
+	<dt><label for="group_name">{L_GROUP_NAME}{L_COLON}</label></dt>
+	<dd><strong style="color: #{GROUP_COLOUR};">{GROUP_NAME}</strong> <input name="group_name" type="hidden" value="{GROUP_INTERNAL_NAME}" />
+		<input name="group_name" type="text" id="group_name" value="{GROUP_INTERNAL_NAME}" class="inputbox" /></dd>
+</dl>
+<dl>
+	<dt><label for="group_desc">{L_GROUP_DESC}{L_COLON}</label></dt>
+	<dd><textarea id="group_desc" name="group_desc" rows="5" cols="45" class="inputbox">{GROUP_DESC}</textarea></dd>
+	<dd><label for="desc_parse_bbcode"><input type="checkbox" class="radio" name="desc_parse_bbcode" id="desc_parse_bbcode" checked="checked" /> {L_PARSE_BBCODE}</label>&nbsp;<label for="desc_parse_smilies"><input type="checkbox" class="radio" name="desc_parse_smilies" id="desc_parse_smilies" checked="checked" /> {L_PARSE_SMILIES}</label>&nbsp;
+		<label for="desc_parse_urls"><input type="checkbox" class="radio" name="desc_parse_urls" id="desc_parse_urls" checked="checked" /> {L_PARSE_URLS}</label></dd>
+</dl>
+
+<dl>
+	<dt><label for="group_type1">{L_GROUP_TYPE}{L_COLON}</label><br /><span>{L_GROUP_TYPE_EXPLAIN}</span></dt>
+	<dd>
+		<label for="group_type1"><input type="radio" class="radio" name="group_type" id="group_type1" value="{GROUP_TYPE_FREE}"{GROUP_FREE} /> {L_GROUP_OPEN}</label>
+		<label for="group_type2"><input type="radio" class="radio" name="group_type" id="group_type2" value="{GROUP_TYPE_OPEN}"{GROUP_OPEN} /> {L_GROUP_REQUEST}</label>
+		<label for="group_type3"><input type="radio" class="radio" name="group_type" id="group_type3" value="{GROUP_TYPE_CLOSED}"{GROUP_CLOSED} /> {L_GROUP_CLOSED}</label>
+		<label for="group_type4"><input type="radio" class="radio" name="group_type" id="group_type4" value="{GROUP_TYPE_HIDDEN}"{GROUP_HIDDEN} /> {L_GROUP_HIDDEN}</label>
+	</dd>
+</dl>
+
+	<input name="group_type" type="hidden" value="{GROUP_TYPE_SPECIAL}" />
+
+</fieldset>
+
+<fieldset>
+<dl>
+	<dt><label for="group_colour">{L_GROUP_COLOR}{L_COLON}</label><br /><span>{L_GROUP_COLOR_EXPLAIN}</span></dt>
+	<dd>
+		<input name="group_colour" type="text" id="group_colour" value="{GROUP_COLOUR}" size="6" maxlength="6" class="inputbox narrow" />
+		<span style="background-color: #{GROUP_COLOUR};">&nbsp;&nbsp;&nbsp;</span>
+		[ <a href="#" id="color_palette_toggle">{L_COLOUR_SWATCH}</a> ]
+		<div id="color_palette_placeholder" class="color_palette_placeholder hidden" data-orientation="h" data-height="12" data-width="15" data-target="#group_colour"></div>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="group_rank">{L_GROUP_RANK}{L_COLON}</label></dt>
+	<dd><select name="group_rank" id="group_rank">{S_RANK_OPTIONS}</select></dd>
+</dl>
+</fieldset>
+
+<fieldset>
+<dl>
+	<dt><label for="default0">{L_USER_GROUP_DEFAULT}{L_COLON}</label><br /><span>{L_USER_GROUP_DEFAULT_EXPLAIN}</span></dt>
+	<dd>
+		<label for="default1"><input type="radio" name="default" id="default1" value="1" /> {L_YES}</label>
+		<label for="default0"><input type="radio" name="default" id="default0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="usernames">{L_USERNAME}{L_COLON}</label><br /><span>{L_USERNAMES_EXPLAIN}</span></dt>
+	<dd><textarea name="usernames" id="usernames" rows="3" cols="30" class="inputbox"></textarea></dd>
+	<dd><strong><a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a></strong></dd>
+</dl>
+</fieldset>
+
+<h3>ucp_login_link - fields1</h3>
+
+<fieldset class="fields1">
+	<dl>
+		<dt>&nbsp;</dt>
+		<dd>{S_HIDDEN_FIELDS}<input type="submit" name="register" tabindex="1" value="{L_REGISTER}" class="button1" /></dd>
+	</dl>
+</fieldset>
+
+<fieldset class="fields1">
+	<div class="error">{LOGIN_ERROR}</div>
+	<dl>
+		<dt><label for="{USERNAME_CREDENTIAL}">{L_USERNAME}{L_COLON}</label></dt>
+		<dd><input type="text" tabindex="2" name="{USERNAME_CREDENTIAL}" id="{USERNAME_CREDENTIAL}" size="25" value="{LOGIN_USERNAME}" class="inputbox autowidth" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="{PASSWORD_CREDENTIAL}">{L_PASSWORD}{L_COLON}</label></dt>
+		<dd><input type="password" tabindex="3" id="{PASSWORD_CREDENTIAL}" name="{PASSWORD_CREDENTIAL}" size="25" class="inputbox autowidth" autocomplete="off" /></dd>
+	</dl>
+
+
+	{S_LOGIN_REDIRECT}
+	<dl>
+		<dt>&nbsp;</dt>
+		<dd>{S_HIDDEN_FIELDS}<input type="submit" name="login" tabindex="5" value="{L_LOGIN}" class="button1" /></dd>
+	</dl>
+</fieldset>
+
+<h3>ucp_pm_options - fields2</h3>
+
+<fieldset class="fields2">
+
+
+	<dl>
+		<dt><label for="check_option">{L_IF}{L_COLON}</label></dt>
+		<dd>
+			<select name="check_option" id="check_option">{S_CHECK_OPTIONS}</select> <input type="submit" name="next" value="{L_NEXT_STEP}" class="button2" />{CHECK_CURRENT}<input type="hidden" name="check_option" value="{CHECK_OPTION}" />
+		</dd>
+	</dl>
+
+
+
+	<dl>
+		<dt><input type="submit" name="back[rule]" value="{L_PREVIOUS_STEP}" class="button2" /><label>&nbsp;</label></dt>
+		<dd><select name="rule_option" id="rule_option">{S_RULE_OPTIONS}</select> <input type="submit" name="next" value="{L_NEXT_STEP}" class="button2" /><em>{RULE_CURRENT}</em><input type="hidden" name="rule_option" value="{RULE_OPTION}" /></dd>
+	</dl>
+
+
+
+
+		<dl>
+			<dt><input type="submit" name="back[cond]" value="{L_PREVIOUS_STEP}" class="button2" /><label>&nbsp;</label></dt>
+			<dd>
+
+
+						<input type="text" name="rule_string" value="{CURRENT_STRING}" class="inputbox medium" maxlength="250" />
+
+						<input type="text" name="rule_string" value="{CURRENT_STRING}" class="inputbox tiny" />&nbsp;<span>[ <a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a> ]</span>
+
+						<input type="hidden" name="rule_string" value="{CURRENT_STRING}" /><select name="rule_group_id">{S_GROUP_OPTIONS}</select>{L_NO_GROUPS}
+
+					<input type="submit" name="next" value="{L_NEXT_STEP}" class="button2" />
+
+					<strong>{COND_CURRENT}</strong><input type="hidden" name="rule_string" value="{CURRENT_STRING}" /><input type="hidden" name="rule_user_id" value="{CURRENT_USER_ID}" /><input type="hidden" name="rule_group_id" value="{CURRENT_GROUP_ID}" />
+
+			</dd>
+		</dl>
+
+	<input type="hidden" name="cond_option" value="{COND_OPTION}" />
+
+
+
+<input type="hidden" name="cond_option" value="none" />
+
+
+	<dl>
+		<dt><input type="submit" name="back[action]" value="{L_PREVIOUS_STEP}" class="button2" /><label>&nbsp;</label></dt>
+		<dd> <select name="action_option">{S_ACTION_OPTIONS}</select> <input type="submit" name="add_rule" value="{L_ADD_RULE}" class="button1" />{ACTION_CURRENT}<input type="hidden" name="action_option" value="{ACTION_OPTION}" /></dd>
+	</dl>
+
+
+</fieldset>
+
+<fieldset class="fields2">
+
+
+<dl>
+	<dt><label for="foldername">{L_ADD_FOLDER}{L_COLON}</label></dt>
+	<dd>{L_MAX_FOLDER_REACHED}<input type="text" class="inputbox medium" name="foldername" id="foldername" size="30" maxlength="30" /> <input class="button2" type="submit" name="addfolder" value="{L_ADD}" /></dd>
+</dl>
+<hr class="dashed" />
+
+
+
+	<dl>
+		<dt><label for="rename_folder_id">{L_RENAME_FOLDER}{L_COLON}</label></dt>
+		<dd><select name="rename_folder_id" id="rename_folder_id">{S_FOLDER_OPTIONS}</select></dd>
+		<dt><label for="new_folder_name">{L_NEW_FOLDER_NAME}{L_COLON}</label></dt>
+		<dd><input type="text" class="inputbox tiny" name="new_folder_name" id="new_folder_name" maxlength="30" /> <input class="button2" type="submit" name="rename_folder" value="{L_RENAME}" /></dd>
+	</dl>
+	<hr class="dashed" />
+	<dl>
+		<dt><label for="remove_folder_id">{L_REMOVE_FOLDER}{L_COLON}</label></dt>
+		<dd><select name="remove_folder_id" id="remove_folder_id">{S_FOLDER_OPTIONS}</select></dd>
+		<dd style="margin-top: 3px;"><label for="remove_action1"><input type="radio" name="remove_action" id="remove_action1" value="1" checked="checked" /> {L_MOVE_DELETED_MESSAGES_TO}{L_COLON}</label> <select name="move_to">{S_TO_FOLDER_OPTIONS}</select></dd>
+		<dd style="margin-top: 3px;"><label for="remove_action2"><input type="radio" name="remove_action" id="remove_action2" value="2" /> {L_DELETE_MESSAGES_IN_FOLDER}</label></dd>
+		<dd style="margin-top: 3px;"><input class="button2" type="submit" name="remove_folder" value="{L_REMOVE}" /></dd>
+	</dl>
+
+
+<hr class="dashed" />
+
+<dl>
+	<dt><label for="full_action1">{L_IF_FOLDER_FULL}{L_COLON}</label></dt>
+	<dd style="margin-top: 3px;"><label for="full_action1"><input type="radio" name="full_action" id="full_action1" value="1"{S_DELETE_CHECKED} /> {L_DELETE_OLDEST_MESSAGES}</label></dd>
+	<dd style="margin-top: 3px;"><label for="full_action2"><input type="radio" name="full_action" id="full_action2" value="2"{S_MOVE_CHECKED} /> {L_MOVE_TO_FOLDER}{L_COLON}</label> <select name="full_move_to">{S_FULL_FOLDER_OPTIONS}</select></dd>
+	<dd style="margin-top: 3px;"><label for="full_action3" style="white-space:normal;"><input type="radio" name="full_action" id="full_action3" value="3"{S_HOLD_CHECKED} /> {L_HOLD_NEW_MESSAGES}</label></dd>
+</dl>
+
+
+<dl>
+	<dt><label>{L_DEFAULT_ACTION}{L_COLON}</label><br /><span>{L_DEFAULT_ACTION_EXPLAIN}</span></dt>
+	<dd>{DEFAULT_ACTION}</dd>
+	<dd><input class="button2" type="submit" name="fullfolder" value="{L_CHANGE}" /></dd>
+</dl>
+</fieldset>
+
+<h3>ucp_pm_viewfilder - no class</h3>
+
+<fieldset>
+	<dl>
+		<dt><label for="delimiter">{L_DELIMITER}{L_COLON}</label></dt>
+		<dd><input class="inputbox" type="text" id="delimiter" name="delimiter" value="," /></dd>
+	</dl>
+	<dl>
+		<dt><label for="enclosure">{L_ENCLOSURE}{L_COLON}</label></dt>
+		<dd><input class="inputbox" type="text" id="enclosure" name="enclosure" value="&#034;" /></dd>
+	</dl>
+</fieldset>
+
+<h3>ucp_prefs_personal - no class</h3>
+
+<fieldset>
+<p class="error">{ERROR}</p>
+
+<dl>
+	<dt><label for="viewemail0">{L_SHOW_EMAIL}{L_COLON}</label></dt>
+	<dd>
+		<label for="viewemail1"><input type="radio" name="viewemail" id="viewemail1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="viewemail0"><input type="radio" name="viewemail" id="viewemail0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="massemail1">{L_ADMIN_EMAIL}{L_COLON}</label></dt>
+	<dd>
+		<label for="massemail1"><input type="radio" name="massemail" id="massemail1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="massemail0"><input type="radio" name="massemail" id="massemail0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="allowpm1">{L_ALLOW_PM}{L_COLON}</label><br /><span>{L_ALLOW_PM_EXPLAIN}</span></dt>
+	<dd>
+		<label for="allowpm1"><input type="radio" name="allowpm" id="allowpm1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="allowpm0"><input type="radio" name="allowpm" id="allowpm0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+
+	<dl>
+		<dt><label for="hideonline0">{L_HIDE_ONLINE}{L_COLON}</label><br /><span>{L_HIDE_ONLINE_EXPLAIN}</span></dt>
+		<dd>
+			<label for="hideonline1"><input type="radio" name="hideonline" id="hideonline1" value="1" checked="checked" /> {L_YES}</label>
+			<label for="hideonline0"><input type="radio" name="hideonline" id="hideonline0" value="0" checked="checked" /> {L_NO}</label>
+		</dd>
+	</dl>
+
+
+	<dl>
+		<dt><label for="notifymethod0">{L_NOTIFY_METHOD}{L_COLON}</label></dt>
+		<dd>
+			<label for="notifymethod0"><input type="radio" name="notifymethod" id="notifymethod0" value="0" checked="checked" /> {L_NOTIFY_METHOD_EMAIL}</label>
+			<label for="notifymethod1"><input type="radio" name="notifymethod" id="notifymethod1" value="1" checked="checked" /> {L_NOTIFY_METHOD_IM}</label>
+			<label for="notifymethod2"><input type="radio" name="notifymethod" id="notifymethod2" value="2" checked="checked" /> {L_NOTIFY_METHOD_BOTH}</label>
+		</dd>
+	</dl>
+
+
+	<dl>
+		<dt><label for="lang">{L_BOARD_LANGUAGE}{L_COLON}</label></dt>
+		<dd><select name="lang" id="lang">{S_LANG_OPTIONS}</select></dd>
+	</dl>
+
+
+	<dl>
+		<dt><label for="user_style">{L_BOARD_STYLE}{L_COLON}</label></dt>
+		<dd><select name="user_style" id="user_style">{S_STYLE_OPTIONS}</select></dd>
+	</dl>
+
+
+<dl>
+	<dt><label for="dateformat">{L_BOARD_DATE_FORMAT}{L_COLON}</label><br /><span>{L_BOARD_DATE_FORMAT_EXPLAIN}</span></dt>
+	<dd>
+		<select name="dateoptions" id="dateoptions" onchange="if(this.value=='custom'){phpbb.toggleDisplay('custom_date',1);}else{phpbb.toggleDisplay('custom_date',-1);} if (this.value == 'custom') { document.getElementById('dateformat').value = default_dateformat; } else { document.getElementById('dateformat').value = this.value; }">
+			{S_DATEFORMAT_OPTIONS}
+		</select>
+	</dd>
+	<dd id="custom_date" style="display:none;"><input type="text" name="dateformat" id="dateformat" value="{DATE_FORMAT}" maxlength="64" class="inputbox narrow" style="margin-top: 3px;" /></dd>
+</dl>
+
+</fieldset>
+
+<h3>ucp_prefs_post - no class</h3>
+
+<fieldset>
+<p class="error">{ERROR}</p>
+
+<dl>
+	<dt><label for="bbcode1">{L_DEFAULT_BBCODE}{L_COLON}</label></dt>
+	<dd>
+		<label for="bbcode1"><input type="radio" name="bbcode" id="bbcode1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="bbcode0"><input type="radio" name="bbcode" id="bbcode0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="smilies1">{L_DEFAULT_SMILIES}{L_COLON}</label></dt>
+	<dd>
+		<label for="smilies1"><input type="radio" name="smilies" id="smilies1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="smilies0"><input type="radio" name="smilies" id="smilies0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="sig1">{L_DEFAULT_ADD_SIG}{L_COLON}</label></dt>
+	<dd>
+		<label for="sig1"><input type="radio" name="sig" id="sig1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="sig0"><input type="radio" name="sig" id="sig0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="notify1">{L_DEFAULT_NOTIFY}{L_COLON}</label></dt>
+	<dd>
+		<label for="notify1"><input type="radio" name="notify" id="notify1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="notify0"><input type="radio" name="notify" id="notify0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+
+</fieldset>
+
+<h3>ucp_prefs_view - no class</h3>
+
+<fieldset>
+<p class="error">{ERROR}</p>
+
+<dl>
+	<dt><label for="images1">{L_VIEW_IMAGES}{L_COLON}</label></dt>
+	<dd>
+		<label for="images1"><input type="radio" name="images" id="images1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="images0"><input type="radio" name="images" id="images0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="flash0">{L_VIEW_FLASH}{L_COLON}</label></dt>
+	<dd>
+		<label for="flash1"><input type="radio" name="flash" id="flash1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="flash0"><input type="radio" name="flash" id="flash0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="smilies1">{L_VIEW_SMILIES}{L_COLON}</label></dt>
+	<dd>
+		<label for="smilies1"><input type="radio" name="smilies" id="smilies1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="smilies0"><input type="radio" name="smilies" id="smilies0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="sigs1">{L_VIEW_SIGS}{L_COLON}</label></dt>
+	<dd>
+		<label for="sigs1"><input type="radio" name="sigs" id="sigs1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="sigs0"><input type="radio" name="sigs" id="sigs0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+<dl>
+	<dt><label for="avatars1">{L_VIEW_AVATARS}{L_COLON}</label></dt>
+	<dd>
+		<label for="avatars1"><input type="radio" name="avatars" id="avatars1" value="1" checked="checked" /> {L_YES}</label>
+		<label for="avatars0"><input type="radio" name="avatars" id="avatars0" value="0" checked="checked" /> {L_NO}</label>
+	</dd>
+</dl>
+
+	<dl>
+		<dt><label for="wordcensor1">{L_DISABLE_CENSORS}{L_COLON}</label></dt>
+		<dd>
+			<label for="wordcensor1"><input type="radio" name="wordcensor" id="wordcensor1" value="1" checked="checked" /> {L_YES}</label>
+			<label for="wordcensor0"><input type="radio" name="wordcensor" id="wordcensor0" value="0" checked="checked" /> {L_NO}</label>
+		</dd>
+	</dl>
+
+
+<hr />
+
+<dl>
+	<dt><label>{L_VIEW_TOPICS_DAYS}{L_COLON}</label></dt>
+	<dd>{S_TOPIC_SORT_DAYS}</dd>
+</dl>
+<dl>
+	<dt><label>{L_VIEW_TOPICS_KEY}{L_COLON}</label></dt>
+	<dd>{S_TOPIC_SORT_KEY}</dd>
+</dl>
+<dl>
+	<dt><label>{L_VIEW_TOPICS_DIR}{L_COLON}</label></dt>
+	<dd>{S_TOPIC_SORT_DIR}</dd>
+</dl>
+<hr />
+<dl>
+	<dt><label>{L_VIEW_POSTS_DAYS}{L_COLON}</label></dt>
+	<dd>{S_POST_SORT_DAYS}</dd>
+</dl>
+<dl>
+	<dt><label>{L_VIEW_POSTS_KEY}{L_COLON}</label></dt>
+	<dd>{S_POST_SORT_KEY}</dd>
+</dl>
+<dl>
+	<dt><label>{L_VIEW_POSTS_DIR}{L_COLON}</label></dt>
+	<dd>{S_POST_SORT_DIR}</dd>
+</dl>
+
+</fieldset>
+
+<h3>ucp_profile_profile_info - no class</h3>
+
+<fieldset>
+<p class="error">{ERROR}</p>
+
+
+	<dl>
+		<dt><label for="bday_day">{L_BIRTHDAY}{L_COLON}</label><br /><span>{L_BIRTHDAY_EXPLAIN}</span></dt>
+		<dd>
+			<label for="bday_day">{L_DAY}{L_COLON} <select name="bday_day" id="bday_day">{S_BIRTHDAY_DAY_OPTIONS}</select></label>
+			<label for="bday_month">{L_MONTH}{L_COLON} <select name="bday_month" id="bday_month">{S_BIRTHDAY_MONTH_OPTIONS}</select></label>
+			<label for="bday_year">{L_YEAR}{L_COLON} <select name="bday_year" id="bday_year">{S_BIRTHDAY_YEAR_OPTIONS}</select></label>
+		</dd>
+	</dl>
+
+
+	<dl>
+		<dt><label for="jabber">{L_UCP_JABBER}{L_COLON}</label></dt>
+		<dd><input type="email" name="jabber" id="jabber" maxlength="255" value="{JABBER}" class="inputbox" /></dd>
+	</dl>
+
+
+	<dl>
+		<dt><label for="{profile_fields.FIELD_ID}">{profile_fields.LANG_NAME}{L_COLON} *</label>
+		<br /><span>{profile_fields.LANG_EXPLAIN}</span></dt>
+		<dd class="error">{profile_fields.ERROR}</dd>
+		<dd>{profile_fields.FIELD}</dd>
+	</dl>
+
+
+</fieldset>
+
+<h3>ucp_profile_red_details - no class</h3>
+
+<fieldset>
+<p class="error">{ERROR}</p>
+
+<dl>
+	<dt><label for="username">{L_USERNAME}{L_COLON}</label><br /><span>{L_USERNAME_EXPLAIN}</span></dt>
+	<dd><input type="text" name="username" id="username" value="{USERNAME}" class="inputbox" title="{L_USERNAME}" /><strong>{USERNAME}</strong></dd>
+</dl>
+<dl>
+	<dt><label for="email">{L_EMAIL_ADDRESS}{L_COLON}</label></dt>
+	<dd><input type="email" name="email" id="email" maxlength="100" value="{EMAIL}" class="inputbox" title="{L_EMAIL_ADDRESS}" autocomplete="off" /><strong>{EMAIL}</strong></dd>
+</dl>
+
+	<dl>
+		<dt><label for="new_password">{L_NEW_PASSWORD}{L_COLON}</label><br /><span>{L_CHANGE_PASSWORD_EXPLAIN}</span></dt>
+		<dd><input type="password" name="new_password" id="new_password" maxlength="255" value="{NEW_PASSWORD}" class="inputbox" title="{L_CHANGE_PASSWORD}" autocomplete="off" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="password_confirm">{L_CONFIRM_PASSWORD}{L_COLON}</label><br /><span>{L_CONFIRM_PASSWORD_EXPLAIN}</span></dt>
+		<dd><input type="password" name="password_confirm" id="password_confirm" maxlength="255" value="{PASSWORD_CONFIRM}" class="inputbox" title="{L_CONFIRM_PASSWORD}" autocomplete="off" /></dd>
+	</dl>
+
+
+</fieldset>
+
+<fieldset>
+<dl>
+	<dt><label for="cur_password">{L_CURRENT_PASSWORD}{L_COLON}</label><br /><span>{L_CURRENT_CHANGE_PASSWORD_EXPLAIN}{L_CURRENT_PASSWORD_EXPLAIN}</span></dt>
+	<dd><input type="password" name="cur_password" id="cur_password" maxlength="255" value="{CUR_PASSWORD}" class="inputbox" title="{L_CURRENT_PASSWORD}" autocomplete="off" /></dd>
+</dl>
+</fieldset>
+
+<h3>ucp_register - fields2</h3>
+
+<fieldset class="fields2">
+<dl><dd class="error">{ERROR}</dd></dl>
+
+	<dl><dd><strong>{L_REG_COND}</strong></dd></dl>
+
+
+<dl>
+	<dt><label for="username">{L_USERNAME}{L_COLON}</label><br /><span>{L_USERNAME_EXPLAIN}</span></dt>
+	<dd><input type="text" tabindex="1" name="username" id="username" size="25" value="{USERNAME}" class="inputbox autowidth" title="{L_USERNAME}" /></dd>
+</dl>
+<dl>
+	<dt><label for="email">{L_EMAIL_ADDRESS}{L_COLON}</label></dt>
+	<dd><input type="email" tabindex="2" name="email" id="email" size="25" maxlength="100" value="{EMAIL}" class="inputbox autowidth" title="{L_EMAIL_ADDRESS}" autocomplete="off" /></dd>
+</dl>
+<dl>
+	<dt><label for="new_password">{L_PASSWORD}{L_COLON}</label><br /><span>{L_PASSWORD_EXPLAIN}</span></dt>
+	<dd><input type="password" tabindex="4" name="new_password" id="new_password" size="25" value="{PASSWORD}" class="inputbox autowidth" title="{L_NEW_PASSWORD}" autocomplete="off" /></dd>
+</dl>
+<dl>
+	<dt><label for="password_confirm">{L_CONFIRM_PASSWORD}{L_COLON}</label></dt>
+	<dd><input type="password"  tabindex="5" name="password_confirm" id="password_confirm" size="25" value="{PASSWORD_CONFIRM}" class="inputbox autowidth" title="{L_CONFIRM_PASSWORD}" autocomplete="off" /></dd>
+</dl>
+
+
+<hr />
+
+
+<dl>
+	<dt><label for="lang">{L_LANGUAGE}{L_COLON}</label></dt>
+	<dd><select name="lang" id="lang" onchange="change_language(this.value); return false;" tabindex="6" title="{L_LANGUAGE}">{S_LANG_OPTIONS}</select></dd>
+</dl>
+
+<!-- INCLUDE timezone_option.html -->
+
+
+
+	<dl><dd><strong>{L_ITEMS_REQUIRED}</strong></dd></dl>
+
+
+	<dl>
+		<dt><label for="{profile_fields.FIELD_ID}">{profile_fields.LANG_NAME}{L_COLON} *</label>
+		<br /><span>{profile_fields.LANG_EXPLAIN}</span>
+		<br /><span class="error">{profile_fields.ERROR}</span></dt>
+		<dd>{profile_fields.FIELD}</dd>
+	</dl>
+
+
+
+
+</fieldset>
+
+<h3>ucp_remind - no class</h3>
+
+<fieldset>
+<dl>
+	<dt><label for="username">{L_USERNAME}{L_COLON}</label></dt>
+	<dd><input class="inputbox narrow" type="text" name="username" id="username" size="25" /></dd>
+</dl>
+<dl>
+	<dt><label for="email">{L_EMAIL_ADDRESS}{L_COLON}</label><br /><span>{L_EMAIL_REMIND}</span></dt>
+	<dd><input class="inputbox narrow" type="email" name="email" id="email" size="25" maxlength="100" /></dd>
+</dl>
+<dl>
+	<dt>&nbsp;</dt>
+	<dd>{S_HIDDEN_FIELDS}<input type="submit" name="submit" id="submit" class="button1" value="{L_SUBMIT}" tabindex="2" />&nbsp; <input type="reset" value="{L_RESET}" name="reset" class="button2" /></dd>
+</dl>
+{S_FORM_TOKEN}
+</fieldset>
+
+<h3>ucp_resend - no class</h3>
+
+<fieldset>
+<dl>
+	<dt><label for="username">{L_USERNAME}{L_COLON}</label></dt>
+	<dd><input class="inputbox narrow" type="text" name="username" id="username" size="25" /></dd>
+</dl>
+<dl>
+	<dt><label for="email">{L_EMAIL_ADDRESS}{L_COLON}</label><br /><span>{L_EMAIL_REMIND}</span></dt>
+	<dd><input class="inputbox narrow" type="email" name="email" id="email" size="25" maxlength="100" /></dd>
+</dl>
+<dl>
+	<dt>&nbsp;</dt>
+	<dd>{S_HIDDEN_FIELDS}{S_FORM_TOKEN}<input type="submit" name="submit" id="submit" class="button1" value="{L_SUBMIT}" tabindex="2" />&nbsp; <input type="reset" value="{L_RESET}" name="reset" class="button2" /></dd>
+</dl>
+</fieldset>
+
+<h3>ucp_zebra_foes - fields2</h3>
+
+<fieldset class="fields2">
+<p class="error">{ERROR}</p>
+<dl>
+	<dt><label for="usernames">{L_YOUR_FOES}{L_COLON}</label><br /><span>{L_YOUR_FOES_EXPLAIN}</span></dt>
+	<dd>
+
+			<select name="usernames[]" id="usernames" multiple="multiple" size="5">{S_USERNAME_OPTIONS}</select>
+
+			<strong>{L_NO_FOES}</strong>
+
+	</dd>
+</dl>
+<dl>
+	<dt><label for="add">{L_ADD_FOES}{L_COLON}</label><br /><span>{L_ADD_FOES_EXPLAIN}</span></dt>
+	<dd><textarea name="add" id="add" rows="3" cols="30" class="inputbox">{USERNAMES}</textarea></dd>
+	<dd><strong><a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a></strong></dd>
+</dl>
+</fieldset>
+
+<h3>ucp_zebra_friends - fields2</h3>
+
+<fieldset class="fields2">
+<p class="error">{ERROR}</p>
+
+<dl>
+	<dt><label for="usernames">{L_YOUR_FRIENDS}{L_COLON}</label><br /><span>{L_YOUR_FRIENDS_EXPLAIN}</span></dt>
+	<dd>
+
+			<select name="usernames[]" id="usernames" multiple="multiple" size="5">{S_USERNAME_OPTIONS}</select>
+
+			<strong>{L_NO_FRIENDS}</strong>
+
+	</dd>
+</dl>
+
+<dl>
+	<dt><label for="add">{L_ADD_FRIENDS}{L_COLON}</label><br /><span>{L_ADD_FRIENDS_EXPLAIN}</span></dt>
+	<dd><textarea name="add" id="add" rows="3" cols="30" class="inputbox">{USERNAMES}</textarea></dd>
+	<dd><strong><a href="{U_FIND_USERNAME}" onclick="find_username(this.href); return false;">{L_FIND_USERNAME}</a></strong></dd>
+</dl>
+</fieldset>
+
+<h3>viewforum_body - fields1</h3>
+
+<fieldset class="fields1">
+<dl>
+	<dt><label for="username">{L_USERNAME}{L_COLON}</label></dt>
+	<dd><input type="text" tabindex="1" name="username" id="username" size="25" value="{USERNAME}" class="inputbox autowidth" /></dd>
+</dl>
+<dl>
+	<dt><label for="password">{L_PASSWORD}{L_COLON}</label></dt>
+	<dd><input type="password" tabindex="2" id="password" name="password" size="25" class="inputbox autowidth" autocomplete="off" /></dd>
+	<dd><label for="autologin"><input type="checkbox" name="autologin" id="autologin" tabindex="3" /> {L_LOG_ME_IN}</label></dd>
+	<dd><label for="viewonline"><input type="checkbox" name="viewonline" id="viewonline" tabindex="4" /> {L_HIDE_ME}</label></dd>
+</dl>
+<dl>
+	<dt>&nbsp;</dt>
+	<dd><input type="submit" name="login" tabindex="5" value="{L_LOGIN}" class="button1" /></dd>
+</dl>
+{S_LOGIN_REDIRECT}
+</fieldset>
+</div>

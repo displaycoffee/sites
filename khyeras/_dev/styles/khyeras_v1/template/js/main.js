@@ -11,6 +11,16 @@ function checkForSpace( selector ) {
 	});
 }
 
+// Remove spaces
+function removeSpaces( selector ) {
+	jQuery( selector ).each( function() {
+		var current = jQuery( this );
+
+		// Remove spaces
+		current.html( current.html().replace( /&nbsp;/g, '' ) );
+	});
+}
+
 // Check if area should be scrollable
 function addScrollableArea( selector, selectorHeight, selectorHide ) {
 	if ( selector.length && selector[0].scrollHeight > selectorHeight ) {
