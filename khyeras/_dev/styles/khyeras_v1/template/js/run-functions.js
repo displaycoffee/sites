@@ -1,37 +1,24 @@
+/* JavaScript Functionality
+========================================================================== */
+
+addBodyClass();
+addForumImageClass();
+addFieldsetClasses();
+
+/* jQuery Functionality
+========================================================================== */
+
 // Get distance for scroll to bottom
 var bottomDistance =  jQuery( document ).height() + jQuery( window ).height();
 
 // Base font size for responsive comparisons
 var baseFontSize = 16;
 
-// Add class to body tag
-var body = document.getElementsByTagName( 'body' );
-if ( body[0].getAttribute( 'data-class' ) ) {
-	var bodyClass = body[0].getAttribute( 'data-class' ).replace( /[^a-zA-Z ]/g,'' ).trim().replace( / /g,'-' ).replace( /-+/g,'-' );
-}
-
-if ( bodyClass ) {
-	body[0].className = body[0].className + ( ' ' + bodyClass );
-}
-
-// If forum has image, add a class to parent
-var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
-
-if ( forumImage.length ) {
-	for ( var i = 0; i < forumImage.length; i++ ) {
-		var parentRow = forumImage[i].parentNode.parentNode.parentNode;
-		parentRow.className = parentRow.className + ( ' has-forum-image' );
-	}
-}
-
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
 	// Check if the dt contains a single empty space
 	checkForSpace( 'fieldset dl dt' );
 	checkForSpace( 'dl.details dt' );
-
-	// Remove spaces in fieldsets
-	removeSpaces( 'fieldset dl dd' );
 
 	// Add wrapper around topic review if height is bigger than 400px
 	addScrollableArea( $( '.topicreview' ), 400, $( '.review .right-box' ) );

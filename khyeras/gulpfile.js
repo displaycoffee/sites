@@ -29,8 +29,9 @@ var distCSS = dist + '/theme';
 
 /* JavaScript
    ---------------------------------------------- */
-var jsSources = [		
-	devJS + '/main.js',
+var jsSources = [
+	devJS + '/javascript-functions.js',
+	devJS + '/jquery-functions.js',
 	devJS + '/run-functions.js'
 ];
 
@@ -62,7 +63,7 @@ gulp.task('sass', function() {
 /* CSS
    ---------------------------------------------- */
 
-var cssSources = [distCSS + '/**.css'];	
+var cssSources = [distCSS + '/**.css'];
 
 gulp.task('css', function() {
 	gulp.src(cssSources)
