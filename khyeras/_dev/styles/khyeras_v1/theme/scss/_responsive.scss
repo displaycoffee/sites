@@ -177,16 +177,14 @@
 	#viewprofile .panel:first-child .inner .left-box:not(.profile-details) {
 		flex: 0 0 176px;
 	}
-	#search_memberlist {
-		fieldset.fields1 dl {
-			dt {
-				width: auto;
-				float: none;
-				margin: 0 0 $ffs 0;
-			}
-			dd {
-				margin-left: 0;
-			}
+	#search_memberlist fieldset.fields1 dl {
+		dt {
+			width: auto;
+			float: none;
+			margin-bottom: $ffs;
+		}
+		dd {
+			margin-left: 0;
 		}
 	}
 	.quick-login {
@@ -399,10 +397,7 @@
 		}
 		dl:not(.pmlist) dt {
 			float: none;
-			margin: 0 0 $ffs 0;
-			label {
-				margin-right: 0;
-			}
+			margin-bottom: $ffs;
 		}
 	}
 
@@ -761,14 +756,6 @@
 			}
 		}
 	}
-	#register .captcha-panel .captcha {
-		.g-recaptcha, &.captcha-image + dd .button2 {
-			margin: 10px 0 0 0;
-		}
-		&.captcha-image + dd {
-			display: block;
-		}
-	}
 	.quick-login {
 		text-align: left;
 		& > label, & > a, & > span {
@@ -921,20 +908,6 @@
 			margin-top: -10px;
 		}
 	}
-	.section-mcp-view-topic .cp-main #display-panel dl dd select#st {
-		& ~ label select {
-			width: 100%;
-		}
-		& + label {
-			max-width: 100px;
-			select {
-				margin-top: $ffs;
-			}
-			& + label {
-				max-width: 106px;
-			}
-		}
-	}
 	.section-mcp-warnings .cp-main table.table1 td a[href*='user_notes'] {
 		position: relative;
 		left: -10px;
@@ -1071,6 +1044,14 @@
 	}
 
 	// form-fields.scss
+	.button, .button1, .button2 {
+		padding: 10px;
+	}
+	fieldset:not(.polls) dl:not(.pmlist) dd.has-multiple-fields > [class*='button'] {
+		max-width: 100px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 	input[type='number'].inputbox {
 		width: 100%;
 	}
@@ -1294,6 +1275,16 @@
 		text-overflow: ellipsis;
 		overflow: hidden;
 	}
+	.section-mcp-view-topic .cp-main #display-panel dl dd.has-multiple-fields.has-space select#st + label {
+		@include flex(full);
+		select {
+			margin-top: $ffs;
+			width: 100%;
+		}
+		& + label {
+			@include flex(base);
+		}
+	}
 	.section-mcp-user-details, .section-mcp-moderator-logs {
 		.cp-main .action-bar.bar-top .inputbox[type='search'] {
 			margin-top: $ffs;
@@ -1301,9 +1292,6 @@
 				top: -4px;
 			}
 		}
-	}
-	.section-mcp-view-topic .cp-main #merge-panel dl dd input[type='number'].inputbox {
-		margin-bottom: $ffs;
 	}
 
 	// header.scss
@@ -1337,7 +1325,6 @@
 	// form-fields.scss
 	.button, .button1, .button2 {
 		display: block;
-		padding: 10px;
 	}
 	input.button, input.button1, input.button2 {
 		width: 100%;
@@ -1351,6 +1338,20 @@
 		@include reset-font-size('& > *');
 		& > strong {
 			display: block;
+		}
+	}
+	fieldset:not(.polls) dl:not(.pmlist) dd.has-multiple-fields {
+		display: block;
+		& > {
+			.inputbox, select, input.button, input.button1, input.button2 {
+				width: calc(100% - 5px);
+			}
+		}
+		& > [class*='button'] {
+			max-width: none;
+		}
+		& > label[for*='icon'] {
+			display: inline-block;
 		}
 	}
 
@@ -1469,23 +1470,6 @@
 	}
 
 	// other-sections.scss
-	#search_memberlist {
-		fieldset.fields1 dl dd {
-			select:not(#search_group_id) {
-				&, & + .inputbox {
-					width: 100%;
-					float: none;
-				}
-			}
-			select:not(#search_group_id):first-child {
-				margin-right: 0;
-			}
-			select:not(#search_group_id) + .inputbox, select[name='sd'] {
-				margin-top: $ffs;
-				margin-left: 0;
-			}
-		}
-	}
 	.section-ucp-send-password, .section-ucp-send-activation-email {
 		fieldset dl dd .button1 + .button2 {
 			margin-top: (-$ffs-minus);
@@ -1594,33 +1578,10 @@
 			}
 		}
 	}
-	.section-mcp-moderation-queue, .section-mcp-post-details {
-		.cp-main {
-			form[id*='mcp'] fieldset dl dd {
-				display: block;
-			 	.button2 {
-					margin-top: $ffs;
-					margin-left: 0;
-				}
-			}
-		}
-	}
 	.section-mcp-moderation-queue .cp-main .postbody .post-notice {
 		&.unapproved, &.deleted {
 			[class*='button'] + [class*='button'] {
 				margin-top: -15px;
-			}
-		}
-	}
-	.section-mcp-view-topic .cp-main #display-panel dl dd select#st {
-		& ~ label {
-			display: block;
-		}
-		& + label {
-			margin-top: 0;
-			&, & + label {
-				max-width: none;
-				margin-left: 0;
 			}
 		}
 	}

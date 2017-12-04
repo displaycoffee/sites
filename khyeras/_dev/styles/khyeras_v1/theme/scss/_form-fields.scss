@@ -46,7 +46,7 @@ label {
 	display: block;
 	margin: 0 0 $ffs 0;
 	input[type='checkbox'], input[type='radio'], input[type='number'].inputbox {
-		margin-right: $ffs;
+		margin-right:$ffs-half;
 	}
 }
 
@@ -131,27 +131,18 @@ fieldset.submit-buttons {
 /* Fieldset - DL
 ========================================================================== */
 
-fieldset dl:not(.pmlist) {
-	@include clearfix('&');
-	margin: 0 -10px 20px -10px;
-	dt, dd {
-		padding: 0 10px;
-		.inputbox, select, label {
-			margin-bottom: 0;
-		}
-	}
-	dt {
-		float: left;
-	}
-	label {
-		margin: 0 10px 0 0;
-		@include inline-block(baseline);
-	}
-}
-
 fieldset:not(.polls) {
 	dl:not(.pmlist) {
+		@include clearfix('&');
+		margin: 0 -10px 20px -10px;
+		.inputbox, select, label {
+			margin: 0;
+		}
+		dt, dd {
+			padding: 0 10px;
+		}
 		dt {
+			float: left;
 			width: $ffi-01;
 			label {
 				& + br {
@@ -163,12 +154,52 @@ fieldset:not(.polls) {
 					display: block;
 				}
 			}
+
 		}
 		dd {
-			margin-left: $ffi-01;
-			margin-bottom: $ffs;
+			margin: 0 0 $ffs $ffi-01;
+			border: 1px solid red;
 			&:last-child {
 				margin-bottom: 0;
+			}
+			&.has-multiple-fields {
+				@include clearfix('&');
+				border: 1px solid #ff00ff;
+				margin-top: -($ffs);
+				padding: 0 (10 - $ffs-half);
+				@include flex-flow(row wrap);
+				align-items: center;
+				& > * {
+					@include flex;
+					margin: $ffs $ffs-half 0 $ffs-half;
+				}
+				& > {
+					a {
+						display: inline-block;
+					}
+					.inputbox, select {
+						@include flex(base);
+					}
+				}
+				& > label[for*='icon'] {
+					line-height: 32px;
+					img {
+						@include sizing(20px, 20px);
+						position: relative;
+						top: 4px;
+						display: inline-block;
+						margin: 0 $ffs;
+					}
+				}
+			}
+			&.has-space {
+				border: 1px solid #4bff00;
+			}
+			&.has-multiple-fields.has-space {
+				border: 1px solid #ffdf00;
+			}
+			&#tz_select_date {
+				display: flex !important;
 			}
 		}
 	}

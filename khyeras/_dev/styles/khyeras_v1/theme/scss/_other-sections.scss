@@ -89,40 +89,17 @@ dl.faq + .top {
 	}
 }
 
-#search_memberlist {
-	.dropdown-container .dropdown.live-search {
-		&[style*='block'] {
-			visibility: visible;
-			opacity: 1;
-			z-index: 2;
-			left: 0;
-		}
-		.dropdown-contents.search-results li .search-result {
-			cursor: pointer;
-			display: block;
-			padding: 0 0 3px 0;
-		}
+#search_memberlist .dropdown-container .dropdown.live-search {
+	&[style*='block'] {
+		visibility: visible;
+		opacity: 1;
+		z-index: 2;
+		left: 0;
 	}
-	fieldset.fields1 dl dd {
-		@include clearfix('&');
-		select:not(#search_group_id) {
-			&, & + .inputbox {
-				float: left;
-				width: 49%;
-			}
-		}
-		select:not(#search_group_id):first-child {
-			margin-right: 1%;
-		}
-		select:not(#search_group_id) + .inputbox, select[name='sd'] {
-			margin-left: 1%;
-		}
-		input[type='number'].inputbox {
-			margin-right: 0;
-		}
-	}
-	.submit-buttons {
-		clear: both;
+	.dropdown-contents.search-results li .search-result {
+		cursor: pointer;
+		display: block;
+		padding: 0 0 3px 0;
 	}
 }
 
@@ -235,22 +212,8 @@ dl.faq + .top {
 /* Registration
 ========================================================================== */
 
-#register {
-	.panel:first-child fieldset dl dd:first-child {
-		margin-left: 0;
-	}
-	.captcha-panel .captcha.captcha-image + dd {
-		margin-top: 10px;
-		margin-bottom: 10px;
-		@include flex-flow(row nowrap);
-		.inputbox {
-			@include flex(base);
-		}
-		.button2 {
-			@include flex;
-			margin: 0 0 0 $ffs;
-		}
-	}
+#register .panel:first-child fieldset dl dd:first-child {
+	margin-left: 0;
 }
 
 /* Who Is Online

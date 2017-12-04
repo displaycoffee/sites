@@ -562,7 +562,7 @@
 		.button2, select[name='move_to'], select[name='full_move_to'] {
 			@include flex;
 		}
-		label[for='remove_action1'], label[for='full_action2'] {
+		label[for='remove_action1'], label[for='_action2'] {
 			margin-top: 3px;
 			@include flex;
 		}
@@ -687,31 +687,29 @@
 	}
 }
 
+/* MCP - Approve Topic
+========================================================================== */
+
+.section-mcp-approve-topic fieldset dl dt.empty-space {
+	display: none;
+	& ~ dd {
+		margin-left: 0;
+	}
+}
+
 /* MCP - Moderation Queue & Post Details
 ========================================================================== */
 
 .section-mcp-moderation-queue, .section-mcp-post-details {
-	.cp-main {
-		form[id*='mcp'] fieldset dl dd {
-			@include flex-flow(row wrap);
-			align-items: flex-start;
-			select, .inputbox {
-				@include flex(base);
-			}
-		 	.button2 {
-				@include flex;
-				margin: 0 0 0 $ffs;
-			}
-		}
-		#mcp_chgposter fieldset dl dd {
-			margin-top: 0 !important;
+	.cp-main #mcp_chgposter fieldset dl dd {
+		margin-top: 0 !important;
+		&.has-multiple-fields {
+			margin-top: -($ffs) !important;
 			br {
 				display: none;
 				& + span {
 					@include flex(full);
-					min-width: 1px;
 					display: block;
-					margin: 5px 0 0 0;
 				}
 			}
 		}
@@ -727,18 +725,13 @@
 		display: block;
 		width: auto;
 	}
-	#display-panel dl dd select#st {
-		& ~ label, & ~ .button2 {
-			margin: $ffs 0 0 0;
+	#display-panel dl dd.has-multiple-fields.has-space {
+		@include reset-font-size('& > *');
+		select#st {
+			@include flex(full);
 		}
-		& ~ label select {
+		select#sk {
 			width: auto;
-		}
-		& + label {
-			margin-left: -8px;
-			& + label {
-				margin-left: $ffs;
-			}
 		}
 	}
 }
@@ -821,15 +814,16 @@
 ========================================================================== */
 
 .section-mcp-warnings .cp-main #warning {
-	& ~ br, & ~ .panel .empty-space {
+	& ~ br, & ~ .panel dt.empty-space {
 		display: none;
 	}
 	& ~ .panel {
-		width: auto;
 		display: block;
+		width: auto;
 		padding: 0;
+		background: none;
 		dd {
-			margin: 0 -10px;
+			margin-left: 0;
 		}
 	}
 }

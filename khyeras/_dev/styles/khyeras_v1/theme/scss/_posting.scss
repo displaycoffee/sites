@@ -49,19 +49,6 @@
 	}
 }
 
-
-/* Topic Icons
-========================================================================== */
-
-#postform fieldset, fieldset#split-panel {
-	dl dd label[for*='icon'] img {
-		@include sizing(20px, 20px);
-		position: relative;
-		top: 4px;
-		@include inline-block(baseline);
-	}
-}
-
 /* Color Palette
 ========================================================================== */
 
