@@ -37,6 +37,10 @@ select {
 	}
 }
 
+textarea {
+	display: block;
+}
+
 input[type='checkbox'], input[type='radio']  {
 	position: relative;
 	top: 2px;

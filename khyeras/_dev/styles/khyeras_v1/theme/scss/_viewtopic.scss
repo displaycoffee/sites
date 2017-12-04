@@ -218,14 +218,18 @@
 
 fieldset.polls dl {
 	position: relative;
+	@include clearfix('&');
+	margin: 0 -10px 20px -10px;
 	&.voted {
 		font-weight: bold;
 	}
 	dt, dd {
 		line-height: 22px;
+		padding: 0 10px;
 	}
 	dt {
 		width: 30%;
+		float: left;
 	}
 	.poll_option_select {
 		& + .resultbar {

@@ -1047,6 +1047,9 @@
 	.button, .button1, .button2 {
 		padding: 10px;
 	}
+	.button-icon-only, .mcp-main .postbody .post-buttons .button {
+		padding: 5px;
+	}
 	fieldset:not(.polls) dl:not(.pmlist) dd.has-multiple-fields > [class*='button'] {
 		max-width: 100px;
 		overflow: hidden;
@@ -1126,9 +1129,8 @@
 			&:after {
 				border-bottom: 1px dashed $color-04;
 				display: block;
-				height: 1px;
 				margin: 0 10px;
-				padding: 10px 0 0 0;
+				padding: 9px 0 0 0;
 			}
 			&:last-child:after {
 				height: 0;
@@ -1435,8 +1437,13 @@
 			padding-right: 50px;
 		}
 	}
-	fieldset.polls dl dt {
-		padding-right: 0;
+	fieldset.polls dl {
+		&.poll_view_results .resultbar {
+			text-align: left;
+		}
+		dt {
+			padding-right: 0;
+		}
 	}
 	fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		position: static;
@@ -1531,6 +1538,9 @@
 		.notifications {
 			margin-left: 0;
 		}
+	}
+	.section-ucp-compose-message .cp-main #pmheader-postingbox .recipients ul li .button2 {
+		display: inline-block;
 	}
 	.section-ucp-rules-folders-settings .cp-main {
 		.def-rules li {

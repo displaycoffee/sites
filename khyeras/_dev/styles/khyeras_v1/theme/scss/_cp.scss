@@ -393,14 +393,9 @@
 			display: none;
 		}
 		dl.pmlist {
-			dt label {
-				line-height: 0;
-				strong {
-					line-height: 1.5;
-				}
-				.inputbox {
-					margin: $ffs 0 0 0;
-				}
+			dt label strong {
+				display: block;
+				margin: 0 0 $ffs 0;
 			}
 			dd.recipients {
 				margin: 20px 0 (-$ffs) 0;

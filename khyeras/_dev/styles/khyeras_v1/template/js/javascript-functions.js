@@ -34,7 +34,7 @@ function addForumImageClass() {
 
 // Add classes to fieldset dl dd depending on conditions
 function addFieldsetClasses( selector ) {
-	var fieldset = document.querySelectorAll( 'fieldset dl dd' );
+	var fieldset = document.querySelectorAll( 'fieldset:not(.polls) dl:not(.pmlist) dd' );
 
 	console.log(fieldset)
 
