@@ -163,14 +163,22 @@
 
 .cp-main {
 	fieldset dl dd {
-		label[for*='_width'], label[for*='_height'] {
-			margin: 0 $ffs 0 0;
+		label[for*='_width']:after {
+			content: ' in width';
+		}
+		label[for*='_height']:after {
+			content: ' in height';
 		}
 	}
 	[id*='avatar_option_avatar_driver'] > p {
 		margin: -10px 0 20px $ffi-01;
 		font-style: italic;
 		font-size: rem(13px);
+	}
+	#avatar_option_avatar_driver_remote, #avatar_option_avatar_driver_gravatar {
+		fieldset dd.has-multiple-fields.has-space {
+			@include reset-font-size('& > *');
+		}
 	}
 	#avatar_option_avatar_driver_local {
 		fieldset {
@@ -581,17 +589,15 @@
 		float: left;
 	}
 	.right-box {
-		text-align: right;
 		float: right;
-		label, select, .button2 {
-			vertical-align: middle;
-		}
-		label, select {
-			display: inline-block;
+		@include flex-flow(row nowrap);
+		align-items: center;
+		@include reset-font-size('> *');
+		label {
 			margin: 0;
 		}
 		select {
-			width: auto;
+			margin: 0 $ffs;
 		}
 	}
 }
@@ -599,16 +605,26 @@
 /* UCP - Manage groups
 ========================================================================== */
 
-.section-ucp-manage-groups .cp-main {
-	#group_colour {
-		width: auto;
+.section-ucp-manage-groups .cp-main fieldset dd {
+	&.has-multiple-fields.has-space {
+		@include reset-font-size('& > *');
 	}
 	span[style*='background-color'] {
 		@include sizing(16px, 16px);
-		display: inline-block;
+		display: block;
+		position: relative;
+		top: -1px;
+	}
+	#color_palette_toggle {
+		&:before {
+			content: '[ ';
+		}
+		&:after {
+			content: ' ]';
+		}
 	}
 	#color_palette_placeholder {
-		margin: 10px 0 0 0;
+		@include flex(full);
 	}
 }
 
