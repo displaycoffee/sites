@@ -21,10 +21,13 @@ dl.faq + .top {
 
 .section-search form[data-focus='keywords'] fieldset dl dd {
 	#sk, #st, select[name='ch'] {
-		width: 50%;
+		max-width: 50%;
 	}
 	select[name='ch'] {
 		margin-right: $ffs;
+	}
+	&.has-multiple-fields.has-space {
+		@include reset-font-size('select, label');
 	}
 }
 

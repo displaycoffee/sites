@@ -163,6 +163,9 @@ fieldset:not(.polls) {
 		dd {
 			margin: 0 0 $ffs $ffi-01;
 			border: 1px solid red;
+			label {
+				display: inline-block;
+			}
 			&:last-child {
 				margin-bottom: 0;
 			}

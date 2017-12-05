@@ -175,23 +175,20 @@
 	#avatar_option_avatar_driver_local {
 		fieldset {
 			position: relative;
+			label[for='category']:before, input[type='submit'][name='avatar_local_go'] {
+				position: absolute;
+				top: 0;
+			}
 			label[for='category'] {
-				@include flex-flow(row nowrap);
-				align-items: flex-start;
-				margin: 0 65px 0 0;
+				margin: 0 65px 0 300px;
 				@include reset-font-size('&:before, select');
 				&:before {
 					content: 'Category:';
-					flex: 0 0 $ffi-01;
-				}
-				select {
-					@include flex(base);
+					left: 0;
 				}
 			}
 			input[type='submit'][name='avatar_local_go'] {
 				width: 60px;
-				position: absolute;
-				top: 0;
 				right: 0;
 			}
 		}
@@ -682,13 +679,15 @@
 	}
 }
 
-/* MCP - Approve Topic
+/* MCP - Approve Topic & Post
 ========================================================================== */
 
-.section-mcp-approve-topic fieldset dl dt.empty-space {
-	display: none;
-	& ~ dd {
-		margin-left: 0;
+.section-mcp-approve-topic, .section-mcp-approve-post {
+	fieldset dl dt.empty-space {
+		display: none;
+		& ~ dd {
+			margin-left: 0;
+		}
 	}
 }
 
@@ -722,6 +721,9 @@
 	}
 	#display-panel dl dd.has-multiple-fields.has-space {
 		@include reset-font-size('& > *');
+		label {
+			display: block;
+		}
 		select#st {
 			@include flex(full);
 		}
@@ -779,11 +781,9 @@
 			padding: 0;
 			@include flex;
 		}
-		.column1 {
-			.avatar {
-				margin: 0 20px 20px 0;
-				max-width: 200px;
-			}
+		.column1 .avatar {
+			margin: 0 20px 20px 0;
+			max-width: 200px;
 		}
 	}
 }
