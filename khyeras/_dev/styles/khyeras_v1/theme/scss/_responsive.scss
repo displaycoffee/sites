@@ -868,8 +868,25 @@
 			padding-right: 20px;
 		}
 	}
+	.section-ucp-edit-profile .cp-main fieldset dl dd {
+		label[for*='bday'] select {
+			width: 100%;
+		}
+		label[for='bday_day'], label[for='bday_month'] {
+			@include flex(base);
+		}
+		label[for='bday_year'] {
+			@include flex(full);
+		}
+	}
 	.section-ucp-compose-message .cp-main #pmheader-postingbox .column1 {
 		overflow: visible;
+	}
+	.section-ucp-rules-folders-settings .cp-main fieldset dl dt input[value='Previous'] {
+		float: left;
+		position: relative;
+		top: $ffs;
+		margin-right: -($ffs + 1);
 	}
 	.section-ucp-edit-memberships .cp-main fieldset {
 		.left-box {
@@ -1247,25 +1264,6 @@
 	.cp-main .gallery label {
 		width: 50%;
 	}
-	.section-ucp-edit-profile .cp-main fieldset dl dd {
-		label[for*='bday'] {
-			&, select {
-				width: 100%;
-			}
-			select {
-				max-width: none;
-				margin: $ffs 0;
-			}
-		}
-		label[for='bday_year'] select {
-			margin-bottom: 0;
-		}
-	}
-	.section-ucp-edit-global-settings .cp-main #tz_select_date .button2 {
-		flex: 0 0 118px;
-		text-overflow: ellipsis;
-		overflow: hidden;
-	}
 	.section-ucp-edit-memberships .cp-main fieldset {
 		.left-box, .right-box {
 			float: none;
@@ -1340,15 +1338,20 @@
 			display: block;
 		}
 	}
-	fieldset:not(.polls) dl:not(.pmlist) dd.has-multiple-fields {
-		display: block;
-		& > {
-			.inputbox, select, input.button, input.button1, input.button2 {
-				width: calc(100% - 5px);
+	fieldset:not(.polls) dl:not(.pmlist) dd {
+		&.has-multiple-fields {
+			display: block;
+			& > {
+				.inputbox, select, input.button, input.button1, input.button2 {
+					width: calc(100% - 5px);
+				}
+			}
+			& > [class*='button'] {
+				max-width: none;
 			}
 		}
-		& > [class*='button'] {
-			max-width: none;
+		&#tz_select_date {
+			display: block !important;
 		}
 	}
 
@@ -1511,13 +1514,6 @@
 			}
 		}
 	}
-	.section-ucp-edit-global-settings .cp-main #tz_select_date {
-		display: block !important;
-		.button2 {
-			margin: $ffs 0 0 0;
-			overflow: visible;
-		}
-	}
 	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
 		img {
 			display: none;
@@ -1536,30 +1532,22 @@
 	.section-ucp-rules-folders-settings .cp-main {
 		.def-rules li {
 			position: relative;
-			padding-bottom: 29px;
+			padding: 0 0 30px 0;
 			.right-box {
-				float: none;
-				position: absolute;
-				bottom: 0;
+				top: auto;
+				right: auto;
 				left: 0;
-				margin: 0;
+				bottom: 3px;
 			}
 		}
-		fieldset dl dd {
-			display: block;
-			select, .inputbox {
-				& + [class*='button'] {
-					margin-top: $ffs;
-					margin-left: 0;
-				}
-			}
-			select[name='move_to'], select[name='full_move_to'] {
-				width: 100%;
-			}
+		fieldset dl dt input[value='Previous'] {
+			float: none;
+			top: 0;
+			margin-right: 0;
 		}
 	}
 	.section-ucp-edit-memberships .cp-main fieldset .right-box {
-		display: block;		
+		display: block;
 		select {
 			margin: $ffs 0;
 		}

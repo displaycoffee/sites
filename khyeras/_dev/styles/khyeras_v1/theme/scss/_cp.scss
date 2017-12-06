@@ -325,11 +325,9 @@
 ========================================================================== */
 
 .section-ucp-edit-profile .cp-main fieldset dl dd label[for*='bday'] {
-	margin: 0;
+	display: block;
 	select {
 		width: auto;
-		max-width: 75px;
-		margin: 0 $ffs;
 	}
 }
 
@@ -338,21 +336,6 @@
 
 .section-ucp-edit-signature .cp-main fieldset.fields1 + h3 + fieldset {
 	margin: 0 0 20px 0;
-}
-
-/* UCP - Global Settings
-========================================================================== */
-
-.section-ucp-edit-global-settings .cp-main #tz_select_date {
-	display: flex !important;
-	flex-flow: row nowrap;
-	align-items: flex-start;
-	select, .button2 {
-		@include flex;
-	}
-	.button2 {
-		margin: 0 0 0 $ffs;
-	}
 }
 
 /* UCP - Private Messages - Legend
@@ -448,81 +431,83 @@
 /* UCP - Private Messages - Inbox
 ========================================================================== */
 
-.section-ucp-view-messages .cp-main {
-	#viewfolder {
-		& > .display-options {
-			text-align: center;
-			margin: 0 0 20px 0;
-			@include clearfix('&');
-			.left-box, .right-box {
-				display: inline-block;
-				margin: 9.5px 0;
-				.icon {
-					width: auto;
-				}
-			}
-			.left-box {
-				float: left;
-				.icon {
-					margin: 0 5px 0 0;
-				}
-			}
-			.right-box {
-				float: right;
-				direction: rtl;
-				span {
-					margin: 0 5px 0 0;
-				}
-				.icon {
-					margin: 0 0 0 5px;
-				}
-			}
-			label, select {
-				display: inline-block;
-				margin: 0;
-			}
-			select {
+.section-ucp-view-messages .cp-main #viewfolder {
+	& > .display-options {
+		text-align: center;
+		margin: 0 0 20px 0;
+		@include clearfix('&');
+		&:not(.clearfix) {
+			line-height: 40px;
+		}
+		.left-box, .right-box {
+			display: inline-block;
+			.icon {
 				width: auto;
 			}
 		}
-		.topiclist > li.row {
-			&[class*='pm_'] dl {
-				position: relative;
-				&:before, &:after {
-					content: '';
-					display: block;
-					@include sizing(5px, 100%);
-					position: absolute;
-					top: 0;
-					bottom: 0;
-					background: #ff00ff;
-				}
-				&:before {
-					left: -10px;
-				}
-				&:after {
-					right: -10px;
-				}
+		.left-box {
+			float: left;
+			.icon {
+				margin: 0 5px 0 0;
 			}
-			&.pm_marked_colour dl {
-				&:before, &:after {
-					background: $color-06;
-				}
+		}
+		.right-box {
+			float: right;
+			direction: rtl;
+			span {
+				margin: 0 5px 0 0;
 			}
-			&.pm_replied_colour dl {
-				&:before, &:after {
-					background: $color-07;
-				}
+			.icon {
+				margin: 0 0 0 5px;
 			}
-			&.pm_friend_colour dl {
-				&:before, &:after {
-					background: $color-14;
-				}
+		}
+		label, select {
+			margin: 0;
+		}
+		label {
+			display: inline-block;
+		}
+		select {
+			width: auto;
+		}
+	}
+	.topiclist > li.row {
+		&[class*='pm_'] dl {
+			position: relative;
+			&:before, &:after {
+				content: '';
+				display: block;
+				@include sizing(5px, 100%);
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				background: #ff00ff;
 			}
-			&.pm_foe_colour dl {
-				&:before, &:after {
-					background: $color-11;
-				}
+			&:before {
+				left: -10px;
+			}
+			&:after {
+				right: -10px;
+			}
+		}
+		&.pm_marked_colour dl {
+			&:before, &:after {
+				background: $color-06;
+			}
+		}
+		&.pm_replied_colour dl {
+			&:before, &:after {
+				background: $color-07;
+			}
+		}
+		&.pm_friend_colour dl {
+			&:before, &:after {
+				background: $color-14;
+			}
+		}
+		&.pm_foe_colour dl {
+			&:before, &:after {
+				background: $color-11;
 			}
 		}
 	}
@@ -534,12 +519,15 @@
 .section-ucp-rules-folders-settings .cp-main {
 	.def-rules {
 		display: inline-block;
+		margin-left: 15px;
 		li {
 			margin: 0 0 10px 0;
+			padding: 0 110px 0 0;
+			position: relative;
 			.right-box {
-				float: right;
-				clear: right;
-				margin: -3px 0 1px 20px;
+				position: absolute;
+				top: -3px;
+				right: 0;
 				.button2 {
 					@include small-form-ele;
 				}
@@ -550,28 +538,12 @@
 		}
 	}
 	fieldset dl dd {
-		@include flex-flow(row wrap);
-		align-items: flex-start;
 		margin-top: 0 !important;
-		select, .inputbox {
-			@include flex(base);
-			& + [class*='button'] {
-				margin: 0 0 0 $ffs;
-			}
+		&.has-multiple-fields {
+			margin-top: -$ffs !important;
 		}
-		.button2, select[name='move_to'], select[name='full_move_to'] {
-			@include flex;
-		}
-		label[for='remove_action1'], label[for='_action2'] {
-			margin-top: 3px;
-			@include flex;
-		}
-		select[name='move_to'], select[name='full_move_to'] {
-			@include flex(base);
-			@include small-form-ele;
-			width: auto;
-			min-height: 0;
-			font-size: rem(13px);
+		label[for='remove_action1'], label[for='full_action2'] {
+			@include flex(full);
 		}
 	}
 }
