@@ -158,11 +158,9 @@ fieldset:not(.polls) {
 					display: block;
 				}
 			}
-
 		}
 		dd {
 			margin: 0 0 $ffs $ffi-01;
-			border: 1px solid red;
 			label {
 				display: inline-block;
 			}
@@ -171,7 +169,6 @@ fieldset:not(.polls) {
 			}
 			&.has-multiple-fields {
 				@include clearfix('&');
-				border: 1px solid #ff00ff;
 				margin-top: -($ffs);
 				padding: 0 (10 - $ffs-half);
 				@include flex-flow(row wrap);
@@ -198,12 +195,6 @@ fieldset:not(.polls) {
 						margin: 0 $ffs;
 					}
 				}
-			}
-			&.has-space {
-				border: 1px solid #4bff00;
-			}
-			&.has-multiple-fields.has-space {
-				border: 1px solid #ffdf00;
 			}
 			&#tz_select_date {
 				display: flex !important;

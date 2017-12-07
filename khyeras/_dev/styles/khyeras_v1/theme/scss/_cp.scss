@@ -36,9 +36,15 @@
 				font-weight: bold;
 			}
 		}
+		.friend-online, .friend-offline {
+			.button2 {
+				@include small-form-ele;
+				margin: 0 0 0 $ffs;
+			}
+		}
 		.friend-offline {
 			font-style: italic;
-			opacity: 0.5;
+			opacity: 0.70;
 		}
 		.inner {
 			@include reset-inner;

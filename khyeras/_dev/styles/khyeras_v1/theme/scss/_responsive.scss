@@ -1475,11 +1475,6 @@
 	}
 
 	// other-sections.scss
-	.section-ucp-send-password, .section-ucp-send-activation-email {
-		fieldset dl dd .button1 + .button2 {
-			margin-top: (-$ffs-minus);
-		}
-	}
 	.section-search form[data-focus='keywords'] fieldset dl dd {
 		#st, select[name='ch'] {
 			max-width: none;

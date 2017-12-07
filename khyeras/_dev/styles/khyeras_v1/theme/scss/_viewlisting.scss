@@ -1,3 +1,11 @@
+/* View Forum Section
+========================================================================== */
+
+.section-viewforum .forum-title + div + .panel .inner > strong:last-child {
+	display: block;
+	margin: 0 0 20px 0;
+}
+
 /* Forums & Topics
 ========================================================================== */
 

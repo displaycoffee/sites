@@ -21,8 +21,7 @@
 			.button-wrapper {
 				margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
 				.button-link {
-					@include inline-block(middle);
-					line-height: 0;
+					@include inline-block(middle);					
 					margin: 0 $ffs-half $ffs $ffs-half;
 				}
 			}

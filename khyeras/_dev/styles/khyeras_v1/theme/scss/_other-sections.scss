@@ -219,6 +219,24 @@ dl.faq + .top {
 	margin-left: 0;
 }
 
+/* Send Password / Activation Email
+========================================================================== */
+
+.section-ucp-send-password, .section-ucp-send-activation-email {
+	fieldset dl {
+		dt.empty-space {
+			display: none;
+			& + dd {
+				margin-left: 0;
+			}
+		}
+		dd.has-multiple-fields.has-space {
+			@include reset-font-size('& > *');
+			justify-content: center;
+		}
+	}
+}
+
 /* Who Is Online
 ========================================================================== */
 
