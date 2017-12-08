@@ -211,6 +211,18 @@ fieldset:not(.polls) {
 	}
 }
 
+.section-search form[data-focus='keywords'] fieldset,
+.section-ucp-send-password fieldset,
+.section-ucp-send-activation-email fieldset,
+.cp-main #avatar_option_avatar_driver_remote fieldset,
+.cp-main #avatar_option_avatar_driver_gravatar fieldset,
+.section-ucp-manage-groups .cp-main fieldset,
+.section-mcp-view-topic .cp-main #display-panel {
+	 dl dd.has-multiple-fields.has-space {
+		@include reset-font-size('& > *');
+	}
+}
+
 /* Auto Width Form Elements
 ========================================================================== */
 

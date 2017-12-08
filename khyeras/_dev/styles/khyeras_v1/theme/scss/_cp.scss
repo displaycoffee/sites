@@ -181,11 +181,6 @@
 		font-style: italic;
 		font-size: rem(13px);
 	}
-	#avatar_option_avatar_driver_remote, #avatar_option_avatar_driver_gravatar {
-		fieldset dd.has-multiple-fields.has-space {
-			@include reset-font-size('& > *');
-		}
-	}
 	#avatar_option_avatar_driver_local {
 		fieldset {
 			position: relative;
@@ -442,29 +437,32 @@
 		text-align: center;
 		margin: 0 0 20px 0;
 		@include clearfix('&');
-		&:not(.clearfix) {
-			line-height: 40px;
-		}
 		.left-box, .right-box {
 			display: inline-block;
+			position: relative;
 			.icon {
-				width: auto;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				@include sizing(10px, 12px);
+			}
+			span {
+				margin: 0;
 			}
 		}
 		.left-box {
 			float: left;
+			padding: 0 5px 0 20px;
 			.icon {
-				margin: 0 5px 0 0;
+				left: 0;
 			}
 		}
 		.right-box {
 			float: right;
-			direction: rtl;
-			span {
-				margin: 0 5px 0 0;
-			}
+			padding: 0 20px 0 5px;
 			.icon {
-				margin: 0 0 0 5px;
+				right: 0;
 			}
 		}
 		label, select {
@@ -475,6 +473,9 @@
 		}
 		select {
 			width: auto;
+		}
+		&:not(.clearfix) {
+			line-height: 40px;
 		}
 	}
 	.topiclist > li.row {
@@ -584,9 +585,6 @@
 ========================================================================== */
 
 .section-ucp-manage-groups .cp-main fieldset dd {
-	&.has-multiple-fields.has-space {
-		@include reset-font-size('& > *');
-	}
 	span[style*='background-color'] {
 		@include sizing(16px, 16px);
 		display: block;
@@ -714,7 +712,6 @@
 		width: auto;
 	}
 	#display-panel dl dd.has-multiple-fields.has-space {
-		@include reset-font-size('& > *');
 		label {
 			display: block;
 		}

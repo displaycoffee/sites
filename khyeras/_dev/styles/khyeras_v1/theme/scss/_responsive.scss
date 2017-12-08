@@ -31,11 +31,6 @@
 		}
 	}
 
-	// other-sections.scss
-	.quick-login .inputbox {
-		width: 170px;
-	}
-
 	// cp.scss
 	.cp-menu {
 		flex: 0 0 150px;
@@ -185,33 +180,6 @@
 		}
 		dd {
 			margin-left: 0;
-		}
-	}
-	.quick-login {
-		@include clearfix('&');
-		text-align: right;
-		label {
-			&[for='username'], &[for='password'] {
-				float: left;
-				width: 50%;
-				margin: 0 0 20px 0;
-				@include flex-flow(row wrap);
-				align-items: center;
-				span {
-					@include flex;
-					margin-right: $ffs;
-				}
-				.inputbox {
-					width: auto;
-					@include flex(base);
-				}
-			}
-			&[for='username'] {
-				padding-right: $ffs;
-			}
-			&[for='password'] {
-				padding-left: $ffs;
-			}
 		}
 	}
 
@@ -747,45 +715,10 @@
 			flex: 0 0 130px;
 		}
 		&.profile-details dd select[name='g'] {
-			&, & + .button2 {
-				width: 100%;
-			}
+			max-width: 120px;
 			& + .button2 {
-				display: block;
-				margin-top: $ffs;
+				padding: 10px;
 			}
-		}
-	}
-	.quick-login {
-		text-align: left;
-		& > label, & > a, & > span {
-			margin-right: 0;
-		}
-		& > a, & > label, label span, label[for='username'], label[for='password'] {
-			display: block;
-		}
-		label {
-			&[for='username'], &[for='password'] {
-				padding: 0;
-				width: auto;
-				float: none;
-				span {
-					margin: 0 0 $ffs 0;
-				}
-				.inputbox {
-					width: 100%;
-				}
-			}
-			&[for='password'] {
-				margin-bottom: $ffs;
-			}
-			&[for='autologin'] {
-				margin-top: 20px;
-				margin-bottom: 20px;
-			}
-		}
-		.responsive-hide {
-			display: none;
 		}
 	}
 	.popup-wrap {
@@ -881,6 +814,48 @@
 	}
 	.section-ucp-compose-message .cp-main #pmheader-postingbox .column1 {
 		overflow: visible;
+	}
+	.section-ucp-view-messages .cp-main #viewfolder > .display-options {
+		text-align: left;
+		position: relative;
+		.left-box, .right-box {
+			width: 50%;
+			.icon {
+				top: 4px;
+				bottom: auto;
+			}
+		}
+		.right-box {
+			text-align: right;
+		}
+		label:before, .button2 {
+			position: absolute;
+		}
+		label {
+			clear: both;
+			display: block;
+			padding: 0 (60px + $ffs) 0 (100px + $ffs);
+			@include reset-font-size('&:before, select');
+			&:before {
+				content: 'Move to folder:';
+				left: 0;
+				bottom: 10px;
+			}
+			select {
+				width: 100%;
+			}
+		}
+		.button2 {
+			right: 0;
+			bottom: 0;
+			width: 60px;
+		}
+		&:not(.clearfix) {
+			line-height: 1.5;
+			.left-box, .right-box {
+				margin: 0 0 20px 0;
+			}
+		}
 	}
 	.section-ucp-rules-folders-settings .cp-main fieldset dl dt input[value='Previous'] {
 		float: left;
@@ -1235,13 +1210,18 @@
 					margin: 0 auto 10px auto;
 				}
 			}
-			&.profile-details dt:first-child + dd {
-				& > span {
-					display: block;
-					text-align: center;
-					border-bottom: 1px dashed #15212c;
-					margin: 0 0 20px 0;
-				    padding: 0 0 20px 0;
+			&.profile-details {
+				dt:first-child + dd {
+					& > span {
+						display: block;
+						text-align: center;
+						border-bottom: 1px dashed #15212c;
+						margin: 0 0 20px 0;
+					    padding: 0 0 20px 0;
+					}
+				}
+				dd select[name='g'] {
+					max-width: none;
 				}
 			}
 		}
@@ -1456,6 +1436,16 @@
 			}
 		}
 	}
+	.review {
+		padding-right: 0;
+		padding-bottom: 20px;
+		.right-box {
+			top: auto;
+			right: auto;
+			left: 0;
+			bottom: 0;
+		}
+	}
 
 	// posting.scss
 	#color_palette_placeholder table td {
@@ -1475,6 +1465,12 @@
 	}
 
 	// other-sections.scss
+	#viewprofile .panel:first-child .inner .left-box.profile-details dd select[name='g'] {
+		width: 100%;
+		& + .button2 {
+			margin-top: $ffs;
+		}
+	}
 	.section-search form[data-focus='keywords'] fieldset dl dd {
 		#st, select[name='ch'] {
 			max-width: none;
@@ -1523,6 +1519,22 @@
 	}
 	.section-ucp-compose-message .cp-main #pmheader-postingbox .recipients ul li .button2 {
 		display: inline-block;
+	}
+	.section-ucp-view-messages .cp-main #viewfolder > .display-options {
+		label {
+			font-size: rem(14px);
+			padding: 0;
+			&:before {
+				display: none;
+			}
+			select {
+				margin: $ffs 0;
+			}
+		}
+		.button2 {
+			position: static;
+			width: 100%;
+		}
 	}
 	.section-ucp-rules-folders-settings .cp-main {
 		.def-rules li {

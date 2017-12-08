@@ -26,9 +26,6 @@ dl.faq + .top {
 	select[name='ch'] {
 		margin-right: $ffs;
 	}
-	&.has-multiple-fields.has-space {
-		@include reset-font-size('select, label');
-	}
 }
 
 /* Search Results
@@ -192,26 +189,6 @@ dl.faq + .top {
 	}
 }
 
-/* Quick Login
-========================================================================== */
-
-.quick-login {
-	margin: 0 0 20px 0;
-	& > label, & > a, span {
-		@include inline-block(middle);
-	}
-	& > label, & > a, & > span {
-		margin: 0 $ffs 0 0;
-	}
-	.inputbox {
-		margin: 0;
-		width: 270px;
-	}
-	input[type='checkbox'] {
-		margin: 0 0 0 $ffs;
-	}
-}
-
 /* Registration
 ========================================================================== */
 
@@ -231,7 +208,6 @@ dl.faq + .top {
 			}
 		}
 		dd.has-multiple-fields.has-space {
-			@include reset-font-size('& > *');
 			justify-content: center;
 		}
 	}
