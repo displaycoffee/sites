@@ -458,8 +458,7 @@
 		margin: 0 2.5px 5px 2.5px;
 		text-align: center;
 		.contact-icon {
-			@include font-awesome;
-			font-size: 0;
+			@include font-awesome($fs: 0);
 			&:before {
 				font-size: rem($global-font-size);
 			}

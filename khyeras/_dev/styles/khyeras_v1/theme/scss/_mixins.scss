@@ -79,11 +79,14 @@
 }
 
 // FontAwesome properties
-@mixin font-awesome {
+@mixin font-awesome($fs: '') {
 	display: inline-block;
   	font-weight: normal;
   	font-style: normal;
   	font-variant: normal;
+	@if ($fs != '') {
+		font-size: $fs;
+	}
   	font-family: 'FontAwesome';
   	line-height: 1;
   	text-rendering: auto; /* optimizelegibility throws things off #1094 */
@@ -153,10 +156,13 @@
 }
 
 // RPG Theme Icons
-@mixin rpg-icons {
+@mixin rpg-icons($fs: '') {
 	display: inline-block;
+  	font-weight: normal;
+	@if ($fs != '') {
+		font-size: $fs;
+	}
   	font-family: 'Khyeras Icons';
-	font-weight: normal;
   	text-rendering: auto; /* optimizelegibility throws things off #1094 */
   	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;

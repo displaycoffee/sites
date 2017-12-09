@@ -120,8 +120,7 @@
 			}
 			&.attach-status .file-status {
 				&:before {
-					@include font-awesome;
-					font-size: rem(20px);
+					@include font-awesome($fs: rem(20px));
 				}
 				&.file-uploaded:before {
 					content: unicode($icon-check-circle);

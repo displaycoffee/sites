@@ -263,8 +263,7 @@
 			strong {
 				font-weight: normal;
 				a:before {
-					@include font-awesome;
-					font-size: rem(12px);
+					@include font-awesome($fs: rem(12px));
 					content: unicode($icon-chevron-left);
 					margin-right: 10px;
 					color: $color-01;

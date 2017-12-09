@@ -105,10 +105,9 @@
 							display: none;
 						}
 						&:before {
-							@include rpg-icons;
+							@include rpg-icons($fs: rem(16px));
 							content: unicode($icon-book-cover);
 							padding-right: 5px;
-							font-size: rem(16px);
 							vertical-align: bottom;
 						}
 						ul:before {
@@ -150,9 +149,8 @@
 				@include sizing($list-icon-size, $list-icon-size);
 				line-height: $list-icon-size;
 				z-index: 2;
-				@include rpg-icons;
+				@include rpg-icons($fs: rem(22px));
 				text-align: center;
-				font-size: rem(22px);
 				background: $color-04;
 				border: 1px solid mix($color-01, $color-04, 5%);
 				border-radius: 100%;
@@ -345,9 +343,8 @@ table {
 			font-size: rem(16px);
 			display: block;
 			&:before {
-				@include font-awesome;
+				@include font-awesome($fs: rem(22px));
 				content: unicode($icon-exclamation-circle);
-				font-size: rem(22px);
 				padding-right: 10px;
 				transform: rotate(-20deg);
 			}

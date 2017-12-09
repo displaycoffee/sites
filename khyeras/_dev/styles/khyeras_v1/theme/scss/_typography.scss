@@ -146,8 +146,7 @@ h5, h6 {
 ========================================================================== */
 
 .icon  {
-	@include font-awesome;
-	font-size: rem($global-font-size);
+	@include font-awesome($fs: rem($global-font-size));
 }
 
 .icon.rpg-icon {
