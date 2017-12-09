@@ -675,11 +675,8 @@
 ========================================================================== */
 
 .section-mcp-approve-topic, .section-mcp-approve-post {
-	fieldset dl dt.empty-space {
-		display: none;
-		& ~ dd {
-			margin-left: 0;
-		}
+	fieldset dl dt.empty-space ~ dd {
+		margin-left: 0;
 	}
 }
 
@@ -800,7 +797,7 @@
 ========================================================================== */
 
 .section-mcp-warnings .cp-main #warning {
-	& ~ br, & ~ .panel dt.empty-space {
+	& ~ br {
 		display: none;
 	}
 	& ~ .panel {

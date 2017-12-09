@@ -224,6 +224,16 @@ fieldset:not(.polls) {
 	}
 }
 
+.section-mcp-approve-topic fieldset,
+.section-mcp-approve-post fieldset,
+.section-mcp-warnings .cp-main #warning ~,
+.section-ucp-send-password fieldset,
+.section-ucp-send-activation-email fieldset {
+	dl dt.empty-space {
+		display: none;
+	}
+}
+
 /* Auto Width Form Elements
 ========================================================================== */
 

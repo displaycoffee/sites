@@ -201,11 +201,8 @@ dl.faq + .top {
 
 .section-ucp-send-password, .section-ucp-send-activation-email {
 	fieldset dl {
-		dt.empty-space {
-			display: none;
-			& + dd {
-				margin-left: 0;
-			}
+		dt.empty-space + dd {
+			margin-left: 0;
 		}
 		dd.has-multiple-fields.has-space {
 			justify-content: center;
