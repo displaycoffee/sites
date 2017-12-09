@@ -104,7 +104,7 @@
 				label[for*='post_id_list_select'] {
 					margin: 2px 0 0 0;
 					input[type='checkbox'] {
-						margin: 0 0 0 $ffs;
+						margin: 0 0 0 $ffs-half;
 					}
 				}
 			}
@@ -817,9 +817,6 @@
 /* MCP - Banning
 ========================================================================== */
 
-body[class*='section-mcp-ban'] .cp-main {
-	dd label[for='ban'], dd label[for='banlength'], dd#banlengthother label {
-		display: block;
-		margin: 0;
-	}
+body[class*='section-mcp-ban'] .cp-main fieldset dl dd label {
+	display: block;
 }

@@ -422,12 +422,10 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 				display: none;
 			}
 		}
-		.postbody {
-			.post-buttons {
-				margin: 0 -2px;
-				li {
-					margin: 0 2px;
-				}
+		.postbody .post-buttons {
+			margin: 0 -2px;
+			li {
+				margin: 0 2px;
 			}
 		}
 	}

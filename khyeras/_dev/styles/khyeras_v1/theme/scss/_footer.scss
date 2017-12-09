@@ -21,7 +21,7 @@
 			.button-wrapper {
 				margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
 				.button-link {
-					@include inline-block(middle);					
+					@include inline-block(middle);
 					margin: 0 $ffs-half $ffs $ffs-half;
 				}
 			}
@@ -91,16 +91,10 @@
 	.submit-buttons {
 		margin: 0;
 	}
-	label #delete_permanent {
-		margin-left: $ffs;
-	}
 	label[for='delete_reason'] {
 		margin: 20px 0 0 0;
-		strong {
-			padding: 0 7px 0 0;
-			& + br {
-				display: none;
-			}
+		span {
+			font-style: italic;
 		}
 	}
 }

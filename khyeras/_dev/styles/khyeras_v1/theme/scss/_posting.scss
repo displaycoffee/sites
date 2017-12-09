@@ -19,7 +19,6 @@
 		}
 		select {
 			width: auto;
-			display: inline-block;
 			@include small-form-ele;
 			font-size: rem(13px);
 			min-height: 0;
@@ -70,8 +69,11 @@
 /* Options Panel
 ========================================================================== */
 
-#options-panel fieldset > div:last-of-type {
+#options-panel fieldset {
 	margin: 0 0 20px 0;
+	& > div:last-child label {
+		margin: 0;
+	}
 }
 
 /* Attach Panel

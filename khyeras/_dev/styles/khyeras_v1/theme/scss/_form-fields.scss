@@ -137,6 +137,7 @@ fieldset.submit-buttons {
 
 fieldset:not(.polls) {
 	dl:not(.pmlist) {
+		// Always keep clearfix to account for weird margin collapse spacing
 		@include clearfix('&');
 		margin: 0 -10px 20px -10px;
 		.inputbox, select, label {
