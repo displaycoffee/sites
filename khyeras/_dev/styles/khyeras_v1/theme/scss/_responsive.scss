@@ -779,14 +779,10 @@
 			display: none;
 		}
 	}
-	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
-		img {
-			max-width: 50px;
-			max-height: 50px;
-		}
-		.notifications {
-			margin-left: 70px;
-		}
+	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner .image-wrap {
+		width: 50px;
+		max-height: 75px;
+		border-width: 2px;
 	}
 	.section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
 		border: 0;
@@ -1506,11 +1502,8 @@
 		}
 	}
 	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
-		img {
+		.image-wrap, img {
 			display: none;
-		}
-		.notifications {
-			margin-left: 0;
 		}
 	}
 	.section-ucp-manage-groups .cp-main fieldset dd span[style*='background-color'] {
@@ -1587,21 +1580,26 @@
 	#notification_list {
 		.header {
 			padding-right: 50px;
-			.header_settings a {
+			.header_settings {
 				font-size: 0;
-				&:before {
+				a:before {
 					@include font-awesome($fs: rem($global-font-size));
+				}
+				& > a:before {
 					content: unicode($icon-cogs);
+				}
+				& > #mark_all_notifications a:before {
+					content: unicode($icon-check-circle);
+					margin-left: 10px;
 				}
 			}
 		}
 		ul li {
 			.notification-block {
-				img {
+				.image-wrap, img {
 					display: none;
 				}
 				.notification_text {
-					margin-left: 0;
 					.notification-title {
 						padding-right: 20px;
 					}

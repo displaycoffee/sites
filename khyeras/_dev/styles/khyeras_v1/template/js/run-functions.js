@@ -4,6 +4,8 @@
 addBodyClass();
 addForumImageClass();
 addFieldsetClasses();
+addImageWrapper( '.notification_list .list-inner > img' );
+addImageWrapper( '.notification_list .notification-block > img' );
 
 /* jQuery Functionality
 ========================================================================== */

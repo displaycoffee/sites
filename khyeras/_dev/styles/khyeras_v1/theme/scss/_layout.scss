@@ -174,6 +174,9 @@
 			}
 			.icon {
 				margin: 0 5px 0 0;
+				&.fa-home {
+					color: $color-01;
+				}
 				&.fa-home + span {
 					margin-left: 0;
 				}

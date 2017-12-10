@@ -36,8 +36,6 @@ function addForumImageClass() {
 function addFieldsetClasses( selector ) {
 	var fieldset = document.querySelectorAll( 'fieldset:not(.polls) dl:not(.pmlist) dd' );
 
-	console.log(fieldset)
-
 	if ( fieldset.length ) {
 		for ( var i = 0; i < fieldset.length; i++ ) {
 			// Check if there are multiple children in the dd
@@ -49,6 +47,25 @@ function addFieldsetClasses( selector ) {
 			if ( fieldset[i].innerHTML.indexOf( '&nbsp;' ) !== -1 ) {
 				fieldset[i].className += ( checkForClasses( fieldset[i] ) + 'has-space' );
 			}
+		}
+	}
+}
+
+// Add an image wrapper around notification images
+function addImageWrapper( selector ) {
+	var image = document.querySelectorAll( selector );
+
+	if ( image.length ) {
+		for ( var i = 0; i < image.length; i++ ) {
+			// Create the new image wrapper div
+			var imageWrapper = document.createElement( 'div' );
+			imageWrapper.setAttribute( 'class', 'image-wrap' );
+
+			// Insert wrapper before the image
+			image[i].parentNode.insertBefore( imageWrapper, image[i] );
+
+			// Append image to the image wrapper
+			imageWrapper.appendChild( image[i] );
 		}
 	}
 }

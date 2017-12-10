@@ -335,14 +335,17 @@
 			.notification-block {
 				@include clearfix('&');
 				display: block;
-				img {
-					float: left;
-					max-width: 50px;
+				.image-wrap, .notification_text {
+					overflow: hidden;
+				}
+				.image-wrap {
+					width: 50px;
 					max-height: 50px;
-					border: 1px solid $color-03;
+					margin: 0 10px 0 0;
+					float: left;
+					border: 2px solid $color-04;
 				}
 				.notification_text {
-					margin: 0 0 0 60px;
 					p {
 						margin: 0 0 2px 0;
 						&:last-child {

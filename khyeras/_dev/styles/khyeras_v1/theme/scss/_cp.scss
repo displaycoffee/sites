@@ -294,14 +294,17 @@
 
 .section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
 	@include clearfix('&');
-	img {
+	.image-wrap, .notifications {
+		overflow: hidden;
+	}
+	.image-wrap {
+		width: 100px;
+		max-height: 125px;
+		margin: 0 20px 0 0;
 		float: left;
-		max-width: 100px;
-		max-height: 100px;
-		border: 1px solid $color-03;
+		border: 5px solid $color-04;
 	}
 	.notifications {
-		margin: 0 0 0 120px;
 		p {
 			margin: 0 0 5px 0;
 		}
