@@ -1552,12 +1552,21 @@
 			margin: $ffs 0;
 		}
 	}
-	.mcp-main .forum-selection label {
-		display: block;
-		select {
-			width: 100%;
-			max-width: none;
-			margin: $ffs 0;
+	.mcp-main {
+		.action-bar.actions-jump .jumpbox {
+			display: block;
+			.dropdown {
+				min-width: 1px;
+				left: 0;
+			}
+		}
+		.forum-selection label {
+			display: block;
+			select {
+				width: 100%;
+				max-width: none;
+				margin: $ffs 0;
+			}
 		}
 	}
 	.section-mcp-moderation-queue .cp-main .postbody .post-notice {

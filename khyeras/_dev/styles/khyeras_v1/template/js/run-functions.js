@@ -49,10 +49,11 @@ jQuery( document ).ready( function( $ ) {
 	}
 
 	// If pagination in mcp is empty, hide it
-	var mcpPagination = $( '.mcp-main .pagination' );
+	// Mostly for mcp post details
+	var mcpPagination = $( '.mcp-main .pagination ul' );
 
-	if ( $( mcpPagination ).find( 'ul' ).children().length == 0 ) {
-		$( mcpPagination ).hide();
+	if ( mcpPagination.children().length == 0 ) {
+		mcpPagination.parent().hide();
 	}
 
 	// Add wrapper around control panel elements
