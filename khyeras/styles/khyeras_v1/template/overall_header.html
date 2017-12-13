@@ -65,6 +65,7 @@
 
 </head>
 
+
 <body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS}<!-- IF SCRIPT_NAME == 'viewforum' or SCRIPT_NAME == 'search' --><!-- IF TOTAL_PAGES == 0 --> no-topics<!-- ENDIF--><!-- ENDIF--> section-{SCRIPT_NAME}" data-class="section {SCRIPT_NAME} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
 
 	<!--[if lte IE 9]>
@@ -119,6 +120,19 @@
 		<!-- IF SCRIPT_NAME == 'index' -->
 			<!-- INCLUDE header_featured.html -->
 		<!-- ENDIF -->
+
+		<div class="wrapper">
+			<p>topics: {TOTAL_TOPICS}</p>
+			<p>posts: {TOTAL_POSTS}</p>
+			<p>total: {TOTAL}</p>
+			<p>users: {TOTAL_USERS}</p>
+			<p>reports: {TOTAL_REPORTS}</p>
+			<p>searches: {TOTAL_MATCHES}</p>
+			<p>attachments: {TOTAL_ATTACHMENTS}</p>
+			<p>notifications: {TOTAL_COUNT}</p>
+			<p>page number: {PAGE_NUMBER}</p>
+			<p>pm: {TOTAL_MESSAGES}</p>
+		</div>
 
 		{% if navlinks|length > 0 %}
 			<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
