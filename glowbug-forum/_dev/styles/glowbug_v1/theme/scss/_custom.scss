@@ -1,3 +1,9 @@
+/* Font Awesome */
+
+i[class*='fa'] {
+	@include font-awesome;
+}
+
 /* Other */
 
 .glowbug {
@@ -131,6 +137,23 @@
 	}
 	.content {
 		box-shadow: none;
+	}
+}
+
+/* Topic Solved */
+
+.section-viewtopic .post-buttons li a[data-original-title*='solved'] {
+	padding: 5px 6px;
+    @include sizing(26px, 26px);
+	background: transparent;
+	box-shadow: none;
+	color: $color-04;
+	i {
+		position: relative;
+		top: -4px;
+	}
+	&:hover {
+		background: #f2f2f2;
 	}
 }
 

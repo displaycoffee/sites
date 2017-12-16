@@ -1,25 +1,29 @@
-<!-- IF FORUM_ID != 3 and FORUM_ID != 6 and FORUM_ID != 7 and FORUM_ID != 8 and FORUM_ID != 9 -->
+{% set excluded_forums = [3, 6, 7, 8, 9, 29, 30, 31, 32, 33, 34] %}
+
+{% if FORUM_ID not in excluded_forums %}
 	<div class="sharing-buttons">
-		<!-- DEFINE $SHARE_URL = '{BOARD_URL}viewtopic.php?f={FORUM_ID}%26t={TOPIC_ID}%23p{postrow.POST_ID}' -->
+
+		{% set sharing_url = BOARD_URL ~ 'viewtopic.php?f=' ~ FORUM_ID ~ '%26t=' ~ TOPIC_ID ~ '%23p' ~ postrow.POST_ID %}
+
 		<strong>Share On:</strong>
 		<!-- Facebook -->
-		<a href="//www.facebook.com/sharer.php?u={$SHARE_URL}" target="_blank">
+		<a href="//www.facebook.com/sharer.php?u={{ sharing_url }}" target="_blank">
 			<i class="fa fa-facebook"></i>
 		</a>
 		<!-- Twitter -->
-		<a href="//twitter.com/share?url={$SHARE_URL}&amp;text={postrow.POST_SUBJECT}&amp;hashtags=glowbugentertainment" target="_blank">
+		<a href="//twitter.com/share?url={{ sharing_url }}&amp;text={postrow.POST_SUBJECT}&amp;hashtags=glowbugentertainment" target="_blank">
 			<i class="fa fa-twitter"></i>
 		</a>
 		<!-- Google+ -->
-		<a href="//plus.google.com/share?url={$SHARE_URL}" target="_blank">
+		<a href="//plus.google.com/share?url={{ sharing_url }}" target="_blank">
 			<i class="fa fa-google-plus"></i>
 		</a>
 		<!-- LinkedIn -->
-		<a href="//www.linkedin.com/shareArticle?mini=true&amp;url={$SHARE_URL}" target="_blank">
+		<a href="//www.linkedin.com/shareArticle?mini=true&amp;url={{ sharing_url }}" target="_blank">
 			<i class="fa fa-linkedin"></i>
 		</a>
 		<!-- Tumblr-->
-		<a href="//www.tumblr.com/share/link?url={$SHARE_URL}&amp;title={postrow.POST_SUBJECT}" target="_blank">
+		<a href="//www.tumblr.com/share/link?url={{ sharing_url }}&amp;title={postrow.POST_SUBJECT}" target="_blank">
 			<i class="fa fa-tumblr"></i>
 		</a>
 		<!-- Pinterest -->
@@ -27,24 +31,24 @@
 			<i class="fa fa-pinterest-p"></i>
 		</a>
 		<!-- Digg -->
-		<a href="//www.digg.com/submit?url={$SHARE_URL}" target="_blank">
+		<a href="//www.digg.com/submit?url={{ sharing_url }}" target="_blank">
 			<i class="fa fa-digg"></i>
 		</a>
 		<!-- Reddit -->
-		<a href="//reddit.com/submit?url={$SHARE_URL}&amp;title={postrow.POST_SUBJECT}" target="_blank">
+		<a href="//reddit.com/submit?url={{ sharing_url }}&amp;title={postrow.POST_SUBJECT}" target="_blank">
 			<i class="fa fa-reddit"></i>
 		</a>
 		<!-- VK -->
-		<a href="//vkontakte.ru/share.php?url={$SHARE_URL}" target="_blank">
+		<a href="//vkontakte.ru/share.php?url={{ sharing_url }}" target="_blank">
 			<i class="fa fa-vk"></i>
 		</a>
 		<!-- StumbleUpon-->
-		<a href="//www.stumbleupon.com/submit?url={$SHARE_URL}&amp;title={postrow.POST_SUBJECT}" target="_blank">
+		<a href="//www.stumbleupon.com/submit?url={{ sharing_url }}&amp;title={postrow.POST_SUBJECT}" target="_blank">
 			<i class="fa fa-stumbleupon"></i>
 		</a>
 		<!-- Email -->
-		<a href="mailto:?Subject={postrow.POST_SUBJECT}&amp;Body=Here's%20a%20link%20from%20glowbugentertainment:%20 {$SHARE_URL}">
+		<a href="mailto:?Subject={postrow.POST_SUBJECT}&amp;Body=Here's%20a%20link%20from%20glowbugentertainment:%20 {{ sharing_url }}">
 			<i class="fa fa-envelope"></i>
 		</a>
 	</div>
-<!-- ENDIF -->
+{% endif %}
