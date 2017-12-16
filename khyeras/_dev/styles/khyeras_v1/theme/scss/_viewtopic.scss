@@ -32,6 +32,19 @@
 	}
 }
 
+/* View Topic - Body - Deleted & Ignored
+========================================================================== */
+
+.postprofile, .postbody div[id*='post_content'] {
+	&[style*='none'] {
+		display: block !important;
+		position: absolute;
+		left: -9999px;
+		top: -9999px;
+		width: 100%;
+	}
+}
+
 /* View Topic - Body - Post Notice
 ========================================================================== */
 
@@ -371,14 +384,6 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		@include flex(full);
 		text-align: right;
 		margin: 0 0 20px 0;
-	}
-	&.deleted {
-		.postprofile[style*='none'], .postbody div[id*='post_content'][style*='none'] {
-			display: block !important;
-			position: absolute;
-			left: -9999px;
-			top: -9999px;
-		}
 	}
 }
 

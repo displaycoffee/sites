@@ -96,8 +96,9 @@
 		background: $color-05;
 		border: 1px solid $color-03;
 		.dropdown-contents {
-			margin: 0 0 -3px 0;
+			margin: 0 0 -3px 0 !important;
 			max-height: 300px;
+			max-width: none !important;
 			overflow-y: auto;
 			overflow-x: hidden;
 			padding: 0 20px 0 0;

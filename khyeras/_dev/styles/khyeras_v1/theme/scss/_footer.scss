@@ -55,11 +55,10 @@
 .phpbb_alert {
 	display: none;
 	position: fixed;
-	right: 0;
 	top: 150px;
-	left: 0;
+	right: 30px;
+	left: 30px;
 	z-index: 150;
-	width: 100%;
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 20px;
