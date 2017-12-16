@@ -4,6 +4,7 @@
 addBodyClass();
 addForumImageClass();
 addFieldsetClasses();
+addNoPaginationClass();
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
 
@@ -46,14 +47,6 @@ jQuery( document ).ready( function( $ ) {
 
 	if ( $( pmPostBox ).find( 'fieldset.fields1' ).children().length == 0 ) {
 		$( pmPostBox ).hide();
-	}
-
-	// If pagination in mcp is empty, hide it
-	// Mostly for mcp post details
-	var mcpPagination = $( '.mcp-main .pagination ul' );
-
-	if ( mcpPagination.children().length == 0 ) {
-		mcpPagination.parent().hide();
 	}
 
 	// Add wrapper around control panel elements

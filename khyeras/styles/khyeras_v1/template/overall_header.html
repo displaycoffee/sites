@@ -65,8 +65,7 @@
 
 </head>
 
-
-<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS}<!-- IF SCRIPT_NAME == 'viewforum' or SCRIPT_NAME == 'search' --><!-- IF TOTAL_PAGES == 0 --> no-topics<!-- ENDIF--><!-- ENDIF--> section-{SCRIPT_NAME}" data-class="section {SCRIPT_NAME} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
+<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS} section-{SCRIPT_NAME}" data-class="section {SCRIPT_NAME} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
 
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
@@ -120,8 +119,6 @@
 		<!-- IF SCRIPT_NAME == 'index' -->
 			<!-- INCLUDE header_featured.html -->
 		<!-- ENDIF -->
-
-		<!-- INCLUDE body_classes.html -->
 
 		{% if navlinks|length > 0 %}
 			<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">

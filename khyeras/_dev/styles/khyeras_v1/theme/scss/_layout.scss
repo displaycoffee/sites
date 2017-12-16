@@ -266,6 +266,42 @@
 	}
 }
 
+.no-pagination {
+	&.section-viewforum, &.section-search-search {
+		.action-bar.bar-top + .panel .inner strong {
+			display: block;
+			margin: 0 0 20px 0;
+		}
+	}
+	&.section-viewforum {
+		.action-bar.bar-top, .action-bar.bar-bottom {
+			.pagination {
+				@include reset-font-size('[data-ajax="mark_topics_read"]');
+			}
+		}
+	}
+	&.section-search-search {
+		.action-bar.bar-top, .action-bar.bottom {
+			display: none;
+		}
+	}
+	&.section-memberlist-members {
+		.action-bar.bar-top .pagination, .action-bar.bottom {
+			display: none;
+		}
+	}
+	&.section-mcp-view-forum {
+		.action-bar.bar-top, .action-bar.bottom .pagination {
+			display: none;
+		}
+	}
+	&.section-mcp-moderator-logs, &.section-mcp-user-details {
+		.action-bar .pagination {
+			display: none;
+		}
+	}
+}
+
 /* Page Jump
 ========================================================================== */
 

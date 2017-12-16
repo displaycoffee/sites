@@ -1,3 +1,6 @@
+// Common variables
+var body = document.querySelector( 'body' );
+
 // If className has classes, add a space before adding new classes
 function checkForClasses( selector ) {
 	if ( selector.className ) {
@@ -9,13 +12,12 @@ function checkForClasses( selector ) {
 
 // Add class to body tag
 function addBodyClass() {
-	var body = document.getElementsByTagName( 'body' );
-	if ( body[0].getAttribute( 'data-class' ) ) {
-		var bodyClass = body[0].getAttribute( 'data-class' ).replace( /[^a-zA-Z ]/g,'' ).trim().replace( / /g,'-' ).replace( /-+/g,'-' );
+	if ( body.getAttribute( 'data-class' ) ) {
+		var bodyClass = body.getAttribute( 'data-class' ).replace( /[^a-zA-Z ]/g,'' ).trim().replace( / /g,'-' ).replace( /-+/g,'-' );
 	}
 
 	if ( bodyClass ) {
-		body[0].className += ( checkForClasses( body[0] ) + bodyClass );
+		body.className += ( checkForClasses( body ) + bodyClass );
 	}
 }
 
@@ -46,6 +48,24 @@ function addFieldsetClasses( selector ) {
 			// Check if element has an nbsp space
 			if ( fieldset[i].innerHTML.indexOf( '&nbsp;' ) !== -1 ) {
 				fieldset[i].className += ( checkForClasses( fieldset[i] ) + 'has-space' );
+			}
+		}
+	}
+}
+
+// Add no-pagination class to body to hide pagination
+function addNoPaginationClass() {
+	var pagination = document.querySelector( '.action-bar .pagination' );
+	if ( pagination ) {
+		var paginationText = pagination.innerText.toLowerCase();
+		var paginationPhrase = 'page 1 of 1';
+
+		if ( paginationText.indexOf( paginationPhrase ) !== -1 ) {
+			var regex = new RegExp( paginationPhrase, 'gi' );
+			var totalNumber = paginationText.replace( regex, '' ).match( /\d+/g );
+
+			if ( totalNumber && totalNumber <= 0 ) {
+				body.className += ( checkForClasses( body ) + 'no-pagination' );
 			}
 		}
 	}

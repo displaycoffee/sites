@@ -239,30 +239,6 @@
 	}
 }
 
-/* Forums - No Topics
-========================================================================== */
-
-.no-topics {
-	.action-bar {
-		&.bar-top, &.bottom {
-			.pagination {
-				display: none;
-			}
-		}
-	}
-	.action-bar.bar-top {
-		& + .panel {
-			&, & > .inner > strong {
-				margin: 0 0 20px 0;
-			}
-			& > .inner > strong {
-				display: block;
-			}
-		}
-	}
-}
-
-
 /* Table Listings
 ========================================================================== */
 
