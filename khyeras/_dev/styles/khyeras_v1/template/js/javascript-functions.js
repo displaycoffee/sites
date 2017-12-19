@@ -89,3 +89,15 @@ function addImageWrapper( selector ) {
 		}
 	}
 }
+
+
+// Check for empty content elements on the page
+function checkForEmpty( selector ) {
+	var element = document.querySelectorAll( selector );
+
+	if ( element.length ) {
+		for ( var i = 0; i < element.length; i++ ) {
+			element[i].parentNode.style.display = 'none';
+		}
+	}
+}

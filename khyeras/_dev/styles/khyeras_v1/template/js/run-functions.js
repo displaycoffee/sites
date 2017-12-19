@@ -7,6 +7,8 @@ addFieldsetClasses();
 addNoPaginationClass();
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
+checkForEmpty( '.section-mcp-post-details .pagination ul' );
+checkForEmpty( '.section-mcp-post-details .postbody .content pre' );
 
 /* jQuery Functionality
 ========================================================================== */

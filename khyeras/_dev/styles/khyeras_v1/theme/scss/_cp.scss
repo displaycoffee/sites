@@ -61,6 +61,12 @@
 		padding: 20px 20px 0 20px;
 		margin: 0 0 20px 0;
 	}
+	.postbody .attachbox, pre, code {
+		background: rgba($color-02,0.20);
+	}
+	pre code, code pre {
+		background: none;
+	}
 	.topiclist {
 		& + p > strong {
 			display: block;
@@ -115,12 +121,6 @@
 				border: 0;
 				margin: 0;
 			}
-		}
-		.postbody .attachbox, pre, code {
-			background: rgba($color-02,0.3);
-		}
-		pre code, code pre {
-			background: none;
 		}
 	}
 }
@@ -676,9 +676,12 @@
 /* MCP - Approve Topic & Post
 ========================================================================== */
 
-.section-mcp-approve-topic, .section-mcp-approve-post {
-	fieldset dl dt.empty-space ~ dd {
-		margin-left: 0;
+[class*='section-mcp-approve-topic'], [class*='section-mcp-approve-post'] {
+	fieldset dl dt.empty-space {
+		display: none;
+		& ~ dd {
+			margin-left: 0;
+		}
 	}
 }
 
@@ -697,6 +700,14 @@
 					display: block;
 				}
 			}
+		}
+	}
+}
+
+.section-mcp-deleted-topics .cp-main .topiclist > li dl {
+	dt .list-inner .responsive-show, dd.moderation {
+		span br {
+			display: none;
 		}
 	}
 }
@@ -720,6 +731,9 @@
 		select#sk {
 			width: auto;
 		}
+	}
+	#merge-panel dl dt label[for='to_topic_id'] {
+		padding-top: 10px;
 	}
 }
 
