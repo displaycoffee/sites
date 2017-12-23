@@ -155,7 +155,7 @@
 /* UCP - Avatar (User & Groups)
 ========================================================================== */
 
-.section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details {
+.section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details, .section-mcp-warnings {
 	.cp-main {
 		.avatar, img[src*='no_avatar.gif'] {
 			border: 5px solid $color-04;
@@ -785,9 +785,16 @@
 			padding: 0;
 			@include flex;
 		}
-		.column1 .avatar {
-			margin: 0 20px 20px 0;
-			max-width: 200px;
+		.column1 {
+			& > div {
+				max-width: 221px;
+				margin: 0 20px 20px 0;
+				padding: 0 20px 0 0;
+				border-right: 1px dashed $color-04;
+			}
+			.avatar {
+				margin: 0 auto;
+			}
 		}
 	}
 }
@@ -831,5 +838,7 @@
 ========================================================================== */
 
 body[class*='section-mcp-ban'] .cp-main fieldset dl dd label {
-	display: block;
+	&:not([for*='banexclude']) {
+		display: block;
+	}
 }

@@ -223,6 +223,13 @@
 			width: 210px;
 		}
 	}
+	.section-mcp-user-details, .section-mcp-warnings {
+		.cp-main h2 + .panel h3 + div {
+			.column1 > div {
+				max-width: 171px;
+			}
+		}
+	}
 
 	// header.scss
 	#page-welcome .user-profile {
@@ -895,6 +902,13 @@
 			margin-top: -10px;
 		}
 	}
+	.section-mcp-user-details, .section-mcp-warnings {
+		.cp-main h2 + .panel h3 + div {
+			.column1 > div {
+				max-width: 131px;
+			}
+		}
+	}
 	.section-mcp-warnings .cp-main table.table1 td a[href*='user_notes'] {
 		position: relative;
 		left: -10px;
@@ -1267,6 +1281,23 @@
 			margin-top: $ffs;
 			& + .button2 {
 				top: -4px;
+			}
+		}
+	}
+	.section-mcp-user-details, .section-mcp-warnings {
+		.cp-main h2 + .panel h3 + div {
+			display: block;
+			.column1 {
+				& > div {
+					margin-right: 0;
+					padding: 0 0 20px 0;
+					border-right: 0;
+					border-bottom: 1px dashed $color-04;
+					max-width: none;
+				}
+				.avatar {
+					max-height: 200px;
+				}
 			}
 		}
 	}
