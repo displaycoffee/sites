@@ -16,9 +16,6 @@ checkForEmpty( '.section-mcp-post-details .postbody .content pre' );
 // Get distance for scroll to bottom
 var bottomDistance =  jQuery( document ).height() + jQuery( window ).height();
 
-// Base font size for responsive comparisons
-var baseFontSize = 16;
-
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
 	// Check if the dt contains a single empty space
@@ -68,6 +65,8 @@ jQuery( document ).ready( function( $ ) {
 
 	toggleMobileContent( '.toggle-links a', '#page-welcome .site-callouts .site-links' );
 	toggleMobileContent( '.toggle-featured a', '#featured-content' );
+
+	mobileDropDownPosition();
 
 	initializeMobileMenu({
 	    menu          : '#page-header .navbar > ul',

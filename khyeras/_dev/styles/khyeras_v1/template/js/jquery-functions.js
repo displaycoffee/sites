@@ -132,6 +132,50 @@ function toggleMobileContent( button, selector ) {
 	});
 }
 
+function mobileDropDownPosition() {
+	var dropdownToggle = jQuery( '.dropdown-toggle' );
+
+	dropdownToggle.on( 'click', function( event ) {
+		// Check if we are on mobile
+		var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
+
+		// Check if the parent is #mobile-menu
+		// We don't want to do this there
+		var parentMobileMenu = jQuery( this ).parents( '#mobile-menu' );
+
+		if ( onMobile && parentMobileMenu.length <= 0 ) {
+			var dropdown = jQuery( this ).parent().find( '.dropdown' );
+
+			if ( dropdown.parent().hasClass( 'dropdown-visible' ) ) {
+				var dropdownPadding = jQuery( dropdown ).css( 'padding-left' ).replace( 'px', '' );
+
+				// Add styles
+				jQuery( dropdown ).css({
+					'left'  : -( dropdown.offset().left - dropdownPadding ),
+					'width' : ( body.offsetWidth - ( dropdownPadding * 2 ) )
+				});
+
+				// If clicked outside dropdown, remove stles
+				jQuery(document).on('click', function(event) {
+					resetDropdownPosition();
+				});
+			} else {
+				resetDropdownPosition();
+			}
+		} else {
+			return false;
+		}
+
+		// Function to reset position styles
+		function resetDropdownPosition() {
+			jQuery( dropdown ).css({
+				'left'  : '',
+				'width' : ''
+			});
+		}
+	});
+}
+
 // Debounce function from underscore.js and https://davidwalsh.name/javascript-debounce-function
 function debounce( func, wait, immediate ) {
 	var timeout;
@@ -182,14 +226,11 @@ function initializeMobileMenu( options ) {
 
 	// Resize actions for mobile menu
 	function mobileResizeAction() {
-		// Widths for em comparison
-		var windowWidth = ( window.innerWidth / baseFontSize );
-		var docWidth = ( document.documentElement.clientWidth / baseFontSize );
-		var bodyWidth = ( document.body.clientWidth / baseFontSize );
-		var responseWidth = ( width / baseFontSize );
+		// Check if we are on mobile
+		var onMobile = isMobile( baseFontSize, ( width / baseFontSize ) );
 
 		// Check all sorts of window and document widths to make sure resizing is consistent across browsers
-		if ( ( windowWidth || docWidth || bodyWidth ) <= responseWidth ) {
+		if ( onMobile ) {
 			// Check if mobile ones is false, meaning we haven't activated the mobile menu yet
 			if ( !mobileOnce ) {
 				// Close menu when button is clicked on
