@@ -12,7 +12,7 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		li {
+		& > li {
 			@include inline-block(middle);
 			&.hidden {
 				display: none;
@@ -429,7 +429,7 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		}
 		.postbody .post-buttons {
 			margin: 0 -2px;
-			li {
+			& > li {
 				margin: 0 2px;
 			}
 		}
