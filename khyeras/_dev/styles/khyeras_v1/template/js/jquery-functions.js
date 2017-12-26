@@ -155,34 +155,54 @@ function debounce( func, wait, immediate ) {
 function mobileDropDownPosition() {
 	var dropdownToggle = jQuery( '.dropdown-toggle' );
 	var resizeForMobile = false;
+	var lastPosition = false;
+
+	// Re-check drop down position if window is resized
+	resizeForMobile = function() {
+		var visibleDropdown = jQuery( '.dropdown-container.dropdown-visible' );
+
+		if ( visibleDropdown.length && visibleDropdown.parents( '#page-header' ).length <= 0 ) {
+			var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
+
+			if ( onMobile ) {
+				console.log('yes')
+			} else {
+				console.log('no')
+			}
+		}
+	};
+	window.addEventListener( 'resize', resizeForMobile );
 
 	// Click events for dropdown
-	dropdownToggle.on( 'click', function( event ) {
-		var current = jQuery( this );
-		var dropdown = current.parent().find( '.dropdown' );
-		var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
+	// dropdownToggle.on( 'click', function( event ) {
+	// 	var current = jQuery( this );
+	// 	var dropdown = current.parent().find( '.dropdown' );
+	// 	var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
+    //
+	// 	if ( onMobile && ( current.parents( '#mobile-menu' ).length <= 0 ) && dropdown.parent().hasClass( 'dropdown-visible' ) ) {
+	// 		addDropdownPosition( current, dropdown );
+    //
+	// 		// Re-check drop down position if window is resized
+	// 		resizeForMobile = function() {
+	// 			onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
+    //
+	// 			if (onMobile) {
+	// 				addDropdownPosition( current, dropdown );
+	// 			} else {
+	// 				resetDropdownPosition( dropdown );
+	// 			}
+	// 		};
+	// 		window.addEventListener( 'resize', resizeForMobile );
+    //
+	// 		// If clicked outside dropdown, remove stles
+	// 		jQuery( document ).on( 'click', function( event ) {
+	// 			resetDropdownPosition( dropdown );
+	// 		});
+	// 	}
+	// });
 
-		if ( onMobile && ( current.parents( '#mobile-menu' ).length <= 0 ) && dropdown.parent().hasClass( 'dropdown-visible' ) ) {
-			addDropdownPosition( current, dropdown );
 
-			// Re-check drop down position if window is resized
-			resizeForMobile = function() {
-				onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
 
-				if (onMobile) {
-					addDropdownPosition( current, dropdown );
-				} else {
-					resetDropdownPosition( dropdown );
-				}
-			};
-			window.addEventListener( 'resize', resizeForMobile );
-
-			// If clicked outside dropdown, remove stles
-			jQuery( document ).on( 'click', function( event ) {
-				resetDropdownPosition( dropdown );
-			});
-		}
-	});
 
 	// Function to add position styles
 	function addDropdownPosition( current, dropdown ) {
