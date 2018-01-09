@@ -154,66 +154,61 @@ function debounce( func, wait, immediate ) {
 
 function mobileDropDownPosition() {
 	var dropdownToggle = jQuery( '.dropdown-toggle' );
-	var resizeForMobile = false;
 	var lastPosition = false;
+	var visibleSelector = '.dropdown-container.dropdown-visible';
+
+	dropdownToggle.on( 'click', function( event ) {
+		var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
+		var toggle = jQuery( this );
+		var dropdown = toggle.parent().find( '.dropdown' );
+
+		// Check if dropdown is visible and that it's not in the page-header
+		if ( jQuery( visibleSelector ).length && jQuery( visibleSelector ).parents( '#page-header' ).length <= 0 ) {
+			// If initially on mobile, add dropdown position
+			if ( onMobile ) {
+				addDropdownPosition( toggle, dropdown );
+			}
+
+			// Otherwise, watch for browser resize
+			window.addEventListener( 'resize', resizeForMobile );
+		} else {
+			// If dropdown is toggled close, reset position and remove resize event
+			resetDropdownPosition( dropdown, true );
+		}
+
+		// If clicked outside dropdown, reset position and remove resize event
+		jQuery( document ).on( 'click', function( event ) {
+			resetDropdownPosition( dropdown, true );
+		});
+	});
 
 	// Re-check drop down position if window is resized
-	resizeForMobile = function() {
-		var visibleDropdown = jQuery( '.dropdown-container.dropdown-visible' );
+	function resizeForMobile( event ) {
+		console.log('resize test')
+		var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
+		var toggle = jQuery( visibleSelector ).find( '.dropdown-toggle' );
+		var dropdown = jQuery( visibleSelector ).find( '.dropdown' );
 
-		if ( visibleDropdown.length && visibleDropdown.parents( '#page-header' ).length <= 0 ) {
-			var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
-
-			if ( onMobile ) {
-				console.log('yes')
-			} else {
-				console.log('no')
-			}
+		// Add and remove dropdown positions based on browser width
+		if ( onMobile ) {
+			addDropdownPosition( toggle, dropdown );
+		} else {
+			resetDropdownPosition( dropdown, false );
 		}
 	};
-	window.addEventListener( 'resize', resizeForMobile );
-
-	// Click events for dropdown
-	// dropdownToggle.on( 'click', function( event ) {
-	// 	var current = jQuery( this );
-	// 	var dropdown = current.parent().find( '.dropdown' );
-	// 	var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
-    //
-	// 	if ( onMobile && ( current.parents( '#mobile-menu' ).length <= 0 ) && dropdown.parent().hasClass( 'dropdown-visible' ) ) {
-	// 		addDropdownPosition( current, dropdown );
-    //
-	// 		// Re-check drop down position if window is resized
-	// 		resizeForMobile = function() {
-	// 			onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
-    //
-	// 			if (onMobile) {
-	// 				addDropdownPosition( current, dropdown );
-	// 			} else {
-	// 				resetDropdownPosition( dropdown );
-	// 			}
-	// 		};
-	// 		window.addEventListener( 'resize', resizeForMobile );
-    //
-	// 		// If clicked outside dropdown, remove stles
-	// 		jQuery( document ).on( 'click', function( event ) {
-	// 			resetDropdownPosition( dropdown );
-	// 		});
-	// 	}
-	// });
-
-
-
 
 	// Function to add position styles
-	function addDropdownPosition( current, dropdown ) {
-		var position = -( current.offset().left - 20 );
+	function addDropdownPosition( anchor, dropdown ) {
+		var position = -( anchor.offset().left - 20 );
 		dropdown.css( 'left', position  );
 	}
 
 	// Function to reset position styles
-	function resetDropdownPosition( dropdown ) {
+	function resetDropdownPosition( dropdown, eventRemove ) {
 		dropdown.css( 'left', ''  );
-		resizeForMobile = false;
+		if ( eventRemove ) {
+			window.removeEventListener( 'resize', resizeForMobile );
+		}
 	}
 }
 

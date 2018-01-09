@@ -1064,6 +1064,14 @@
 	}
 
 	// layout.scss
+	.dropdown-container {
+		&.dropdown-visible, &.dropdown-left.dropdown-visible {
+			.dropdown {
+				min-width: 1px;
+				width: calc(100vw - 57px);
+			}
+		}
+	}
 	#nav-breadcrumbs ul li.home a {
 		.icon {
 			margin-right: 0;
