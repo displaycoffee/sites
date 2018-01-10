@@ -152,25 +152,26 @@ function debounce( func, wait, immediate ) {
 	};
 };
 
-function mobileDropDownPosition() {
-	var dropdownToggle = jQuery( '.dropdown-toggle' );
+// Initialize Dropdown Resize for mobile
+function initializeDropDownResize() {
+	var dropdownToggle = jQuery( '.page-body .dropdown-toggle' );
 	var lastPosition = false;
-	var visibleSelector = '.dropdown-container.dropdown-visible';
+	var visibleSelector = '.page-body .dropdown-container.dropdown-visible';
 
 	dropdownToggle.on( 'click', function( event ) {
 		var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
 		var toggle = jQuery( this );
 		var dropdown = toggle.parent().find( '.dropdown' );
 
-		// Check if dropdown is visible and that it's not in the page-header
-		if ( jQuery( visibleSelector ).length && jQuery( visibleSelector ).parents( '#page-header' ).length <= 0 ) {
+		// Check if dropdown is visible
+		if ( jQuery( visibleSelector ).length ) {
 			// If initially on mobile, add dropdown position
 			if ( onMobile ) {
 				addDropdownPosition( toggle, dropdown );
 			}
 
 			// Otherwise, watch for browser resize
-			window.addEventListener( 'resize', resizeForMobile );
+			window.addEventListener( 'resize', resizeDropDownForMobile );
 		} else {
 			// If dropdown is toggled close, reset position and remove resize event
 			resetDropdownPosition( dropdown, true );
@@ -182,9 +183,7 @@ function mobileDropDownPosition() {
 		});
 	});
 
-	// Re-check drop down position if window is resized
-	function resizeForMobile( event ) {
-		console.log('resize test')
+	var resizeDropDownForMobile = function() {
 		var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
 		var toggle = jQuery( visibleSelector ).find( '.dropdown-toggle' );
 		var dropdown = jQuery( visibleSelector ).find( '.dropdown' );
@@ -200,14 +199,18 @@ function mobileDropDownPosition() {
 	// Function to add position styles
 	function addDropdownPosition( anchor, dropdown ) {
 		var position = -( anchor.offset().left - 20 );
-		dropdown.css( 'left', position  );
+		var dropdownPosition = ( dropdown.offset().left - 20 );
+
+		if ( dropdownPosition != 0 ) {
+			dropdown.css( 'left', position  );
+		}
 	}
 
 	// Function to reset position styles
 	function resetDropdownPosition( dropdown, eventRemove ) {
 		dropdown.css( 'left', ''  );
 		if ( eventRemove ) {
-			window.removeEventListener( 'resize', resizeForMobile );
+			window.removeEventListener( 'resize', resizeDropDownForMobile );
 		}
 	}
 }
@@ -297,8 +300,8 @@ function initializeMobileMenu( options ) {
 	mobileResizeAction();
 
 	// Then run mobile menu on resizing using debounce
-	var resizeForMobile = debounce( function() {
+	var resizeMenuForMobile = debounce( function() {
 		mobileResizeAction();
 	}, 100 );
-	window.addEventListener( 'resize', resizeForMobile );
+	window.addEventListener( 'resize', resizeMenuForMobile );
 }
