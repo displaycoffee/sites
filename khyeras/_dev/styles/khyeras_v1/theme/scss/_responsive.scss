@@ -331,6 +331,10 @@
 		}
 		.action-bar.actions-jump .jumpbox {
 			text-align: left;
+			&.dropdown-visible .dropdown {
+				left: 0;
+				right: auto;
+			}
 		}
 	}
 
@@ -1064,12 +1068,27 @@
 	}
 
 	// layout.scss
-	.page-body .dropdown-container {
-		&.dropdown-visible, &.dropdown-left.dropdown-visible {
+	.page-body {
+		.dropdown-container.dropdown-visible {
 			.dropdown {
 				min-width: 1px;
 				width: calc(100vw - 57px);
 			}
+			&.dropdown-left .dropdown {
+				right: auto;
+			}
+		}
+		.inner .dropdown-container.dropdown-visible .dropdown {
+			width: calc(100vw - 97px);
+			margin-left: 20px !important;
+		}
+		.cp-main .dropdown-container.dropdown-visible .dropdown {
+			width: calc(100vw - 137px);
+			margin-left: 40px !important;
+		}
+		.topicreview .dropdown-container.dropdown-visible .dropdown {
+			width: calc(100vw - 217px);
+			margin-left: 61px !important;
 		}
 	}
 	#nav-breadcrumbs ul li.home a {
@@ -1086,6 +1105,12 @@
 			.inputbox, select {
 				width: calc(100% - 10px);
 			}
+		}
+	}
+	.sort-tools .dropdown .display-options label {
+		padding-right: 400px;
+		select {
+			width: 400px;
 		}
 	}
 	dl.details {
@@ -1218,6 +1243,11 @@
 	}
 
 	// other-sections.scss
+	#search_memberlist .dropdown-container .dropdown.live-search[style*='block'] {
+		min-width: 1px;
+		left: -1px;
+		right: -1px;
+	}
 	#viewprofile .panel:first-child .inner {
 		display: block;
 		.left-box {
@@ -1374,6 +1404,20 @@
 	}
 
 	// layout.scss
+	.page-body {
+		.inner .dropdown-container.dropdown-visible .dropdown {
+			width: calc(100vw - 77px);
+			margin-left: 10px !important;
+		}
+		.cp-main .dropdown-container.dropdown-visible .dropdown {
+			width: calc(100vw - 117px);
+			margin-left: 30px !important;
+		}
+		.topicreview .dropdown-container.dropdown-visible .dropdown {
+			width: calc(100vw - 177px);
+			margin-left: 41px !important;
+		}
+	}
 	.forabg, .forumbg, .post, .panel {
 		border-width: 10px;
 	}
@@ -1463,16 +1507,6 @@
 	}
 	fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		position: static;
-	}
-	.postprofile dd.profile-contact {
-		position: relative;
-		.dropdown-container {
-			position: static;
-			.dropdown {
-				left: -100px;
-				right: 0;
-			}
-		}
 	}
 	.review {
 		padding-right: 0;
@@ -1597,11 +1631,6 @@
 	.mcp-main {
 		.action-bar.actions-jump .jumpbox {
 			display: block;
-			.dropdown {
-				width: 100%;
-				min-width: 1px;
-				left: 0;
-			}
 		}
 		.forum-selection label {
 			display: block;
@@ -1708,9 +1737,6 @@
 		dd {
 			&.profile-posts, &.profile-joined {
 				display: none;
-			}
-			&.profile-contact .dropdown-container .dropdown {
-				left: 0;
 			}
 		}
 	}

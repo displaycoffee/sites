@@ -345,13 +345,8 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		}
 		&.profile-contact .dropdown-container {
 			display: inline-block;
-			.dropdown {
-				left: 0;
-				right: auto;
-				top: em(30px);
-				.dropdown-contents > div {
-					display: inline;
-				}
+			.dropdown .dropdown-contents > div {
+				display: inline;
 			}
 		}
 	}

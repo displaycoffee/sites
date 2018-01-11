@@ -87,7 +87,8 @@
 		display: block !important;
 		min-width: 160px;
 		position: absolute;
-		left: -999px;
+		top: -9999px;
+		left: -9999px;
 		z-index: -1;
 		margin: 0 !important;
 		padding: 20px;
@@ -120,39 +121,35 @@
 			}
 		}
  	}
-	&.dropdown-visible .dropdown {
-		visibility: visible;
-		opacity: 1;
-		z-index: 50;
-		left: 0;
-	}
-	&.dropdown-left.dropdown-visible .dropdown {
-		left: auto;
-		right: 0;
-	}
-}
-
-.dropdown-container {
-	&.dropdown-down {
+	&.dropdown-visible {
 		.dropdown {
-			top: 25px;
+			visibility: visible;
+			opacity: 1;
+			z-index: 50;
+			top: 22px;
+			left: 0;
 		}
-		.button + .dropdown {
+		.button ~ .dropdown {
 			top: 45px;
 		}
-		.button-icon-only + .dropdown {
+		.button-icon-only ~ .dropdown {
 			top: 30px;
 		}
-	}
-	&.dropdown-up {
-		.dropdown {
-			bottom: 25px;
+		&.dropdown-up {
+			.dropdown {
+				top: auto;
+				bottom: 25px;
+			}
+			.button ~ .dropdown {
+				bottom: 45px;
+			}
+			.button-icon-only ~ .dropdown {
+				bottom: 30px;
+			}
 		}
-		.button + .dropdown {
-			bottom: 45px;
-		}
-		.button-icon-only + .dropdown {
-			bottom: 30px;
+		&.dropdown-left .dropdown {
+			left: auto;
+			right: 0;
 		}
 	}
 }
@@ -326,15 +323,12 @@
 /* Page Jump
 ========================================================================== */
 
-.page-jump .dropdown {
-	top: em(30px);
-	.page-jump-form {
-		input[type='number'].inputbox, .button2 {
-			width: 100%;
-		}
-		input[type='number'].inputbox {
-			margin: 10px 0;
-		}
+.page-jump .dropdown .page-jump-form {
+	input[type='number'].inputbox, .button2 {
+		width: 100%;
+	}
+	input[type='number'].inputbox {
+		margin: 10px 0;
 	}
 }
 
@@ -716,7 +710,7 @@
 			border-bottom: 2px solid $color-01;
 		}
 	}
-	.dropdown {
+	&.dropdown-visible .dropdown {
 		top: 24px;
 	}
 }
