@@ -49,7 +49,7 @@ function addForumImageClass() {
 }
 
 // Add classes to fieldset dl dd depending on conditions
-function addFieldsetClasses( selector ) {
+function addFieldsetClasses() {
 	var fieldset = document.querySelectorAll( 'fieldset:not(.polls) dl:not(.pmlist) dd' );
 
 	if ( fieldset.length ) {
@@ -62,6 +62,20 @@ function addFieldsetClasses( selector ) {
 			// Check if element has an nbsp space
 			if ( fieldset[i].innerHTML.indexOf( '&nbsp;' ) !== -1 ) {
 				fieldset[i].className += ( checkForClasses( fieldset[i] ) + 'has-space' );
+			}
+		}
+	}
+}
+
+// Add classes to fieldset dl dd depending on conditions
+function addActionBarClass() {
+	var actionBar = document.querySelectorAll( '.action-bar' );
+
+	if ( actionBar.length ) {
+		for ( var i = 0; i < actionBar.length; i++ ) {
+			// Check if element has an nbsp space
+			if ( actionBar[i].innerHTML.indexOf( 'dropdown-container' ) !== -1 ) {
+				actionBar[i].className += ( checkForClasses( actionBar[i] ) + 'has-dropdown' );
 			}
 		}
 	}

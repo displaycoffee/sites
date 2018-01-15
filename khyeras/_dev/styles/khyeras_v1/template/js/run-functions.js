@@ -4,6 +4,7 @@
 addBodyClass();
 addForumImageClass();
 addFieldsetClasses();
+addActionBarClass();
 addNoPaginationClass();
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );

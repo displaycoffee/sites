@@ -306,10 +306,18 @@
    Note: Header area only. UCP notifications in cp.scss
 ========================================================================== */
 
+.user-buttons {
+	position: relative;
+	.notification-container {
+		position: static;
+	}
+}
+
 #notification_list {
 	min-width: 450px;
 	top: 45px;
-	right: 2.5px;
+	right: 1.5px;
+	left: auto;
 	.header {
 		@include spectral-common;
 		font-size: rem(18px);
