@@ -252,10 +252,10 @@
 /* Pagination
 ========================================================================== */
 
-.pagination ul {
+.pagination > ul {
 	margin: 0 -5px;
 	@include inline-block(bottom);
-	li {
+	& > li {
 		@include inline-block(middle);
 		&.active span, a {
 			padding: 0 5px;
@@ -280,6 +280,10 @@
 					background: none;
 				}
 			}
+		}
+		&.dropdown-container.dropdown-visible .dropdown {
+			left: 0;
+			right: auto;
 		}
 	}
 }
@@ -373,7 +377,7 @@
 	.pagination, .jumpbox {
 		@include flex(base);
 	}
-	.pagination ul {
+	.pagination > ul {
 		padding-left: 10px;
 	}
 	&.bar-top .search-box {
@@ -655,6 +659,7 @@
 
 .tabs, .minitabs {
 	& > ul {
+		position: relative;
 		margin: 0;
 		@include flex-flow(row wrap);
 		align-items: flex-end;
@@ -695,7 +700,7 @@
 }
 
 .responsive-tab {
-	position: relative;
+	position: static;
 	& > .responsive-tab-link {
 		&:before, &:after {
 			content: '';
@@ -710,8 +715,10 @@
 			border-bottom: 2px solid $color-01;
 		}
 	}
-	&.dropdown-visible .dropdown {
-		top: 24px;
+	&.dropdown-visible .tab-dropdown.dropdown {
+		top: 35px;
+		right: 0;
+		left: 0;
 	}
 }
 

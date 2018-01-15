@@ -66,8 +66,6 @@ jQuery( document ).ready( function( $ ) {
 	toggleMobileContent( '.toggle-links a', '#page-welcome .site-callouts .site-links' );
 	toggleMobileContent( '.toggle-featured a', '#featured-content' );
 
-	initializeDropDownResize();
-
 	initializeMobileMenu({
 	    menu          : '#page-header .navbar > ul',
 	    menuContainer : '#page-header .navbar',

@@ -152,69 +152,6 @@ function debounce( func, wait, immediate ) {
 	};
 };
 
-// Initialize Dropdown Resize for mobile
-function initializeDropDownResize() {
-	var dropdownToggle = jQuery( '.page-body .dropdown-toggle' );
-	var lastPosition = false;
-	var visibleSelector = '.page-body .dropdown-container.dropdown-visible';
-
-	dropdownToggle.on( 'click', function( event ) {
-		var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
-		var toggle = jQuery( this );
-		var dropdown = toggle.parent().find( '.dropdown' );
-
-		// Check if dropdown is visible
-		if ( jQuery( visibleSelector ).length ) {
-			// If initially on mobile, add dropdown position
-			if ( onMobile ) {
-				addDropdownPosition( toggle, dropdown );
-			}
-
-			// Otherwise, watch for browser resize
-			window.addEventListener( 'resize', resizeDropDownForMobile );
-		} else {
-			// If dropdown is toggled close, reset position and remove resize event
-			resetDropdownPosition( dropdown, true );
-		}
-
-		// If clicked outside dropdown, reset position and remove resize event
-		jQuery( document ).on( 'click', function( event ) {
-			resetDropdownPosition( dropdown, true );
-		});
-	});
-
-	var resizeDropDownForMobile = function() {
-		var onMobile = isMobile( baseFontSize, ( 600 / baseFontSize ) );
-		var toggle = jQuery( visibleSelector ).find( '.dropdown-toggle' );
-		var dropdown = jQuery( visibleSelector ).find( '.dropdown' );
-
-		// Add and remove dropdown positions based on browser width
-		if ( onMobile ) {
-			addDropdownPosition( toggle, dropdown );
-		} else {
-			resetDropdownPosition( dropdown, false );
-		}
-	};
-
-	// Function to add position styles
-	function addDropdownPosition( anchor, dropdown ) {
-		var position = -( anchor.offset().left - 20 );
-		var dropdownPosition = ( dropdown.offset().left - 20 );
-
-		if ( dropdownPosition != 0 ) {
-			dropdown.css( 'left', position  );
-		}
-	}
-
-	// Function to reset position styles
-	function resetDropdownPosition( dropdown, eventRemove ) {
-		dropdown.css( 'left', ''  );
-		if ( eventRemove ) {
-			window.removeEventListener( 'resize', resizeDropDownForMobile );
-		}
-	}
-}
-
 // Initialize Mobile Menu
 function initializeMobileMenu( options ) {
 	// Variables from mobile object

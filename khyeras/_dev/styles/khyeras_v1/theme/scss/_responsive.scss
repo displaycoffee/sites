@@ -72,7 +72,7 @@
 		width: 50%;
 	}
 	.action-bar {
-		.pagination ul {
+		.pagination > ul {
 			display: block;
 			margin-top: 2.5px;
 			padding-left: 0;
@@ -235,6 +235,9 @@
 	#page-welcome .user-profile {
 		order: -2;
 	}
+	#notification_list {
+		left: -70%;
+	}
 }
 
 /* 850 Breakpoint
@@ -320,8 +323,10 @@
 	}
 	.mcp-main {
 		.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
-			position: static;
 			margin-bottom: 20px;
+		}
+		.forum-selection, .tabs-container .minitabs {
+			position: static;
 		}
 		.forum-selection + h2, .action-bar.actions-jump + h2, .tabs-container h2 {
 			padding: 0;
@@ -329,11 +334,14 @@
 		.forum-selection, .action-bar.actions-jump {
 			height: auto;
 		}
-		.action-bar.actions-jump .jumpbox {
-			text-align: left;
-			&.dropdown-visible .dropdown {
-				left: 0;
-				right: auto;
+		.action-bar.actions-jump {
+			position: relative;
+			.jumpbox {
+				text-align: left;
+				&.dropdown-visible .dropdown {
+					left: 0;
+					right: auto;
+				}
 			}
 		}
 	}
@@ -401,7 +409,7 @@
 	.action-bar {
 		.pagination {
 			@include clearfix('&');
-			ul {
+			& > ul {
 				float: right;
 				margin-top: 0;
 				padding-left: 10px;
@@ -1019,7 +1027,6 @@
 		min-width: 0;
 		top: 35px;
 		left: 2.5px;
-		right: 2.5px;
 	}
 	#featured-content {
 		display: none;
@@ -1068,29 +1075,6 @@
 	}
 
 	// layout.scss
-	.page-body {
-		.dropdown-container.dropdown-visible {
-			.dropdown {
-				min-width: 1px;
-				width: calc(100vw - 57px);
-			}
-			&.dropdown-left .dropdown {
-				right: auto;
-			}
-		}
-		.inner .dropdown-container.dropdown-visible .dropdown {
-			width: calc(100vw - 97px);
-			margin-left: 20px !important;
-		}
-		.cp-main .dropdown-container.dropdown-visible .dropdown {
-			width: calc(100vw - 137px);
-			margin-left: 40px !important;
-		}
-		.topicreview .dropdown-container.dropdown-visible .dropdown {
-			width: calc(100vw - 217px);
-			margin-left: 61px !important;
-		}
-	}
 	#nav-breadcrumbs ul li.home a {
 		.icon {
 			margin-right: 0;
@@ -1107,10 +1091,33 @@
 			}
 		}
 	}
-	.sort-tools .dropdown .display-options label {
-		padding-right: 400px;
-		select {
-			width: 400px;
+	.action-bar {
+		position: relative;
+		.dropdown-container {
+			position: static;
+			.dropdown {
+				min-width: 1px;
+			}
+			&.dropdown-visible {
+				.dropdown {
+					left: 5px;
+					right: 5px;
+					top: auto;
+				}
+				&, &.dropdown-up {
+					.dropdown {
+						bottom: 100%;
+					}
+				}
+			}
+		}
+		.pagination > ul {
+			position: relative;
+			.dropdown-container.dropdown-visible .dropdown {
+				right: 5px;
+				left: 5px;
+				margin-bottom: 5px !important;
+			}
 		}
 	}
 	dl.details {
@@ -1304,6 +1311,10 @@
 			margin-top: 10px;
 		}
 	}
+	.mcp-main .action-bar.actions-jump .jumpbox.dropdown-visible .dropdown {
+		right: 0;
+		margin-bottom: 5px !important;
+	}
 	.section-mcp-view-topic .cp-main #display-panel dl dd.has-multiple-fields.has-space select#st + label {
 		@include flex(full);
 		select {
@@ -1404,20 +1415,6 @@
 	}
 
 	// layout.scss
-	.page-body {
-		.inner .dropdown-container.dropdown-visible .dropdown {
-			width: calc(100vw - 77px);
-			margin-left: 10px !important;
-		}
-		.cp-main .dropdown-container.dropdown-visible .dropdown {
-			width: calc(100vw - 117px);
-			margin-left: 30px !important;
-		}
-		.topicreview .dropdown-container.dropdown-visible .dropdown {
-			width: calc(100vw - 177px);
-			margin-left: 41px !important;
-		}
-	}
 	.forabg, .forumbg, .post, .panel {
 		border-width: 10px;
 	}
@@ -1435,10 +1432,14 @@
 			margin-top: -40px;
 			padding-left: 90px;
 		}
-		.pagination ul {
+		.pagination > ul {
 			float: none;
-			margin-top: 5px;
+			margin: 5px 0 0 0;
 			padding-left: 0;
+			.dropdown-container.dropdown-visible .dropdown {
+				right: 0;
+				left: 0;
+			}
 		}
 	}
 	.display-actions .display-actions-wrapper {

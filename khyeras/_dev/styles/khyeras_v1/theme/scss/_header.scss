@@ -309,6 +309,7 @@
 #notification_list {
 	min-width: 450px;
 	top: 45px;
+	right: 2.5px;
 	.header {
 		@include spectral-common;
 		font-size: rem(18px);

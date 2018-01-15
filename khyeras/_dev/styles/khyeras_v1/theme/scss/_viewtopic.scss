@@ -343,10 +343,17 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 			margin: -10px 0 10px 0;
 			font-style: italic;
 		}
-		&.profile-contact .dropdown-container {
-			display: inline-block;
-			.dropdown .dropdown-contents > div {
-				display: inline;
+		&.profile-contact {
+			position: relative;
+			.dropdown-container {
+				display: inline-block;
+				position: static;
+				.dropdown .dropdown-contents > div {
+					display: inline;
+				}
+				&.dropdown-visible .dropdown {
+					left: 0;
+				}
 			}
 		}
 	}
