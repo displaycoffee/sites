@@ -58,15 +58,18 @@ jQuery( document ).ready( function( $ ) {
 		cpMain.parent().addClass('cp-wrapper');
 	}
 
+	// Add top/bottom buttons and sticky nav when scrolling
 	if ( !$( 'body' ).hasClass( 'simple-phpbb' ) ) {
 		addOnScroll( '#page-header .navbar', '.header-overlay', 'sticky' );
 		scrollOnPage( '.scroll-to-top', 100, 0 );
 		scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 	}
 
+	// Show selected content on mobile
 	toggleMobileContent( '.toggle-links a', '#page-welcome .site-callouts .site-links' );
 	toggleMobileContent( '.toggle-featured a', '#featured-content' );
 
+	// Start the mobile menu
 	initializeMobileMenu({
 	    menu          : '#page-header .navbar > ul',
 	    menuContainer : '#page-header .navbar',

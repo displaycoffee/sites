@@ -1108,12 +1108,25 @@
 				.dropdown {
 					left: 5px;
 					right: 5px;
-					top: auto;
+					top: calc((100% - 1rem) - 35px);
 				}
-				&, &.dropdown-up {
+				// .button ~ .dropdown {
+				// 	top: 45px;
+				// }
+				// .button-icon-only ~ .dropdown {
+				// 	top: 30px;
+				// }
+				&.dropdown-up {
 					.dropdown {
-						bottom: 100%;
+						top: auto;
+						bottom: calc((100% - 1rem));
 					}
+					// .button ~ .dropdown {
+					// 	bottom: 45px;
+					// }
+					// .button-icon-only ~ .dropdown {
+					// 	bottom: 30px;
+					// }
 				}
 			}
 		}
@@ -1128,7 +1141,7 @@
 					top: 102%;
 				}
 			}
-		}	
+		}
 	}
 	dl.details {
 		dt {
@@ -1556,6 +1569,9 @@
 	.cp-main {
 		.panel, .post.pm, .topicreview {
 			padding: 20px 10px 0 10px;
+		}
+		.topicreview.scrollable .scrollable-wrapper {
+			padding-right: 10px;
 		}
 		#avatar_option_avatar_driver_local fieldset {
 			label[for='category'] {

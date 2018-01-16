@@ -30,6 +30,7 @@ var distCSS = dist + '/theme';
 /* JavaScript
    ---------------------------------------------- */
 var jsSources = [
+	devJS + '/global-functions.js',
 	devJS + '/javascript-functions.js',
 	devJS + '/jquery-functions.js',
 	devJS + '/run-functions.js'
