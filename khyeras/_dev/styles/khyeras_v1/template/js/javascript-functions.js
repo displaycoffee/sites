@@ -41,20 +41,6 @@ function addFieldsetClasses() {
 	}
 }
 
-// Add dropdown class to action bar depending on conditions
-function addActionBarClass() {
-	var actionBar = document.querySelectorAll( '.action-bar' );
-
-	if ( actionBar.length ) {
-		for ( var i = 0; i < actionBar.length; i++ ) {
-			// Check if element has an nbsp space
-			if ( actionBar[i].innerHTML.indexOf( 'dropdown-container' ) !== -1 ) {
-				actionBar[i].className += ( checkForClasses( actionBar[i] ) + 'has-dropdown' );
-			}
-		}
-	}
-}
-
 // Add no-pagination class to body to hide pagination
 function addNoPaginationClass() {
 	var pagination = document.querySelector( '.action-bar .pagination' );

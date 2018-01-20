@@ -1097,7 +1097,7 @@
 			padding-left: 0;
 		}
 	}
-	.action-bar.has-dropdown {
+	.action-bar {
 		position: relative;
 		.dropdown-container {
 			position: static;
@@ -1108,38 +1108,29 @@
 				.dropdown {
 					left: 5px;
 					right: 5px;
-					top: calc((100% - 1rem) - 35px);
+					top: auto;
+					margin-top: 10px !important;
 				}
-				// .button ~ .dropdown {
-				// 	top: 45px;
-				// }
-				// .button-icon-only ~ .dropdown {
-				// 	top: 30px;
-				// }
 				&.dropdown-up {
 					.dropdown {
-						top: auto;
-						bottom: calc((100% - 1rem));
+						bottom: auto;
+						-webkit-font-smoothing: subpixel-antialiased;
+						transform: translateY(-100%);
+						margin-top: -30px !important;
 					}
-					// .button ~ .dropdown {
-					// 	bottom: 45px;
-					// }
-					// .button-icon-only ~ .dropdown {
-					// 	bottom: 30px;
-					// }
+					.button ~ .dropdown {
+						margin-top: -50px !important;
+					}
+					.button-icon-only ~ .dropdown {
+						margin-top: -35px !important;
+					}
 				}
 			}
 		}
 		.pagination > ul {
 			position: static;
-			& > li.page-jump.dropdown-container {
-				.dropdown {
-					max-width: none;
-				}
-				&.dropdown-visible .dropdown {
-					bottom: auto;
-					top: 102%;
-				}
+			& > li.page-jump .dropdown {
+				max-width: none;
 			}
 		}
 	}
@@ -1336,7 +1327,6 @@
 	}
 	.mcp-main .action-bar.actions-jump .jumpbox.dropdown-visible .dropdown {
 		right: 0;
-		margin-bottom: 5px !important;
 	}
 	.section-mcp-view-topic .cp-main #display-panel dl dd.has-multiple-fields.has-space select#st + label {
 		@include flex(full);

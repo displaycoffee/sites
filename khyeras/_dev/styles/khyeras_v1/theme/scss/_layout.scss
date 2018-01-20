@@ -126,25 +126,25 @@
 			visibility: visible;
 			opacity: 1;
 			z-index: 50;
-			top: 22px;
+			top: 27px;
 			left: 0;
 		}
 		.button ~ .dropdown {
-			top: 45px;
+			top: 50px;
 		}
 		.button-icon-only ~ .dropdown {
-			top: 30px;
+			top: 35px;
 		}
 		&.dropdown-up {
 			.dropdown {
 				top: auto;
-				bottom: 25px;
+				bottom: 30px;
 			}
 			.button ~ .dropdown {
-				bottom: 45px;
+				bottom: 50px;
 			}
 			.button-icon-only ~ .dropdown {
-				bottom: 30px;
+				bottom: 35px;
 			}
 		}
 		&.dropdown-left .dropdown {
