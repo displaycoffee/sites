@@ -110,7 +110,8 @@ dl.faq + .top {
 ========================================================================== */
 
 #viewprofile {
-	.panel:first-child {
+	.profile-panel {
+		position: relative;
 		&.online .left-box.profile-details:first-child {
 			margin-top: 35px;
 		}
@@ -153,6 +154,13 @@ dl.faq + .top {
 						font-size: rem(22px);
 						font-weight: normal !important;
 					}
+				}
+				.zebra a i {
+					color: $color-01;
+					font-size: rem(16px);
+					margin: 0 5px 0 0;
+					position: relative;
+					top: 1px;
 				}
 			}
 		}
