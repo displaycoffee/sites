@@ -78,7 +78,6 @@ function addImageWrapper( selector ) {
 	}
 }
 
-
 // Check for empty content elements on the page
 function checkForEmpty( selector ) {
 	var element = document.querySelectorAll( selector );
@@ -86,6 +85,18 @@ function checkForEmpty( selector ) {
 	if ( element.length ) {
 		for ( var i = 0; i < element.length; i++ ) {
 			element[i].parentNode.style.display = 'none';
+		}
+	}
+}
+
+// Remove <t> tags from draft textarea
+function removeDraftTags() {
+	var element = document.querySelectorAll( '#postform[action*="mode=drafts"] textarea' );
+
+	if ( element.length ) {
+		for ( var i = 0; i < element.length; i++ ) {
+			var newValue = element[i].value.replace( /<t>/g,'' ).replace( /<\/t>/g,'' );
+			element[i].value = newValue;
 		}
 	}
 }
