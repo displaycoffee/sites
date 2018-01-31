@@ -1109,3 +1109,28 @@ $icon-yin-yang: \ea14;
 .rpg-yin-yang:before {
 	content: unicode($icon-yin-yang);
 }
+
+/* RPG Icon Overrides
+========================================================================== */
+
+.fa-pencil, .fa-reply, .fa-file-o, .fa-inbox, .fa-gavel {
+	font-family: 'Khyeras Icons';
+}
+
+.fa-pencil, .fa-reply {
+	&:before {
+		content: unicode($icon-quill-ink);
+	}
+}
+
+.fa-file-o {
+	&:before {
+		content: unicode($icon-scroll-unfurled);
+	}
+}
+
+.fa-gavel {
+	&:before {
+		content: unicode($icon-gavel);
+	}
+}

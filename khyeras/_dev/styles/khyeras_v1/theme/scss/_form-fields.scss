@@ -16,13 +16,13 @@ fieldset {
 	border: 0;
 }
 
-.inputbox, select, .button, .button1, .button2 {
+.inputbox, textarea, select, .button, .button1, .button2 {
 	border: 0;
 	border-radius: 3px;
 	line-height: rem(20px);
 }
 
-.inputbox, select {
+.inputbox, textarea, select {
 	background: $color-01;
 	color: $color-08;
 	width: 100%;
@@ -39,6 +39,10 @@ select {
 
 textarea {
 	display: block;
+}
+
+.section-memberlist-send-email #message {
+	height: auto !important;
 }
 
 input[type='checkbox'], input[type='radio']  {
@@ -140,7 +144,7 @@ fieldset:not(.polls) {
 		// Always keep clearfix to account for weird margin collapse spacing
 		@include clearfix('&');
 		margin: 0 -10px 20px -10px;
-		.inputbox, select, label {
+		.inputbox, textarea, select, label {
 			margin: 0;
 		}
 		dt, dd {

@@ -88,15 +88,3 @@ function checkForEmpty( selector ) {
 		}
 	}
 }
-
-// Remove <t> tags from draft textarea
-function removeDraftTags() {
-	var element = document.querySelectorAll( '#postform[action*="mode=drafts"] textarea' );
-
-	if ( element.length ) {
-		for ( var i = 0; i < element.length; i++ ) {
-			var newValue = element[i].value.replace( /<t>/g,'' ).replace( /<\/t>/g,'' );
-			element[i].value = newValue;
-		}
-	}
-}

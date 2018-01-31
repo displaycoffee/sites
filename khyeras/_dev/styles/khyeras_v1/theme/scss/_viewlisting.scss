@@ -179,16 +179,16 @@
 		@include forum-icon($icon-padlock);
 	}
 	.forum_read, .forum_read_subforum {
-		@include forum-icon($icon-book-cover-02);
-	}
-	.forum_unread, .forum_unread_subforum {
 		@include forum-icon($icon-book-cover);
 	}
+	.forum_unread, .forum_unread_subforum {
+		@include forum-icon($icon-book-cover-02);
+	}
 	.topic_read, .topic_read_mine, .topic_read_hot, .topic_read_hot_mine, .pm_read {
-		@include forum-icon($icon-tied-scroll);
+		@include forum-icon($icon-scroll-unfurled);
 	}
 	.topic_unread, .topic_unread_mine, .topic_unread_hot, .topic_unread_hot_mine, .pm_unread {
-		@include forum-icon($icon-scroll-unfurled);
+		@include forum-icon($icon-tied-scroll);
 	}
 	.global_read, .global_read_mine, .global_read_locked,
 	.global_read_locked_mine, .global_unread, .global_unread_mine,
