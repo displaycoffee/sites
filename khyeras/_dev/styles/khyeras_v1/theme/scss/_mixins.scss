@@ -109,6 +109,48 @@
 	left: 10px;
 }
 
+// FontAwesome properties
+@mixin icon-font($family: '', $fs: '', $lh: '') {
+	// Font family logic
+	@if ($family != '') {
+		@if ($family == 'game') {
+			$family: 'Khyeras Icons';
+		} @else {
+			$family: $family;
+		}
+	} @else {
+		$family: 'FontAwesome';
+	}
+
+	display: inline-block;
+	font-family: $family;
+  	font-weight: normal;
+  	font-style: normal;
+  	font-variant: normal;
+
+	// Font size logic
+	@if ($fs != false) {
+		@if ($fs != '') {
+			font-size: $fs;
+		} @else {
+			font-size: rem($global-font-size);
+		}
+	}
+
+	// Line height logic
+	@if ($lh != false) {
+		@if ($lh != '') {
+			line-height: $lh;
+		} @else {
+			line-height: 1;
+		}
+	}
+
+  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
 // Inline block
 @mixin inline-block($vertical-align) {
 	display: inline-block;

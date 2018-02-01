@@ -142,7 +142,7 @@ h5, h6 {
 	font-size: rem(20px);
 }
 
-/* Icons
+/* Icon Families, Colors, and Sizes
 ========================================================================== */
 
 .icon  {
@@ -207,16 +207,4 @@ h5, h6 {
 
 .icon.icon-black, a:hover .icon.icon-black {
 	color: $color-01;
-}
-
-.fa-angle-left, .fa-angle-right {
-	font-size: rem(12px);
-}
-
-.fa-angle-left:before {
-	content: unicode($icon-chevron-left);
-}
-
-.fa-angle-right:before {
-	content: unicode($icon-chevron-right);
 }
