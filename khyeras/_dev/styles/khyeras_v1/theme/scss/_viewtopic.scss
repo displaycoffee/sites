@@ -130,7 +130,7 @@
 	.inline-attachment, .attachbox {
 		.file {
 			.icon_topic_attach:before {
-				@include font-awesome;
+				@include icon-font;				
 				content: unicode($icon-file-o);
 			}
 			.attach-image {

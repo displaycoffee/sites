@@ -15,8 +15,10 @@
 		li {
 			margin: 0 0 5px 0;
 			a[href*='folder']:before {
-				@include rpg-icons;
-				content: unicode($icon-book-cover-02);
+				@include icon-font($family: game, $fs: false, $lh: false);
+				font-size: rem(16px);
+				content: unicode($rpg-bookmarklet);
+				vertical-align: bottom;
 				margin: 0 5px 0 0;
 				color: $color-01;
 			}
@@ -263,7 +265,8 @@
 			strong {
 				font-weight: normal;
 				a:before {
-					@include font-awesome($fs: rem(12px));
+					@include icon-font($fs: false);
+					font-size: rem(12px);
 					content: unicode($icon-chevron-left);
 					margin-right: 10px;
 					color: $color-01;

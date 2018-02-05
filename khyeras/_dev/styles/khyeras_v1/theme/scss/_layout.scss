@@ -445,7 +445,7 @@
 			font-size: rem($global-font-size);
 			display: block;
 			&:before {
-				@include font-awesome;
+				@include icon-font;
 				color: $color-01;
 				margin: 0 5px 0 0;
 			}
@@ -534,7 +534,8 @@
 		margin: 0 2.5px 5px 2.5px;
 		text-align: center;
 		.contact-icon {
-			@include font-awesome($fs: 0);
+			@include icon-font($fs: false);
+			font-size: 0;
 			&:before {
 				font-size: rem($global-font-size);
 			}

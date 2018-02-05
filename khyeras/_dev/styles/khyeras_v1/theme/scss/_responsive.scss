@@ -1672,7 +1672,8 @@
 			.header_settings {
 				font-size: 0;
 				a:before {
-					@include font-awesome($fs: rem($global-font-size));
+					@include icon-font($fs: false);
+					font-size: rem($global-font-size);
 				}
 				& > a:before {
 					content: unicode($icon-cogs);

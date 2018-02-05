@@ -78,22 +78,6 @@
 	}
 }
 
-// FontAwesome properties
-@mixin font-awesome($fs: '') {
-	display: inline-block;
-  	font-weight: normal;
-  	font-style: normal;
-  	font-variant: normal;
-	@if ($fs != '') {
-		font-size: $fs;
-	}
-  	font-family: 'FontAwesome';
-  	line-height: 1;
-  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
-  	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-}
-
 // Icon properties for forum/topic listing
 @mixin forum-icon($icon) {
 	dt:before {
@@ -197,19 +181,6 @@
 	}
 }
 
-// RPG Theme Icons
-@mixin rpg-icons($fs: '') {
-	display: inline-block;
-  	font-weight: normal;
-	@if ($fs != '') {
-		font-size: $fs;
-	}
-  	font-family: 'Khyeras Icons';
-  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
-  	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-}
-
 // Sizing for elements
 @mixin sizing($width, $height) {
 	width: $width;
@@ -232,7 +203,7 @@
 			color: $color-06;
 		}
 		&[href*='mode=']:after {
-			@include font-awesome;
+			@include icon-font;
 			margin: 0 0 0 10px;
 			position: relative;
 		}

@@ -1,1136 +1,152 @@
 /* RPG Icon Variables
 ========================================================================== */
 
-$icon-achievement: \e900;
-$icon-angel-outfit: \e901;
-$icon-ankh: \e902;
-$icon-anvil-impact: \e903;
-$icon-arrow-flights: \e904;
-$icon-arrowed: \e905;
-$icon-arrows-shield: \e906;
-$icon-assassin-pocket: \e907;
-$icon-attached-shield: \e908;
-$icon-axe-swing: \e909;
-$icon-back-pain: \e90a;
-$icon-backstab: \e90b;
-$icon-backup: \e90c;
-$icon-bandaged: \e90d;
-$icon-bat-02: \e90e;
-$icon-battle-gear: \e90f;
-$icon-bear-head: \e910;
-$icon-bed: \e912;
-$icon-beech: \e913;
-$icon-beer-stein: \e914;
-$icon-big-egg: \e915;
-$icon-big-wave: \e916;
-$icon-blood: \e917;
-$icon-bo: \e918;
-$icon-bolt-shield: \e919;
-$icon-book-cover: \e91a;
-$icon-book-cover-02: \e91b;
-$icon-boomerang: \e91c;
-$icon-boots: \e91d;
-$icon-bracer: \e91e;
-$icon-brass-knuckles: \e91f;
-$icon-breastplate: \e920;
-$icon-brick-wall: \e921;
-$icon-broadsword: \e922;
-$icon-broken-wall: \e923;
-$icon-brutal-helm: \e924;
-$icon-butterfly: \e925;
-$icon-caesar: \e926;
-$icon-campfire: \e927;
-$icon-camping-tent: \e928;
-$icon-candle-light: \e929;
-$icon-cape: \e92a;
-$icon-carnival-mask: \e92b;
-$icon-cash: \e92c;
-$icon-castle: \e92d;
-$icon-chemical-drop: \e92e;
-$icon-chicken-leg: \e92f;
-$icon-closed-doors: \e930;
-$icon-coffee-cup: \e931;
-$icon-coffin: \e932;
-$icon-compass: \e933;
-$icon-corset: \e934;
-$icon-crescent-blade: \e935;
-$icon-cross-shield: \e936;
-$icon-crossbow: \e937;
-$icon-crossed-axes: \e938;
-$icon-crossed-swords: \e939;
-$icon-crowned-heart: \e93a;
-$icon-crowned-skull: \e93b;
-$icon-crystal-growth: \e93c;
-$icon-crystal-wand: \e93d;
-$icon-cut-palm: \e93e;
-$icon-daggers: \e93f;
-$icon-dart: \e940;
-$icon-deadly-strike: \e941;
-$icon-death-note: \e942;
-$icon-diamond-hard: \e943;
-$icon-diamond-ring: \e944;
-$icon-dig-dug: \e945;
-$icon-direction-sign: \e946;
-$icon-double-dragon: \e947;
-$icon-double-shot: \e948;
-$icon-dragon-head-02: \e949;
-$icon-drakkar: \e94a;
-$icon-drama-masks: \e94b;
-$icon-dress: \e94c;
-$icon-drop: \e94d;
-$icon-droplet-splash: \e94e;
-$icon-dungeon-gate: \e94f;
-$icon-dynamite: \e950;
-$icon-egg-clutch: \e951;
-$icon-empty-hourglass: \e952;
-$icon-evil-hand: \e953;
-$icon-eyedropper: \e954;
-$icon-fairy: \e955;
-$icon-feather: \e956;
-$icon-fencer: \e957;
-$icon-fire-tail: \e958;
-$icon-fist-02: \e959;
-$icon-flail: \e95a;
-$icon-flamed-leaf: \e95b;
-$icon-flanged-mace: \e95c;
-$icon-fluffy-cloud: \e95d;
-$icon-fluffy-wing: \e95e;
-$icon-flying-flag: \e95f;
-$icon-footsteps: \e960;
-$icon-g-clef: \e961;
-$icon-galleon: \e962;
-$icon-gauntlet: \e963;
-$icon-gavel: \e964;
-$icon-gem-chain: \e965;
-$icon-ghost: \e966;
-$icon-gibbet: \e967;
-$icon-gold-mine: \e968;
-$icon-grasping-claws: \e969;
-$icon-graveyard: \e96a;
-$icon-grim-reaper: \e96b;
-$icon-ground-sprout: \e96c;
-$icon-hand: \e96d;
-$icon-handheld-fan: \e96e;
-$icon-harpoon-chain: \e96f;
-$icon-haunting: \e970;
-$icon-heart-bottle: \e971;
-$icon-heart-wings: \e972;
-$icon-heavy-arrow: \e973;
-$icon-heavy-rain: \e974;
-$icon-heavy-thorny-triskelion: \e975;
-$icon-holy-grail: \e976;
-$icon-hooded-assassin: \e977;
-$icon-hooded-figure: \e978;
-$icon-horse-head: \e979;
-$icon-human-ear: \e97a;
-$icon-hunting-horn: \e97b;
-$icon-hydra: \e97c;
-$icon-ifrit: \e97d;
-$icon-imp: \e97e;
-$icon-infinity: \e97f;
-$icon-jawbone: \e980;
-$icon-katana: \e981;
-$icon-key: \e982;
-$icon-kitchen-knives: \e983;
-$icon-knee-pad: \e984;
-$icon-kneeling: \e985;
-$icon-knife-fork: \e986;
-$icon-kusarigama: \e987;
-$icon-ladder: \e988;
-$icon-lantern: \e989;
-$icon-laurel-crown: \e98a;
-$icon-laurels: \e98b;
-$icon-leg-armor: \e98c;
-$icon-light-backpack: \e98d;
-$icon-lighthouse: \e98e;
-$icon-lightning-trio: \e98f;
-$icon-locked-chest: \e990;
-$icon-log: \e991;
-$icon-lunar-wand: \e992;
-$icon-lyre: \e993;
-$icon-magic-swirl: \e994;
-$icon-medal: \e995;
-$icon-medal-skull: \e996;
-$icon-medieval-gate: \e997;
-$icon-meditation: \e998;
-$icon-mermaid: \e999;
-$icon-minerals: \e99a;
-$icon-mining: \e99b;
-$icon-mounted-knight: \e99c;
-$icon-ninja-star: \e99d;
-$icon-nunchaku: \e99e;
-$icon-open-treasure-chest: \e99f;
-$icon-owl: \e9a0;
-$icon-padlock: \e9a1;
-$icon-paint-brush: \e9a2;
-$icon-palm: \e9a3;
-$icon-pawprint: \e9a4;
-$icon-peaks: \e9a5;
-$icon-pegasus: \e9a6;
-$icon-pirate-coat: \e9a7;
-$icon-pirate-flag: \e9a8;
-$icon-plain-dagger: \e9a9;
-$icon-plasma-bolt: \e9aa;
-$icon-pocket-watch: \e9ab;
-$icon-pointy-hat: \e9ac;
-$icon-poison-bottle: \e9ad;
-$icon-queen-crown: \e9ae;
-$icon-quill-ink: \e9af;
-$icon-quiver: \e9b0;
-$icon-railway: \e9b1;
-$icon-raining: \e9b2;
-$icon-raise-skeleton: \e9b3;
-$icon-rally-the-troops: \e9b4;
-$icon-reaper-scythe: \e9b5;
-$icon-ribbon-medal: \e9b6;
-$icon-ringed-planet: \e9b7;
-$icon-robe: \e9b8;
-$icon-rose: \e9b9;
-$icon-salamander: \e9ba;
-$icon-scales: \e9bb;
-$icon-scroll-unfurled: \e9bc;
-$icon-scythe: \e9bd;
-$icon-sea-dragon: \e9be;
-$icon-sea-serpent: \e9bf;
-$icon-shaking-hands: \e9c0;
-$icon-sharp-axe: \e9c1;
-$icon-shining-claw: \e9c2;
-$icon-shirt: \e9c3;
-$icon-shoulder-armor: \e9c4;
-$icon-sickle: \e9c5;
-$icon-six-eyes: \e9c6;
-$icon-skeleton-key: \e9c7;
-$icon-skull-staff: \e9c8;
-$icon-sliced-bread: \e9c9;
-$icon-slime: \e9ca;
-$icon-smoking-pipe: \e9cb;
-$icon-snowflake-02: \e9cc;
-$icon-snowing: \e9cd;
-$icon-sonic-screech: \e9ce;
-$icon-spear-feather: \e9cf;
-$icon-spears: \e9d0;
-$icon-spectre: \e9d1;
-$icon-spell-book: \e9d2;
-$icon-spider-web: \e9d3;
-$icon-spiked-ball: \e9d4;
-$icon-spiked-bat: \e9d5;
-$icon-spiked-fence: \e9d6;
-$icon-spiked-mace: \e9d7;
-$icon-spinning-sword: \e9d8;
-$icon-spiral-bottle: \e9d9;
-$icon-spotted-mushroom: \e9da;
-$icon-spyglass: \e9db;
-$icon-stabbed-note: \e9dc;
-$icon-stag-head: \e9dd;
-$icon-star-swirl: \e9de;
-$icon-steam-locomotive: \e9df;
-$icon-steampunk-goggles: \e9e0;
-$icon-stone-bridge: \e9e1;
-$icon-stone-crafting: \e9e2;
-$icon-strong: \e9e3;
-$icon-sun: \e9e4;
-$icon-sun-cloud: \e9e5;
-$icon-swap-bag: \e9e6;
-$icon-swimfins: \e9e7;
-$icon-switch-weapon: \e9e8;
-$icon-sword-array: \e9e9;
-$icon-sword-smithing: \e9ea;
-$icon-sword-spade: \e9eb;
-$icon-swords-emblem: \e9ec;
-$icon-syringe: \e9ed;
-$icon-tattered-banner: \e9ee;
-$icon-telepathy: \e9ef;
-$icon-teleport: \e9f0;
-$icon-temptation: \e9f1;
-$icon-thor-hammer: \e9f2;
-$icon-thrown-daggers: \e9f3;
-$icon-tied-scroll: \e9f4;
-$icon-tombstone: \e9f5;
-$icon-treasure-map: \e9f6;
-$icon-tree-branch: \e9f7;
-$icon-trident: \e9f8;
-$icon-trophy: \e9f9;
-$icon-trousers: \e9fa;
-$icon-two-handed-sword: \e9fb;
-$icon-unfriendly-fire: \e9fc;
-$icon-unicorn: \e9fd;
-$icon-unlit-bomb: \e9fe;
-$icon-valley: \e9ff;
-$icon-vertical-banner: \ea00;
-$icon-viking-helmet: \ea01;
-$icon-village: \ea02;
-$icon-vine-leaf: \ea03;
-$icon-voodoo-doll: \ea04;
-$icon-war-pick: \ea05;
-$icon-wax-tablet: \ea06;
-$icon-well: \ea07;
-$icon-whip: \ea08;
-$icon-whirlwind: \ea09;
-$icon-wine-glass: \ea0a;
-$icon-wingfoot: \ea0b;
-$icon-wizard-staff: \ea0c;
-$icon-wolf-head: \ea0d;
-$icon-wolf-trap: \ea0e;
-$icon-wolverine-claws: \ea0f;
-$icon-wood-club: \ea10;
-$icon-wooden-sign: \ea11;
-$icon-wrecking-ball: \ea12;
-$icon-wyvern: \ea13;
-$icon-yin-yang: \ea14;
+$rpg-quill-ink: \e900;
+$rpg-quill: \e901;
+$rpg-big-gear: \e902;
+$rpg-gear-hammer: \e903;
+$rpg-gear-wrench: \e904;
+$rpg-castle: \e905;
+$rpg-fangs: \e906;
+$rpg-harpy: \e907;
+$rpg-fire-silhouette: \e908;
+$rpg-ghost-ally: \e909;
+$rpg-transportation-rings: \e90a;
+$rpg-run: \e90b;
+$rpg-dragon-head: \e90c;
+$rpg-dwarf-face: \e90d;
+$rpg-elf-ear: \e90e;
+$rpg-clockwork: \e90f;
+$rpg-trumpet-flag: \e910;
+$rpg-compass: \e911;
+$rpg-padlock: \e912;
+$rpg-key: \e913;
+$rpg-secret-book: \e914;
+$rpg-direction-sign: \e915;
+$rpg-stabbed-note: \e916;
+$rpg-white-book: \e917;
+$rpg-bookmark: \e918;
+$rpg-book-cover: \e919;
+$rpg-bookmarklet: \e91a;
+$rpg-evil-hand: \e91b;
+$rpg-shaking-hands: \e91c;
+$rpg-fairy: \e91d;
+$rpg-crossed-swords: \e91e;
+$rpg-gavel: \e91f;
+$rpg-hunting-horn: \e920;
+$rpg-scroll-unfurled: \e921;
+$rpg-tied-scroll: \e922;
+
 
 /* RPG Icon Classes
 ========================================================================== */
 
-.rpg-achievement:before {
-	content: unicode($icon-achievement);
+.rpg-quill-ink:before {
+	content: unicode($rpg-quill-ink);
 }
-.rpg-angel-outfit:before {
-	content: unicode($icon-angel-outfit);
+.rpg-quill:before {
+	content: unicode($rpg-quill);
 }
-.rpg-ankh:before {
-	content: unicode($icon-ankh);
+.rpg-big-gear:before {
+	content: unicode($rpg-big-gear);
 }
-.rpg-anvil-impact:before {
-	content: unicode($icon-anvil-impact);
+.rpg-gear-hammer:before {
+	content: unicode($rpg-gear-hammer);
 }
-.rpg-arrow-flights:before {
-	content: unicode($icon-arrow-flights);
-}
-.rpg-arrowed:before {
-	content: unicode($icon-arrowed);
-}
-.rpg-arrows-shield:before {
-	content: unicode($icon-arrows-shield);
-}
-.rpg-assassin-pocket:before {
-	content: unicode($icon-assassin-pocket);
-}
-.rpg-attached-shield:before {
-	content: unicode($icon-attached-shield);
-}
-.rpg-axe-swing:before {
-	content: unicode($icon-axe-swing);
-}
-.rpg-back-pain:before {
-	content: unicode($icon-back-pain);
-}
-.rpg-backstab:before {
-	content: unicode($icon-backstab);
-}
-.rpg-backup:before {
-	content: unicode($icon-backup);
-}
-.rpg-bandaged:before {
-	content: unicode($icon-bandaged);
-}
-.rpg-bat-02:before {
-	content: unicode($icon-bat-02);
-}
-.rpg-battle-gear:before {
-	content: unicode($icon-battle-gear);
-}
-.rpg-bear-head:before {
-	content: unicode($icon-bear-head);
-}
-.rpg-bed:before {
-	content: unicode($icon-bed);
-}
-.rpg-beech:before {
-	content: unicode($icon-beech);
-}
-.rpg-beer-stein:before {
-	content: unicode($icon-beer-stein);
-}
-.rpg-big-egg:before {
-	content: unicode($icon-big-egg);
-}
-.rpg-big-wave:before {
-	content: unicode($icon-big-wave);
-}
-.rpg-blood:before {
-	content: unicode($icon-blood);
-}
-.rpg-bo:before {
-	content: unicode($icon-bo);
-}
-.rpg-bolt-shield:before {
-	content: unicode($icon-bolt-shield);
-}
-.rpg-book-cover:before {
-	content: unicode($icon-book-cover);
-}
-.rpg-book-cover-02:before {
-	content: unicode($icon-book-cover-02);
-}
-.rpg-boomerang:before {
-	content: unicode($icon-boomerang);
-}
-.rpg-boots:before {
-	content: unicode($icon-boots);
-}
-.rpg-bracer:before {
-	content: unicode($icon-bracer);
-}
-.rpg-brass-knuckles:before {
-	content: unicode($icon-brass-knuckles);
-}
-.rpg-breastplate:before {
-	content: unicode($icon-breastplate);
-}
-.rpg-brick-wall:before {
-	content: unicode($icon-brick-wall);
-}
-.rpg-broadsword:before {
-	content: unicode($icon-broadsword);
-}
-.rpg-broken-wall:before {
-	content: unicode($icon-broken-wall);
-}
-.rpg-brutal-helm:before {
-	content: unicode($icon-brutal-helm);
-}
-.rpg-butterfly:before {
-	content: unicode($icon-butterfly);
-}
-.rpg-caesar:before {
-	content: unicode($icon-caesar);
-}
-.rpg-campfire:before {
-	content: unicode($icon-campfire);
-}
-.rpg-camping-tent:before {
-	content: unicode($icon-camping-tent);
-}
-.rpg-candle-light:before {
-	content: unicode($icon-candle-light);
-}
-.rpg-cape:before {
-	content: unicode($icon-cape);
-}
-.rpg-carnival-mask:before {
-	content: unicode($icon-carnival-mask);
-}
-.rpg-cash:before {
-	content: unicode($icon-cash);
+.rpg-gear-wrench:before {
+	content: unicode($rpg-gear-wrench);
 }
 .rpg-castle:before {
-	content: unicode($icon-castle);
+	content: unicode($rpg-castle);
 }
-.rpg-chemical-drop:before {
-	content: unicode($icon-chemical-drop);
+.rpg-fangs:before {
+	content: unicode($rpg-fangs);
 }
-.rpg-chicken-leg:before {
-	content: unicode($icon-chicken-leg);
+.rpg-harpy:before {
+	content: unicode($rpg-harpy);
 }
-.rpg-closed-doors:before {
-	content: unicode($icon-closed-doors);
+.rpg-fire-silhouette:before {
+	content: unicode($rpg-fire-silhouette);
 }
-.rpg-coffee-cup:before {
-	content: unicode($icon-coffee-cup);
+.rpg-ghost-ally:before {
+	content: unicode($rpg-ghost-ally);
 }
-.rpg-coffin:before {
-	content: unicode($icon-coffin);
+.rpg-transportation-rings:before {
+	content: unicode($rpg-transportation-rings);
+}
+.rpg-run:before {
+	content: unicode($rpg-run);
+}
+.rpg-dragon-head:before {
+	content: unicode($rpg-dragon-head);
+}
+.rpg-dwarf-face:before {
+	content: unicode($rpg-dwarf-face);
+}
+.rpg-elf-ear:before {
+	content: unicode($rpg-elf-ear);
+}
+.rpg-clockwork:before {
+	content: unicode($rpg-clockwork);
+}
+.rpg-trumpet-flag:before {
+	content: unicode($rpg-trumpet-flag);
 }
 .rpg-compass:before {
-	content: unicode($icon-compass);
-}
-.rpg-corset:before {
-	content: unicode($icon-corset);
-}
-.rpg-crescent-blade:before {
-	content: unicode($icon-crescent-blade);
-}
-.rpg-cross-shield:before {
-	content: unicode($icon-cross-shield);
-}
-.rpg-crossbow:before {
-	content: unicode($icon-crossbow);
-}
-.rpg-crossed-axes:before {
-	content: unicode($icon-crossed-axes);
-}
-.rpg-crossed-swords:before {
-	content: unicode($icon-crossed-swords);
-}
-.rpg-crowned-heart:before {
-	content: unicode($icon-crowned-heart);
-}
-.rpg-crowned-skull:before {
-	content: unicode($icon-crowned-skull);
-}
-.rpg-crystal-growth:before {
-	content: unicode($icon-crystal-growth);
-}
-.rpg-crystal-wand:before {
-	content: unicode($icon-crystal-wand);
-}
-.rpg-cut-palm:before {
-	content: unicode($icon-cut-palm);
-}
-.rpg-daggers:before {
-	content: unicode($icon-daggers);
-}
-.rpg-dart:before {
-	content: unicode($icon-dart);
-}
-.rpg-deadly-strike:before {
-	content: unicode($icon-deadly-strike);
-}
-.rpg-death-note:before {
-	content: unicode($icon-death-note);
-}
-.rpg-diamond-hard:before {
-	content: unicode($icon-diamond-hard);
-}
-.rpg-diamond-ring:before {
-	content: unicode($icon-diamond-ring);
-}
-.rpg-dig-dug:before {
-	content: unicode($icon-dig-dug);
-}
-.rpg-direction-sign:before {
-	content: unicode($icon-direction-sign);
-}
-.rpg-double-dragon:before {
-	content: unicode($icon-double-dragon);
-}
-.rpg-double-shot:before {
-	content: unicode($icon-double-shot);
-}
-.rpg-dragon-head-02:before {
-	content: unicode($icon-dragon-head-02);
-}
-.rpg-drakkar:before {
-	content: unicode($icon-drakkar);
-}
-.rpg-drama-masks:before {
-	content: unicode($icon-drama-masks);
-}
-.rpg-dress:before {
-	content: unicode($icon-dress);
-}
-.rpg-drop:before {
-	content: unicode($icon-drop);
-}
-.rpg-droplet-splash:before {
-	content: unicode($icon-droplet-splash);
-}
-.rpg-dungeon-gate:before {
-	content: unicode($icon-dungeon-gate);
-}
-.rpg-dynamite:before {
-	content: unicode($icon-dynamite);
-}
-.rpg-egg-clutch:before {
-	content: unicode($icon-egg-clutch);
-}
-.rpg-empty-hourglass:before {
-	content: unicode($icon-empty-hourglass);
-}
-.rpg-evil-hand:before {
-	content: unicode($icon-evil-hand);
-}
-.rpg-eyedropper:before {
-	content: unicode($icon-eyedropper);
-}
-.rpg-fairy:before {
-	content: unicode($icon-fairy);
-}
-.rpg-feather:before {
-	content: unicode($icon-feather);
-}
-.rpg-fencer:before {
-	content: unicode($icon-fencer);
-}
-.rpg-fire-tail:before {
-	content: unicode($icon-fire-tail);
-}
-.rpg-fist-02:before {
-	content: unicode($icon-fist-02);
-}
-.rpg-flail:before {
-	content: unicode($icon-flail);
-}
-.rpg-flamed-leaf:before {
-	content: unicode($icon-flamed-leaf);
-}
-.rpg-flanged-mace:before {
-	content: unicode($icon-flanged-mace);
-}
-.rpg-fluffy-cloud:before {
-	content: unicode($icon-fluffy-cloud);
-}
-.rpg-fluffy-wing:before {
-	content: unicode($icon-fluffy-wing);
-}
-.rpg-flying-flag:before {
-	content: unicode($icon-flying-flag);
-}
-.rpg-footsteps:before {
-	content: unicode($icon-footsteps);
-}
-.rpg-g-clef:before {
-	content: unicode($icon-g-clef);
-}
-.rpg-galleon:before {
-	content: unicode($icon-galleon);
-}
-.rpg-gauntlet:before {
-	content: unicode($icon-gauntlet);
-}
-.rpg-gavel:before {
-	content: unicode($icon-gavel);
-}
-.rpg-gem-chain:before {
-	content: unicode($icon-gem-chain);
-}
-.rpg-ghost:before {
-	content: unicode($icon-ghost);
-}
-.rpg-gibbet:before {
-	content: unicode($icon-gibbet);
-}
-.rpg-gold-mine:before {
-	content: unicode($icon-gold-mine);
-}
-.rpg-grasping-claws:before {
-	content: unicode($icon-grasping-claws);
-}
-.rpg-graveyard:before {
-	content: unicode($icon-graveyard);
-}
-.rpg-grim-reaper:before {
-	content: unicode($icon-grim-reaper);
-}
-.rpg-ground-sprout:before {
-	content: unicode($icon-ground-sprout);
-}
-.rpg-hand:before {
-	content: unicode($icon-hand);
-}
-.rpg-handheld-fan:before {
-	content: unicode($icon-handheld-fan);
-}
-.rpg-harpoon-chain:before {
-	content: unicode($icon-harpoon-chain);
-}
-.rpg-haunting:before {
-	content: unicode($icon-haunting);
-}
-.rpg-heart-bottle:before {
-	content: unicode($icon-heart-bottle);
-}
-.rpg-heart-wings:before {
-	content: unicode($icon-heart-wings);
-}
-.rpg-heavy-arrow:before {
-	content: unicode($icon-heavy-arrow);
-}
-.rpg-heavy-rain:before {
-	content: unicode($icon-heavy-rain);
-}
-.rpg-heavy-thorny-triskelion:before {
-	content: unicode($icon-heavy-thorny-triskelion);
-}
-.rpg-holy-grail:before {
-	content: unicode($icon-holy-grail);
-}
-.rpg-hooded-assassin:before {
-	content: unicode($icon-hooded-assassin);
-}
-.rpg-hooded-figure:before {
-	content: unicode($icon-hooded-figure);
-}
-.rpg-horse-head:before {
-	content: unicode($icon-horse-head);
-}
-.rpg-human-ear:before {
-	content: unicode($icon-human-ear);
-}
-.rpg-hunting-horn:before {
-	content: unicode($icon-hunting-horn);
-}
-.rpg-hydra:before {
-	content: unicode($icon-hydra);
-}
-.rpg-ifrit:before {
-	content: unicode($icon-ifrit);
-}
-.rpg-imp:before {
-	content: unicode($icon-imp);
-}
-.rpg-infinity:before {
-	content: unicode($icon-infinity);
-}
-.rpg-jawbone:before {
-	content: unicode($icon-jawbone);
-}
-.rpg-katana:before {
-	content: unicode($icon-katana);
-}
-.rpg-key:before {
-	content: unicode($icon-key);
-}
-.rpg-kitchen-knives:before {
-	content: unicode($icon-kitchen-knives);
-}
-.rpg-knee-pad:before {
-	content: unicode($icon-knee-pad);
-}
-.rpg-kneeling:before {
-	content: unicode($icon-kneeling);
-}
-.rpg-knife-fork:before {
-	content: unicode($icon-knife-fork);
-}
-.rpg-kusarigama:before {
-	content: unicode($icon-kusarigama);
-}
-.rpg-ladder:before {
-	content: unicode($icon-ladder);
-}
-.rpg-lantern:before {
-	content: unicode($icon-lantern);
-}
-.rpg-laurel-crown:before {
-	content: unicode($icon-laurel-crown);
-}
-.rpg-laurels:before {
-	content: unicode($icon-laurels);
-}
-.rpg-leg-armor:before {
-	content: unicode($icon-leg-armor);
-}
-.rpg-light-backpack:before {
-	content: unicode($icon-light-backpack);
-}
-.rpg-lighthouse:before {
-	content: unicode($icon-lighthouse);
-}
-.rpg-lightning-trio:before {
-	content: unicode($icon-lightning-trio);
-}
-.rpg-locked-chest:before {
-	content: unicode($icon-locked-chest);
-}
-.rpg-log:before {
-	content: unicode($icon-log);
-}
-.rpg-lunar-wand:before {
-	content: unicode($icon-lunar-wand);
-}
-.rpg-lyre:before {
-	content: unicode($icon-lyre);
-}
-.rpg-magic-swirl:before {
-	content: unicode($icon-magic-swirl);
-}
-.rpg-medal:before {
-	content: unicode($icon-medal);
-}
-.rpg-medal-skull:before {
-	content: unicode($icon-medal-skull);
-}
-.rpg-medieval-gate:before {
-	content: unicode($icon-medieval-gate);
-}
-.rpg-meditation:before {
-	content: unicode($icon-meditation);
-}
-.rpg-mermaid:before {
-	content: unicode($icon-mermaid);
-}
-.rpg-minerals:before {
-	content: unicode($icon-minerals);
-}
-.rpg-mining:before {
-	content: unicode($icon-mining);
-}
-.rpg-mounted-knight:before {
-	content: unicode($icon-mounted-knight);
-}
-.rpg-ninja-star:before {
-	content: unicode($icon-ninja-star);
-}
-.rpg-nunchaku:before {
-	content: unicode($icon-nunchaku);
-}
-.rpg-open-treasure-chest:before {
-	content: unicode($icon-open-treasure-chest);
-}
-.rpg-owl:before {
-	content: unicode($icon-owl);
+	content: unicode($rpg-compass);
 }
 .rpg-padlock:before {
-	content: unicode($icon-padlock);
+	content: unicode($rpg-padlock);
 }
-.rpg-paint-brush:before {
-	content: unicode($icon-paint-brush);
+.rpg-key:before {
+	content: unicode($rpg-key);
 }
-.rpg-palm:before {
-	content: unicode($icon-palm);
+.rpg-secret-book:before {
+	content: unicode($rpg-secret-book);
 }
-.rpg-pawprint:before {
-	content: unicode($icon-pawprint);
-}
-.rpg-peaks:before {
-	content: unicode($icon-peaks);
-}
-.rpg-pegasus:before {
-	content: unicode($icon-pegasus);
-}
-.rpg-pirate-coat:before {
-	content: unicode($icon-pirate-coat);
-}
-.rpg-pirate-flag:before {
-	content: unicode($icon-pirate-flag);
-}
-.rpg-plain-dagger:before {
-	content: unicode($icon-plain-dagger);
-}
-.rpg-plasma-bolt:before {
-	content: unicode($icon-plasma-bolt);
-}
-.rpg-pocket-watch:before {
-	content: unicode($icon-pocket-watch);
-}
-.rpg-pointy-hat:before {
-	content: unicode($icon-pointy-hat);
-}
-.rpg-poison-bottle:before {
-	content: unicode($icon-poison-bottle);
-}
-.rpg-queen-crown:before {
-	content: unicode($icon-queen-crown);
-}
-.rpg-quill-ink:before {
-	content: unicode($icon-quill-ink);
-}
-.rpg-quiver:before {
-	content: unicode($icon-quiver);
-}
-.rpg-railway:before {
-	content: unicode($icon-railway);
-}
-.rpg-raining:before {
-	content: unicode($icon-raining);
-}
-.rpg-raise-skeleton:before {
-	content: unicode($icon-raise-skeleton);
-}
-.rpg-rally-the-troops:before {
-	content: unicode($icon-rally-the-troops);
-}
-.rpg-reaper-scythe:before {
-	content: unicode($icon-reaper-scythe);
-}
-.rpg-ribbon-medal:before {
-	content: unicode($icon-ribbon-medal);
-}
-.rpg-ringed-planet:before {
-	content: unicode($icon-ringed-planet);
-}
-.rpg-robe:before {
-	content: unicode($icon-robe);
-}
-.rpg-rose:before {
-	content: unicode($icon-rose);
-}
-.rpg-salamander:before {
-	content: unicode($icon-salamander);
-}
-.rpg-scales:before {
-	content: unicode($icon-scales);
-}
-.rpg-scroll-unfurled:before {
-	content: unicode($icon-scroll-unfurled);
-}
-.rpg-scythe:before {
-	content: unicode($icon-scythe);
-}
-.rpg-sea-dragon:before {
-	content: unicode($icon-sea-dragon);
-}
-.rpg-sea-serpent:before {
-	content: unicode($icon-sea-serpent);
-}
-.rpg-shaking-hands:before {
-	content: unicode($icon-shaking-hands);
-}
-.rpg-sharp-axe:before {
-	content: unicode($icon-sharp-axe);
-}
-.rpg-shining-claw:before {
-	content: unicode($icon-shining-claw);
-}
-.rpg-shirt:before {
-	content: unicode($icon-shirt);
-}
-.rpg-shoulder-armor:before {
-	content: unicode($icon-shoulder-armor);
-}
-.rpg-sickle:before {
-	content: unicode($icon-sickle);
-}
-.rpg-six-eyes:before {
-	content: unicode($icon-six-eyes);
-}
-.rpg-skeleton-key:before {
-	content: unicode($icon-skeleton-key);
-}
-.rpg-skull-staff:before {
-	content: unicode($icon-skull-staff);
-}
-.rpg-sliced-bread:before {
-	content: unicode($icon-sliced-bread);
-}
-.rpg-slime:before {
-	content: unicode($icon-slime);
-}
-.rpg-smoking-pipe:before {
-	content: unicode($icon-smoking-pipe);
-}
-.rpg-snowflake-02:before {
-	content: unicode($icon-snowflake-02);
-}
-.rpg-snowing:before {
-	content: unicode($icon-snowing);
-}
-.rpg-sonic-screech:before {
-	content: unicode($icon-sonic-screech);
-}
-.rpg-spear-feather:before {
-	content: unicode($icon-spear-feather);
-}
-.rpg-spears:before {
-	content: unicode($icon-spears);
-}
-.rpg-spectre:before {
-	content: unicode($icon-spectre);
-}
-.rpg-spell-book:before {
-	content: unicode($icon-spell-book);
-}
-.rpg-spider-web:before {
-	content: unicode($icon-spider-web);
-}
-.rpg-spiked-ball:before {
-	content: unicode($icon-spiked-ball);
-}
-.rpg-spiked-bat:before {
-	content: unicode($icon-spiked-bat);
-}
-.rpg-spiked-fence:before {
-	content: unicode($icon-spiked-fence);
-}
-.rpg-spiked-mace:before {
-	content: unicode($icon-spiked-mace);
-}
-.rpg-spinning-sword:before {
-	content: unicode($icon-spinning-sword);
-}
-.rpg-spiral-bottle:before {
-	content: unicode($icon-spiral-bottle);
-}
-.rpg-spotted-mushroom:before {
-	content: unicode($icon-spotted-mushroom);
-}
-.rpg-spyglass:before {
-	content: unicode($icon-spyglass);
+.rpg-direction-sign:before {
+	content: unicode($rpg-direction-sign);
 }
 .rpg-stabbed-note:before {
-	content: unicode($icon-stabbed-note);
+	content: unicode($rpg-stabbed-note);
 }
-.rpg-stag-head:before {
-	content: unicode($icon-stag-head);
+.rpg-white-book:before {
+	content: unicode($rpg-white-book);
 }
-.rpg-star-swirl:before {
-	content: unicode($icon-star-swirl);
+.rpg-bookmark:before {
+	content: unicode($rpg-bookmark);
 }
-.rpg-steam-locomotive:before {
-	content: unicode($icon-steam-locomotive);
+.rpg-book-cover:before {
+	content: unicode($rpg-book-cover);
 }
-.rpg-steampunk-goggles:before {
-	content: unicode($icon-steampunk-goggles);
+.rpg-bookmarklet:before {
+	content: unicode($rpg-bookmarklet);
 }
-.rpg-stone-bridge:before {
-	content: unicode($icon-stone-bridge);
+.rpg-evil-hand:before {
+	content: unicode($rpg-evil-hand);
 }
-.rpg-stone-crafting:before {
-	content: unicode($icon-stone-crafting);
+.rpg-shaking-hands:before {
+	content: unicode($rpg-shaking-hands);
 }
-.rpg-strong:before {
-	content: unicode($icon-strong);
+.rpg-fairy:before {
+	content: unicode($rpg-fairy);
 }
-.rpg-sun:before {
-	content: unicode($icon-sun);
+.rpg-crossed-swords:before {
+	content: unicode($rpg-crossed-swords);
 }
-.rpg-sun-cloud:before {
-	content: unicode($icon-sun-cloud);
+.rpg-gavel:before {
+	content: unicode($rpg-gavel);
 }
-.rpg-swap-bag:before {
-	content: unicode($icon-swap-bag);
+.rpg-hunting-horn:before {
+	content: unicode($rpg-hunting-horn);
 }
-.rpg-swimfins:before {
-	content: unicode($icon-swimfins);
-}
-.rpg-switch-weapon:before {
-	content: unicode($icon-switch-weapon);
-}
-.rpg-sword-array:before {
-	content: unicode($icon-sword-array);
-}
-.rpg-sword-smithing:before {
-	content: unicode($icon-sword-smithing);
-}
-.rpg-sword-spade:before {
-	content: unicode($icon-sword-spade);
-}
-.rpg-swords-emblem:before {
-	content: unicode($icon-swords-emblem);
-}
-.rpg-syringe:before {
-	content: unicode($icon-syringe);
-}
-.rpg-tattered-banner:before {
-	content: unicode($icon-tattered-banner);
-}
-.rpg-telepathy:before {
-	content: unicode($icon-telepathy);
-}
-.rpg-teleport:before {
-	content: unicode($icon-teleport);
-}
-.rpg-temptation:before {
-	content: unicode($icon-temptation);
-}
-.rpg-thor-hammer:before {
-	content: unicode($icon-thor-hammer);
-}
-.rpg-thrown-daggers:before {
-	content: unicode($icon-thrown-daggers);
+.rpg-scroll-unfurled:before {
+	content: unicode($rpg-scroll-unfurled);
 }
 .rpg-tied-scroll:before {
-	content: unicode($icon-tied-scroll);
+	content: unicode($rpg-tied-scroll);
 }
-.rpg-tombstone:before {
-	content: unicode($icon-tombstone);
-}
-.rpg-treasure-map:before {
-	content: unicode($icon-treasure-map);
-}
-.rpg-tree-branch:before {
-	content: unicode($icon-tree-branch);
-}
-.rpg-trident:before {
-	content: unicode($icon-trident);
-}
-.rpg-trophy:before {
-	content: unicode($icon-trophy);
-}
-.rpg-trousers:before {
-	content: unicode($icon-trousers);
-}
-.rpg-two-handed-sword:before {
-	content: unicode($icon-two-handed-sword);
-}
-.rpg-unfriendly-fire:before {
-	content: unicode($icon-unfriendly-fire);
-}
-.rpg-unicorn:before {
-	content: unicode($icon-unicorn);
-}
-.rpg-unlit-bomb:before {
-	content: unicode($icon-unlit-bomb);
-}
-.rpg-valley:before {
-	content: unicode($icon-valley);
-}
-.rpg-vertical-banner:before {
-	content: unicode($icon-vertical-banner);
-}
-.rpg-viking-helmet:before {
-	content: unicode($icon-viking-helmet);
-}
-.rpg-village:before {
-	content: unicode($icon-village);
-}
-.rpg-vine-leaf:before {
-	content: unicode($icon-vine-leaf);
-}
-.rpg-voodoo-doll:before {
-	content: unicode($icon-voodoo-doll);
-}
-.rpg-war-pick:before {
-	content: unicode($icon-war-pick);
-}
-.rpg-wax-tablet:before {
-	content: unicode($icon-wax-tablet);
-}
-.rpg-well:before {
-	content: unicode($icon-well);
-}
-.rpg-whip:before {
-	content: unicode($icon-whip);
-}
-.rpg-whirlwind:before {
-	content: unicode($icon-whirlwind);
-}
-.rpg-wine-glass:before {
-	content: unicode($icon-wine-glass);
-}
-.rpg-wingfoot:before {
-	content: unicode($icon-wingfoot);
-}
-.rpg-wizard-staff:before {
-	content: unicode($icon-wizard-staff);
-}
-.rpg-wolf-head:before {
-	content: unicode($icon-wolf-head);
-}
-.rpg-wolf-trap:before {
-	content: unicode($icon-wolf-trap);
-}
-.rpg-wolverine-claws:before {
-	content: unicode($icon-wolverine-claws);
-}
-.rpg-wood-club:before {
-	content: unicode($icon-wood-club);
-}
-.rpg-wooden-sign:before {
-	content: unicode($icon-wooden-sign);
-}
-.rpg-wrecking-ball:before {
-	content: unicode($icon-wrecking-ball);
-}
-.rpg-wyvern:before {
-	content: unicode($icon-wyvern);
-}
-.rpg-yin-yang:before {
-	content: unicode($icon-yin-yang);
-}
+
 
 /* RPG Icon Overrides
 ========================================================================== */
-
-.fa-pencil, .fa-reply, .fa-file-o, .fa-inbox, .fa-gavel {
-	font-family: 'Khyeras Icons';
-}
-
-.fa-pencil, .fa-reply {
-	&:before {
-		content: unicode($icon-quill-ink);
-	}
-}
-
-.fa-file-o {
-	&:before {
-		content: unicode($icon-scroll-unfurled);
-	}
-}
-
-.fa-gavel {
-	&:before {
-		content: unicode($icon-gavel);
-	}
-}
