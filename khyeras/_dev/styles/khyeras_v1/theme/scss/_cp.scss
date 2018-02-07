@@ -17,7 +17,7 @@
 			a[href*='folder']:before {
 				@include icon-font($family: game, $fs: false, $lh: false);
 				font-size: rem(16px);
-				content: unicode($rpg-bookmarklet);
+				content: unicode($rpg-open-book);
 				vertical-align: bottom;
 				margin: 0 5px 0 0;
 				color: $color-01;

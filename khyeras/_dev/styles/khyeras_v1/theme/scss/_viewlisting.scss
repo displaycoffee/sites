@@ -108,7 +108,7 @@
 							@include icon-font($family: game, $fs: false, $lh: false);
 							font-size: rem(16px);
 							vertical-align: bottom;
-							content: unicode($rpg-bookmarklet);
+							content: unicode($rpg-open-book);
 							padding-right: 5px;
 						}
 						ul:before {
@@ -181,7 +181,7 @@
 		@include forum-icon($rpg-padlock);
 	}
 	.forum_read, .forum_read_subforum {
-		@include forum-icon($rpg-bookmarklet);
+		@include forum-icon($rpg-open-book);
 	}
 	.forum_unread, .forum_unread_subforum {
 		@include forum-icon($rpg-secret-book);
@@ -218,8 +218,6 @@
 		@include inline-block(baseline);
 	}
 	.subforum .icon {
-		position: relative;
-		top: -1px;
 		margin: 0 5px 0 0;
 	}
 }

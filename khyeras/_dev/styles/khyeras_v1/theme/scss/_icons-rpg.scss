@@ -1,11 +1,11 @@
 /* RPG Icon Variables
 ========================================================================== */
 
+$rpg-spell-book: \e918;
+$rpg-open-book: \e923;
 $rpg-quill-ink: \e900;
 $rpg-quill: \e901;
 $rpg-big-gear: \e902;
-$rpg-gear-hammer: \e903;
-$rpg-gear-wrench: \e904;
 $rpg-castle: \e905;
 $rpg-fangs: \e906;
 $rpg-harpy: \e907;
@@ -25,7 +25,6 @@ $rpg-secret-book: \e914;
 $rpg-direction-sign: \e915;
 $rpg-stabbed-note: \e916;
 $rpg-white-book: \e917;
-$rpg-bookmark: \e918;
 $rpg-book-cover: \e919;
 $rpg-bookmarklet: \e91a;
 $rpg-evil-hand: \e91b;
@@ -35,118 +34,152 @@ $rpg-crossed-swords: \e91e;
 $rpg-gavel: \e91f;
 $rpg-hunting-horn: \e920;
 $rpg-scroll-unfurled: \e921;
+$rpg-thors-hammer: \e903;
 $rpg-tied-scroll: \e922;
-
+$rpg-tinker: \e904;
 
 /* RPG Icon Classes
 ========================================================================== */
 
+.rpg-spell-book:before {
+	content: unicode($rpg-spell-book);
+}
+.rpg-open-book:before {
+    content: unicode($rpg-open-book);
+}
 .rpg-quill-ink:before {
-	content: unicode($rpg-quill-ink);
+    content: unicode($rpg-quill-ink);
 }
 .rpg-quill:before {
-	content: unicode($rpg-quill);
+    content: unicode($rpg-quill);
 }
 .rpg-big-gear:before {
-	content: unicode($rpg-big-gear);
-}
-.rpg-gear-hammer:before {
-	content: unicode($rpg-gear-hammer);
-}
-.rpg-gear-wrench:before {
-	content: unicode($rpg-gear-wrench);
+    content: unicode($rpg-big-gear);
 }
 .rpg-castle:before {
-	content: unicode($rpg-castle);
+    content: unicode($rpg-castle);
 }
 .rpg-fangs:before {
-	content: unicode($rpg-fangs);
+    content: unicode($rpg-fangs);
 }
 .rpg-harpy:before {
-	content: unicode($rpg-harpy);
+    content: unicode($rpg-harpy);
 }
 .rpg-fire-silhouette:before {
-	content: unicode($rpg-fire-silhouette);
+    content: unicode($rpg-fire-silhouette);
 }
 .rpg-ghost-ally:before {
-	content: unicode($rpg-ghost-ally);
+    content: unicode($rpg-ghost-ally);
 }
 .rpg-transportation-rings:before {
-	content: unicode($rpg-transportation-rings);
+    content: unicode($rpg-transportation-rings);
 }
 .rpg-run:before {
-	content: unicode($rpg-run);
+    content: unicode($rpg-run);
 }
 .rpg-dragon-head:before {
-	content: unicode($rpg-dragon-head);
+    content: unicode($rpg-dragon-head);
 }
 .rpg-dwarf-face:before {
-	content: unicode($rpg-dwarf-face);
+    content: unicode($rpg-dwarf-face);
 }
 .rpg-elf-ear:before {
-	content: unicode($rpg-elf-ear);
+    content: unicode($rpg-elf-ear);
 }
 .rpg-clockwork:before {
-	content: unicode($rpg-clockwork);
+    content: unicode($rpg-clockwork);
 }
 .rpg-trumpet-flag:before {
-	content: unicode($rpg-trumpet-flag);
+    content: unicode($rpg-trumpet-flag);
 }
 .rpg-compass:before {
-	content: unicode($rpg-compass);
+    content: unicode($rpg-compass);
 }
 .rpg-padlock:before {
-	content: unicode($rpg-padlock);
+    content: unicode($rpg-padlock);
 }
 .rpg-key:before {
-	content: unicode($rpg-key);
+    content: unicode($rpg-key);
 }
 .rpg-secret-book:before {
-	content: unicode($rpg-secret-book);
+    content: unicode($rpg-secret-book);
 }
 .rpg-direction-sign:before {
-	content: unicode($rpg-direction-sign);
+    content: unicode($rpg-direction-sign);
 }
 .rpg-stabbed-note:before {
-	content: unicode($rpg-stabbed-note);
+    content: unicode($rpg-stabbed-note);
 }
 .rpg-white-book:before {
-	content: unicode($rpg-white-book);
-}
-.rpg-bookmark:before {
-	content: unicode($rpg-bookmark);
+    content: unicode($rpg-white-book);
 }
 .rpg-book-cover:before {
-	content: unicode($rpg-book-cover);
+    content: unicode($rpg-book-cover);
 }
 .rpg-bookmarklet:before {
-	content: unicode($rpg-bookmarklet);
+    content: unicode($rpg-bookmarklet);
 }
 .rpg-evil-hand:before {
-	content: unicode($rpg-evil-hand);
+    content: unicode($rpg-evil-hand);
 }
 .rpg-shaking-hands:before {
-	content: unicode($rpg-shaking-hands);
+    content: unicode($rpg-shaking-hands);
 }
 .rpg-fairy:before {
-	content: unicode($rpg-fairy);
+    content: unicode($rpg-fairy);
 }
 .rpg-crossed-swords:before {
-	content: unicode($rpg-crossed-swords);
+    content: unicode($rpg-crossed-swords);
 }
 .rpg-gavel:before {
-	content: unicode($rpg-gavel);
+    content: unicode($rpg-gavel);
 }
 .rpg-hunting-horn:before {
-	content: unicode($rpg-hunting-horn);
+    content: unicode($rpg-hunting-horn);
 }
 .rpg-scroll-unfurled:before {
-	content: unicode($rpg-scroll-unfurled);
+    content: unicode($rpg-scroll-unfurled);
+}
+.rpg-thors-hammer:before {
+    content: unicode($rpg-thors-hammer);
 }
 .rpg-tied-scroll:before {
-	content: unicode($rpg-tied-scroll);
+    content: unicode($rpg-tied-scroll);
+}
+.rpg-tinker:before {
+    content: unicode($rpg-tinker);
 }
 
 
 /* RPG Icon Overrides
 ========================================================================== */
+
+.fa-bell, .fa-cog, .fa-cogs, .fa-file, .fa-file-o,
+.fa-gavel, .fa-pencil, .fa-pencil-square-o, .fa-reply,
+.fa-wrench {
+	font-family: 'Khyeras Icons';
+}
+
+.fa-bell:before {
+	content: unicode($rpg-trumpet-flag);
+}
+
+.fa-cog:before, .fa-cogs:before {
+	content: unicode($rpg-big-gear);
+}
+
+.fa-file:before, .fa-file-o:before {
+	content: unicode($rpg-scroll-unfurled);
+}
+
+.fa-gavel:before {
+	content: unicode($rpg-thors-hammer);
+}
+
+.fa-pencil:before, .fa-pencil-square-o:before, .fa-reply:before {
+	content: unicode($rpg-quill);
+}
+
+.fa-wrench:before {
+	content: unicode($rpg-tinker);
+}
