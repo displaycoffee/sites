@@ -1669,11 +1669,11 @@
 			.header_settings {
 				font-size: 0;
 				a:before {
-					@include icon-font($fs: false);
+					@include icon-font($family: game, $fs: false);
 					font-size: rem($global-font-size);
 				}
 				& > a:before {
-					content: unicode($icon-cogs);
+					content: unicode($rpg-pokecog);
 				}
 				& > #mark_all_notifications a:before {
 					content: unicode($icon-check-circle);

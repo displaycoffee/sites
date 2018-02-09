@@ -130,8 +130,8 @@
 	.inline-attachment, .attachbox {
 		.file {
 			.icon_topic_attach:before {
-				@include icon-font;				
-				content: unicode($icon-file-o);
+				@include icon-font($family: game);
+				content: unicode($rpg-scroll-unfurled);
 			}
 			.attach-image {
 				display: inline-block;

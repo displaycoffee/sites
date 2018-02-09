@@ -1,6 +1,9 @@
 /* RPG Icon Variables
 ========================================================================== */
 
+$rpg-cross-shield: \e924;
+$rpg-stone-crafting: \e925;
+$rpg-pokecog: \e926;
 $rpg-spell-book: \e918;
 $rpg-open-book: \e923;
 $rpg-quill-ink: \e900;
@@ -41,6 +44,15 @@ $rpg-tinker: \e904;
 /* RPG Icon Classes
 ========================================================================== */
 
+.rpg-cross-shield:before {
+	content: unicode($rpg-cross-shield);
+}
+.rpg-stone-crafting:before {
+	content: unicode($rpg-stone-crafting);
+}
+.rpg-pokecog:before {
+	content: unicode($rpg-pokecog);
+}
 .rpg-spell-book:before {
 	content: unicode($rpg-spell-book);
 }
@@ -154,9 +166,9 @@ $rpg-tinker: \e904;
 /* RPG Icon Overrides
 ========================================================================== */
 
-.fa-bell, .fa-cog, .fa-cogs, .fa-file, .fa-file-o,
-.fa-gavel, .fa-pencil, .fa-pencil-square-o, .fa-reply,
-.fa-wrench {
+.fa-bell, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
+.fa-home, .fa-lock, .fa-pencil, .fa-pencil-square-o, .fa-reply,
+.fa-shield, .fa-wrench {
 	font-family: 'Khyeras Icons';
 }
 
@@ -165,7 +177,7 @@ $rpg-tinker: \e904;
 }
 
 .fa-cog:before, .fa-cogs:before {
-	content: unicode($rpg-big-gear);
+	content: unicode($rpg-pokecog);
 }
 
 .fa-file:before, .fa-file-o:before {
@@ -176,10 +188,22 @@ $rpg-tinker: \e904;
 	content: unicode($rpg-thors-hammer);
 }
 
+.fa-home:before {
+	content: unicode($rpg-castle);
+}
+
+.fa-lock:before {
+	content: unicode($rpg-padlock);
+}
+
 .fa-pencil:before, .fa-pencil-square-o:before, .fa-reply:before {
 	content: unicode($rpg-quill);
 }
 
+.fa-shield:before {
+	content: unicode($rpg-cross-shield);
+}
+
 .fa-wrench:before {
-	content: unicode($rpg-tinker);
+	content: unicode($rpg-stone-crafting);
 }
