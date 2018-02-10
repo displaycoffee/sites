@@ -192,10 +192,12 @@
 			}
 			.icon {
 				margin: 0 5px 0 0;
-				&.fa-home {
+				&.rpg-castle {
 					color: $color-01;
+					font-size: rem(18px);
+					margin: 0 10px 0 0;
 				}
-				&.fa-home + span {
+				&.rpg-castle + span {
 					margin-left: 0;
 				}
 			}

@@ -167,7 +167,7 @@ $rpg-tinker: \e904;
 ========================================================================== */
 
 .fa-bell, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
-.fa-home, .fa-lock, .fa-pencil, .fa-pencil-square-o, .fa-reply,
+.fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-pencil-square-o, .fa-reply,
 .fa-shield, .fa-wrench {
 	font-family: 'Khyeras Icons';
 }
@@ -190,6 +190,10 @@ $rpg-tinker: \e904;
 
 .fa-home:before {
 	content: unicode($rpg-castle);
+}
+
+.fa-inbox:before {
+	content: unicode($rpg-open-book);
 }
 
 .fa-lock:before {
