@@ -18,9 +18,9 @@
 	<!-- IF S_REGISTERED_USER -->
 		<!-- EVENT navbar_header_user_profile_prepend -->
 		<!-- EVENT navbar_header_username_prepend -->
-		<h5>Welcome, <a href="{U_PROFILE}">{CURRENT_USERNAME_SIMPLE}</a>.</h5>
+		<h5>Welcome, <a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}">{CURRENT_USERNAME_SIMPLE}</a>.</h5>
 		<!-- EVENT navbar_header_username_append -->
 	<!-- ELSE -->
-		<h5>Welcome, {L_GUEST}.</h5>
+		<h5>Welcome, <a href="{U_REGISTER}" class="guest-register" title="{L_REGISTER}">{L_GUEST}</a>.</h5>
 	<!-- ENDIF -->
 <!-- ENDDEFINE -->

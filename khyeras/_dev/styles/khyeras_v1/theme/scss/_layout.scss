@@ -506,22 +506,11 @@
 
 .caret {
 	border-left: 1px solid $color-01;
-	padding: 0 0 0 5px;
-	line-height: 1;
-	font-size: rem(16px);
-	.icon {
-		position: relative;
-		top: -2px;
-	}
+	padding: 0 0 0 8px;
 }
 
 .jumpbox .caret {
-	margin: 0 0 0 5px;
-}
-
-.dropdown-visible .caret .icon {
-	transform: rotate(-180deg);
-	top: 5px;
+	margin: 0 0 0 8px;
 }
 
 /* Contact Icons

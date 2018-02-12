@@ -42,7 +42,7 @@ $icon-youtube: \f16a;
 	font-size: rem(12px);
 }
 
-.fa-angle-down:before {
+.fa-angle-down:before, .caret .fa-sort-down:before {
 	content: unicode($icon-chevron-down);
 }
 
@@ -54,6 +54,6 @@ $icon-youtube: \f16a;
 	content: unicode($icon-chevron-right);
 }
 
-.fa-angle-up:before {
+.fa-angle-up:before, .dropdown-visible .caret .fa-sort-down:before {
 	content: unicode($icon-chevron-up);
 }

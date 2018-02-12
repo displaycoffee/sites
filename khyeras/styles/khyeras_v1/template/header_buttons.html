@@ -1,13 +1,13 @@
 <!-- DEFINE $DISPLAY_TOGGLE -->
 	<li class="toggle toggle-links">
 		<a class="button">
-			<i class="icon fa-commenting fa-fw" aria-hidden="true"></i><span>Announcements &amp; Events</span>
+			<i class="icon rpg-icon rpg-hunting-horn" aria-hidden="true"></i><span>Announcements &amp; Events</span>
 		</a>
 	</li>
 	<!-- IF SCRIPT_NAME == 'index' -->
 		<li class="toggle toggle-featured">
 			<a class="button">
-				<i class="icon fa fa-star fa-fw" aria-hidden="true"></i><span>Featured</span>
+				<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i><span>Featured</span>
 			</a>
 		</li>
 	<!-- ENDIF -->
@@ -16,7 +16,7 @@
 <!-- DEFINE $DISPLAY_LOGIN_LOGOUT -->
 	<li>
 		<a class="button" href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x">
-			<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
+			<i class="icon rpg-icon rpg-portal" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
 		</a>
 	</li>
 <!-- ENDDEFINE -->
@@ -57,12 +57,7 @@
 		<!-- ENDIF -->
 		<li>
 			<a class="button" href="{U_PROFILE}" title="{L_PROFILE}">
-				<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_UCP}</span>
-			</a>
-		</li>
-		<li>
-			<a class="button" href="{U_USER_PROFILE}" title="{L_READ_PROFILE}">
-				<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
+				<i class="icon rpg-icon rpg-key" aria-hidden="true"></i><span>{L_UCP}</span>
 			</a>
 		</li>
 		{$DISPLAY_TOGGLE}

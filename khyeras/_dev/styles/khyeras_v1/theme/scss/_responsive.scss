@@ -990,7 +990,8 @@
 					display: block;
 				}
 				& > a {
-					padding: 5px 10px;
+					padding-top: 5px;
+					padding-bottom: 5px;
 				}
 			}
 		}
@@ -1055,7 +1056,8 @@
 
 	// form-fields.scss
 	.button, .button1, .button2 {
-		padding: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 	.button-icon-only, .mcp-main .postbody .post-buttons .button {
 		padding: 5px;
@@ -1398,8 +1400,6 @@
 	}
 	.button-icon-only, .mcp-main .postbody .post-buttons .button {
 		display: inline-block;
-		width: auto;
-		padding: 5px;
 	}
 	fieldset.submit-buttons {
 		@include reset-font-size('& > *');
@@ -1438,7 +1438,7 @@
 	.action-bar .topic-tools + .search-box {
 		float: right;
 		width: 100%;
-		margin-top: -40px;
+		margin-top: -41px;
 		padding-left: 90px;
 	}
 	.display-actions .display-actions-wrapper {

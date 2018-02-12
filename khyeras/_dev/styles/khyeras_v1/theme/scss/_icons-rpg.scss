@@ -1,6 +1,10 @@
 /* RPG Icon Variables
 ========================================================================== */
 
+$rpg-achievement: \e929;
+$rpg-stars-stack: \e92a;
+$rpg-wooden-door: \e927;
+$rpg-portal: \e928;
 $rpg-cross-shield: \e924;
 $rpg-stone-crafting: \e925;
 $rpg-pokecog: \e926;
@@ -44,6 +48,18 @@ $rpg-tinker: \e904;
 /* RPG Icon Classes
 ========================================================================== */
 
+.rpg-achievement:before {
+	content: unicode($rpg-achievement);
+}
+.rpg-stars-stack:before {
+	content: unicode($rpg-stars-stack);
+}
+.rpg-wooden-door:before {
+	content: unicode($rpg-wooden-door);
+}
+.rpg-portal:before {
+	content: unicode($rpg-portal);
+}
 .rpg-cross-shield:before {
 	content: unicode($rpg-cross-shield);
 }
@@ -167,8 +183,7 @@ $rpg-tinker: \e904;
 ========================================================================== */
 
 .fa-bell, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
-.fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-pencil-square-o, .fa-reply,
-.fa-shield, .fa-wrench {
+.fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-sliders, .fa-pencil-square-o, .fa-power-off, .fa-reply, .fa-shield, .fa-wrench {
 	font-family: 'Khyeras Icons';
 }
 
@@ -204,8 +219,16 @@ $rpg-tinker: \e904;
 	content: unicode($rpg-quill);
 }
 
+.fa-power-off:before {
+	content: unicode($rpg-portal);
+}
+
 .fa-shield:before {
 	content: unicode($rpg-cross-shield);
+}
+
+.fa-sliders:before {
+	content: unicode($rpg-key);
 }
 
 .fa-wrench:before {

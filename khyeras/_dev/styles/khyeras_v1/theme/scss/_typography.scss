@@ -89,17 +89,21 @@ body {
 }
 
 a {
-	color: $color-06;
-	@include transition(color 0.3s ease-in-out);
+	color: $color-06;	
 	text-decoration: none;
 	&:hover {
 		color: $color-07;
 	}
 }
 
-a[class*='username']:hover {
+a, a span[class*='username'] {
+	@include transition(color 0.3s ease-in-out);
+}
+
+a[class*='username']:hover, a:hover span[class*='username'] {
 	color: $color-07 !important;
 }
+
 /* Headers
 ========================================================================== */
 

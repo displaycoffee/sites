@@ -258,6 +258,12 @@
 				font-weight: bold;
 			}
 		}
+		.guest-register {
+			color: $color-06;
+			&:hover {
+				color: $color-07;
+			}
+		}
 	}
 	.user-buttons {
 		text-align: center;
@@ -274,8 +280,10 @@
 			& > a {
 				display: block;
 				margin: 0 $ffs-half $ffs $ffs-half;
-				padding: 10px;
+				padding-left: 10px;
+				padding-right: 10px;
 				min-width: 80px;
+				font-size: rem($global-font-size);
 			}
 		}
 	}
