@@ -2,8 +2,8 @@
 <html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {META}
 <title>{SITENAME} &bull; <!-- IF S_IN_MCP -->{L_MCP} &bull; <!-- ELSEIF S_IN_UCP -->{L_UCP} &bull; <!-- ENDIF -->{PAGE_TITLE}</title>
 
@@ -41,6 +41,12 @@
 </head>
 
 <body id="phpbb" class="simple-phpbb nojs {S_CONTENT_DIRECTION} {BODY_CLASS}<!-- IF SCRIPT_NAME == 'viewforum' or SCRIPT_NAME == 'search' --><!-- IF TOTAL_PAGES == 0 --> no-topics<!-- ENDIF--><!-- ENDIF--> section-{SCRIPT_NAME}" data-class="section {SCRIPT_NAME} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
+
+<!--[if lte IE 9]>
+	<p class="browserupgrade">
+		You are using an <strong>outdated</strong> browser. Please <a href="//browsehappy.com/" target="_blank"><strong>upgrade your browser</strong></a> to improve your experience.
+	</p>
+<![endif]-->
 
 <!-- EVENT simple_header_body_before -->
 

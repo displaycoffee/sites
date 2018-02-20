@@ -1242,7 +1242,7 @@
 		}
 		dd {
 			display: none;
-			&.profile-rank, &.profile-posts, &.profile-joined, &.profile-contact {
+			&.profile-rank, &.profile-posts, &.profile-joined, &.profile-contact, &.search-result-date {
 				display: block;
 			}
 		}
@@ -1485,7 +1485,7 @@
 	}
 
 	// viewtopic.scss
-	.postbod .attachbox {
+	.postbody .attachbox {
 		display: block;
 		& > dd {
 			width: auto;
