@@ -1669,10 +1669,11 @@
 			.header_settings {
 				font-size: 0;
 				a:before {
-					@include icon-font($family: game, $fs: false);
 					font-size: rem($global-font-size);
+					@include icon-font($fs: false);
 				}
 				& > a:before {
+					font-family: 'Khyeras Icons';
 					content: unicode($rpg-pokecog);
 				}
 				& > #mark_all_notifications a:before {

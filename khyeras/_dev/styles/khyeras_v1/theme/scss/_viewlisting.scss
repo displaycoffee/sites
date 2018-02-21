@@ -107,7 +107,6 @@
 						&:before {
 							@include icon-font($family: game, $fs: false, $lh: false);
 							font-size: rem(16px);
-							vertical-align: bottom;
 							content: unicode($rpg-open-book);
 							padding-right: 5px;
 						}
