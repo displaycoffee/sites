@@ -1,0 +1,9 @@
+services:
+    displaycoffee.khyeras.listener:
+        class: displaycoffee\khyeras\event\main_listener
+        arguments:
+            - '@controller.helper'
+            - '@template'
+            - '@user'
+        tags:
+            - { name: event.listener }

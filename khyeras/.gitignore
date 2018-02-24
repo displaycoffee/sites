@@ -10,14 +10,14 @@ adm/
 assets/
 bin/
 cache/
-config/
+/config/
 docs/
 download/
 files/
 images/
 includes/
 install/
-language/
+/language/
 phpbb/
 store/
 vendor/
