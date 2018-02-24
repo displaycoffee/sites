@@ -45,26 +45,48 @@
 	}
 }
 
-/* View Topic - Body - Post Notice
+/* View Topic - Body - Post Notices
 ========================================================================== */
 
-.postbody .post-notice {
-	background: $color-09;
-	padding: 10px;
-	border-radius: 3px;
-	&, a {
-		color: $color-08
-	}
-	a:hover {
-		color: $color-07;
-	}
-	&.reported {
-		background: mix(white, $color-11, 80%);
-	}
-	&.unapproved {
-		background: mix(white, $color-07, 60%);
-		.icon-red {
+.postbody {
+	.post-notice, .rules {
+		padding: 10px;
+		border-radius: 3px;
+		&, a {
+			color: $color-08
+		}
+		a:hover {
 			color: $color-07;
+		}
+	}
+	.post-notice {
+		background: $color-09;
+		&.reported {
+			background: mix(white, $color-11, 80%);
+		}
+		&.unapproved {
+			background: mix(white, $color-07, 60%);
+			.icon-red {
+				color: $color-07;
+			}
+		}
+	}
+	.rules {
+		background: mix(white, $color-07, 60%);
+		font-size: rem(13px);
+		&:before {
+			content: 'Rules: ';
+			font-weight: bold;
+		}
+	}
+	.notice {
+		br {
+			display: none;
+		}
+		strong:before {
+			content: '';
+			display: block;
+			height: 1px;
 		}
 	}
 }
@@ -73,9 +95,20 @@
 ========================================================================== */
 
 .postbody {
+	&.ignore, & .ignore {
+		margin: 0 0 20px 0;
+	}
 	& > div > h3, & > h3 {
 		margin: 0 0 5px 0;
 		padding: 0 150px 0 0;
+	}
+	h3 img[src*='images/icons'] {
+		max-width: 20px;
+		max-height: 20px;
+		display: inline-block;
+		margin: 0 5px 0 0;
+		position: relative;
+		top: 2px;
 	}
 }
 

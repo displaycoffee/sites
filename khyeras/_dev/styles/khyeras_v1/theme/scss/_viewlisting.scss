@@ -105,8 +105,7 @@
 							display: none;
 						}
 						&:before {
-							@include icon-font($family: game, $fs: false, $lh: false);
-							font-size: rem(16px);
+							@include icon-font($family: game, $lh: false);
 							content: unicode($rpg-open-book);
 							padding-right: 5px;
 						}
@@ -142,6 +141,13 @@
 
 .topiclist > li.row {
 	dl {
+		dt[style*='images/icons'] {
+			background-size: 16px auto;
+			background-position: 10px 1px;
+			.list-inner .topictitle {
+				padding-left: 23px;
+			}
+		}
 		&[class*='read'], &[class*='link'], &[class*='moved'] {
 			padding-left: 60px;
 			dt:before {

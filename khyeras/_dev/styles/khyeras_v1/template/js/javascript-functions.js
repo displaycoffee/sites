@@ -44,6 +44,7 @@ function addFieldsetClasses() {
 // Add no-pagination class to body to hide pagination
 function addNoPaginationClass() {
 	var pagination = document.querySelector( '.action-bar .pagination' );
+
 	if ( pagination ) {
 		var paginationText = pagination.innerText.toLowerCase();
 		var paginationPhrase = 'page 1 of 1';
@@ -54,6 +55,19 @@ function addNoPaginationClass() {
 
 			if ( totalNumber && totalNumber <= 0 ) {
 				body.className += ( checkForClasses( body ) + 'no-pagination' );
+			}
+		}
+	}
+}
+
+// Add class to topics on search results that are ignored
+function addSearchIgnoredClass() {
+	var topic = document.querySelectorAll( '.search.post .postbody' );
+
+	if ( topic.length ) {
+		for ( var i = 0; i < topic.length; i++ ) {
+			if ( topic[i].innerHTML.indexOf( 'ignore list' ) !== -1 ) {
+				topic[i].className += ( checkForClasses( topic[i] ) + 'ignore' );
 			}
 		}
 	}

@@ -654,10 +654,6 @@
 
 .notice {
 	font-size: rem(13px);
-	&:before {
-		content: 'Note:';
-		font-weight: bold;
-	}
 }
 
 .error {

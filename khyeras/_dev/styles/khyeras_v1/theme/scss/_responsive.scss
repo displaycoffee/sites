@@ -459,6 +459,9 @@
 				&:before {
 					display: none;
 				}
+				dt[style*='images/icons'] {
+					background-position: 62px 1px;
+				}
 				&[class*='read'], &[class*='link'], &[class*='moved'] {
 					padding-left: 0;
 					dt {
@@ -1460,6 +1463,9 @@
 	.topiclist > li.row dl {
 		dt .row-item-link {
 			@include sizing($responsive-icon-size + 2, $responsive-icon-size + 2);
+		}
+		dt[style*='images/icons'] {
+			background-position: 54px 1px;
 		}
 		&[class*='read'], &[class*='link'], &[class*='moved'] {
 			dt {
