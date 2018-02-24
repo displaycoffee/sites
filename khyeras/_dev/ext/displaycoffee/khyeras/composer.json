@@ -1,0 +1,27 @@
+{
+    "name": "displaycoffee/khyeras",
+    "type": "phpbb-extension",
+    "description": "Custom variables and code for Khy'eras theme.",
+    "homepage": "",
+    "version": "1.0.0",
+    "time": "2017-10-02",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Adria",
+            "email": "adria@neverend.org",
+            "homepage": "https://github.com/displaycoffee",
+            "role": ""
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "display-name": "Khy'eras Custom Code",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.4,<3.2.0@dev"
+        }
+    }
+}

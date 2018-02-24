@@ -10,6 +10,7 @@ adm/
 assets/
 bin/
 cache/
+config/
 docs/
 download/
 files/
@@ -19,21 +20,12 @@ install/
 language/
 phpbb/
 store/
-!styles/
 vendor/
 
 # Extensions
-ext/
+ext/*
 !ext/displaycoffee/
 
-# Config folders
-config/
-!ext/displaycoffee/khyeras/config/
-
-# Themes
+# Styles
 styles/*
-!styles/khyeras_v1
-!styles/khyeras_v1/*
-!styles/khyeras_v1/theme
-!styles/khyeras_v1/theme/images
-!_dev/styles/khyeras_v1/theme/images
+!styles/khyeras_v1/
