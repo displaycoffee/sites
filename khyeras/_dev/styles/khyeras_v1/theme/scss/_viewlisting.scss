@@ -23,9 +23,7 @@
 				margin: 0;
 				dfn {
 					font-style: normal;
-					position: absolute;
-					top: -9999px;
-					left: -9999px;
+					@include position($type: absolute, $top: -9999px, $left: -9999px);
 				}
 				&.mark {
 					flex: 0 0 90px;
@@ -89,8 +87,7 @@
 					.row-item-link {
 						display: block;
 						@include sizing($list-icon-size + 2, $list-icon-size + 2);
-						@include forum-icon-position;
-						z-index: 10;
+						@include position($type: absolute, $top: 0, $left: 10px, $z: 10);
 					}
 					a .icon {
 						&.fa-exclamation, &.fa-question {
@@ -151,10 +148,9 @@
 		&[class*='read'], &[class*='link'], &[class*='moved'] {
 			padding-left: 60px;
 			dt:before {
-				@include forum-icon-position;
+				@include position($type: absolute, $top: 0, $left: 10px, $z: 2);
 				@include sizing($list-icon-size, $list-icon-size);
 				line-height: $list-icon-size;
-				z-index: 2;
 				@include icon-font($family: game, $fs: false, $lh: false);
 				font-size: rem(24px);
 				text-align: center;
@@ -172,10 +168,9 @@
 			border: 1px solid mix($color-01, $color-10, 5%);
 		}
 		&[class*='mine'] dt:after {
-			@include forum-icon-position;
+			@include position($type: absolute, $top: 0, $left: 10px, $z: 3);
 			@include icon-font;
 			content: unicode($icon-star);
-			z-index: 3;
 			color: $color-14;
 		}
 	}
@@ -239,7 +234,7 @@
 		@include sizing(130px, 130px);
 		border-radius: 100%;
 		overflow: hidden;
-		@include forum-icon-position;
+		@include position($type: absolute, $top: 0, $left: 10px);
 		border: 5px solid $color-04;
 	}
 }
@@ -291,9 +286,7 @@ table {
 			}
 			dfn {
 				font-style: normal;
-				position: absolute;
-				top: -9999px;
-				left: -9999px;
+				@include position($type: absolute, $top: -9999px, $left: -9999px);
 			}
 		}
 		.rank-img {

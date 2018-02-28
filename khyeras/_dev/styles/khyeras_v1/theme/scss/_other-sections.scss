@@ -7,9 +7,7 @@ dl.faq dt, dl.faq + .top, #faqlinks dl.faq dd {
 
 dl.faq + .top {
 	display: inline-block;
-	position: relative;
-	top: -15px;
-	left: -2px;
+	@include position($type: relative, $top: -15px, $left: -2px);
 }
 
 #faqlinks dl.faq dd:last-child {
@@ -88,9 +86,7 @@ dl.faq + .top {
 	&[style*='block'] {
 		visibility: visible;
 		opacity: 1;
-		z-index: 2;
-		left: -1px;
-		top: 45px;
+		@include position($top: 45px, $left: -1px, $z: 2);
 	}
 	.dropdown-contents.search-results li .search-result {
 		cursor: pointer;
@@ -159,8 +155,7 @@ dl.faq + .top {
 					color: $color-01;
 					font-size: rem(16px);
 					margin: 0 5px 0 0;
-					position: relative;
-					top: 1px;
+					@include position($type: relative, $top: 1px);
 				}
 			}
 		}
@@ -187,9 +182,7 @@ dl.faq + .top {
 		font-size: rem(13px);
 	}
 	.page-body > a[onclick*='window.close'] {
-		position: absolute;
-		top: 30px;
-		right: 30px;
+		@include position($type: absolute, $top: 30px, $right: 30px);
 	}
 }
 
@@ -239,9 +232,7 @@ dl.faq + .top {
 			position: relative;
 			margin: 5px 0;
 			&:before {
-				position: absolute;
-				top: 0;
-				left: 0;
+				@include position($type: absolute, $top: 0, $left: 0);
 				content: 'IP:';
 				font-weight: bold;
 			}

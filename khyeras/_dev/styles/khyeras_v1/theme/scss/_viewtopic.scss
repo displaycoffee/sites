@@ -9,9 +9,7 @@
 	position: relative;
 	.post-buttons {
 		margin: 0;
-		position: absolute;
-		top: 0;
-		right: 0;
+		@include position($type: absolute, $top: 0, $right: 0);
 		& > li {
 			@include inline-block(middle);
 			&.hidden {
@@ -38,9 +36,7 @@
 .postprofile, .postbody div[id*='post_content'] {
 	&[style*='none'] {
 		display: block !important;
-		position: absolute;
-		left: -9999px;
-		top: -9999px;
+		@include position($type: absolute, $top: -9999px, $left: -9999px);
 		width: 100%;
 	}
 }
@@ -107,8 +103,7 @@
 		max-height: 20px;
 		display: inline-block;
 		margin: 0 5px 0 0;
-		position: relative;
-		top: 2px;
+		@include position($type: relative, $top: 2px);
 	}
 }
 
@@ -136,9 +131,7 @@
 			position: relative;
 			padding: 0 200px 10px 0;
 			.responsive-hide {
-				position: absolute;
-				top: 2px;
-				right: 0;
+				@include position($type: absolute, $top: 2px, $right: 0);
 				font-size: rem(13px);
 			}
 		}
@@ -180,10 +173,7 @@
 					padding: 0;
 					background: none;
 					border: none;
-					position: absolute;
-					top: 10px;
-					right: 10px;
-					z-index: 2;
+					@include position($type: absolute, $top: 10px, $right: 10px, $z: 2);
 					color: $color-04;
 				}
 			}
@@ -321,9 +311,7 @@ fieldset.polls dl {
 }
 
 fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
-	position: absolute;
-	top: 1px;
-	left: 30%;
+	@include position($type: absolute, $top: 1px, $left: 30%);
 }
 
 .topic_poll .panel .content {
@@ -436,9 +424,7 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 	padding: 0 120px 0 0;
 	position: relative;
 	.right-box {
-		position: absolute;
-		top: 6px;
-		right: 0;
+		@include position($type: absolute, $top: 6px, $right: 0);
 		font-family: $font-01;
 		font-variant: none;
 		font-size: rem($global-font-size);

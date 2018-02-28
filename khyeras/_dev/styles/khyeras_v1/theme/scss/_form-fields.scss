@@ -46,8 +46,7 @@ textarea {
 }
 
 input[type='checkbox'], input[type='radio']  {
-	position: relative;
-	top: 2px;
+	@include position($type: relative, $top: 2px);
 }
 
 label {
@@ -85,9 +84,7 @@ input[type='search']::-webkit-search-cancel-button {
 	}
 	.button {
 		width: 40px;
-		position: absolute;
-		top: 0;
-		z-index: 1;
+		@include position($type: absolute, $top: 0, $z: 1);
 		padding: 10px 0;
 		background: $color-01;
 		.icon {
@@ -96,8 +93,7 @@ input[type='search']::-webkit-search-cancel-button {
 		}
 		.fa-cog {
 			font-size: rem(16px);
-			position: relative;
-			top: 1px;
+			@include position($type: relative, $top: 1px);
 		}
 		&:hover .icon {
 			color: $color-13;
@@ -201,8 +197,7 @@ fieldset:not(.polls) {
 					img {
 						max-width: 20px;
 						max-height: 20px;
-						position: relative;
-						top: 4px;
+						@include position($type: relative, $top: 4px);
 						display: inline-block;
 						margin: 0 $ffs;
 					}

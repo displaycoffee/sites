@@ -85,14 +85,6 @@
 	}
 }
 
-// Reusable positioning for forum/topic icons
-// Also use for forum-image and row-item-link
-@mixin forum-icon-position {
-	position: absolute;
-	top: 0;
-	left: 10px;
-}
-
 // FontAwesome properties
 @mixin icon-font($family: '', $fs: '', $lh: '') {
 	// Font family logic
@@ -158,6 +150,29 @@
 	line-height: 1.2;
 }
 
+// Mixin for positioning
+@mixin position($type: '', $top: '', $bottom: '', $left: '', $right: '', $z: '') {
+	// Font family logic
+	@if ($type != '') {
+		position: $type;
+	}
+	@if ($top != '') {
+		top: $top;
+	}
+	@if ($bottom != '') {
+		bottom: $bottom;
+	}
+	@if ($left != '') {
+		left: $left;
+	}
+	@if ($right != '') {
+		right: $right;
+	}
+	@if ($z != '') {
+		z-index: $z;
+	}
+}
+
 // Reset font sizing for responsive button spacing
 @mixin reset-font-size($selector) {
 	font-size: 0;
@@ -165,7 +180,6 @@
 		font-size: rem($global-font-size);
 	}
 }
-
 
 // Reset inner element styling
 @mixin reset-inner {

@@ -51,10 +51,7 @@
 ========================================================================== */
 
 .browserupgrade {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 100;
+	@include position($type: fixed, $top: 0, $left: 0, $z: 100);
 	width: 100%;
 	background: $color-09;
 	border-bottom: 2px solid $color-09 - #333;
@@ -86,10 +83,7 @@
 		@include transition(opacity 0.5s ease);
 		display: block !important;
 		min-width: 160px;
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-		z-index: -1;
+		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
 		margin: 0 !important;
 		padding: 20px;
 		text-align: left;
@@ -125,9 +119,7 @@
 		.dropdown {
 			visibility: visible;
 			opacity: 1;
-			z-index: 50;
-			top: 27px;
-			left: 0;
+			@include position($top: 27px, $left: 0, $z: 50);
 		}
 		.button ~ .dropdown {
 			top: 50px;
@@ -137,8 +129,7 @@
 		}
 		&.dropdown-up {
 			.dropdown {
-				top: auto;
-				bottom: 30px;
+				@include position($top: auto, $bottom: 30px);
 			}
 			.button ~ .dropdown {
 				bottom: 50px;
@@ -148,8 +139,7 @@
 			}
 		}
 		&.dropdown-left .dropdown {
-			left: auto;
-			right: 0;
+			@include position($right: 0, $left: auto);
 		}
 	}
 }
@@ -164,10 +154,7 @@
 	margin-top: -50px;
 	margin-left: -50px;
 	@include sizing(50px, 50px);
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	z-index: 51;
+	@include position($type: fixed, $top: 50%, $left: 50%, $z: 51);
 }
 
 /* Breadcrumbs
@@ -293,8 +280,7 @@
 					position: relative;
 					padding: 0 55px;
 					li:first-child, .page-jump-form .button2 {
-						position: absolute;
-						top: 0;
+						@include position($type: absolute, $top: 0);
 						width: 50px;
 					}
 					li:first-child {
@@ -487,9 +473,7 @@
 		margin: 0 0 10px 0;
 		display: block;
 		span {
-			position: absolute;
-			top: 12px;
-			left: 0;
+			@include position($type: absolute, $top: 12px, $left: 0);
 		}
 		select {
 			width: 100%;
@@ -587,8 +571,7 @@
 	position: relative;
 	&:before, &:after {
 		display: block;
-		position: absolute;
-		z-index: 10;
+		@include position($type: absolute, $z: 10);
 	}
 	&:before {
 		content: '\f004\0000A0\0000A0 Online';

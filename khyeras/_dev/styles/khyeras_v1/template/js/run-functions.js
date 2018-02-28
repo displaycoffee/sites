@@ -7,6 +7,7 @@ addFieldsetClasses();
 addNoPaginationClass();
 noContentListing();
 addSearchIgnoredClass();
+checkForNewPM();
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
 checkForEmpty( '.section-mcp-post-details .pagination ul' );

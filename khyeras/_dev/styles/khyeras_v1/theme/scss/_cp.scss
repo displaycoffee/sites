@@ -14,13 +14,20 @@
 		margin: 0;
 		li {
 			margin: 0 0 5px 0;
-			a[href*='folder']:before {
-				@include icon-font($family: game, $fs: false, $lh: false);
-				font-size: rem(16px);
-				content: unicode($rpg-open-book);
-				vertical-align: bottom;
-				margin: 0 5px 0 0;
-				color: $color-01;
+			a[href*='folder'] {
+				&:before {
+					@include icon-font($family: game, $fs: false, $lh: false);
+					font-size: rem(16px);
+					vertical-align: bottom;
+					margin: 0 5px 0 0;
+					color: $color-01;
+				}
+				&:not(.new-pm):before {
+					content: unicode($rpg-open-book);
+				}
+				&.new-pm:before {
+					content: unicode($rpg-secret-book);
+				}
 			}
 			&.active-subsection a {
 				font-weight: bold;
@@ -89,9 +96,7 @@
 					}
 				}
 				.pagination {
-					position: absolute;
-					bottom: 0;
-					left: 0;
+					@include position($type: absolute, $bottom: 0, $left: 0);
 					height: 24px;
 					overflow: hidden;
 				}
@@ -146,9 +151,7 @@
 		&:after {
 			content: 'Last Post';
 			padding-left: 10px;
-			position: absolute;
-			top: 0;
-			right: 0;
+			@include position($type: absolute, $top: 0, $right: 0);
 			width: 260px;
 		}
 	}
@@ -187,8 +190,7 @@
 		fieldset {
 			position: relative;
 			label[for='category']:before, input[type='submit'][name='avatar_local_go'] {
-				position: absolute;
-				top: 0;
+				@include position($type: absolute, $top: 0);
 			}
 			label[for='category'] {
 				margin: 0 65px 0 300px;
@@ -224,9 +226,7 @@
 			}
 			input[type='radio'] {
 				@include sizing(14px, 14px);
-				top: 13px;
-				right: 17px;
-				z-index: 2;
+				@include position($top: 13px, $right: 17px, $z: 2);
 				margin-right: 0;
 			}
 			&:before {
@@ -235,9 +235,7 @@
 				@include sizing(19px, 19px);
 				border-radius: 100%;
 				background: $color-04;
-				top: 10px;
-				right: 15px;
-				z-index: 1;
+				@include position($top: 10px, $right: 15px, $z: 1);
 			}
 			br {
 				display: none;
@@ -258,9 +256,7 @@
 			float: none;
 			margin: 0;
 			padding: 0;
-			position: absolute;
-			bottom: 20px;
-			left: 0;
+			@include position($type: absolute, $bottom: 20px, $left: 0);
 			overflow: hidden;
 			strong {
 				font-weight: normal;
@@ -352,9 +348,7 @@
 	padding: 0 0 0 21px;
 	.imageset {
 		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
+		@include position($type: absolute, $top: 0, $left: 0);
 		@include sizing(16px, 16px);
 		border-radius: 3px;
 	}
@@ -423,8 +417,7 @@
 					margin: 0 $ffs 0 0;
 					border-radius: 100%;
 					font-weight: bold;
-					position: relative;
-					top: -2px;
+					@include position($type: relative, $top: -2px);
 				}
 				a strong {
 					font-weight: normal;
@@ -446,9 +439,7 @@
 			display: inline-block;
 			position: relative;
 			.icon {
-				position: absolute;
-				top: 0;
-				bottom: 0;
+				@include position($type: absolute, $top: 0, $bottom: 0);
 				margin: auto;
 				@include sizing(10px, 12px);
 			}
@@ -490,10 +481,7 @@
 				content: '';
 				display: block;
 				@include sizing(5px, 100%);
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				background: #ff00ff;
+				@include position($type: absolute, $top: 0, $bottom: 0);
 			}
 			&:before {
 				left: -10px;
@@ -537,9 +525,7 @@
 			padding: 0 110px 0 0;
 			position: relative;
 			.right-box {
-				position: absolute;
-				top: -3px;
-				right: 0;
+				@include position($type: absolute, $top: -3px, $right: 0);
 				.button2 {
 					@include small-form-ele;
 				}
@@ -593,8 +579,7 @@
 	span[style*='background-color'] {
 		@include sizing(16px, 16px);
 		display: block;
-		position: relative;
-		top: -1px;
+		@include position($type: relative, $top: -1px);
 	}
 	#color_palette_toggle {
 		&:before {
@@ -618,9 +603,7 @@
 		@include scrollable;
 	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
-		position: absolute;
-		top: 0;
-		right: 0;
+		@include position($type: absolute, $top: 0, $right: 0);
 	}
 	.forum-selection, .action-bar.actions-jump {
 		height: 40px;
@@ -769,8 +752,7 @@
 				font-size: 0;
 				padding: 10px 0;
 				margin: 0 0 0 -45px;
-				position: relative;
-				top: 5px;
+				@include position($type: relative, $top: 5px);
 			}
 		}
 	}
@@ -812,9 +794,7 @@
 		& + .display-actions {
 			width: 95px;
 			padding-right: 0;
-			position: absolute;
-			bottom: -1px;
-			right: 0;
+			@include position($type: absolute, $bottom: -1px, $right: 0);
 		}
 	}
 }

@@ -64,9 +64,7 @@ blockquote {
 	padding: 0 0 0 30px;
 	position: relative;
 	&:before {
-		position: absolute;
-		top: 0;
-		left: 0;
+		@include position($type: absolute, $top: 0, $left: 0);
 		font-family: $font-02;
 		@include quotes;
 		content: '\00201C';
@@ -108,8 +106,7 @@ abbr[title] {
 	font-family: $sans-serif-fb;
 	font-size: rem(20px);
 	line-height: 1;
-	position: relative;
-	top: 2px;
+	@include position($type: relative, $top: 2px);
 }
 
 a.anchor {
@@ -158,8 +155,7 @@ a.anchor {
 }
 
 .skiplink {
-	position: absolute;
-	left: -9999px;
+	@include position($type: absolute, $left: -9999px);
 	width: 990px;
 }
 
@@ -172,8 +168,7 @@ a.anchor {
 
 .top-anchor {
 	display: block;
-	position: absolute;
-	top: -20px;
+	@include position($type: absolute, $top: -20px);
 }
 
 /* Smilies and Emojis

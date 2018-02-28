@@ -109,14 +109,9 @@
 				}
 				.attach-controls {
 					width: 59%;
-					position: relative;
-					right: -1%;
+					@include position($type: relative, $right: -1%);
 					text-align: right;
 				}
-			}
-			&.attach-comment .inputbox {
-				position: relative;
-				top: 3px;
 			}
 			&.attach-status .file-status {
 				&:before {

@@ -81,7 +81,6 @@ function noContentListing() {
 	}
 }
 
-
 // Add class to topics on search results that are ignored
 function addSearchIgnoredClass() {
 	var topic = document.querySelectorAll( '.search.post .postbody' );
@@ -90,6 +89,19 @@ function addSearchIgnoredClass() {
 		for ( var i = 0; i < topic.length; i++ ) {
 			if ( topic[i].innerHTML.indexOf( 'ignore list' ) !== -1 ) {
 				topic[i].className += ( checkForClasses( topic[i] ) + 'ignore' );
+			}
+		}
+	}
+}
+
+// Check if there is a new PM (mostly for icon purposes)
+function checkForNewPM() {
+	var menuLink = document.querySelectorAll( '.cp-menu ul li a[href*="folder"]' );
+
+	if ( menuLink.length ) {
+		for ( var i = 0; i < menuLink.length; i++ ) {
+			if ( menuLink[i].innerHTML.indexOf( 'strong' ) !== -1 ) {
+				menuLink[i].className += ( checkForClasses( menuLink[i] ) + 'new-pm' );
 			}
 		}
 	}

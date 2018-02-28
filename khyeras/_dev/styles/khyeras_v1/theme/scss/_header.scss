@@ -21,8 +21,7 @@
 		align-items: center;
 		align-content: center;
 		height: 100%;
-		position: relative;
-		z-index: 2;
+		@include position($type: relative, $z: 2);
 		.site-description, .site-quotes {
 			@include flex(base);
 			max-width: 310px;
@@ -60,8 +59,7 @@
 			}
 			span {
 				@include quotes;
-				position: relative;
-				top: -5px;
+				@include position($type: relative, $top: -5px);
 				&.quote-left {
 					margin: 0 10px 0 0;
 				}
@@ -87,13 +85,9 @@
 		}
 	}
  	.header-overlay {
-		position: absolute;
 		height: 125px;
 		background: url($images + 'header-background.png') center -65px repeat-x;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		z-index: 1;
+		@include position($type: absolute, $bottom: 0, $left: 0, $right: 0, $z: 1);
 	}
 }
 
@@ -103,11 +97,7 @@
 #page-header .navbar {
 	background: rgba($color-05, 0.75);
 	border-bottom: 1px solid $color-04;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 20;
+	@include position($type: fixed, $top: 0, $right: 0, $left: 0, $z: 20);
 	text-align: center;
 	padding: 10px 0;
 	a {
@@ -141,10 +131,7 @@
 				display: block;
 				@include sizing(20px, 20px);
 				line-height: 20px;
-				position: absolute;
-				top: -1.5px;
-				right: 5px;
-				z-index: 10;
+				@include position($type: absolute, $top: -1.5px, $right: 5px, $z: 10);
 				// Setting the variable here to use multiple transitions
 				$transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 				@include transition($transform);
@@ -334,9 +321,7 @@
 		position: relative;
 		margin: -20px -20px 20px -20px;
 		.header_settings {
-			position: absolute;
-			right: 20px;
-			top: 11px;
+			@include position($type: absolute, $top: 11px, $right: 20px);
 			font-family: $font-01;
 			font-variant: none;
 			font-size: rem(13px);
@@ -379,10 +364,7 @@
 			}
 			.icon-mark {
 				display: block;
-				position: absolute;
-				top: 0;
-				right: 0;
-				z-index: 2;
+				@include position($type: absolute, $top: 0, $right: 0, $z: 2);
 				.icon {
 					width: auto;
 				}
@@ -432,10 +414,7 @@
 				}
 			}
 			p {
-				position: absolute;
-				left: 15px;
-				right: 15px;
-				bottom: 5px;
+				@include position($type: absolute, $bottom: 5px, $left: 15px, $right: 15px);
 				padding: 0 10px;
 				height: 30px;
 				line-height: 30px;
@@ -477,8 +456,7 @@
 				display: block;
 				@include sizing(100%, 4px);
 				background: $color-01;
-				position: absolute;
-				left: 0;
+				@include position($type: absolute, $left: 0);
 			}
 			&:before, &:after {
 				content: '';
@@ -497,12 +475,9 @@
 }
 
 #mobile-menu {
-	left: -($mobile-menu-width + 300);
 	background: $color-04;
 	border-right: 1px solid mix($color-02, $color-04, 25%);
-	position: fixed;
-	top: 0;
-	z-index: 9999;
+	@include position($type: fixed, $top: 0, $left: -($mobile-menu-width + 300), $z: 9999);
 	@include sizing($mobile-menu-width, 100%);
 	@include transition(left 0.3s ease-in-out);
 	&.show {
@@ -526,9 +501,7 @@
 		}
 		.fa-times {
 			@include sizing(50px, 50px);
-			position: absolute;
-			right: 0;
-			top: 0;
+			@include position($type: absolute, $top: 0, $right: 0);
 			font-size: rem(25px);
 			margin: 0;
 		}
@@ -554,9 +527,8 @@
 	}
 	& > ul {
 		li {
-			left: 0;
+			@include position($type: relative, $left: 0);
 			@include transition(left 0.5s ease-in-out);
-			position: relative;
 		}
 		.dropdown-container {
 			& > a {
@@ -569,10 +541,7 @@
 				@include sizing(50px, 100%);
 				max-height: 44px;
 				line-height: 44px;
-				position: absolute;
-				top: 0;
-				right: 0;
-				z-index: 10;
+				@include position($type: absolute, $top: 0, $right: 0, $z: 10);
 				@include transition(all 0.5s ease-in-out);
 			  	font-size: rem(20px);
 				&:before {
@@ -586,8 +555,7 @@
 				padding: 0;
 				border: 0;
 				background: none;
-				position: absolute;
-				left: -($mobile-menu-width + 300);
+				@include position($type: absolute, $left: -($mobile-menu-width + 300));
 				@include transition(left 0.5s ease-in-out);
 				.dropdown-contents {
 					max-height: none;
@@ -608,11 +576,9 @@
 					transform: rotate(-180deg);
 				}
 				.dropdown {
-					top: auto;
-					left: 0;
+					@include position($top: auto, $left: 0, $z: 2);
 					visibility: visible;
 				    opacity: 1;
-				    z-index: 2;
 				}
 			}
 			&.dropdown-close > * {

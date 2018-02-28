@@ -96,8 +96,7 @@
 			&[class*='forum'] dd.posts, &:not([class*='forum']) dd.views {
 				&:before {
 					content: '/';
-					position: relative;
-					left: -10px;
+					@include position($type: relative, $left: -10px);
 				}
 			}
 			dd {
@@ -282,9 +281,7 @@
 					width: 200px;
 					padding: 0 10px;
 					content: 'Last Post';
-					position: absolute;
-					top: -51px;
-					left: 0;
+					@include position($type: absolute, $top: -51px, $left: 0);
 				}
 			}
 			dl[class*='forum'] dd.lastpost {
@@ -881,8 +878,7 @@
 	}
 	.section-ucp-rules-folders-settings .cp-main fieldset dl dt input[value='Previous'] {
 		float: left;
-		position: relative;
-		top: $ffs;
+		@include position($type: relative, $top: $ffs);
 		margin-right: -($ffs + 1);
 	}
 	.section-ucp-edit-memberships .cp-main fieldset {
@@ -926,9 +922,7 @@
 		}
 	}
 	.section-mcp-warnings .cp-main table.table1 td a[href*='user_notes'] {
-		position: relative;
-		left: -10px;
-		z-index: 2;
+		@include position($type: relative, $left: -10px, $z: 2);
 		background: $color-05;
 	}
 
