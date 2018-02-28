@@ -321,12 +321,6 @@
 }
 
 .no-pagination {
-	&.section-viewforum, &.section-search-search {
-		.action-bar.bar-top + .panel .inner strong {
-			display: block;
-			margin: 0 0 20px 0;
-		}
-	}
 	&.section-viewforum {
 		.action-bar.bar-top, .action-bar.bar-bottom {
 			.pagination {
@@ -354,6 +348,13 @@
 			display: none;
 		}
 	}
+}
+
+/* No Content
+========================================================================== */
+
+.panel .inner.no-content {
+	padding-bottom: 20px;
 }
 
 /* Action Bar & Display Actions

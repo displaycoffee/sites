@@ -60,6 +60,28 @@ function addNoPaginationClass() {
 	}
 }
 
+// Add a class to elements where there are no topics / forums
+function noContentListing() {
+	var noContentText = [
+		'This board has no forums.',
+		'You do not have the required permissions to view or read topics within this forum.',
+		'There are no topics or posts in this forum.',
+		'This category has no forums.',
+		'No suitable matches were found.'
+	];
+
+	var listing = document.querySelectorAll( '.action-bar + .panel .inner' );
+
+	if ( listing.length ) {
+		for ( var i = 0; i < listing.length; i++ ) {
+			if ( noContentText.indexOf( listing[i].innerText ) !== -1 ) {
+				listing[i].className += ( checkForClasses( listing[i] ) + 'no-content' );
+			}
+		}
+	}
+}
+
+
 // Add class to topics on search results that are ignored
 function addSearchIgnoredClass() {
 	var topic = document.querySelectorAll( '.search.post .postbody' );

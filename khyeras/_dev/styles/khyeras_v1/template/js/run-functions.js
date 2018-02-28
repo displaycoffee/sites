@@ -5,6 +5,7 @@ addBodyClass();
 addForumImageClass();
 addFieldsetClasses();
 addNoPaginationClass();
+noContentListing();
 addSearchIgnoredClass();
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
