@@ -13,14 +13,15 @@ addImageWrapper( '.notification_list .notification-block > img' );
 checkForEmpty( '.section-mcp-post-details .pagination ul' );
 checkForEmpty( '.section-mcp-post-details .postbody .content pre' );
 
-/* jQuery Functionality
-========================================================================== */
-
 // Get distance for scroll to bottom
 var bottomDistance =  jQuery( document ).height() + jQuery( window ).height();
 
 // Run all functions on document ready
 jQuery( document ).ready( function( $ ) {
+
+	/* jQuery Functionality
+	========================================================================== */
+
 	// Check if the dt contains a single empty space
 	checkForSpace( 'fieldset dl dt' );
 	checkForSpace( 'dl.details dt' );
@@ -79,4 +80,9 @@ jQuery( document ).ready( function( $ ) {
 	    mobileMenu    : '#mobile-menu',
 	    width         : 768
 	});
+
+	/* Profile Field Functionality
+	========================================================================== */
+
+	profileThings();
 });
