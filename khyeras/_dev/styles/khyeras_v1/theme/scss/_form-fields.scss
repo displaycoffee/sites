@@ -57,10 +57,25 @@ label {
 	}
 }
 
-button[disabled], html input[disabled], option[disabled] {
-	cursor: not-allowed;
-	color: $color-13;
+button, html input, option, select, textarea {
+	&[disabled] {
+		cursor: not-allowed;
+	}
 }
+
+button, option {
+	&[disabled] {
+		color: $color-13;
+	}
+}
+
+html input, select, textarea {
+	&[disabled] {
+		color: mix($color-02, $color-13, 40%);
+		background: $color-13;
+	}
+}
+
 
 input[type='search']::-webkit-search-decoration, input[type='search']::-webkit-search-results-button, input[type='search']::-webkit-search-results-decoration {
 	display: none;

@@ -1,24 +1,26 @@
 function profileThings() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
+		var defaultText = '-- Please Select --';
+
 		var requiredFields = {
 			'pf_c_race_type' : {
 				'fieldType' : 'select',
-				'default'   : 'Unknown',
+				'default'   : defaultText,
 				'hidden'    : 'Full Blooded'
 			},
-			'pf_c_race_opts' : {
-				'fieldType' : 'checkbox',
-				'default'   : 'None',
+			'pf_c_race_a_opts' : {
+				'fieldType' : 'select',
+				'default'   : defaultText,
 				'hidden'    : 'Human'
 			},
 			'pf_c_class_type' : {
 				'fieldType' : 'select',
-				'default'   : 'Unknown',
+				'default'   : defaultText,
 				'hidden'    : 'Single'
 			},
-			'pf_c_class_opts' : {
-				'fieldType' : 'checkbox',
-				'default'   : 'None',
+			'pf_c_class_a_opts' : {
+				'fieldType' : 'select',
+				'default'   : defaultText,
 				'hidden'    : 'Fighter'
 			}
 		}
@@ -28,50 +30,96 @@ function profileThings() {
 			'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
 		}
 
-		// // Writer = 10, Character = 9
-		// var selectedAccount = '10';
-		// updateRequiredFields();
-		//
-		// // If account selection has changed, update fields
-		// jQuery( '#pf_account_type' ).on( 'change', function() {
-		// 	selectedAccount = jQuery( this ).find( 'option:selected' ).text().trim();
-		// 	updateRequiredFields();
+		var raceAllowed = {
+			'Dwarf' : [ 'Human', 'Kerasoka', 'Shapeshifter' ],
+			'Elemental' : [ 'Fae', 'Human', 'Kerasoka', 'Lumeacia', 'Shapeshifter' ],
+			'Fae' : [ 'Elemental', 'Human', 'Kerasoka', 'Shapeshifter' ],
+			'Human' : [ 'Dwarf', 'Elemental', 'Fae', 'Kerasoka', 'Shapeshifter', 'Ue\'drahc' ],
+			'Kerasoka' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Lumeacia', 'Shapeshifter' ],
+			'Lumeacia' : [ 'Elemental', 'Kerasoka' ],
+			'Shapeshifter' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Kerasoka' ],
+			'Ue\'drahc' : [ 'Human' ]
+		}
+
+		// Writer = 10, Character = 9
+		var selectedAccount = '10';
+		updateRequiredFields();
+
+		// If account selection has changed, update fields
+		jQuery( '#pf_account_type' ).on( 'change', function() {
+			selectedAccount = jQuery( this ).find( 'option:selected' ).text().trim();
+			updateRequiredFields();
+		});
+
+		// Re-enable disabled fields so form can submit properly
+		jQuery('#register').on('submit', function() {
+			jQuery( '[id^=pf_c_]' ).each( function() {
+		    	jQuery( this ).prop( 'disabled', false );
+			});
+		});
+
+		// Update race based on type selection
+		// var raceMenu = jQuery( '#pf_c_race_type' );
+		// updateRace( raceMenu );
+		// raceMenu.on( 'change', function() {
+		// 	updateRace( raceMenu );
 		// });
 
 		// Update religion checkboxes based on type selection
-		var religionMenu = jQuery( '#pf_c_religion_type' );
-		updateReligion( religionMenu );
-		religionMenu.on( 'change', function() {
-			updateReligion( religionMenu );
-		});
+		// var religionMenu = jQuery( '#pf_c_religion_type' );
+		// updateReligion( religionMenu );
+		// religionMenu.on( 'change', function() {
+		// 	updateReligion( religionMenu );
+		// });
 	}
 
 	function updateRequiredFields() {
 		// For each field in the requiredFields object, update the value depending on account
 		jQuery.each( requiredFields, function( key, value ) {
 			var field = jQuery( 'label[for="' + key + '"]' ).closest( 'dl' );
-			var fieldValue = ( selectedAccount == '10' ) ? value.hidden : value.default;
+			var fieldValue = ( selectedAccount == '9' ) ? value.default : value.hidden;
 
 			// Update select menus
 			if ( value.fieldType == 'select' ) {
 				updateSelectMenu( field, fieldValue );
-			}
-
-			// Update checkboxes
-			if ( value.fieldType == 'checkbox' ) {
-				updateCheckboxes( field, fieldValue );
 			}
 		});
 
 		// Hide any custom profile field starting with pf_c_
 		jQuery( '[id^=pf_c_]' ).each( function() {
 			if (selectedAccount == '9') {
-				jQuery( this ).closest( 'dl' ).removeClass( 'hide-fields' );
+				jQuery( this ).prop( 'disabled', false );
+				//jQuery( this ).closest( 'dl' ).removeClass( 'hide-fields' );
 			} else {
-				jQuery( this ).closest( 'dl' ).addClass( 'hide-fields' );
+				jQuery( this ).prop( 'disabled', true );
+				//jQuery( this ).closest( 'dl' ).addClass( 'hide-fields' );
 			}
 		});
 	}
+
+	// function updateRace( field ) {
+	// 	// Get current selected option
+	// 	var selected = field.find( 'option:selected' ).text().trim();
+	// 	var raceOpts1 = jQuery( '#pf_c_race_a_opts' );
+	// 	var raceOpts2 = jQuery( '#pf_c_race_b_opts' );
+	//
+	// 	console.log(selected, defaultText);
+	//
+	// 	if ( selected == defaultText ) {
+	// 		console.log('hello')
+	// 		raceOpts1.prop( 'disabled', true );
+	// 		raceOpts2.prop( 'disabled', true );
+	// 	} else if ( selected == 'Full Blooded' ) {
+	// 		raceOpts1.prop( 'disabled', false );
+	// 		raceOpts2.prop( 'disabled', true );
+	// 	}
+	//
+	// 	raceOpts1.on( 'change', function() {
+	// 		if ( field.find( 'option:selected' ).text().trim() != defaultText ) {
+	// 			raceOpts2.prop( 'disabled', false );
+	// 		}
+	// 	});
+	// }
 
 	function updateReligion( field ) {
 		// Get current selected option
@@ -106,17 +154,17 @@ function profileThings() {
 		});
 	}
 
-	function updateCheckboxes( field, text ) {
-		// Remove currently selected item
-		field.find( 'input[type="checkbox"]' ).prop( 'checked', false );
-
-		// Add new selected item
-		if ( text != 'None' ) {
-			field.find( 'input[type="checkbox"]' ).each( function() {
-				if ( jQuery( this ).closest( 'label' ).text().trim() == text ) {
-					jQuery( this ).prop( 'checked', true );
-				}
-			});
-		}
-	}
+	// function updateCheckboxes( field, text ) {
+	// 	// Remove currently selected item
+	// 	field.find( 'input[type="checkbox"]' ).prop( 'checked', false );
+	//
+	// 	// Add new selected item
+	// 	if ( text != 'None' ) {
+	// 		field.find( 'input[type="checkbox"]' ).each( function() {
+	// 			if ( jQuery( this ).closest( 'label' ).text().trim() == text ) {
+	// 				jQuery( this ).prop( 'checked', true );
+	// 			}
+	// 		});
+	// 	}
+	// }
 }
