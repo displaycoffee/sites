@@ -189,8 +189,15 @@ dl.faq + .top {
 /* Registration
 ========================================================================== */
 
-#register .panel:first-child fieldset dl dd:first-child {
-	margin-left: 0;
+#register {
+	.panel:first-child fieldset dl dd:first-child {
+		margin-left: 0;
+	}
+	fieldset .hide-fields {
+		visibility: hidden;
+		opacity: 0;
+		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+	}
 }
 
 /* Send Password / Activation Email

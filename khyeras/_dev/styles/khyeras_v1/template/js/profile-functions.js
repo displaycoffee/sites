@@ -1,6 +1,5 @@
 function profileThings() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
-
 		var requiredFields = {
 			'pf_c_race_type' : {
 				'fieldType' : 'select',
@@ -24,12 +23,11 @@ function profileThings() {
 			}
 		}
 
-		//console.log(requiredFields.pf_c_race_type.fieldType);
-
 		// Writer = 10, Character = 9
 		var selectedAccount = '10';
 		updateRequiredFields();
 
+		// If account selection has changed, update fields
 		jQuery( '#pf_account_type' ).on( 'change', function() {
 			selectedAccount = jQuery( this ).find( 'option:selected' ).text().trim();
 			updateRequiredFields();
@@ -53,25 +51,25 @@ function profileThings() {
 			}
 		});
 
-
-
-		// jQuery( '[id^=pf_c_]' ).each( function() {
-		// 	if (selectedAccount == '9') {
-		// 		jQuery( this ).closest( 'dl' ).show();
-		// 	} else {
-		// 		jQuery( this ).closest( 'dl' ).hide();
-		// 	}
-		// });
+		// Hide any custom profile field starting with pf_c_
+		jQuery( '[id^=pf_c_]' ).each( function() {
+			if (selectedAccount == '9') {
+				jQuery( this ).closest( 'dl' ).removeClass( 'hide-fields' );
+			} else {
+				jQuery( this ).closest( 'dl' ).addClass( 'hide-fields' );
+			}
+		});
 	}
 
 	function updateSelectMenu( field, text ) {
 		// Remove currently selected item
 		field.find( 'option:selected' ).removeAttr( 'selected' );
 
-		// Add new selected item		
+		// Add new selected item
 		field.find( 'option' ).each( function() {
 			if ( jQuery( this ).text().trim() == text ) {
-				jQuery( this ).attr( 'selected', 'selected' );
+				var optValue = jQuery( this ).val();
+				field.find( 'select' ).val( optValue );
 			}
 		});
 	}
