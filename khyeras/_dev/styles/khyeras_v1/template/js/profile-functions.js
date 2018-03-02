@@ -1,7 +1,9 @@
 function profileThings() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
+		// Default dropdown text for comparisons
 		var defaultText = '-- Please Select --';
 
+		// Required field values to change
 		var requiredFields = {
 			'pf_c_race_type' : {
 				'fieldType' : 'select',
@@ -25,30 +27,20 @@ function profileThings() {
 			}
 		}
 
-		var religionAllowed = {
-			'Archaicism' : [ 'Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir' ],
-			'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
-		}
-
-		var raceAllowed = {
-			'Dwarf' : [ 'Human', 'Kerasoka', 'Shapeshifter' ],
-			'Elemental' : [ 'Fae', 'Human', 'Kerasoka', 'Lumeacia', 'Shapeshifter' ],
-			'Fae' : [ 'Elemental', 'Human', 'Kerasoka', 'Shapeshifter' ],
-			'Human' : [ 'Dwarf', 'Elemental', 'Fae', 'Kerasoka', 'Shapeshifter', 'Ue\'drahc' ],
-			'Kerasoka' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Lumeacia', 'Shapeshifter' ],
-			'Lumeacia' : [ 'Elemental', 'Kerasoka' ],
-			'Shapeshifter' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Kerasoka' ],
-			'Ue\'drahc' : [ 'Human' ]
-		}
+		// When selecting character account, disable these fields by default
+		var characterDisabled = [ 'pf_c_race_a_opts', 'pf_c_race_b_opts', 'pf_c_religion_opts[]', 'pf_c_class_a_opts', 'pf_c_class_b_opts' ];
 
 		// Writer = 10, Character = 9
-		var selectedAccount = '10';
+		var selectedAccount = '10' || selectedAccount;
 		updateRequiredFields();
+		toggleFields();
+		updateRace();
 
 		// If account selection has changed, update fields
 		jQuery( '#pf_account_type' ).on( 'change', function() {
 			selectedAccount = jQuery( this ).find( 'option:selected' ).text().trim();
 			updateRequiredFields();
+			toggleFields();
 		});
 
 		// Re-enable disabled fields so form can submit properly
@@ -84,42 +76,40 @@ function profileThings() {
 				updateSelectMenu( field, fieldValue );
 			}
 		});
+	}
 
-		// Hide any custom profile field starting with pf_c_
+	function toggleFields() {
+		// Loop through all the custom profile fields and enable / displable
 		jQuery( '[id^=pf_c_]' ).each( function() {
-			if (selectedAccount == '9') {
-				jQuery( this ).prop( 'disabled', false );
-				//jQuery( this ).closest( 'dl' ).removeClass( 'hide-fields' );
+			if ( selectedAccount == '9' ) {
+				var nameAttr = jQuery( this ).attr( 'name' );
+
+				// For fields in characterDisabled, leave those disabled when switching
+				if ( characterDisabled.indexOf( nameAttr ) <= -1 ) {
+					jQuery( this ).prop( 'disabled', false );
+				}
 			} else {
 				jQuery( this ).prop( 'disabled', true );
-				//jQuery( this ).closest( 'dl' ).addClass( 'hide-fields' );
 			}
 		});
 	}
 
-	// function updateRace( field ) {
-	// 	// Get current selected option
-	// 	var selected = field.find( 'option:selected' ).text().trim();
-	// 	var raceOpts1 = jQuery( '#pf_c_race_a_opts' );
-	// 	var raceOpts2 = jQuery( '#pf_c_race_b_opts' );
-	//
-	// 	console.log(selected, defaultText);
-	//
-	// 	if ( selected == defaultText ) {
-	// 		console.log('hello')
-	// 		raceOpts1.prop( 'disabled', true );
-	// 		raceOpts2.prop( 'disabled', true );
-	// 	} else if ( selected == 'Full Blooded' ) {
-	// 		raceOpts1.prop( 'disabled', false );
-	// 		raceOpts2.prop( 'disabled', true );
-	// 	}
-	//
-	// 	raceOpts1.on( 'change', function() {
-	// 		if ( field.find( 'option:selected' ).text().trim() != defaultText ) {
-	// 			raceOpts2.prop( 'disabled', false );
-	// 		}
-	// 	});
-	// }
+	function updateRace() {
+		var raceType = jQuery( '#pf_c_race_type' );
+		var raceOpts1 = jQuery( '#pf_c_race_a_opts' );
+		var raceOpts2 = jQuery( '#pf_c_race_b_opts' );
+
+		raceType.on( 'change', function() {
+			var selected = jQuery( this ).find( 'option:selected' ).text().trim();
+
+			if ( selected != defaultText ) {
+			} else {
+				raceOpts1.add( raceOpts2 ).prop( 'disabled', true );
+				updateSelectMenu( raceOpts1, defaultText );
+				updateSelectMenu( raceOpts2, defaultText );
+			}
+		});
+	}
 
 	function updateReligion( field ) {
 		// Get current selected option
@@ -168,3 +158,30 @@ function profileThings() {
 	// 	}
 	// }
 }
+
+var religionAllowed = {
+	'Archaicism' : [ 'Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir' ],
+	'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
+}
+
+var raceAllowed = {
+	'Dwarf' : [ 'Human', 'Kerasoka', 'Shapeshifter' ],
+	'Elemental' : [ 'Fae', 'Human', 'Kerasoka', 'Lumeacia', 'Shapeshifter' ],
+	'Fae' : [ 'Elemental', 'Human', 'Kerasoka', 'Shapeshifter' ],
+	'Human' : [ 'Dwarf', 'Elemental', 'Fae', 'Kerasoka', 'Shapeshifter', 'Ue\'drahc' ],
+	'Kerasoka' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Lumeacia', 'Shapeshifter' ],
+	'Lumeacia' : [ 'Elemental', 'Kerasoka' ],
+	'Shapeshifter' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Kerasoka' ],
+	'Ue\'drahc' : [ 'Human' ]
+}
+
+// // Hide any custom profile field starting with pf_c_
+// jQuery( '[id^=pf_c_]' ).each( function() {
+// 	if (selectedAccount == '9') {
+// 		//jQuery( this ).prop( 'disabled', false );
+// 		//jQuery( this ).closest( 'dl' ).removeClass( 'hide-fields' );
+// 	} else {
+// 		//jQuery( this ).prop( 'disabled', true );
+// 		//jQuery( this ).closest( 'dl' ).addClass( 'hide-fields' );
+// 	}
+// });
