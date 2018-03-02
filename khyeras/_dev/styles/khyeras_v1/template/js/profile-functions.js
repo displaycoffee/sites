@@ -23,14 +23,26 @@ function profileThings() {
 			}
 		}
 
-		// Writer = 10, Character = 9
-		var selectedAccount = '10';
-		updateRequiredFields();
+		var religionAllowed = {
+			'Archaicism' : [ 'Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir' ],
+			'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
+		}
 
-		// If account selection has changed, update fields
-		jQuery( '#pf_account_type' ).on( 'change', function() {
-			selectedAccount = jQuery( this ).find( 'option:selected' ).text().trim();
-			updateRequiredFields();
+		// // Writer = 10, Character = 9
+		// var selectedAccount = '10';
+		// updateRequiredFields();
+		//
+		// // If account selection has changed, update fields
+		// jQuery( '#pf_account_type' ).on( 'change', function() {
+		// 	selectedAccount = jQuery( this ).find( 'option:selected' ).text().trim();
+		// 	updateRequiredFields();
+		// });
+
+		// Update religion checkboxes based on type selection
+		var religionMenu = jQuery( '#pf_c_religion_type' );
+		updateReligion( religionMenu );
+		religionMenu.on( 'change', function() {
+			updateReligion( religionMenu );
 		});
 	}
 
@@ -57,6 +69,26 @@ function profileThings() {
 				jQuery( this ).closest( 'dl' ).removeClass( 'hide-fields' );
 			} else {
 				jQuery( this ).closest( 'dl' ).addClass( 'hide-fields' );
+			}
+		});
+	}
+
+	function updateReligion( field ) {
+		// Get current selected option
+		var selected = field.find( 'option:selected' ).text().trim();
+
+		// Find the specific religion options
+		jQuery( 'label[for^=pf_c_religion_opts_]' ).each( function() {
+			// Initially disable all checkboxes
+			jQuery( this ).find( 'input[type="checkbox"]' ).prop({ 'disabled' : true, 'checked' : false });
+
+			// If religion is not in the selected array, don't enable the option
+			if ( religionAllowed[selected] ) {
+				var optionText = jQuery( this ).text().trim();
+
+				if ( religionAllowed[selected].indexOf( optionText ) > -1 ) {
+					jQuery( this ).find( 'input[type="checkbox"]' ).prop( 'disabled', false );
+				}
 			}
 		});
 	}
