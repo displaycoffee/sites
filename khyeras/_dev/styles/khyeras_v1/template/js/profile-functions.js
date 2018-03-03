@@ -38,7 +38,7 @@ function profileThings() {
 
 		// If account selection has changed, update fields
 		jQuery( '#pf_account_type' ).on( 'change', function() {
-			selectedAccount = jQuery( this ).find( 'option:selected' ).text().trim();
+			selectedAccount = findSelected( jQuery( this ) );
 			updateRequiredFields();
 			toggleFields();
 		});
@@ -79,7 +79,7 @@ function profileThings() {
 	}
 
 	function toggleFields() {
-		// Loop through all the custom profile fields and enable / displable
+		// Loop through all the custom profile fields and enable / disable
 		jQuery( '[id^=pf_c_]' ).each( function() {
 			if ( selectedAccount == '9' ) {
 				var nameAttr = jQuery( this ).attr( 'name' );
@@ -95,25 +95,40 @@ function profileThings() {
 	}
 
 	function updateRace() {
+		// Race select menus
 		var raceType = jQuery( '#pf_c_race_type' );
 		var raceOpts1 = jQuery( '#pf_c_race_a_opts' );
 		var raceOpts2 = jQuery( '#pf_c_race_b_opts' );
 
+		// Watch for changes on race type
 		raceType.on( 'change', function() {
-			var selected = jQuery( this ).find( 'option:selected' ).text().trim();
+			// Always reset select menus when race type changes
+			updateSelectMenu( raceOpts1, defaultText );
+			updateSelectMenu( raceOpts2, defaultText );
+			raceOpts1.add( raceOpts2 ).prop( 'disabled', true );
 
-			if ( selected != defaultText ) {
+			// If the selected type does not equal default text, enable first dropdown
+			if ( findSelected( jQuery( this ) ) != defaultText ) {
+				raceOpts1.prop( 'disabled', false );
+			}
+		});
+
+		// Watch for changes on race primary
+		raceOpts1.on( 'change', function() {
+			// If selected type is half breed and the primary race and defaultText are not the same...
+			// Then show the second drop dropdown and reset if no longer true
+			if ( findSelected( raceType ) == 'Half-Breed' && findSelected( jQuery( this ) ) != defaultText ) {
+				raceOpts2.prop( 'disabled', false );
 			} else {
-				raceOpts1.add( raceOpts2 ).prop( 'disabled', true );
-				updateSelectMenu( raceOpts1, defaultText );
 				updateSelectMenu( raceOpts2, defaultText );
+				raceOpts2.prop( 'disabled', true );
 			}
 		});
 	}
 
 	function updateReligion( field ) {
 		// Get current selected option
-		var selected = field.find( 'option:selected' ).text().trim();
+		var selected = findSelected( field );
 
 		// Find the specific religion options
 		jQuery( 'label[for^=pf_c_religion_opts_]' ).each( function() {
@@ -142,6 +157,10 @@ function profileThings() {
 				field.find( 'select' ).val( optValue );
 			}
 		});
+	}
+
+	function findSelected( selector ) {
+		return selector.find( 'option:selected' ).text().trim();
 	}
 
 	// function updateCheckboxes( field, text ) {
