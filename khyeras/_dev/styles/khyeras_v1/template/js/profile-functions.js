@@ -1,5 +1,8 @@
 function profileThings() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
+		// Character field selector
+		var characterFields = jQuery( '[id^=pf_c_]' );
+
 		// Default dropdown text for comparisons
 		var defaultText = '-- Please Select --';
 
@@ -7,22 +10,18 @@ function profileThings() {
 		var requiredFields = {
 			'pf_c_race_type' : {
 				'fieldType' : 'select',
-				'default'   : defaultText,
 				'hidden'    : 'Full Blooded'
 			},
 			'pf_c_race_a_opts' : {
 				'fieldType' : 'select',
-				'default'   : defaultText,
 				'hidden'    : 'Human'
 			},
 			'pf_c_class_type' : {
 				'fieldType' : 'select',
-				'default'   : defaultText,
 				'hidden'    : 'Single'
 			},
 			'pf_c_class_a_opts' : {
 				'fieldType' : 'select',
-				'default'   : defaultText,
 				'hidden'    : 'Fighter'
 			}
 		}
@@ -31,31 +30,32 @@ function profileThings() {
 		var characterDisabled = [ 'pf_c_race_a_opts', 'pf_c_race_b_opts', 'pf_c_religion_opts[]', 'pf_c_class_a_opts', 'pf_c_class_b_opts' ];
 
 		// Writer = 10, Character = 9
-		var selectedAccount = '10' || selectedAccount;
-		updateRequiredFields();
-		toggleFields();
-		updateRace();
+		var selectedDropdown = jQuery( '#pf_account_type' );
+		var selectedAccount = findSelected( selectedDropdown );
+		setRequiredDisabled();
+		updateRequiredDropdowns( '#pf_c_race_type', '#pf_c_race_a_opts', '#pf_c_race_b_opts', 'Half-Breed' );
+		updateRequiredDropdowns( '#pf_c_class_type', '#pf_c_class_a_opts', '#pf_c_class_b_opts', 'Dual' );
 
-		// If account selection has changed, update fields
-		jQuery( '#pf_account_type' ).on( 'change', function() {
+		// If account selection has changed, selected account variable
+		selectedDropdown.on( 'change', function() {
 			selectedAccount = findSelected( jQuery( this ) );
-			updateRequiredFields();
-			toggleFields();
 		});
 
-		// Re-enable disabled fields so form can submit properly
-		jQuery('#register').on('submit', function() {
-			jQuery( '[id^=pf_c_]' ).each( function() {
-		    	jQuery( this ).prop( 'disabled', false );
-			});
-		});
+		// This is a test
+		jQuery( '#register' ).on( 'submit', function( e ) {
+			// I probably don't need this...
+			selectedAccount = findSelected( selectedDropdown );
 
-		// Update race based on type selection
-		// var raceMenu = jQuery( '#pf_c_race_type' );
-		// updateRace( raceMenu );
-		// raceMenu.on( 'change', function() {
-		// 	updateRace( raceMenu );
-		// });
+			if ( selectedAccount == '10' ) {
+				characterFields.each( function() {
+			    	jQuery( this ).prop( 'disabled', false );
+				});
+				updateWriterFields();
+			}
+
+			// Remove this later
+			// return false;
+		});
 
 		// Update religion checkboxes based on type selection
 		// var religionMenu = jQuery( '#pf_c_religion_type' );
@@ -65,63 +65,68 @@ function profileThings() {
 		// });
 	}
 
-	function updateRequiredFields() {
-		// For each field in the requiredFields object, update the value depending on account
+	function updateWriterFields() {
+		// Loop through all character fields and set as needed
+		characterFields.each( function() {
+			var current = jQuery( this );
+
+			if ( current.is( 'select' ) ) {
+				current.find( 'option:selected' ).removeAttr( 'selected' );
+				updateSelectMenu( current, defaultText );
+			} else  {
+				if ( current.is( 'input[type="checkbox"]' ) ) {
+					current.prop( 'checked', false );
+				}
+				current.val( '' );
+			}
+		});
+
+		// For each item in requiredFields object, update the value depending on account
 		jQuery.each( requiredFields, function( key, value ) {
 			var field = jQuery( 'label[for="' + key + '"]' ).closest( 'dl' );
-			var fieldValue = ( selectedAccount == '9' ) ? value.default : value.hidden;
-
-			// Update select menus
-			if ( value.fieldType == 'select' ) {
-				updateSelectMenu( field, fieldValue );
-			}
+			updateSelectMenu( field, value.hidden );
 		});
 	}
 
-	function toggleFields() {
-		// Loop through all the custom profile fields and enable / disable
-		jQuery( '[id^=pf_c_]' ).each( function() {
-			if ( selectedAccount == '9' ) {
-				var nameAttr = jQuery( this ).attr( 'name' );
+	function setRequiredDisabled() {
+		// Loop through all the custom profile fields and disable required fields
+		characterFields.each( function() {
+			var current = jQuery( this );
 
-				// For fields in characterDisabled, leave those disabled when switching
-				if ( characterDisabled.indexOf( nameAttr ) <= -1 ) {
-					jQuery( this ).prop( 'disabled', false );
-				}
-			} else {
+			if ( characterDisabled.indexOf( current.attr( 'name' ) ) > -1 ) {
 				jQuery( this ).prop( 'disabled', true );
 			}
 		});
 	}
 
-	function updateRace() {
-		// Race select menus
-		var raceType = jQuery( '#pf_c_race_type' );
-		var raceOpts1 = jQuery( '#pf_c_race_a_opts' );
-		var raceOpts2 = jQuery( '#pf_c_race_b_opts' );
+	function updateRequiredDropdowns( main, opts1, opts2, multiText ) {
+		// Select menus
+		var dropdownType = jQuery( main );
+		var dropdownOpts1 = jQuery( opts1 );
+		var dropdownOpts2 = jQuery( opts2 );
 
-		// Watch for changes on race type
-		raceType.on( 'change', function() {
-			// Always reset select menus when race type changes
-			updateSelectMenu( raceOpts1, defaultText );
-			updateSelectMenu( raceOpts2, defaultText );
-			raceOpts1.add( raceOpts2 ).prop( 'disabled', true );
+		// Watch for changes on type
+		dropdownType.on( 'change', function() {
+			// Always reset select menus when type changes
+			updateSelectMenu( dropdownOpts1, defaultText );
+			updateSelectMenu( dropdownOpts2, defaultText );
+			dropdownOpts1.add( dropdownOpts2 ).prop( 'disabled', true );
 
 			// If the selected type does not equal default text, enable first dropdown
 			if ( findSelected( jQuery( this ) ) != defaultText ) {
-				raceOpts1.prop( 'disabled', false );
+				dropdownOpts1.prop( 'disabled', false );
 			}
 		});
 
-		// Watch for changes on race primary
-		raceOpts1.on( 'change', function() {
-			// If selected type is half breed and the primary race and defaultText are not the same...
+		// Watch for changes on primary dropdown (opts1)
+		dropdownOpts1.on( 'change', function() {
+			// If type allows for a second selection and the primary selection and defaultText are not the same...
 			// Then show the second drop dropdown and reset if no longer true
-			if ( findSelected( raceType ) == 'Half-Breed' && findSelected( jQuery( this ) ) != defaultText ) {
-				raceOpts2.prop( 'disabled', false );
+			if ( findSelected( dropdownType ) == multiText && findSelected( jQuery( this ) ) != defaultText ) {
+				dropdownOpts2.prop( 'disabled', false );
 			} else {
-				updateSelectMenu( raceOpts2, defaultText );
-				raceOpts2.prop( 'disabled', true );
+				updateSelectMenu( dropdownOpts2, defaultText );
+				dropdownOpts2.prop( 'disabled', true );
 			}
 		});
 	}
@@ -162,20 +167,6 @@ function profileThings() {
 	function findSelected( selector ) {
 		return selector.find( 'option:selected' ).text().trim();
 	}
-
-	// function updateCheckboxes( field, text ) {
-	// 	// Remove currently selected item
-	// 	field.find( 'input[type="checkbox"]' ).prop( 'checked', false );
-	//
-	// 	// Add new selected item
-	// 	if ( text != 'None' ) {
-	// 		field.find( 'input[type="checkbox"]' ).each( function() {
-	// 			if ( jQuery( this ).closest( 'label' ).text().trim() == text ) {
-	// 				jQuery( this ).prop( 'checked', true );
-	// 			}
-	// 		});
-	// 	}
-	// }
 }
 
 var religionAllowed = {
@@ -195,7 +186,7 @@ var raceAllowed = {
 }
 
 // // Hide any custom profile field starting with pf_c_
-// jQuery( '[id^=pf_c_]' ).each( function() {
+// characterFields.each( function() {
 // 	if (selectedAccount == '9') {
 // 		//jQuery( this ).prop( 'disabled', false );
 // 		//jQuery( this ).closest( 'dl' ).removeClass( 'hide-fields' );
