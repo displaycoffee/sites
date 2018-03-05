@@ -29,11 +29,23 @@ function profileThings() {
 		// When selecting character account, disable these fields by default
 		var characterDisabled = [ 'pf_c_race_a_opts', 'pf_c_race_b_opts', 'pf_c_religion_opts[]', 'pf_c_class_a_opts', 'pf_c_class_b_opts' ];
 
+		var raceAllowed = {
+			'Dwarf' : [ 'Human', 'Kerasoka', 'Shapeshifter' ],
+			'Elemental' : [ 'Fae', 'Human', 'Kerasoka', 'Lumeacia', 'Shapeshifter' ],
+			'Fae' : [ 'Elemental', 'Human', 'Kerasoka', 'Shapeshifter' ],
+			'Human' : [ 'Dwarf', 'Elemental', 'Fae', 'Kerasoka', 'Shapeshifter', 'Ue\'drahc' ],
+			'Kerasoka' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Lumeacia', 'Shapeshifter' ],
+			'Lumeacia' : [ 'Elemental', 'Kerasoka' ],
+			'Shapeshifter' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Kerasoka' ],
+			'Ue\'drahc' : [ 'Human' ]
+		}
+
+
 		// Writer = 10, Character = 9
 		var selectedDropdown = jQuery( '#pf_account_type' );
 		var selectedAccount = findSelected( selectedDropdown );
 		setRequiredDisabled();
-		updateRequiredDropdowns( '#pf_c_race_type', '#pf_c_race_a_opts', '#pf_c_race_b_opts', 'Half-Breed' );
+		updateRequiredDropdowns( '#pf_c_race_type', '#pf_c_race_a_opts', '#pf_c_race_b_opts', 'Half-Breed', raceAllowed );
 		updateRequiredDropdowns( '#pf_c_class_type', '#pf_c_class_a_opts', '#pf_c_class_b_opts', 'Dual' );
 
 		// If account selection has changed, selected account variable
@@ -99,7 +111,7 @@ function profileThings() {
 		});
 	}
 
-	function updateRequiredDropdowns( main, opts1, opts2, multiText ) {
+	function updateRequiredDropdowns( main, opts1, opts2, multiText, allowed ) {
 		// Select menus
 		var dropdownType = jQuery( main );
 		var dropdownOpts1 = jQuery( opts1 );
@@ -108,12 +120,25 @@ function profileThings() {
 		// Watch for changes on type
 		dropdownType.on( 'change', function() {
 			// Always reset select menus when type changes
+			dropdownOpts1.find( 'option' ).each( function() {
+				jQuery( this ).prop( 'disabled', false );
+			});
 			updateSelectMenu( dropdownOpts1, defaultText );
 			updateSelectMenu( dropdownOpts2, defaultText );
 			dropdownOpts1.add( dropdownOpts2 ).prop( 'disabled', true );
 
 			// If the selected type does not equal default text, enable first dropdown
 			if ( findSelected( jQuery( this ) ) != defaultText ) {
+
+				// Update half breed options as needed
+				if ( findSelected( jQuery( this ) ) == multiText ) {
+					dropdownOpts1.find( 'option' ).each( function() {
+						if ( !allowed[jQuery( this ).text().trim()] ) {
+							jQuery( this ).prop( 'disabled', true );
+						}
+					});
+				}
+
 				dropdownOpts1.prop( 'disabled', false );
 			}
 		});
@@ -174,16 +199,7 @@ var religionAllowed = {
 	'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
 }
 
-var raceAllowed = {
-	'Dwarf' : [ 'Human', 'Kerasoka', 'Shapeshifter' ],
-	'Elemental' : [ 'Fae', 'Human', 'Kerasoka', 'Lumeacia', 'Shapeshifter' ],
-	'Fae' : [ 'Elemental', 'Human', 'Kerasoka', 'Shapeshifter' ],
-	'Human' : [ 'Dwarf', 'Elemental', 'Fae', 'Kerasoka', 'Shapeshifter', 'Ue\'drahc' ],
-	'Kerasoka' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Lumeacia', 'Shapeshifter' ],
-	'Lumeacia' : [ 'Elemental', 'Kerasoka' ],
-	'Shapeshifter' : [ 'Dwarf', 'Elemental', 'Fae', 'Human', 'Kerasoka' ],
-	'Ue\'drahc' : [ 'Human' ]
-}
+
 
 // // Hide any custom profile field starting with pf_c_
 // characterFields.each( function() {
