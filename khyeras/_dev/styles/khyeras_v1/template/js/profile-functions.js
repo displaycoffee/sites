@@ -177,26 +177,62 @@ function updateProfileFields() {
 
 	// --- START --- SUBMIT LOGIC
 
-
-	// Writer = 10, Character = 9
-	var selectedDropdown = jQuery( '#pf_account_type' );
-	var selectedAccount = findSelected( selectedDropdown );
+	// Required field values to change
+	var requiredFields = {
+		'pf_c_race_type' : {
+			'fieldType' : 'select',
+			'hidden'    : 'Full Blooded'
+		},
+		'pf_c_race_a_opts' : {
+			'fieldType' : 'select',
+			'hidden'    : 'Human'
+		},
+		'pf_c_class_type' : {
+			'fieldType' : 'select',
+			'hidden'    : 'Single'
+		},
+		'pf_c_class_a_opts' : {
+			'fieldType' : 'select',
+			'hidden'    : 'Fighter'
+		}
+	}
 
 	// This is a test
 	jQuery( '#register' ).on( 'submit', function( e ) {
-		// I probably don't need this...
-		selectedAccount = findSelected( selectedDropdown );
+		// Writer = 10, Character = 9
+		var selectedAccount = findSelected( accountType );
 
+		// Check if the writer account is selected
 		if ( selectedAccount == '10' ) {
+
+			// Loop through all character fields and set as needed
 			characterFields.each( function() {
-				jQuery( this ).prop( 'disabled', false );
+				var current = jQuery( this );
+				if ( current.is( 'select' ) ) {
+					disableSelect( current );
+					resetSelectOptions( current, defaultText );
+				} else  {
+					if ( current.is( 'input[type="checkbox"]' ) ) {
+						disableCheckBox( current );
+					}
+					current.val( '' );
+				}
 			});
-			updateWriterFields();
+
+			// For each item in requiredFields object, update the value
+			jQuery.each( requiredFields, function( key, value ) {
+				var selector = jQuery( '#' + key );
+				if ( selector.is( 'select' ) ) {
+					enableSelect( selector );
+					enableSelectOptions( selector );
+					resetSelectOptions( selector, value.hidden );
+				}
+			});
 		}
 
 		// Remove this later
-		// return false;
-	});	
+		return false;
+	});
 
 	// --- END --- SUBMIT LOGIC
 
@@ -257,33 +293,8 @@ function updateProfileFields() {
 
 function profileThings() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
-		// Required field values to change
-		var requiredFields = {
-			'pf_c_race_type' : {
-				'fieldType' : 'select',
-				'hidden'    : 'Full Blooded'
-			},
-			'pf_c_race_a_opts' : {
-				'fieldType' : 'select',
-				'hidden'    : 'Human'
-			},
-			'pf_c_class_type' : {
-				'fieldType' : 'select',
-				'hidden'    : 'Single'
-			},
-			'pf_c_class_a_opts' : {
-				'fieldType' : 'select',
-				'hidden'    : 'Fighter'
-			}
-		}
-
-
-
 	}
 }
-
-
-
 
 
 // // Hide any custom profile field starting with pf_c_
