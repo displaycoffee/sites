@@ -84,5 +84,6 @@ jQuery( document ).ready( function( $ ) {
 	/* Profile Field Functionality
 	========================================================================== */
 
-	profileThings();
+	//profileThings();
+	updateProfileFields();
 });
