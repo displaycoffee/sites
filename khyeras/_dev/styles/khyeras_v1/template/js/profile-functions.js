@@ -20,9 +20,48 @@ function updateProfileFields() {
 			disableSelect( disabledFields[i] );
 		}
 		if ( disabledFields[i].is( 'input[type="checkbox"]' ) ) {
-			disableCheckBox( disabledFields[i] );
+			toggleCheckBox( disabledFields[i], false );
 		}
 	}
+
+	// Keep a count of selected checkboxes
+	var raceCount = 0;
+	var classesCount = 0;
+
+	// Check for changes on race type
+	raceType.on( 'change', function() {
+		var selectedType = findSelected( raceType );
+
+		// Reset options on any change
+		toggleCheckBox( raceOpts, false );
+
+		// Check if selected is not equal to default option
+		if ( selectedType == 'Full Blooded' ) {
+			toggleCheckBox( raceOpts, true );
+		} else if ( selectedType == 'Half-Breed' ) {
+			jQuery.each( raceOpts, function() {
+				var current = jQuery( this );
+				var optText = current.parent().text().trim();
+
+				if ( nonHalf.indexOf( optText ) <= -1 ) {
+					toggleCheckBox( current, true );
+				}
+			});
+		}
+	});
+
+	// Check for changes on race option on click
+	raceOpts.on( 'change', function() {
+		var selectedType = findSelected( raceType );
+
+		if ( selectedType == 'Half-Breed' ) {
+			if ( jQuery( this ).is(':checked') ) {
+				raceCount += 1;
+			} else {
+				raceCount -= 1;
+			}
+		}
+	});
 
 	// Disable select menu and options
 	function disableSelect( selector ) {
@@ -37,9 +76,18 @@ function updateProfileFields() {
 		});
 	}
 
-	// Disable checkbox options
-	function disableCheckBox( selector ) {
-		selector.prop({ 'disabled' : true, 'checked' : false });
+	// Disable / enable checkbox options
+	function toggleCheckBox( selector, condition ) {
+		if ( condition ) {
+			selector.prop( 'disabled', false );
+		} else {
+			selector.prop({ 'disabled' : true, 'checked' : false });
+		}
+	}
+
+	// Get the currently selected option
+	function findSelected( selector ) {
+		return selector.find( 'option:selected' ).text().trim();
 	}
 }
 
@@ -62,15 +110,15 @@ var characterRules = {
 		'exClass' : [ 'Alchemist', 'Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Summoner', 'Wizard' ]
 	},
 	'Dwarf' : {
-		'exRace'  : [ 'Elemental', 'Fae', 'Lumeacia', 'Ue\'drahc' ].concat( nonHalf ),
+		'exRace'  : [ 'Elemental', 'Fae', 'Lumeacia', 'Ue\'drahc' ],
 		'exClass' : magicClasses
 	},
 	'Elemental' : {
-		'exRace'  : [ 'Dwarf', 'Ue\'drahc' ].concat( nonHalf ),
+		'exRace'  : [ 'Dwarf', 'Ue\'drahc' ],
 		'exClass' : dragonClasses
 	},
 	'Fae' : {
-		'exRace'  : [ 'Dwarf', 'Lumeacia', 'Ue\'drahc' ].concat( nonHalf ),
+		'exRace'  : [ 'Dwarf', 'Lumeacia', 'Ue\'drahc' ],
 		'exClass' : dragonClasses
 	},
 	'Ghost' : {
@@ -78,11 +126,11 @@ var characterRules = {
 		'exClass' : dragonClasses
 	},
 	'Human' : {
-		'exRace'  : [ 'Lumeacia' ].concat( nonHalf ),
+		'exRace'  : [ 'Lumeacia' ],
 		'exClass' : dragonClasses
 	},
 	'Kerasoka' : {
-		'exRace'  : [ 'Ue\'drahc' ].concat( nonHalf ),
+		'exRace'  : [ 'Ue\'drahc' ],
 		'exClass' : magicClasses
 	},
 	'Korcai' : {
@@ -90,15 +138,15 @@ var characterRules = {
 		'exClass' : dragonClasses
 	},
 	'Lumeacia' : {
-		'exRace'  : [ 'Dwarf', 'Fae', 'Human', 'Shapeshifter', 'Ue\'drahc' ].concat( nonHalf ),
+		'exRace'  : [ 'Dwarf', 'Fae', 'Human', 'Shapeshifter', 'Ue\'drahc' ],
 		'exClass' : dragonClasses
 	},
 	'Shapeshifter' : {
-		'exRace'  : [ 'Lumeacia', 'Ue\'drahc' ].concat( nonHalf ),
+		'exRace'  : [ 'Lumeacia', 'Ue\'drahc' ],
 		'exClass' : dragonClasses
 	},
 	'Ue\'drahc' : {
-		'exRace'  : [ 'Dwarf', 'Elemental', 'Fae', 'Kerasoka', 'Lumeacia', 'Shapeshifter' ].concat( nonHalf ),
+		'exRace'  : [ 'Dwarf', 'Elemental', 'Fae', 'Kerasoka', 'Lumeacia', 'Shapeshifter' ],
 		'exClass' : dragonClasses
 	}
 }
