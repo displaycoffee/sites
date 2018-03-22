@@ -4,8 +4,10 @@ function updateProfileFields() {
 	var characterFields = jQuery( '[id^=pf_c_]' );
 	var raceType 		= jQuery( '#pf_c_race_type' );
 	var raceOpts 		= jQuery( 'input[name="pf_c_race_opts[]"]' );
+	var raceParent 		= jQuery( '#pf_c_race_opts_1' ).closest( 'dd' );
 	var classType 		= jQuery( '#pf_c_class_type' );
 	var classOpts 		= jQuery( 'input[name="pf_c_class_opts[]"]' );
+	var classParent		= jQuery( '#pf_c_class_opts_1' ).closest( 'dd' );
 	var religionType 	= jQuery( '#pf_c_religion_type' );
 	var religionOpts 	= jQuery( 'input[name="pf_c_religion_opts[]"]' );
 
@@ -41,7 +43,7 @@ function updateProfileFields() {
 		} else if ( selectedType == 'Half-Breed' ) {
 			jQuery.each( raceOpts, function() {
 				var current = jQuery( this );
-				var optText = current.parent().text().trim();
+				var optText = getCheckText( current );
 
 				if ( nonHalf.indexOf( optText ) <= -1 ) {
 					toggleCheckBox( current, true );
@@ -53,12 +55,50 @@ function updateProfileFields() {
 	// Check for changes on race option on click
 	raceOpts.on( 'change', function() {
 		var selectedType = findSelected( raceType );
+		var selectedOpt;
+		var checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
+		raceCount = checkedBox.length;
 
-		if ( selectedType == 'Half-Breed' ) {
-			if ( jQuery( this ).is(':checked') ) {
-				raceCount += 1;
-			} else {
-				raceCount -= 1;
+		if ( raceCount ) {
+			var selectedOpt = checkedBox[0].nextSibling.nodeValue.trim();
+			var raceArray = characterRules[selectedOpt]['exRace'].concat( nonHalf );
+
+			raceOpts.each( function() {
+				var current = jQuery( this );
+				var optText = getCheckText( current );
+
+				if ( selectedType == 'Full Blooded' ) {
+					if ( !current.is(':checked') ) {
+						toggleCheckBox( current, false );
+					} else {
+						toggleCheckBox( current, true );
+					}
+				} else if ( selectedType == 'Half-Breed' ) {
+					if ( raceCount == 1 ) {
+						if ( raceArray && raceArray.indexOf( optText ) <= -1 )	{
+							toggleCheckBox( current, true );
+						} else {
+							toggleCheckBox( current, false );
+						}
+					} else if ( raceCount == 2 ) {
+						if ( !current.is(':checked') ) {
+							toggleCheckBox( current, false );
+						}
+					}
+				}
+			});
+		} else {
+			if ( selectedType == 'Full Blooded' ) {
+				toggleCheckBox( raceOpts, true );
+			} else if ( selectedType == 'Half-Breed' ) {
+				jQuery.each( raceOpts, function() {
+					var current = jQuery( this );
+					var optText = getCheckText( current );
+
+					if ( nonHalf.indexOf( optText ) <= -1 ) {
+						toggleCheckBox( current, true );
+					}
+				});
 			}
 		}
 	});
@@ -83,6 +123,11 @@ function updateProfileFields() {
 		} else {
 			selector.prop({ 'disabled' : true, 'checked' : false });
 		}
+	}
+
+	// Return text next to checkbox
+	function getCheckText( selector ) {
+		return selector[0].nextSibling.nodeValue.trim();
 	}
 
 	// Get the currently selected option
