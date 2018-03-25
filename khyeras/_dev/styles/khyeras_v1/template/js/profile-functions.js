@@ -1,4 +1,9 @@
 function updateProfileFields() {
+	// Reusable language variables
+	var defaultText = '-- Please Select --';
+	var fb 			= 'Full Blooded';
+	var hb 			= 'Half-Breed';
+
 	// Reusable selectors for fields
 	var accountType     = jQuery( '#pf_account_type' );
 	var characterFields = jQuery( '[id^=pf_c_]' );
@@ -10,9 +15,6 @@ function updateProfileFields() {
 	var classParent		= jQuery( '#pf_c_class_opts_1' ).closest( 'dd' );
 	var religionType 	= jQuery( '#pf_c_religion_type' );
 	var religionOpts 	= jQuery( 'input[name="pf_c_religion_opts[]"]' );
-
-	// Default dropdown text for comparisons
-	var defaultText = '-- Please Select --';
 
 	// Disable these fields by default
 	var disabledFields = [ raceOpts, classType, classOpts, religionOpts ];
@@ -30,17 +32,75 @@ function updateProfileFields() {
 	var raceCount = 0;
 	var classesCount = 0;
 
-	// Check for changes on race type
+	// Check for changes on race type dropdwon
 	raceType.on( 'change', function() {
 		var selectedType = findSelected( raceType );
 
-		// Reset options on any change
+		// Reset options on change
 		toggleCheckBox( raceOpts, false );
 
-		// Check if selected is not equal to default option
-		if ( selectedType == 'Full Blooded' ) {
+		// Enable options depending on type selection
+		enableRaceOptions( selectedType );
+	});
+
+	// Check for changes on race checkboxes
+	raceOpts.on( 'change', function() {
+		var selectedType = findSelected( raceType );
+		var selectedOpt;
+
+		// Update count of checkboxes
+		var checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
+		raceCount = checkedBox.length;
+
+		// Check if there is one or more checked boxes
+		if ( raceCount ) {
+			// Get text following checkbox
+			var selectedOpt = getCheckText( checkedBox );
+
+			// Build excluded race list from selected race and non-half arrays
+			var raceArray = characterRules[selectedOpt]['exRace'].concat( nonHalf );
+
+			// Loop through all the race checkboxes
+			raceOpts.each( function() {
+				var current = jQuery( this );
+				var optText = getCheckText( current );
+
+				if ( selectedType == fb ) {
+					// If full blooded race type, MAX: one option
+					// With one box checked, disable remaining and enable class type dropdown
+					if ( !current.is(':checked') ) {
+						toggleCheckBox( current, false );
+					}
+				} else if ( selectedType == hb ) {
+					// If half-breed race type, MAX: two options
+					if ( raceCount == 1 ) {
+						// With one box checked, exclude remaining in array list
+						if ( raceArray && raceArray.indexOf( optText ) <= -1 )	{
+							toggleCheckBox( current, true );
+						} else {
+							toggleCheckBox( current, false );
+						}
+					} else if ( raceCount == 2 ) {
+						// With two boxes checked, disable remaining and enable class type dropdown
+						if ( !current.is(':checked') ) {
+							toggleCheckBox( current, false );
+						}
+					}
+				}
+			});
+		} else {
+			// If no boxes are checked, enable options depending on type selection
+			enableRaceOptions( selectedType );
+		}
+	});
+
+	// Build default race options depending on selection
+	function enableRaceOptions( type ) {
+		if ( type == fb ) {
+			// If full blooded race type, enable all options
 			toggleCheckBox( raceOpts, true );
-		} else if ( selectedType == 'Half-Breed' ) {
+		} else if ( type == hb ) {
+			// If half-breed race type, enable those that can be half-breeds
 			jQuery.each( raceOpts, function() {
 				var current = jQuery( this );
 				var optText = getCheckText( current );
@@ -50,58 +110,7 @@ function updateProfileFields() {
 				}
 			});
 		}
-	});
-
-	// Check for changes on race option on click
-	raceOpts.on( 'change', function() {
-		var selectedType = findSelected( raceType );
-		var selectedOpt;
-		var checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
-		raceCount = checkedBox.length;
-
-		if ( raceCount ) {
-			var selectedOpt = checkedBox[0].nextSibling.nodeValue.trim();
-			var raceArray = characterRules[selectedOpt]['exRace'].concat( nonHalf );
-
-			raceOpts.each( function() {
-				var current = jQuery( this );
-				var optText = getCheckText( current );
-
-				if ( selectedType == 'Full Blooded' ) {
-					if ( !current.is(':checked') ) {
-						toggleCheckBox( current, false );
-					} else {
-						toggleCheckBox( current, true );
-					}
-				} else if ( selectedType == 'Half-Breed' ) {
-					if ( raceCount == 1 ) {
-						if ( raceArray && raceArray.indexOf( optText ) <= -1 )	{
-							toggleCheckBox( current, true );
-						} else {
-							toggleCheckBox( current, false );
-						}
-					} else if ( raceCount == 2 ) {
-						if ( !current.is(':checked') ) {
-							toggleCheckBox( current, false );
-						}
-					}
-				}
-			});
-		} else {
-			if ( selectedType == 'Full Blooded' ) {
-				toggleCheckBox( raceOpts, true );
-			} else if ( selectedType == 'Half-Breed' ) {
-				jQuery.each( raceOpts, function() {
-					var current = jQuery( this );
-					var optText = getCheckText( current );
-
-					if ( nonHalf.indexOf( optText ) <= -1 ) {
-						toggleCheckBox( current, true );
-					}
-				});
-			}
-		}
-	});
+	}
 
 	// Disable select menu and options
 	function disableSelect( selector ) {
