@@ -41,6 +41,7 @@ function updateProfileFields() {
 		// Reset options on change
 		toggleCheckBox( raceOpts, false );
 		toggleSelect( classType, false );
+		toggleCheckBox( classOpts, false );
 
 		// Enable options depending on type selection
 		enableRaceOptions( selRaceType );
@@ -95,11 +96,13 @@ function updateProfileFields() {
 					toggleSelect( classType, true );
 				} else {
 					toggleSelect( classType, false );
+					toggleCheckBox( classOpts, false );
 				}
 			});
 		} else {
-			// If no boxes are checked, disable class type
+			// If no boxes are checked, disable class type dropdown and checkboxes
 			toggleSelect( classType, false );
+			toggleCheckBox( classOpts, false );
 
 			// Enable options depending on type selection
 			enableRaceOptions( selRaceType );
@@ -108,39 +111,36 @@ function updateProfileFields() {
 
 	// Check for changes on class type dropdwon
 	classType.on( 'change', function() {
+		var selRaceType = findSelected( raceType );
 		var selClassType = findSelected( classType );
 
 		// Reset options on change
 		toggleCheckBox( classOpts, false );
 
-		// Build excluded class list from selected races
-		var classArray = [];
-		raceOpts.each( function() {
-			var current = jQuery( this );
-			if ( current.is(':checked') ) {
-				var classList = characterRules[getCheckText( current )]['exClass'];
-				if ( classList ) {
-					classArray = mergeArray( classArray, classList );
-				}
-			}
-		});
+		// Enable options depending on type selections
+		enableClassOptions( selRaceType, selClassType );
+	});
 
-		console.log(classArray);
+	// Check for changes on class checkboxes
+	classOpts.on( 'change', function() {
+		var selRaceType = findSelected( raceType );
+		var selClassType = findSelected( classType );
 
-		// Enable options depending on type selection
-		if ( selClassType == single ) {
-			// If single class type, enable all options
-			// toggleCheckBox( classOpts, true );
-		} else if ( selClassType == dual ) {
-			// // If half-breed race type, enable those that can be half-breeds
-			// jQuery.each( raceOpts, function() {
-			// 	var current = jQuery( this );
-			// 	var optText = getCheckText( current );
-			//
-			// 	if ( nonHalf.indexOf( optText ) <= -1 ) {
-			// 		toggleCheckBox( current, true );
-			// 	}
-			// });
+		// Update count of checkboxes
+		var checkedBox = classParent.find( 'input[type="checkbox"]:checked' );
+		classCount = checkedBox.length;
+
+		// Check if there is one or more checked boxes
+		if ( classCount ) {
+			classOpts.each( function() {
+				var current = jQuery( this );
+			});
+		} else {
+			// If no boxes are checked, disable checkboxes
+			toggleCheckBox( classOpts, false );
+
+			// Enable options depending on type selection
+			enableClassOptions( selRaceType, selClassType );
 		}
 	});
 
@@ -156,6 +156,46 @@ function updateProfileFields() {
 				var optText = getCheckText( current );
 
 				if ( nonHalf.indexOf( optText ) <= -1 ) {
+					toggleCheckBox( current, true );
+				}
+			});
+		}
+	}
+
+	// Build default class options depending on race selection
+	function enableClassOptions( rtype, ctype ) {
+		// Build excluded class list from selected races
+		var classArray = [];
+		raceOpts.each( function() {
+			var current = jQuery( this );
+			var optText = getCheckText( current );
+
+			if ( current.is(':checked') ) {
+				var classList = characterRules[optText]['exClass'];
+
+				// Define allowed classes based on race type and checked boxes
+				if ( classList ) {
+					if ( rtype == fb ) {
+						classArray = classList;
+					} else if ( rtype == hb ) {
+						// Some half-breed classes can use magic
+						if ( optText == 'Dwarf' ) {
+							classArray = dragonClasses;
+						} else {
+							classArray = mergeArray( classArray, classList );
+						}
+					}
+				}
+			}
+		});
+
+		// Enable options depending on type selection
+		if ( ctype != defaultText ) {
+			jQuery.each( classOpts, function() {
+				var current = jQuery( this );
+				var optText = getCheckText( current );
+
+				if ( classArray.indexOf( optText ) <= -1 ) {
 					toggleCheckBox( current, true );
 				}
 			});
@@ -198,19 +238,6 @@ function updateProfileFields() {
 	// Return text next to checkbox
 	function getCheckText( selector ) {
 		return selector[0].nextSibling.nodeValue.trim();
-	}
-
-	// Merge arrays and remove duplicates
-	function mergeArray( array1, array2 ) {
-		var a = array1.concat( array2 );
-	    for ( var i = 0; i < a.length; ++i ) {
-	        for ( var j = i+1; j < a.length; ++j ) {
-	            if ( a[i] === a[j] ) {
-	                a.splice( j--, 1 );
-				}
-	        }
-	    }
-	    return a;
 	}
 }
 
