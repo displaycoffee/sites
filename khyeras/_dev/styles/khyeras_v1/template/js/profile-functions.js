@@ -3,6 +3,8 @@ function updateProfileFields() {
 	var defaultText = '-- Please Select --';
 	var fb 			= 'Full Blooded';
 	var hb 			= 'Half-Breed';
+	var single		= 'Single';
+	var dual		= 'Dual';
 
 	// Reusable selectors for fields
 	var accountType     = jQuery( '#pf_account_type' );
@@ -30,24 +32,24 @@ function updateProfileFields() {
 
 	// Keep a count of selected checkboxes
 	var raceCount = 0;
-	var classesCount = 0;
+	var classCount = 0;
 
 	// Check for changes on race type dropdwon
 	raceType.on( 'change', function() {
-		var selectedType = findSelected( raceType );
+		var selRaceType = findSelected( raceType );
 
 		// Reset options on change
 		toggleCheckBox( raceOpts, false );
 		toggleSelect( classType, false );
 
 		// Enable options depending on type selection
-		enableRaceOptions( selectedType );
+		enableRaceOptions( selRaceType );
 	});
 
 	// Check for changes on race checkboxes
 	raceOpts.on( 'change', function() {
-		var selectedType = findSelected( raceType );
-		var selectedOpt;
+		var selRaceType = findSelected( raceType );
+		var selRaceOpt;
 
 		// Update count of checkboxes
 		var checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
@@ -56,40 +58,43 @@ function updateProfileFields() {
 		// Check if there is one or more checked boxes
 		if ( raceCount ) {
 			// Get text following checkbox
-			var selectedOpt = getCheckText( checkedBox );
+			var selRaceOpt = getCheckText( checkedBox );
 
 			// Build excluded race list from selected race and non-half arrays
-			var raceArray = characterRules[selectedOpt]['exRace'].concat( nonHalf );
+			var raceArray = mergeArray( characterRules[selRaceOpt]['exRace'], nonHalf );
 
 			// Loop through all the race checkboxes
 			raceOpts.each( function() {
 				var current = jQuery( this );
-				var optText = getCheckText( current );
 
-				if ( selectedType == fb ) {
+				if ( selRaceType == fb ) {
 					// If full blooded race type, MAX: one option
-					// With one box checked, disable remaining and enable class type dropdown
+					// With one box checked, disable remaining
 					if ( !current.is(':checked') ) {
 						toggleCheckBox( current, false );
 					}
-					toggleSelect( classType, true );
-				} else if ( selectedType == hb ) {
+				} else if ( selRaceType == hb ) {
 					// If half-breed race type, MAX: two options
 					if ( raceCount == 1 ) {
-						// With one box checked, exclude remaining in array list and disable class type dropdown
-						if ( raceArray && raceArray.indexOf( optText ) <= -1 )	{
+						// With one box checked, exclude remaining in array list
+						if ( raceArray && raceArray.indexOf( getCheckText( current ) ) <= -1 )	{
 							toggleCheckBox( current, true );
 						} else {
 							toggleCheckBox( current, false );
 						}
-						toggleSelect( classType, false );
 					} else if ( raceCount == 2 ) {
-						// With two boxes checked, disable remaining and enable class type dropdown
+						// With two boxes checked, disable remaining
 						if ( !current.is(':checked') ) {
 							toggleCheckBox( current, false );
 						}
-						toggleSelect( classType, true );
 					}
+				}
+
+				// Enable class type dropdown depending on race type and race checkbox count
+				if ( ( selRaceType == fb && raceCount == 1 ) || ( selRaceType == hb && raceCount == 2 ) ) {
+					toggleSelect( classType, true );
+				} else {
+					toggleSelect( classType, false );
 				}
 			});
 		} else {
@@ -97,7 +102,45 @@ function updateProfileFields() {
 			toggleSelect( classType, false );
 
 			// Enable options depending on type selection
-			enableRaceOptions( selectedType );
+			enableRaceOptions( selRaceType );
+		}
+	});
+
+	// Check for changes on class type dropdwon
+	classType.on( 'change', function() {
+		var selClassType = findSelected( classType );
+
+		// Reset options on change
+		toggleCheckBox( classOpts, false );
+
+		// Build excluded class list from selected races
+		var classArray = [];
+		raceOpts.each( function() {
+			var current = jQuery( this );
+			if ( current.is(':checked') ) {
+				var classList = characterRules[getCheckText( current )]['exClass'];
+				if ( classList ) {
+					classArray = mergeArray( classArray, classList );
+				}
+			}
+		});
+
+		console.log(classArray);
+
+		// Enable options depending on type selection
+		if ( selClassType == single ) {
+			// If single class type, enable all options
+			// toggleCheckBox( classOpts, true );
+		} else if ( selClassType == dual ) {
+			// // If half-breed race type, enable those that can be half-breeds
+			// jQuery.each( raceOpts, function() {
+			// 	var current = jQuery( this );
+			// 	var optText = getCheckText( current );
+			//
+			// 	if ( nonHalf.indexOf( optText ) <= -1 ) {
+			// 		toggleCheckBox( current, true );
+			// 	}
+			// });
 		}
 	});
 
@@ -128,8 +171,12 @@ function updateProfileFields() {
 			});
 		} else {
 			selector.prop( 'disabled', true );
-			selector.find( 'option' ).each( function() {
-				jQuery( this ).prop( 'disabled', true );
+			selector.find( 'option' ).each( function( index ) {
+				var current =  jQuery( this );
+				current.prop( 'disabled', true );
+				if ( current.text().trim() == defaultText ) {
+					selector.val( current.val() );
+				}
 			});
 		}
 	}
@@ -152,13 +199,26 @@ function updateProfileFields() {
 	function getCheckText( selector ) {
 		return selector[0].nextSibling.nodeValue.trim();
 	}
+
+	// Merge arrays and remove duplicates
+	function mergeArray( array1, array2 ) {
+		var a = array1.concat( array2 );
+	    for ( var i = 0; i < a.length; ++i ) {
+	        for ( var j = i+1; j < a.length; ++j ) {
+	            if ( a[i] === a[j] ) {
+	                a.splice( j--, 1 );
+				}
+	        }
+	    }
+	    return a;
+	}
 }
 
 // Common array for exclude dragon classes
 var dragonClasses = [ 'Physical', 'Magical', 'Healing' ];
 
 // Common array for exclude magic classes
-var magicClasses = [ 'Cleric', 'Druid', 'Sorcerer', 'Summoner', 'Wizard' ].concat( dragonClasses );
+var magicClasses = [ 'Cleric', 'Druid', 'Sorcerer', 'Summoner', 'Wizard' ];
 
 // Common array for excluding all races
 var all = [ 'All' ];
@@ -174,7 +234,7 @@ var characterRules = {
 	},
 	'Dwarf' : {
 		'exRace'  : [ 'Elemental', 'Fae', 'Lumeacia', 'Ue\'drahc' ],
-		'exClass' : magicClasses
+		'exClass' : mergeArray( magicClasses, dragonClasses )
 	},
 	'Elemental' : {
 		'exRace'  : [ 'Dwarf', 'Ue\'drahc' ],
@@ -194,7 +254,7 @@ var characterRules = {
 	},
 	'Kerasoka' : {
 		'exRace'  : [ 'Ue\'drahc' ],
-		'exClass' : magicClasses
+		'exClass' : mergeArray( magicClasses, dragonClasses )
 	},
 	'Korcai' : {
 		'exRace'  : all,
