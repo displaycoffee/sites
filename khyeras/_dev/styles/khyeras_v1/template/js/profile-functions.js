@@ -21,7 +21,7 @@ function updateProfileFields() {
 
 	for ( var i = 0; i < disabledFields.length; i++ ) {
 		if ( disabledFields[i].is( 'select' ) ) {
-			disableSelect( disabledFields[i] );
+			toggleSelect( disabledFields[i], false );
 		}
 		if ( disabledFields[i].is( 'input[type="checkbox"]' ) ) {
 			toggleCheckBox( disabledFields[i], false );
@@ -38,6 +38,7 @@ function updateProfileFields() {
 
 		// Reset options on change
 		toggleCheckBox( raceOpts, false );
+		toggleSelect( classType, false );
 
 		// Enable options depending on type selection
 		enableRaceOptions( selectedType );
@@ -71,25 +72,31 @@ function updateProfileFields() {
 					if ( !current.is(':checked') ) {
 						toggleCheckBox( current, false );
 					}
+					toggleSelect( classType, true );
 				} else if ( selectedType == hb ) {
 					// If half-breed race type, MAX: two options
 					if ( raceCount == 1 ) {
-						// With one box checked, exclude remaining in array list
+						// With one box checked, exclude remaining in array list and disable class type dropdown
 						if ( raceArray && raceArray.indexOf( optText ) <= -1 )	{
 							toggleCheckBox( current, true );
 						} else {
 							toggleCheckBox( current, false );
 						}
+						toggleSelect( classType, false );
 					} else if ( raceCount == 2 ) {
 						// With two boxes checked, disable remaining and enable class type dropdown
 						if ( !current.is(':checked') ) {
 							toggleCheckBox( current, false );
 						}
+						toggleSelect( classType, true );
 					}
 				}
 			});
 		} else {
-			// If no boxes are checked, enable options depending on type selection
+			// If no boxes are checked, disable class type
+			toggleSelect( classType, false );
+
+			// Enable options depending on type selection
 			enableRaceOptions( selectedType );
 		}
 	});
@@ -112,17 +119,24 @@ function updateProfileFields() {
 		}
 	}
 
-	// Disable select menu and options
-	function disableSelect( selector ) {
-		if ( !selector.prop( 'disabled' ) ) {
+	// Disable / enable select menu and options
+	function toggleSelect( selector, condition ) {
+		if ( condition ) {
+			selector.prop( 'disabled', false );
+			selector.find( 'option' ).each( function() {
+				jQuery( this ).prop( 'disabled', false );
+			});
+		} else {
 			selector.prop( 'disabled', true );
-		}
-
-		selector.find( 'option' ).each( function() {
-			if ( !jQuery( this ).prop( 'disabled' ) ) {
+			selector.find( 'option' ).each( function() {
 				jQuery( this ).prop( 'disabled', true );
-			}
-		});
+			});
+		}
+	}
+
+	// Return the currently selected option
+	function findSelected( selector ) {
+		return selector.find( 'option:selected' ).text().trim();
 	}
 
 	// Disable / enable checkbox options
@@ -137,11 +151,6 @@ function updateProfileFields() {
 	// Return text next to checkbox
 	function getCheckText( selector ) {
 		return selector[0].nextSibling.nodeValue.trim();
-	}
-
-	// Get the currently selected option
-	function findSelected( selector ) {
-		return selector.find( 'option:selected' ).text().trim();
 	}
 }
 
