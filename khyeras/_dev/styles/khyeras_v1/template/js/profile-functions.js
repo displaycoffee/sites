@@ -288,7 +288,7 @@ function updateProfileFields() {
 				var current = jQuery( this );
 				var optText = getCheckText( current );
 
-				if ( religionRules[rtype].indexOf( optText ) > -1 ) {
+				if ( religionRules[rtype].indexOf( optText ) <= -1 ) {
 					toggleCheckBox( current, false );
 				} else {
 					toggleCheckBox( current, true );
