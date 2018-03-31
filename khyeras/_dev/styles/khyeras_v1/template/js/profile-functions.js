@@ -14,13 +14,10 @@ function updateProfileFields() {
 		var characterFields = jQuery( '[id^=pf_c_]' );
 		var raceType 		= jQuery( '#pf_c_race_type' );
 		var raceOpts 		= jQuery( 'input[name="pf_c_race_opts[]"]' );
-		var raceParent 		= jQuery( '#pf_c_race_opts_1' ).closest( 'dd' );
 		var classType 		= jQuery( '#pf_c_class_type' );
 		var classOpts 		= jQuery( 'input[name="pf_c_class_opts[]"]' );
-		var classParent		= jQuery( '#pf_c_class_opts_1' ).closest( 'dd' );
 		var religionType 	= jQuery( '#pf_c_religion_type' );
 		var religionOpts 	= jQuery( 'input[name="pf_c_religion_opts[]"]' );
-		var religionParent  = jQuery( '#pf_c_religion_opts_1' ).closest( 'dd' );
 
 		// Set variables without values
 		var current, checkedBox, optText;
@@ -39,7 +36,16 @@ function updateProfileFields() {
 			disableAllClass();
 
 			// Enable options depending on type selection
-			defaultRaceOptions( selRaceType );
+			if ( selRaceType == fb ) {
+				toggleCheckBox( raceOpts, true );
+			} else if ( selRaceType == hb ) {
+				jQuery.each( raceOpts, function() {
+					current = jQuery( this );
+					if ( nonHalf.indexOf( getCheckText( current ) ) <= -1 ) {
+						toggleCheckBox( current, true );
+					}
+				});
+			}
 		});
 
 		// Check for changes on race checkboxes
@@ -48,38 +54,22 @@ function updateProfileFields() {
 			updateRaceOptions();
 		});
 
-		// Build default race options depending on selection
-		function defaultRaceOptions( rtype ) {
-			if ( rtype == fb ) {
-				toggleCheckBox( raceOpts, true );
-			} else if ( rtype == hb ) {
-				jQuery.each( raceOpts, function() {
-					current = jQuery( this );
-					optText = getCheckText( current );
-
-					if ( nonHalf.indexOf( optText ) <= -1 ) {
-						toggleCheckBox( current, true );
-					}
-				});
-			}
-		}
-
 		// Update race options depending on various selections
 		function updateRaceOptions() {
 			selRaceType = findSelected( raceType );
 
 			// Update count of checkboxes
-			checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
+			checkedBox = jQuery( '#pf_c_race_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
 			raceCount = checkedBox.length;
 
-			// Check if full breed or half-breed is selected
+			// Check if Full Blooded or Half-Breed is selected
 			if ( selRaceType == fb || selRaceType == hb ) {
 				raceOpts.each( function() {
 					current = jQuery( this );
 
-					// If half-breed and one box is selected, update remaining
+					// If Half-Breed and one box is selected, update remaining
 					if ( selRaceType == hb && raceCount == 1 ) {
-						 selRaceOpt = getCheckText( checkedBox );
+						selRaceOpt = getCheckText( checkedBox );
 
 						// Create exclude array and enable / disable boxes
 						var raceArray = mergeArray( characterRules[selRaceOpt]['exRace'], nonHalf );
@@ -93,7 +83,7 @@ function updateProfileFields() {
 						disableAllClass();
 					} else if ( ( selRaceType == fb && raceCount == 1 ) || ( selRaceType == hb && raceCount == 2 ) ) {
 						// If max count is met, disable remaining checkboxes
-						// Half-breed - MAX: 2, Full blooded - MAX: 1
+						// Half-Breed - MAX: 2, Full Blooded - MAX: 1
 						if ( !current.is(':checked') ) {
 							toggleCheckBox( current, false );
 						}
@@ -102,7 +92,13 @@ function updateProfileFields() {
 						toggleSelect( classType, true );
 					} else {
 						// If no above conditions are met, reset to default options and disable classes
-						defaultRaceOptions( selRaceType );
+						if ( selRaceType == fb ) {
+							toggleCheckBox( current, true );
+						} else if ( selRaceType == hb ) {
+							if ( nonHalf.indexOf( getCheckText( current ) ) > -1 ) {
+								toggleCheckBox( current, false );
+							}
+						}
 						disableAllClass();
 					}
 				});
@@ -148,7 +144,7 @@ function updateProfileFields() {
 
 					// Define allowed classes based on race type and checked boxes
 					if ( classList ) {
-						// Half-breed dwarves can be magic users
+						// Half-Breed dwarves can be magic users
 						if ( rtype == hb && optText == 'Dwarf' ) {
 							classArray = dragonClasses;
 						} else {
@@ -162,9 +158,7 @@ function updateProfileFields() {
 			if ( ctype != defaultText ) {
 				jQuery.each( classOpts, function() {
 					current = jQuery( this );
-					optText = getCheckText( current );
-
-					if ( classArray.indexOf( optText ) <= -1 ) {
+					if ( classArray.indexOf( getCheckText( current ) ) <= -1 ) {
 						toggleCheckBox( current, true );
 					}
 				});
@@ -177,7 +171,7 @@ function updateProfileFields() {
 			selClassType = findSelected( classType );
 
 			// Update count of checkboxes
-			checkedBox = classParent.find( 'input[type="checkbox"]:checked' );
+			checkedBox = jQuery( '#pf_c_class_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
 			classCount = checkedBox.length;
 
 			// Check if single or dual is selected
@@ -253,7 +247,7 @@ function updateProfileFields() {
 			selReligionType = findSelected( religionType );
 
 			// Update count of checkboxes
-			checkedBox = religionParent.find( 'input[type="checkbox"]:checked' );
+			checkedBox = jQuery( '#pf_c_religion_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
 			religionCount = checkedBox.length;
 
 			// Check if Archaicism or Idolism is selected
@@ -329,7 +323,7 @@ var magicClasses = [ 'Cleric', 'Druid', 'Sorcerer', 'Summoner', 'Wizard' ];
 // Common array for excluding all races
 var all = [ 'All' ];
 
-// Common array for excluding non-half-breed
+// Common array for excluding non-Half-Breed
 var nonHalf = [ 'Dragon', 'Ghost', 'Korcai' ];
 
 // Excluded character rules / combinations
