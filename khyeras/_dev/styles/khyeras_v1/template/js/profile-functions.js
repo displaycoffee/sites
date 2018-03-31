@@ -22,102 +22,96 @@ function updateProfileFields() {
 		var religionOpts 	= jQuery( 'input[name="pf_c_religion_opts[]"]' );
 		var religionParent  = jQuery( '#pf_c_religion_opts_1' ).closest( 'dd' );
 
-		// Check if there are error messages
-		var errors = jQuery( 'dd.error' ).length;
-
-		//	Disable these fields by default
-		var disabledFields = [ raceOpts, classType, classOpts, religionOpts ];
-
-		for ( var i = 0; i < disabledFields.length; i++ ) {
-			if ( disabledFields[i].is( 'select' ) ) {
-				toggleSelect( disabledFields[i], false );
-			}
-			if ( disabledFields[i].is( 'input[type="checkbox"]' ) ) {
-				toggleCheckBox( disabledFields[i], false );
-			}
-		}
-
-		// Keep a count of selected checkboxes
-		var raceCount = 0;
-		var classCount = 0;
-		var religionCount = 0;
+		// Set variables without values
+		var current, checkedBox, optText;
+		var raceCount, selRaceType, selRaceOpt;
+		var classCount, selClassType, selClassOpt;
+		var religionCount, selReligionType, selReligionOpt;
 
 		// --- START --- RACE LOGIC
 
 		// Check for changes on race type dropdown
 		raceType.on( 'change', function() {
-			var selRaceType = findSelected( raceType );
+			selRaceType = findSelected( raceType );
 
 			// Reset options on change
 			toggleCheckBox( raceOpts, false );
-			toggleSelect( classType, false );
-			toggleCheckBox( classOpts, false );
+			disableAllClass();
 
 			// Enable options depending on type selection
-			enableRaceOptions( selRaceType );
+			defaultRaceOptions( selRaceType );
 		});
 
 		// Check for changes on race checkboxes
+		updateRaceOptions();
 		raceOpts.on( 'change', function() {
-			var selRaceType = findSelected( raceType );
-			var selRaceOpt;
+			updateRaceOptions();
+		});
+
+		// Update race options depending on various selections
+		function updateRaceOptions() {
+			selRaceType = findSelected( raceType );
 
 			// Update count of checkboxes
-			var checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
+			checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
 			raceCount = checkedBox.length;
 
-			// Check if there is one or more checked boxes
-			if ( raceCount ) {
-				// Get text following checkbox
-				var selRaceOpt = getCheckText( checkedBox );
-
-				// Build excluded race list from selected race and non-half arrays
-				var raceArray = mergeArray( characterRules[selRaceOpt]['exRace'], nonHalf );
-
-				// Loop through all the race checkboxes
+			// Check if full breed or half-breed is selected
+			if ( selRaceType == fb || selRaceType == hb ) {
 				raceOpts.each( function() {
-					var current = jQuery( this );
+					current = jQuery( this );
 
-					if ( selRaceType == fb ) {
-						// If full blooded race type, MAX: one option
-						// With one box checked, disable remaining
+					// If half-breed and one box is selected, update remaining
+					if ( selRaceType == hb && raceCount == 1 ) {
+						 selRaceOpt = getCheckText( checkedBox );
+
+						// Create exclude array and enable / disable boxes
+						var raceArray = mergeArray( characterRules[selRaceOpt]['exRace'], nonHalf );
+						if ( raceArray && raceArray.indexOf( getCheckText( current ) ) <= -1 )	{
+							toggleCheckBox( current, true );
+						} else {
+							toggleCheckBox( current, false );
+						}
+
+						// Also make sure classes are still disabled
+						disableAllClass();
+					} else if ( ( selRaceType == fb && raceCount == 1 ) || ( selRaceType == hb && raceCount == 2 ) ) {
+						// If max count is met, disable remaining checkboxes
+						// Half-breed - MAX: 2, Full blooded - MAX: 1
 						if ( !current.is(':checked') ) {
 							toggleCheckBox( current, false );
 						}
-					} else if ( selRaceType == hb ) {
-						// If half-breed race type, MAX: two options
-						if ( raceCount == 1 ) {
-							// With one box checked, exclude remaining in array list
-							if ( raceArray && raceArray.indexOf( getCheckText( current ) ) <= -1 )	{
-								toggleCheckBox( current, true );
-							} else {
-								toggleCheckBox( current, false );
-							}
-						} else if ( raceCount == 2 ) {
-							// With two boxes checked, disable remaining
-							if ( !current.is(':checked') ) {
-								toggleCheckBox( current, false );
-							}
-						}
-					}
 
-					// Enable class type dropdown depending on race type and race checkbox count
-					if ( ( selRaceType == fb && raceCount == 1 ) || ( selRaceType == hb && raceCount == 2 ) ) {
+						// And allow class type selection
 						toggleSelect( classType, true );
 					} else {
-						toggleSelect( classType, false );
-						toggleCheckBox( classOpts, false );
+						// If no above conditions are met, reset to default options and disable classes
+						defaultRaceOptions( selRaceType );
+						disableAllClass();
 					}
 				});
 			} else {
-				// If no boxes are checked, disable class type dropdown and checkboxes
+				// When default is selected, disable all options
+				toggleCheckBox( raceOpts, false );
 				toggleSelect( classType, false );
-				toggleCheckBox( classOpts, false );
-
-				// Enable options depending on type selection
-				enableRaceOptions( selRaceType );
 			}
-		});
+		}
+
+		// Build default race options depending on selection
+		function defaultRaceOptions( rtype ) {
+			if ( rtype == fb ) {
+				toggleCheckBox( raceOpts, true );
+			} else if ( rtype == hb ) {
+				jQuery.each( raceOpts, function() {
+					current = jQuery( this );
+					optText = getCheckText( current );
+
+					if ( nonHalf.indexOf( optText ) <= -1 ) {
+						toggleCheckBox( current, true );
+					}
+				});
+			}
+		}
 
 		// --- END --- RACE LOGIC
 
@@ -125,55 +119,94 @@ function updateProfileFields() {
 
 		// Check for changes on class type dropdown
 		classType.on( 'change', function() {
-			var selRaceType = findSelected( raceType );
-			var selClassType = findSelected( classType );
+			selRaceType = findSelected( raceType );
+			selClassType = findSelected( classType );
 
 			// Reset options on change
 			toggleCheckBox( classOpts, false );
 
 			// Enable options depending on type selections
-			enableClassOptions( selRaceType, selClassType );
+			defaultClassOptions( selRaceType, selClassType );
 		});
 
 		// Check for changes on class checkboxes
+		updateClassOptions();
 		classOpts.on( 'change', function() {
-			var selRaceType = findSelected( raceType );
-			var selClassType = findSelected( classType );
+			updateClassOptions();
+		});
+
+		// Update class options depending on various selections
+		function updateClassOptions() {
+			selRaceType = findSelected( raceType );
+			selClassType = findSelected( classType );
 
 			// Update count of checkboxes
-			var checkedBox = classParent.find( 'input[type="checkbox"]:checked' );
+			checkedBox = classParent.find( 'input[type="checkbox"]:checked' );
 			classCount = checkedBox.length;
 
-			// Check if there is one or more checked boxes
-			if ( classCount ) {
-				// Loop through all the class checkboxes
+			// Check if single or dual is selected
+			if ( selClassType == single || selClassType == dual ) {
 				classOpts.each( function() {
-					var current = jQuery( this );
+					current = jQuery( this );
 
-					if ( selClassType == single ) {
-						// If single class type, MAX: one option
-						// With one box checked, disable remaining
+					// If max count is met, disable remaining checkboxes
+					// Dual - MAX: 2, Single - MAX: 1
+					if ( ( selClassType == single && classCount == 1 ) || ( selClassType == dual && classCount == 2 ) ) {
 						if ( !current.is(':checked') ) {
 							toggleCheckBox( current, false );
 						}
-					} else if ( selClassType == dual ) {
-						// If dual class type, MAX: two options
-						if ( classCount == 1 ) {
-							// With one box checked, enable options depending on type selectio
-							enableClassOptions( selRaceType, selClassType );
-						} else if ( classCount == 2 ) {
-							// With two boxes checked, disable remaining
-							if ( !current.is(':checked') ) {
-								toggleCheckBox( current, false );
-							}
-						}
+					} else {
+						// If no above conditions are met, reset to default options
+						defaultClassOptions( selRaceType, selClassType );
 					}
 				});
 			} else {
-				// Enable options depending on type selection
-				enableClassOptions( selRaceType, selClassType );
+				// When default is selected, disable all options
+				toggleCheckBox( classOpts, false );
 			}
-		});
+		}
+
+		// Build default class options depending on race and class selection
+		function defaultClassOptions( rtype, ctype ) {
+			// Build excluded class list from selected races
+			var classArray = [];
+			raceOpts.each( function() {
+				current = jQuery( this );
+				optText = getCheckText( current );
+
+				if ( current.is(':checked') ) {
+					var classList = characterRules[optText]['exClass'];
+
+					// Define allowed classes based on race type and checked boxes
+					if ( classList ) {
+						// Half-breed dwarves can be magic users
+						if ( rtype == hb && optText == 'Dwarf' ) {
+							classArray = dragonClasses;
+						} else {
+							classArray = mergeArray( classArray, classList );
+						}
+					}
+				}
+			});
+
+			// Enable options depending on type selection
+			if ( ctype != defaultText ) {
+				jQuery.each( classOpts, function() {
+					current = jQuery( this );
+					optText = getCheckText( current );
+
+					if ( classArray.indexOf( optText ) <= -1 ) {
+						toggleCheckBox( current, true );
+					}
+				});
+			}
+		}
+
+		// Reset for disabling everything class related
+		function disableAllClass() {
+			toggleSelect( classType, false );
+			toggleCheckBox( classOpts, false );
+		}
 
 		// --- END --- CLASS LOGIC
 
@@ -222,66 +255,6 @@ function updateProfileFields() {
 			}
 		});
 
-		// --- END --- RELIGION LOGIC
-
-		// Build default race options depending on selection
-		function enableRaceOptions( rtype ) {
-			if ( rtype == fb ) {
-				// If full blooded race type, enable all options
-				toggleCheckBox( raceOpts, true );
-			} else if ( rtype == hb ) {
-				// If half-breed race type, enable those that can be half-breeds
-				jQuery.each( raceOpts, function() {
-					var current = jQuery( this );
-					var optText = getCheckText( current );
-
-					if ( nonHalf.indexOf( optText ) <= -1 ) {
-						toggleCheckBox( current, true );
-					}
-				});
-			}
-		}
-
-		// Build default class options depending on race selection
-		function enableClassOptions( rtype, ctype ) {
-			// Build excluded class list from selected races
-			var classArray = [];
-			raceOpts.each( function() {
-				var current = jQuery( this );
-				var optText = getCheckText( current );
-
-				if ( current.is(':checked') ) {
-					var classList = characterRules[optText]['exClass'];
-
-					// Define allowed classes based on race type and checked boxes
-					if ( classList ) {
-						if ( rtype == fb ) {
-							classArray = classList;
-						} else if ( rtype == hb ) {
-							// Some half-breed classes can use magic
-							if ( optText == 'Dwarf' ) {
-								classArray = dragonClasses;
-							} else {
-								classArray = mergeArray( classArray, classList );
-							}
-						}
-					}
-				}
-			});
-
-			// Enable options depending on type selection
-			if ( ctype != defaultText ) {
-				jQuery.each( classOpts, function() {
-					var current = jQuery( this );
-					var optText = getCheckText( current );
-
-					if ( classArray.indexOf( optText ) <= -1 ) {
-						toggleCheckBox( current, true );
-					}
-				});
-			}
-		}
-
 		// Build default religion options depending on selection
 		function enableReligionOptions( rtype ) {
 			// Enable options depending on type selection
@@ -300,6 +273,8 @@ function updateProfileFields() {
 				});
 			}
 		}
+
+		// --- END --- RELIGION LOGIC
 
 		// Disable / enable select menu and options
 		function toggleSelect( selector, condition ) {
@@ -406,6 +381,18 @@ var religionRules = {
 	'Archaicism' : [ 'Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir' ],
 	'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
 }
+
+// //	Disable these fields by default
+// var disabledFields = [ raceOpts, classType, classOpts, religionOpts ];
+//
+// for ( var i = 0; i < disabledFields.length; i++ ) {
+// 	if ( disabledFields[i].is( 'select' ) ) {
+// 		toggleSelect( disabledFields[i], false );
+// 	}
+// 	if ( disabledFields[i].is( 'input[type="checkbox"]' ) ) {
+// 		toggleCheckBox( disabledFields[i], false );
+// 	}
+// }
 
 // function updateProfileFields() {
 // 	// TO DO
