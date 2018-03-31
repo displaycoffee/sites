@@ -48,6 +48,22 @@ function updateProfileFields() {
 			updateRaceOptions();
 		});
 
+		// Build default race options depending on selection
+		function defaultRaceOptions( rtype ) {
+			if ( rtype == fb ) {
+				toggleCheckBox( raceOpts, true );
+			} else if ( rtype == hb ) {
+				jQuery.each( raceOpts, function() {
+					current = jQuery( this );
+					optText = getCheckText( current );
+
+					if ( nonHalf.indexOf( optText ) <= -1 ) {
+						toggleCheckBox( current, true );
+					}
+				});
+			}
+		}
+
 		// Update race options depending on various selections
 		function updateRaceOptions() {
 			selRaceType = findSelected( raceType );
@@ -97,22 +113,6 @@ function updateProfileFields() {
 			}
 		}
 
-		// Build default race options depending on selection
-		function defaultRaceOptions( rtype ) {
-			if ( rtype == fb ) {
-				toggleCheckBox( raceOpts, true );
-			} else if ( rtype == hb ) {
-				jQuery.each( raceOpts, function() {
-					current = jQuery( this );
-					optText = getCheckText( current );
-
-					if ( nonHalf.indexOf( optText ) <= -1 ) {
-						toggleCheckBox( current, true );
-					}
-				});
-			}
-		}
-
 		// --- END --- RACE LOGIC
 
 		// --- START --- CLASS LOGIC
@@ -134,37 +134,6 @@ function updateProfileFields() {
 		classOpts.on( 'change', function() {
 			updateClassOptions();
 		});
-
-		// Update class options depending on various selections
-		function updateClassOptions() {
-			selRaceType = findSelected( raceType );
-			selClassType = findSelected( classType );
-
-			// Update count of checkboxes
-			checkedBox = classParent.find( 'input[type="checkbox"]:checked' );
-			classCount = checkedBox.length;
-
-			// Check if single or dual is selected
-			if ( selClassType == single || selClassType == dual ) {
-				classOpts.each( function() {
-					current = jQuery( this );
-
-					// If max count is met, disable remaining checkboxes
-					// Dual - MAX: 2, Single - MAX: 1
-					if ( ( selClassType == single && classCount == 1 ) || ( selClassType == dual && classCount == 2 ) ) {
-						if ( !current.is(':checked') ) {
-							toggleCheckBox( current, false );
-						}
-					} else {
-						// If no above conditions are met, reset to default options
-						defaultClassOptions( selRaceType, selClassType );
-					}
-				});
-			} else {
-				// When default is selected, disable all options
-				toggleCheckBox( classOpts, false );
-			}
-		}
 
 		// Build default class options depending on race and class selection
 		function defaultClassOptions( rtype, ctype ) {
@@ -202,6 +171,37 @@ function updateProfileFields() {
 			}
 		}
 
+		// Update class options depending on various selections
+		function updateClassOptions() {
+			selRaceType = findSelected( raceType );
+			selClassType = findSelected( classType );
+
+			// Update count of checkboxes
+			checkedBox = classParent.find( 'input[type="checkbox"]:checked' );
+			classCount = checkedBox.length;
+
+			// Check if single or dual is selected
+			if ( selClassType == single || selClassType == dual ) {
+				classOpts.each( function() {
+					current = jQuery( this );
+
+					// If max count is met, disable remaining checkboxes
+					// Dual - MAX: 2, Single - MAX: 1
+					if ( ( selClassType == single && classCount == 1 ) || ( selClassType == dual && classCount == 2 ) ) {
+						if ( !current.is(':checked') ) {
+							toggleCheckBox( current, false );
+						}
+					} else {
+						// If no above conditions are met, reset to default options
+						defaultClassOptions( selRaceType, selClassType );
+					}
+				});
+			} else {
+				// When default is selected, disable all options
+				toggleCheckBox( classOpts, false );
+			}
+		}
+
 		// Reset for disabling everything class related
 		function disableAllClass() {
 			toggleSelect( classType, false );
@@ -214,63 +214,67 @@ function updateProfileFields() {
 
 		// Check for changes on religion type dropdown
 		religionType.on( 'change', function() {
-			var selReligionType = findSelected( religionType );
+			selReligionType = findSelected( religionType );
 
 			// Reset options on change
 			toggleCheckBox( religionOpts, false );
 
 			// Enable options depending on type selections
-			enableReligionOptions( selReligionType );
+			defaultReligionOptions( selReligionType );
 		});
 
 		// Check for changes on religion checkboxes
+		updateReligionOptions();
 		religionOpts.on( 'change', function() {
-			var selReligionType = findSelected( religionType );
-
-			// Update count of checkboxes
-			var checkedBox = religionParent.find( 'input[type="checkbox"]:checked' );
-			religionCount = checkedBox.length;
-
-			// Check if there is one or more checked boxes
-			if ( religionCount ) {
-				// Loop through all the religion checkboxes
-				religionOpts.each( function() {
-					var current = jQuery( this );
-
-					if ( selReligionType == archaicism || selReligionType == idolism ) {
-						// If archaicism or idolism type, MAX: four options
-						if ( religionCount > 3 ) {
-							// With four boxes checked, disable remaining
-							if ( !current.is(':checked') ) {
-								toggleCheckBox( current, false );
-							}
-						} else {
-							enableReligionOptions( selReligionType );
-						}
-					}
-				});
-			} else {
-				// Enable options depending on type selection
-				enableReligionOptions( selReligionType );
-			}
+			updateReligionOptions();
 		});
 
 		// Build default religion options depending on selection
-		function enableReligionOptions( rtype ) {
+		function defaultReligionOptions( rtype ) {
 			// Enable options depending on type selection
 			if ( rtype != defaultText && religionRules[rtype] ) {
 
 				// Check religion combinations that are available
 				jQuery.each( religionOpts, function() {
-					var current = jQuery( this );
-					var optText = getCheckText( current );
+					current = jQuery( this );
+					optText = getCheckText( current );
 
-					if ( religionRules[rtype].indexOf( optText ) <= -1 ) {
-						toggleCheckBox( current, false );
-					} else {
+					if ( religionRules[rtype].indexOf( optText ) > -1 ) {
 						toggleCheckBox( current, true );
 					}
 				});
+			} else {
+				toggleCheckBox( current, false );
+			}
+		}
+
+		// Update religion options depending on various selections
+		function updateReligionOptions() {
+			selReligionType = findSelected( religionType );
+
+			// Update count of checkboxes
+			checkedBox = religionParent.find( 'input[type="checkbox"]:checked' );
+			religionCount = checkedBox.length;
+
+			// Check if Archaicism or Idolism is selected
+			if ( selReligionType == archaicism || selReligionType == idolism ) {
+				religionOpts.each( function() {
+					current = jQuery( this );
+
+					// If max count is met, disable remaining checkboxes
+					// Archaicism or Idolism - MAX: 2
+					if ( religionCount > 3 ) {
+						if ( !current.is(':checked') ) {
+							toggleCheckBox( current, false );
+						}
+					} else {
+						// If no above conditions are met, reset to default options
+						defaultReligionOptions( selReligionType );
+					}
+				});
+			} else {
+				// When default is selected, disable all options
+				toggleCheckBox( religionOpts, false );
 			}
 		}
 
