@@ -122,7 +122,15 @@ function updateProfileFields() {
 			toggleCheckBox( classOpts, false );
 
 			// Enable options depending on type selections
-			defaultClassOptions( selRaceType, selClassType );
+			if ( selClassType != defaultText ) {
+				var classArray = createClassArray();
+				jQuery.each( classOpts, function() {
+					current = jQuery( this );
+					if ( classArray.indexOf( getCheckText( current ) ) <= -1 ) {
+						toggleCheckBox( current, true );
+					}
+				});
+			}
 		});
 
 		// Check for changes on class checkboxes
@@ -131,9 +139,8 @@ function updateProfileFields() {
 			updateClassOptions();
 		});
 
-		// Build default class options depending on race and class selection
-		function defaultClassOptions( rtype, ctype ) {
-			// Build excluded class list from selected races
+		// Build excluded class list from selected races
+		function createClassArray( rtype ) {
 			var classArray = [];
 			raceOpts.each( function() {
 				current = jQuery( this );
@@ -153,22 +160,14 @@ function updateProfileFields() {
 					}
 				}
 			});
-
-			// Enable options depending on type selection
-			if ( ctype != defaultText ) {
-				jQuery.each( classOpts, function() {
-					current = jQuery( this );
-					if ( classArray.indexOf( getCheckText( current ) ) <= -1 ) {
-						toggleCheckBox( current, true );
-					}
-				});
-			}
+			return classArray;
 		}
 
 		// Update class options depending on various selections
 		function updateClassOptions() {
 			selRaceType = findSelected( raceType );
 			selClassType = findSelected( classType );
+			var classArray = createClassArray();
 
 			// Update count of checkboxes
 			checkedBox = jQuery( '#pf_c_class_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
@@ -187,7 +186,11 @@ function updateProfileFields() {
 						}
 					} else {
 						// If no above conditions are met, reset to default options
-						defaultClassOptions( selRaceType, selClassType );
+						if ( selClassType != defaultText ) {
+							if ( classArray.indexOf( getCheckText( current ) ) <= -1 ) {
+								toggleCheckBox( current, true );
+							}
+						}
 					}
 				});
 			} else {
@@ -213,8 +216,20 @@ function updateProfileFields() {
 			// Reset options on change
 			toggleCheckBox( religionOpts, false );
 
-			// Enable options depending on type selections
-			defaultReligionOptions( selReligionType );
+			// Enable options depending on type selection
+			if ( selReligionType != defaultText && religionRules[selReligionType] ) {
+				jQuery.each( religionOpts, function() {
+					current = jQuery( this );
+					if ( religionRules[selReligionType].indexOf( getCheckText( current ) ) > -1 ) {
+						toggleCheckBox( current, true );
+					} else {
+						toggleCheckBox( current, false );
+					}
+				});
+			} else {
+				toggleCheckBox( current, false );
+			}
+
 		});
 
 		// Check for changes on religion checkboxes
@@ -222,25 +237,6 @@ function updateProfileFields() {
 		religionOpts.on( 'change', function() {
 			updateReligionOptions();
 		});
-
-		// Build default religion options depending on selection
-		function defaultReligionOptions( rtype ) {
-			// Enable options depending on type selection
-			if ( rtype != defaultText && religionRules[rtype] ) {
-
-				// Check religion combinations that are available
-				jQuery.each( religionOpts, function() {
-					current = jQuery( this );
-					optText = getCheckText( current );
-
-					if ( religionRules[rtype].indexOf( optText ) > -1 ) {
-						toggleCheckBox( current, true );
-					}
-				});
-			} else {
-				toggleCheckBox( current, false );
-			}
-		}
 
 		// Update religion options depending on various selections
 		function updateReligionOptions() {
@@ -263,7 +259,15 @@ function updateProfileFields() {
 						}
 					} else {
 						// If no above conditions are met, reset to default options
-						defaultReligionOptions( selReligionType );
+						if ( selReligionType != defaultText && religionRules[selReligionType] ) {
+							if ( religionRules[selReligionType].indexOf( getCheckText( current ) ) > -1 ) {
+								toggleCheckBox( current, true );
+							} else {
+								toggleCheckBox( current, false );
+							}
+						} else {
+							toggleCheckBox( current, false );
+						}
 					}
 				});
 			} else {
