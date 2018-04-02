@@ -41,9 +41,7 @@ function updateProfileFields() {
 			} else if ( selRaceType == hb ) {
 				jQuery.each( raceOpts, function() {
 					current = jQuery( this );
-					if ( nonHalf.indexOf( getCheckText( current ) ) <= -1 ) {
-						toggleCheckBox( current, true );
-					}
+					compareCheckedValues( nonHalf, getCheckText( current ), current );
 				});
 			}
 		});
@@ -73,10 +71,8 @@ function updateProfileFields() {
 
 						// Create exclude array and enable / disable boxes
 						var raceArray = mergeArray( characterRules[selRaceOpt]['exRace'], nonHalf );
-						if ( raceArray && raceArray.indexOf( getCheckText( current ) ) <= -1 )	{
-							toggleCheckBox( current, true );
-						} else {
-							toggleCheckBox( current, false );
+						if ( raceArray ) {
+							compareCheckedValues( raceArray, getCheckText( current ), current );
 						}
 
 						// Also make sure classes are still disabled
@@ -95,9 +91,7 @@ function updateProfileFields() {
 						if ( selRaceType == fb ) {
 							toggleCheckBox( current, true );
 						} else if ( selRaceType == hb ) {
-							if ( nonHalf.indexOf( getCheckText( current ) ) > -1 ) {
-								toggleCheckBox( current, false );
-							}
+							compareCheckedValues( nonHalf, getCheckText( current ), current );
 						}
 						disableAllClass();
 					}
@@ -123,12 +117,10 @@ function updateProfileFields() {
 
 			// Enable options depending on type selections
 			if ( selClassType != defaultText ) {
-				var classArray = createClassArray();
+				var classArray = createClassArray( selRaceType );
 				jQuery.each( classOpts, function() {
 					current = jQuery( this );
-					if ( classArray.indexOf( getCheckText( current ) ) <= -1 ) {
-						toggleCheckBox( current, true );
-					}
+					compareCheckedValues( classArray, getCheckText( current ), current );
 				});
 			}
 		});
@@ -167,7 +159,7 @@ function updateProfileFields() {
 		function updateClassOptions() {
 			selRaceType = findSelected( raceType );
 			selClassType = findSelected( classType );
-			var classArray = createClassArray();
+			var classArray = createClassArray( selRaceType );
 
 			// Update count of checkboxes
 			checkedBox = jQuery( '#pf_c_class_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
@@ -187,9 +179,7 @@ function updateProfileFields() {
 					} else {
 						// If no above conditions are met, reset to default options
 						if ( selClassType != defaultText ) {
-							if ( classArray.indexOf( getCheckText( current ) ) <= -1 ) {
-								toggleCheckBox( current, true );
-							}
+							compareCheckedValues( classArray, getCheckText( current ), current );
 						}
 					}
 				});
@@ -220,11 +210,7 @@ function updateProfileFields() {
 			if ( selReligionType != defaultText && religionRules[selReligionType] ) {
 				jQuery.each( religionOpts, function() {
 					current = jQuery( this );
-					if ( religionRules[selReligionType].indexOf( getCheckText( current ) ) > -1 ) {
-						toggleCheckBox( current, true );
-					} else {
-						toggleCheckBox( current, false );
-					}
+					compareCheckedValues( religionRules[selReligionType], getCheckText( current ), current, 'include' );
 				});
 			} else {
 				toggleCheckBox( current, false );
@@ -260,11 +246,7 @@ function updateProfileFields() {
 					} else {
 						// If no above conditions are met, reset to default options
 						if ( selReligionType != defaultText && religionRules[selReligionType] ) {
-							if ( religionRules[selReligionType].indexOf( getCheckText( current ) ) > -1 ) {
-								toggleCheckBox( current, true );
-							} else {
-								toggleCheckBox( current, false );
-							}
+							compareCheckedValues( religionRules[selReligionType], getCheckText( current ), current, 'include' );
 						} else {
 							toggleCheckBox( current, false );
 						}
@@ -308,6 +290,25 @@ function updateProfileFields() {
 				selector.prop( 'disabled', false );
 			} else {
 				selector.prop({ 'disabled' : true, 'checked' : false });
+			}
+		}
+
+		// Update checked checkboxes depending on condition
+		function compareCheckedValues( array, value, selector, type ) {
+			// By default, "exclude" checked values
+			var toggle1 = false;
+			var toggle2 = true;
+
+			// Or, if the type is "include", reverse booleans
+			if ( type == 'include' ) {
+				toggle1 = true;
+				toggle2 = false;
+			}
+
+			if ( array.indexOf( value ) > -1 ) {
+				toggleCheckBox( selector, toggle1 );
+			} else {
+				toggleCheckBox( selector, toggle2 );
 			}
 		}
 
@@ -383,18 +384,6 @@ var religionRules = {
 	'Archaicism' : [ 'Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir' ],
 	'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
 }
-
-// //	Disable these fields by default
-// var disabledFields = [ raceOpts, classType, classOpts, religionOpts ];
-//
-// for ( var i = 0; i < disabledFields.length; i++ ) {
-// 	if ( disabledFields[i].is( 'select' ) ) {
-// 		toggleSelect( disabledFields[i], false );
-// 	}
-// 	if ( disabledFields[i].is( 'input[type="checkbox"]' ) ) {
-// 		toggleCheckBox( disabledFields[i], false );
-// 	}
-// }
 
 // function updateProfileFields() {
 // 	// TO DO
