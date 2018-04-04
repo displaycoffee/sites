@@ -25,6 +25,60 @@ function updateProfileFields() {
 		var classCount, selClassType, selClassOpt;
 		var religionCount, selReligionType, selReligionOpt;
 
+		// --- START --- ACCOUNT LOGIC
+
+		// Change text values of options
+		updateAccountOptions( '10', 'Writer', '9', 'Character' );
+
+		// Check for changes on account type dropdown
+		updateCharacterFields();
+		accountType.on( 'change', function() {
+			updateCharacterFields();
+
+			// Enable options depending on account selection
+			selAccount = findSelected( accountType );
+			if ( selAccount == 'Character' || selAccount == '9' ) {
+				toggleSelect( raceType, true );
+				toggleSelect( religionType, true );
+				jQuery( 'input[id^=pf_c_][type="text"]' ).prop( 'disabled', false );
+				jQuery( 'textarea[id^=pf_c_]' ).prop( 'disabled', false );
+			}
+		});
+
+		// Update account type option text
+		function updateAccountOptions( condition1, replace1, condition2, replace2 ) {
+			accountType.find( 'option' ).each( function() {
+				current = jQuery( this );
+				optText = current.text().trim();
+
+				if ( optText == condition1 ) {
+					current.text( function () {
+						return current.text().replace( optText, replace1 );
+					});​​​​​
+				} else if ( optText == condition2 ) {
+					current.text( function () {
+						return current.text().replace( optText, replace2 );
+					});​​​​​
+				}
+			});
+		}
+
+		// Update character fields depending on selections
+		function updateCharacterFields() {
+			characterFields.each( function() {
+				current = jQuery( this );
+				if ( current.is( 'select' ) ) {
+					toggleSelect( current, false );
+				} else if ( current.is( 'input[type="checkbox"]' ) ) {
+					toggleCheckBox( current, false );
+				} else {
+					current.val( '' ).prop( 'disabled', true );
+				}
+			});
+		}
+
+		// --- END --- ACCOUNT LOGIC
+
 		// --- START --- RACE LOGIC
 
 		// Check for changes on race type dropdown
@@ -268,9 +322,8 @@ function updateProfileFields() {
 
 			// Check if the writer account is selected
 			if ( selAccount == 'Writer' || selAccount == '10' ) {
-				// Change account type options again
-				// Writer = 10, Character = 9
-				//updateAccountTypeOptions( accountType, 'Writer', '10', 'Character', '9' );
+				// Clear out extra field information
+				updateCharacterFields();
 
 				// Set required fields for character registration to go through
 				setRequiredSelect( raceType, fb );
@@ -278,9 +331,6 @@ function updateProfileFields() {
 				setRequiredSelect( classType, single );
 				setRequiredCheckboxes( classOpts, 'Bard' );
 			}
-
-			// Remove this later
-			return false;
 		});
 
 		// Set required select menus
@@ -288,6 +338,7 @@ function updateProfileFields() {
 			var selOpt;
 			selector.find( 'option' ).each( function() {
 				current = jQuery( this );
+				current.prop( 'disabled', false );
 				if ( current.text().trim() == value ) {
 					selOpt = current.val();
 				}
@@ -307,24 +358,7 @@ function updateProfileFields() {
 			});
 		}
 
-		// Update account type option text
-		// function updateAccountTypeOptions( selector, condition1, replace1, condition2, replace2 ) {
-		// 	selector.find( 'option' ).each( function() {
-		// 		var optionText = jQuery( this ).text().trim();
-		//
-		// 		if ( optionText == condition1 ) {
-		// 			jQuery( this ).text( function () {
-		// 				return jQuery( this ).text().replace( optionText, replace1 );
-		// 			});​​​​​
-		// 		} else if ( optionText == condition2 ) {
-		// 			jQuery( this ).text( function () {
-		// 				return jQuery( this ).text().replace( optionText, replace2 );
-		// 			});​​​​​
-		// 		}
-		// 	});
-		// }
-
-		// --- END --- RELIGION LOGIC
+		// --- END --- ON SUBMIT LOGIC
 
 		// Disable / enable select menu and options
 		function toggleSelect( selector, condition ) {
