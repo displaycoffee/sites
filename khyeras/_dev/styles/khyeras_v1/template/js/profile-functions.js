@@ -1,5 +1,8 @@
 function updateProfileFields() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
+		// TO-DO
+		// 01. Hide error messages that aren't relevant for non-character accounts
+
 		// Reusable language variables
 		var defaultText = '-- Please Select --';
 		var fb 			= 'Full Blooded';
@@ -30,8 +33,13 @@ function updateProfileFields() {
 		// Change text values of options
 		updateAccountOptions( '10', 'Writer', '9', 'Character' );
 
+		// If selected account is default or writer, disable and reset fields
+		selAccount = findSelected( accountType );
+		if ( selAccount == 'Writer' || selAccount == '10' || selAccount == defaultText ) {
+			updateCharacterFields();
+		}
+
 		// Check for changes on account type dropdown
-		updateCharacterFields();
 		accountType.on( 'change', function() {
 			updateCharacterFields();
 
@@ -331,6 +339,8 @@ function updateProfileFields() {
 				setRequiredSelect( classType, single );
 				setRequiredCheckboxes( classOpts, 'Bard' );
 			}
+
+			//return false;
 		});
 
 		// Set required select menus
