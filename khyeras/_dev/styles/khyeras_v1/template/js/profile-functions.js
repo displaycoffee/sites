@@ -2,6 +2,8 @@ function updateProfileFields() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
 		// TO-DO
 		// 01. Hide error messages that aren't relevant for non-character accounts
+		// 02. profilefields/type/type_multisel.php line 165, surround error messages with html using things like $field_data['field_name']
+		// 03. Error messages have "multiple-fields class"
 
 		// Reusable language variables
 		var defaultText = '-- Please Select --';
