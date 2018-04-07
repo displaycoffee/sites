@@ -1,3 +1,24 @@
+function updateErrorMessages() {
+	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
+		var errors = jQuery( 'fieldset dl .error' );
+
+		if ( errors && errors.length ) {
+			var errorsText = errors.text();
+			var errorsSplit = errors.html().split( '<br>' );
+
+			for ( var i = 0; i < errorsSplit.length; i++ ) {
+				errorsSplit[i] = errorsSplit[i] + 'testing';
+			}
+
+			console.log(errorsSplit)
+
+			errors.text( function () {
+			    return errorsText.replace( errorsText, '' );
+			});​​​​​
+		}
+	}
+}
+
 function updateProfileFields() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
 		// TO-DO
