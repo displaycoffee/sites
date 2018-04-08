@@ -11,8 +11,8 @@ var browserSync = require('browser-sync').create(),
 /* Global Variables
    ---------------------------------------------- */
 
-var phpBBFolder = 'styles';
-//var phpBBFolder = 'ext';
+//var phpBBFolder = 'styles';
+var phpBBFolder = 'ext';
 var proxyURL = 'http://localhost/sites/khyeras';
 
 /* Styles Configuration
@@ -125,12 +125,12 @@ if (phpBBFolder == 'ext') {
    	/* Development Variables
    	   ---------------------------------------------- */
 
-   	var dev = '_dev/ext/displaycoffee';
+   	var dev = '_dev/ext';
 
    	/* Distribution Variables
    	   ---------------------------------------------- */
 
-   	var dist = 'ext/displaycoffee/';
+   	var dist = 'ext';
 
    	/* Static Files
    	   ---------------------------------------------- */
