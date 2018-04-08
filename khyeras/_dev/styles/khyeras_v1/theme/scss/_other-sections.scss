@@ -190,13 +190,27 @@ dl.faq + .top {
 ========================================================================== */
 
 #register {
-	.panel:first-child fieldset dl dd:first-child {
-		margin-left: 0;
+	.error {
+		font-weight: normal;
+		padding: 10px;
+		border-radius: 3px;
+		background: mix(white, $color-11, 80%);
+		&, a {
+			color: $color-08
+		}
+		a:hover {
+			color: $color-07;
+		}
+		.error-msg {
+			display: block;
+		}
 	}
-	fieldset .hide-fields {
-		visibility: hidden;
-		opacity: 0;
-		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+	fieldset, .error {
+		.hide-fields {
+			visibility: hidden;
+			opacity: 0;
+			@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+		}
 	}
 }
 

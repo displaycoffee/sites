@@ -1,31 +1,5 @@
-function updateErrorMessages() {
-	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
-		var errors = jQuery( 'fieldset dl .error' );
-
-		if ( errors && errors.length ) {
-			var errorsText = errors.text();
-			var errorsSplit = errors.html().split( '<br>' );
-
-			for ( var i = 0; i < errorsSplit.length; i++ ) {
-				errorsSplit[i] = errorsSplit[i] + 'testing';
-			}
-
-			console.log(errorsSplit)
-
-			errors.text( function () {
-			    return errorsText.replace( errorsText, '' );
-			});​​​​​
-		}
-	}
-}
-
 function updateProfileFields() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
-		// TO-DO
-		// 01. Hide error messages that aren't relevant for non-character accounts
-		// 02. profilefields/type/type_multisel.php line 165, surround error messages with html using things like $field_data['field_name']
-		// 03. Error messages have "multiple-fields class"
-
 		// Reusable language variables
 		var defaultText = '-- Please Select --';
 		var fb 			= 'Full Blooded';
@@ -51,6 +25,76 @@ function updateProfileFields() {
 		var classCount, selClassType, selClassOpt;
 		var religionCount, selReligionType, selReligionOpt;
 
+		// --- START --- ERROR MESSAGE LOGIC
+
+		// Get checkbox counts
+		raceCount = getCheckedCount( '#pf_c_race_opts_1' );
+		classCount = getCheckedCount( '#pf_c_class_opts_1' );
+		religionCount = getCheckedCount( '#pf_c_religion_opts_1' );
+
+		// Set quote text
+		var raceQuote = '\u201CRace\u201D';
+		var classQuote = '\u201CClass\u201D';
+		var religionQuote = '\u201CReligion\u201D';
+
+		// Are there "too few" messages ?
+		var tooFew = jQuery( '.error-msg-too-few' );
+
+		if ( tooFew ) {
+			// If there is one message, check race and class
+			if ( tooFew[0] ) {
+				if ( raceCount < 1 ) {
+					replaceErrorText( tooFew[0], raceQuote, '1' );
+				} else if ( classCount < 1 ) {
+					replaceErrorText( tooFew[0], classQuote, '1' );
+				}
+			}
+
+			// Then, if there is a second error, check class
+			if ( tooFew[1] && classCount < 1 ) {
+				replaceErrorText( tooFew[1], classQuote, '1' );
+			}
+		}
+
+		// Are there "too many" messages?
+		var tooMany = jQuery( '.error-msg-too-many' );
+
+		if ( tooMany ) {
+			// If there is one message, check race, class, and religion
+			if ( tooMany[0] ) {
+				if ( raceCount > 2 ) {
+					replaceErrorText( tooMany[0], raceQuote, '2' );
+				} else if ( classCount > 2 ) {
+					replaceErrorText( tooMany[0], classQuote, '2' );
+				} else if ( religionCount > 4 ) {
+					replaceErrorText( tooMany[0], religionQuote, '4' );
+				}
+			}
+
+			// Then, if there is a second error, check class and religion
+			if ( tooMany[1] ) {
+				if ( classCount > 2 ) {
+					replaceErrorText( tooMany[0], classQuote, '2' );
+				} else if ( religionCount > 4 ) {
+					replaceErrorText( tooMany[0], religionQuote, '4' );
+				}
+			}
+
+			// Then, if there is a third error, check religion
+			if ( tooMany[2] && religionCount > 4 ) {
+				replaceErrorText( tooMany[0], religionQuote, '4' );
+			}
+		}
+
+		// Replace error text as needed
+		function replaceErrorText( selector, field, count ) {
+			jQuery( selector ).text( function () {
+				return jQuery( selector ).text().replace( '"field"', field ).replace( '"x"', count );
+			});​​​​​
+		}
+
+		// --- END --- ERROR MESSAGE LOGIC
+
 		// --- START --- ACCOUNT LOGIC
 
 		// Change text values of options
@@ -60,15 +104,20 @@ function updateProfileFields() {
 		selAccount = findSelected( accountType );
 		if ( selAccount == 'Writer' || selAccount == '10' || selAccount == defaultText ) {
 			updateCharacterFields();
+			toggleFieldClass( true );
+		} else {
+			toggleFieldClass( false );
 		}
 
 		// Check for changes on account type dropdown
 		accountType.on( 'change', function() {
 			updateCharacterFields();
+			toggleFieldClass( true );
 
 			// Enable options depending on account selection
 			selAccount = findSelected( accountType );
 			if ( selAccount == 'Character' || selAccount == '9' ) {
+				toggleFieldClass( false );
 				toggleSelect( raceType, true );
 				toggleSelect( religionType, true );
 				jQuery( 'input[id^=pf_c_][type="text"]' ).prop( 'disabled', false );
@@ -108,6 +157,17 @@ function updateProfileFields() {
 			});
 		}
 
+		// Add or remove classes to hide fields
+		function toggleFieldClass( condition ) {
+			if ( condition ) {
+				jQuery( '.error-msg-chracter' ).addClass( 'hide-fields' );
+				characterFields.closest( 'dl' ).addClass( 'hide-fields' );
+			} else {
+				jQuery( '.error-msg-chracter' ).removeClass( 'hide-fields' );
+				characterFields.closest( 'dl' ).removeClass( 'hide-fields' );
+			}
+		}
+
 		// --- END --- ACCOUNT LOGIC
 
 		// --- START --- RACE LOGIC
@@ -143,7 +203,7 @@ function updateProfileFields() {
 
 			// Update count of checkboxes
 			checkedBox = jQuery( '#pf_c_race_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
-			raceCount = checkedBox.length;
+			raceCount = getCheckedCount( '#pf_c_race_opts_1' );
 
 			// Check if Full Blooded or Half-Breed is selected
 			if ( selRaceType == fb || selRaceType == hb ) {
@@ -248,7 +308,7 @@ function updateProfileFields() {
 
 			// Update count of checkboxes
 			checkedBox = jQuery( '#pf_c_class_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
-			classCount = checkedBox.length;
+			classCount = getCheckedCount( '#pf_c_class_opts_1' );
 
 			// Check if single or dual is selected
 			if ( selClassType == single || selClassType == dual ) {
@@ -315,7 +375,7 @@ function updateProfileFields() {
 
 			// Update count of checkboxes
 			checkedBox = jQuery( '#pf_c_religion_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
-			religionCount = checkedBox.length;
+			religionCount = getCheckedCount( '#pf_c_religion_opts_1' );
 
 			// Check if Archaicism or Idolism is selected
 			if ( selReligionType == archaicism || selReligionType == idolism ) {
@@ -449,6 +509,11 @@ function updateProfileFields() {
 		function getCheckText( selector ) {
 			return selector[0].nextSibling.nodeValue.trim();
 		}
+
+		// Return count of checkboxes
+		function getCheckedCount( selector ) {
+			return jQuery( selector ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' ).length;
+		}
 	}
 }
 
@@ -517,14 +582,3 @@ var religionRules = {
 	'Archaicism' : [ 'Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir' ],
 	'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
 }
-
-// // Hide any custom profile field starting with pf_c_
-// characterFields.each( function() {
-// 	if (selAccount == '9') {
-// 		//jQuery( this ).prop( 'disabled', false );
-// 		//jQuery( this ).closest( 'dl' ).removeClass( 'hide-fields' );
-// 	} else {
-// 		//jQuery( this ).prop( 'disabled', true );
-// 		//jQuery( this ).closest( 'dl' ).addClass( 'hide-fields' );
-// 	}
-// });
