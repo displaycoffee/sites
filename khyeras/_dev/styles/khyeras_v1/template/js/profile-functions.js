@@ -14,10 +14,13 @@ function updateProfileFields() {
 		var characterFields = jQuery( '[id^=pf_c_]' );
 		var raceType 		= jQuery( '#pf_c_race_type' );
 		var raceOpts 		= jQuery( 'input[name="pf_c_race_opts[]"]' );
+		var raceParent      = jQuery( '#pf_c_race_opts_1' ).closest( 'dd' );
 		var classType 		= jQuery( '#pf_c_class_type' );
 		var classOpts 		= jQuery( 'input[name="pf_c_class_opts[]"]' );
+		var classParent     = jQuery( '#pf_c_class_opts_1' ).closest( 'dd' );
 		var religionType 	= jQuery( '#pf_c_religion_type' );
 		var religionOpts 	= jQuery( 'input[name="pf_c_religion_opts[]"]' );
+		var religionParent  = jQuery( '#pf_c_religion_opts_1' ).closest( 'dd' );
 
 		// Set variables without values
 		var current, checkedBox, optText, selAccount;
@@ -191,6 +194,33 @@ function updateProfileFields() {
 			}
 		});
 
+		// Add headers
+		var raceHeaders = [ 'Beast', 'Changeling', 'Elf', 'Human', 'Mystic', 'Terra', 'Undead' ];
+		addGroupHeaders( raceParent, raceHeaders );
+
+		// Re-arrange options to headers
+		raceOpts.each( function() {
+			current = jQuery( this );
+			parent = current.parent();
+			optText = getCheckText( current );
+
+			if ( optText == 'Dragon' || optText == 'Ue\'drahc' ) {
+				parent.appendTo( '.group-beast' );
+			} else if ( optText == 'Shapeshifter' ) {
+				parent.appendTo( '.group-changeling' );
+			} else if ( optText == 'Lumeacia' || optText == 'Kerasoka' ) {
+				parent.appendTo( '.group-elf' );
+			} else if ( optText == 'Elemental' || optText == 'Fae' ) {
+				parent.appendTo( '.group-mystic' );
+			} else if ( optText == 'Dwarf' ) {
+				parent.appendTo( '.group-terra' );
+			} else if ( optText == 'Ghost' || optText == 'Korcai' ) {
+				parent.appendTo( '.group-undead' );
+			} else {
+				parent.appendTo( '.group-human' );
+			}
+		});
+
 		// Check for changes on race checkboxes
 		updateRaceOptions();
 		raceOpts.on( 'change', function() {
@@ -202,7 +232,7 @@ function updateProfileFields() {
 			selRaceType = findSelected( raceType );
 
 			// Update count of checkboxes
-			checkedBox = jQuery( '#pf_c_race_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
+			checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
 			raceCount = getCheckedCount( '#pf_c_race_opts_1' );
 
 			// Check if Full Blooded or Half-Breed is selected
@@ -270,6 +300,27 @@ function updateProfileFields() {
 			}
 		});
 
+		// Add headers
+		var classHeaders = [ 'Combat', 'Supportive', 'Magic', 'Dragon' ];
+		addGroupHeaders( classParent, classHeaders );
+
+		// Re-arrange options to headers
+		classOpts.each( function() {
+			current = jQuery( this );
+			parent = current.parent();
+			optText = getCheckText( current );
+
+			if ( optText == 'Alchemist' || optText == 'Bard' || optText == 'Cleric' ) {
+				parent.appendTo( '.group-supportive' );
+			} else if ( optText == 'Druid' || optText == 'Sorcerer' || optText == 'Summoner'  || optText == 'Wizard' ) {
+				parent.appendTo( '.group-magic' );
+			} else if ( optText == 'Physical' || optText == 'Magical' || optText == 'Healing' ) {
+				parent.appendTo( '.group-dragon' );
+			} else {
+				parent.appendTo( '.group-combat' );
+			}
+		});
+
 		// Check for changes on class checkboxes
 		updateClassOptions();
 		classOpts.on( 'change', function() {
@@ -307,7 +358,7 @@ function updateProfileFields() {
 			var classArray = createClassArray( selRaceType );
 
 			// Update count of checkboxes
-			checkedBox = jQuery( '#pf_c_class_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
+			checkedBox = classParent.find( 'input[type="checkbox"]:checked' );
 			classCount = getCheckedCount( '#pf_c_class_opts_1' );
 
 			// Check if single or dual is selected
@@ -363,6 +414,23 @@ function updateProfileFields() {
 
 		});
 
+		// Add headers
+		var religionHeaders = [ 'Archaicism', 'Idolism' ];
+		addGroupHeaders( religionParent, religionHeaders );
+
+		// Re-arrange options to headers
+		religionOpts.each( function() {
+			current = jQuery( this );
+			parent = current.parent();
+			optText = getCheckText( current );
+
+			if ( optText == 'Cecilia' || optText == 'Bhelest' ) {
+				parent.appendTo( '.group-idolism' );
+			} else {
+				parent.appendTo( '.group-archaicism' );
+			}
+		});
+
 		// Check for changes on religion checkboxes
 		updateReligionOptions();
 		religionOpts.on( 'change', function() {
@@ -374,7 +442,7 @@ function updateProfileFields() {
 			selReligionType = findSelected( religionType );
 
 			// Update count of checkboxes
-			checkedBox = jQuery( '#pf_c_religion_opts_1' ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' );
+			checkedBox = religionParent.find( 'input[type="checkbox"]:checked' );
 			religionCount = getCheckedCount( '#pf_c_religion_opts_1' );
 
 			// Check if Archaicism or Idolism is selected
@@ -513,6 +581,15 @@ function updateProfileFields() {
 		// Return count of checkboxes
 		function getCheckedCount( selector ) {
 			return jQuery( selector ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' ).length;
+		}
+
+		// Add grouped sections
+		function addGroupHeaders( selector, headers ) {
+			for ( var i = 0; i < headers.length; i++ ) {
+				current =  headers[i];
+				var groupClass = 'group-' + current.replace( / /g, '-' ).toLowerCase();
+				jQuery( '<div class="group ' + groupClass + '"><span class="group-header">' + current + '</span></div>' ).appendTo( selector );
+			}
 		}
 	}
 }

@@ -190,6 +190,13 @@ dl.faq + .top {
 ========================================================================== */
 
 #register {
+	fieldset, .error {
+		.hide-fields {
+			visibility: hidden;
+			opacity: 0;
+			@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+		}
+	}
 	.error {
 		font-weight: normal;
 		padding: 10px;
@@ -205,11 +212,20 @@ dl.faq + .top {
 			display: block;
 		}
 	}
-	fieldset, .error {
-		.hide-fields {
-			visibility: hidden;
-			opacity: 0;
-			@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+	fieldset dl dd {
+		.group {
+			width: 33.33%;
+			margin: 0 -2.5px;
+			padding: 0 $ffs-half;
+			align-self: flex-start;
+			.group-header, label {
+				margin: $ffs $ffs-half 0 $ffs-half;
+			}
+			.group-header {
+				display: block;
+				font-weight: bold;
+				font-size: rem(15px);
+			}
 		}
 	}
 }
