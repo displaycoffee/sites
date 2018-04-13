@@ -28,76 +28,6 @@ function updateProfileFields() {
 		var classCount, selClassType, selClassOpt;
 		var religionCount, selReligionType, selReligionOpt;
 
-		// --- START --- ERROR MESSAGE LOGIC
-
-		// Get checkbox counts
-		raceCount = getCheckedCount( '#pf_c_race_opts_1' );
-		classCount = getCheckedCount( '#pf_c_class_opts_1' );
-		religionCount = getCheckedCount( '#pf_c_religion_opts_1' );
-
-		// Set quote text
-		var raceQuote = '\u201CRace\u201D';
-		var classQuote = '\u201CClass\u201D';
-		var religionQuote = '\u201CReligion\u201D';
-
-		// Are there "too few" messages ?
-		var tooFew = jQuery( '.error-msg-too-few' );
-
-		if ( tooFew ) {
-			// If there is one message, check race and class
-			if ( tooFew[0] ) {
-				if ( raceCount < 1 ) {
-					replaceErrorText( tooFew[0], raceQuote, '1' );
-				} else if ( classCount < 1 ) {
-					replaceErrorText( tooFew[0], classQuote, '1' );
-				}
-			}
-
-			// Then, if there is a second error, check class
-			if ( tooFew[1] && classCount < 1 ) {
-				replaceErrorText( tooFew[1], classQuote, '1' );
-			}
-		}
-
-		// Are there "too many" messages?
-		var tooMany = jQuery( '.error-msg-too-many' );
-
-		if ( tooMany ) {
-			// If there is one message, check race, class, and religion
-			if ( tooMany[0] ) {
-				if ( raceCount > 2 ) {
-					replaceErrorText( tooMany[0], raceQuote, '2' );
-				} else if ( classCount > 2 ) {
-					replaceErrorText( tooMany[0], classQuote, '2' );
-				} else if ( religionCount > 4 ) {
-					replaceErrorText( tooMany[0], religionQuote, '4' );
-				}
-			}
-
-			// Then, if there is a second error, check class and religion
-			if ( tooMany[1] ) {
-				if ( classCount > 2 ) {
-					replaceErrorText( tooMany[0], classQuote, '2' );
-				} else if ( religionCount > 4 ) {
-					replaceErrorText( tooMany[0], religionQuote, '4' );
-				}
-			}
-
-			// Then, if there is a third error, check religion
-			if ( tooMany[2] && religionCount > 4 ) {
-				replaceErrorText( tooMany[0], religionQuote, '4' );
-			}
-		}
-
-		// Replace error text as needed
-		function replaceErrorText( selector, field, count ) {
-			jQuery( selector ).text( function () {
-				return jQuery( selector ).text().replace( '"field"', field ).replace( '"x"', count );
-			});​​​​​
-		}
-
-		// --- END --- ERROR MESSAGE LOGIC
-
 		// --- START --- ACCOUNT LOGIC
 
 		// Change text values of options
@@ -194,33 +124,6 @@ function updateProfileFields() {
 			}
 		});
 
-		// Add headers
-		var raceHeaders = [ 'Beast', 'Changeling', 'Elf', 'Human', 'Mystic', 'Terra', 'Undead' ];
-		addGroupHeaders( raceParent, raceHeaders );
-
-		// Re-arrange options to headers
-		raceOpts.each( function() {
-			current = jQuery( this );
-			parent = current.parent();
-			optText = getCheckText( current );
-
-			if ( optText == 'Dragon' || optText == 'Ue\'drahc' ) {
-				parent.appendTo( '.group-beast' );
-			} else if ( optText == 'Shapeshifter' ) {
-				parent.appendTo( '.group-changeling' );
-			} else if ( optText == 'Lumeacia' || optText == 'Kerasoka' ) {
-				parent.appendTo( '.group-elf' );
-			} else if ( optText == 'Elemental' || optText == 'Fae' ) {
-				parent.appendTo( '.group-mystic' );
-			} else if ( optText == 'Dwarf' ) {
-				parent.appendTo( '.group-terra' );
-			} else if ( optText == 'Ghost' || optText == 'Korcai' ) {
-				parent.appendTo( '.group-undead' );
-			} else {
-				parent.appendTo( '.group-human' );
-			}
-		});
-
 		// Check for changes on race checkboxes
 		updateRaceOptions();
 		raceOpts.on( 'change', function() {
@@ -297,27 +200,6 @@ function updateProfileFields() {
 					current = jQuery( this );
 					compareCheckedValues( classArray, getCheckText( current ), current );
 				});
-			}
-		});
-
-		// Add headers
-		var classHeaders = [ 'Combat', 'Supportive', 'Magic', 'Dragon' ];
-		addGroupHeaders( classParent, classHeaders );
-
-		// Re-arrange options to headers
-		classOpts.each( function() {
-			current = jQuery( this );
-			parent = current.parent();
-			optText = getCheckText( current );
-
-			if ( optText == 'Alchemist' || optText == 'Bard' || optText == 'Cleric' ) {
-				parent.appendTo( '.group-supportive' );
-			} else if ( optText == 'Druid' || optText == 'Sorcerer' || optText == 'Summoner'  || optText == 'Wizard' ) {
-				parent.appendTo( '.group-magic' );
-			} else if ( optText == 'Physical' || optText == 'Magical' || optText == 'Healing' ) {
-				parent.appendTo( '.group-dragon' );
-			} else {
-				parent.appendTo( '.group-combat' );
 			}
 		});
 
@@ -412,23 +294,6 @@ function updateProfileFields() {
 				toggleCheckBox( current, false );
 			}
 
-		});
-
-		// Add headers
-		var religionHeaders = [ 'Archaicism', 'Idolism' ];
-		addGroupHeaders( religionParent, religionHeaders );
-
-		// Re-arrange options to headers
-		religionOpts.each( function() {
-			current = jQuery( this );
-			parent = current.parent();
-			optText = getCheckText( current );
-
-			if ( optText == 'Cecilia' || optText == 'Bhelest' ) {
-				parent.appendTo( '.group-idolism' );
-			} else {
-				parent.appendTo( '.group-archaicism' );
-			}
 		});
 
 		// Check for changes on religion checkboxes
@@ -581,15 +446,6 @@ function updateProfileFields() {
 		// Return count of checkboxes
 		function getCheckedCount( selector ) {
 			return jQuery( selector ).closest( 'dd' ).find( 'input[type="checkbox"]:checked' ).length;
-		}
-
-		// Add grouped sections
-		function addGroupHeaders( selector, headers ) {
-			for ( var i = 0; i < headers.length; i++ ) {
-				current =  headers[i];
-				var groupClass = 'group-' + current.replace( / /g, '-' ).toLowerCase();
-				jQuery( '<div class="group ' + groupClass + '"><span class="group-header">' + current + '</span></div>' ).appendTo( selector );
-			}
 		}
 	}
 }

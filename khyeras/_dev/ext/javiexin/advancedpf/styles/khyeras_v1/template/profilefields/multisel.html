@@ -1,0 +1,84 @@
+<!-- Advanced Profile Fields Pack -->
+<!-- BEGIN multisel -->
+	{% set field_id = multisel.FIELD_IDENT %}
+
+	{% macro display_opt(options, field, list) %}
+		{% for opt in options %}
+			{% if opt.VALUE in list || list == 'all' %}
+				<label for="{{ field }}_{{ opt.OPTION_ID }}"><input type="checkbox" name="{{ field }}[]" id="{{ field }}_{{ opt.OPTION_ID }}" value="{{ opt.OPTION_ID }}"{{ opt.SELECTED }} /> {{ opt.VALUE }}</label>
+			{% endif %}
+		{% endfor %}
+	{% endmacro %}
+
+	{% if field_id == 'pf_c_race_opts' %}
+		<div class="group">
+			<span class="group-header">Beast</span>
+			{% set beast = ['Dragon', 'Ue\'drahc'] %}
+			{{ _self.display_opt(multisel.options, field_id, beast) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Changeling</span>
+			{% set changeling = ['Shapeshifter'] %}
+			{{ _self.display_opt(multisel.options, field_id, changeling) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Elf</span>
+			{% set elf = ['Lumeacia', 'Kerasoka'] %}
+			{{ _self.display_opt(multisel.options, field_id, elf) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Human</span>
+			{% set human = ['Human'] %}
+			{{ _self.display_opt(multisel.options, field_id, human) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Mystic</span>
+			{% set mystic = ['Elemental', 'Fae'] %}
+			{{ _self.display_opt(multisel.options, field_id, mystic) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Terra</span>
+			{% set terra = ['Dwarf'] %}
+			{{ _self.display_opt(multisel.options, field_id, terra) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Undead</span>
+			{% set undead = ['Ghost', 'Korcai'] %}
+			{{ _self.display_opt(multisel.options, field_id, undead) }}
+		</div>
+	{% elseif  field_id == 'pf_c_class_opts' %}
+		<div class="group">
+			<span class="group-header">Combat</span>
+			{% set combat = ['Barbarian', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue'] %}
+			{{ _self.display_opt(multisel.options, field_id, combat) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Supportive</span>
+			{% set supportive = ['Alchemist', 'Bard', 'Cleric'] %}
+			{{ _self.display_opt(multisel.options, field_id, supportive) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Magic</span>
+			{% set magic = ['Druid', 'Sorcerer', 'Summoner', 'Wizard'] %}
+			{{ _self.display_opt(multisel.options, field_id, magic) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Dragon</span>
+			{% set dragon = ['Physical', 'Magical', 'Healing'] %}
+			{{ _self.display_opt(multisel.options, field_id, dragon) }}
+		</div>
+	{% elseif field_id == 'pf_c_religion_opts' %}
+		<div class="group">
+			<span class="group-header">Archaicism</span>
+			{% set archaicism = ['Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir'] %}
+			{{ _self.display_opt(multisel.options, field_id, archaicism) }}
+		</div>
+		<div class="group">
+			<span class="group-header">Idolism</span>
+			{% set idolism = ['Cecilia', 'Bhelest'] %}
+			{{ _self.display_opt(multisel.options, field_id, idolism) }}
+		</div>
+	{% else %}
+		{{ _self.display_opt(multisel.options, field_id, 'all') }}
+	{% endif %}
+<!-- END multisel -->

@@ -25,7 +25,6 @@ vendor/
 # Extensions
 ext/*
 !ext/displaycoffee/
-!ext/javiexin/advancedpf/styles/prosilver/
 
 # Styles
 styles/*

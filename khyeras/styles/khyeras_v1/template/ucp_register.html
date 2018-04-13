@@ -37,18 +37,12 @@
 				{% endif %}
 
 				{% set character_class = '' %}
-				{% if 'Race' in error or 'Class' in error or 'Religion' in error or '_TOO_' in error %}
+				{% if 'Race' in error or 'Class' in error or 'Religion' in error %}
 					{% set character_class = ' error-msg-chracter' %}
 				{% endif %}
 
 				<span class="error-msg{{ error_class }}{{ character_class }}">
-					{% if error == 'FIELD_MULTISEL_TOO_FEW' %}
-						You have not selected enough options for the field "field". At least "x" option(s) must be selected.
-					{% elseif error == 'FIELD_MULTISEL_TOO_MANY' %}
-						You have selected too many options on the field "field". At most "x" option(s) may be selected.
-					{% else %}
-						{{ error }}
-					{% endif %}
+					{{ error }}
 				</span>
 			{% endfor %}
 		</p>
