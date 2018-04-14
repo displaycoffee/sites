@@ -92,7 +92,14 @@
 			<dt><label<!-- IF profile_fields.FIELD_ID --> for="{profile_fields.FIELD_ID}"<!-- ENDIF -->>{profile_fields.LANG_NAME}{L_COLON}<!-- IF profile_fields.S_REQUIRED --> *<!-- ENDIF --></label>
 			<!-- IF profile_fields.LANG_EXPLAIN --><br /><span>{profile_fields.LANG_EXPLAIN}</span><!-- ENDIF -->
 			<!-- IF profile_fields.ERROR --><br /><span class="error">{profile_fields.ERROR}</span><!-- ENDIF --></dt>
-			<dd>{profile_fields.FIELD}</dd>
+			<dd>
+				{profile_fields.FIELD}
+				<!-- IF profile_fields.LANG_NAME == 'Account Type'-->
+					<p class="error account-type">
+						<i class="icon fa-exclamation fa-fw icon-red" aria-hidden="true"></i><strong>Note:</strong> Switching the "Account Type" dropdown during registration may erase any information that is entered, especially for character fields.
+					</p>
+				<!-- ENDIF -->
+			</dd>
 		</dl>
 	<!-- END profile_fields -->
 	<!-- ENDIF -->
