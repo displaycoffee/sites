@@ -380,6 +380,16 @@
 ========================================================================== */
 
 #featured-content {
+	margin: 0 0 10px 0;
+	.featured-title {
+		text-align: center;
+		margin: 0 -5px 20px -5px;
+		.icon {
+			margin: 0 5px;
+			position: relative;
+			top: -2.5px;
+		}
+	}
 	.flex-row {
 		align-items: center;
 		.flex-column {
@@ -393,7 +403,7 @@
 			}
 			a {
 				display: block;
-				border: 5px solid $color-04;
+				border: 5px solid rgba($color-02, 0.30);
 				color: $color-01;
 				&:hover {
 					color: $color-07;

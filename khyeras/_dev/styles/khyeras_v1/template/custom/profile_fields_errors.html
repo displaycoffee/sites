@@ -1,0 +1,26 @@
+{% if ERROR %}
+	{% set errors = ERROR|split('<br />') %}
+	<p class="error">
+		{% for error in errors %}
+			{% set error_class = '' %}
+			{% if 'too short' in error %}
+				{% set error_class = ' error-msg-too-short' %}
+			{% elseif 'must be completed' in error %}
+				{% set error_class = ' error-msg-required' %}
+			{% elseif 'TOO_FEW' in error %}
+				{% set error_class = ' error-msg-too-few' %}
+			{% elseif 'TOO_MANY' in error %}
+				{% set error_class = ' error-msg-too-many' %}
+			{% endif %}
+
+			{% set character_class = '' %}
+			{% if 'Race' in error or 'Class' in error or 'Religion' in error %}
+				{% set character_class = ' error-msg-chracter' %}
+			{% endif %}
+
+			<span class="error-msg{{ error_class }}{{ character_class }}">
+				{{ error }}
+			</span>
+		{% endfor %}
+	</p>
+{% endif %}

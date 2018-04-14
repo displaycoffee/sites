@@ -23,7 +23,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	static public function getSubscribedEvents()
  	{
  		return array(
- 			'core.page_header' => 'testing_variables',
+ 			'core.page_header' => 'pf_variables',
  		);
  	}
 
@@ -54,7 +54,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	/**
  	 * Add a link to the controller in the forum navbar
  	 */
- 	public function testing_variables()
+ 	public function pf_variables()
  	{
 
 		global $phpbb_container;
@@ -64,11 +64,17 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$cp = $phpbb_container->get('profilefields.manager');
 		$profile_fields = $cp->grab_profile_fields_data($user_id);
 
+		$acc_type = $profile_fields[$user_id]['account_type']['value'];
+		if ($acc_type == 2) {
+			$acc_type = 'Writer';
+		} else if ($acc_type == 3) {
+			$acc_type = 'Character';
+		} else {
+			$acc_type = null;
+		}
+
  		$this->template->assign_vars(array(
- 			'TESTING'	=> 'BEEP BOOP',
-			'USER_INFO' => 'id: ' . $this->user->data['user_id'] . ',<br />username_clear: ' . $this->user->data['username_clean'],
-			'TEST_PROFILE' => $profile_fields[$user_id]['test_field']['value'],
-			'NEW_THING' => 'SUP?'
+			'ACCOUNT_TYPE' => $acc_type
  		));
  	}
  }

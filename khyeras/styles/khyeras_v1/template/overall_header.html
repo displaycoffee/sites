@@ -46,6 +46,14 @@
 </script>
 <!-- ENDIF -->
 
+<script>
+	<!-- IF ACCOUNT_TYPE -->
+		var accType = '{ACCOUNT_TYPE}';
+	<!-- ELSE -->
+		var accType = '';
+	<!-- ENDIF -->
+</script>
+
 <link href="{T_FONT_AWESOME_LINK}" rel="stylesheet">
 <link href="{T_STYLESHEET_LINK}" rel="stylesheet">
 
@@ -112,12 +120,12 @@
 			<!-- EVENT overall_header_headerbar_after -->
 		</header>
 
-		<!-- INCLUDE header_define.html -->
+		<!-- INCLUDE custom/header_define.html -->
 
-		<!-- INCLUDE header_welcome.html -->
+		<!-- INCLUDE custom/header_welcome.html -->
 
 		<!-- IF SCRIPT_NAME == 'index' -->
-			<!-- INCLUDE header_featured.html -->
+			<!-- INCLUDE custom/header_featured.html -->
 		<!-- ENDIF -->
 
 		{% if navlinks|length > 0 %}

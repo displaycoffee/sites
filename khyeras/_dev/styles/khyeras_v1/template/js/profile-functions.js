@@ -1,5 +1,5 @@
 function updateProfileFields() {
-	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
+	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) || jQuery( 'body' ).hasClass( 'section-ucp-edit-profile' ) ) {
 		// Reusable language variables
 		var defaultText = '-- Please Select --';
 		var fb 			= 'Full Blooded';
@@ -34,7 +34,7 @@ function updateProfileFields() {
 		updateAccountOptions( '10', 'Writer', '9', 'Character' );
 
 		// If selected account is default or writer, disable and reset fields
-		selAccount = findSelected( accountType );
+		selAccount = accType ? accType : findSelected( accountType );
 		if ( selAccount == 'Writer' || selAccount == '10' || selAccount == defaultText ) {
 			updateCharacterFields();
 			toggleFieldClass( true );
@@ -93,10 +93,10 @@ function updateProfileFields() {
 		// Add or remove classes to hide fields
 		function toggleFieldClass( condition ) {
 			if ( condition ) {
-				jQuery( '.error-msg-chracter' ).addClass( 'hide-fields' );
+				jQuery( '.error-msg-chracter, .character-fields h3, .character-fields p' ).addClass( 'hide-fields' );
 				characterFields.closest( 'dl' ).addClass( 'hide-fields' );
 			} else {
-				jQuery( '.error-msg-chracter' ).removeClass( 'hide-fields' );
+				jQuery( '.error-msg-chracter, .character-fields h3, .character-fields p' ).removeClass( 'hide-fields' );
 				characterFields.closest( 'dl' ).removeClass( 'hide-fields' );
 			}
 		}
@@ -355,8 +355,6 @@ function updateProfileFields() {
 				setRequiredSelect( classType, single );
 				setRequiredCheckboxes( classOpts, 'Bard' );
 			}
-
-			//return false;
 		});
 
 		// Set required select menus
