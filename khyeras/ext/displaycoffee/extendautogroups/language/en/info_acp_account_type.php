@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* Extending Auto Groups Example
+* Extend Auto Groups
 *
 * @copyright (c) 2015 phpBB Limited <https://www.phpbb.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
@@ -35,5 +35,5 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	// Auto Groups Management
-	'VENDOR_EXTENSION_AUTOGROUPS_TYPE_EXAMPLE'	=> 'Example user data type',
+	'DISPLAYCOFFEE_EXTENDAUTOGROUPS_AUTOGROUPS_TYPE_ACCOUNT_TYPE'	=> 'Example user data type',
 ));

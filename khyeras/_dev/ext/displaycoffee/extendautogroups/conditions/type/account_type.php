@@ -1,19 +1,19 @@
 <?php
 /**
 *
-* Extending Auto Groups Example
+* Extend Auto Groups
 *
 * @copyright (c) 2015 phpBB Limited <https://www.phpbb.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
-namespace foo\bar\conditions\type;
+namespace displaycoffee\extendautogroups\conditions\type;
 
 /**
 * Auto Groups Example class
 */
-class example extends \phpbb\autogroups\conditions\type\base
+class account_type extends \phpbb\autogroups\conditions\type\base
 {
 	/**
 	* Get condition type
@@ -23,7 +23,7 @@ class example extends \phpbb\autogroups\conditions\type\base
 	*/
 	public function get_condition_type()
 	{
-		return 'vendor.extension.autogroups.type.example';
+		return 'displaycoffee.extendautogroups.autogroups.type.account_type';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class example extends \phpbb\autogroups\conditions\type\base
 	*/
 	public function get_condition_field()
 	{
-		return 'example_data';
+		return 'account_type_data';
 	}
 
 	/**
@@ -45,7 +45,7 @@ class example extends \phpbb\autogroups\conditions\type\base
 	*/
 	public function get_condition_type_name()
 	{
-		return $this->user->lang('VENDOR_EXTENSION_AUTOGROUPS_TYPE_EXAMPLE');
+		return $this->user->lang('DISPLAYCOFFEE_EXTENDAUTOGROUPS_AUTOGROUPS_TYPE_ACCOUNT_TYPE');
 	}
 
 	/**

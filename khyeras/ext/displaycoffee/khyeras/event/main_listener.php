@@ -52,7 +52,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	}
 
  	/**
- 	 * Add a link to the controller in the forum navbar
+ 	 * Get data from profile fields
  	 */
  	public function pf_variables()
  	{

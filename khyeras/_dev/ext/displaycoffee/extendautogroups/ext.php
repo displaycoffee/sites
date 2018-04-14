@@ -1,14 +1,14 @@
 <?php
 /**
 *
-* Extending Auto Groups Example
+* Extend Auto Groups
 *
 * @copyright (c) 2015 phpBB Limited <https://www.phpbb.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
-namespace foo\bar;
+namespace displaycoffee\extendautogroups;
 
 /**
 * This ext class is optional and can be omitted if left empty.
@@ -42,7 +42,7 @@ class ext extends \phpbb\extension\base
 				{
 					// Try to remove this extension from auto groups db tables
 					$autogroups = $this->container->get('phpbb.autogroups.manager');
-					$autogroups->purge_autogroups_type('vendor.extension.autogroups.type.example');
+					$autogroups->purge_autogroups_type('displaycoffee.extendautogroups.autogroups.type.account_type');
 				}
 				catch (\InvalidArgumentException $e)
 				{

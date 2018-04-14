@@ -1,14 +1,14 @@
 <?php
 /**
 *
-* Extending Auto Groups Example
+* Extend Auto Groups
 *
 * @copyright (c) 2015 phpBB Limited <https://www.phpbb.com>
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
-namespace foo\bar\event;
+namespace displaycoffee\extendautogroups\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -37,11 +37,21 @@ class listener implements EventSubscriberInterface
 		// This conditional must be used to ensure calls only go out if Auto Groups is installed/enabled
 		if ($this->autogroup_manager !== null)
 		{
+
+			// This calls our class (with no optional arguments)
+			$this->autogroup_manager->check_condition('displaycoffee.extendautogroups.autogroups.type.account_type');
+
 			// This calls our class and sends it some $options data
-			$this->autogroup_manager->check_condition('vendor.extension.autogroups.type.example', array(
-				'foo'   => 'bar',
-				'users' => $event['user_id_ary'],
+			$this->autogroup_manager->check_condition('displaycoffee.extendautogroups.autogroups.type.account_type', array(
+				'foo'	=> 'bar',
+				'users'	=> $user_id_ary,
 			));
+
+			// This calls our class and sends it some $options data
+			// $this->autogroup_manager->check_condition('displaycoffee.extendautogroups.autogroups.type.account_type', array(
+			// 	'foo'   => 'bar',
+			// 	'users' => $event['user_id_ary'],
+			// ));
 		}
 	}
 }

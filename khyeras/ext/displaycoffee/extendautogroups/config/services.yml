@@ -1,6 +1,6 @@
 services:
-    foo.bar.autogroups.type.example:           # change this for your extension
-        class: foo\bar\conditions\type\example # change this for your extension
+    displaycoffee.extendautogroups.autogroups.type.account_type:           # change this for your extension
+        class: displaycoffee\extendautogroups\conditions\type\account_type # change this for your extension
         scope: prototype
         arguments:
             - @service_container
@@ -13,10 +13,9 @@ services:
         tags:
             - { name: phpbb.autogroups.type }
 
-    foo.bar.listener:
-        class: foo\bar\event\listener
+    displaycoffee.extendautogroups.listener:
+        class: displaycoffee\extendautogroups\event\listener
         arguments:
             - @?phpbb.autogroups.manager   # The ? defines this as an optional dependency
         tags:
             - { name: event.listener }
-
