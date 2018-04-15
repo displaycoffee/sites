@@ -34,7 +34,7 @@ class account_type extends \phpbb\autogroups\conditions\type\base
 	*/
 	public function get_condition_field()
 	{
-		return 'account_type_data';
+		return 'pf_account_type';
 	}
 
 	/**
@@ -45,7 +45,7 @@ class account_type extends \phpbb\autogroups\conditions\type\base
 	*/
 	public function get_condition_type_name()
 	{
-		return $this->user->lang('DISPLAYCOFFEE_EXTENDAUTOGROUPS_AUTOGROUPS_TYPE_ACCOUNT_TYPE');
+		return $this->language->lang('DISPLAYCOFFEE_EXTENDAUTOGROUPS_AUTOGROUPS_TYPE_ACCOUNT_TYPE');
 	}
 
 	/**
@@ -70,7 +70,7 @@ class account_type extends \phpbb\autogroups\conditions\type\base
 
 		// This query simply grabs all users and their example_data field
 		$sql = 'SELECT user_id, ' . implode(', ', $condition_data) . '
-			FROM ' . USERS_TABLE;
+			FROM ' . PROFILE_FIELDS_DATA_TABLE;
 		$result = $this->db->sql_query_limit($sql, 1);
 
 		while ($row = $this->db->sql_fetchrow($result))
