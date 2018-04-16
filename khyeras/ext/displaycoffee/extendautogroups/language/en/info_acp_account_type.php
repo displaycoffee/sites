@@ -35,5 +35,5 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	// Auto Groups Management
-	'DISPLAYCOFFEE_EXTENDAUTOGROUPS_AUTOGROUPS_TYPE_ACCOUNT_TYPE'	=> 'Example user data type',
+	'AUTOGROUPS_ACCOUNT_TYPE'	=> 'Account Type',
 ));

@@ -23,7 +23,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	static public function getSubscribedEvents()
  	{
  		return array(
- 			'core.page_header' => 'pf_variables',
+ 			'core.page_header' => 'pf_variables'
  		);
  	}
 
@@ -57,7 +57,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	public function pf_variables()
  	{
 
-		global $phpbb_container;
+		global $phpbb_container, $db;
 
 		$user_id = $this->user->data['user_id'];
 
@@ -76,5 +76,36 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  		$this->template->assign_vars(array(
 			'ACCOUNT_TYPE' => $acc_type
  		));
+
+		//var_dump($this->user->data['group_id']);
+
+		if ($this->user->data['group_id'] == '10') {
+
+			// $sql_ary = array(
+			//     'group_id'    => '10'
+			// );
+			//
+			// $sql_arr = array(
+			//     'group_id'    => '10',
+			//     'user_id'        => $user_id,
+			//     'group_leader'    => 0,
+			//     'user_pending'     => 0,
+			// );
+
+			// $sql = 'INSERT INTO ' . USER_GROUP_TABLE . '
+			//     SET ' . $db->sql_build_array('UPDATE', $sql_ary) . '
+			//     WHERE user_id = ' . (int) $user_id;
+			// $db->sql_query($sql);
+
+
+			// $sql = 'INSERT INTO ' . USER_GROUP_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_arr);
+			// $db->sql_query($sql);
+
+			// $sql = 'UPDATE ' . USERS_TABLE . '
+			//     SET ' . $db->sql_build_array('UPDATE', $sql_ary) . '
+			//     WHERE user_id = ' . (int) $user_id;
+			// $db->sql_query($sql);
+
+		}
  	}
  }
