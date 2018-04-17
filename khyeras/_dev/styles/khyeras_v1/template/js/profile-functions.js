@@ -30,12 +30,9 @@ function updateProfileFields() {
 
 		// --- START --- ACCOUNT LOGIC
 
-		// Change text values of options
-		updateAccountOptions( '10', 'Writer', '9', 'Character' );
-
 		// If selected account is default or writer, disable and reset fields
 		selAccount = accType ? accType : findSelected( accountType );
-		if ( selAccount == 'Writer' || selAccount == '10' || selAccount == defaultText ) {
+		if ( selAccount == 'Writer' || selAccount == defaultText ) {
 			updateCharacterFields();
 			toggleFieldClass( true );
 		} else {
@@ -49,7 +46,7 @@ function updateProfileFields() {
 
 			// Enable options depending on account selection
 			selAccount = findSelected( accountType );
-			if ( selAccount == 'Character' || selAccount == '9' ) {
+			if ( selAccount == 'Character' ) {
 				toggleFieldClass( false );
 				toggleSelect( raceType, true );
 				toggleSelect( religionType, true );
@@ -57,24 +54,6 @@ function updateProfileFields() {
 				jQuery( 'textarea[id^=pf_c_]' ).prop( 'disabled', false );
 			}
 		});
-
-		// Update account type option text
-		function updateAccountOptions( condition1, replace1, condition2, replace2 ) {
-			accountType.find( 'option' ).each( function() {
-				current = jQuery( this );
-				optText = current.text().trim();
-
-				if ( optText == condition1 ) {
-					current.text( function () {
-						return current.text().replace( optText, replace1 );
-					});​​​​​
-				} else if ( optText == condition2 ) {
-					current.text( function () {
-						return current.text().replace( optText, replace2 );
-					});​​​​​
-				}
-			});
-		}
 
 		// Update character fields depending on selections
 		function updateCharacterFields() {
@@ -341,11 +320,10 @@ function updateProfileFields() {
 		// --- START --- ON SUBMIT LOGIC
 
 		jQuery( '#register' ).on( 'submit', function( e ) {
-			// Writer = 10, Character = 9
 			selAccount = findSelected( accountType );
 
 			// Check if the writer account is selected
-			if ( selAccount == 'Writer' || selAccount == '10' ) {
+			if ( selAccount == 'Writer' ) {
 				// Clear out extra field information
 				updateCharacterFields();
 

@@ -12,6 +12,12 @@
 	.flex-column {
 		@include flex(base);
 	}
+	&.flex-row-05 {
+		margin: 0 -5px;
+		.flex-column {
+			padding: 0 5px;
+		}
+	}
 	&.flex-row-10 {
 		margin: 0 -10px;
 		.flex-column {

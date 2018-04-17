@@ -47,6 +47,9 @@ textarea {
 
 input[type='checkbox'], input[type='radio']  {
 	@include position($type: relative, $top: 2px);
+	&[disabled] {
+		opacity: 0.5;
+	}
 }
 
 label {
@@ -75,7 +78,6 @@ html input, select, textarea {
 		background: $color-13;
 	}
 }
-
 
 input[type='search']::-webkit-search-decoration, input[type='search']::-webkit-search-results-button, input[type='search']::-webkit-search-results-decoration {
 	display: none;

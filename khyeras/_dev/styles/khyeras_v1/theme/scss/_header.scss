@@ -412,6 +412,9 @@
 					}
 				}
 			}
+			.featured-content {
+				border: 1px solid $color-04;
+			}
 			.image-wrap {
 				@include sizing(100%, 0);
 				overflow: hidden;
@@ -424,14 +427,14 @@
 				}
 			}
 			p {
-				@include position($type: absolute, $bottom: 5px, $left: 15px, $right: 15px);
+				@include position($type: absolute, $bottom: 6px, $left: 11px, $right: 11px);
 				padding: 0 10px;
 				height: 30px;
 				line-height: 30px;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
-				background: rgba($color-02, 0.4);
+				background: rgba($color-02, 0.60);
 				text-align: center;
 			}
 		}

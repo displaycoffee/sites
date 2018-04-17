@@ -138,7 +138,9 @@
 							<li class="crumb home" {$MICRODATA}><a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home"><i class="icon rpg-icon rpg-castle" aria-hidden="true"></i><span itemprop="title">{L_SITE_HOME}</span></a></li>
 						<!-- ENDIF -->
 						<!-- EVENT overall_header_breadcrumb_prepend -->
-							<li class="crumb home" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><!-- IF not U_SITE_HOME --><i class="icon rpg-icon rpg-castle"></i><!-- ENDIF --><span itemprop="title">{L_INDEX}</span></a></li>
+							<!-- IF not U_SITE_HOME -->
+								<li class="crumb home" {$MICRODATA}><a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index"><i class="icon rpg-icon rpg-castle"></i><span itemprop="title">{L_INDEX}</span></a></li>
+							<!-- ENDIF -->
 						<!-- BEGIN navlinks -->
 							<!-- EVENT overall_header_navlink_prepend -->
 							<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><i class="icon fa-chevron-right fa-fw"></i><a href="{navlinks.U_VIEW_FORUM}" itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a></li>
