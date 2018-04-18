@@ -50,8 +50,7 @@ function updateProfileFields() {
 				toggleFieldClass( false );
 				toggleSelect( raceType, true );
 				toggleSelect( religionType, true );
-				jQuery( 'input[id^=pf_c_][type="text"]' ).prop( 'disabled', false );
-				jQuery( 'textarea[id^=pf_c_]' ).prop( 'disabled', false );
+				jQuery( 'input[id^=pf_c_][type="text"], input[id^=pf_c_][type="number"], textarea[id^=pf_c_]' ).prop( 'disabled', false );
 			}
 		});
 

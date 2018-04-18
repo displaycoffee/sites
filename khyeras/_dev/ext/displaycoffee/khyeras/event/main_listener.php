@@ -97,11 +97,13 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$acc_type = $event['cp_data']['pf_account_type'];
 
 		// Check the account type field
-		// 2 == Writer / 10 == group id, 3 == Character / 11 == group id
+		// 2 == Writer / 10 == group id / rank == 4, 3 == Character / 11 == group id / rank == 3
 		if ($acc_type == 2) {
 			$group_number = '10';
+			$rank_number = '4';
 		} else if ($acc_type == 3) {
 			$group_number = '11';
+			$rank_number = '3';
 		}
 
 		if ($acc_type == 2 || $acc_type == 3) {
@@ -119,7 +121,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 			// User data
 			$user_array = array(
-			    'group_id'    => $group_number
+			    'group_id'     => $group_number,
+				'user_rank'    => $rank_number
 			);
 
 			// Update users table with default group id
