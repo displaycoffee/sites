@@ -59,8 +59,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	{
 		global $phpbb_container;
 
-		// Get the user id
+		// Get the user id and group id
 		$user_id = $this->user->data['user_id'];
+		$group_id = $this->user->data['group_id'];
 
 		// Get profile field data
 		$cp = $phpbb_container->get('profilefields.manager');
@@ -69,19 +70,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// Get the account type
 		$acc_type = $pf[$user_id]['account_type']['value'];
 
-		// Check the account type field
-		// 2 == Writer, 3 == Character
-		if ($acc_type == 2) {
-			$acc_type = 'Writer';
-		} else if ($acc_type == 3) {
-			$acc_type = 'Character';
-		} else {
-			$acc_type = null;
-		}
-
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
-			'ACCOUNT_TYPE' => $acc_type
+			'KHY_ACCOUNT_TYPE' => $acc_type,
+			'KHY_GROUP_ID'     => $group_id
  		));
  	}
 

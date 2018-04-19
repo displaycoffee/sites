@@ -31,8 +31,7 @@ function updateProfileFields() {
 		// --- START --- ACCOUNT LOGIC
 
 		// If selected account is default or writer, disable and reset fields
-		selAccount = accType ? accType : findSelected( accountType );
-		if ( selAccount == 'Writer' || selAccount == defaultText ) {
+		if ( accType == 'Writer' || selAccount == 'Writer' || selAccount == defaultText ) {
 			updateCharacterFields();
 			toggleFieldClass( true );
 		} else {

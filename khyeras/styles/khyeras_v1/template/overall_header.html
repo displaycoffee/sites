@@ -46,13 +46,34 @@
 </script>
 <!-- ENDIF -->
 
-<script>
-	<!-- IF ACCOUNT_TYPE -->
-		var accType = '{ACCOUNT_TYPE}';
-	<!-- ELSE -->
-		var accType = '';
-	<!-- ENDIF -->
-</script>
+{% set groups = {
+	1  : 'Guests',
+	2  : 'Registered users',
+	3  : 'Registered COPPA users',
+	4  : 'Global moderators',
+	5  : 'Administrators',
+	6  : 'Bots',
+	7  : 'Newly registered users',
+	10 : 'Writers',
+	11 : 'Characters',
+} %}
+
+<!-- IF S_USER_LOGGED_IN and not S_IS_BOT -->
+	<script>
+		<!-- IF KHY_ACCOUNT_TYPE == 3 -->
+			var accType = 'Character';
+		<!-- ELSE -->
+			var accType = 'Writer';
+		<!-- ENDIF -->
+		<!-- IF KHY_GROUP_ID -->
+			var groupID = {KHY_GROUP_ID};
+			var groupName = '{{ groups[KHY_GROUP_ID] }}';
+		<!-- ELSE -->
+			var groupID = false;
+			var groupName = false;
+		<!-- ENDIF -->
+	</script>
+<!-- ENDIF -->
 
 <link href="{T_FONT_AWESOME_LINK}" rel="stylesheet">
 <link href="{T_STYLESHEET_LINK}" rel="stylesheet">
