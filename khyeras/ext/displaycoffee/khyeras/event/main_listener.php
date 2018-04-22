@@ -95,29 +95,43 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// Get profile data from profilefields manager
 		$pf = $phpbb_container->get('profilefields.manager')->grab_profile_fields_data($user_id);
 
-		// Get the profile field information
-		$acc_id = $pf[$user_id]['account_type']['data']['field_id'];
-		$acc_value = ($pf[$user_id]['account_type']['value']) - 1;
+		// Get profile field information
+		$pf_user = $pf[$user_id];
+		$acc_name = 'account_type';
+		$race_name = 'c_race_type';
 
-		// Get the row of data with selected field_id and option_id
+		// Array to store language variables
+		$pf_lang = array();
+
+		// Array for grabbing multiple lang variables
 		$pf_array = array(
-		    'field_id'  => $acc_id,
-			'option_id' => $acc_value
+		    $acc_name => array(
+		        'field_id' 	=> $pf_user[$acc_name]['data']['field_id'],
+		        'option_id' => ($pf_user[$acc_name]['value']) - 1
+		    ),
+			$race_name => array(
+		        'field_id' 	=> $pf_user[$race_name]['data']['field_id'],
+		        'option_id' => ($pf_user[$race_name]['value']) - 1
+		    )
 		);
 
-		// Create the SQL statement for group data
-		$pf_sql = 'SELECT lang_value
-	        FROM ' . PROFILE_FIELDS_LANG_TABLE . '
-	        WHERE ' . $this->db->sql_build_array('SELECT', $pf_array);
+		// Loop through row array and add info for each lang variable to $pf_lang
+		foreach ($pf_array as $key => $value)
+		{
+			// Create the SQL statement for group data
+			$pf_sql = 'SELECT lang_value
+		        FROM ' . PROFILE_FIELDS_LANG_TABLE . '
+		        WHERE ' . $this->db->sql_build_array('SELECT', $value);
 
-		// Run the query
-		$pf_result = $this->db->sql_query($pf_sql);
+			// Run the query
+			$pf_result = $this->db->sql_query($pf_sql);
 
-		// $pf_row should hold the selected data
-		$pf_row = $this->db->sql_fetchrow($pf_result);
+			// $pf_lang[$key] should hold the selected data
+			$pf_lang[$key] = $this->db->sql_fetchrow($pf_result)['lang_value'];
 
-		// Be sure to free the result after a SELECT query
-		$this->db->sql_freeresult($pf_result);
+			// Be sure to free the result after a SELECT query
+			$this->db->sql_freeresult($pf_result);
+		}
 
 		// --- END --- Profile Field Information
 
@@ -125,7 +139,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
-			'KHY_ACCOUNT_TYPE' => $pf_row['lang_value'],
+			'KHY_ACCOUNT_TYPE' => $pf_lang['account_type'],
 			'KHY_GROUP_ID'     => $group_id,
 			'KHY_GROUP_NAME'   => $group_row['group_name']
  		));
