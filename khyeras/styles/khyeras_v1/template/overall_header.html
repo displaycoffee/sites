@@ -46,32 +46,10 @@
 </script>
 <!-- ENDIF -->
 
-{% set groups = {
-	1  : 'Guests',
-	2  : 'Registered users',
-	3  : 'Registered COPPA users',
-	4  : 'Global moderators',
-	5  : 'Administrators',
-	6  : 'Bots',
-	7  : 'Newly registered users',
-	10 : 'Writers',
-	11 : 'Characters',
-} %}
-
 <!-- IF S_USER_LOGGED_IN and not S_IS_BOT -->
 	<script>
-		<!-- IF KHY_ACCOUNT_TYPE == 3 -->
-			var accType = 'Character';
-		<!-- ELSE -->
-			var accType = 'Writer';
-		<!-- ENDIF -->
-		<!-- IF KHY_GROUP_ID -->
-			var groupID = {KHY_GROUP_ID};
-			var groupName = '{{ groups[KHY_GROUP_ID] }}';
-		<!-- ELSE -->
-			var groupID = false;
-			var groupName = false;
-		<!-- ENDIF -->
+		var accType = '{KHY_ACCOUNT_TYPE}';
+		var groupName = '{{ KHY_GROUP_NAME | title }}';
 	</script>
 <!-- ENDIF -->
 

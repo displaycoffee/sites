@@ -37,6 +37,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	/* @var \phpbb\user */
  	protected $user;
 
+	/** @var \phpbb\db\driver\driver_interface */
+	protected $db;
+
  	/**
  	 * Constructor
  	 *
@@ -45,11 +48,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	 * @param \phpbb\user               $user       User object
  	 * @param string                    $php_ext    phpEx
  	 */
- 	public function __construct(\phpbb\controller\helper $helper, \phpbb\template\template $template, \phpbb\user $user)
+ 	public function __construct(\phpbb\controller\helper $helper, \phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db)
  	{
  		$this->helper   = $helper;
  		$this->template = $template;
  		$this->user     = $user;
+		$this->db       = $db;
  	}
 
  	/**
@@ -63,18 +67,70 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$user_id = $this->user->data['user_id'];
 		$group_id = $this->user->data['group_id'];
 
-		// Get profile field data
-		$cp = $phpbb_container->get('profilefields.manager');
-		$pf = $cp->grab_profile_fields_data($user_id);
+		// --- START --- Group Information
 
-		// Get the account type
-		$acc_type = $pf[$user_id]['account_type']['value'];
+		// Get the row of data with selected group_id
+		$group_array = array(
+		    'group_id'    => $group_id
+		);
+
+		// Create the SQL statement for group data
+		$group_sql = 'SELECT group_name
+	        FROM ' . GROUPS_TABLE . '
+	        WHERE ' . $this->db->sql_build_array('SELECT', $group_array);
+
+		// Run the query
+		$group_result = $this->db->sql_query($group_sql);
+
+		// $group_row should hold the selected data
+		$group_row = $this->db->sql_fetchrow($group_result);
+
+		// Be sure to free the result after a SELECT query
+		$this->db->sql_freeresult($group_result);
+
+		// --- END --- Group Information
+
+		// --- START --- Profile Field Information
+
+		// Get profile data from profilefields manager
+		$pf = $phpbb_container->get('profilefields.manager')->grab_profile_fields_data($user_id);
+
+		// Get the profile field information
+		$acc_id = $pf[$user_id]['account_type']['data']['field_id'];
+		$acc_value = ($pf[$user_id]['account_type']['value']) - 1;
+
+		// Get the row of data with selected field_id and option_id
+		$pf_array = array(
+		    'field_id'  => $acc_id,
+			'option_id' => $acc_value
+		);
+
+		// Create the SQL statement for group data
+		$pf_sql = 'SELECT lang_value
+	        FROM ' . PROFILE_FIELDS_LANG_TABLE . '
+	        WHERE ' . $this->db->sql_build_array('SELECT', $pf_array);
+
+		// Run the query
+		$pf_result = $this->db->sql_query($pf_sql);
+
+		// $pf_row should hold the selected data
+		$pf_row = $this->db->sql_fetchrow($pf_result);
+
+		// Be sure to free the result after a SELECT query
+		$this->db->sql_freeresult($pf_result);
+
+		// --- END --- Profile Field Information
+
+		// --- START --- Variable Assignment
 
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
-			'KHY_ACCOUNT_TYPE' => $acc_type,
-			'KHY_GROUP_ID'     => $group_id
+			'KHY_ACCOUNT_TYPE' => $pf_row['lang_value'],
+			'KHY_GROUP_ID'     => $group_id,
+			'KHY_GROUP_NAME'   => $group_row['group_name']
  		));
+
+		// --- END --- Variable Assignment
  	}
 
 	/**
@@ -82,20 +138,18 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	 */
 	public function add_account_group($event)
 	{
-		global $db;
-
 		// Get the user id and account type
 		$user_id = $event['user_id'];
 		$acc_type = $event['cp_data']['pf_account_type'];
 
 		// Check the account type field
-		// 2 == Writer / 10 == group id / rank == 4, 3 == Character / 11 == group id / rank == 3
+		// Writer > 2 / group_id > 8 / rank > 4 | Character > 3 / group_id > 9 / rank > 5
 		if ($acc_type == 2) {
-			$group_number = '10';
+			$group_number = '8';
 			$rank_number = '4';
 		} else if ($acc_type == 3) {
-			$group_number = '11';
-			$rank_number = '3';
+			$group_number = '9';
+			$rank_number = '5';
 		}
 
 		if ($acc_type == 2 || $acc_type == 3) {
@@ -108,8 +162,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			);
 
 			// Insert a new row into the db for new group
-			$user_group_sql = 'INSERT INTO ' . USER_GROUP_TABLE . ' ' . $db->sql_build_array('INSERT', $user_group_arr);
-			$db->sql_query($user_group_sql);
+			$user_group_sql = 'INSERT INTO ' . USER_GROUP_TABLE . ' ' . $this->db->sql_build_array('INSERT', $user_group_arr);
+			$this->db->sql_query($user_group_sql);
 
 			// User data
 			$user_array = array(
@@ -119,9 +173,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 			// Update users table with default group id
 			$user_sql = 'UPDATE ' . USERS_TABLE . '
-			    SET ' . $db->sql_build_array('UPDATE', $user_array) . '
+			    SET ' . $this->db->sql_build_array('UPDATE', $user_array) . '
 			    WHERE user_id = ' . (int) $user_id;
-			$db->sql_query($user_sql);
+			$this->db->sql_query($user_sql);
 		}
 	}
  }
