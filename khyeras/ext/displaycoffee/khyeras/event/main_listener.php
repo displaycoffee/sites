@@ -71,7 +71,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// Get the row of data with selected group_id
 		$group_array = array(
-		    'group_id'    => $group_id
+		    'group_id' => $group_id
 		);
 
 		// Create the SQL statement for group data
@@ -95,39 +95,75 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// Get profile data from profilefields manager
 		$pf = $phpbb_container->get('profilefields.manager')->grab_profile_fields_data($user_id);
 
-		// Get profile field information
+		// Set profile field names
 		$pf_user = $pf[$user_id];
 		$acc_name = 'account_type';
-		$race_name = 'c_race_type';
+		$race_opts = 'c_race_opts';
+		$class_opts = 'c_class_opts';
 
 		// Array to store language variables
 		$pf_lang = array();
 
-		// Array for grabbing multiple lang variables
+		// Associative array for grabbing multiple lang variables
+		// We only really need to do this for dropdowns and multi checkboxes
 		$pf_array = array(
 		    $acc_name => array(
 		        'field_id' 	=> $pf_user[$acc_name]['data']['field_id'],
 		        'option_id' => ($pf_user[$acc_name]['value']) - 1
 		    ),
-			$race_name => array(
-		        'field_id' 	=> $pf_user[$race_name]['data']['field_id'],
-		        'option_id' => ($pf_user[$race_name]['value']) - 1
+			$race_opts => array(
+		        'field_id' 	=> $pf_user[$race_opts]['data']['field_id'],
+		        'option_id' => explode(';', $pf_user[$race_opts]['value'])
+		    ),
+			$class_opts => array(
+		        'field_id' 	=> $pf_user[$class_opts]['data']['field_id'],
+		        'option_id' => explode(';', $pf_user[$class_opts]['value'])
 		    )
 		);
 
-		// Loop through row array and add info for each lang variable to $pf_lang
+		// Loop through $pf_array and add info for each lang variable to $pf_lang
 		foreach ($pf_array as $key => $value)
 		{
-			// Create the SQL statement for group data
-			$pf_sql = 'SELECT lang_value
-		        FROM ' . PROFILE_FIELDS_LANG_TABLE . '
-		        WHERE ' . $this->db->sql_build_array('SELECT', $value);
+			// Check if the option_id value is an array
+			if (gettype($value['option_id']) == 'array')
+			{
+				// Set empty string to add comma separated options
+				$options = '';
 
-			// Run the query
-			$pf_result = $this->db->sql_query($pf_sql);
+				// Loop through each option
+				for ($i = 0; $i < count($value['option_id']); $i++)
+				{
+					// Get the option value
+					$option = ($value['option_id'][$i]) - 1;
 
-			// $pf_lang[$key] should hold the selected data
-			$pf_lang[$key] = $this->db->sql_fetchrow($pf_result)['lang_value'];
+					// Create the SQL statement for option data
+					$pf_sql = 'SELECT lang_value
+				        FROM ' . PROFILE_FIELDS_LANG_TABLE . '
+				        WHERE field_id="' . $value['field_id'] . '" AND option_id="' .  $option . '"';
+
+					// Run the query
+					$pf_result = $this->db->sql_query($pf_sql);
+
+					// Add selected data to options string
+					$options = $options . $this->db->sql_fetchrow($pf_result)['lang_value'] . ', ';
+				}
+
+				// Finally add to $pf_lang array
+				$pf_lang[$key] = rtrim($options, ', ');
+			}
+			else
+			{
+				// Create the SQL statement for lang data
+				$pf_sql = 'SELECT lang_value
+			        FROM ' . PROFILE_FIELDS_LANG_TABLE . '
+			        WHERE ' . $this->db->sql_build_array('SELECT', $value);
+
+				// Run the query
+				$pf_result = $this->db->sql_query($pf_sql);
+
+				// Add selected data to $pf_lang
+				$pf_lang[$key] = $this->db->sql_fetchrow($pf_result)['lang_value'];
+			}
 
 			// Be sure to free the result after a SELECT query
 			$this->db->sql_freeresult($pf_result);
@@ -139,9 +175,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
-			'KHY_ACCOUNT_TYPE' => $pf_lang['account_type'],
 			'KHY_GROUP_ID'     => $group_id,
-			'KHY_GROUP_NAME'   => $group_row['group_name']
+			'KHY_GROUP_NAME'   => $group_row['group_name'],
+			'KHY_ACCOUNT_TYPE' => $pf_lang[$acc_name],
+			'KHY_RACE'   	   => $pf_lang[$race_opts],
+			'KHY_CLASS'   	   => $pf_lang[$class_opts],
+			'KHY_LEVEL'   	   => $pf_user['c_level']['value']
  		));
 
 		// --- END --- Variable Assignment
