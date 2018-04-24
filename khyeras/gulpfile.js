@@ -46,7 +46,7 @@ if (phpBBFolder == 'styles') {
 
 	gulp.task('js', function() {
 		gulp.src(jsSources)
-			.pipe(concat('functions.js'))
+			.pipe(concat('khyeras.js'))
 			.pipe(uglify())
 			.pipe(gulp.dest(distJS));
 	});

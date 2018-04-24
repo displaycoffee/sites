@@ -207,18 +207,21 @@
 	}
 	.user-profile {
 		text-align: center;
+		.date-and-time {
+			display: none;
+		}
 		.user-avatar {
 			border-radius: 100%;
 			border: 5px solid $color-04;
 			overflow: hidden;
 			width: 150px;
-			margin: -75px auto 15px auto;
+			margin: -75px auto 20px auto;
 			.image-wrap {
 				height: 0;
 				padding: 0 0 100% 0;
 			}
 		}
-		h5, .character-level {
+		h5, p {
 			margin: 0 0 10px 0
 		}
 		h5 {
@@ -228,10 +231,9 @@
 		}
 		p {
 			font-size: rem($global-font-size);
-		}
-		.character-level {
-			text-transform: uppercase;
-			@include spectral-common;
+			&:last-child, &:nth-last-child(2) {
+				margin-bottom: 20px;
+			}
 		}
 		.character-stats {
 			.icon, .separator {
@@ -243,6 +245,7 @@
 			.separator {
 				display: inline-block;
 				font-weight: bold;
+				@include position(relative, -2px);
 			}
 		}
 		.guest-register {

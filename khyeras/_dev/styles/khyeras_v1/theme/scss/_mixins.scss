@@ -152,7 +152,6 @@
 
 // Mixin for positioning
 @mixin position($type: '', $top: '', $bottom: '', $left: '', $right: '', $z: '') {
-	// Font family logic
 	@if ($type != '') {
 		position: $type;
 	}

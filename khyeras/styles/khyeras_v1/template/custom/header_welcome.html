@@ -6,22 +6,25 @@
 					<div class="user-profile flex-column">
 						{$DISPLAY_AVATAR}
 						{$DISPLAY_USERNAME}
-						<!-- TO DO: LOGIC FOR ALL OF THIS -->
-						<!-- GUEST BLOCK -->
-						<!-- <p>
-							Looks like you're not registered. Check out our boards, <a href="//google.com">read more on Khy'eras</a>, or <a href="{U_REGISTER}">sign up today</a>.
-						</p> -->
-						<!-- LOGGED IN USER BLOCK -->
-						<!-- <p>
-							Don't forget to check out the latest <a href="/viewforum.php?f=9">announcements</a> and <a href="//www.google.com">events</a>. Or, perhaps you're looking to add a new character? If so, don't forget to <a href="//www.google.com">link the account</a>.
-						</p> -->
-						<!-- CHARACTER BLOCK -->
-						<p class="character-level">Level 01</p>
-						<p class="character-stats">
-							<i class="icon rpg-icon rpg-crossed-swords"></i>
-							<span class="separator">/</span>
-							<i class="icon rpg-icon rpg-fairy"></i>
-						</p>
+						<!-- IF KHY_GROUP_NAME == 'Characters' -->
+							<p class="character-level">
+								<strong>Level</strong> <!-- IF KHY_LEVEL < 10 -->0<!-- ENDIF -->{KHY_LEVEL}
+							</p>
+							<p class="character-stats">
+								{{ KHY_RACE | replace({',': ' and'}) }}
+								<span class="separator">/</span>
+								{{ KHY_CLASS | replace({',': ' and'}) }}
+							</p>
+						<!-- ELSEIF S_REGISTERED_USER -->
+							<p>
+								Don't forget to check out the latest <a href="{BOARD_URL}/viewforum.php?f=9">announcements</a> and <a href="{BOARD_URL}/viewforum.php?f=26">events</a>. Or, perhaps you're looking to add a new character? If so, don't forget to <a href="//www.google.com">link the account</a>.
+							</p>
+						<!-- ELSE -->
+							<p>
+								Looks like you're not registered. Check out our boards, <a href="{BOARD_URL}">read more on Khy'eras</a>, or <a href="{U_REGISTER}">sign up today</a>.
+							</p>
+						<!-- ENDIF -->
+						{$DISPLAY_TIME}
 					</div>
 					<div class="user-information flex-column">
 						{$DISPLAY_TIME}
@@ -33,7 +36,7 @@
 						<!-- ENDIF -->
 					</div>
 					<div class="site-callouts flex-column">
-						<p class="introduction">Freed from Bhelest's nightmares and undead legions, the realm of Khy'eras – called "The Neverend" – unveiled vast reaches perfect for exploration. Create a character, craft unlimited adventures, and unlock the land's secrets. <a class="read-more" href="//google.com">Read more...</a></p>
+						<p class="introduction">Freed from Bhelest's nightmares and undead legions, the realm of Khy'eras – called "The Neverend" – unveiled vast reaches perfect for exploration. Create a character, craft unlimited adventures, and unlock the land's secrets. <a class="read-more" href="{BOARD_URL}">Read more...</a></p>
 						<!-- INCLUDE custom/header_links.html -->
 					</div>
 				</div>

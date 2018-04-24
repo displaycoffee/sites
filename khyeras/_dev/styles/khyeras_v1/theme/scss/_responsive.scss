@@ -236,8 +236,19 @@
 	}
 
 	// header.scss
-	#page-welcome .user-profile {
-		order: -2;
+	#page-welcome {
+		.user-profile {
+			order: -2;
+			p:nth-last-child(2) {
+				margin-bottom: 10px;
+			}
+			.date-and-time {
+				display: block;
+			}
+		}
+		.user-information .date-and-time {
+			display: none;
+		}
 	}
 	#notification_list {
 		left: 1.5px;
