@@ -1,5 +1,12 @@
 function updateProfileFields() {
 	if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) || jQuery( 'body' ).hasClass( 'section-ucp-edit-profile' ) ) {
+		// Determine what page we are on
+		if ( jQuery( 'body' ).hasClass( 'section-ucp-register' ) ) {
+			var pageType = 'register';
+		} else {
+			var pageType = 'ucp';
+		}
+
 		// Reusable language variables
 		var defaultText = '-- Please Select --';
 		var fb 			= 'Full Blooded';
@@ -28,9 +35,15 @@ function updateProfileFields() {
 		var classCount, selClassType, selClassOpt;
 		var religionCount, selReligionType, selReligionOpt;
 
+		// Is accType defined?
+		if ( typeof accType == 'undefined' ) {
+			accType = false;
+		}
+
 		// --- START --- ACCOUNT LOGIC
 
 		// If selected account is default or writer, disable and reset fields
+		selAccount = findSelected( accountType );
 		if ( accType == 'Writer' || selAccount == 'Writer' || selAccount == defaultText ) {
 			updateCharacterFields();
 			toggleFieldClass( true );
@@ -57,12 +70,19 @@ function updateProfileFields() {
 		function updateCharacterFields() {
 			characterFields.each( function() {
 				current = jQuery( this );
-				if ( current.is( 'select' ) ) {
-					toggleSelect( current, false );
-				} else if ( current.is( 'input[type="checkbox"]' ) ) {
-					toggleCheckBox( current, false );
+
+				// Different actions for register versus ucp edit profile
+				if ( pageType == 'ucp' ) {
+					accountType.prop( 'disabled', true );
+					current.prop( 'disabled', true );
 				} else {
-					current.val( '' ).prop( 'disabled', true );
+					if ( current.is( 'select' ) ) {
+						toggleSelect( current, false );
+					} else if ( current.is( 'input[type="checkbox"]' ) ) {
+						toggleCheckBox( current, false );
+					} else {
+						current.val( '' ).prop( 'disabled', true );
+					}
 				}
 			});
 		}
@@ -70,11 +90,9 @@ function updateProfileFields() {
 		// Add or remove classes to hide fields
 		function toggleFieldClass( condition ) {
 			if ( condition ) {
-				jQuery( '.error-msg-chracter, .character-fields h3, .character-fields p' ).addClass( 'hide-fields' );
-				characterFields.closest( 'dl' ).addClass( 'hide-fields' );
+				jQuery( '.error-msg-chracter, .character-fields' ).addClass( 'hide-fields' );
 			} else {
-				jQuery( '.error-msg-chracter, .character-fields h3, .character-fields p' ).removeClass( 'hide-fields' );
-				characterFields.closest( 'dl' ).removeClass( 'hide-fields' );
+				jQuery( '.error-msg-chracter, .character-fields' ).removeClass( 'hide-fields' );
 			}
 		}
 
@@ -155,6 +173,11 @@ function updateProfileFields() {
 				// When default is selected, disable all options
 				toggleCheckBox( raceOpts, false );
 				toggleSelect( classType, false );
+			}
+
+			// If on ucp profile and writer account, disable all fields to ensure no changes are made
+			if ( accType == 'Writer' && pageType == 'ucp' ) {
+				classType.prop( 'disabled', true );
 			}
 		}
 
@@ -268,9 +291,8 @@ function updateProfileFields() {
 					compareCheckedValues( religionRules[selReligionType], getCheckText( current ), current, 'include' );
 				});
 			} else {
-				toggleCheckBox( current, false );
+				toggleCheckBox( religionOpts, false );
 			}
-
 		});
 
 		// Check for changes on religion checkboxes
@@ -317,7 +339,7 @@ function updateProfileFields() {
 
 		// --- START --- ON SUBMIT LOGIC
 
-		jQuery( '#register' ).on( 'submit', function( e ) {
+		jQuery( '.page-body' ).on( 'submit', '#register, #ucp.edit-profile-form', function( e ) {
 			selAccount = findSelected( accountType );
 
 			// Check if the writer account is selected
@@ -330,6 +352,11 @@ function updateProfileFields() {
 				setRequiredCheckboxes( raceOpts, 'Human' );
 				setRequiredSelect( classType, single );
 				setRequiredCheckboxes( classOpts, 'Bard' );
+
+				// If on ucp profile, set account type field on submit
+				if ( pageType == 'ucp' ) {
+					setRequiredSelect( accountType, 'Writer' );
+				}
 			}
 		});
 

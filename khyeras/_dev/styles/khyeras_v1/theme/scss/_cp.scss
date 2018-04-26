@@ -341,12 +341,10 @@
 ========================================================================== */
 
 #register, .section-ucp-edit-profile #ucp {
-	fieldset, .error {
-		.hide-fields {
-			visibility: hidden;
-			opacity: 0;
-			@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
-		}
+	.hide-fields {
+		visibility: hidden;
+		opacity: 0;
+		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
 	}
 	.error {
 		font-weight: normal;

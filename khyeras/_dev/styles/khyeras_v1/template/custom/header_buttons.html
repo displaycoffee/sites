@@ -57,7 +57,7 @@
 		<!-- ENDIF -->
 		<li>
 			<a class="button" href="{U_PROFILE}" title="{L_PROFILE}">
-				<i class="icon rpg-icon rpg-key" aria-hidden="true"></i><span>{L_UCP}</span>
+				<i class="icon rpg-icon rpg-key" aria-hidden="true"></i><span><!-- IF SCRIPT_NAME == 'ucp' -->UCP<!-- ELSE -->{L_UCP}<!-- ENDIF --></span>
 			</a>
 		</li>
 		{$DISPLAY_TOGGLE}
