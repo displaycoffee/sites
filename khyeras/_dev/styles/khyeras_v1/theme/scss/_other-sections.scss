@@ -108,48 +108,19 @@ dl.faq + .top {
 #viewprofile {
 	.profile-panel {
 		position: relative;
-		&.online .left-box.profile-details:first-child {
-			margin-top: 35px;
-		}
 		.inner {
 			@include flex-flow(row nowrap);
-			.left-box:not(.profile-details) {
+			.postprofile {
 			    flex: 0 0 231px;
 				margin: 0 20px 20px 0;
 				padding: 0 20px 0 0;
-				border-right: 1px dashed $color-04;
-				.profile-avatar {
-					overflow: hidden;
-					border: 5px solid $color-04;
-					border-radius: 100%;
-					@include sizing(100%, 0);
-					padding: 0 0 95.24% 0;
-					margin: 0 0 10px 0;
-					& + dd {
-						font-style: italic;
-						font-family: $font-02;
-					}
-				}
 			}
-			.left-box.profile-details {
+			.profile-details {
 				@include flex(base);
-				dt:first-child {
-					display: none;
-					& + dd {
-						margin-left: 0;
-					}
-				}
-				dd {
-					select[name='g'] {
-						width: auto;
-						margin-bottom: 0;
-						min-width: 33.33%;
-					}
-					span[style*='color'] {
-						@include spectral-common;
-						font-size: rem(22px);
-						font-weight: normal !important;
-					}
+				dd select[name='g'] {
+					width: auto;
+					margin-bottom: 0;
+					min-width: 33.33%;
 				}
 				.zebra a i {
 					color: $color-01;

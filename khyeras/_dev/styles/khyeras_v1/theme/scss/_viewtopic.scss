@@ -329,15 +329,18 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 	}
 }
 
-/* View Topic - Profile
+/* View Topic - Profile - View Topic, PM, & Memberlist View
 ========================================================================== */
 
 .postprofile {
 	border-right: 1px dashed $color-04;
-	dt a[class*='username'], dd.profile-rank {
+	dt a[class*='username'], dt span[class*='username'], dd.profile-rank {
 		font-family: $font-02;
 	}
 	dt {
+		& > strong {
+			font-weight: normal;
+		}
 		text-align: center;
 		margin: 0 0 10px 0;
 		&.has-avatar .avatar-container {
@@ -351,10 +354,12 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 				padding: 0 0 100% 0;
 			}
 		}
-		a[class*='username'] {
-			display: block;
-			font-size: rem(22px);
-			font-variant: small-caps;
+		a, span {
+			&[class*='username'] {
+				display: block;
+				font-size: rem(22px);
+				font-variant: small-caps;
+			}
 		}
 	}
 	dd {

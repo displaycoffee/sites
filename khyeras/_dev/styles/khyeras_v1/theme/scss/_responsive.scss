@@ -31,11 +31,6 @@
 		}
 	}
 
-	// other-sections.scss
-	#register fieldset dl dd .group {
-		width: 50%;
-	}
-
 	// cp.scss
 	.cp-menu {
 		flex: 0 0 150px;
@@ -47,6 +42,9 @@
 		&:after {
 			width: 190px;
 		}
+	}
+	#register fieldset dl dd .group {
+		width: 50%;
 	}
 	.section-ucp-manage-groups .cp-main .topiclist > li dl dd.info {
 		flex: 0 0 250px;
@@ -173,7 +171,7 @@
 	}
 
 	// other-sections.scss
-	#viewprofile .panel:first-child .inner .left-box:not(.profile-details) {
+	#viewprofile .profile-panel .inner .postprofile {
 		flex: 0 0 176px;
 	}
 	#search_memberlist fieldset.fields1 dl {
@@ -747,20 +745,11 @@
 	}
 
 	// other-sections.scss
-	#register fieldset dl dd .group {
-		margin-top: 10px;
-	}
-	#viewprofile .panel:first-child .inner .left-box {
-		&:not(.profile-details) {
-			border-right: 0;
-			padding-right: 0;
-			flex: 0 0 130px;
-		}
-		&.profile-details dd select[name='g'] {
-			max-width: 120px;
-			& + .button2 {
-				padding: 10px;
-			}
+	#viewprofile .profile-panel .inner {
+		display: block;
+		.postprofile {
+			margin: 0 0 20px 0;
+			padding: 0 0 20px 0;
 		}
 	}
 	.popup-wrap {
@@ -838,6 +827,9 @@
 			padding-left: 20px;
 			padding-right: 20px;
 		}
+	}
+	#register fieldset dl dd .group {
+		margin-top: 10px;
 	}
 	.section-ucp-edit-profile .cp-main fieldset dl dd {
 		label[for*='bday'] select {
@@ -1284,34 +1276,17 @@
 		left: -1px;
 		right: -1px;
 	}
-	#viewprofile .panel:first-child .inner {
+	.section-search form[data-focus='keywords'] fieldset dl dd #sk {
+		@include flex(full);
+		max-width: none;
+	}
+	#viewprofile .profile-panel .inner .postprofile dd {
 		display: block;
-		.left-box {
-			&:not(.profile-details) {
-				border-right: 0;
-				margin: 0;
-				padding: 0;
-				.profile-avatar {
-					@include sizing(80px, 80px);
-					padding-bottom: 0;
-					margin: 0 auto 10px auto;
-				}
-			}
-			&.profile-details {
-				dt:first-child + dd {
-					& > span {
-						display: block;
-						text-align: center;
-						border-bottom: 1px dashed #15212c;
-						margin: 0 0 20px 0;
-					    padding: 0 0 20px 0;
-					}
-				}
-				dd select[name='g'] {
-					max-width: none;
-				}
-			}
-		}
+	}
+
+	// cp.scss
+	.cp-main .gallery label {
+		width: 50%;
 	}
 	#register .captcha-panel .captcha .g-recaptcha {
 		max-width: 220px;
@@ -1321,15 +1296,6 @@
 		& > div {
 			@include sizing(auto !important, auto !important);
 		}
-	}
-	.section-search form[data-focus='keywords'] fieldset dl dd #sk {
-		@include flex(full);
-		max-width: none;
-	}
-
-	// cp.scss
-	.cp-main .gallery label {
-		width: 50%;
 	}
 	.section-ucp-edit-memberships .cp-main fieldset {
 		.left-box, .right-box {
@@ -1556,10 +1522,7 @@
 	}
 
 	// other-sections.scss
-	#register fieldset dl dd .group {
-		width: auto;
-	}
-	#viewprofile .panel:first-child .inner .left-box.profile-details dd select[name='g'] {
+	#viewprofile .profile-panel .inner .left-box.profile-details dd select[name='g'] {
 		width: 100%;
 		& + .button2 {
 			margin-top: $ffs;
@@ -1601,6 +1564,9 @@
 				width: auto;
 			}
 		}
+	}
+	#register fieldset dl dd .group {
+		width: auto;
 	}
 	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
 		.image-wrap, img {

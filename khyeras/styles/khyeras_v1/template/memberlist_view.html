@@ -7,76 +7,84 @@
 <form method="post" action="{S_PROFILE_ACTION}" id="viewprofile">
 <div class="panel bg1<!-- IF S_ONLINE --> online<!-- ENDIF --> profile-panel">
 	<div class="inner">
-
-	<!-- IF AVATAR_IMG -->
-		<dl class="left-box">
-			<dt class="profile-avatar">{AVATAR_IMG}</dt>
-			<!-- EVENT memberlist_view_rank_avatar_before -->
-			<!-- IF RANK_TITLE --><dd style="text-align: center;">{RANK_TITLE}</dd><!-- ENDIF -->
-			<!-- IF RANK_IMG --><dd style="text-align: center;">{RANK_IMG}</dd><!-- ENDIF -->
-			<!-- EVENT memberlist_view_rank_avatar_after -->
-		</dl>
-	<!-- ENDIF -->
-
-	<dl class="left-box details profile-details">
-		<dt>{L_USERNAME}{L_COLON}</dt>
-		<dd>
-			<!-- IF USER_COLOR --><span style="color: {USER_COLOR}; font-weight: bold;"><!-- ELSE --><span><!-- ENDIF -->{USERNAME}</span>
-			<!-- IF U_EDIT_SELF --> [ <a href="{U_EDIT_SELF}">{L_EDIT_PROFILE}</a> ]<!-- ENDIF -->
-			<!-- IF U_USER_ADMIN --> [ <a href="{U_USER_ADMIN}">{L_USER_ADMIN}</a> ]<!-- ENDIF -->
-			<!-- IF U_USER_BAN --> [ <a href="{U_USER_BAN}">{L_USER_BAN}</a> ]<!-- ENDIF -->
-			<!-- IF U_SWITCH_PERMISSIONS --> [ <a href="{U_SWITCH_PERMISSIONS}">{L_USE_PERMISSIONS}</a> ]<!-- ENDIF -->
-		</dd>
-		<!-- EVENT memberlist_view_zebra_before -->
-		<!-- IF S_USER_LOGGED_IN and S_ZEBRA -->
-			<dt>Alliance:</dt>
-			<!-- IF U_REMOVE_FRIEND -->
-				 <dd class="zebra">
-					 <a href="{U_REMOVE_FRIEND}" data-ajax="zebra">
-						 <i class="icon rpg-icon rpg-shaking-hands"></i>{L_REMOVE_FRIEND}
-					 </a>
-				 </dd>
-			<!-- ELSEIF U_REMOVE_FOE -->
-				<dd class="zebra">
-					<a href="{U_REMOVE_FOE}" data-ajax="zebra">
-						<i class="icon rpg-icon rpg-evil-hand"></i>{L_REMOVE_FOE}
-					</a>
-				</dd>
+		<dl class="left-box postprofile">
+			<dt class="<!-- IF RANK_TITLE or RANK_IMG -->has-profile-rank<!-- ELSE -->no-profile-rank<!-- ENDIF --> <!-- IF AVATAR_IMG -->has-avatar<!-- ELSE -->no-avatar<!-- ENDIF -->">
+				<!-- IF AVATAR_IMG -->
+					<div class="avatar-container">
+						<div class="avatar">{AVATAR_IMG}</div>
+					</div>
+				<!-- ENDIF -->
+				<span class="username-coloured"<!-- IF USER_COLOR --> style="color: {USER_COLOR};"<!-- ENDIF -->>{USERNAME}</span>
+			</dt>
+			<!-- IF AVATAR_IMG -->
+				<!-- EVENT memberlist_view_rank_avatar_before -->
 			<!-- ELSE -->
-				<dd class="zebra">
-					<!-- IF U_ADD_FRIEND -->
-						<a href="{U_ADD_FRIEND}" data-ajax="zebra">
-							<i class="icon rpg-icon rpg-shaking-hands"></i>{L_ADD_FRIEND}
-						</a>
-					<!-- ENDIF -->
-					<!-- IF U_ADD_FOE -->
-						<span class="bullet">&bull;</span>
-						<a href="{U_ADD_FOE}" data-ajax="zebra">
-							<i class="icon rpg-icon rpg-evil-hand"></i>{L_ADD_FOE}
-						</a>
-					<!-- ENDIF -->
+				<!-- EVENT memberlist_view_rank_no_avatar_before -->
+			<!-- ENDIF -->
+			<!-- IF RANK_TITLE or RANK_IMG -->
+				<dd class="profile-rank">
+					{RANK_TITLE}
+					<!-- IF RANK_TITLE and RANK_IMG --><br /><!-- ENDIF -->{RANK_IMG}
 				</dd>
 			<!-- ENDIF -->
-		<!-- ENDIF -->
-		<!-- EVENT memberlist_view_zebra_after -->
-		<!-- IF not AVATAR_IMG -->
-			<!-- EVENT memberlist_view_rank_no_avatar_before -->
-			<!-- IF RANK_TITLE --><dt>{L_RANK}{L_COLON}</dt> <dd>{RANK_TITLE}</dd><!-- ENDIF -->
-			<!-- IF RANK_IMG --><dt><!-- IF RANK_TITLE -->&nbsp;<!-- ELSE -->{L_RANK}{L_COLON}<!-- ENDIF --></dt> <dd>{RANK_IMG}</dd><!-- ENDIF -->
-			<!-- EVENT memberlist_view_rank_no_avatar_after -->
-		<!-- ENDIF -->
-		<!-- IF S_USER_INACTIVE --><dt>{L_USER_IS_INACTIVE}{L_COLON}</dt> <dd>{USER_INACTIVE_REASON}</dd><!-- ENDIF -->
-		<!-- IF AGE !== '' --><dt>{L_AGE}{L_COLON}</dt> <dd>{AGE}</dd><!-- ENDIF -->
-		<!-- IF S_GROUP_OPTIONS --><dt>{L_USERGROUPS}{L_COLON}</dt> <dd><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd><!-- ENDIF -->
-		<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
-		<!-- BEGIN custom_fields -->
-			<!-- IF not custom_fields.S_PROFILE_CONTACT -->
-				<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt> <dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
+			<!-- IF AVATAR_IMG -->
+				<!-- EVENT memberlist_view_rank_avatar_after -->
+			<!-- ELSE -->
+				<!-- EVENT memberlist_view_rank_no_avatar_after -->
 			<!-- ENDIF -->
-		<!-- END custom_fields -->
-		<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
-	</dl>
-
+			<!-- IF U_EDIT_SELF or U_USER_ADMIN or U_USER_BAN or U_SWITCH_PERMISSIONS -->
+				<dd class="profile-permissions">
+					<!-- IF U_EDIT_SELF --> [ <a href="{U_EDIT_SELF}">{L_EDIT_PROFILE}</a> ]<!-- ENDIF -->
+					<!-- IF U_USER_ADMIN --> [ <a href="{U_USER_ADMIN}">{L_USER_ADMIN}</a> ]<!-- ENDIF -->
+					<!-- IF U_USER_BAN --> [ <a href="{U_USER_BAN}">{L_USER_BAN}</a> ]<!-- ENDIF -->
+					<!-- IF U_SWITCH_PERMISSIONS --> [ <a href="{U_SWITCH_PERMISSIONS}">{L_USE_PERMISSIONS}</a> ]<!-- ENDIF -->
+				</dd>
+			<!-- ENDIF -->
+		</dl>
+		<dl class="left-box details profile-details">
+			<!-- EVENT memberlist_view_zebra_before -->
+			<!-- IF S_USER_LOGGED_IN and S_ZEBRA -->
+				<dt>Alliance:</dt>
+				<!-- IF U_REMOVE_FRIEND -->
+					 <dd class="zebra">
+						 <a href="{U_REMOVE_FRIEND}" data-ajax="zebra">
+							 <i class="icon rpg-icon rpg-shaking-hands"></i>{L_REMOVE_FRIEND}
+						 </a>
+					 </dd>
+				<!-- ELSEIF U_REMOVE_FOE -->
+					<dd class="zebra">
+						<a href="{U_REMOVE_FOE}" data-ajax="zebra">
+							<i class="icon rpg-icon rpg-evil-hand"></i>{L_REMOVE_FOE}
+						</a>
+					</dd>
+				<!-- ELSE -->
+					<dd class="zebra">
+						<!-- IF U_ADD_FRIEND -->
+							<a href="{U_ADD_FRIEND}" data-ajax="zebra">
+								<i class="icon rpg-icon rpg-shaking-hands"></i>{L_ADD_FRIEND}
+							</a>
+						<!-- ENDIF -->
+						<!-- IF U_ADD_FOE -->
+							<span class="bullet">&bull;</span>
+							<a href="{U_ADD_FOE}" data-ajax="zebra">
+								<i class="icon rpg-icon rpg-evil-hand"></i>{L_ADD_FOE}
+							</a>
+						<!-- ENDIF -->
+					</dd>
+				<!-- ENDIF -->
+			<!-- ENDIF -->
+			<!-- EVENT memberlist_view_zebra_after -->
+			<!-- IF S_USER_INACTIVE --><dt>{L_USER_IS_INACTIVE}{L_COLON}</dt> <dd>{USER_INACTIVE_REASON}</dd><!-- ENDIF -->
+			<!-- IF AGE !== '' --><dt>{L_AGE}{L_COLON}</dt> <dd>{AGE}</dd><!-- ENDIF -->
+			<!-- IF S_GROUP_OPTIONS --><dt>{L_USERGROUPS}{L_COLON}</dt> <dd><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd><!-- ENDIF -->
+			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
+			<!-- BEGIN custom_fields -->
+				<!-- IF not custom_fields.S_PROFILE_CONTACT -->
+					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt> <dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
+				<!-- ENDIF -->
+			<!-- END custom_fields -->
+			<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
+		</dl>
 	</div>
 </div>
 
