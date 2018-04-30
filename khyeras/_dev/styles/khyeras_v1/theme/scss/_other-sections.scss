@@ -106,6 +106,17 @@ dl.faq + .top {
 ========================================================================== */
 
 #viewprofile {
+	.profile-tabs ul li a {
+		cursor: pointer;
+	}
+	.tab-panel {
+		&.show-panel {
+			display: block;
+		}
+		&.hide-panel {
+			display: none;
+		}
+	}
 	.profile-panel {
 		position: relative;
 		.inner {
@@ -114,13 +125,17 @@ dl.faq + .top {
 			    flex: 0 0 231px;
 				margin: 0 20px 20px 0;
 				padding: 0 20px 0 0;
+				.profile-permissions {
+					font-size: rem(12px);
+					text-align: center;
+				}
 			}
 			.profile-details {
 				@include flex(base);
-				dd select[name='g'] {
+				.group-options select {
 					width: auto;
 					margin-bottom: 0;
-					min-width: 33.33%;
+					min-width: 50%;
 				}
 				.zebra a i {
 					color: $color-01;

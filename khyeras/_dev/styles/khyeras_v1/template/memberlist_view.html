@@ -5,6 +5,28 @@
 <!-- EVENT memberlist_view_content_prepend -->
 
 <form method="post" action="{S_PROFILE_ACTION}" id="viewprofile">
+
+<div id="tabs" class="tabs profile-tabs sub-panels" role="tablist">
+	<ul>
+		<li class="tab activetab">
+			<a data-tabname="character-panel" role="tab" aria-controls="character-panel">Character</a>
+		</li>
+		<li class="tab">
+			<a data-tabname="writer-panel" role="tab" aria-controls="writer-panel">Writer</a>
+		</li>
+	</ul>
+</div>
+
+<fieldset class="character-panel tab-panel show-panel" class="fields2" role="tabpanel">
+	test 1a
+</fieldset>
+<fieldset class="character-panel tab-panel show-panel" class="fields2" role="tabpanel">
+	test 1b
+</fieldset>
+<fieldset class="writer-panel tab-panel hide-panel" class="fields2" role="tabpanel">
+	test 2
+</fieldset>
+
 <div class="panel bg1<!-- IF S_ONLINE --> online<!-- ENDIF --> profile-panel">
 	<div class="inner">
 		<dl class="left-box postprofile">
@@ -76,7 +98,7 @@
 			<!-- EVENT memberlist_view_zebra_after -->
 			<!-- IF S_USER_INACTIVE --><dt>{L_USER_IS_INACTIVE}{L_COLON}</dt> <dd>{USER_INACTIVE_REASON}</dd><!-- ENDIF -->
 			<!-- IF AGE !== '' --><dt>{L_AGE}{L_COLON}</dt> <dd>{AGE}</dd><!-- ENDIF -->
-			<!-- IF S_GROUP_OPTIONS --><dt>{L_USERGROUPS}{L_COLON}</dt> <dd><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd><!-- ENDIF -->
+			<!-- IF S_GROUP_OPTIONS --><dt>{L_USERGROUPS}{L_COLON}</dt> <dd class="group-options"><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd><!-- ENDIF -->
 			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
 			<!-- BEGIN custom_fields -->
 				<!-- IF not custom_fields.S_PROFILE_CONTACT -->

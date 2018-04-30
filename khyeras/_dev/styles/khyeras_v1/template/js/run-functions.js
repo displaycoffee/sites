@@ -81,6 +81,9 @@ jQuery( document ).ready( function( $ ) {
 	    width         : 768
 	});
 
+	// Tab functionality for memberlist_view
+	toggleMemberDisplay();
+
 	/* Profile Field Functionality
 	========================================================================== */
 

@@ -221,3 +221,35 @@ function initializeMobileMenu( options ) {
 	}, 100 );
 	window.addEventListener( 'resize', resizeMenuForMobile );
 }
+
+// Toggle display of character versus writer on memberlist_view
+function toggleMemberDisplay() {
+	var profileTabs = jQuery( '.profile-tabs' );
+
+	if ( profileTabs.length ) {
+		// Get all tabs on profile
+		var tabs = profileTabs.find( 'ul li a[data-tabname]' );
+
+		// Add click event for tabs
+		tabs.on( 'click', function() {
+			var current = jQuery( this );
+			
+			// Find any active tab, remove activetab class, then add it to clicked element
+			tabs.parent().removeClass( 'activetab' );
+			current.parent().addClass( 'activetab' );
+
+			// Get tab name
+			var activeTab =  current.attr( 'data-tabname' );
+
+			// For each tab, show or hide depending on tab name match
+			jQuery( '.tab-panel' ).each( function() {
+				var current = jQuery( this );
+				if ( current.hasClass( activeTab ) ) {
+					current.addClass( 'show-panel' ).removeClass( 'hide-panel' );
+				} else {
+					current.addClass( 'hide-panel' ).removeClass( 'show-panel' );
+				}
+			});
+		});
+	}
+}
