@@ -6,26 +6,21 @@
 
 <form method="post" action="{S_PROFILE_ACTION}" id="viewprofile">
 
-<div id="tabs" class="tabs profile-tabs sub-panels" role="tablist">
-	<ul>
-		<li class="tab activetab">
-			<a data-tabname="character-panel" role="tab" aria-controls="character-panel">Character</a>
-		</li>
-		<li class="tab">
-			<a data-tabname="writer-panel" role="tab" aria-controls="writer-panel">Writer</a>
-		</li>
-	</ul>
-</div>
+<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+	<!-- DEFINE $CHARACTER_CLASS = 'character-panel tab-panel show-panel' -->
+	<!-- DEFINE $WRITER_CLASS = 'writer-panel tab-panel hide-panel' -->
 
-<fieldset class="character-panel tab-panel show-panel" class="fields2" role="tabpanel">
-	test 1a
-</fieldset>
-<fieldset class="character-panel tab-panel show-panel" class="fields2" role="tabpanel">
-	test 1b
-</fieldset>
-<fieldset class="writer-panel tab-panel hide-panel" class="fields2" role="tabpanel">
-	test 2
-</fieldset>
+	<div id="tabs" class="tabs profile-tabs sub-panels" role="tablist">
+		<ul>
+			<li class="tab activetab">
+				<a data-tabname="character-panel" role="tab" aria-controls="character-panel">Character</a>
+			</li>
+			<li class="tab">
+				<a data-tabname="writer-panel" role="tab" aria-controls="writer-panel">Writer</a>
+			</li>
+		</ul>
+	</div>
+<!-- ENDIF -->
 
 <div class="panel bg1<!-- IF S_ONLINE --> online<!-- ENDIF --> profile-panel">
 	<div class="inner">
@@ -63,7 +58,37 @@
 				</dd>
 			<!-- ENDIF -->
 		</dl>
-		<dl class="left-box details profile-details">
+
+		<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+			<dl class="left-box details profile-details {$CHARACTER_CLASS}">
+				<!-- IF S_PROFILE_C_LEVEL -->
+					<dt class="level">
+						<div class="level-wrap">
+							<span class="level-name">{PROFILE_C_LEVEL_NAME}</span>
+							<span class="level-value"><!-- IF PROFILE_C_LEVEL_VALUE < 10 -->0<!-- ENDIF -->{PROFILE_C_LEVEL_VALUE}</span>
+						</div>
+					</dt>
+				<!-- ENDIF -->
+				<dd class="stats">
+					<!-- IF S_PROFILE_C_HP -->
+						<div class="stat-bar hp-bar">{PROFILE_C_HP_NAME} - {PROFILE_C_HP_VALUE}</div>
+					<!-- ENDIF -->
+					<!-- IF S_PROFILE_C_MP -->
+						<div class="stat-bar mp-bar">{PROFILE_C_MP_NAME} - {PROFILE_C_MP_VALUE}</div>
+					<!-- ENDIF -->
+				</dd>
+				<!-- IF S_PROFILE_C_RACE_OPTS -->
+					<dt>{PROFILE_C_RACE_OPTS_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_RACE_OPTS_VALUE}</dd>
+				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_CLASS_OPTS -->
+					<dt>{PROFILE_C_CLASS_OPTS_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_CLASS_OPTS_VALUE}</dd>
+				<!-- ENDIF -->
+			</dl>
+		<!-- ENDIF -->
+
+		<dl class="left-box details profile-details<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' --> {$WRITER_CLASS}<!-- ENDIF -->">
 			<!-- EVENT memberlist_view_zebra_before -->
 			<!-- IF S_USER_LOGGED_IN and S_ZEBRA -->
 				<dt>Alliance:</dt>
@@ -99,19 +124,79 @@
 			<!-- IF S_USER_INACTIVE --><dt>{L_USER_IS_INACTIVE}{L_COLON}</dt> <dd>{USER_INACTIVE_REASON}</dd><!-- ENDIF -->
 			<!-- IF AGE !== '' --><dt>{L_AGE}{L_COLON}</dt> <dd>{AGE}</dd><!-- ENDIF -->
 			<!-- IF S_GROUP_OPTIONS --><dt>{L_USERGROUPS}{L_COLON}</dt> <dd class="group-options"><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd><!-- ENDIF -->
-			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
-			<!-- BEGIN custom_fields -->
-				<!-- IF not custom_fields.S_PROFILE_CONTACT -->
-					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt> <dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
-				<!-- ENDIF -->
-			<!-- END custom_fields -->
-			<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
+			<!-- IF S_PROFILE_PRONOUNS -->
+				<dt>{PROFILE_PRONOUNS_NAME}{L_COLON}</dt>
+				<dd>{PROFILE_PRONOUNS_VALUE}</dd>
+			<!-- ENDIF  -->
+			<!-- IF S_PROFILE_C_WRITER_NAME and PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+				<dt>{PROFILE_C_WRITER_NAME_NAME}{L_COLON}</dt>
+				<dd>{PROFILE_C_WRITER_NAME_VALUE}</dd>
+			<!-- ENDIF  -->
 		</dl>
 	</div>
 </div>
 
+<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+	<div class="panel bg2 {$CHARACTER_CLASS}" role="tabpanel">
+		<div class="inner">
+			<h3>Other Details</h3>
+			<dl class="details">
+				<!-- IF S_PROFILE_C_AGE -->
+					<dt>{PROFILE_C_AGE_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_AGE_VALUE}</dd>
+				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_ORIGIN -->
+					<dt>{PROFILE_C_ORIGIN_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_ORIGIN_VALUE}</dd>
+				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_RELIGION_TYPE -->
+					<dt>Religion{L_COLON}</dt>
+					<dd>
+						{PROFILE_C_RELIGION_TYPE_VALUE}
+						<!-- IF S_PROFILE_C_RELIGION_OPTS -->
+							 - {PROFILE_C_RELIGION_OPTS_VALUE}
+						<!-- ENDIF -->
+					</dd>
+				<!-- ENDIF -->
+			</dl>
+		</div>
+	</div>
+
+	<div class="panel bg2 {$CHARACTER_CLASS}" role="tabpanel">
+		<div class="inner">
+			<div class="column1">
+				<h3>Physical Features</h3>
+				<!-- IF S_PROFILE_C_FEATURES -->
+					<p>{{ PROFILE_C_FEATURES_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
+				<!-- ELSE -->
+					<p>There's nothing here yet...</p>
+				<!-- ENDIF -->
+			</div>
+			<div class="column2">
+				<h3>Personality</h3>
+				<!-- IF S_PROFILE_C_PERSONALITY -->
+					<p>{{ PROFILE_C_PERSONALITY_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
+				<!-- ELSE -->
+					<p>There's nothing here yet...</p>
+				<!-- ENDIF -->
+			</div>
+		</div>
+	</div>
+
+	<div class="panel bg2 {$CHARACTER_CLASS}" role="tabpanel">
+		<div class="inner">
+			<h3>Background</h3>
+			<!-- IF S_PROFILE_C_BACKGROUND -->
+				<p>{{ PROFILE_C_BACKGROUND_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
+			<!-- ELSE -->
+				<p>There's nothing here yet...</p>
+			<!-- ENDIF -->
+		</div>
+	</div>
+<!-- ENDIF -->
+
 <!-- EVENT memberlist_view_contact_before -->
-<div class="panel bg2">
+<div class="panel bg2<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' --> {$WRITER_CLASS}<!-- ENDIF -->">
 	<div class="inner">
 
 	<div class="column1">
@@ -133,10 +218,6 @@
 			<!-- ENDIF -->
 		<!-- END custom_fields -->
 		<!-- EVENT memberlist_view_contact_custom_fields_after -->
-		<!-- IF S_PROFILE_FIELD1 -->
-			<!-- NOTE: Use a construct like this to include admin defined profile fields. Replace FIELD1 with the name of your field. -->
-			<dt>{PROFILE_FIELD1_NAME}{L_COLON}</dt> <dd>{PROFILE_FIELD1_VALUE}</dd>
-		<!-- ENDIF -->
 		</dl>
 	</div>
 

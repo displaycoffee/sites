@@ -224,16 +224,16 @@
 		h5, p {
 			margin: 0 0 10px 0
 		}
-		h5 {
-			font-family: $font-03;
-			font-variant: none;
-			font-size: rem(40px);
-		}
 		p {
 			font-size: rem($global-font-size);
 			&:last-child, &:nth-last-child(2) {
 				margin-bottom: 20px;
 			}
+		}
+		.welcome-header {
+			font-family: $font-03;
+			font-variant: none;
+			font-size: rem(40px);
 		}
 		.character-stats {
 			.icon, .separator {

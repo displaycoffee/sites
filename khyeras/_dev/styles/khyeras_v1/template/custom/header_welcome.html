@@ -7,9 +7,9 @@
 						{$DISPLAY_AVATAR}
 						{$DISPLAY_USERNAME}
 						<!-- IF KHY_GROUP_NAME == 'Characters' -->
-							<p class="character-level">
-								<strong>Level</strong> <!-- IF KHY_LEVEL < 10 -->0<!-- ENDIF -->{KHY_LEVEL}
-							</p>
+							<h5 class="character-level">
+								Level <!-- IF KHY_LEVEL < 10 -->0<!-- ENDIF -->{KHY_LEVEL}
+							</h5>
 							<p class="character-stats">
 								{{ KHY_RACE | replace({',': ' and'}) }}
 								<span class="separator">/</span>

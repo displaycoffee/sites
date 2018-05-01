@@ -143,6 +143,27 @@ dl.faq + .top {
 					margin: 0 5px 0 0;
 					@include position($type: relative, $top: 1px);
 				}
+				.level, .stats {
+					height: 70px;
+					overflow: hidden;
+				}
+				.level {
+					.level-wrap {
+						display: inline-block;
+					}
+					span {
+						display: block;
+						line-height: 1;
+						@include spectral-common;
+					}
+					.level-name {
+						font-size: rem(18px);
+						margin: 0 0 5px 0;
+					}
+					.level-value {
+						font-size: rem(50px);
+					}
+				}
 			}
 		}
 	}
