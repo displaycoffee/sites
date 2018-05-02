@@ -60,6 +60,7 @@
 		</dl>
 
 		<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+
 			<dl class="left-box details profile-details {$CHARACTER_CLASS}">
 				<!-- IF S_PROFILE_C_LEVEL -->
 					<dt class="level">
@@ -70,12 +71,7 @@
 					</dt>
 				<!-- ENDIF -->
 				<dd class="stats">
-					<!-- IF S_PROFILE_C_HP -->
-						<div class="stat-bar hp-bar">{PROFILE_C_HP_NAME} - {PROFILE_C_HP_VALUE}</div>
-					<!-- ENDIF -->
-					<!-- IF S_PROFILE_C_MP -->
-						<div class="stat-bar mp-bar">{PROFILE_C_MP_NAME} - {PROFILE_C_MP_VALUE}</div>
-					<!-- ENDIF -->
+					<!-- INCLUDE custom/stat_map.html -->
 				</dd>
 				<!-- IF S_PROFILE_C_RACE_OPTS -->
 					<dt>{PROFILE_C_RACE_OPTS_NAME}{L_COLON}</dt>
