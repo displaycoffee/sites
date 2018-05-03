@@ -686,34 +686,6 @@
 			}
 		}
 	}
-	.postprofile {
-		border-right: 0;
-		border-bottom: 1px dashed $color-04;
-		@include clearfix('&');
-		dt, dd.profile-rank {
-			text-align: left;
-		}
-		dt {
-			margin-bottom: 0;
-			a[class*='username'] {
-				padding-right: 50px;
-			}
-			&.has-avatar {
-				.avatar-container {
-					float: left;
-					width: 130px;
-					margin-right: 20px;
-				}
-				& ~ dd {
-					margin-left: 150px;
-				}
-			}
-		}
-		dd.profile-rank {
-			margin: 0 0 3px 0;
-			font-size: rem(16px);
-		}
-	}
 
 	// posting.scss
 	#postform #smiley-box {
@@ -744,15 +716,42 @@
 		}
 	}
 
+	// profile.scss
+	.postprofile {
+		border-right: 0;
+		border-bottom: 1px dashed $color-04;
+		@include clearfix('&');
+		dt, dd.profile-rank, dd.profile-permissions {
+			text-align: left;
+		}
+		dt {
+			margin-bottom: 0;
+			a[class*='username'] {
+				padding-right: 50px;
+			}
+			&.has-avatar {
+				.avatar-container {
+					float: left;
+					width: 130px;
+					margin-right: 20px;
+				}
+				& ~ dd {
+					margin-left: 150px;
+				}
+			}
+		}
+		dd.profile-rank {
+			margin: 0 0 3px 0;
+			font-size: rem(16px);
+		}
+	}
+
 	// other-sections.scss
 	#viewprofile .profile-panel .inner {
 		display: block;
 		.postprofile {
 			margin: 0 0 20px 0;
 			padding: 0 0 20px 0;
-			.profile-permissions {
-				text-align: left;
-			}
 		}
 	}
 	.popup-wrap {
@@ -1242,6 +1241,19 @@
 		margin-left: 0;
 		padding: 0;
 	}
+
+	// posting.scss
+	#color_palette_placeholder table {
+		max-width: none;
+		td {
+			width: 5.88% !important;
+			&:nth-child(3n) {
+				display: none;
+			}
+		}
+	}
+
+	// profile.scss
 	.postprofile {
 		dt.has-avatar {
 			.avatar-container {
@@ -1260,17 +1272,6 @@
 	}
 	.post.online .postprofile dt.has-avatar .avatar-container {
 		margin-top: 40px;
-	}
-
-	// posting.scss
-	#color_palette_placeholder table {
-		max-width: none;
-		td {
-			width: 5.88% !important;
-			&:nth-child(3n) {
-				display: none;
-			}
-		}
 	}
 
 	// other-sections.scss
@@ -1719,8 +1720,10 @@
 			}
 		}
 	}
+
+	// profile.scss
 	.postprofile {
-		dt, dd, dd.profile-rank {
+		dt, dd, dd.profile-rank, dd.profile-permissions {
 			text-align: center;
 		}
 		dt a[class*='username'] {
@@ -1743,11 +1746,6 @@
 	}
 	.post.online .postprofile dt.has-avatar .avatar-container {
 		margin-top: 0;
-	}
-
-	// other-sections.scss
-	#viewprofile .profile-panel .inner .postprofile .profile-permissions {
-		text-align: center;
 	}
 
 	// header.scss

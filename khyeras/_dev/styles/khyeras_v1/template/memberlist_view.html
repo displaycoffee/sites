@@ -60,16 +60,13 @@
 		</dl>
 
 		<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-
 			<dl class="left-box details profile-details {$CHARACTER_CLASS}">
-				<!-- IF S_PROFILE_C_LEVEL -->
-					<dt class="level">
-						<div class="level-wrap">
-							<span class="level-name">{PROFILE_C_LEVEL_NAME}</span>
-							<span class="level-value"><!-- IF PROFILE_C_LEVEL_VALUE < 10 -->0<!-- ENDIF -->{PROFILE_C_LEVEL_VALUE}</span>
-						</div>
-					</dt>
-				<!-- ENDIF -->
+				<dt class="level">
+					<div class="level-wrap">
+						<span class="level-name">Level</span>
+						<span class="level-value">01</span>
+					</div>
+				</dt>
 				<dd class="stats">
 					<!-- INCLUDE custom/stat_map.html -->
 				</dd>

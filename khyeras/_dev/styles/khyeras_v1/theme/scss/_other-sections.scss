@@ -36,9 +36,6 @@ dl.faq + .top {
 			margin: 0 5px 0 0;
 		}
 	}
-	.postprofile dt a[class*='username'] {
-		display: inline;
-	}
 	.post {
 		.postbody {
 			.posthilit {
@@ -125,10 +122,6 @@ dl.faq + .top {
 			    flex: 0 0 231px;
 				margin: 0 20px 20px 0;
 				padding: 0 20px 0 0;
-				.profile-permissions {
-					font-size: rem(12px);
-					text-align: center;
-				}
 			}
 			.profile-details {
 				@include flex(base);
