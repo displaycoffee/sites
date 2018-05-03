@@ -18,7 +18,7 @@
 			overflow: hidden;
 			border: 5px solid $color-04;
 			border-radius: 100%;
-			a.avatar {
+			a.avatar, div.avatar {
 				display: block;
 				@include sizing(100%, 0);
 				padding: 0 0 100% 0;
@@ -66,7 +66,52 @@
 	display: inline;
 }
 
-/* Online
+/* HP / MP Stat Bars
+========================================================================== */
+
+.stat-bar {
+	position: relative;
+	height: 20px;
+	border: 2px solid;
+	box-shadow: inset 0px 0px 6px 3px rgba($color-02, 0.40);
+	border-radius: 3px;
+	.stat-bar-inner {
+		height: 100%;
+	}
+	.stat-bar-label {
+		position: absolute;
+		bottom: -50%;
+		left: 0;
+		right: 0;
+		line-height: 1;
+		text-align: center;
+		text-shadow: 1px 1px 0 rgba($color-02, 0.40), 2px 2px 0 rgba($color-02, 0.40);
+		@include spectral-common;
+	}
+	& + .stat-bar {
+		margin: 15px 0 0 0;
+	}
+	&.hp-bar {
+		border-color: mix($color-02, $color-18, 33.33%);
+		background: mix($color-02, $color-18, 50%);
+		.stat-bar-inner {
+			background: $color-18;
+		}
+	}
+	&.mp-bar {
+		border-color: mix($color-02, $color-17, 33.33%);
+		background: mix($color-02, $color-17, 50%);
+		.stat-bar-inner {
+			background: $color-17;
+		}
+	}
+}
+
+#viewprofile .stat-bar {
+	max-width: 200px;
+}
+
+/* Online Badge - Typically shows near profile
 ========================================================================== */
 
 .online {

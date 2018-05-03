@@ -67,9 +67,15 @@
 						<span class="level-value">01</span>
 					</div>
 				</dt>
-				<dd class="stats">
-					<!-- INCLUDE custom/stat_map.html -->
-				</dd>
+				<!-- IF S_PROFILE_C_HP or S_PROFILE_C_MP -->
+					<dd class="stats">
+						<!-- INCLUDE custom/stat_map.html -->
+					</dd>
+				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_EXPERIENCE -->
+					<dt>{PROFILE_C_EXPERIENCE_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_EXPERIENCE_VALUE}</dd>
+				<!-- ENDIF -->
 				<!-- IF S_PROFILE_C_RACE_OPTS -->
 					<dt>{PROFILE_C_RACE_OPTS_NAME}{L_COLON}</dt>
 					<dd>{PROFILE_C_RACE_OPTS_VALUE}</dd>
@@ -77,6 +83,23 @@
 				<!-- IF S_PROFILE_C_CLASS_OPTS -->
 					<dt>{PROFILE_C_CLASS_OPTS_NAME}{L_COLON}</dt>
 					<dd>{PROFILE_C_CLASS_OPTS_VALUE}</dd>
+				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_AGE -->
+					<dt>{PROFILE_C_AGE_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_AGE_VALUE}</dd>
+				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_ORIGIN -->
+					<dt>{PROFILE_C_ORIGIN_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_ORIGIN_VALUE}</dd>
+				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_RELIGION_TYPE -->
+					<dt>Religion{L_COLON}</dt>
+					<dd>
+						{PROFILE_C_RELIGION_TYPE_VALUE}
+						<!-- IF S_PROFILE_C_RELIGION_OPTS -->
+							 - {PROFILE_C_RELIGION_OPTS_VALUE}
+						<!-- ENDIF -->
+					</dd>
 				<!-- ENDIF -->
 			</dl>
 		<!-- ENDIF -->
@@ -130,31 +153,6 @@
 </div>
 
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-	<div class="panel bg2 {$CHARACTER_CLASS}" role="tabpanel">
-		<div class="inner">
-			<h3>Other Details</h3>
-			<dl class="details">
-				<!-- IF S_PROFILE_C_AGE -->
-					<dt>{PROFILE_C_AGE_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_AGE_VALUE}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_ORIGIN -->
-					<dt>{PROFILE_C_ORIGIN_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_ORIGIN_VALUE}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_RELIGION_TYPE -->
-					<dt>Religion{L_COLON}</dt>
-					<dd>
-						{PROFILE_C_RELIGION_TYPE_VALUE}
-						<!-- IF S_PROFILE_C_RELIGION_OPTS -->
-							 - {PROFILE_C_RELIGION_OPTS_VALUE}
-						<!-- ENDIF -->
-					</dd>
-				<!-- ENDIF -->
-			</dl>
-		</div>
-	</div>
-
 	<div class="panel bg2 {$CHARACTER_CLASS}" role="tabpanel">
 		<div class="inner">
 			<div class="column1">

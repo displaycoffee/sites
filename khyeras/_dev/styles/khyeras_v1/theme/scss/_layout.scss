@@ -551,7 +551,8 @@
 			&.phpbb_wlm-icon:before {
 				content: unicode($icon-windows);
 			}
-			&.jabber-icon, &.phpbb_aol-icon, &.phpbb_icq-icon {
+			&.jabber-icon, &.phpbb_aol-icon, &.phpbb_icq-icon,
+			&.contact_discord-icon {
 				&:before {
 					content: unicode($icon-heart);
 				}
