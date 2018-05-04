@@ -59,6 +59,39 @@
 	}
 }
 
+/* View Profile
+========================================================================== */
+
+#viewprofile {
+	.user-contact {
+		.contact-icons {
+			margin: 0 -2.5px 15px -2.5px;
+			a {
+				@include sizing(28px, 28px);
+				line-height: 28px;
+				color: $color-01;
+				&:hover {
+					color: $color-06;
+				}
+				.contact-icon:before {
+					font-size: rem(20px);
+				}
+			}
+		}
+	}
+	.user-stats dl.details {
+		dd {
+			br {
+				display: none;
+			}
+			strong a {
+				display: inline-block;
+				margin: 0 10px 0 0;
+			}
+		}
+	}
+}
+
 /* Search Profile - User name
 ========================================================================== */
 

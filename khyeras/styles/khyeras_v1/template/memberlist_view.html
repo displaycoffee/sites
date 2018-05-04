@@ -9,7 +9,6 @@
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 	<!-- DEFINE $CHARACTER_CLASS = 'character-panel tab-panel show-panel' -->
 	<!-- DEFINE $WRITER_CLASS = 'writer-panel tab-panel hide-panel' -->
-
 	<div id="tabs" class="tabs profile-tabs sub-panels" role="tablist">
 		<ul>
 			<li class="tab activetab">
@@ -137,9 +136,22 @@
 				<!-- ENDIF -->
 			<!-- ENDIF -->
 			<!-- EVENT memberlist_view_zebra_after -->
-			<!-- IF S_USER_INACTIVE --><dt>{L_USER_IS_INACTIVE}{L_COLON}</dt> <dd>{USER_INACTIVE_REASON}</dd><!-- ENDIF -->
-			<!-- IF AGE !== '' --><dt>{L_AGE}{L_COLON}</dt> <dd>{AGE}</dd><!-- ENDIF -->
-			<!-- IF S_GROUP_OPTIONS --><dt>{L_USERGROUPS}{L_COLON}</dt> <dd class="group-options"><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd><!-- ENDIF -->
+			<!-- IF S_USER_INACTIVE -->
+				<dt>{L_USER_IS_INACTIVE}{L_COLON}</dt>
+				<dd>{USER_INACTIVE_REASON}</dd>
+			<!-- ENDIF -->
+			<!-- IF AGE !== '' -->
+				<dt><!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->Writer <!-- ENDIF -->{L_AGE}{L_COLON}</dt>
+				<dd>{AGE}</dd>
+			<!-- ENDIF -->
+			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
+			<!-- BEGIN custom_fields -->
+				<!-- IF custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_location' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_interests' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_occupation' -->
+					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
+					<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
+				<!-- ENDIF -->
+			<!-- END custom_fields -->
+			<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
 			<!-- IF S_PROFILE_PRONOUNS -->
 				<dt>{PROFILE_PRONOUNS_NAME}{L_COLON}</dt>
 				<dd>{PROFILE_PRONOUNS_VALUE}</dd>
@@ -148,105 +160,142 @@
 				<dt>{PROFILE_C_WRITER_NAME_NAME}{L_COLON}</dt>
 				<dd>{PROFILE_C_WRITER_NAME_VALUE}</dd>
 			<!-- ENDIF  -->
+			<!-- IF S_GROUP_OPTIONS -->
+				<dt>{L_USERGROUPS}{L_COLON}</dt>
+				<dd class="group-options"><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd>
+			<!-- ENDIF -->
 		</dl>
 	</div>
 </div>
 
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-	<div class="panel bg2 {$CHARACTER_CLASS}" role="tabpanel">
-		<div class="inner">
-			<div class="column1">
-				<h3>Physical Features</h3>
-				<!-- IF S_PROFILE_C_FEATURES -->
-					<p>{{ PROFILE_C_FEATURES_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
-				<!-- ELSE -->
-					<p>There's nothing here yet...</p>
-				<!-- ENDIF -->
-			</div>
-			<div class="column2">
-				<h3>Personality</h3>
-				<!-- IF S_PROFILE_C_PERSONALITY -->
-					<p>{{ PROFILE_C_PERSONALITY_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
-				<!-- ELSE -->
-					<p>There's nothing here yet...</p>
-				<!-- ENDIF -->
+	<div class="{$CHARACTER_CLASS}" role="tabpanel">
+		<div class="panel bg2">
+			<div class="inner">
+				<div class="column1">
+					<h3>Physical Features</h3>
+					<!-- IF S_PROFILE_C_FEATURES -->
+						<p>{{ PROFILE_C_FEATURES_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
+					<!-- ELSE -->
+						<p>There's nothing here yet...</p>
+					<!-- ENDIF -->
+				</div>
+				<div class="column2">
+					<h3>Personality</h3>
+					<!-- IF S_PROFILE_C_PERSONALITY -->
+						<p>{{ PROFILE_C_PERSONALITY_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
+					<!-- ELSE -->
+						<p>There's nothing here yet...</p>
+					<!-- ENDIF -->
+				</div>
 			</div>
 		</div>
-	</div>
-
-	<div class="panel bg2 {$CHARACTER_CLASS}" role="tabpanel">
-		<div class="inner">
-			<h3>Background</h3>
-			<!-- IF S_PROFILE_C_BACKGROUND -->
-				<p>{{ PROFILE_C_BACKGROUND_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
-			<!-- ELSE -->
-				<p>There's nothing here yet...</p>
-			<!-- ENDIF -->
+		<div class="panel bg2">
+			<div class="inner">
+				<h3>Background</h3>
+				<!-- IF S_PROFILE_C_BACKGROUND -->
+					<p>{{ PROFILE_C_BACKGROUND_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
+				<!-- ELSE -->
+					<p>There's nothing here yet...</p>
+				<!-- ENDIF -->
+			</div>
 		</div>
 	</div>
 <!-- ENDIF -->
 
 <!-- EVENT memberlist_view_contact_before -->
-<div class="panel bg2<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' --> {$WRITER_CLASS}<!-- ENDIF -->">
-	<div class="inner">
-
-	<div class="column1">
-		<h3>{L_CONTACT_USER}</h3>
-
-		<dl class="details">
-		<!-- IF U_EMAIL --><dt>{L_EMAIL_ADDRESS}{L_COLON}</dt> <dd><a href="{U_EMAIL}">{L_SEND_EMAIL_USER}</a></dd><!-- ENDIF -->
-		<!-- IF U_PM --><dt>{L_PM}{L_COLON}</dt> <dd><a href="{U_PM}">{L_SEND_PRIVATE_MESSAGE}</a></dd><!-- ENDIF -->
-		<!-- IF U_JABBER and S_JABBER_ENABLED --><dt>{L_JABBER}{L_COLON}</dt> <dd><a href="{U_JABBER}" onclick="popup(this.href, 750, 320); return false;">{L_SEND_JABBER_MESSAGE}</a></dd><!-- ELSEIF USER_JABBER --><dt>{L_JABBER}{L_COLON}</dt> <dd>{USER_JABBER}</dd><!-- ENDIF -->
-		<!-- EVENT memberlist_view_contact_custom_fields_before -->
-		<!-- BEGIN custom_fields -->
-			<!-- IF custom_fields.S_PROFILE_CONTACT -->
-				<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
-				<!-- IF custom_fields.PROFILE_FIELD_CONTACT -->
-					<dd><a href="{custom_fields.PROFILE_FIELD_CONTACT}">{custom_fields.PROFILE_FIELD_DESC}</a></dd>
-				<!-- ELSE -->
-					<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
-				<!-- ENDIF -->
-			<!-- ENDIF -->
-		<!-- END custom_fields -->
-		<!-- EVENT memberlist_view_contact_custom_fields_after -->
-		</dl>
+<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+	<div class="{$WRITER_CLASS}" role="tabpanel">
+<!-- ENDIF -->
+		<div class="panel bg2">
+			<div class="inner">
+				<div class="user-contact">
+					<h3>{L_CONTACT_USER}</h3>
+					<div class="contact-icons">
+						<!-- IF U_EMAIL -->
+							<a href="{U_EMAIL}" title="{L_SEND_EMAIL_USER}">
+								<span class="contact-icon email-icon">{L_SEND_EMAIL_USER}</span>
+							</a>
+						<!-- ENDIF -->
+						<!-- IF U_PM -->
+							<a href="{U_PM}" title="{L_SEND_PRIVATE_MESSAGE}">
+								<span class="contact-icon pm-icon">{L_SEND_PRIVATE_MESSAGE}</span>
+							</a>
+						<!-- ENDIF -->
+						<!-- IF U_JABBER and S_JABBER_ENABLED -->
+							<a href="{U_JABBER}" onclick="popup(this.href, 750, 320); return false;" title="{L_SEND_JABBER_MESSAGE}">
+								<span class="contact-icon jabber-icon">{L_SEND_JABBER_MESSAGE}</span>
+							</a>
+						<!-- ENDIF -->
+						<!-- BEGIN custom_fields -->
+							<!-- IF custom_fields.S_PROFILE_CONTACT -->
+								<!-- IF custom_fields.PROFILE_FIELD_CONTACT -->
+									<a href="{custom_fields.PROFILE_FIELD_CONTACT}" title="{custom_fields.PROFILE_FIELD_DESC}">
+										<span class="contact-icon {custom_fields.PROFILE_FIELD_IDENT}-icon">{custom_fields.PROFILE_FIELD_DESC}</span>
+									</a>
+								<!-- ENDIF -->
+							<!-- ENDIF -->
+						<!-- END custom_fields -->
+					</div>
+					<dl class="details">
+						<!-- IF USER_JABBER -->
+							<dt>{L_JABBER}{L_COLON}</dt>
+							<dd>{USER_JABBER}</dd>
+						<!-- ENDIF -->
+						<!-- EVENT memberlist_view_contact_custom_fields_before -->
+						<!-- BEGIN custom_fields -->
+							<!-- IF custom_fields.S_PROFILE_CONTACT -->
+								<!-- IF not custom_fields.PROFILE_FIELD_CONTACT -->
+									<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
+									<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
+								<!-- ENDIF -->
+							<!-- ENDIF -->
+						<!-- END custom_fields -->
+						<!-- EVENT memberlist_view_contact_custom_fields_after -->
+					</dl>
+				</div>
+				<div class="user-stats">
+					<h3>{L_USER_FORUM}</h3>
+					<dl class="details">
+						<!-- EVENT memberlist_view_user_statistics_before -->
+						<dt>{L_JOINED}{L_COLON}</dt>
+						<dd>{JOINED}</dd>
+						<dt>{L_LAST_ACTIVE}{L_COLON}</dt>
+						<dd>{LAST_ACTIVE}</dd>
+						<!-- IF S_WARNINGS -->
+							<dt>{L_WARNINGS}{L_COLON} </dt>
+							<dd>
+								<strong>{WARNINGS}</strong>
+								<!-- IF U_NOTES or U_WARN --> [ <!-- IF U_NOTES --><a href="{U_NOTES}">{L_VIEW_NOTES}</a><!-- ENDIF --> <!-- IF U_WARN --><!-- IF U_NOTES --> | <!-- ENDIF --><a href="{U_WARN}">{L_WARN_USER}</a><!-- ENDIF --> ]<!-- ENDIF -->
+							</dd>
+						<!-- ENDIF -->
+						<dt>{L_TOTAL_POSTS}{L_COLON}</dt>
+						<dd>
+							{POSTS} <!-- IF S_DISPLAY_SEARCH -->| <strong><a href="{U_SEARCH_USER}">{L_SEARCH_USER_POSTS}</a></strong><!-- ENDIF -->
+							<!-- IF POSTS_PCT --><br />({POSTS_PCT} / {POSTS_DAY})<!-- ENDIF -->
+							<!-- IF POSTS_IN_QUEUE and U_MCP_QUEUE --><br />&nbsp;(<a href="{U_MCP_QUEUE}">{L_POSTS_IN_QUEUE}</a>)<!-- ELSEIF POSTS_IN_QUEUE --><br />&nbsp;({L_POSTS_IN_QUEUE})<!-- ENDIF -->
+						</dd>
+						<!-- IF S_SHOW_ACTIVITY and POSTS -->
+							<dt>{L_ACTIVE_IN_FORUM}{L_COLON}</dt>
+							<dd><!-- IF ACTIVE_FORUM != '' --><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})<!-- ELSE --> - <!-- ENDIF --></dd>
+							<dt>{L_ACTIVE_IN_TOPIC}{L_COLON}</dt>
+							<dd><!-- IF ACTIVE_TOPIC != '' --><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})<!-- ELSE --> - <!-- ENDIF --></dd>
+						<!-- ENDIF -->
+						<!-- EVENT memberlist_view_user_statistics_after -->
+					</dl>
+				</div>
+			</div>
+		</div>
+<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 	</div>
-
-	<div class="column2">
-		<h3>{L_USER_FORUM}</h3>
-		<dl class="details">
-			<!-- EVENT memberlist_view_user_statistics_before -->
-			<dt>{L_JOINED}{L_COLON}</dt> <dd>{JOINED}</dd>
-			<dt>{L_LAST_ACTIVE}{L_COLON}</dt> <dd>{LAST_ACTIVE}</dd>
-			<!-- IF S_WARNINGS -->
-			<dt>{L_WARNINGS}{L_COLON} </dt>
-			<dd><strong>{WARNINGS}</strong><!-- IF U_NOTES or U_WARN --> [ <!-- IF U_NOTES --><a href="{U_NOTES}">{L_VIEW_NOTES}</a><!-- ENDIF --> <!-- IF U_WARN --><!-- IF U_NOTES --> | <!-- ENDIF --><a href="{U_WARN}">{L_WARN_USER}</a><!-- ENDIF --> ]<!-- ENDIF --></dd>
-			<!-- ENDIF -->
-			<dt>{L_TOTAL_POSTS}{L_COLON}</dt>
-				<dd>{POSTS} <!-- IF S_DISPLAY_SEARCH -->| <strong><a href="{U_SEARCH_USER}">{L_SEARCH_USER_POSTS}</a></strong><!-- ENDIF -->
-					<!-- IF POSTS_PCT --><br />({POSTS_PCT} / {POSTS_DAY})<!-- ENDIF -->
-					<!-- IF POSTS_IN_QUEUE and U_MCP_QUEUE --><br />(<a href="{U_MCP_QUEUE}">{L_POSTS_IN_QUEUE}</a>)<!-- ELSEIF POSTS_IN_QUEUE --><br />({L_POSTS_IN_QUEUE})<!-- ENDIF -->
-				</dd>
-			<!-- IF S_SHOW_ACTIVITY and POSTS -->
-				<dt>{L_ACTIVE_IN_FORUM}{L_COLON}</dt> <dd><!-- IF ACTIVE_FORUM != '' --><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})<!-- ELSE --> - <!-- ENDIF --></dd>
-				<dt>{L_ACTIVE_IN_TOPIC}{L_COLON}</dt> <dd><!-- IF ACTIVE_TOPIC != '' --><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})<!-- ELSE --> - <!-- ENDIF --></dd>
-			<!-- ENDIF -->
-			<!-- EVENT memberlist_view_user_statistics_after -->
-		</dl>
-	</div>
-
-	</div>
-</div>
+<!-- ENDIF -->
 <!-- EVENT memberlist_view_contact_after -->
 
 <!-- IF SIGNATURE -->
 <div class="panel bg1">
 	<div class="inner">
-
 		<h3>{L_SIGNATURE}</h3>
-
 		<div class="postbody"><div class="signature standalone">{SIGNATURE}</div></div>
-
 	</div>
 </div>
 <!-- ENDIF -->
