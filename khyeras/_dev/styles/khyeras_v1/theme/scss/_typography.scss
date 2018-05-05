@@ -89,7 +89,7 @@ body {
 }
 
 a {
-	color: $color-06;	
+	color: $color-06;
 	text-decoration: none;
 	&:hover {
 		color: $color-07;
@@ -154,7 +154,7 @@ h5, h6 {
 	font-size: rem($global-font-size);
 }
 
-.icon.rpg-icon {
+.icon.rpg-icon, .icon.misc-icon {
 	font-family: 'Khyeras Icons';
 }
 

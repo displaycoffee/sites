@@ -234,3 +234,27 @@ $rpg-tinker: \e904;
 .fa-wrench:before {
 	content: unicode($rpg-stone-crafting);
 }
+
+/* Miscellaneous Icons - Uses RPG font
+========================================================================== */
+
+$misc-icq: \e92b;
+$misc-jabber: \e92c;
+$misc-aim: \e92e;
+$misc-discord: \e92d;
+
+/* Miscellaneous Icon Classes
+========================================================================== */
+
+.misc-icq:before {
+	content: unicode($misc-icq);
+}
+.misc-jabber:before {
+	content: unicode($misc-jabber);
+}
+.misc-aim:before {
+	content: unicode($misc-aim);
+}
+.misc-discord:before {
+	content: unicode($misc-discord);
+}

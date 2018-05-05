@@ -65,10 +65,8 @@
 #viewprofile {
 	.user-contact {
 		.contact-icons {
-			margin: 0 -2.5px 15px -2.5px;
+			margin: 0 -5px 10px -5px;
 			a {
-				@include sizing(28px, 28px);
-				line-height: 28px;
 				color: $color-01;
 				&:hover {
 					color: $color-06;

@@ -511,15 +511,13 @@
 .contact-icons {
 	a {
 		@include inline-block(middle);
-		@include sizing(20px, 20px);
-		line-height: 20px;
-		margin: 0 2.5px 5px 2.5px;
+		margin: 0 5px 10px 5px;
 		text-align: center;
 		.contact-icon {
 			@include icon-font($fs: false);
 			font-size: 0;
 			&:before {
-				font-size: rem($global-font-size);
+				font-size: rem(16px);
 			}
 			&.pm-icon:before {
 				content: unicode($icon-inbox);
@@ -553,9 +551,19 @@
 			}
 			&.jabber-icon, &.phpbb_aol-icon, &.phpbb_icq-icon,
 			&.contact_discord-icon {
-				&:before {
-					content: unicode($icon-heart);
-				}
+				font-family: 'Khyeras Icons';
+			}
+			&.jabber-icon:before {
+				content: unicode($misc-jabber);
+			}
+			&.contact_discord-icon:before {
+				content: unicode($misc-discord);
+			}
+			&.phpbb_aol-icon:before {
+				content: unicode($misc-aim);
+			}
+			&.phpbb_icq-icon:before {
+				content: unicode($misc-icq);
 			}
 		}
 	}
