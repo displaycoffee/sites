@@ -1,10 +1,10 @@
-/* Profile - View Topic, PM, & Memberlist View
+/* Profile - View Topic, PM, Memberlist View
    Note: More specific styling like layout sizing is located in their specific sections
 ========================================================================== */
 
 .postprofile {
 	border-right: 1px dashed $color-04;
-	dt a[class*='username'], dt span[class*='username'], dd.profile-rank {
+	dt a[class*='username'], dt span[class*='username'], dd.profile-rank, dd.profile-title {
 		font-family: $font-02;
 	}
 	dt {
@@ -34,67 +34,59 @@
 	}
 	dd {
 		margin: 0 0 3px 0;
-		&.profile-rank {
+		&.profile-rank, &.profile-title {
 			text-align: center;
-			margin: -10px 0 10px 0;
 			font-style: italic;
+			margin: 10px 0 20px 0;
 		}
-		&.profile-contact {
-			position: relative;
-			.dropdown-container {
-				display: inline-block;
-				position: static;
-				.dropdown .dropdown-contents > div {
-					display: inline;
-				}
-				&.dropdown-visible .dropdown {
-					left: 0;
-				}
-			}
-		}
-		&.profile-permissions {
-			font-size: rem(12px);
-			text-align: center;
+		&.profile-rank + .profile-title {
+			margin-top: -15px;
 		}
 	}
 }
 
-/* View Profile
+/* Level - Includes Header Welcome
 ========================================================================== */
 
-#viewprofile {
-	.user-contact {
-		.contact-icons {
-			margin: 0 -5px 10px -5px;
-			a {
-				color: $color-01;
-				&:hover {
-					color: $color-06;
-				}
-				.contact-icon:before {
-					font-size: rem(20px);
-				}
-			}
+.level {
+	@include spectral-common;
+	.level-wrap {
+		display: inline-block;
+		span {
+			display: block;
+			line-height: 1;
 		}
-	}
-	.user-stats dl.details {
-		dd {
-			br {
-				display: none;
-			}
-			strong a {
-				display: inline-block;
-				margin: 0 10px 0 0;
-			}
+		.level-name {
+			font-size: rem(18px);
+			margin: 0 0 5px 0;
+		}
+		.level-value {
+			font-size: rem(50px);
 		}
 	}
 }
 
-/* Search Profile - User name
+#page-welcome .user-profile, .section-viewtopic {
+	.level {
+		font-size: rem(16px);
+	}
+}
+
+/* Race and Class - Includes Header Welcome
 ========================================================================== */
 
-.section-search .postprofile dt a[class*='username'] {
-	display: inline;
+.race-and-class {
+	.icon, .separator {
+		vertical-align: middle;
+	}
+	.icon {
+		font-size: rem(22px);
+	}
+	.separator {
+		display: inline-block;
+		font-weight: bold;
+		@include position(relative, -2px);
+	}
 }
 
 /* HP / MP Stat Bars
@@ -106,12 +98,13 @@
 	border: 2px solid;
 	box-shadow: inset 0px 0px 6px 3px rgba($color-02, 0.40);
 	border-radius: 3px;
+	margin: 0 0 5px 0;
 	.stat-bar-inner {
 		height: 100%;
 	}
 	.stat-bar-label {
 		position: absolute;
-		bottom: -50%;
+		bottom: -8.5px;
 		left: 0;
 		right: 0;
 		line-height: 1;
@@ -120,7 +113,7 @@
 		@include spectral-common;
 	}
 	& + .stat-bar {
-		margin: 15px 0 0 0;
+		margin-top: 15px;
 	}
 	&.hp-bar {
 		border-color: mix($color-02, $color-18, 33.33%);
@@ -135,6 +128,9 @@
 		.stat-bar-inner {
 			background: $color-17;
 		}
+	}
+	&.stat-bar-small {
+		height: 16px;
 	}
 }
 

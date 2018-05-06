@@ -43,6 +43,9 @@
 					<!-- IF RANK_TITLE and RANK_IMG --><br /><!-- ENDIF -->{RANK_IMG}
 				</dd>
 			<!-- ENDIF -->
+			<!-- IF S_PROFILE_TITLE -->
+				<dd class="profile-title">{PROFILE_TITLE_VALUE}</dd>
+			<!-- ENDIF -->
 			<!-- IF AVATAR_IMG -->
 				<!-- EVENT memberlist_view_rank_avatar_after -->
 			<!-- ELSE -->
@@ -67,9 +70,7 @@
 					</div>
 				</dt>
 				<!-- IF S_PROFILE_C_HP or S_PROFILE_C_MP -->
-					<dd class="stats">
-						<!-- INCLUDE custom/stat_map.html -->
-					</dd>
+					<dd class="stats"><!-- INCLUDE custom/stat_map.html --></dd>
 				<!-- ENDIF -->
 				<!-- IF S_PROFILE_C_EXPERIENCE -->
 					<dt>{PROFILE_C_EXPERIENCE_NAME}{L_COLON}</dt>
@@ -77,19 +78,27 @@
 				<!-- ENDIF -->
 				<!-- IF S_PROFILE_C_RACE_OPTS -->
 					<dt>{PROFILE_C_RACE_OPTS_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_RACE_OPTS_VALUE}</dd>
+					<dd>{{ PROFILE_C_RACE_OPTS_VALUE|replace({', ': ' and '}) }}</dd>
 				<!-- ENDIF -->
 				<!-- IF S_PROFILE_C_CLASS_OPTS -->
 					<dt>{PROFILE_C_CLASS_OPTS_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_CLASS_OPTS_VALUE}</dd>
+					<dd>{{ PROFILE_C_CLASS_OPTS_VALUE|replace({', ': ' and '}) }}</dd>
 				<!-- ENDIF -->
 				<!-- IF S_PROFILE_C_AGE -->
 					<dt>{PROFILE_C_AGE_NAME}{L_COLON}</dt>
 					<dd>{PROFILE_C_AGE_VALUE}</dd>
 				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_GENDER -->
+					<dt>{PROFILE_C_GENDER_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_GENDER_VALUE}</dd>
+				<!-- ENDIF -->
 				<!-- IF S_PROFILE_C_ORIGIN -->
 					<dt>{PROFILE_C_ORIGIN_NAME}{L_COLON}</dt>
 					<dd>{PROFILE_C_ORIGIN_VALUE}</dd>
+				<!-- ENDIF -->
+				<!-- IF S_PROFILE_C_RESIDENCE -->
+					<dt>{PROFILE_C_RESIDENCE_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_C_RESIDENCE_VALUE}</dd>
 				<!-- ENDIF -->
 				<!-- IF S_PROFILE_C_RELIGION_TYPE -->
 					<dt>Religion{L_COLON}</dt>
@@ -106,7 +115,7 @@
 		<dl class="left-box details profile-details<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' --> {$WRITER_CLASS}<!-- ENDIF -->">
 			<!-- EVENT memberlist_view_zebra_before -->
 			<!-- IF S_USER_LOGGED_IN and S_ZEBRA -->
-				<dt>Alliance:</dt>
+				<dt>Alliance{L_COLON}</dt>
 				<!-- IF U_REMOVE_FRIEND -->
 					 <dd class="zebra">
 						 <a href="{U_REMOVE_FRIEND}" data-ajax="zebra">
@@ -146,20 +155,12 @@
 			<!-- ENDIF -->
 			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
 			<!-- BEGIN custom_fields -->
-				<!-- IF custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_location' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_interests' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_occupation' -->
+				<!-- IF custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_location' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_interests' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_occupation' or custom_fields.PROFILE_FIELD_IDENT eq 'writing_prefs' or custom_fields.PROFILE_FIELD_IDENT eq 'pronouns' -->
 					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
 					<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
 				<!-- ENDIF -->
 			<!-- END custom_fields -->
 			<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
-			<!-- IF S_PROFILE_PRONOUNS -->
-				<dt>{PROFILE_PRONOUNS_NAME}{L_COLON}</dt>
-				<dd>{PROFILE_PRONOUNS_VALUE}</dd>
-			<!-- ENDIF  -->
-			<!-- IF S_PROFILE_C_WRITER_NAME and PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-				<dt>{PROFILE_C_WRITER_NAME_NAME}{L_COLON}</dt>
-				<dd>{PROFILE_C_WRITER_NAME_VALUE}</dd>
-			<!-- ENDIF  -->
 			<!-- IF S_GROUP_OPTIONS -->
 				<dt>{L_USERGROUPS}{L_COLON}</dt>
 				<dd class="group-options"><select name="g">{S_GROUP_OPTIONS}</select> <input type="submit" name="submit" value="{L_GO}" class="button2" /></dd>
@@ -174,6 +175,29 @@
 			<div class="inner">
 				<div class="column1">
 					<h3>Physical Features</h3>
+					<dl class="details">
+						<!-- IF S_PROFILE_C_COMPLEXION -->
+							<dt>{PROFILE_C_COMPLEXION_NAME}{L_COLON}</dt>
+							<dd>{PROFILE_C_COMPLEXION_VALUE}</dd>
+						<!-- ENDIF -->
+						<!-- IF S_PROFILE_C_HAIR -->
+							<dt>{PROFILE_C_HAIR_NAME}{L_COLON}</dt>
+							<dd>{PROFILE_C_HAIR_VALUE}</dd>
+						<!-- ENDIF -->
+						<!-- IF S_PROFILE_C_EYES -->
+							<dt>{PROFILE_C_EYES_NAME}{L_COLON}</dt>
+							<dd>{PROFILE_C_EYES_VALUE}</dd>
+						<!-- ENDIF -->
+						<!-- IF S_PROFILE_C_HEIGHT -->
+							<dt>{PROFILE_C_HEIGHT_NAME}{L_COLON}</dt>
+							<dd>{PROFILE_C_HEIGHT_VALUE}</dd>
+						<!-- ENDIF -->
+						<!-- IF S_PROFILE_C_WEIGHT -->
+							<dt>{PROFILE_C_WEIGHT_NAME}{L_COLON}</dt>
+							<dd>{PROFILE_C_WEIGHT_VALUE}</dd>
+						<!-- ENDIF -->
+					</dl>
+					<p class="other-features">Other Features{L_COLON}</p>
 					<!-- IF S_PROFILE_C_FEATURES -->
 						<p>{{ PROFILE_C_FEATURES_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
 					<!-- ELSE -->
@@ -229,7 +253,7 @@
 						<!-- ENDIF -->
 						<!-- BEGIN custom_fields -->
 							<!-- IF custom_fields.S_PROFILE_CONTACT -->
-								<!-- IF custom_fields.PROFILE_FIELD_CONTACT -->
+								<!-- IF custom_fields.PROFILE_FIELD_CONTACT and custom_fields.PROFILE_FIELD_IDENT neq 'c_writer_name' -->
 									<a href="{custom_fields.PROFILE_FIELD_CONTACT}" title="{custom_fields.PROFILE_FIELD_DESC}">
 										<span class="contact-icon {custom_fields.PROFILE_FIELD_IDENT}-icon">{custom_fields.PROFILE_FIELD_DESC}</span>
 									</a>
@@ -248,6 +272,9 @@
 								<!-- IF not custom_fields.PROFILE_FIELD_CONTACT -->
 									<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
 									<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
+								<!-- ELSEIF custom_fields.PROFILE_FIELD_IDENT eq 'c_writer_name' and PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+									<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
+									<dd><a href="{ROOT_PATH}{custom_fields.PROFILE_FIELD_CONTACT}">{custom_fields.PROFILE_FIELD_VALUE}</a></dd>
 								<!-- ENDIF -->
 							<!-- ENDIF -->
 						<!-- END custom_fields -->

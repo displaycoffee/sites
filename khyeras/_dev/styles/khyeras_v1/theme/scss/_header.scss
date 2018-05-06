@@ -235,19 +235,6 @@
 			font-variant: none;
 			font-size: rem(40px);
 		}
-		.character-stats {
-			.icon, .separator {
-				vertical-align: middle;
-			}
-			.icon {
-				font-size: rem(22px);
-			}
-			.separator {
-				display: inline-block;
-				font-weight: bold;
-				@include position(relative, -2px);
-			}
-		}
 		.guest-register {
 			color: $color-06;
 			&:hover {

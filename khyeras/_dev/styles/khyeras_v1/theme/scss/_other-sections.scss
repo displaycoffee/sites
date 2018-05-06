@@ -37,6 +37,9 @@ dl.faq + .top {
 		}
 	}
 	.post {
+		.postprofile dt a[class*='username'] {
+			display: inline;
+		}
 		.postbody {
 			.posthilit {
 				background: $color-09;
@@ -122,6 +125,12 @@ dl.faq + .top {
 			    flex: 0 0 231px;
 				margin: 0 20px 20px 0;
 				padding: 0 20px 0 0;
+				dd {
+					&.profile-permissions {
+						font-size: rem(12px);
+						text-align: center;
+					}
+				}
 			}
 			.profile-details {
 				@include flex(base);
@@ -140,24 +149,28 @@ dl.faq + .top {
 					height: 70px;
 					overflow: hidden;
 				}
-				.level {
-					.level-wrap {
-						display: inline-block;
-					}
-					span {
-						display: block;
-						line-height: 1;
-						@include spectral-common;
-					}
-					.level-name {
-						font-size: rem(18px);
-						margin: 0 0 5px 0;
-					}
-					.level-value {
-						font-size: rem(50px);
-					}
-				}
 			}
+		}
+	}
+	.user-contact .contact-icons {
+		margin: 0 -5px 10px -5px;
+		a {
+			color: $color-01;
+			&:hover {
+				color: $color-06;
+			}
+			.contact-icon:before {
+				font-size: rem(20px);
+			}
+		}
+	}
+	.user-stats dl.details dd {
+		br {
+			display: none;
+		}
+		strong a {
+			display: inline-block;
+			margin: 0 10px 0 0;
 		}
 	}
 	.panel .signature {
