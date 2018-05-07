@@ -162,21 +162,26 @@
 			<!-- ENDIF -->
 
 			<!-- IF postrow.PROFILE_ACCOUNT_TYPE_VALUE eq 'Character' -->
-				<dd class="character-separator"></dd>
-				<dd class="level">Level 01</dd>
-				<!-- IF postrow.S_PROFILE_C_HP or postrow.S_PROFILE_C_MP -->
-					<dd class="stats"><!-- INCLUDE custom/stat_map.html --></dd>
-				<!-- ENDIF -->
-				<!-- IF postrow.S_PROFILE_C_RACE_OPTS or postrow.PROFILE_C_CLASS_OPTS_VALUE -->
-					<dd class="race-and-class">
-						{{ postrow.PROFILE_C_RACE_OPTS_VALUE|replace({', ': ' and '}) }}
-						<!-- IF postrow.S_PROFILE_C_CLASS_OPTS -->
-							<span class="separator">/</span>
-							{{ postrow.PROFILE_C_CLASS_OPTS_VALUE|replace({', ': ' and '}) }}
-						<!-- ENDIF -->
-					</dd>
-				<!-- ENDIF -->
-				<dd class="character-separator"></dd>
+				<dd class="profile-character-wrapper">
+					<div class="level">
+						<div class="level-wrap level-wrap-small">
+							<span class="level-name">Level</span>
+							<span class="level-value">01</span>
+						</div>
+					</div>
+					<!-- IF postrow.S_PROFILE_C_HP or postrow.S_PROFILE_C_MP -->
+						<div class="stats"><!-- INCLUDE custom/stat_map.html --></div>
+					<!-- ENDIF -->
+					<!-- IF postrow.S_PROFILE_C_RACE_OPTS or postrow.PROFILE_C_CLASS_OPTS_VALUE -->
+						<div class="race-and-class">
+							{{ postrow.PROFILE_C_RACE_OPTS_VALUE|replace({', ': ' and '}) }}
+							<!-- IF postrow.S_PROFILE_C_CLASS_OPTS -->
+								<span class="separator">/</span>
+								{{ postrow.PROFILE_C_CLASS_OPTS_VALUE|replace({', ': ' and '}) }}
+							<!-- ENDIF -->
+						</div>
+					<!-- ENDIF -->
+				</dd>
 			<!-- ENDIF -->
 
 			<!-- IF postrow.POSTER_POSTS != '' --><dd class="profile-posts"><strong>{L_POSTS}{L_COLON}</strong> <!-- IF postrow.U_SEARCH !== '' --><a href="{postrow.U_SEARCH}"><!-- ENDIF -->{postrow.POSTER_POSTS}<!-- IF postrow.U_SEARCH !== '' --></a><!-- ENDIF --></dd><!-- ENDIF -->

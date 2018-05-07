@@ -721,7 +721,7 @@
 		border-right: 0;
 		border-bottom: 1px dashed $color-04;
 		@include clearfix('&');
-		dt, dd.profile-rank, dd.profile-permissions {
+		dt, dd.profile-rank, dd.profile-title {
 			text-align: left;
 		}
 		dt {

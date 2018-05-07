@@ -338,37 +338,37 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 /* View Topic - Profile
 ========================================================================== */
 
-.postprofile {
-	dd {
-		&.profile-contact {
-			position: relative;
-			.dropdown-container {
-				display: inline-block;
-				position: static;
-				.dropdown .dropdown-contents > div {
-					display: inline;
-				}
-				&.dropdown-visible .dropdown {
-					left: 0;
-				}
+.post .postprofile {
+	.profile-contact {
+		position: relative;
+		.dropdown-container {
+			display: inline-block;
+			position: static;
+			.dropdown .dropdown-contents > div {
+				display: inline;
+			}
+			&.dropdown-visible .dropdown {
+				left: 0;
 			}
 		}
-		&.level, &.race-and-class {
-			text-align: center;
-			margin: 0;
+	}
+	.profile-character-wrapper {
+		@include clearfix('&');
+		margin: 20px 0;
+		padding: 15px 0 10px 0;
+		border-top: 1px dashed $color-04;
+		border-bottom: 1px dashed $color-04;
+		.level {
+			float: left;
+			width: 50px;
 		}
-		&.stats {
-			margin: 10px 0 15px 0;
+		.stats {
+			margin-left: 50px;
+			padding: 0 0 0 10px;
 		}
-		&.character-separator {
-			//margin: 20px 0;
-			&:before {
-				content: '';
-				display: block;
-				max-width: 33.33%;
-				margin: auto;
-				border-bottom: 1px dashed $color-04;
-			}
+		.race-and-class {
+			padding: 5px 0 0 0;
+			clear: both;
 		}
 	}
 }

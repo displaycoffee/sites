@@ -4,7 +4,7 @@
 
 .postprofile {
 	border-right: 1px dashed $color-04;
-	dt a[class*='username'], dt span[class*='username'], dd.profile-rank, dd.profile-title {
+	dt a[class*='username'], dt span[class*='username'], .profile-rank, .profile-title {
 		font-family: $font-02;
 	}
 	dt {
@@ -34,14 +34,19 @@
 	}
 	dd {
 		margin: 0 0 3px 0;
-		&.profile-rank, &.profile-title {
-			text-align: center;
-			font-style: italic;
-			margin: 10px 0 20px 0;
-		}
-		&.profile-rank + .profile-title {
-			margin-top: -15px;
-		}
+	}
+	.profile-rank, .profile-title, .profile-permissions {
+		text-align: center;
+	}
+	.profile-rank, .profile-title {
+		font-style: italic;
+		margin: 10px 0 20px 0;
+	}
+	.profile-rank + .profile-title {
+		margin-top: -15px;
+	}
+	.profile-permissions {
+		font-size: rem(12px);
 	}
 }
 
@@ -63,10 +68,18 @@
 		.level-value {
 			font-size: rem(50px);
 		}
+		&.level-wrap-small {
+			.level-name {
+				font-size: rem(15px);
+			}
+			.level-value {
+				font-size: rem(42px);
+			}
+		}
 	}
 }
 
-#page-welcome .user-profile, .section-viewtopic {
+#page-welcome .user-profile {
 	.level {
 		font-size: rem(16px);
 	}

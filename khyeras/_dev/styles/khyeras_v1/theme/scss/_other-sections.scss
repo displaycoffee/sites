@@ -125,12 +125,6 @@ dl.faq + .top {
 			    flex: 0 0 231px;
 				margin: 0 20px 20px 0;
 				padding: 0 20px 0 0;
-				dd {
-					&.profile-permissions {
-						font-size: rem(12px);
-						text-align: center;
-					}
-				}
 			}
 			.profile-details {
 				@include flex(base);
