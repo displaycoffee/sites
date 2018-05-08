@@ -678,5 +678,8 @@ dl.details {
 	}
 	dd {
 		margin-left: 200px;
+		&.details-full {
+			margin-left: 0;
+		}
 	}
 }

@@ -139,10 +139,6 @@ dl.faq + .top {
 					margin: 0 5px 0 0;
 					@include position($type: relative, $top: 1px);
 				}
-				.level, .stats {
-					height: 70px;
-					overflow: hidden;
-				}
 			}
 		}
 	}

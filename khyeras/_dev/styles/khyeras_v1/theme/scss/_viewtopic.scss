@@ -353,22 +353,13 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		}
 	}
 	.profile-character-wrapper {
-		@include clearfix('&');
-		margin: 20px 0;
+		margin-top: 20px;
+		margin-bottom: 20px;
 		padding: 15px 0 10px 0;
 		border-top: 1px dashed $color-04;
 		border-bottom: 1px dashed $color-04;
-		.level {
-			float: left;
-			width: 50px;
-		}
-		.stats {
-			margin-left: 50px;
-			padding: 0 0 0 10px;
-		}
 		.race-and-class {
-			padding: 5px 0 0 0;
-			clear: both;
+			margin: 5px 0 0 0;
 		}
 	}
 }

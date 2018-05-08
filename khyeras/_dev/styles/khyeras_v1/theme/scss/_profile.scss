@@ -7,6 +7,9 @@
 	dt a[class*='username'], dt span[class*='username'], .profile-rank, .profile-title {
 		font-family: $font-02;
 	}
+	dt, .profile-rank, .profile-title, .profile-permissions {
+		text-align: center;
+	}
 	dt {
 		& > strong {
 			font-weight: normal;
@@ -35,9 +38,6 @@
 	dd {
 		margin: 0 0 3px 0;
 	}
-	.profile-rank, .profile-title, .profile-permissions {
-		text-align: center;
-	}
 	.profile-rank, .profile-title {
 		font-style: italic;
 		margin: 10px 0 20px 0;
@@ -47,6 +47,23 @@
 	}
 	.profile-permissions {
 		font-size: rem(12px);
+	}
+}
+
+/* Race and Class - Includes Header Welcome
+========================================================================== */
+
+.race-and-class {
+	.icon, .separator {
+		vertical-align: middle;
+	}
+	.icon {
+		font-size: rem(22px);
+	}
+	.separator {
+		display: inline-block;
+		font-weight: bold;
+		@include position(relative, -2px);
 	}
 }
 
@@ -68,87 +85,85 @@
 		.level-value {
 			font-size: rem(50px);
 		}
-		&.level-wrap-small {
-			.level-name {
-				font-size: rem(15px);
-			}
-			.level-value {
-				font-size: rem(42px);
-			}
+	}
+	&.level-small .level-wrap {
+		.level-name {
+			font-size: rem(15px);
+		}
+		.level-value {
+			font-size: rem(42px);
 		}
 	}
 }
 
-#page-welcome .user-profile {
-	.level {
-		font-size: rem(16px);
-	}
-}
-
-/* Race and Class - Includes Header Welcome
-========================================================================== */
-
-.race-and-class {
-	.icon, .separator {
-		vertical-align: middle;
-	}
-	.icon {
-		font-size: rem(22px);
-	}
-	.separator {
-		display: inline-block;
-		font-weight: bold;
-		@include position(relative, -2px);
-	}
+#page-welcome .user-profile .level {
+	font-size: rem(16px);
 }
 
 /* HP / MP Stat Bars
 ========================================================================== */
 
-.stat-bar {
-	position: relative;
-	height: 20px;
-	border: 2px solid;
-	box-shadow: inset 0px 0px 6px 3px rgba($color-02, 0.40);
-	border-radius: 3px;
-	margin: 0 0 5px 0;
-	.stat-bar-inner {
-		height: 100%;
-	}
-	.stat-bar-label {
-		position: absolute;
-		bottom: -8.5px;
-		left: 0;
-		right: 0;
-		line-height: 1;
-		text-align: center;
-		text-shadow: 1px 1px 0 rgba($color-02, 0.40), 2px 2px 0 rgba($color-02, 0.40);
-		@include spectral-common;
-	}
-	& + .stat-bar {
-		margin-top: 15px;
-	}
-	&.hp-bar {
-		border-color: mix($color-02, $color-18, 33.33%);
-		background: mix($color-02, $color-18, 50%);
+.stats {
+	.stat-bar {
+		position: relative;
+		height: 20px;
+		border: 2px solid;
+		box-shadow: inset 0px 0px 6px 3px rgba($color-02, 0.40);
+		border-radius: 3px;
+		margin: 0 0 5px 0;
 		.stat-bar-inner {
-			background: $color-18;
+			height: 100%;
+		}
+		.stat-bar-label {
+			position: absolute;
+			bottom: -8.5px;
+			left: 0;
+			right: 0;
+			line-height: 1;
+			text-align: center;
+			text-shadow: 1px 1px 0 rgba($color-02, 0.40), 2px 2px 0 rgba($color-02, 0.40);
+			@include spectral-common;
+		}
+		& + .stat-bar {
+			margin-top: 15px;
+		}
+		&.hp-bar {
+			border-color: mix($color-02, $color-18, 33.33%);
+			background: mix($color-02, $color-18, 50%);
+			.stat-bar-inner {
+				background: $color-18;
+			}
+		}
+		&.mp-bar {
+			border-color: mix($color-02, $color-17, 33.33%);
+			background: mix($color-02, $color-17, 50%);
+			.stat-bar-inner {
+				background: $color-17;
+			}
 		}
 	}
-	&.mp-bar {
-		border-color: mix($color-02, $color-17, 33.33%);
-		background: mix($color-02, $color-17, 50%);
-		.stat-bar-inner {
-			background: $color-17;
-		}
-	}
-	&.stat-bar-small {
+	&.stats-small .stat-bar {
 		height: 16px;
 	}
 }
 
-#viewprofile .stat-bar {
-	max-width: 200px;
+#viewprofile .stats .stat-bar {
+	max-width: 50%;
+}
+
+/* Character Card
+========================================================================== */
+
+.character-card {
+	@include flex-flow(row nowrap);
+	align-items: flex-start;
+	.level {
+		@include flex;
+	}
+	.stats {
+		@include flex(base);
+		margin: 0 0 0 10px;
+	}
 }
 
 /* Online Badge - Typically shows near profile

@@ -63,15 +63,17 @@
 
 		<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 			<dl class="left-box details profile-details {$CHARACTER_CLASS}">
-				<dt class="level">
-					<div class="level-wrap">
-						<span class="level-name">Level</span>
-						<span class="level-value">01</span>
+				<dd class="character-card details-full">
+					<div class="level">
+						<div class="level-wrap">
+							<span class="level-name">Level</span>
+							<span class="level-value">01</span>
+						</div>
 					</div>
-				</dt>
-				<!-- IF S_PROFILE_C_HP or S_PROFILE_C_MP -->
-					<dd class="stats"><!-- INCLUDE custom/stat_map.html --></dd>
-				<!-- ENDIF -->
+					<!-- IF S_PROFILE_C_HP or S_PROFILE_C_MP -->
+						<div class="stats"><!-- INCLUDE custom/stat_map.html --></div>
+					<!-- ENDIF -->
+				</dd>
 				<!-- IF S_PROFILE_C_EXPERIENCE -->
 					<dt>{PROFILE_C_EXPERIENCE_NAME}{L_COLON}</dt>
 					<dd>{PROFILE_C_EXPERIENCE_VALUE}</dd>

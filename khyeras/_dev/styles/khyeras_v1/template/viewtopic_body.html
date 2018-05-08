@@ -163,15 +163,17 @@
 
 			<!-- IF postrow.PROFILE_ACCOUNT_TYPE_VALUE eq 'Character' -->
 				<dd class="profile-character-wrapper">
-					<div class="level">
-						<div class="level-wrap level-wrap-small">
-							<span class="level-name">Level</span>
-							<span class="level-value">01</span>
+					<div class="character-card">
+						<div class="level level-small">
+							<div class="level-wrap">
+								<span class="level-name">Level</span>
+								<span class="level-value">01</span>
+							</div>
 						</div>
+						<!-- IF postrow.S_PROFILE_C_HP or postrow.S_PROFILE_C_MP -->
+							<div class="stats stats-small"><!-- INCLUDE custom/stat_map.html --></div>
+						<!-- ENDIF -->
 					</div>
-					<!-- IF postrow.S_PROFILE_C_HP or postrow.S_PROFILE_C_MP -->
-						<div class="stats"><!-- INCLUDE custom/stat_map.html --></div>
-					<!-- ENDIF -->
 					<!-- IF postrow.S_PROFILE_C_RACE_OPTS or postrow.PROFILE_C_CLASS_OPTS_VALUE -->
 						<div class="race-and-class">
 							{{ postrow.PROFILE_C_RACE_OPTS_VALUE|replace({', ': ' and '}) }}

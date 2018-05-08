@@ -659,6 +659,13 @@
 		 .postprofile {
 			 margin: 0 0 20px 0;
 			 padding: 0 0 20px 0;
+			 .profile-character-wrapper {
+				 border-top: 0;
+				 border-bottom: 0;
+				 padding: 0;
+				 margin-top: 20px;
+				 margin-bottom: 0;
+			 }
 		 }
 	}
 	.postbody {
@@ -721,7 +728,7 @@
 		border-right: 0;
 		border-bottom: 1px dashed $color-04;
 		@include clearfix('&');
-		dt, dd.profile-rank, dd.profile-title {
+		dt, .profile-rank, .profile-title, .profile-permissions {
 			text-align: left;
 		}
 		dt {
@@ -740,10 +747,15 @@
 				}
 			}
 		}
-		dd.profile-rank {
-			margin: 0 0 3px 0;
-			font-size: rem(16px);
+		.profile-rank + .profile-title {
+			margin-top: -18px;
 		}
+		.profile-posts, .profile-joined, .profile-character-wrapper ~ .profile-contact {
+			display: none;
+		}
+	}
+	#viewprofile .stats .stat-bar {
+	    max-width: 75%;
 	}
 
 	// other-sections.scss
@@ -1254,21 +1266,16 @@
 	}
 
 	// profile.scss
-	.postprofile {
-		dt.has-avatar {
-			.avatar-container {
-				width: 80px;
-			}
-			& ~ dd {
-				margin-left: 100px;
-			}
+	.postprofile dt.has-avatar {
+		.avatar-container {
+			width: 80px;
 		}
-		// dd {
-		// 	display: none;
-		// 	&.profile-rank, &.profile-posts, &.profile-joined, &.profile-contact, &.search-result-date {
-		// 		display: block;
-		// 	}
-		// }
+		& ~ dd {
+			margin-left: 100px;
+		}
+	}
+	#viewprofile .stats .stat-bar {
+		max-width: none;
 	}
 	.post.online .postprofile dt.has-avatar .avatar-container {
 		margin-top: 40px;
@@ -1725,10 +1732,13 @@
 			}
 		}
 	}
+	.post .postprofile .profile-character-wrapper {
+		margin-top: 10px;
+	}
 
 	// profile.scss
 	.postprofile {
-		dt, dd, dd.profile-rank, dd.profile-permissions {
+		dt, dd, .profile-rank, .profile-title, .profile-permissions {
 			text-align: center;
 		}
 		dt a[class*='username'] {
@@ -1743,11 +1753,12 @@
 				margin-left: 0;
 			}
 		}
-		// dd {
-		// 	&.profile-posts, &.profile-joined {
-		// 		display: none;
-		// 	}
-		// }
+		.profile-rank, .profile-title {
+			margin-bottom: 10px;
+		}
+		.profile-rank + .profile-title {
+			margin-top: -5px;
+		}
 	}
 	.post.online .postprofile dt.has-avatar .avatar-container {
 		margin-top: 0;
