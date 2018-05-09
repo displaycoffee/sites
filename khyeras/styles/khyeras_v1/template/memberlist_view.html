@@ -37,14 +37,18 @@
 			<!-- ELSE -->
 				<!-- EVENT memberlist_view_rank_no_avatar_before -->
 			<!-- ENDIF -->
-			<!-- IF RANK_TITLE or RANK_IMG -->
+			<!-- IF RANK_TITLE or RANK_IMG or S_PROFILE_TITLE -->
 				<dd class="profile-rank">
-					{RANK_TITLE}
-					<!-- IF RANK_TITLE and RANK_IMG --><br /><!-- ENDIF -->{RANK_IMG}
+					<!-- IF RANK_TITLE or RANK_IMG -->
+						<div class="rank-label">{RANK_TITLE}</div>
+						<!-- IF RANK_IMG -->
+							<div class="rank-image">{RANK_IMG}</div>
+						<!-- ENDIF -->
+					<!-- ENDIF -->
+					<!-- IF S_PROFILE_TITLE -->
+						<div class="title-label">{PROFILE_TITLE_VALUE}</div>
+					<!-- ENDIF -->
 				</dd>
-			<!-- ENDIF -->
-			<!-- IF S_PROFILE_TITLE -->
-				<dd class="profile-title">{PROFILE_TITLE_VALUE}</dd>
 			<!-- ENDIF -->
 			<!-- IF AVATAR_IMG -->
 				<!-- EVENT memberlist_view_rank_avatar_after -->
@@ -210,6 +214,12 @@
 					<h3>Personality</h3>
 					<!-- IF S_PROFILE_C_PERSONALITY -->
 						<p>{{ PROFILE_C_PERSONALITY_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
+					<!-- ELSE -->
+						<p>There's nothing here yet...</p>
+					<!-- ENDIF -->
+					<h3>Relationships and Companions</h3>
+					<!-- IF S_PROFILE_C_RELATIONSHIPS -->
+						<p>{{ PROFILE_C_RELATIONSHIPS_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
 					<!-- ELSE -->
 						<p>There's nothing here yet...</p>
 					<!-- ENDIF -->

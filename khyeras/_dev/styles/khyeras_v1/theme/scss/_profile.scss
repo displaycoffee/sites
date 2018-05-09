@@ -4,10 +4,10 @@
 
 .postprofile {
 	border-right: 1px dashed $color-04;
-	dt a[class*='username'], dt span[class*='username'], .profile-rank, .profile-title {
+	dt a[class*='username'], dt span[class*='username'], .profile-rank {
 		font-family: $font-02;
 	}
-	dt, .profile-rank, .profile-title, .profile-permissions {
+	dt, .profile-rank, .profile-permissions {
 		text-align: center;
 	}
 	dt {
@@ -21,6 +21,7 @@
 			overflow: hidden;
 			border: 5px solid $color-04;
 			border-radius: 100%;
+			box-shadow: 0 0 10px 5px rgba($color-02, 0.25);
 			a.avatar, div.avatar {
 				display: block;
 				@include sizing(100%, 0);
@@ -32,22 +33,27 @@
 				display: block;
 				font-size: rem(22px);
 				font-variant: small-caps;
+				margin: 10px 0 0 0;
 			}
 		}
 	}
 	dd {
 		margin: 0 0 3px 0;
 	}
-	.profile-rank, .profile-title {
+	.profile-rank {
 		font-style: italic;
-		margin: 10px 0 20px 0;
-	}
-	.profile-rank + .profile-title {
-		margin-top: -15px;
+		margin: 10px 0;
+		div ~ div {
+			margin: 5px 0 0 0;
+		}
 	}
 	.profile-permissions {
 		font-size: rem(12px);
 	}
+}
+
+.pm .postprofile dt.has-avatar .avatar-container {
+	box-shadow: 0 0 10px 5px rgba($color-02, 0.15);
 }
 
 /* Race and Class - Includes Header Welcome
@@ -88,10 +94,10 @@
 	}
 	&.level-small .level-wrap {
 		.level-name {
-			font-size: rem(15px);
+			font-size: rem(14px);
 		}
 		.level-value {
-			font-size: rem(42px);
+			font-size: rem(38px);
 		}
 	}
 }
@@ -108,7 +114,7 @@
 		position: relative;
 		height: 20px;
 		border: 2px solid;
-		box-shadow: inset 0px 0px 6px 3px rgba($color-02, 0.40);
+		box-shadow: inset 0 0 6px 3px rgba($color-02, 0.40);
 		border-radius: 3px;
 		margin: 0 0 5px 0;
 		.stat-bar-inner {
@@ -186,12 +192,13 @@
 		line-height: 0;
 		padding: 0 10px;
 		text-align: center;
+		box-shadow: 0 8px 6px -6px rgba($color-02, 0.25);
 	}
 	&:after {
 		content: '';
 		@include sizing(0, 0);
 		border-left: 12px inset transparent;
-		border-top: 8px solid mix(black, $color-10, 35%);
+		border-top: 8px solid mix($color-02, $color-10, 35%);
 	}
 }
 
@@ -217,6 +224,7 @@
 	}
 	&:before {
 		top: 15px;
+		box-shadow: 0 8px 6px -6px rgba($color-02, 0.15);
 	}
 	&:after {
 		top: 39px;

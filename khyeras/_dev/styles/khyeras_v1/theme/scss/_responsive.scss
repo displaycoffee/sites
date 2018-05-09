@@ -53,11 +53,6 @@
 	// header.scss
 	#featured-content .flex-row .flex-column {
 		width: 25%;
-		&.featured-title {
-			min-width: 1px;
-			@include flex(full);
-			text-align: center;
-		}
 	}
 }
 
@@ -728,13 +723,18 @@
 		border-right: 0;
 		border-bottom: 1px dashed $color-04;
 		@include clearfix('&');
-		dt, .profile-rank, .profile-title, .profile-permissions {
+		dt, .profile-rank, .profile-permissions {
 			text-align: left;
 		}
 		dt {
 			margin-bottom: 0;
 			a[class*='username'] {
 				padding-right: 50px;
+			}
+			a, span {
+				&[class*='username'] {
+					margin-top: 0;
+				}
 			}
 			&.has-avatar {
 				.avatar-container {
@@ -746,9 +746,6 @@
 					margin-left: 150px;
 				}
 			}
-		}
-		.profile-rank + .profile-title {
-			margin-top: -18px;
 		}
 		.profile-posts, .profile-joined, .profile-character-wrapper ~ .profile-contact {
 			display: none;
@@ -1672,6 +1669,12 @@
 			}
 		}
 	}
+	#featured-content .flex-row {
+		margin-bottom: 30px;
+		.flex-column:last-child {
+			margin-bottom: 0;
+		}
+	}
 	#notification_list {
 		.header {
 			padding-right: 50px;
@@ -1738,26 +1741,27 @@
 
 	// profile.scss
 	.postprofile {
-		dt, dd, .profile-rank, .profile-title, .profile-permissions {
+		dt, dd, .profile-rank, .profile-permissions {
 			text-align: center;
 		}
-		dt a[class*='username'] {
-			padding-right: 0;
-		}
-		dt.has-avatar {
-			.avatar-container {
-				float: none;
-				margin-right: 0;
+		dt {
+			a[class*='username'] {
+				padding-right: 0;
 			}
-			& ~ dd {
-				margin-left: 0;
+			a, span {
+				&[class*='username'] {
+					margin-top: 10px;
+				}
 			}
-		}
-		.profile-rank, .profile-title {
-			margin-bottom: 10px;
-		}
-		.profile-rank + .profile-title {
-			margin-top: -5px;
+			&.has-avatar {
+				.avatar-container {
+					float: none;
+					margin-right: 0;
+				}
+				& ~ dd {
+					margin-left: 0;
+				}
+			}
 		}
 	}
 	.post.online .postprofile dt.has-avatar .avatar-container {

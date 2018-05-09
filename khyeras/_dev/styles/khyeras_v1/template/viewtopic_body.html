@@ -154,12 +154,20 @@
 			</dt>
 
 			<!-- EVENT viewtopic_body_postrow_rank_before -->
-			<!-- IF postrow.RANK_TITLE or postrow.RANK_IMG --><dd class="profile-rank">{postrow.RANK_TITLE}<!-- IF postrow.RANK_TITLE and postrow.RANK_IMG --><br /><!-- ENDIF -->{postrow.RANK_IMG}</dd><!-- ENDIF -->
-			<!-- EVENT viewtopic_body_postrow_rank_after -->
-
-			<!-- IF postrow.S_PROFILE_TITLE -->
-				<dd class="profile-title">{postrow.PROFILE_TITLE_VALUE}</dd>
+			<!-- IF postrow.RANK_TITLE or postrow.RANK_IMG or postrow.S_PROFILE_TITLE -->
+				<dd class="profile-rank">
+					<!-- IF postrow.RANK_TITLE or postrow.RANK_IMG -->
+						<div class="rank-label">{postrow.RANK_TITLE}</div>
+						<!-- IF postrow.RANK_IMG -->
+							<div class="rank-image">{postrow.RANK_IMG}</div>
+						<!-- ENDIF -->
+					<!-- ENDIF -->
+					<!-- IF postrow.S_PROFILE_TITLE -->
+						<div class="title-label">{postrow.PROFILE_TITLE_VALUE}</div>
+					<!-- ENDIF -->
+				</dd>
 			<!-- ENDIF -->
+			<!-- EVENT viewtopic_body_postrow_rank_after -->
 
 			<!-- IF postrow.PROFILE_ACCOUNT_TYPE_VALUE eq 'Character' -->
 				<dd class="profile-character-wrapper">
