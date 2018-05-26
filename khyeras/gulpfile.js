@@ -11,8 +11,8 @@ var browserSync = require('browser-sync').create(),
 /* Global Variables
    ---------------------------------------------- */
 
-// var phpBBFolder = 'styles';
-var phpBBFolder = 'ext';
+var phpBBFolder = 'styles';
+// var phpBBFolder = 'ext';
 var proxyURL = 'http://localhost/sites/khyeras';
 
 /* Styles Configuration

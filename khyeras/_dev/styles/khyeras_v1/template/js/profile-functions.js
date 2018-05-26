@@ -452,7 +452,7 @@ function updateProfileFields() {
 }
 
 // Common array for exclude dragon classes
-var dragonClasses = [ 'Physical', 'Magical', 'Healing' ];
+var dragonClasses = [ 'Physical', 'Magical', 'Restoration' ];
 
 // Common array for exclude magic classes
 var magicClasses = [ 'Cleric', 'Druid', 'Sorcerer', 'Summoner', 'Wizard' ];
