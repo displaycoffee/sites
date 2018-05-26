@@ -179,8 +179,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			'KHY_GROUP_NAME'   => $group_row['group_name'],
 			'KHY_ACCOUNT_TYPE' => $pf_lang[$acc_name],
 			'KHY_RACE'   	   => $pf_lang[$race_opts],
-			'KHY_CLASS'   	   => $pf_lang[$class_opts],
-			'KHY_LEVEL'   	   => $pf_user['c_level']['value']
+			'KHY_CLASS'   	   => $pf_lang[$class_opts]
  		));
 
 		// --- END --- Variable Assignment
