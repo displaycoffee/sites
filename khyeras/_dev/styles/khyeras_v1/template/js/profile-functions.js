@@ -514,5 +514,5 @@ var characterRules = {
 // Excluded religion rules / combinations
 var religionRules = {
 	'Archaicism' : [ 'Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir' ],
-	'Idolism'	 : [ 'Cecilia', 'Bhelest' ]
+	'Idolism'	 : [ 'Ahm\'kela', 'Cecilia', 'Bhelest', 'Esyrax', 'Faryv', 'Faunir', 'Iodrah', 'Kaxitaki', 'Kelorha', 'Lahiel', 'Misanyt', 'Nilbein', 'Veditova' ]
 }
