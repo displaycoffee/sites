@@ -1584,7 +1584,9 @@
 		}
 	}
 	#register fieldset dl dd .group {
-		width: auto;
+		&, &.group-religion {
+			width: auto;
+		}
 	}
 	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
 		.image-wrap, img {

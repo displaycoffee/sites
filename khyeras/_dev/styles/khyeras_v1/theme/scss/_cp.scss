@@ -370,6 +370,9 @@
 			margin: 0 -2.5px;
 			padding: 0 $ffs-half;
 			align-self: flex-start;
+			&.group-religion {
+				width: 50%;
+			}
 			.group-header, label {
 				margin: $ffs $ffs-half 0 $ffs-half;
 			}
