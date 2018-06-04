@@ -8,98 +8,95 @@
 		</span>
 		<span class="mobile-menu-text">Menu</span>
 	</div>
-	<ul>
+	<ul role="menu">
 		<li class="dropdown-container">
-			<a href="http://google.com"><span>About</span></a>
+			<a href="{ROOT_PATH}about" title="About" role="menuitem"><span>About</span></a>
 			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
 			<div class="dropdown">
 				<ul class="dropdown-contents" role="menu">
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Rules</span></a>
+						<a href="{ROOT_PATH}rules" title="Rules" role="menuitem"><span>Rules</span></a>
 					</li>
 					<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
 						<!-- IF U_TEAM -->
 							<li>
-								<a href="{U_TEAM}" role="menuitem"><span>{L_THE_TEAM}</span></a>
+								<a href="{U_TEAM}" title="{L_THE_TEAM}" role="menuitem"><span>{L_THE_TEAM}</span></a>
 							</li>
 						<!-- ENDIF -->
 					<!-- ENDIF -->
 					<!-- IF U_CONTACT_US -->
 						<li>
-							<a href="{U_CONTACT_US}" role="menuitem"><span>{L_CONTACT_US}</span></a>
+							<a href="{U_CONTACT_US}" title="{L_CONTACT_US}" role="menuitem"><span>{L_CONTACT_US}</span></a>
 						</li>
 					<!-- ENDIF -->
 					<li>
-						<a href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}" role="menuitem"><span>{L_FORUM} {L_FAQ}</span></a>
+						<a href="{U_FAQ}" title="{L_FORUM} {L_FAQ}" role="menuitem"><span>{L_FORUM} {L_FAQ}</span></a>
 					</li>
 				</ul>
 			</div>
 		</li>
 		<li class="dropdown-container">
-			<a href="http://google.com"><span>Game Play</span></a>
+			<a href="{ROOT_PATH}gameplay" title="Gameplay" role="menuitem"><span>Gameplay</span></a>
 			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
 			<div class="dropdown">
 				<ul class="dropdown-contents" role="menu">
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Leveling</span></a>
+						<a href="{ROOT_PATH}classes" title="Classes" role="menuitem"><span>Classes</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Classes</span></a>
+						<a href="{ROOT_PATH}magic" title="Magic" role="menuitem"><span>Magic</span></a>
 					</li>
 				</ul>
 			</div>
 		</li>
 		<li class="dropdown-container">
-			<a href="http://google.com"><span>Lore</span></a>
+			<a href="{ROOT_PATH}lore" title="Lore" role="menuitem"><span>Lore</span></a>
 			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
 			<div class="dropdown">
 				<ul class="dropdown-contents" role="menu">
 					<li>
-						<a href="http://google.com" role="menuitem"><span>History</span></a>
+						<a href="{ROOT_PATH}history" title="History" role="menuitem"><span>History</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Short History</span></a>
+						<a href="{ROOT_PATH}short-history" title="Short History" role="menuitem"><span>Short History</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Timeline</span></a>
+						<a href="{ROOT_PATH}timeline" title="Timeline" role="menuitem"><span>Timeline</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Races</span></a>
+						<a href="{ROOT_PATH}glossary" title="Glossary" role="menuitem"><span>Glossary</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Religion</span></a>
+						<a href="{ROOT_PATH}races" title="Races" role="menuitem"><span>Races</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Magic</span></a>
-					</li>
-					<li>
-						<a href="http://google.com" role="menuitem"><span>Glossary</span></a>
+						<a href="{ROOT_PATH}religion" title="Religion" role="menuitem"><span>Religion</span></a>
 					</li>
 				</ul>
 			</div>
 		</li>
 		<li class="dropdown-container">
-			<a href="http://google.com"><span>Setting</span></a>
+			<a href="{ROOT_PATH}setting" title="Setting" role="menuitem"><span>Setting</span></a>
 			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
 			<div class="dropdown">
 				<ul class="dropdown-contents" role="menu">
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Map</span></a>
+						<a href="{ROOT_PATH}setting-tviyr" title="Tviyr" role="menuitem"><span>Tviyr</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Tviyr</span></a>
+						<a href="{ROOT_PATH}setting-ninraih" title="Ninraih" role="menuitem"><span>Ninraih</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Ninraih</span></a>
+						<a href="{ROOT_PATH}setting-irtuen-reaches" title="Irtuen Reaches" role="menuitem"><span>Irtuen Reaches</span></a>
 					</li>
 					<li>
-						<a href="http://google.com" role="menuitem"><span>Irtuen Reaches</span></a>
+						<a href="{ROOT_PATH}setting-map" title="Map" role="menuitem"><span>Map</span></a>
 					</li>
 				</ul>
 			</div>
 		</li>
 		<li class="dropdown-container">
-			<a href="#"><span>Community</span></a>
+			<a href="#" title="Community" role="menuitem"><span>Community</span></a>
 			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
 			<div class="dropdown">
 				<ul class="dropdown-contents" role="menu">
@@ -107,36 +104,36 @@
 					<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
 						<!-- IF S_DISPLAY_MEMBERLIST -->
 							<li>
-								<a href="{U_MEMBERLIST}" role="menuitem"><span>{L_MEMBERLIST}</span></a>
+								<a href="{U_MEMBERLIST}" title="{L_MEMBERLIST}" role="menuitem"><span>{L_MEMBERLIST}</span></a>
 							</li>
 						<!-- ENDIF -->
 					<!-- ENDIF -->
 					<!-- IF S_DISPLAY_SEARCH -->
 						<!-- IF S_REGISTERED_USER -->
 							<li>
-								<a href="{U_SEARCH_SELF}" role="menuitem"><span>{L_SEARCH_SELF}</span></a>
+								<a href="{U_SEARCH_SELF}" title="{L_SEARCH_SELF}" role="menuitem"><span>{L_SEARCH_SELF}</span></a>
 							</li>
 						<!-- ENDIF -->
 						<!-- IF S_USER_LOGGED_IN -->
 							<li>
-								<a href="{U_SEARCH_NEW}" role="menuitem"><span>{L_SEARCH_NEW}</span></a>
+								<a href="{U_SEARCH_NEW}" title="{L_SEARCH_NEW}" role="menuitem"><span>{L_SEARCH_NEW}</span></a>
 							</li>
 						<!-- ENDIF -->
 						<!-- IF S_LOAD_UNREADS -->
 							<li>
-								<a href="{U_SEARCH_UNREAD}" role="menuitem"><span>{L_SEARCH_UNREAD}</span></a>
+								<a href="{U_SEARCH_UNREAD}" title="{L_SEARCH_UNREAD}" role="menuitem"><span>{L_SEARCH_UNREAD}</span></a>
 							</li>
 						<!-- ENDIF -->
 							<li>
-								<a href="{U_SEARCH_UNANSWERED}" role="menuitem"><span>{L_SEARCH_UNANSWERED}</span></a>
+								<a href="{U_SEARCH_UNANSWERED}" title="{L_SEARCH_UNANSWERED}" role="menuitem"><span>{L_SEARCH_UNANSWERED}</span></a>
 							</li>
 							<li>
-								<a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem"><span>{L_SEARCH_ACTIVE_TOPICS}</span></a>
+								<a href="{U_SEARCH_ACTIVE_TOPICS}" title="{L_SEARCH_ACTIVE_TOPICS}" role="menuitem"><span>{L_SEARCH_ACTIVE_TOPICS}</span></a>
 							</li>
 					<!-- ENDIF -->
 					<!-- IF U_WATCH_FORUM_LINK and not S_IS_BOT -->
 						<li>
-							<a href="{U_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}"><span>{S_WATCH_FORUM_TITLE}</span></a>
+							<a href="{U_WATCH_FORUM_LINK}" title="{S_WATCH_FORUM_TITLE}" title="{S_WATCH_FORUM_TITLE}"><span>{S_WATCH_FORUM_TITLE}</span></a>
 						</li>
 					<!-- ENDIF -->
 					<!-- EVENT navbar_header_quick_links_after -->
@@ -146,7 +143,7 @@
 		<!-- EVENT overall_header_searchbox_before -->
 		<!-- IF S_DISPLAY_SEARCH -->
 			<li class="dropdown-container">
-				<a href="{U_SEARCH}"><span>Search</span></a>
+				<a href="{U_SEARCH}" title="{L_SEARCH}" role="menuitem"><span>{L_SEARCH}</span></a>
 				<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
 				<div id="search-box" class="search-box search-header dropdown" role="search">
 					<div class="dropdown-contents">
@@ -156,7 +153,7 @@
 								<button class="button button-search" type="submit" title="{L_SEARCH}">
 									<i class="icon fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">{L_SEARCH}</span>
 								</button>
-								<a href="{U_SEARCH}" class="button button-search-end" title="{L_SEARCH_ADV}">
+								<a href="{U_SEARCH}" title="{L_SEARCH_ADV}" class="button button-search-end">
 									<i class="icon fa-cog fa-fw" aria-hidden="true"></i><span class="sr-only">{L_SEARCH_ADV}</span>
 								</a>
 								{S_SEARCH_HIDDEN_FIELDS}
