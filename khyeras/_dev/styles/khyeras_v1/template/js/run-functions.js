@@ -2,7 +2,7 @@
 ========================================================================== */
 
 addBodyClass();
-addForumImageClass();
+updateForumImage();
 addFieldsetClasses();
 addNoPaginationClass();
 noContentListing();

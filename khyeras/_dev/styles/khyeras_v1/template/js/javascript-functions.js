@@ -9,14 +9,18 @@ function addBodyClass() {
 	}
 }
 
-// If forum has image, add a class to parent
-function addForumImageClass() {
+// If forum has image, add responsive image and a class to parent
+function updateForumImage() {
 	var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
 
 	if ( forumImage.length ) {
 		for ( var i = 0; i < forumImage.length; i++ ) {
-			var parentRow = forumImage[i].parentNode.parentNode.parentNode;
+			// Get current image source and add responsive image
+			var responsiveImg = forumImage[i].childNodes[0].getAttribute( 'src' ).replace( '300x300', '1000x500' );
+			forumImage[i].setAttribute( 'style', 'background-image: url(' + responsiveImg  + ');' );
 
+			// Add class to parent row
+			var parentRow = forumImage[i].parentNode.parentNode.parentNode;
 			parentRow.className += ( checkForClasses( parentRow ) + 'has-forum-image' );
 		}
 	}

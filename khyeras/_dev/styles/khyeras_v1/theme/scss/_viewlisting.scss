@@ -84,11 +84,6 @@
 			dl {
 				position: relative;
 				dt {
-					.row-item-link {
-						display: block;
-						@include sizing($list-icon-size + 2, $list-icon-size + 2);
-						@include position($type: absolute, $top: 0, $left: 10px, $z: 10);
-					}
 					a .icon {
 						&.fa-exclamation, &.fa-question {
 							margin: 0 0 0 3px;
@@ -150,12 +145,21 @@
 				}
 			}
 		}
+		&[class*='read'] dt:before, &[class*='link'] dt:before,
+		&[class*='moved'] dt:before, dt .row-item-link {
+			@include position($type: absolute, $top: 0, $left: 10px);
+			@include sizing($list-icon-size, $list-icon-size);
+		}
+		dt .row-item-link {
+			display: block;
+			z-index: 10;
+		}
 		&[class*='read'], &[class*='link'], &[class*='moved'] {
 			padding-left: 60px;
 			dt:before {
-				@include position($type: absolute, $top: 0, $left: 10px, $z: 2);
-				@include sizing($list-icon-size, $list-icon-size);
-				line-height: $list-icon-size;
+				z-index: 2;
+				box-sizing: border-box;
+				line-height: $list-icon-size - 2px;
 				@include icon-font($family: game, $fs: false, $lh: false);
 				font-size: rem(24px);
 				text-align: center;

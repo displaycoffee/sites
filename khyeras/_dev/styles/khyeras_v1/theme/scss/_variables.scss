@@ -4,6 +4,7 @@
 $assets: '../theme';
 $fonts: $assets + '/fonts/';
 $images: $assets + '/images/';
+$phpbb-images: '../../../images/content/';
 
 /* Classes
 ========================================================================== */
@@ -57,6 +58,6 @@ $ffi-02: 200px;
 $ffs: 5px;
 $ffs-minus: (20 - $ffs);
 $ffs-half: ($ffs / 2);
-$list-icon-size: 40px;
+$list-icon-size: 42px;
 $main-margin: 30px;
 $mobile-menu-width: 300px;
