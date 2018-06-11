@@ -245,6 +245,9 @@
 		overflow: hidden;
 		@include position($type: absolute, $top: 0, $left: 10px);
 		border: 5px solid $color-04;
+		background-repeat: no-repeat;
+		background-position: -9999px -9999px;
+		background-size: cover;
 	}
 }
 
