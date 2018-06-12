@@ -144,7 +144,12 @@ input[type='search']::-webkit-search-cancel-button {
 
 .button-icon-only, .mcp-main .postbody .post-buttons .button {
 	@include small-form-ele($padding: 5px);
-	max-height: none;
+}
+
+.format-buttons button:not(.button-icon-only) {
+	@include small-form-ele($padding: 6px 10px);
+	font-size: rem(13px);
+	text-transform: uppercase;
 }
 
 fieldset.submit-buttons {

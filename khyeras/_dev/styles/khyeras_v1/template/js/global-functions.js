@@ -36,3 +36,8 @@ function mergeArray( array1, array2 ) {
 	}
 	return a;
 }
+
+// Replace HTML characters
+function cleanHTML( selector ) {
+	return selector.replace( /(<([^>]+)>)/ig, '' );
+}
