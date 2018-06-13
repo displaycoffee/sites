@@ -46,9 +46,6 @@ jQuery( document ).ready( function( $ ) {
 	// Update display-actions div formatting
 	formatDisplayActions();
 
-	// Update display-options div formatting
-	formatDisplayOptions();
-
 	// If postingbox in ucp is empty, hide it
 	var pmPostBox = $( '#pmheader-postingbox' );
 

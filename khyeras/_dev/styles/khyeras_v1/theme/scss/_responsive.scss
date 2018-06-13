@@ -1181,6 +1181,12 @@
 			}
 		}
 	}
+	.sort-tools .dropdown .display-options label {
+		padding-right: 77%;
+		select {
+			width: 75%;
+		}
+	}
 	dl.details {
 		dt {
 			float: none;
