@@ -63,6 +63,13 @@ function formatDisplayActions() {
 	});
 }
 
+// Add spans to display-options for better formatting
+function formatDisplayOptions() {
+	jQuery( '.display-options label' ).contents().filter( function() {
+        return this.nodeType === 3 && this.data.trim().length > 0;
+    }).wrap( '<span>' );
+}
+
 // Add sticky class to navigation when scroll
 function addOnScroll( selector, anchor, class ) {
 	// Variables for scroll logic
@@ -233,7 +240,7 @@ function toggleMemberDisplay() {
 		// Add click event for tabs
 		tabs.on( 'click', function() {
 			var current = jQuery( this );
-			
+
 			// Find any active tab, remove activetab class, then add it to clicked element
 			tabs.parent().removeClass( 'activetab' );
 			current.parent().addClass( 'activetab' );
