@@ -224,28 +224,3 @@ dl.faq + .top {
 		}
 	}
 }
-
-/* Pages
-========================================================================== */
-
-.card {
-	@include flex-flow(row wrap);
-	.card-image {
-		flex: 0 0 160px;
-		margin: 0 20px 20px 0;
-		.image-wrap {
-			border-radius: 100%;
-			border: 5px solid $color-04;
-			background-repeat: no-repeat;
-		    background-position: -9999px -9999px;
-		    background-size: cover;
-		}
-	}
-	.card-image-right {
-		margin: 0 0 20px 20px;
-		order: 1;
-	}
-	.card-details {
-		@include flex(base);
-	}
-}

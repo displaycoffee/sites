@@ -18,6 +18,9 @@
 			dt, dd {
 				padding: 0 10px;
 				@include flex(base);
+				.pagination {
+					margin: 5px 0 0 0;
+				}
 			}
 			dd {
 				margin: 0;
@@ -145,8 +148,7 @@
 				}
 			}
 		}
-		&[class*='read'] dt:before, &[class*='link'] dt:before,
-		&[class*='moved'] dt:before, dt .row-item-link {
+		&.row-item dt:before, dt .row-item-link {
 			@include position($type: absolute, $top: 0, $left: 10px);
 			@include sizing($list-icon-size, $list-icon-size);
 		}
@@ -154,7 +156,7 @@
 			display: block;
 			z-index: 10;
 		}
-		&[class*='read'], &[class*='link'], &[class*='moved'] {
+		&.row-item {
 			padding-left: 60px;
 			dt:before {
 				z-index: 2;

@@ -466,15 +466,15 @@
 					display: none;
 				}
 				dt[style*='images/icons'] {
-					background-position: 62px 1px;
+					background-position: 72px 1px;
 				}
-				&[class*='read'], &[class*='link'], &[class*='moved'] {
+				&.row-item {
 					padding-left: 0;
 					dt {
 						min-height: ($list-icon-size + 2 + 5);
 						&:before {
 							position: static;
-							margin: 0 10px 5px 0;
+							margin: 0 20px 5px 0;
 							float: left;
 							clear: right;
 						}
@@ -530,15 +530,13 @@
 					padding-left: 0;
 					min-height: 0;
 					dt {
-						padding-top: 100px;
-						.forum-image, .forumtitle {
-							@include position($top: -20px, $left: -10px, $right: -10px);
-						}
 						.forum-image {
+							position: static;
 							@include sizing(auto, 100px);
 							border-radius: 0;
 							border: 0;
 							background-position: center bottom;
+							margin: -20px -20px 20px -20px;
 							img {
 								display: none;
 							}
@@ -547,10 +545,9 @@
 							}
 						}
 						.forumtitle {
-							margin-top: 50px;
 							height: 50px;
 							line-height: 50px;
-							position: absolute;
+							@include position($type: absolute, $top: 50px, $left: -10px, $right: -10px);
 							padding: 0 20px;
 							background: rgba($color-02, 0.5);
 							color: $color-01;
@@ -560,24 +557,17 @@
 							overflow: hidden;
 							text-overflow: ellipsis;
 							white-space: nowrap;
+							text-indent: 62px;
 							& + br {
 								display: none;
 							}
 						}
 					}
-					&[class*='read'] dt:before, &[class*='link'] dt:before,
-					&[class*='moved'] dt:before, dt .row-item-link {
-						top: 10px;
+					&.row-item dt:before, dt .row-item-link {
+						top: 30px;
 					}
-					&[class*='read'], &[class*='link'], &[class*='moved'] {
-						dt {
-							&:before {
-								position: absolute;
-							}
-							.forumtitle {
-								padding-left: 80px;
-							}
-						}
+					&.row-item dt:before {
+						position: absolute;
 					}
 				}
 				&:not([class*='forum']) dd.lastpost dfn {
@@ -1181,12 +1171,6 @@
 			}
 		}
 	}
-	.sort-tools .dropdown .display-options label {
-		padding-right: 77%;
-		select {
-			width: 75%;
-		}
-	}
 	dl.details {
 		dt {
 			float: none;
@@ -1494,32 +1478,22 @@
 	$responsive-icon-size: $list-icon-size - 8px;
 	.topiclist > li.row dl {
 		dt[style*='images/icons'] {
-			background-position: 54px 1px;
+			background-position: 64px 1px;
 		}
-		&[class*='read'] dt:before, &[class*='link'] dt:before,
-		&[class*='moved'] dt:before, dt .row-item-link {
+		&.row-item dt:before, dt .row-item-link {
 			@include sizing($responsive-icon-size, $responsive-icon-size);
 		}
-		&[class*='read'], &[class*='link'], &[class*='moved'] {
-			dt {
-				min-height: ($responsive-icon-size + 2 + 5);
-				&:before {
-					line-height: $responsive-icon-size - 2px;
-					font-size: rem(16px);
-				}
+		&.row-item dt {
+			min-height: ($responsive-icon-size + 2 + 5);
+			&:before {
+				margin-right: 10px;
+				line-height: $responsive-icon-size - 2px;
+				font-size: rem(16px);
 			}
 		}
 	}
-	.styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image {
-		&[class*='read'] dt:before, &[class*='link'] dt:before,
-		&[class*='moved'] dt:before, dt .row-item-link {
-			top: 12.5px;
-		}
-		&[class*='read'], &[class*='link'], &[class*='moved'] {
-			dt .forumtitle {
-				padding-left: 70px;
-			}
-		}
+	.styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image dt .forumtitle {
+		text-indent: 44px;
 	}
 
 	// viewtopic.scss
