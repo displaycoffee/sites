@@ -1,6 +1,9 @@
 /* RPG Icon Variables
 ========================================================================== */
 
+$rpg-two-shadows: \e92f;
+$rpg-holy-grail: \e930;
+$rpg-hourglass: \e931;
 $rpg-achievement: \e929;
 $rpg-stars-stack: \e92a;
 $rpg-wooden-door: \e927;
@@ -48,6 +51,15 @@ $rpg-tinker: \e904;
 /* RPG Icon Classes
 ========================================================================== */
 
+.rpg-two-shadows:before {
+	content: unicode($rpg-two-shadows);
+}
+.rpg-holy-grail:before {
+	content: unicode($rpg-holy-grail);
+}
+.rpg-hourglass:before {
+	content: unicode($rpg-hourglass);
+}
 .rpg-achievement:before {
 	content: unicode($rpg-achievement);
 }

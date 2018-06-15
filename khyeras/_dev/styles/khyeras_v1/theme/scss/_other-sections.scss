@@ -224,3 +224,22 @@ dl.faq + .top {
 		}
 	}
 }
+
+/* Pages
+========================================================================== */
+
+.pages-content hr {
+	display: block;
+	border-bottom-style: dashed;
+}
+
+.race-key {
+	list-style: none;
+	margin: 0;
+	li {
+		margin: 0 0 10px 0;
+		.icon {
+			margin: 0 10px 0 0;
+		}
+	}
+}

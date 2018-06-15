@@ -1,6 +1,15 @@
 // Also includes functions in addition to mixins
 
 // Clearfix
+@mixin black-bar($t, $l, $r) {
+	@include position($type: absolute, $top: $t, $left: $l, $right: $r);
+	height: 50px;
+	line-height: 50px;
+	padding: 0 20px;
+	background: rgba($color-02, 0.60);
+}
+
+// Clearfix
 @mixin clearfix($selector) {
 	#{$selector}:before, #{$selector}:after {
 		content: '';

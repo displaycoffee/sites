@@ -87,6 +87,9 @@
 			margin-left: 150px;
 		}
 	}
+	.card .card-image {
+		flex: 0 0 130px;
+	}
 
 	// viewlisting.scss
 	.topiclist > li {
@@ -449,6 +452,47 @@
 			}
 		}
 	}
+	.card {
+		display: block;
+		position: relative;
+		.card-image, &.card-right .card-image {
+			margin: 0 0 20px 0;
+		}
+		.card-image .image-wrap {
+			border-radius: 0;
+			height: 150px;
+			background-position: center 0;
+			border-width: 2px;
+			box-shadow: none;
+			img {
+				display: none;
+			}
+		}
+		.card-details {
+			.rpg-icon-wrapper {
+				@include position($type: relative, $top: -25px);
+				margin: 0 0 0 5px;
+			}
+			.card-header {
+				@include clearfix('&');
+				@include black-bar(98px, 2px, 2px);
+			}
+		}
+		&.card-right .card-details .card-header {
+			text-align: right;
+		}
+		&.card-no-image .card-details {
+			.rpg-icon-wrapper {
+				top: -1px;
+			}
+			.card-header {
+				height: 60px;
+				line-height: 60px;
+				position: static;
+				border: 1px solid $color-04;
+			}
+		}
+	}
 
 	// viewlisting.scss
 	.topiclist {
@@ -558,6 +602,9 @@
 							text-overflow: ellipsis;
 							white-space: nowrap;
 							text-indent: 62px;
+							&:hover {
+								color: $color-07;
+							}
 							& + br {
 								display: none;
 							}
@@ -771,30 +818,6 @@
 			float: none;
 			width: auto;
 			padding: 0;
-		}
-	}
-	.card {
-		display: block;
-		position: relative;
-		.card-image, .card-image-right {
-			margin: 0 0 20px 0;
-		}
-		.card-image {
-			.image-wrap {
-				border-radius: 0;
-				height: 150px;
-				background-position: center center;
-				img {
-					display: none;
-				}
-			}
-		}
-		.card-details h5 {
-			@include position($type: absolute, $top: 95px, $left: 5px, $right: 5px);
-			height: 50px;
-			line-height: 50px;
-			padding: 0 20px;
-			background: rgba($color-02, 0.60);
 		}
 	}
 
@@ -1470,6 +1493,46 @@
 			.button1, .button2 {
 				margin-left: 0;
 				margin-top: $ffs;
+			}
+		}
+	}
+
+	.card {
+		&, &.card-no-image {
+			.card-details .card-header {
+				height: auto;
+				line-height: 1.5;
+			}
+		}
+		.card-details {
+			h5, .rpg-icon-wrapper {
+				display: block;
+			}
+			h5 {
+				@include black-bar(98px, 2px, 2px);
+			}
+			.rpg-icon-wrapper {
+				top: 0;
+				text-align: center;
+				margin: 0 0 20px 0;
+			}
+			.card-header {
+				position: static;
+				background: none;
+				padding: 0;
+				margin: 0;
+			}
+		}
+		&.card-no-image .card-details {
+			padding-top: 70px;
+			h5, .rpg-icon-wrapper {
+				top: 0;
+			}
+			h5 {
+				border: 1px solid $color-04;
+			}
+			.card-header {
+				border: 0;
 			}
 		}
 	}

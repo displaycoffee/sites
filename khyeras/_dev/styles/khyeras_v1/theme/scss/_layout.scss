@@ -687,13 +687,33 @@ dl.details {
 	}
 }
 
-/* Pages
+/* RPG Icon Circles
+========================================================================== */
+
+.rpg-icon-wrapper {
+	display: inline-block;
+	margin: 0 -5px;
+}
+
+.rpg-round-icon {
+	margin: 0 5px;
+	@include sizing($list-icon-size - 2px, $list-icon-size - 2px);
+	line-height: $list-icon-size - 4px;
+	border-radius: 100%;
+	background: $color-04;
+	border: 1px solid mix($color-01, $color-04, 5%);
+	font-size: rem(18px);
+	text-align: center;
+}
+
+/* Card
 ========================================================================== */
 
 .card {
 	@include flex-flow(row wrap);
+	align-items: center;
 	.card-image {
-		flex: 0 0 160px;
+		flex: 0 0 200px;
 		margin: 0 20px 20px 0;
 		.image-wrap {
 			border-radius: 100%;
@@ -701,13 +721,27 @@ dl.details {
 			background-repeat: no-repeat;
 		    background-position: -9999px -9999px;
 		    background-size: cover;
+			box-shadow: 0 0 7.5px 3.75px rgba($color-02, 0.25);
 		}
-	}
-	.card-image-right {
-		margin: 0 0 20px 20px;
-		order: 1;
 	}
 	.card-details {
 		@include flex(base);
+		h5 {
+			display: inline-block;
+			margin: 0;
+		}
+		h5, .rpg-icon-wrapper {
+			vertical-align: middle;
+		}
+		.rpg-icon-wrapper {
+			margin: 0 5px;
+		}
+		.card-header {
+			margin: 0 0 20px 0;
+		}
+	}
+	&.card-right .card-image {
+		margin: 0 0 20px 20px;
+		order: 1;
 	}
 }
