@@ -773,9 +773,19 @@
 			padding: 0;
 		}
 	}
+	.excerpt, .excerpt-simple {
+		&.excerpt-right .excerpt-details .excerpt-header {
+			text-align: right;
+		}
+	}
+	.excerpt h5 a, .excerpt-simple h5 {
+		@include ellipsis;
+	}
 	.excerpt {
-		display: block;
 		position: relative;
+		&, .excerpt-details h5 a {
+			display: block;
+		}
 		.excerpt-image, &.excerpt-right .excerpt-image {
 			margin: 0 0 20px 0;
 		}
@@ -792,7 +802,6 @@
 		.excerpt-details {
 			h5 a {
 				display: block;
-				@include ellipsis;
 			}
 			.rpg-icon-wrapper {
 				@include position($type: relative, $top: -25px);
@@ -801,9 +810,11 @@
 				@include black-bar(98px, 2px, 2px);
 			}
 		}
-		&.excerpt-right .excerpt-details .excerpt-header {
-			text-align: right;
-		}
+	}
+	.excerpt-simple .excerpt-details .excerpt-header {
+		background: rgba($color-02, 0.60);
+		padding: 10px 20px;
+		border: 2px solid $color-04;
 	}
 
 	// cp.scss
@@ -1327,8 +1338,10 @@
 			font-weight: bold;
 		}
 	}
-	.excerpt .excerpt-details h5 {
-		max-width: 62.5%;
+	.excerpt, .excerpt-simple {
+		.excerpt-details h5 {
+			max-width: 62.5%;
+		}
 	}
 
 	// cp.scss
@@ -1578,37 +1591,57 @@
 			margin-bottom: $ffs;
 		}
 	}
-	.excerpt {
+	.excerpt, .excerpt-simple {
 		.excerpt-details {
 			h5, .rpg-icon-wrapper {
 				display: block;
 			}
 			h5 {
 				max-width: none;
-				@include black-bar(98px, 2px, 2px);
 			}
 			.rpg-icon-wrapper {
-				top: 0;
 				padding: 0 10px 5px 0;
 			}
 			.excerpt-header {
-				float: left;
-				clear: right;
-				position: static;
 				background: none;
 				padding: 0;
 				margin: 0;
-				height: auto;
 			}
 		}
-		&.excerpt-right {
-			.rpg-icon-wrapper {
-				padding: 0 0 5px 10px;
-			}
-			.excerpt-header {
-				float: right;
-				clear: left;
-			}
+		&.excerpt-right .rpg-icon-wrapper {
+			padding: 0 0 5px 10px;
+		}
+	}
+	.excerpt .excerpt-details .excerpt-header, .excerpt-simple .excerpt-details .rpg-icon-wrapper {
+		float: left;
+		clear: right;
+	}
+	.excerpt.excerpt-right .excerpt-details .excerpt-header, .excerpt-simple.excerpt-right .excerpt-details .rpg-icon-wrapper {
+		float: right;
+		clear: left;
+	}
+	.excerpt .excerpt-details {
+		h5 {
+			@include black-bar(98px, 2px, 2px);
+		}
+		.rpg-icon-wrapper {
+			top: 0;
+		}
+		.excerpt-header {
+			position: static;
+			height: auto;
+		}
+	}
+	.excerpt-simple .excerpt-details {
+		min-height: 100px;
+		h5 {
+			background: rgba(0,0,0,0.6);
+		    padding: 10px 20px;
+			margin: 0 0 20px 0;
+		    border: 2px solid $color-04;
+		}
+		.excerpt-header {
+			border: 0;
 		}
 	}
 

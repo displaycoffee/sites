@@ -72,7 +72,12 @@
 
 </head>
 
-<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS} section-{SCRIPT_NAME}" data-class="section {SCRIPT_NAME} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
+{% set bodyname = SCRIPT_NAME|lower %}
+{% if 'app/' in SCRIPT_NAME %}
+	{% set bodyname = 'page' %}
+{% endif %}
+
+<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS} section-{{ bodyname }}" data-class="section {{ bodyname }} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
 
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
