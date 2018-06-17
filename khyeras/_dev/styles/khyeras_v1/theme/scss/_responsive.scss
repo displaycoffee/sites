@@ -87,9 +87,6 @@
 			margin-left: 150px;
 		}
 	}
-	.card .card-image {
-		flex: 0 0 130px;
-	}
 
 	// viewlisting.scss
 	.topiclist > li {
@@ -181,6 +178,9 @@
 		dd {
 			margin-left: 0;
 		}
+	}
+	.excerpt .excerpt-image {
+		flex: 0 0 130px;
 	}
 
 	// cp.scss
@@ -452,47 +452,6 @@
 			}
 		}
 	}
-	.card {
-		display: block;
-		position: relative;
-		.card-image, &.card-right .card-image {
-			margin: 0 0 20px 0;
-		}
-		.card-image .image-wrap {
-			border-radius: 0;
-			height: 150px;
-			background-position: center 0;
-			border-width: 2px;
-			box-shadow: none;
-			img {
-				display: none;
-			}
-		}
-		.card-details {
-			.rpg-icon-wrapper {
-				@include position($type: relative, $top: -25px);
-				margin: 0 0 0 5px;
-			}
-			.card-header {
-				@include clearfix('&');
-				@include black-bar(98px, 2px, 2px);
-			}
-		}
-		&.card-right .card-details .card-header {
-			text-align: right;
-		}
-		&.card-no-image .card-details {
-			.rpg-icon-wrapper {
-				top: -1px;
-			}
-			.card-header {
-				height: 60px;
-				line-height: 60px;
-				position: static;
-				border: 1px solid $color-04;
-			}
-		}
-	}
 
 	// viewlisting.scss
 	.topiclist {
@@ -589,18 +548,12 @@
 							}
 						}
 						.forumtitle {
-							height: 50px;
-							line-height: 50px;
-							@include position($type: absolute, $top: 50px, $left: -10px, $right: -10px);
-							padding: 0 20px;
-							background: rgba($color-02, 0.5);
+							@include black-bar(50px, -10px, -10px);
 							color: $color-01;
 							@include spectral-common;
 							font-size: rem(20px);
 							font-weight: normal;
-							overflow: hidden;
-							text-overflow: ellipsis;
-							white-space: nowrap;
+							@include ellipsis;
 							text-indent: 62px;
 							&:hover {
 								color: $color-07;
@@ -818,6 +771,38 @@
 			float: none;
 			width: auto;
 			padding: 0;
+		}
+	}
+	.excerpt {
+		display: block;
+		position: relative;
+		.excerpt-image, &.excerpt-right .excerpt-image {
+			margin: 0 0 20px 0;
+		}
+		.excerpt-image .image-wrap {
+			border-radius: 0;
+			height: 150px;
+			background-position: center 0;
+			border-width: 2px;
+			box-shadow: none;
+			img {
+				display: none;
+			}
+		}
+		.excerpt-details {
+			h5 a {
+				display: block;
+				@include ellipsis;
+			}
+			.rpg-icon-wrapper {
+				@include position($type: relative, $top: -25px);
+			}
+			.excerpt-header {
+				@include black-bar(98px, 2px, 2px);
+			}
+		}
+		&.excerpt-right .excerpt-details .excerpt-header {
+			text-align: right;
 		}
 	}
 
@@ -1125,8 +1110,7 @@
 	}
 	fieldset:not(.polls) dl:not(.pmlist) dd.has-multiple-fields > [class*='button'] {
 		max-width: 100px;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		@include ellipsis;
 	}
 	input[type='number'].inputbox {
 		width: 100%;
@@ -1343,6 +1327,9 @@
 			font-weight: bold;
 		}
 	}
+	.excerpt .excerpt-details h5 {
+		max-width: 62.5%;
+	}
 
 	// cp.scss
 	.cp-main .gallery label {
@@ -1496,45 +1483,10 @@
 			}
 		}
 	}
-
-	.card {
-		&, &.card-no-image {
-			.card-details .card-header {
-				height: auto;
-				line-height: 1.5;
-			}
-		}
-		.card-details {
-			h5, .rpg-icon-wrapper {
-				display: block;
-			}
-			h5 {
-				@include black-bar(98px, 2px, 2px);
-			}
-			.rpg-icon-wrapper {
-				top: 0;
-				text-align: center;
-				margin: 0 0 20px 0;
-			}
-			.card-header {
-				position: static;
-				background: none;
-				padding: 0;
-				margin: 0;
-			}
-		}
-		&.card-no-image .card-details {
-			padding-top: 70px;
-			h5, .rpg-icon-wrapper {
-				top: 0;
-			}
-			h5 {
-				border: 1px solid $color-04;
-			}
-			.card-header {
-				border: 0;
-			}
-		}
+	.rpg-round-icon {
+		@include sizing($list-icon-size - 8px, $list-icon-size - 8px);
+		line-height: $list-icon-size - 10px;
+		font-size: rem(16px);
 	}
 
 	// viewlisting.scss
@@ -1624,6 +1576,39 @@
 		}
 		select[name='ch'] {
 			margin-bottom: $ffs;
+		}
+	}
+	.excerpt {
+		.excerpt-details {
+			h5, .rpg-icon-wrapper {
+				display: block;
+			}
+			h5 {
+				max-width: none;
+				@include black-bar(98px, 2px, 2px);
+			}
+			.rpg-icon-wrapper {
+				top: 0;
+				padding: 0 10px 5px 0;
+			}
+			.excerpt-header {
+				float: left;
+				clear: right;
+				position: static;
+				background: none;
+				padding: 0;
+				margin: 0;
+				height: auto;
+			}
+		}
+		&.excerpt-right {
+			.rpg-icon-wrapper {
+				padding: 0 0 5px 10px;
+			}
+			.excerpt-header {
+				float: right;
+				clear: left;
+			}
 		}
 	}
 

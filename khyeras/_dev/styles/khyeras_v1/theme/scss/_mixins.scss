@@ -1,6 +1,6 @@
 // Also includes functions in addition to mixins
 
-// Clearfix
+// Black transparent bar
 @mixin black-bar($t, $l, $r) {
 	@include position($type: absolute, $top: $t, $left: $l, $right: $r);
 	height: 50px;
@@ -47,6 +47,13 @@
 	}
 
 	@return $pixels / $context * 1rem;
+}
+
+// Set text overflow with ellipsis
+@mixin ellipsis {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 // Set flex flow property

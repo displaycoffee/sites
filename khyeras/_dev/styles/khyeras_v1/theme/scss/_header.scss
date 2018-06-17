@@ -401,9 +401,7 @@
 				margin: 0;
 				height: 30px;
 				line-height: 30px;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
+				@include ellipsis;
 				background: rgba($color-02, 0.60);
 				text-align: center;
 			}

@@ -225,7 +225,7 @@ dl.faq + .top {
 	}
 }
 
-/* Pages
+/* Pages - General
 ========================================================================== */
 
 .pages-content hr {
@@ -241,5 +241,46 @@ dl.faq + .top {
 		.icon {
 			margin: 0 10px 0 0;
 		}
+	}
+}
+
+/* Pages - Excerpts
+========================================================================== */
+
+.excerpt {
+	@include flex-flow(row wrap);
+	align-items: center;
+	.excerpt-image {
+		flex: 0 0 200px;
+		margin: 0 20px 20px 0;
+		.image-wrap {
+			border-radius: 100%;
+			border: 5px solid $color-04;
+			background-repeat: no-repeat;
+		    background-position: -9999px -9999px;
+		    background-size: cover;
+			box-shadow: 0 0 7.5px 3.75px rgba($color-02, 0.25);
+		}
+	}
+	.excerpt-details {
+		@include flex(base);
+		h5 {
+			max-width: 75%;
+			display: inline-block;
+			margin: 0;
+		}
+		h5, .rpg-icon-wrapper {
+			vertical-align: middle;
+		}
+		.rpg-icon-wrapper {
+			padding: 0 0 0 5px;
+		}
+		.excerpt-header {
+			margin: 0 0 20px 0;
+		}
+	}
+	&.excerpt-right .excerpt-image {
+		margin: 0 0 20px 20px;
+		order: 1;
 	}
 }

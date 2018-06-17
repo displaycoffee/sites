@@ -161,9 +161,7 @@ a.anchor {
 
 .ellipsis-text {
 	display: inline-block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	@include ellipsis;
 }
 
 .top-anchor {
