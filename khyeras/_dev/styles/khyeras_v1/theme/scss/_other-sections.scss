@@ -256,6 +256,21 @@ dl.faq + .top {
 /* Pages - Excerpts
 ========================================================================== */
 
+.excerpt, .excerpt-simple {
+	.excerpt-details {
+		.excerpt-title, .rpg-icon-wrapper {
+			@include inline-block(middle);
+		}
+		.excerpt-title {
+			max-width: 75%;
+		}
+		.rpg-icon-wrapper {
+			padding: 0 0 0 5px;
+			margin-bottom: 20px;
+		}
+	}
+}
+
 .excerpt {
 	@include flex-flow(row wrap);
 	align-items: center;
@@ -273,16 +288,16 @@ dl.faq + .top {
 	}
 	.excerpt-details {
 		@include flex(base);
-		.excerpt-title, .rpg-icon-wrapper {
-			@include inline-block(middle);
-		}
-		.excerpt-title {
-			max-width: 75%;
-		}
-		.rpg-icon-wrapper {
-			padding: 0 0 0 5px;
-			margin-bottom: 20px;
-		}
+		// .excerpt-title, .rpg-icon-wrapper {
+		// 	@include inline-block(middle);
+		// }
+		// .excerpt-title {
+		// 	max-width: 75%;
+		// }
+		// .rpg-icon-wrapper {
+		// 	padding: 0 0 0 5px;
+		// 	margin-bottom: 20px;
+		// }
 	}
 	&.excerpt-right .excerpt-image {
 		margin: 0 0 20px 20px;

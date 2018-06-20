@@ -179,13 +179,13 @@
 			margin-left: 0;
 		}
 	}
-	.excerpt {
-		.excerpt-image {
-			flex: 0 0 130px;
-		}
+	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
 			max-width: 72%;
 		}
+	}
+	.excerpt .excerpt-image {
+		flex: 0 0 130px;
 	}
 
 	// cp.scss
@@ -325,8 +325,10 @@
 	}
 
 	// other-sections.scss
-	.excerpt .excerpt-details .excerpt-title {
-		max-width: 68%;
+	.excerpt, .excerpt-simple {
+		.excerpt-details .excerpt-title {
+			max-width: 68%;
+		}
 	}
 
 	// cp.scss
@@ -543,13 +545,16 @@
 					padding-left: 0;
 					min-height: 0;
 					dt {
+						padding-top: 120px;
 						.forum-image {
-							position: static;
-							@include sizing(auto, 100px);
+							top: -20px;
+							left: -10px;
+							right: -10px;
+							@include sizing(auto, 120px);
 							border-radius: 0;
 							border: 0;
 							background-position: center bottom;
-							margin: -20px -20px 20px -20px;
+							margin: 0;
 							img {
 								display: none;
 							}
@@ -564,7 +569,6 @@
 							font-size: rem(20px);
 							font-weight: normal;
 							@include ellipsis;
-							text-indent: 62px;
 							&:hover {
 								color: $color-07;
 							}
@@ -572,12 +576,9 @@
 								display: none;
 							}
 						}
-					}
-					&.row-item dt:before, dt .row-item-link {
-						top: 30px;
-					}
-					&.row-item dt:before {
-						position: absolute;
+						.row-item-link {
+							top: 120px;
+						}
 					}
 				}
 				&:not([class*='forum']) dd.lastpost dfn {
@@ -783,16 +784,31 @@
 			padding: 0;
 		}
 	}
+	.excerpt, .excerpt-simple {
+		.excerpt-details {
+			.excerpt-title, .rpg-icon-wrapper {
+				display: block;
+			}
+			.excerpt-title {
+				max-width: none;
+			}
+			.rpg-icon-wrapper {
+				margin-bottom: 0;
+			}
+		}
+	}
 	.excerpt {
 		position: relative;
-		display: block;
+		&, .excerpt-details .excerpt-title a {
+			display: block;
+		}
 		.excerpt-image, &.excerpt-right .excerpt-image {
 			margin: 0 0 20px 0;
 		}
 		.excerpt-image .image-wrap {
 			border-radius: 0;
 			height: 150px;
-			background-position: center 0;
+			background-position: center top;
 			border-width: 2px;
 			box-shadow: none;
 			img {
@@ -800,12 +816,8 @@
 			}
 		}
 		.excerpt-details {
-			.excerpt-title, .excerpt-title a, .rpg-icon-wrapper {
-				display: block;
-			}
 			.excerpt-title {
 				margin: 0;
-				max-width: none;
 				@include black-bar(98px, 2px, 2px);
 				a {
 					@include ellipsis;
@@ -814,20 +826,25 @@
 			.rpg-icon-wrapper {
 				float: right;
 				clear: left;
-				margin-bottom: 0;
 				padding: 0 0 5px 10px;
 			}
 		}
-		&.excerpt-right .excerpt-details {
-			.excerpt-title {
-				text-align: right;
-			}
-			.rpg-icon-wrapper {
-				float: left;
-				clear: right;
-				padding: 0 15px 5px 0;
-			}
+		&.excerpt-right .excerpt-details .excerpt-title {
+			text-align: right;
 		}
+	}
+	.excerpt.excerpt-right, .excerpt-simple {
+		.excerpt-details .rpg-icon-wrapper {
+			float: left;
+			clear: right;
+			padding: 0 15px 5px 0;
+		}
+	}
+	.excerpt-simple .excerpt-details {
+		min-height: 90px;
+	}
+	.section-page-setting .excerpt .excerpt-image .image-wrap {
+		background-position: center bottom;
 	}
 
 	// cp.scss
@@ -1527,9 +1544,6 @@
 				font-size: rem(16px);
 			}
 		}
-	}
-	.styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image dt .forumtitle {
-		text-indent: 44px;
 	}
 
 	// viewtopic.scss
