@@ -406,7 +406,7 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 	.right-box {
 		@include position($type: absolute, $top: 6px, $right: 0);
 		font-family: $font-01;
-		font-variant: none;
+		font-variant: normal;
 		font-size: rem($global-font-size);
 	}
 }

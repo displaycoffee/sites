@@ -278,7 +278,7 @@
 .section-ucp-attachments .cp-main .topiclist {
 	& > li.header dl dt a {
 		font-family: $font-01;
-		font-variant: none;
+		font-variant: normal;
 		font-size: rem($global-font-size);
 	}
 	& > li.row dl dt .topictitle.attachment-filename {

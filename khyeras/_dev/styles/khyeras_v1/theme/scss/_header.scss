@@ -23,7 +23,7 @@
 		height: 100%;
 		@include position($type: relative, $z: 2);
 		.site-description, .site-quotes {
-			@include flex(base);
+			@include flex;
 			max-width: 310px;
 		}
 		.site-description {
@@ -34,7 +34,7 @@
 			h1 {
 				font-family: $font-03;
 				font-size: rem(100px);
-				font-variant: none;
+				font-variant: normal;
 				text-shadow: 2px 2px 0 rgba($color-02, 0.65);
 				a:hover {
 					color: $color-01;
@@ -230,7 +230,7 @@
 		}
 		.welcome-header {
 			font-family: $font-03;
-			font-variant: none;
+			font-variant: normal;
 			font-size: rem(40px);
 		}
 		.guest-register {
@@ -311,7 +311,7 @@
 		.header_settings {
 			@include position($type: absolute, $top: 11px, $right: 20px);
 			font-family: $font-01;
-			font-variant: none;
+			font-variant: normal;
 			font-size: rem(13px);
 		}
 	}

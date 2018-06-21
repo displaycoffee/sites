@@ -288,16 +288,6 @@ dl.faq + .top {
 	}
 	.excerpt-details {
 		@include flex(base);
-		// .excerpt-title, .rpg-icon-wrapper {
-		// 	@include inline-block(middle);
-		// }
-		// .excerpt-title {
-		// 	max-width: 75%;
-		// }
-		// .rpg-icon-wrapper {
-		// 	padding: 0 0 0 5px;
-		// 	margin-bottom: 20px;
-		// }
 	}
 	&.excerpt-right .excerpt-image {
 		margin: 0 0 20px 20px;
