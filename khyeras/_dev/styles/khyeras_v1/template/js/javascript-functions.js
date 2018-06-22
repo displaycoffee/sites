@@ -10,17 +10,19 @@ function addBodyClass() {
 }
 
 // If forum has image, add responsive image and a class to parent
-function updateForumImage() {
+function updateforumImage() {
 	var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
 
-	if ( forumImage.length ) {
+	if ( forumImage && forumImage.length ) {
 		for ( var i = 0; i < forumImage.length; i++ ) {
+			var fImage = forumImage[i];
+
 			// Get current image source and add responsive image
-			var responsiveImg = forumImage[i].childNodes[0].getAttribute( 'src' ).replace( '300x300', '1000x500' );
-			forumImage[i].setAttribute( 'style', 'background-image: url(' + responsiveImg  + ');' );
+			var responsiveImg = fImage.childNodes[0].getAttribute( 'src' ).replace( '300x300', '1000x500' );
+			fImage.setAttribute( 'style', 'background-image: url(' + responsiveImg  + ');' );
 
 			// Add class to parent row
-			var parentRow = forumImage[i].parentNode.parentNode.parentNode;
+			var parentRow = fImage.parentNode.parentNode.parentNode;
 			parentRow.className += ( checkForClasses( parentRow ) + 'has-forum-image' );
 		}
 	}
@@ -28,18 +30,20 @@ function updateForumImage() {
 
 // Add classes to fieldset dl dd depending on conditions
 function addFieldsetClasses() {
-	var fieldset = document.querySelectorAll( 'fieldset:not(.polls) dl:not(.pmlist) dd' );
+	var fieldsetDd = document.querySelectorAll( 'fieldset:not(.polls) dl:not(.pmlist) dd' );
 
-	if ( fieldset.length ) {
-		for ( var i = 0; i < fieldset.length; i++ ) {
+	if ( fieldsetDd && fieldsetDd.length ) {
+		for ( var i = 0; i < fieldsetDd.length; i++ ) {
+			var dd = fieldsetDd[i];
+
 			// Check if there are multiple children in the dd
-			if (fieldset[i].children.length > 1) {
-				fieldset[i].className += ( checkForClasses( fieldset[i] ) + 'has-multiple-fields' );
+			if (dd.children.length > 1) {
+				dd.className += ( checkForClasses( dd ) + 'has-multiple-fields' );
 			}
 
 			// Check if element has an nbsp space
-			if ( fieldset[i].innerHTML.indexOf( '&nbsp;' ) !== -1 ) {
-				fieldset[i].className += ( checkForClasses( fieldset[i] ) + 'has-space' );
+			if ( dd.innerHTML.indexOf( '&nbsp;' ) !== -1 ) {
+				dd.className += ( checkForClasses( dd ) + 'has-space' );
 			}
 		}
 	}
@@ -76,10 +80,12 @@ function noContentListing() {
 
 	var listing = document.querySelectorAll( '.action-bar + .panel .inner' );
 
-	if ( listing.length ) {
+	if ( listing && listing.length ) {
 		for ( var i = 0; i < listing.length; i++ ) {
-			if ( noContentText.indexOf( listing[i].innerText ) !== -1 ) {
-				listing[i].className += ( checkForClasses( listing[i] ) + 'no-content' );
+			var list = listing[i];
+
+			if ( noContentText.indexOf( list.innerText ) !== -1 ) {
+				list.className += ( checkForClasses( list ) + 'no-content' );
 			}
 		}
 	}
@@ -87,12 +93,14 @@ function noContentListing() {
 
 // Add class to topics on search results that are ignored
 function addSearchIgnoredClass() {
-	var topic = document.querySelectorAll( '.search.post .postbody' );
+	var postBody = document.querySelectorAll( '.search.post .postbody' );
 
-	if ( topic.length ) {
-		for ( var i = 0; i < topic.length; i++ ) {
-			if ( topic[i].innerHTML.indexOf( 'ignore list' ) !== -1 ) {
-				topic[i].className += ( checkForClasses( topic[i] ) + 'ignore' );
+	if ( postBody && postBody.length ) {
+		for ( var i = 0; i < postBody.length; i++ ) {
+			var topic = postBody[i];
+
+			if ( topic.innerHTML.indexOf( 'ignore list' ) !== -1 ) {
+				topic.className += ( checkForClasses( topic ) + 'ignore' );
 			}
 		}
 	}
@@ -100,12 +108,14 @@ function addSearchIgnoredClass() {
 
 // Check if there is a new PM (mostly for icon purposes)
 function checkForNewPM() {
-	var menuLink = document.querySelectorAll( '.cp-menu ul li a[href*="folder"]' );
+	var menuItem = document.querySelectorAll( '.cp-menu ul li a[href*="folder"]' );
 
-	if ( menuLink.length ) {
-		for ( var i = 0; i < menuLink.length; i++ ) {
-			if ( menuLink[i].innerHTML.indexOf( 'strong' ) !== -1 ) {
-				menuLink[i].className += ( checkForClasses( menuLink[i] ) + 'new-pm' );
+	if ( menuItem && menuItem.length ) {
+		for ( var i = 0; i < menuItem.length; i++ ) {
+			var item = menuItem[i];
+
+			if ( item.innerHTML.indexOf( 'strong' ) !== -1 ) {
+				item.className += ( checkForClasses( item ) + 'new-pm' );
 			}
 		}
 	}
@@ -113,30 +123,32 @@ function checkForNewPM() {
 
 // Add an image wrapper around notification images
 function addImageWrapper( selector ) {
-	var image = document.querySelectorAll( selector );
+	var imageSelector = document.querySelectorAll( selector );
 
-	if ( image.length ) {
-		for ( var i = 0; i < image.length; i++ ) {
+	if ( imageSelector && imageSelector.length ) {
+		for ( var i = 0; i < imageSelector.length; i++ ) {
+			var sImage = imageSelector[i];
+
 			// Create the new image wrapper div
 			var imageWrapper = document.createElement( 'div' );
 			imageWrapper.setAttribute( 'class', 'image-wrap' );
 
 			// Insert wrapper before the image
-			image[i].parentNode.insertBefore( imageWrapper, image[i] );
+			sImage.parentNode.insertBefore( imageWrapper, sImage );
 
 			// Append image to the image wrapper
-			imageWrapper.appendChild( image[i] );
+			imageWrapper.appendChild( sImage );
 		}
 	}
 }
 
 // Check for empty content elements on the page
 function checkForEmpty( selector ) {
-	var element = document.querySelectorAll( selector );
+	var emptySelector = document.querySelectorAll( selector );
 
-	if ( element.length ) {
-		for ( var i = 0; i < element.length; i++ ) {
-			element[i].parentNode.style.display = 'none';
+	if ( emptySelector && emptySelector.length ) {
+		for ( var i = 0; i < emptySelector.length; i++ ) {
+			emptySelector[i].parentNode.style.display = 'none';
 		}
 	}
 }
@@ -161,5 +173,22 @@ function removeHTMLFromDraft() {
 		var postArea = document.querySelectorAll( '.section-posting' + postForm );
 		var postValue = cleanHTML( postArea[0].value );
 		postArea[0].value = postValue;
+	}
+}
+
+// Check image dimensions and add classes to constrain images in a square space
+function checkImageDimensions( selector ) {
+	var imageSelector = document.querySelectorAll( selector );
+
+	if ( imageSelector && imageSelector.length ) {
+		for ( var i = 0; i < imageSelector.length; i++ ) {
+			var sImage = imageSelector[i];
+
+			if ( sImage.naturalWidth > sImage.naturalHeight ) {
+				sImage.className += ( checkForClasses( sImage ) + 'image-wide' );
+			} else if ( sImage.naturalHeight > sImage.naturalWidth ) {
+				sImage.className += ( checkForClasses( sImage ) + 'image-tall' );
+			}
+		}
 	}
 }
