@@ -4,7 +4,7 @@
 			<dl>
 				<dt>
 					<label{% if pf.FIELD_ID %} for="{{ pf.FIELD_ID }}"{% endif %}>
-						{{ pf.LANG_NAME }}{{ L_COLON }}{% if pf.S_REQUIRED %} *{% endif %}
+						{{ pf.LANG_NAME }}{L_COLON}{% if pf.S_REQUIRED %} *{% endif %}
 					</label>
 					{% if pf.LANG_EXPLAIN %}
 						<br /><span>{{ pf.LANG_EXPLAIN }}</span>
