@@ -1,6 +1,7 @@
 // Common variables
 var body = document.querySelector( 'body' );
 var baseFontSize = 16;
+var bottomDistance =  document.body.scrollHeight + window.innerHeight;
 
 // If className has classes, add a space before adding new classes
 function checkForClasses( selector ) {
@@ -41,3 +42,23 @@ function mergeArray( array1, array2 ) {
 function cleanHTML( selector ) {
 	return selector.replace( /(<([^>]+)>)/ig, '' );
 }
+
+// Debounce function from underscore.js and https://davidwalsh.name/javascript-debounce-function
+function debounce( func, wait, immediate ) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if ( !immediate ) {
+				func.apply( context, args );
+			}
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout( timeout );
+		timeout = setTimeout( later, wait );
+		if ( callNow ) {
+			func.apply( context, args );
+		}
+	};
+};

@@ -161,7 +161,7 @@
 			<!-- ENDIF -->
 			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
 			<!-- BEGIN custom_fields -->
-				<!-- IF custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_location' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_interests' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_occupation' or custom_fields.PROFILE_FIELD_IDENT eq 'writing_prefs' or custom_fields.PROFILE_FIELD_IDENT eq 'pronouns' -->
+				<!-- IF custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_location' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_interests' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_occupation' or custom_fields.PROFILE_FIELD_IDENT eq 'pronouns' or custom_fields.PROFILE_FIELD_IDENT eq 'avatar_credit' or custom_fields.PROFILE_FIELD_IDENT eq 'sig_credit' -->
 					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
 					<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
 				<!-- ENDIF -->
@@ -243,6 +243,14 @@
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 	<div class="{$WRITER_CLASS}" role="tabpanel">
 <!-- ENDIF -->
+		<!-- IF S_PROFILE_WRITING_PREFS -->
+			<div class="panel bg2">
+				<div class="inner">
+					<h3>{PROFILE_WRITING_PREFS_NAME}</h3>
+					<p>{PROFILE_WRITING_PREFS_VALUE}</p>
+				</div>
+			</div>
+		<!-- ENDIF -->
 		<div class="panel bg2">
 			<div class="inner">
 				<div class="user-contact">

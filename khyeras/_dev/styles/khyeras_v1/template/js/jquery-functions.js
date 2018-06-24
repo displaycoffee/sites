@@ -1,135 +1,207 @@
 // Check for spaces inside elements
 function checkForSpace( selector ) {
-	jQuery( selector ).each( function() {
-		var selectorHTML = jQuery( this );
+	var emptySelector = jQuery( selector );
 
-		if ( selectorHTML.html() == '&nbsp;' || selectorHTML.html() == '<label>&nbsp;</label>' ) {
-			selectorHTML.addClass( 'empty-space' );
-		} else {
-			selectorHTML.removeClass( 'empty-space' );
-		}
-	});
-}
+	if ( emptySelector && emptySelector.length ) {
+		emptySelector.each( function() {
+			var current = jQuery( this );
 
-// Check if area should be scrollable
-function addScrollableArea( selector, selectorHeight, selectorHide ) {
-	if ( selector.length && selector[0].scrollHeight > selectorHeight ) {
-		selector.addClass( 'scrollable' );
-		selector.wrapInner( '<div class="scrollable-wrapper"></div>' );
-	} else {
-		selectorHide.hide();
+			if ( current.html() == '&nbsp;' || current.html() == '<label>&nbsp;</label>' ) {
+				current.addClass( 'empty-space' );
+			} else {
+				current.removeClass( 'empty-space' );
+			}
+		});
 	}
 }
 
-// Add class for image attachments adjustments
-function updateaAttachmentDisplay( selector ) {
-	jQuery( selector ).on( 'click', function( e ) {
-		var parentImageContainer = jQuery( this ).closest( '.file' ).parent();
-
-		if ( parentImageContainer.hasClass( 'image-expanded' ) ) {
-			parentImageContainer.removeClass( 'image-expanded' );
+// Add wrapper around area if height is bigger than a certain number
+function addScrollableArea( selector, selectorHeight, selectorHide ) {
+	if ( selector && selector.length || selectorHide && selectorHide.length ) {
+		if ( selector[0].scrollHeight > selectorHeight ) {
+			selector.addClass( 'scrollable' );
+			selector.wrapInner( '<div class="scrollable-wrapper"></div>' );
 		} else {
-			parentImageContainer.addClass( 'image-expanded' );
+			selectorHide.hide();
 		}
-	});
+	}
+}
+
+// Add icon for image attachment expansion
+function addAttachmentIcon() {
+	var attachImage = jQuery( '.attach-image' );
+
+	if ( attachImage && attachImage.length ) {
+		attachImage.each( function() {
+			jQuery( this ).prepend( '<span class="image-open" onclick="viewableArea(this);"><i class="icon icon-xl fa-search-plus fa-fw" aria-hidden="true"></i></span>' );
+		});
+	}
+}
+
+// Add additional click events to image attachment expansion
+function updateaAttachmentDisplay( selector ) {
+	var attachment = jQuery( selector );
+
+	if ( attachment && attachment.length ) {
+		attachment.on( 'click', function( e ) {
+			var parentImageContainer = jQuery( this ).closest( '.file' ).parent();
+
+			if ( parentImageContainer.hasClass( 'image-expanded' ) ) {
+				parentImageContainer.removeClass( 'image-expanded' );
+			} else {
+				parentImageContainer.addClass( 'image-expanded' );
+			}
+		});
+	}
 }
 
 // Function display-actions div because the markup is a mess
 // This prevents editting a number of templates
 function formatDisplayActions() {
-	jQuery( '.display-actions' ).each( function() {
-		var current = jQuery( this );
+	var displayActions = jQuery( '.display-actions' );
 
-		// Remove spaces
-		current.html( current.html().replace( /&nbsp;/g, '' ).replace( /::/g, '&bull;' ) );
+	if ( displayActions && displayActions.length ) {
+		displayActions.each( function() {
+			var current = jQuery( this );
 
-		// Find mark / unmark buttons
-		var markButtons = current.find( ' div a' );
+			// Remove spaces
+			current.html( current.html().replace( /&nbsp;/g, '' ).replace( /::/g, '&bull;' ) );
 
-		if ( markButtons.text().toLowerCase().indexOf( 'mark' ) !== -1 ) {
-			markButtons.parent( 'div' ).addClass( 'mark-actions' );
-		}
+			// Find mark / unmark buttons
+			var markButtons = current.find( ' div a' );
 
-		// Find select menus with a button and wrap a div around
-		var selectMenu = current.children( 'select' );
+			if ( markButtons.text().toLowerCase().indexOf( 'mark' ) !== -1 ) {
+				markButtons.parent( 'div' ).addClass( 'mark-actions' );
+			}
 
-		selectMenu.each( function() {
-			jQuery( this ).next( '.button1, .button2' ).addBack().wrapAll( '<div class="select-actions"></div>' );
+			// Find select menus with a button and wrap a div around
+			var selectMenu = current.children( 'select' );
+
+			selectMenu.each( function() {
+				jQuery( this ).next( '.button1, .button2' ).addBack().wrapAll( '<div class="select-actions"></div>' );
+			});
+
+			// Add a new inner wrapper
+			// Keep at the bottom to do this last
+			current.wrapInner( '<div class="display-actions-wrapper"></div>' );
 		});
+	}
+}
 
-		// Add a new inner wrapper
-		// Keep at the bottom to do this last
-		current.wrapInner( '<div class="display-actions-wrapper"></div>' );
-	});
+// If postingbox in ucp is empty, hide it
+function hidePMPostBox() {
+	var pmPostBox = jQuery( '#pmheader-postingbox' );
+
+	if ( pmPostBox && pmPostBox.length ) {
+		if ( pmPostBox.find( 'fieldset.fields1' ).children().length == 0 ) {
+			pmPostBox.hide();
+		}
+	}
+}
+
+// Add a wrapper to the control panel for better design control
+function addCPWrapper() {
+	var cpMenu = jQuery( '.cp-menu' );
+	var cpMain = jQuery( '.cp-main' );
+
+	if ( cpMenu && cpMenu.length || cpMain && cpMain.length ) {
+		cpMenu.parent().addClass('cp-wrapper');
+		cpMain.parent().addClass('cp-wrapper');
+	}
+}
+
+// Show/hide selected content on mobile
+function toggleMobileContent( button, selector ) {
+	var buttonToggle = jQuery( button );
+	var selectorToggle = jQuery( selector );
+
+	if ( buttonToggle && buttonToggle.length || selectorToggle && selectorToggle.length ) {
+		buttonToggle.off().on( 'click', function() {
+			if ( selectorToggle.hasClass( 'toggle-show' ) ) {
+				selectorToggle.removeClass( 'toggle-show' );
+			} else {
+				selectorToggle.addClass( 'toggle-show' );
+			}
+		});
+	}
+}
+
+// Toggle display of character versus writer on memberlist_view
+function toggleMemberDisplay() {
+	var profileTabs = jQuery( '.profile-tabs' );
+
+	if ( profileTabs && profileTabs.length ) {
+		// Get all tabs on profile
+		var tabs = profileTabs.find( 'ul li a[data-tabname]' );
+
+		// Add click event for tabs
+		tabs.on( 'click', function() {
+			var current = jQuery( this );
+
+			// Find any active tab, remove activetab class, then add it to clicked element
+			tabs.parent().removeClass( 'activetab' );
+			current.parent().addClass( 'activetab' );
+
+			// Get tab name
+			var activeTab =  current.attr( 'data-tabname' );
+
+			// For each tab, show or hide depending on tab name match
+			jQuery( '.tab-panel' ).each( function() {
+				var current = jQuery( this );
+
+				if ( current.hasClass( activeTab ) ) {
+					current.addClass( 'show-panel' ).removeClass( 'hide-panel' );
+				} else {
+					current.addClass( 'hide-panel' ).removeClass( 'show-panel' );
+				}
+			});
+		});
+	}
 }
 
 // Add sticky class to navigation when scroll
 function addOnScroll( selector, anchor, class ) {
-	// Variables for scroll logic
-	var anchor = jQuery( anchor ).offset().top;
 	var windowSelector = jQuery( window );
-	var scrollCheck = false;
 
-	windowSelector.scroll( function() {
-		if (scrollCheck == false) {
-			if ( windowSelector.scrollTop() > anchor ) {
-				jQuery( selector ).addClass( class );
-				scrollCheck = true;
+	if ( windowSelector && windowSelector.length ) {
+		// Variables for scroll logic
+		var anchor = jQuery( anchor ).offset().top;
+		var scrollCheck = false;
+
+		windowSelector.scroll( function() {
+			if (scrollCheck == false) {
+				if ( windowSelector.scrollTop() > anchor ) {
+					jQuery( selector ).addClass( class );
+					scrollCheck = true;
+				}
+			} else {
+				if ( windowSelector.scrollTop() <= anchor ) {
+					jQuery( selector ).removeClass( class );
+					scrollCheck = false;
+				}
 			}
-		} else {
-			if ( windowSelector.scrollTop() <= anchor ) {
-				jQuery( selector ).removeClass( class );
-				scrollCheck = false;
-			}
-		}
-	});
+		});
+	}
 }
 
 // Scroll to top functionality
 // Modified from https://paulund.co.uk/how-to-create-an-animated-scroll-to-top-with-jquery
 function scrollOnPage( selector, distance, position ) {
-	// Check to see if the window is top if not then display button
-	addOnScroll( selector, '.site-description', 'scroll-to-visible' );
+	var scrollSelector = jQuery( selector );
 
-	// Click event to scroll to top
-	jQuery( selector ).on( 'click', function() {
-		jQuery( 'html, body' ).animate({
-			scrollTop : position
-		}, 1000 );
-		return false;
-	});
+	if ( scrollSelector && scrollSelector.length ) {
+		// Check to see if the window is top if not then display button
+		addOnScroll( selector, '.site-description', 'scroll-to-visible' );
+
+		// Click event to scroll to top
+		scrollSelector.on( 'click', function() {
+			jQuery( 'html, body' ).animate({
+				scrollTop : position
+			}, 1000 );
+			return false;
+		});
+	}
 }
-
-// Function to show/hide certain elements on mobile
-function toggleMobileContent( button, selector ) {
-	jQuery( button ).off().on( 'click', function() {
-		if ( jQuery( selector ).hasClass( 'toggle-show' ) ) {
-			jQuery( selector ).removeClass( 'toggle-show' );
-		} else {
-			jQuery( selector ).addClass( 'toggle-show' );
-		}
-	});
-}
-
-// Debounce function from underscore.js and https://davidwalsh.name/javascript-debounce-function
-function debounce( func, wait, immediate ) {
-	var timeout;
-	return function() {
-		var context = this, args = arguments;
-		var later = function() {
-			timeout = null;
-			if ( !immediate ) {
-				func.apply( context, args );
-			}
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout( timeout );
-		timeout = setTimeout( later, wait );
-		if ( callNow ) {
-			func.apply( context, args );
-		}
-	};
-};
 
 // Initialize Mobile Menu
 function initializeMobileMenu( options ) {
@@ -220,36 +292,4 @@ function initializeMobileMenu( options ) {
 		mobileResizeAction();
 	}, 100 );
 	window.addEventListener( 'resize', resizeMenuForMobile );
-}
-
-// Toggle display of character versus writer on memberlist_view
-function toggleMemberDisplay() {
-	var profileTabs = jQuery( '.profile-tabs' );
-
-	if ( profileTabs.length ) {
-		// Get all tabs on profile
-		var tabs = profileTabs.find( 'ul li a[data-tabname]' );
-
-		// Add click event for tabs
-		tabs.on( 'click', function() {
-			var current = jQuery( this );
-
-			// Find any active tab, remove activetab class, then add it to clicked element
-			tabs.parent().removeClass( 'activetab' );
-			current.parent().addClass( 'activetab' );
-
-			// Get tab name
-			var activeTab =  current.attr( 'data-tabname' );
-
-			// For each tab, show or hide depending on tab name match
-			jQuery( '.tab-panel' ).each( function() {
-				var current = jQuery( this );
-				if ( current.hasClass( activeTab ) ) {
-					current.addClass( 'show-panel' ).removeClass( 'hide-panel' );
-				} else {
-					current.addClass( 'hide-panel' ).removeClass( 'show-panel' );
-				}
-			});
-		});
-	}
 }
