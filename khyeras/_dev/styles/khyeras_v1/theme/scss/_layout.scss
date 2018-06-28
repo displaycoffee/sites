@@ -53,6 +53,22 @@
 	overflow: hidden;
 }
 
+.image-wide, .image-tall {
+	position: relative;
+}
+
+.image-wide {
+	height: 100%;
+	max-width: none;
+	left: -50%;
+}
+
+.image-tall {
+	width: 100%;
+	max-height: none;
+	top: -25%;
+}
+
 .read-more {
 	font-style: italic;
 }

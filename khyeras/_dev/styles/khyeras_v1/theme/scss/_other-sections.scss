@@ -275,9 +275,10 @@ dl.faq + .top {
 	@include flex-flow(row wrap);
 	align-items: center;
 	.excerpt-image {
-		flex: 0 0 200px;
+		@include flex;
 		margin: 0 20px 20px 0;
 		.image-wrap {
+			@include sizing(200px, 200px);
 			border-radius: 100%;
 			border: 5px solid $color-04;
 			background-repeat: no-repeat;

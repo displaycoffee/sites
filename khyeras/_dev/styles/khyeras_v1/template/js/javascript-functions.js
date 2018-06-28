@@ -10,16 +10,12 @@ function addBodyClass() {
 }
 
 // If forum has image, add responsive image and a class to parent
-function updateforumImage() {
+function addForumImageClass() {
 	var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
 
 	if ( forumImage && forumImage.length ) {
 		for ( var i = 0; i < forumImage.length; i++ ) {
 			var fImage = forumImage[i];
-
-			// Get current image source and add responsive image
-			var responsiveImg = fImage.childNodes[0].getAttribute( 'src' ).replace( '300x300', '1000x500' );
-			fImage.setAttribute( 'style', 'background-image: url(' + responsiveImg  + ');' );
 
 			// Add class to parent row
 			var parentRow = fImage.parentNode.parentNode.parentNode;
@@ -121,27 +117,6 @@ function checkForNewPM() {
 	}
 }
 
-// Add an image wrapper around notification images
-function addImageWrapper( selector ) {
-	var imageSelector = document.querySelectorAll( selector );
-
-	if ( imageSelector && imageSelector.length ) {
-		for ( var i = 0; i < imageSelector.length; i++ ) {
-			var sImage = imageSelector[i];
-
-			// Create the new image wrapper div
-			var imageWrapper = document.createElement( 'div' );
-			imageWrapper.setAttribute( 'class', 'image-wrap' );
-
-			// Insert wrapper before the image
-			sImage.parentNode.insertBefore( imageWrapper, sImage );
-
-			// Append image to the image wrapper
-			imageWrapper.appendChild( sImage );
-		}
-	}
-}
-
 // Check for empty content elements on the page
 function checkForEmpty( selector ) {
 	var emptySelector = document.querySelectorAll( selector );
@@ -176,6 +151,27 @@ function removeHTMLFromDraft() {
 	}
 }
 
+// Add an image wrapper around notification images
+function addImageWrapper( selector ) {
+	var imageSelector = document.querySelectorAll( selector );
+
+	if ( imageSelector && imageSelector.length ) {
+		for ( var i = 0; i < imageSelector.length; i++ ) {
+			var sImage = imageSelector[i];
+
+			// Create the new image wrapper div
+			var imageWrapper = document.createElement( 'div' );
+			imageWrapper.setAttribute( 'class', 'image-wrap' );
+
+			// Insert wrapper before the image
+			sImage.parentNode.insertBefore( imageWrapper, sImage );
+
+			// Append image to the image wrapper
+			imageWrapper.appendChild( sImage );
+		}
+	}
+}
+
 // Check image dimensions and add classes to constrain images in a square space
 function checkImageDimensions( selector ) {
 	var imageSelector = document.querySelectorAll( selector );
@@ -189,6 +185,31 @@ function checkImageDimensions( selector ) {
 			} else if ( sImage.naturalHeight > sImage.naturalWidth ) {
 				sImage.className += ( checkForClasses( sImage ) + 'image-tall' );
 			}
+		}
+	}
+}
+
+// Add background image for responsive banners
+function addImageBackground( selector, respondDimensions ) {
+	var imageSelector = document.querySelectorAll( selector );
+
+	if ( imageSelector && imageSelector.length ) {
+		for ( var i = 0; i < imageSelector.length; i++ ) {
+			var sImage = imageSelector[i];
+			var sImageSrc = sImage.getAttribute( 'src' );
+			var sImageDimensions = sImageSrc.match( /(\d+x\d+)/g );
+			var sImageExt = sImageSrc.match( /.(jpg|jpeg|gif|png)/g );
+
+			// Create responsive background image src
+			var responsiveImage = sImageSrc;
+			if ( sImageDimensions ) {
+				responsiveImage = sImageSrc.replace( sImageDimensions, respondDimensions );
+			} else if ( sImageExt ) {
+				responsiveImage = sImageSrc.replace( sImageExt, '-' + respondDimensions + sImageExt );
+			}
+
+			// Set background image attribute
+			sImage.parentNode.setAttribute( 'style', 'background-image: url(' + responsiveImage + ');' );
 		}
 	}
 }

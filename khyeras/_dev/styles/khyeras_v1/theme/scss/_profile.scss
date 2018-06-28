@@ -17,15 +17,14 @@
 		text-align: center;
 		margin: 0 0 10px 0;
 		&.has-avatar .avatar-container {
-			display: inline-block;
-			overflow: hidden;
-			border: 5px solid $color-04;
-			border-radius: 100%;
-			box-shadow: 0 0 10px 5px rgba($color-02, 0.25);
 			a.avatar, div.avatar {
+				margin: 0 auto;
+				@include sizing(210px, 210px);
 				display: block;
-				@include sizing(100%, 0);
-				padding: 0 0 100% 0;
+				overflow: hidden;
+				border: 5px solid $color-04;
+				border-radius: 100%;
+				box-shadow: 0 0 10px 5px rgba($color-02, 0.25);
 			}
 		}
 		a, span {
@@ -53,7 +52,9 @@
 }
 
 .pm .postprofile dt.has-avatar .avatar-container {
-	box-shadow: 0 0 10px 5px rgba($color-02, 0.15);
+	a.avatar, div.avatar {
+		box-shadow: 0 0 10px 5px rgba($color-02, 0.15);
+	}
 }
 
 /* Race and Class - Includes Header Welcome

@@ -165,6 +165,13 @@
 		}
 	}
 
+	// profile.scss
+	.postprofile dt.has-avatar .avatar-container {
+		a.avatar, div.avatar {
+			@include sizing(155px, 155px);
+		}
+	}
+
 	// other-sections.scss
 	#viewprofile .profile-panel .inner .postprofile {
 		flex: 0 0 176px;
@@ -184,8 +191,8 @@
 			max-width: 72%;
 		}
 	}
-	.excerpt .excerpt-image {
-		flex: 0 0 130px;
+	.excerpt .excerpt-image .image-wrap {
+		@include sizing(150px, 150px);
 	}
 
 	// cp.scss
@@ -747,8 +754,10 @@
 			&.has-avatar {
 				.avatar-container {
 					float: left;
-					width: 130px;
 					margin-right: 20px;
+					a.avatar, div.avatar {
+						@include sizing(130px, 130px);
+					}
 				}
 				& ~ dd {
 					margin-left: 150px;
@@ -809,7 +818,7 @@
 		}
 		.excerpt-image .image-wrap {
 			border-radius: 0;
-			height: 150px;
+			@include sizing(auto, 150px);
 			background-position: center top;
 			border-width: 2px;
 			box-shadow: none;
@@ -1085,8 +1094,8 @@
 			}
 		}
 		.user-profile {
-			.user-avatar {
-				width: 125px;
+			.user-avatar .image-wrap {
+				@include sizing(125px, 125px);
 			}
 			h5 {
 				font-size: rem(35px);
@@ -1334,7 +1343,10 @@
 	// profile.scss
 	.postprofile dt.has-avatar {
 		.avatar-container {
-			width: 80px;
+			a.avatar, div.avatar {
+				@include sizing(80px, 80px);
+				border-width: 2px;
+			}
 		}
 		& ~ dd {
 			margin-left: 100px;

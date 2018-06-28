@@ -2,18 +2,27 @@
 ========================================================================== */
 
 addBodyClass();
-updateforumImage();
+addForumImageClass();
 addFieldsetClasses();
 addNoPaginationClass();
 noContentListing();
 addSearchIgnoredClass();
 checkForNewPM();
-addImageWrapper( '.notification_list .list-inner > img' );
-addImageWrapper( '.notification_list .notification-block > img' );
 checkForEmpty( '.section-mcp-post-details .pagination ul' );
 checkForEmpty( '.section-mcp-post-details .postbody .content pre' );
 removeHTMLFromDraft();
-checkImageDimensions( '.excerpt .excerpt-image img' );
+addImageWrapper( '.notification_list .list-inner > img' );
+addImageWrapper( '.notification_list .notification-block > img' );
+checkImageDimensions( '.page-welcome .image-wrap img' );
+checkImageDimensions( '.postprofile .avatar img' );
+
+var forumImage = '.forum-image img';
+checkImageDimensions( forumImage );
+addImageBackground( forumImage, '1000x500' );
+
+var excerptImage = '.excerpt .excerpt-image img';
+checkImageDimensions( excerptImage );
+addImageBackground( excerptImage, '1000x500' );
 
 // Run all jquery functions on document ready
 jQuery( document ).ready( function( $ ) {

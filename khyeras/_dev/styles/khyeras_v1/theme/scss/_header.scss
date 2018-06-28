@@ -208,15 +208,13 @@
 			display: none;
 		}
 		.user-avatar {
-			border-radius: 100%;
-			border: 5px solid $color-04;
-			overflow: hidden;
-			width: 150px;
-			margin: -75px auto 20px auto;
-			box-shadow: 0 0 7.5px 3.75px rgba($color-02, 0.25);
+			margin: -75px 0 20px 0;
 			.image-wrap {
-				height: 0;
-				padding: 0 0 100% 0;
+				margin: auto;
+				@include sizing(150px, 150px);
+				border-radius: 100%;
+				border: 5px solid $color-04;
+				box-shadow: 0 0 7.5px 3.75px rgba($color-02, 0.25);
 			}
 		}
 		h5, p {
