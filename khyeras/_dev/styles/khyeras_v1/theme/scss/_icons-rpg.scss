@@ -194,13 +194,17 @@ $rpg-tinker: \e904;
 /* RPG Icon Overrides
 ========================================================================== */
 
-.fa-bell, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
+.fa-bell, .fa-clock-o, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
 .fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-sliders, .fa-pencil-square-o, .fa-power-off, .fa-reply, .fa-shield, .fa-wrench {
 	font-family: 'Khyeras Icons';
 }
 
 .fa-bell:before {
 	content: unicode($rpg-trumpet-flag);
+}
+
+.fa-clock-o:before {
+	content: unicode($rpg-hourglass);
 }
 
 .fa-cog:before, .fa-cogs:before {
