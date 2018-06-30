@@ -291,3 +291,37 @@ dl.faq + .top {
 		order: 1;
 	}
 }
+
+.banner {
+	margin: 0 0 20px 0;
+	border: 2px solid $color-04;
+	position: relative;
+	&.banner-aligned {
+		border: 0;
+		border-bottom: 1px solid $color-04;
+		margin: -20px -20px 20px -20px;
+	}
+	.banner-content {
+		background: rgba($color-02, 0.60);
+		padding: 20px;
+		@include position($type: absolute, $bottom: 0, $left: 0, $right: 0);
+		.main-title, .sub-title {
+			@include ellipsis;
+		}
+		.main-title {
+			margin: 0;
+		}
+		.sub-title {
+			margin: 10px 0 0 0;
+			font-style: italic;
+			font-size: rem(16px);
+		}
+	}
+	& ~ dl.details {
+		dt, dd {
+			&.sub-title {
+				display: none;
+			}
+		}
+	}
+}

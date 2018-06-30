@@ -549,6 +549,7 @@
 							border-radius: 0;
 							border: 0;
 							background-position: center bottom;
+							box-shadow: none;
 							img {
 								display: none;
 							}
@@ -558,6 +559,7 @@
 						}
 						.forumtitle {
 							@include black-bar(50px, -10px, -10px);
+							border-bottom: 1px dashed $color-04;
 							z-index: 2;
 							color: $color-01;
 							@include spectral-common;
@@ -840,8 +842,10 @@
 	.excerpt-simple .excerpt-details {
 		min-height: 90px;
 	}
-	.section-page-setting .excerpt .excerpt-image .image-wrap {
-		background-position: center bottom;
+	.section-page-setting, .section-page-tviyr, .section-page-ninraih, .section-page-irtuen-reaches {
+		.excerpt .excerpt-image .image-wrap {
+			background-position: center bottom;
+		}
 	}
 
 	// cp.scss
@@ -1359,6 +1363,25 @@
 		}
 		.other-features {
 			font-weight: bold;
+		}
+	}
+	.banner {
+		.banner-content {
+			padding: 0 20px;
+			.main-title {
+				line-height: 50px;
+				height: 50px;
+			}
+			.sub-title {
+				display: none;
+			}
+		}
+		& ~ dl.details {
+			dt, dd {
+				&.sub-title {
+					display: block;
+				}
+			}
 		}
 	}
 
