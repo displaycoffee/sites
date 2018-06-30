@@ -275,16 +275,12 @@ dl.faq + .top {
 	@include flex-flow(row wrap);
 	align-items: center;
 	.excerpt-image {
-		@include flex;
+		flex: 0 0 200px;
 		margin: 0 20px 20px 0;
 		.image-wrap {
-			@include sizing(200px, 200px);
-			border-radius: 100%;
-			border: 5px solid $color-04;
 			background-repeat: no-repeat;
 		    background-position: -9999px -9999px;
 		    background-size: cover;
-			box-shadow: 0 0 7.5px 3.75px rgba($color-02, 0.25);
 		}
 	}
 	.excerpt-details {

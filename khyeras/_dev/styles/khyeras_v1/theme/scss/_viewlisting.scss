@@ -18,9 +18,6 @@
 			dt, dd {
 				padding: 0 10px;
 				@include flex(base);
-				.pagination {
-					margin: 5px 0 0 0;
-				}
 			}
 			dd {
 				margin: 0;
@@ -96,17 +93,16 @@
 						font-weight: bold;
 					}
 					.pagination {
-						& > span {
-							display: none;
-						}
-						&:before {
-							@include icon-font($family: game, $lh: false);
-							content: unicode($rpg-open-book);
-							padding-right: 5px;
+						& > span .icon {
+							font-family: 'Khyeras Icons';
+							padding-right: 2.5px;
+							&:before {
+								content: unicode($rpg-open-book);
+							}
 						}
 						ul:before {
 							@include inline-block(middle);
-						    padding: 0 5px;
+						    padding: 0 2.5px;
 							content: 'Pages:';
 							font-weight: bold;
 						}
@@ -225,7 +221,7 @@
 
 .topiclist > li.row dl[class*='forum'] dt {
 	br + strong {
-		margin: 5px 0 0 0;
+		margin: 10px 0 0 0;
 		@include inline-block(baseline);
 	}
 	.subforum .icon {
@@ -241,12 +237,8 @@
 	padding-left: 150px;
 	min-height: 130px;
 	dt .forum-image {
-		display: block;
 		@include sizing(130px, 130px);
-		border-radius: 100%;
-		overflow: hidden;
 		@include position($type: absolute, $top: 0, $left: 10px);
-		border: 5px solid $color-04;
 		background-repeat: no-repeat;
 		background-position: -9999px -9999px;
 		background-size: cover;

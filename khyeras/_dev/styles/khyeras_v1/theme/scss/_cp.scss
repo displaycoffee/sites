@@ -639,6 +639,7 @@
 
 .section-ucp-manage-groups .cp-main fieldset dd {
 	span[style*='background-color'] {
+		border-radius: 3px;
 		@include sizing(16px, 16px);
 		display: block;
 		@include position($type: relative, $top: -1px);

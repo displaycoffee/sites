@@ -16,17 +16,6 @@
 		}
 		text-align: center;
 		margin: 0 0 10px 0;
-		&.has-avatar .avatar-container {
-			a.avatar, div.avatar {
-				margin: 0 auto;
-				@include sizing(210px, 210px);
-				display: block;
-				overflow: hidden;
-				border: 5px solid $color-04;
-				border-radius: 100%;
-				box-shadow: 0 0 10px 5px rgba($color-02, 0.25);
-			}
-		}
 		a, span {
 			&[class*='username'] {
 				display: block;
@@ -48,12 +37,6 @@
 	}
 	.profile-permissions {
 		font-size: rem(12px);
-	}
-}
-
-.pm .postprofile dt.has-avatar .avatar-container {
-	a.avatar, div.avatar {
-		box-shadow: 0 0 10px 5px rgba($color-02, 0.15);
 	}
 }
 
@@ -122,10 +105,7 @@
 			height: 100%;
 		}
 		.stat-bar-label {
-			position: absolute;
-			bottom: -8.5px;
-			left: 0;
-			right: 0;
+			@include position($type: absolute, $bottom: -8.5px, $left: 0, $right: 0);
 			line-height: 1;
 			text-align: center;
 			text-shadow: 1px 1px 0 rgba($color-02, 0.40), 2px 2px 0 rgba($color-02, 0.40);

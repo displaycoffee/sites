@@ -53,22 +53,6 @@
 	overflow: hidden;
 }
 
-.image-wide, .image-tall {
-	position: relative;
-}
-
-.image-wide {
-	height: 100%;
-	max-width: none;
-	left: -50%;
-}
-
-.image-tall {
-	width: 100%;
-	max-height: none;
-	top: -25%;
-}
-
 .read-more {
 	font-style: italic;
 }
@@ -323,8 +307,20 @@
 				}
 			}
 			&.dropdown-visible .dropdown {
-				left: 5px;
-				right: 5px;
+				@include position($left: 5px, $right: 5px);
+			}
+		}
+	}
+}
+
+.topiclist > li dl {
+	dt, dd {
+		.pagination > ul {
+			margin: 0 -2.5px;
+			& > li {
+				&.active span, a {
+					padding: 0 2.5px;
+				}
 			}
 		}
 	}
@@ -673,9 +669,7 @@
 		}
 	}
 	&.dropdown-visible .tab-dropdown.dropdown {
-		top: 35px;
-		right: 0;
-		left: 0;
+		@include position($top: 35px, $left: 0, $right: 0);
 	}
 }
 
@@ -718,4 +712,54 @@ dl.details {
 	border: 1px solid mix($color-01, $color-04, 5%);
 	font-size: rem(18px);
 	text-align: center;
+}
+
+/* Round Images
+========================================================================== */
+
+.postprofile dt.has-avatar .avatar-container > .avatar,
+.styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image dt .forum-image {
+	display: block;
+	line-height: 0;
+}
+
+.postprofile dt.has-avatar .avatar-container > .avatar, #page-welcome .user-profile .user-avatar .image-wrap,
+.excerpt .excerpt-image .image-wrap, .styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image dt .forum-image {
+	border: 5px solid $color-04;
+	border-radius: 100%;
+	overflow: hidden;
+	box-shadow: 0 0 10px 5px rgba($color-02, 0.25);
+	img {
+		width: 100%;
+	}
+}
+
+.postprofile dt.has-avatar .avatar-container > .avatar, #page-welcome .user-profile .user-avatar .image-wrap,
+.excerpt .excerpt-image .image-wrap {
+	height: 0;
+	padding-bottom: calc(100% - 10px);;
+	position: relative;
+}
+
+.pm .postprofile dt.has-avatar .avatar-container > .avatar {
+	box-shadow: 0 0 10px 5px rgba($color-02, 0.15);
+}
+
+/* Positioned Images
+========================================================================== */
+
+.image-wide, .image-tall {
+	@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0);
+	margin: auto;
+}
+
+.image-wide {
+	width: auto !important;
+	max-width: none;
+	height: 100%;
+	@include position($left: -50%, $right: -50%);
+}
+
+.image-tall {
+	top: 25%;
 }

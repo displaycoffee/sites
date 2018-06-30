@@ -141,7 +141,7 @@
 				color: $color-06;
 			}
 			&.dropdown-container > a {
-				padding-right: 40px;;
+				padding-right: 40px;
 			}
 			&.dropdown-visible > .icon {
 				transform: rotate(180deg);
@@ -157,8 +157,7 @@
 				}
 			}
 			&.dropdown-left .dropdown {
-				left: 0;
-				right: auto;
+				@include position($left: 0, $right: auto);
 			}
 		}
 	}
@@ -182,8 +181,7 @@
 
 #page-header .navbar > ul > li.dropdown-container .search-box {
 	min-width: 400px;
-	right: 0;
-	left: auto;
+	@include position($left: auto, $right: 0);
 }
 
 /* Page welcome
@@ -208,14 +206,8 @@
 			display: none;
 		}
 		.user-avatar {
-			margin: -75px 0 20px 0;
-			.image-wrap {
-				margin: auto;
-				@include sizing(150px, 150px);
-				border-radius: 100%;
-				border: 5px solid $color-04;
-				box-shadow: 0 0 7.5px 3.75px rgba($color-02, 0.25);
-			}
+			max-width: 150px;
+			margin: -75px auto 20px auto;
 		}
 		h5, p {
 			margin: 0 0 10px 0
@@ -296,9 +288,7 @@
 
 #notification_list {
 	min-width: 450px;
-	top: 45px;
-	right: 1.5px;
-	left: auto;
+	@include position($top: 45px, $left: auto, $right: 1.5px);
 	.header {
 		@include spectral-common;
 		font-size: rem(18px);
@@ -372,8 +362,7 @@
 		margin: 0 -5px 20px -5px;
 		.icon {
 			margin: 0 5px;
-			position: relative;
-			top: -2.5px;
+			@include position($type: relative, $top: -2.5px);
 		}
 	}
 	.flex-row {
