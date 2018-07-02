@@ -179,6 +179,15 @@
 			margin-left: 0;
 		}
 	}
+	.key.key-grid li {
+		width: 25%;
+		&:nth-child(5n+1) {
+			clear: none;
+		}
+		&:nth-child(4n+1) {
+			clear: left;
+		}
+	}
 	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
 			max-width: 72%;
@@ -323,6 +332,15 @@
 	}
 
 	// other-sections.scss
+	.key.key-grid li {
+		width: 33.33%;
+		&:nth-child(4n+1) {
+			clear: none;
+		}
+		&:nth-child(3n+1) {
+			clear: left;
+		}
+	}
 	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
 			max-width: 68%;
@@ -1218,7 +1236,6 @@
 		dt {
 			float: none;
 			width: auto;
-			font-weight: bold;
 			&.empty-space {
 				display: none;
 			}
@@ -1363,6 +1380,15 @@
 		}
 		.other-features {
 			font-weight: bold;
+		}
+	}
+	.key.key-grid li {
+		width: 50%;
+		&:nth-child(3n+1) {
+			clear: none;
+		}
+		&:nth-child(2n+1) {
+			clear: left;
 		}
 	}
 	.banner {
@@ -1537,7 +1563,7 @@
 	.rpg-round-icon, .map-round-icon {
 		@include sizing($list-icon-size - 8px, $list-icon-size - 8px);
 	}
-	.rpg-round-icon {		
+	.rpg-round-icon {
 		line-height: $list-icon-size - 10px;
 		font-size: rem(16px);
 	}
@@ -1624,6 +1650,10 @@
 		select[name='ch'] {
 			margin-bottom: $ffs;
 		}
+	}
+	.key.key-grid li {
+		width: auto;
+		float: none;
 	}
 
 	// cp.scss

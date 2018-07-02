@@ -672,6 +672,9 @@
 			border-bottom: 2px solid $color-01;
 		}
 	}
+	.dropdown .dropdown-contents > li > a {
+		cursor: pointer;
+	}
 	&.dropdown-visible .tab-dropdown.dropdown {
 		@include position($top: 35px, $left: 0, $right: 0);
 	}
@@ -688,6 +691,7 @@ dl.details {
 		margin: 0 0 5px 0;
 	}
 	dt {
+		font-weight: bold;
 		float: left;
 		width: 200px;
 	}
