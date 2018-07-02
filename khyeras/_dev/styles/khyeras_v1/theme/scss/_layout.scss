@@ -5,6 +5,9 @@
 	max-width: 1300px;
 	margin: 0 auto;
 	padding: 0 20px;
+	&.full-wrapper {
+		max-width: none;
+	}
 }
 
 .flex-row {
@@ -622,6 +625,7 @@
 				margin: 0;
 			}
 			& > a {
+				cursor: pointer;
 				display: block;
 				white-space: nowrap;
 				padding: 5px 10px;
@@ -695,7 +699,7 @@ dl.details {
 	}
 }
 
-/* RPG Icon Circles
+/* Icon Circles
 ========================================================================== */
 
 .rpg-icon-wrapper {
@@ -703,15 +707,23 @@ dl.details {
 	margin: 0 -5px;
 }
 
+.rpg-round-icon, .map-round-icon {
+	@include sizing($list-icon-size - 2px, $list-icon-size - 2px);
+	border-radius: 100%;
+	border: 1px solid mix($color-01, $color-04, 5%);
+}
+
 .rpg-round-icon {
 	margin: 0 5px;
-	@include sizing($list-icon-size - 2px, $list-icon-size - 2px);
 	line-height: $list-icon-size - 4px;
-	border-radius: 100%;
 	background: $color-04;
-	border: 1px solid mix($color-01, $color-04, 5%);
 	font-size: rem(18px);
 	text-align: center;
+}
+
+.map-round-icon {
+	display: inline-block;
+	overflow: hidden;
 }
 
 /* Round Images

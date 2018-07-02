@@ -1534,8 +1534,10 @@
 			}
 		}
 	}
-	.rpg-round-icon {
+	.rpg-round-icon, .map-round-icon {
 		@include sizing($list-icon-size - 8px, $list-icon-size - 8px);
+	}
+	.rpg-round-icon {		
 		line-height: $list-icon-size - 10px;
 		font-size: rem(16px);
 	}

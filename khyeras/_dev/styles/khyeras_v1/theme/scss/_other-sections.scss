@@ -106,9 +106,6 @@ dl.faq + .top {
 ========================================================================== */
 
 #viewprofile {
-	.profile-tabs ul li a {
-		cursor: pointer;
-	}
 	.tab-panel {
 		&.show-panel {
 			display: block;
@@ -243,7 +240,7 @@ dl.faq + .top {
 		&:last-child {
 			margin-bottom: 0;
 		}
-		.icon {
+		.icon, .map-round-icon {
 			margin: 0 10px 0 0;
 		}
 		p {
@@ -323,5 +320,36 @@ dl.faq + .top {
 				display: none;
 			}
 		}
+	}
+}
+
+.map {
+	position: relative;
+	margin: 0 0 20px 0;
+	.tab-panel {
+		position: absolute;
+	}
+	.hide-panel {
+		@include position($top: -9999px, $left: -9999px, $z: -1);
+		opacity: 0;
+		visibility: hidden;
+		@include transition(opacity 0.5s ease);
+	}
+	.show-panel {
+		visibility: visible;
+		opacity: 1;
+		@include position($top: 0, $left: 0, $z: 100);
+	}
+	.map-grid-large-panel {
+		z-index: 90;
+	}
+	.map-grid-small-panel {
+		z-index: 80;
+	}
+	.map-perimeters-panel {
+		z-index: 70;
+	}
+	.map-borders-panel {
+		z-index: 60;
 	}
 }

@@ -143,7 +143,7 @@ function toggleMemberDisplay() {
 			current.parent().addClass( 'activetab' );
 
 			// Get tab name
-			var activeTab =  current.attr( 'data-tabname' );
+			var activeTab = current.attr( 'data-tabname' );
 
 			// For each tab, show or hide depending on tab name match
 			jQuery( '.tab-panel' ).each( function() {
@@ -155,6 +155,41 @@ function toggleMemberDisplay() {
 					current.addClass( 'hide-panel' ).removeClass( 'show-panel' );
 				}
 			});
+		});
+	}
+}
+
+// Toggle display of map elements
+function toggleMapDisplay() {
+	var mapTabs = jQuery( '.map-tabs' );
+
+	if ( mapTabs && mapTabs.length ) {
+		// Get all tabs on map
+		var tabs = mapTabs.find( 'ul li a[data-tabname]' );
+
+		// Add click event for tabs
+		tabs.on( 'click', function() {
+			var current = jQuery( this );
+
+			// Add and remove activetab class for changing tab color / size
+			if ( current.parent().hasClass( 'activetab' ) ) {
+				current.parent().removeClass( 'activetab' );
+			} else {
+				current.parent().addClass( 'activetab' );
+			}
+
+			// Get tab name
+			var activeTab = current.attr( 'data-tabname' );
+
+			// Get map selector
+			var mapPanel = jQuery( '.map .' + activeTab );
+
+			// Show and hide map elements with class toggle
+			if ( mapPanel.hasClass( 'hide-panel' ) ) {
+				mapPanel.addClass( 'show-panel' ).removeClass( 'hide-panel' );
+			} else {
+				mapPanel.addClass( 'hide-panel' ).removeClass( 'show-panel' );
+			}
 		});
 	}
 }

@@ -97,7 +97,7 @@
 #page-header .navbar {
 	background: rgba($color-05, 0.75);
 	border-bottom: 1px solid $color-04;
-	@include position($type: fixed, $top: 0, $right: 0, $left: 0, $z: 20);
+	@include position($type: fixed, $top: 0, $right: 0, $left: 0, $z: 999);
 	text-align: center;
 	padding: 10px 0;
 	a {

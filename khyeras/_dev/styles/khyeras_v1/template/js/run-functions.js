@@ -43,6 +43,7 @@ jQuery( document ).ready( function( $ ) {
 	toggleMobileContent( '.toggle-links a', '#page-welcome .site-callouts .site-links' );
 	toggleMobileContent( '.toggle-featured a', '#featured-content' );
 	toggleMemberDisplay();
+	toggleMapDisplay();
 
 	// Check if the theme is in overall_header then add sticky or scroll functionality
 	if ( !$( 'body' ).hasClass( 'simple-phpbb' ) ) {
