@@ -84,8 +84,7 @@ dl.faq + .top {
 
 #search_memberlist .dropdown-container .dropdown.live-search {
 	&[style*='block'] {
-		visibility: visible;
-		opacity: 1;
+		@include toggle-content(show);
 		@include position($top: 45px, $left: -1px, $z: 2);
 	}
 	.dropdown-contents.search-results li .search-result {
@@ -108,10 +107,11 @@ dl.faq + .top {
 #viewprofile {
 	.tab-panel {
 		&.show-panel {
-			display: block;
+			@include toggle-content(show, $transition: true);
 		}
 		&.hide-panel {
-			display: none;
+			@include toggle-content(hide);
+			@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
 		}
 	}
 	.profile-panel {
@@ -303,7 +303,12 @@ dl.faq + .top {
 ========================================================================== */
 
 .excerpt, .excerpt-simple {
+	margin: 0 0 20px 0;
 	.excerpt-details {
+		@include clearfix('&');
+		p:last-child {
+			margin-bottom: 0;
+		}
 		.excerpt-title, .rpg-icon-wrapper {
 			@include inline-block(middle);
 		}
@@ -322,7 +327,7 @@ dl.faq + .top {
 	align-items: center;
 	.excerpt-image {
 		flex: 0 0 200px;
-		margin: 0 20px 20px 0;
+		margin: 0 20px 0 0;
 		.image-wrap {
 			background-repeat: no-repeat;
 		    background-position: -9999px -9999px;
@@ -333,7 +338,7 @@ dl.faq + .top {
 		@include flex(base);
 	}
 	&.excerpt-right .excerpt-image {
-		margin: 0 0 20px 20px;
+		margin: 0 0 0 20px;
 		order: 1;
 	}
 }
@@ -345,29 +350,25 @@ dl.faq + .top {
 	position: relative;
 	margin: 0 -20px 20px -20px;
 	.tab-panel {
-		position: absolute;
+		@include position($type: absolute, $top: 0, $left: 0, $z: 100);;
+		@include toggle-content(show, $transition: true);
 	}
 	.hide-panel {
 		@include position($top: -9999px, $left: -9999px, $z: -1);
-		opacity: 0;
-		visibility: hidden;
-		@include transition(opacity 0.5s ease);
+		@include toggle-content(hide);
 	}
 	.show-panel {
-		visibility: visible;
-		opacity: 1;
-		@include position($top: 0, $left: 0, $z: 100);
-	}
-	.map-grid-large-panel {
-		z-index: 90;
-	}
-	.map-grid-small-panel {
-		z-index: 80;
-	}
-	.map-perimeters-panel {
-		z-index: 70;
-	}
-	.map-borders-panel {
-		z-index: 60;
+		&.map-grid-large-panel {
+			z-index: 90;
+		}
+		&.map-grid-small-panel {
+			z-index: 80;
+		}
+		&.map-perimeters-panel {
+			z-index: 70;
+		}
+		&.map-borders-panel {
+			z-index: 60;
+		}
 	}
 }

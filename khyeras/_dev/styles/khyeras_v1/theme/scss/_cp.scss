@@ -341,9 +341,11 @@
 ========================================================================== */
 
 #register, .section-ucp-edit-profile #ucp {
+	.character-fields {
+		@include toggle-content(show, $transition: true);
+	}
 	.hide-fields {
-		visibility: hidden;
-		opacity: 0;
+		@include toggle-content(hide);
 		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
 	}
 	.error {

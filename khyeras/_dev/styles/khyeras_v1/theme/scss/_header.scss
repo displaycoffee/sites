@@ -115,10 +115,8 @@
 		line-height: 1;
 		@include sizing(0, 0);
 		overflow: hidden;
-		opacity: 0;
+		@include toggle-content(hide);
 		padding: 0;
-		visibility: hidden;
-		@include transition(all 0.5s ease);
 	}
 	& > ul {
 		margin: 0;
@@ -165,9 +163,8 @@
 		background: rgba($color-05, 1.0);
 		.site-logo-text {
 			padding: 0 10px 0 20px;
-			opacity: 1;
+			@include toggle-content(show);
 			overflow: visible;
-			visibility: visible;
 			@include sizing(auto, auto);
 		}
 		& > ul > li .dropdown {

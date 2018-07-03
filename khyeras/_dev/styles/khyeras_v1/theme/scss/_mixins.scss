@@ -21,6 +21,21 @@
 	}
 }
 
+// For hiding / showing content
+@mixin toggle-content($state, $transition: '') {
+	@if $state == hide {
+		opacity: 0;
+		visibility: hidden;
+	}
+	@if $state == show {
+		visibility: visible;
+		opacity: 1;
+	}
+	@if ($transition == true) {
+		@include transition(opacity 0.5s ease);
+	}
+}
+
 // PX to EM conversion
 // From https://css-tricks.com/snippets/sass/px-to-em-functions
 @function em($pixels, $context: $base-font-size) {

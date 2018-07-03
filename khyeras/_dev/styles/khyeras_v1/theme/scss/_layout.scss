@@ -91,9 +91,7 @@
 		display: none;
 	}
 	.dropdown {
-		visibility: hidden;
-		opacity: 0;
-		@include transition(opacity 0.5s ease);
+		@include toggle-content(hide);
 		display: block !important;
 		min-width: 160px;
 		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
@@ -130,8 +128,7 @@
  	}
 	&.dropdown-visible {
 		.dropdown {
-			visibility: visible;
-			opacity: 1;
+			@include toggle-content(show, $transition: true);
 			@include position($top: 27px, $left: 0, $z: 50);
 		}
 		.button ~ .dropdown {
