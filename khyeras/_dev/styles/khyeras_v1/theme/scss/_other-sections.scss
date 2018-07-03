@@ -227,7 +227,6 @@ dl.faq + .top {
 
 .pages-content hr {
 	display: block;
-	border-bottom-style: dashed;
 }
 
 .key {
@@ -269,10 +268,24 @@ dl.faq + .top {
 	margin: 0 0 20px 0;
 	border: 2px solid $color-04;
 	position: relative;
+	background: red;
 	&.banner-aligned {
 		border: 0;
 		border-bottom: 1px solid $color-04;
 		margin: -20px -20px 20px -20px;
+	}
+	&.banner-vertical {
+		min-height: 580px;
+		overflow: hidden;
+		img {
+			@include position($type: absolute, $top: 0, $bottom: 0, $left: -50%, $right: -50%);
+			margin: auto;
+			max-width: none;
+			height: 100%;
+			&[src*='dragon'], &[src*='dwarf'] {
+				@include position($left: auto, $right: 0);
+			}
+		}
 	}
 	.banner-content {
 		background: rgba($color-02, 0.60);

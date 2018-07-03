@@ -188,6 +188,9 @@
 			clear: left;
 		}
 	}
+	.banner.banner-vertical {
+		min-height: 650px;
+	}
 	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
 			max-width: 72%;
@@ -341,6 +344,14 @@
 			clear: left;
 		}
 	}
+	.banner.banner-vertical {
+		min-height: 725px;
+		img {
+			&[src*='dwarf'] {
+				right: -50%;
+			}
+		}
+	}
 	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
 			max-width: 68%;
@@ -426,13 +437,13 @@
 	}
 
 	// layout.scss
-	.flex-row .flex-column, .column1, .column2 {
+	.flex-row .flex-column, .column1, .column2, .column3, .column4 {
 		width: auto;
 	}
 	.flex-row {
 		display: block;
 	}
-	.column1, .column2 {
+	.column1, .column2, .column3, .column4 {
 		float: none;
 		padding: 0;
 	}
@@ -798,6 +809,19 @@
 			float: none;
 			width: auto;
 			padding: 0;
+		}
+	}
+	.banner.banner-vertical {
+		border: 0;
+	    border-bottom: 1px solid $color-04;
+		margin: -20px -20px 20px -20px;
+		min-height: 0;
+		max-height: rem(669px);
+		overflow: hidden;
+		img {
+			@include sizing(100%, auto);
+			max-width: none;
+			position: static;
 		}
 	}
 	.excerpt, .excerpt-simple {
@@ -1248,6 +1272,14 @@
 		}
 		dd {
 			margin-left: 20px;
+		}
+		&.details-mar20 {
+			dt {
+				margin-bottom: 5px;
+			}
+			dd {
+				margin-left: 0;
+			}
 		}
 	}
 

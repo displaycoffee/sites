@@ -39,13 +39,21 @@
 	width: 50%;
 }
 
-.column1 {
+.column3 {
+	width: 40%;
+}
+
+.column4 {
+	width: 60%;
+}
+
+.column1, .column3 {
 	float: left;
 	clear: left;
 	padding: 0 10px 0 0;
 }
 
-.column2 {
+.column2, .column4 {
 	float: right;
 	clear: right;
 	padding: 0 0 0 10px;
@@ -694,8 +702,15 @@ dl.details {
 	}
 	dd {
 		margin-left: 200px;
+		min-height: 21px;
 		&.details-full {
 			margin-left: 0;
+		}
+	}
+	&.details-mar20 {
+		margin-bottom: 0;
+		dd, dt {
+			margin-bottom: 20px;
 		}
 	}
 }
