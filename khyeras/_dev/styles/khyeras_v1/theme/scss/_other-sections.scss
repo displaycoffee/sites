@@ -275,16 +275,13 @@ dl.faq + .top {
 		margin: -20px -20px 20px -20px;
 	}
 	&.banner-vertical {
-		min-height: 580px;
+		padding-bottom: calc(150% - 4px);
 		overflow: hidden;
 		img {
 			@include position($type: absolute, $top: 0, $bottom: 0, $left: -50%, $right: -50%);
 			margin: auto;
 			max-width: none;
 			height: 100%;
-			&[src*='dragon'], &[src*='dwarf'] {
-				@include position($left: auto, $right: 0);
-			}
 		}
 	}
 	.banner-content {

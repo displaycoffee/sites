@@ -69,6 +69,12 @@
 	.flex-row .flex-column {
 		width: 50%;
 	}
+	.column-break {
+		float: none;
+		width: auto;
+		padding: 0;
+		clear: both;
+	}
 	.action-bar {
 		.pagination > ul {
 			display: block;
@@ -189,7 +195,14 @@
 		}
 	}
 	.banner.banner-vertical {
-		min-height: 650px;
+		padding-bottom: calc(100% - 4px);
+		img {
+			width: 100%;
+			height: auto;
+			&[src*='human'] {
+				bottom: auto;
+			}
+		}
 	}
 	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
@@ -342,14 +355,6 @@
 		}
 		&:nth-child(3n+1) {
 			clear: left;
-		}
-	}
-	.banner.banner-vertical {
-		min-height: 725px;
-		img {
-			&[src*='dwarf'] {
-				right: -50%;
-			}
 		}
 	}
 	.excerpt, .excerpt-simple {
@@ -814,14 +819,14 @@
 	.banner.banner-vertical {
 		border: 0;
 	    border-bottom: 1px solid $color-04;
+		padding-bottom: 80%;
 		margin: -20px -20px 20px -20px;
-		min-height: 0;
-		max-height: rem(669px);
-		overflow: hidden;
 		img {
-			@include sizing(100%, auto);
-			max-width: none;
-			position: static;
+			top: -10%;
+			bottom: auto;
+			&[src*='human'] {
+				top: 0;
+			}
 		}
 	}
 	.excerpt, .excerpt-simple {
@@ -1691,6 +1696,9 @@
 		select[name='ch'] {
 			margin-bottom: $ffs;
 		}
+	}
+	.banner.banner-vertical {
+		padding-bottom: calc(100% - -39px);
 	}
 	.key.key-grid li {
 		width: auto;
