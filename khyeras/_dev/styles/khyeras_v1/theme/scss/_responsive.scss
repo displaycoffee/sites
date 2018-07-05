@@ -827,6 +827,9 @@
 			&[src*='human'] {
 				top: 0;
 			}
+			&[src*='shapeshifter'] {
+				@include position($top: 0, $bottom: 0);
+			}
 		}
 	}
 	.excerpt, .excerpt-simple {
