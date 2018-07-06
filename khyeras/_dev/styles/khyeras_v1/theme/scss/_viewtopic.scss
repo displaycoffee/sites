@@ -44,7 +44,7 @@
 /* View Topic - Body - Post Notices
 ========================================================================== */
 
-.postbody {
+.postbody, .notice-wrapper {
 	.post-notice, .rules {
 		padding: 10px;
 		border-radius: 3px;
@@ -57,10 +57,10 @@
 	}
 	.post-notice {
 		background: $color-09;
-		&.reported {
+		&.reported, &.post-red {
 			background: mix(white, $color-11, 80%);
 		}
-		&.unapproved {
+		&.unapproved, &.post-blue {
 			background: mix(white, $color-07, 60%);
 			.icon-red {
 				color: $color-07;
