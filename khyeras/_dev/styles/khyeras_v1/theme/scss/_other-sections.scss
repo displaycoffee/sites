@@ -264,6 +264,42 @@ dl.faq + .top {
 	}
 }
 
+.chart-grid {
+	margin: 0 0 20px 0;
+	.no-chart-data {
+		margin: 0;
+		font-style: italic;
+	}
+	.chart-row {
+		@include flex-flow(wrap);
+		margin: 0 -2px;
+		.chart-data {
+			text-align: center;
+			@include flex(grow);
+			width: 16.6666%;
+			padding: 0 2px 4px 2px;
+			.chart-data-wrap {
+				height: 100%;
+				padding: 10px 20px;
+			}
+			&.chart-check .chart-data-wrap {
+				background: $color-17;
+			}
+			&.chart-remove .chart-data-wrap {
+				background: $color-18;
+			}
+			.chart-label {
+				display: block;
+				margin: 0 0 2px 0;
+				font-size: rem(16px);
+			}
+			.icon {
+				font-size: rem(22px);
+			}
+		}
+	}
+}
+
 .banner {
 	margin: 0 0 20px 0;
 	border: 2px solid $color-04;
