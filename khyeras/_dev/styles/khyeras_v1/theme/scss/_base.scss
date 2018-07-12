@@ -98,6 +98,8 @@ hr {
 	}
 	&.clear {
 		clear: both;
+		border-bottom: none;
+		margin: 0;
 	}
 }
 

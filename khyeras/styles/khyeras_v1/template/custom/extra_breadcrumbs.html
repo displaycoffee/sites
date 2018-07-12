@@ -1,0 +1,38 @@
+{% set parent_breadcrumbs = [ 'app/races-', 'app/setting-', 'app/religion-' ] %}
+
+{% set parent_page = '' %}
+{% if '-' in SCRIPT_NAME %}
+	{% set parent_page = SCRIPT_NAME|split('-')[0] ~ '-' %}
+{% endif %}
+
+{% if parent_page in parent_breadcrumbs %}
+	{% if 'races' in SCRIPT_NAME %}
+		{% set breadcrumb_id = 'Races' %}
+	{% elseif 'setting' in SCRIPT_NAME %}
+		{% set breadcrumb_id = 'Setting' %}
+	{% elseif 'religion' in SCRIPT_NAME %}
+		{% set breadcrumb_id = 'Religion' %}
+	{% endif %}
+	<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->>
+		<i class="icon fa-chevron-right fa-fw"></i>
+		<a href="{ROOT_PATH}{{ breadcrumb_id | lower }}" itemprop="url">
+			<span itemprop="title">{{ breadcrumb_id }}</span>
+		</a>
+	</li>
+{% endif %}
+
+{% set setting_breadcrumbs = {
+	'Fellsgard'   : 'Tviyr',
+	'Verdant Row' : 'Tviyr',
+	'Ajteire'     : 'Ninraih',
+	'Domrhask'    : 'Irtuen Reaches'
+} %}
+
+{% if setting_breadcrumbs[PAGE_TITLE] %}
+	<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->>
+		<i class="icon fa-chevron-right fa-fw"></i>
+		<a href="{ROOT_PATH}setting-{{ setting_breadcrumbs[PAGE_TITLE] | replace(' ', '-') | lower }}" itemprop="url">
+			<span itemprop="title">{{ setting_breadcrumbs[PAGE_TITLE] }}</span>
+		</a>
+	</li>
+{% endif %}

@@ -304,7 +304,6 @@ dl.faq + .top {
 	margin: 0 0 20px 0;
 	border: 2px solid $color-04;
 	position: relative;
-	background: red;
 	&.banner-aligned {
 		border: 0;
 		border-bottom: 1px solid $color-04;
@@ -326,6 +325,7 @@ dl.faq + .top {
 		@include position($type: absolute, $bottom: 0, $left: 0, $right: 0);
 		.main-title, .sub-title {
 			@include ellipsis;
+			line-height: 1;
 		}
 		.main-title {
 			margin: 0;
