@@ -41,8 +41,27 @@ ul, ol {
 		}
 	}
 }
+
 dt, dd {
 	margin: 0;
+}
+
+dl.definition-list {
+	dt {
+		margin: 0 0 5px 0;
+		strong {
+			font-size: rem(16px);
+		}
+	}
+	dd {
+		margin: 0 0 20px 30px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		.icon {
+			margin: 0 0 0 5px;
+		}
+	}
 }
 
 code {
