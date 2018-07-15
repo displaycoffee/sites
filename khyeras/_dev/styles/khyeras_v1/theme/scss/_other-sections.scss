@@ -418,3 +418,82 @@ dl.faq + .top {
 		}
 	}
 }
+
+/* Pages - Timeline
+========================================================================== */
+
+.timeline {
+	margin: 30px 0 0 0;
+	&, .timeline-row {
+		position: relative;
+	}
+	&:before {
+		content: '';
+		display: block;
+		width: 0;
+		overflow: hidden;
+		@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0, $z: 1);
+		margin: auto;
+		border-right: 1px dashed $color-04;
+	}
+	.timeline-row {
+		z-index: 2;
+		align-items: center;
+		&, .timeline-header h3 {
+			margin-bottom: $main-margin;
+		}
+		.timeline-header + .timeline-column, & .timeline-column:first-child {
+			text-align: right;
+		}
+		.timeline-header {
+			padding: 0 30px;
+			flex: 1 1 100%;
+			min-width: 1px;
+			text-align: center;
+			h3 {
+				&:before, &:after {
+					content: '';
+					display: block;
+					width: 25%;
+				}
+				&:before {
+					border-top: 2px solid $color-04;
+					margin: 0 auto 10px auto;
+				}
+				&:after {
+					border-bottom: 2px solid $color-04;
+					margin: 5px auto 0 auto;
+				}
+			}
+		}
+		.timeline-column {
+			.timeline-sub-title, .bracket {
+				@include inline-block(middle);
+			}
+			.timeline-sub-title {
+				text-align: center;
+			}
+			.bracket {
+				margin: 0 0 0 20px;
+				font-size: rem(40px);
+				font-family: $serif-fb;
+			}
+			h5 {
+				margin: 0 0 5px 0
+			}
+		}
+		&:nth-child(even) {
+			flex-direction: row-reverse;
+			.timeline-column {
+				text-align: right;
+			}
+			.timeline-header + .timeline-column, & .timeline-column:first-child {
+				text-align: left;
+				direction:rtl;
+			}
+			.bracket {
+				margin: 0 20px 0 0;
+			}
+		}
+	}
+}

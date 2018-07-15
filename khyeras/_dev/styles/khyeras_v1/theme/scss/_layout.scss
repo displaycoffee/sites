@@ -33,6 +33,12 @@
 			padding: 0 20px;
 		}
 	}
+	&.flex-row-30 {
+		margin: 0 -30px;
+		.flex-column {
+			padding: 0 30px;
+		}
+	}
 }
 
 .column1, .column2 {
@@ -718,11 +724,6 @@ dl.details {
 /* Icon Circles
 ========================================================================== */
 
-.rpg-icon-wrapper {
-	line-height: 0;
-	margin: 0 -5px;
-}
-
 .rpg-round-icon, .map-round-icon {
 	@include sizing($list-icon-size - 2px, $list-icon-size - 2px);
 	border-radius: 100%;
@@ -730,16 +731,54 @@ dl.details {
 }
 
 .rpg-round-icon {
-	margin: 0 5px;
 	line-height: $list-icon-size - 4px;
 	background: $color-04;
 	font-size: rem(18px);
 	text-align: center;
 }
 
+.rpg-round-icon-lg {
+	@include sizing($list-icon-lg-size - 2px, $list-icon-lg-size - 2px);
+	line-height: $list-icon-lg-size - 4px;
+	font-size: rem(28px);
+}
+
+.rpg-round-icon-green {
+	background: $color-10;
+	border: 1px solid mix($color-01, $color-10, 5%);
+}
+
+.rpg-round-icon-orange {
+	background: $color-19;
+	border: 1px solid mix($color-01, $color-19, 5%);
+}
+
+.rpg-round-icon-purple {
+	background: $color-21;
+	border: 1px solid mix($color-01, $color-21, 5%);
+}
+
+.rpg-round-icon-red {
+	background: $color-16;
+	border: 1px solid mix($color-01, $color-16, 5%);
+}
+
+.rpg-round-icon-yellow {
+	background: $color-20;
+	border: 1px solid mix($color-01, $color-20, 5%);
+}
+
 .map-round-icon {
 	display: inline-block;
 	overflow: hidden;
+}
+
+.rpg-icon-wrapper {
+	line-height: 0;
+	margin: 0 -5px;
+	.rpg-round-icon {
+		margin: 0 5px;
+	}
 }
 
 /* Round Images

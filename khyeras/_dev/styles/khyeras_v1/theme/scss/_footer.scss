@@ -111,7 +111,7 @@
 		color: $color-01;
 	}
 	&.scroll-to-visible {
-		z-index: 1;
+		z-index: 999;
 		@include toggle-content(show, $transition: true);
 	}
 }
