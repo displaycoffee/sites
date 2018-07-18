@@ -1,4 +1,4 @@
-{% set parent_breadcrumbs = [ 'app/races-', 'app/setting-', 'app/religion-' ] %}
+{% set parent_breadcrumbs = [ 'app/races-', 'app/setting-', 'app/religion-', 'app/classes-' ] %}
 
 {% set parent_page = '' %}
 {% if '-' in SCRIPT_NAME %}
@@ -12,6 +12,8 @@
 		{% set breadcrumb_id = 'Setting' %}
 	{% elseif 'religion' in SCRIPT_NAME %}
 		{% set breadcrumb_id = 'Religion' %}
+	{% elseif 'classes' in SCRIPT_NAME %}
+		{% set breadcrumb_id = 'Classes' %}		
 	{% endif %}
 	<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->>
 		<i class="icon fa-chevron-right fa-fw"></i>
