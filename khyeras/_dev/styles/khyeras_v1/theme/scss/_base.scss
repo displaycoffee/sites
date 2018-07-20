@@ -184,6 +184,10 @@ a.anchor {
 	@include clearfix('&');
 }
 
+.clear {
+	clear: both;
+}
+
 .hidden {
 	display: none;
 }

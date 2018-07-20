@@ -230,22 +230,24 @@ dl.faq + .top {
 }
 
 .quick-links {
-	border-bottom: 1px dashed $color-04;
-	border-top: 1px dashed $color-04;
-	padding: 20px 0;
-	&.bottom-only {
-		padding-top: 0;
-		border-top: 0;
+	&.quick-links-both {
+		border-bottom: 1px dashed $color-04;
+		border-top: 1px dashed $color-04;
+		padding: 20px 0;
+	}
+	&.quick-links-bottom {
+		border-bottom: 1px dashed $color-04;
+		padding: 0 0 20px 0;
+	}
+	&.quick-links-top {
+		border-top: 1px dashed $color-04;
+		padding: 20px 0 0 0;
 	}
 }
 
 .page-content-section {
-	border-bottom: 1px dashed $color-04;
-	margin: 0 0 20px 0;
-	&:last-child {
-		border-bottom: 0;
-		margin: 0;
-	}
+	border-top: 1px dashed $color-04;
+	padding: 20px 0 0 0;
 }
 
 .key {
