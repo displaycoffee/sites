@@ -1483,7 +1483,7 @@
 				display: none;
 			}
 		}
-		& ~ dl.details {
+		& ~ .page-content-section dl.details {
 			dt, dd {
 				&.sub-title {
 					display: block;

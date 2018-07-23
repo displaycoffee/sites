@@ -357,7 +357,7 @@ dl.faq + .top {
 			font-size: rem(16px);
 		}
 	}
-	& ~ dl.details {
+	& ~ .page-content-section dl.details {
 		dt, dd {
 			&.sub-title {
 				display: none;
