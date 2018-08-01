@@ -1,0 +1,80 @@
+<!-- DEFINE $DISPLAY_LOGIN_LOGOUT -->
+	<li>
+		<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem"><span>{L_LOGIN_LOGOUT}</span></a>
+	</li>
+<!-- ENDDEFINE -->
+
+<ul class="user-menu" role="menu">
+	<li class="dropdown-container">
+		<a class="dropdown-trigger" title="#" role="menuitem">
+			<div class="user-avatar">
+				<div class="image-wrap">
+					<!-- IF CURRENT_USER_AVATAR -->
+						{CURRENT_USER_AVATAR}
+					<!-- ELSE -->
+						<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
+					<!-- ENDIF -->
+				</div>
+			</div>
+			<span class="user-name">
+				<!-- IF S_REGISTERED_USER -->{CURRENT_USERNAME_SIMPLE}<!-- ELSE -->{L_GUEST}<!-- ENDIF -->
+			</span>
+		</a>
+		<div class="dropdown">
+			<ul class="dropdown-contents" role="menu">
+				<!-- IF S_REGISTERED_USER -->
+					<!-- EVENT navbar_header_profile_list_before -->
+					<li>
+						<a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem"><span>{L_PROFILE}</span></a>
+					</li>
+					<li>
+						<a href="{U_SEARCH_SELF}" title="{L_SEARCH_SELF}" role="menuitem"><span>{L_SEARCH_SELF}</span></a>
+					</li>
+					<!-- IF U_ACP -->
+						<li>
+							<a href="{U_ACP}" title="{L_ACP}" role="menuitem"><span>{L_ACP_SHORT}</span></a>
+						</li>
+					<!-- ENDIF -->
+					<!-- IF U_MCP -->
+						<li>
+							<a href="{U_MCP}" title="{L_MCP}" role="menuitem"><span>{L_MCP_SHORT}</span></a>
+						</li>
+					<!-- ENDIF -->
+					<!-- IF U_RESTORE_PERMISSIONS -->
+						<li>
+							<a href="{U_RESTORE_PERMISSIONS}" title="{L_RESTORE_PERMISSIONS}" role="menuitem"><span>{L_RESTORE_PERMISSIONS}</span></a>
+						</li>
+					<!-- ENDIF -->
+					{$DISPLAY_LOGIN_LOGOUT}
+					<!-- EVENT navbar_header_profile_list_after -->
+				<!-- ELSE -->
+					{$DISPLAY_LOGIN_LOGOUT}
+					<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+						<li>
+							<a href="{U_REGISTER}" title="{L_REGISTER}" role="menuitem"><span>{L_REGISTER}</span></a>
+						</li>
+					<!-- ENDIF -->
+				<!-- ENDIF -->
+			</ul>
+		</div>
+	</li>
+	<!-- IF S_REGISTERED_USER -->
+		<!-- IF S_DISPLAY_PM -->
+			<li>
+				<a href="{U_PRIVATEMSGS}" title="{L_PRIVATE_MESSAGES}">
+					<span>{L_PRIVATE_MESSAGES}</span>
+					<strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
+				</a>
+			</li>
+		<!-- ENDIF -->
+		<!-- IF S_NOTIFICATIONS_DISPLAY -->
+			<li class="dropdown-container notification-container">
+				<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger dropdown-toggle">
+					<span>{L_NOTIFICATIONS}</span>
+					<strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
+				</a>
+				<!-- INCLUDE notification_dropdown.html -->
+			</li>
+		<!-- ENDIF -->
+	<!-- ENDIF  -->
+</ul>

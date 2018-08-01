@@ -54,11 +54,11 @@ jQuery( document ).ready( function( $ ) {
 
 	// Start the mobile menu
 	initializeMobileMenu({
-	    menu          : '#page-header .navbar > ul',
-	    menuContainer : '#page-header .navbar',
-	    mobileButton  : '.mobile-menu-button',
-	    mobileMenu    : '#mobile-menu',
-	    width         : 768
+		menu          : '#page-header .navbar > ul',
+		menuContainer : '#page-header .navbar',
+		mobileButton  : '.mobile-menu-button',
+		mobileMenu    : '#mobile-menu',
+		width         : 768
 	});
 
 	/* Profile Field Functionality

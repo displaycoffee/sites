@@ -100,75 +100,103 @@
 	@include position($type: fixed, $top: 0, $right: 0, $left: 0, $z: 999);
 	text-align: center;
 	padding: 10px 0;
-	a {
-		color: $color-01;
-		&:hover {
-			color: $color-06;
-		}
-	}
-	.site-logo-text, & > ul, & > ul > li {
-		@include inline-block(middle);
-	}
-	.site-logo-text {
-		font-family: $font-03;
-		font-size: rem(30px);
-		line-height: 1;
-		@include sizing(0, 0);
-		overflow: hidden;
-		@include toggle-content(hide);
-		padding: 0;
-	}
-	& > ul {
-		margin: 0;
-		& > li {
-			& > a {
-				padding: 0 20px;
-				display: block;
-			}
-			& > .icon {
-				display: block;
-				@include sizing(20px, 20px);
-				line-height: 20px;
-				@include position($type: absolute, $top: -1.5px, $right: 5px, $z: 10);
-				// Setting the variable here to use multiple transitions
-				$transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
-				@include transition($transform);
-				transform: rotate(0deg);
-			}
-			& > .icon:hover {
+	.wrapper {
+		@include flex-flow(row nowrap);
+		align-items: center;
+		a {
+			color: $color-01;
+			&:hover {
 				color: $color-06;
 			}
-			&.dropdown-container > a {
-				padding-right: 40px;
-			}
-			&.dropdown-visible > .icon {
-				transform: rotate(180deg);
-			}
-			.dropdown {
-				top: 32px;
-				background: $color-04;
-				border: 1px solid $color-03;
-				border-top: 0;
-				border-radius: 0;
-				.dropdown-contents {
-					font-size: rem($global-font-size);
+		}
+		.site-logo-text, & > ul, & > ul > li {
+			@include inline-block(middle);
+		}
+		.site-logo-text {
+			font-family: $font-03;
+			font-size: rem(30px);
+			line-height: 1;
+			@include sizing(0, 0);
+			overflow: hidden;
+			@include toggle-content(hide, $transition: true);
+			padding: 0;
+		}
+		.user-menu {
+			margin: 0 0 0 auto;
+		}
+		& > ul {
+			margin: 0;
+			& > li {
+				& > a {
+					padding: 0 20px;
+					display: block;
+				}
+				& > .icon {
+					display: block;
+					@include sizing(20px, 20px);
+					line-height: 20px;
+					@include position($type: absolute, $top: -1.5px, $right: 5px, $z: 10);
+					// Setting the variable here to use multiple transitions
+					$transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
+					@include transition($transform);
+					transform: rotate(0deg);
+				}
+				& > .icon:hover {
+					color: $color-06;
+				}
+				&.dropdown-container > a {
+					padding-right: 40px;
+				}
+				&.dropdown-visible > .icon {
+					transform: rotate(180deg);
+				}
+				.dropdown {
+					top: 32px;
+					background: $color-04;
+					border: 1px solid $color-03;
+					border-top: 0;
+					border-radius: 0;
+					.dropdown-contents {
+						font-size: rem($global-font-size);
+					}
+				}
+				&.dropdown-left .dropdown {
+					@include position($left: 0, $right: auto);
 				}
 			}
-			&.dropdown-left .dropdown {
-				@include position($left: 0, $right: auto);
+		}
+		.nav-menu > li {
+
+		}
+		.user-menu > li {
+			.user-name, .user-avatar {
+				@include inline-block(middle);
+			}
+			.user-avatar {
+				@include sizing(30px, 10px);
+				margin: 0 10px 0 0;
+				.image-wrap {
+					@include sizing(100%, 30px);
+					position: relative;
+					top: -11px;
+					border: 2px solid $color-04;
+					border-radius: 100%;
+				}
 			}
 		}
 	}
 	&.sticky {
 		background: rgba($color-05, 1.0);
-		.site-logo-text {
-			padding: 0 10px 0 20px;
-			@include toggle-content(show);
-			overflow: visible;
-			@include sizing(auto, auto);
-		}
-		& > ul > li .dropdown {
-			top: 35px;
+		.wrapper {
+			.site-logo-text {
+				padding: 0 10px 0 20px;
+				@include toggle-content(show);
+				overflow: visible;
+				@include sizing(auto, auto);
+			}
+			& > ul > li .dropdown {
+				top: 35px;
+			}
 		}
 	}
 }
