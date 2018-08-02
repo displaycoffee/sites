@@ -120,7 +120,6 @@
 			max-width: none !important;
 			overflow-y: auto;
 			overflow-x: hidden;
-			padding: 0 20px 0 0;
 			font-size: rem(13px);
 			a {
 				color: $color-01;
@@ -128,15 +127,19 @@
 					color: $color-06;
 				}
 			}
-			& > li > a {
-				display: block;
-				padding: 0 0 3px 0;
-				white-space: nowrap;
+			& > li {
+				& > a {
+					display: block;
+					padding: 0 0 3px 0;
+					white-space: nowrap;
+				}
+				&:last-child > a {
+					padding: 0;
+				}
 			}
 			&.dropdown-nonscroll {
 				max-height: none;
 				overflow: visible;
-				padding: 0;
 			}
 		}
  	}
@@ -489,7 +492,7 @@
 	.jumpbox-cat-link {
 		padding: 0 0 10px 0;
 		margin: 10px 0;
-		border-bottom: 1px dashed $color-03;
+		border-bottom: 1px dashed $color-04;
 		font-weight: bold;
 	}
 	&:first-child .jumpbox-cat-link {
