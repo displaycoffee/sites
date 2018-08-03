@@ -116,6 +116,7 @@
 		border: 1px solid $color-04;
 		.dropdown-contents {
 			margin: 0 0 -3px 0 !important;
+			padding: 0 20px 0 0;
 			max-height: 300px;
 			max-width: none !important;
 			overflow-y: auto;
@@ -138,8 +139,7 @@
 				}
 			}
 			&.dropdown-nonscroll {
-				max-height: none;
-				overflow: visible;
+				padding: 0;
 			}
 		}
  	}
