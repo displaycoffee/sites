@@ -120,6 +120,10 @@
 		.user-menu {
 			margin: 0 0 0 auto;
 		}
+		.image-wrap {
+			@include sizing(30px, 30px);
+			border: 2px solid $color-04;
+		}
 		& > ul {
 			margin: 0 -10px;
 			& > li {
@@ -167,10 +171,8 @@
 					}
 				}
 				.user-avatar {
-					@include sizing(30px, 30px);
-					margin: 0 10px 0 0;
+					margin: 0 0 0 10px;
 					.image-wrap {
-						border: 2px solid $color-04;
 						border-radius: 100%;
 					}
 				}
@@ -178,7 +180,6 @@
 					margin: 7px 0 0 0;
 					padding: 10px 0 0 0;
 					border-top: 1px dashed $color-04;
-					display: block;
 					font-weight: normal;
 					&:before {
 						content: 'Switch Accounts:';
@@ -189,11 +190,9 @@
 						padding: 0 0 3px 0;
 					}
 					ul {
-						&, & li {
-							margin: 0;
-							padding: 0;
-						}
+						margin: 0;
 						li {
+							padding: 0;
 							a {
 								.avatar, .username-coloured {
 									@include inline-block(middle);
@@ -202,7 +201,6 @@
 									max-height: 20px;
 									max-width: 20px;
 									border: 1px solid $color-04;
-									border-radius: 100%;
 								}
 							}
 							&:last-child a {
@@ -231,6 +229,81 @@
 #page-header .navbar .wrapper > ul > li.dropdown-container .search-box {
 	min-width: 400px;
 	@include position($left: -150%);
+}
+
+/* Notifications
+   Note: Header area only. UCP notifications in cp.scss
+========================================================================== */
+
+#notification_list {
+	min-width: 450px;
+	&, .dropdown-contents {
+		padding: 0;
+	}
+	.header, .footer, ul li {
+		padding: 10px 20px;
+	}
+	.header, .footer {
+		background: $color-04;
+		font-size: rem(15px);
+	}
+	.header .header_settings, ul li {
+		font-size: rem(13px);
+	}
+	.header {
+		padding-right: 170px;
+		position: relative;
+		.header_settings {
+			@include position($type: absolute, $top: 14px, $right: 20px);
+			font-variant: normal;
+		}
+	}
+	.footer {
+		text-align: center;
+	}
+	.dropdown-contents {
+		max-height: none;
+		overflow: visible;
+	}
+	ul {
+		margin: 0;
+		max-height: 295px;
+		overflow-y: auto;
+		li {
+			position: relative;
+			border-bottom: 1px dashed $color-04;
+			&:last-child {
+				border-bottom: 0;
+			}
+			.notification-block {
+				@include clearfix('&');
+				display: block;
+				.image-wrap {
+					margin: 0 10px 0 0;
+					float: left;
+				}
+				.notification_text {
+					overflow: hidden;
+					padding: 0 25px 0 0;
+					p {
+						display: inline;
+					}
+					.notification-time {
+						&:before {
+							content: ' on ';
+						}
+						&:after {
+							content: '.';
+						}
+					}
+				}
+			}
+			.icon-mark {
+				display: block;
+				@include position($type: absolute, $top: 10px, $right: 16px, $z: 2);
+			}
+		}
+	}
 }
 
 /* Page welcome
@@ -307,97 +380,22 @@
 ========================================================================== */
 
 .badge {
+	display: inline-block;
+	@include sizing(20px, 20px);
+	line-height: 21px;
 	background-color: $color-11;
-	color: $color-01;
-	border-radius: 3px;
+	border-radius: 100%;
 	text-align: center;
 	font-weight: normal;
-	font-size: rem(12px);
-	display: inline-block;
-	text-shadow: none;
-	padding: 0 5px;
-	margin: 0 0 0 5px;
-	height: 20px;
-	line-height: 20px;
-	&.hidden {
-		display: none;
+	font-size: rem(11px);
+	margin: 0 0 0 10px;
+	.fa-plus {
+		font-size: rem(10px);
 	}
 }
 
-/* Notifications
-   Note: Header area only. UCP notifications in cp.scss
-========================================================================== */
-
-.user-buttons {
-	position: relative;
-	.notification-container {
-		position: static;
-	}
-}
-
-#notification_list {
-	min-width: 450px;
-	.header {
-		@include spectral-common;
-		font-size: rem(18px);
-		background: $color-04;
-		padding: 10px 170px 10px 20px;
-		position: relative;
-		margin: -20px -20px 20px -20px;
-		.header_settings {
-			@include position($type: absolute, $top: 14px, $right: 20px);
-			font-family: $font-01;
-			font-variant: normal;
-			font-size: rem(13px);
-		}
-	}
-	ul {
-		margin: 0;
-		li {
-			position: relative;
-			padding: 0 0 10px 0;
-			margin: 0 0 10px 0;
-			border-bottom: 1px dashed $color-04;
-			.notification-block {
-				@include clearfix('&');
-				display: block;
-				.image-wrap, .notification_text {
-					overflow: hidden;
-				}
-				.image-wrap {
-					width: 30px;
-					max-height: 30px;
-					margin: 0 10px 0 0;
-					float: left;
-					border: 2px solid $color-04;
-				}
-				.notification_text {
-					p {
-						margin: 0 0 2px 0;
-						&:last-child {
-							margin: 0;
-						}
-					}
-					.notification-title {
-						padding: 0 25px 0 0;
-					}
-					.notification-time {
-						text-align: right;
-					}
-				}
-			}
-			.icon-mark {
-				display: block;
-				@include position($type: absolute, $top: 0, $right: 0, $z: 2);
-				.icon {
-					width: auto;
-				}
-			}
-		}
-	}
-	.footer {
-		text-align: center;
-	}
+a:hover .badge {
+	color: $color-01;
 }
 
 /* Featured Content
