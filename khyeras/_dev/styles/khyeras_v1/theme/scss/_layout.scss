@@ -115,7 +115,7 @@
 		background: $color-05;
 		border: 1px solid $color-04;
 		.dropdown-contents {
-			margin: 0 0 -3px 0 !important;
+			margin: 0;
 			padding: 0 20px 0 0;
 			max-height: 300px;
 			max-width: none !important;
@@ -128,12 +128,8 @@
 				}
 			}
 			& > li {
-				& > a {
-					display: block;
-					padding: 0 0 3px 0;
-					white-space: nowrap;
-				}
-				&:last-child > a {
+				padding: 0 0 3px 0;
+				&:last-child {
 					padding: 0;
 				}
 			}

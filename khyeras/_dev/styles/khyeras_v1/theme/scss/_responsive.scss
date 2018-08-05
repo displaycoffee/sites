@@ -265,6 +265,56 @@
 	}
 
 	// header.scss
+	#page-header .navbar {
+		.wrapper {
+			justify-content: center;
+			position: relative;
+			.user-menu {
+				margin: 10px -10px 0 -10px;
+				@include flex(full);
+				min-width: 1px;
+			}
+			& > ul {
+				.dropdown-container {
+					position: static;
+				}
+				& > li {
+					.dropdown, &.dropdown-container .search-box {
+						left: 0;
+						right: 0;
+					}
+					.dropdown, &.dropdown-user-info .dropdown, .dropdown.notification_list {
+						top: 73px;
+					}
+					ul.dropdown-contents {
+						text-align: center;
+						margin: 0 0 -10px 0;
+						& > li {
+							@include inline-block(top);
+							padding: 0 10px 10px 10px;
+							&.linked-account-title {
+								display: block;
+								margin-top: 0;
+								padding-top: 10px;
+							}
+						}
+					}
+					.linked-account-title {
+						display: block;
+					}
+				}
+			}
+		}
+		&.sticky .wrapper > ul > li {
+			.dropdown, &.dropdown-user-info .dropdown, .dropdown.notification_list {
+				top: 80px;
+			}
+		}
+	}
+	#notification_list {
+		width: auto !important;
+		min-width: 0;
+	}
 	#page-welcome {
 		.user-profile {
 			order: -2;
@@ -278,9 +328,6 @@
 		.user-information .date-and-time {
 			display: none;
 		}
-	}
-	#notification_list {
-		@include position($left: 1.5px, $right: auto);
 	}
 }
 
@@ -401,22 +448,6 @@
 				&.dropdown-visible .dropdown {
 					@include position($left: 0, $right: auto);
 				}
-			}
-		}
-	}
-
-	// header.scss
-	#page-header .navbar {
-		.site-logo-text {
-			display: block;
-		}
-		&.sticky {
-			.site-logo-text {
-				padding-right: 20px;
-				margin: 0 0 10px 0;
-			}
-			& > ul > li .dropdown {
-				top: 32px;
 			}
 		}
 	}
@@ -1137,14 +1168,6 @@
 				}
 			}
 		}
-		.navbar {
-			.site-logo-text {
-				display: inline-block;
-			}
-			&.sticky .site-logo-text {
-				margin-bottom: 0;
-			}
-		}
 	}
 	#page-welcome {
 		.user-buttons {
@@ -1187,11 +1210,6 @@
 				}
 			}
 		}
-	}
-	#notification_list {
-		width: auto !important;
-		min-width: 0;
-		@include position($top: 35px, $right: 1.5px);
 	}
 	#featured-content {
 		display: none;
@@ -1882,44 +1900,44 @@
 			margin-bottom: 0;
 		}
 	}
-	#notification_list {
-		.header {
-			padding-right: 50px;
-			.header_settings {
-				font-size: 0;
-				a:before {
-					font-size: rem($global-font-size);
-					@include icon-font($fs: false);
-				}
-				& > a:before {
-					font-family: 'Khyeras Icons';
-					content: unicode($rpg-pokecog);
-				}
-				& > #mark_all_notifications a:before {
-					content: unicode($icon-check-circle);
-					margin-left: 10px;
-				}
-			}
-		}
-		ul li {
-			.notification-block {
-				.image-wrap, img {
-					display: none;
-				}
-				.notification_text {
-					.notification-title {
-						padding-right: 20px;
-					}
-					.notification-time {
-						text-align: left;
-					}
-				}
-			}
-			.icon-mark .icon {
-				font-size: rem($global-font-size);
-			}
-		}
-	}
+	// #notification_list {
+	// 	.header {
+	// 		padding-right: 50px;
+	// 		.header_settings {
+	// 			font-size: 0;
+	// 			a:before {
+	// 				font-size: rem($global-font-size);
+	// 				@include icon-font($fs: false);
+	// 			}
+	// 			& > a:before {
+	// 				font-family: 'Khyeras Icons';
+	// 				content: unicode($rpg-pokecog);
+	// 			}
+	// 			& > #mark_all_notifications a:before {
+	// 				content: unicode($icon-check-circle);
+	// 				margin-left: 10px;
+	// 			}
+	// 		}
+	// 	}
+	// 	ul li {
+	// 		.notification-block {
+	// 			.image-wrap, img {
+	// 				display: none;
+	// 			}
+	// 			.notification_text {
+	// 				.notification-title {
+	// 					padding-right: 20px;
+	// 				}
+	// 				.notification-time {
+	// 					text-align: left;
+	// 				}
+	// 			}
+	// 		}
+	// 		.icon-mark .icon {
+	// 			font-size: rem($global-font-size);
+	// 		}
+	// 	}
+	// }
 }
 
 /* 397 Breakpoint
@@ -1973,10 +1991,5 @@
 	}
 	.online .postprofile dt.has-avatar .avatar-container {
 		margin-top: 0;
-	}
-
-	// header.scss
-	#notification_list {
-		top: 70px;
 	}
 }

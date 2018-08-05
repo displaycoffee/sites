@@ -101,7 +101,7 @@
 	text-align: center;
 	padding: 10px 0;
 	.wrapper {
-		@include flex-flow(row nowrap);
+		@include flex-flow(row wrap);
 		align-items: center;
 		a {
 			color: $color-01;
@@ -118,7 +118,7 @@
 			@include toggle-content(hide, $transition: true);
 		}
 		.user-menu {
-			margin: 0 0 0 auto;
+			margin: 0 -10px 0 auto;
 		}
 		.image-wrap {
 			@include sizing(30px, 30px);
@@ -151,18 +151,19 @@
 					}
 				}
 				.dropdown {
-					top: auto;
-					margin: 14px 0 0 0 !important;
-					border-top: 0;
+					top: 34px;
+					&.notification_list {
+						top: 35px;
+					}
 					.dropdown-contents {
 						font-size: rem($global-font-size);
 					}
 				}
+				&.dropdown-user-info .dropdown {
+					top: 40px;
+				}
 				&.dropdown-visible > .icon.fa-chevron-down {
 					transform: rotate(180deg);
-				}
-				&.dropdown-user-info .dropdown {
-					margin-top: 11px !important;
 				}
 				&.guest-info a {
 					color: $color-06;
@@ -176,37 +177,19 @@
 						border-radius: 100%;
 					}
 				}
-				#linked_accounts {
+				.linked-account-title {
 					margin: 7px 0 0 0;
-					padding: 10px 0 0 0;
+					padding: 10px 0 3px 0;
 					border-top: 1px dashed $color-04;
-					font-weight: normal;
-					&:before {
-						content: 'Switch Accounts:';
-						font-weight: bold;
+				}
+				.linked-account {
+					.image-wrap, .username-coloured {
+						@include inline-block(middle);
 					}
-					&:before, ul li a {
-						display: block;
-						padding: 0 0 3px 0;
-					}
-					ul {
-						margin: 0;
-						li {
-							padding: 0;
-							a {
-								.avatar, .username-coloured {
-									@include inline-block(middle);
-								}
-								.avatar {
-									max-height: 20px;
-									max-width: 20px;
-									border: 1px solid $color-04;
-								}
-							}
-							&:last-child a {
-								padding: 0;
-							}
-						}
+					.image-wrap {
+						@include sizing(20px, 20px);
+						border-width: 1px;
+						margin: 0 5px 0 0;
 					}
 				}
 			}
