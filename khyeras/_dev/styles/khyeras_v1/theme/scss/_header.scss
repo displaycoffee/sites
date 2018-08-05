@@ -103,40 +103,22 @@
 	.wrapper {
 		@include flex-flow(row wrap);
 		align-items: center;
-		a {
+		a, .guest-info a:hover {
 			color: $color-01;
+		}
+		a, .icon.fa-chevron-down {
 			&:hover {
 				color: $color-06;
 			}
 		}
-		.site-logo-text {
-			font-family: $font-03;
-			font-size: rem(30px);
-			line-height: 1;
-			@include sizing(0, 0);
-			overflow: hidden;
-			@include toggle-content(hide, $transition: true);
-		}
-		.user-menu {
-			margin: 0 -10px 0 auto;
-		}
-		.image-wrap {
-			@include sizing(30px, 30px);
-			border: 2px solid $color-04;
+		.guest-info a {
+			color: $color-06;
 		}
 		& > ul {
 			margin: 0 -10px;
 			& > li {
 				padding: 0 10px;
-				&, .user-name, .user-avatar {
-					@include inline-block(middle);
-				}
-				.icon.fa-thumbs-o-up {
-					font-size: 0;
-					& + span {
-						margin: 0;
-					}
-				}
+				@include inline-block(middle);
 				& > .icon {
 					@include sizing(20px, 20px);
 					margin: 0 0 0 10px;
@@ -146,53 +128,34 @@
 						@include transition($transform);
 						transform: rotate(0deg);
 					}
-					&:hover {
-						color: $color-06;
-					}
-				}
-				.dropdown {
-					top: 34px;
-					&.notification_list {
-						top: 35px;
-					}
-					.dropdown-contents {
-						font-size: rem($global-font-size);
-					}
-				}
-				&.dropdown-user-info .dropdown {
-					top: 40px;
 				}
 				&.dropdown-visible > .icon.fa-chevron-down {
 					transform: rotate(180deg);
 				}
-				&.guest-info a {
-					color: $color-06;
-					&:hover {
-						color: $color-01;
-					}
-				}
-				.user-avatar {
-					margin: 0 0 0 10px;
-					.image-wrap {
-						border-radius: 100%;
-					}
-				}
-				.linked-account-title {
-					margin: 7px 0 0 0;
-					padding: 10px 0 3px 0;
-					border-top: 1px dashed $color-04;
-				}
-				.linked-account {
-					.image-wrap, .username-coloured {
-						@include inline-block(middle);
-					}
-					.image-wrap {
-						@include sizing(20px, 20px);
-						border-width: 1px;
-						margin: 0 5px 0 0;
-					}
-				}
 			}
+		}
+		.user-menu {
+			margin: 0 -10px 0 auto;
+		}
+		.site-logo-text {
+			font-family: $font-03;
+			font-size: rem(30px);
+			line-height: 1;
+			@include sizing(0, 0);
+			overflow: hidden;
+			@include toggle-content(hide, $transition: true);
+		}
+		.dropdown {
+			top: 34px;
+			&.notification_list {
+				top: 35px;
+			}
+			.dropdown-contents {
+				font-size: rem($global-font-size);
+			}
+		}
+		.dropdown-user-info .dropdown {
+			top: 40px;
 		}
 	}
 	&.sticky {
@@ -202,6 +165,50 @@
 			@include toggle-content(show);
 			overflow: visible;
 			@include sizing(auto, auto);
+		}
+	}
+}
+
+/* Header - Nav Menu
+========================================================================== */
+
+.nav-menu .icon.fa-thumbs-o-up {
+	font-size: 0;
+	& + span {
+		margin: 0;
+	}
+}
+
+/* Header - User Menu
+========================================================================== */
+
+.user-menu {
+	.image-wrap {
+		@include sizing(30px, 30px);
+		border: 2px solid $color-04;
+	}
+	.user-name, .user-avatar {
+		@include inline-block(middle);
+	}
+	.dropdown-container .dropdown-contents .linked-account-title {
+		margin: 7px 0 0 0;
+		padding: 10px 0 3px 0;
+		border-top: 1px dashed $color-04;
+	}
+	.linked-account {
+		.image-wrap, .username-coloured {
+			@include inline-block(middle);
+		}
+		.image-wrap {
+			@include sizing(20px, 20px);
+			border-width: 1px;
+			margin: 0 5px 0 0;
+		}
+	}
+	.user-avatar {
+		margin: 0 0 0 10px;
+		.image-wrap {
+			border-radius: 100%;
 		}
 	}
 }
@@ -552,7 +559,7 @@ a:hover .badge {
 				line-height: 44px;
 				@include position($type: absolute, $top: 0, $right: 0, $z: 10);
 				@include transition(all 0.5s ease-in-out);
-			  	font-size: rem(20px);
+				font-size: rem(20px);
 				&:before {
 					content: unicode($icon-chevron-right);
 				}
@@ -586,7 +593,7 @@ a:hover .badge {
 				.dropdown {
 					@include position($top: auto, $left: 0, $z: 2);
 					visibility: visible;
-				    opacity: 1;
+					opacity: 1;
 				}
 			}
 			&.dropdown-close > * {

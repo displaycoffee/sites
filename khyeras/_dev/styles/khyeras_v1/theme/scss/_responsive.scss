@@ -269,44 +269,37 @@
 		.wrapper {
 			justify-content: center;
 			position: relative;
+			& > ul > li ul.dropdown-contents {
+				text-align: center;
+				margin: 0 0 -10px 0;
+				& > li {
+					@include inline-block(top);
+					padding: 0 10px 10px 10px;
+					&.linked-account-title {
+						display: block;
+						margin-top: 0;
+						padding-top: 10px;
+					}
+				}
+			}
 			.user-menu {
 				margin: 10px -10px 0 -10px;
 				@include flex(full);
 				min-width: 1px;
 			}
-			& > ul {
-				.dropdown-container {
-					position: static;
-				}
-				& > li {
-					.dropdown, &.dropdown-container .search-box {
-						left: 0;
-						right: 0;
-					}
-					.dropdown, &.dropdown-user-info .dropdown, .dropdown.notification_list {
-						top: 73px;
-					}
-					ul.dropdown-contents {
-						text-align: center;
-						margin: 0 0 -10px 0;
-						& > li {
-							@include inline-block(top);
-							padding: 0 10px 10px 10px;
-							&.linked-account-title {
-								display: block;
-								margin-top: 0;
-								padding-top: 10px;
-							}
-						}
-					}
-					.linked-account-title {
-						display: block;
-					}
-				}
+			.dropdown-container {
+				position: static;
+			}
+			.dropdown, .dropdown-container .search-box {
+				left: 0;
+				right: 0;
+			}
+			.dropdown, .dropdown.notification_list, .dropdown-user-info .dropdown {
+				top: 73px;
 			}
 		}
-		&.sticky .wrapper > ul > li {
-			.dropdown, &.dropdown-user-info .dropdown, .dropdown.notification_list {
+		&.sticky .wrapper {
+			.dropdown, .dropdown.notification_list, .dropdown-user-info .dropdown {
 				top: 80px;
 			}
 		}

@@ -54,8 +54,8 @@ jQuery( document ).ready( function( $ ) {
 
 	// Start the mobile menu
 	initializeMobileMenu({
-		menu          : '#page-header .navbar > ul',
-		menuContainer : '#page-header .navbar',
+		menu          : '#page-header .navbar .wrapper > ul',
+		menuContainer : '#page-header .navbar .wrapper',
 		mobileButton  : '.mobile-menu-button',
 		mobileMenu    : '#mobile-menu',
 		width         : 768
