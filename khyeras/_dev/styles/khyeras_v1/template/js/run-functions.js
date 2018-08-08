@@ -58,6 +58,7 @@ jQuery( document ).ready( function( $ ) {
 		menuContainer : '#page-header .navbar .wrapper',
 		mobileButton  : '.mobile-menu-button',
 		mobileMenu    : '#mobile-menu',
+		mobileContent : '.mobile-menu-content',
 		width         : 768
 	});
 

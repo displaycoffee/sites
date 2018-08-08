@@ -245,6 +245,7 @@ function initializeMobileMenu( options ) {
 	var menuContainer = jQuery( options.menuContainer );
 	var mobileButton = jQuery( options.mobileButton );
 	var mobileMenu = jQuery( options.mobileMenu );
+	var mobileContent = jQuery( options.mobileContent );
 	var width = options.width;
 
 	// Set a mobile false state (for window resize mainly)
@@ -281,7 +282,7 @@ function initializeMobileMenu( options ) {
 				});
 
 				// Move menu to menu container
-				menu.detach().appendTo( mobileMenu );
+				menu.detach().appendTo( mobileContent );
 
 				// In that mobile menu container, look for first level list and its items
 				menu.children( '.dropdown-container' ).each( function() {
@@ -289,7 +290,7 @@ function initializeMobileMenu( options ) {
 				});
 
 				// Add/remove classes to slide second level menu open
-				var mainMenuLinks = jQuery( options.mobileMenu + ' > ul > li' );
+				var mainMenuLinks = jQuery( options.mobileContent + ' > ul > li' );
 				mainMenuLinks.find( ' .slide-submenu' ).off().on( 'click', function() {
 					var parentElement = jQuery( this ).parent();
 					if ( parentElement.hasClass( 'dropdown-open' ) ) {

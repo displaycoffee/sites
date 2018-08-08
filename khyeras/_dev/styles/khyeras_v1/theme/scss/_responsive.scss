@@ -1162,9 +1162,6 @@
 			}
 		}
 	}
-	.user-menu .dropdown-container .dropdown-contents .linked-account-title {
-		margin: 0;
-	}
 	#page-welcome {
 		.user-buttons {
 			position: relative;
@@ -1896,44 +1893,6 @@
 			margin-bottom: 0;
 		}
 	}
-	// #notification_list {
-	// 	.header {
-	// 		padding-right: 50px;
-	// 		.header_settings {
-	// 			font-size: 0;
-	// 			a:before {
-	// 				font-size: rem($global-font-size);
-	// 				@include icon-font($fs: false);
-	// 			}
-	// 			& > a:before {
-	// 				font-family: 'Khyeras Icons';
-	// 				content: unicode($rpg-pokecog);
-	// 			}
-	// 			& > #mark_all_notifications a:before {
-	// 				content: unicode($icon-check-circle);
-	// 				margin-left: 10px;
-	// 			}
-	// 		}
-	// 	}
-	// 	ul li {
-	// 		.notification-block {
-	// 			.image-wrap, img {
-	// 				display: none;
-	// 			}
-	// 			.notification_text {
-	// 				.notification-title {
-	// 					padding-right: 20px;
-	// 				}
-	// 				.notification-time {
-	// 					text-align: left;
-	// 				}
-	// 			}
-	// 		}
-	// 		.icon-mark .icon {
-	// 			font-size: rem($global-font-size);
-	// 		}
-	// 	}
-	// }
 }
 
 /* 397 Breakpoint
