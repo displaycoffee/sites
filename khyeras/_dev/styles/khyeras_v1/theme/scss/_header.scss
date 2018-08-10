@@ -154,7 +154,7 @@
 				font-size: rem($global-font-size);
 			}
 		}
-		.dropdown-user-info .dropdown {
+		.user-info .dropdown {
 			top: 40px;
 		}
 	}
@@ -194,6 +194,10 @@
 		margin: 7px 0 0 0;
 		padding: 10px 0 3px 0;
 		border-top: 1px dashed $color-04;
+	}
+	.user-info .user-name {
+		max-width: 285px;
+		@include ellipsis;
 	}
 	.linked-account {
 		.image-wrap, .username-coloured {
@@ -522,7 +526,7 @@ a:hover .badge {
 		@include sizing(44px, 44px);
 		line-height: 44px;
 		font-size: rem(20px);
-		@include position($type: absolute,$right: 0, $z: 10);
+		@include position($type: absolute ,$right: 0, $top: 0, $bottom: 0, $z: 10);
 		margin: auto;
 		text-align: center;
 		cursor: pointer;
@@ -534,9 +538,6 @@ a:hover .badge {
 		.mobile-header {
 			font-size: rem(24px);
 			@include spectral-common;
-		}
-		.fa-times {
-			@include position($top: 0, $bottom: 0);
 		}
 	}
 	ul li > a:first-child, .dropdown.search-box .dropdown-contents,
@@ -557,7 +558,6 @@ a:hover .badge {
 			display: none;
 		}
 		.fa-chevron-right {
-			top: 2px;
 			@include transition(all 0.5s ease-in-out);
 		}
 	}
@@ -595,6 +595,17 @@ a:hover .badge {
 	}
 	.dropdown-close {
 		display: none;
+	}
+	.user-menu {
+		.user-info .user-name {
+			max-width: 190px;
+		}
+		.guest-info .user-name {
+			max-width: 234px;
+		}
+		.user-avatar {
+			vertical-align: top;
+		}
 	}
 	#notification_list {
 		.header {

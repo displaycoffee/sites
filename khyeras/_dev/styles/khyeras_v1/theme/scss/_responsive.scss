@@ -51,6 +51,9 @@
 	}
 
 	// header.scss
+	.user-menu .user-info .user-name {
+		max-width: 115px;
+	}
 	#featured-content .flex-row .flex-column {
 		width: 25%;
 	}
@@ -294,15 +297,20 @@
 				left: 0;
 				right: 0;
 			}
-			.dropdown, .dropdown.notification_list, .dropdown-user-info .dropdown {
+			.dropdown, .dropdown.notification_list, .user-info .dropdown {
 				top: 73px;
 			}
 		}
 		&.sticky .wrapper {
-			.dropdown, .dropdown.notification_list, .dropdown-user-info .dropdown {
+			.dropdown, .dropdown.notification_list, .user-info .dropdown {
 				top: 80px;
 			}
 		}
+	}
+	.user-menu .user-info .user-name {
+		max-width: none;
+		overflow: visible;
+		white-space: normal;
 	}
 	#notification_list {
 		width: auto !important;
