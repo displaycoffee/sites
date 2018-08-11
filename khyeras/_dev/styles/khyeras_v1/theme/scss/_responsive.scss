@@ -54,7 +54,7 @@
 	.user-menu .user-info .user-name {
 		max-width: 115px;
 	}
-	#featured-content .flex-row .flex-column {
+	.featured-content .flex-row .flex-column {
 		width: 25%;
 	}
 }
@@ -268,7 +268,7 @@
 	}
 
 	// header.scss
-	#page-header .navbar {
+	.navbar {
 		.wrapper {
 			justify-content: center;
 			position: relative;
@@ -316,7 +316,7 @@
 		width: auto !important;
 		min-width: 0;
 	}
-	#page-welcome {
+	.page-welcome {
 		.user-profile {
 			order: -2;
 			p:nth-last-child(2) {
@@ -1139,38 +1139,36 @@
 	#mobile-menu {
 		display: block;
 	}
-	#page-header {
-		.headerbar .header-content {
-			.site-description, .header-divider, .site-quotes {
-				min-width: 1px;
-				@include flex(full);
+	.headerbar .header-content {
+		.site-description, .header-divider, .site-quotes {
+			min-width: 1px;
+			@include flex(full);
+		}
+		.site-description, .site-quotes, .site-quotes .quote-author {
+			text-align: center;
+		}
+		.site-description, .site-quotes {
+			max-width: 90%;
+		}
+		.site-description {
+			h1 {
+				font-size: rem(60px);
+				margin-bottom: 10px;
 			}
-			.site-description, .site-quotes, .site-quotes .quote-author {
-				text-align: center;
+			h3 {
+				font-size: rem(24px);
 			}
-			.site-description, .site-quotes {
-				max-width: 90%;
-			}
-			.site-description {
-				h1 {
-					font-size: rem(60px);
-					margin-bottom: 10px;
-				}
-				h3 {
-					font-size: rem(24px);
-				}
-			}
-			.header-divider {
-				height: 1px;
-				margin: 20px 0;
-				&:before {
-					width: 50%;
-					margin: 0 auto;
-				}
+		}
+		.header-divider {
+			height: 1px;
+			margin: 20px 0;
+			&:before {
+				width: 50%;
+				margin: 0 auto;
 			}
 		}
 	}
-	#page-welcome {
+	.page-welcome {
 		.user-buttons {
 			position: relative;
 			& > li {
@@ -1212,7 +1210,7 @@
 			}
 		}
 	}
-	#featured-content {
+	.featured-content {
 		display: none;
 		&.toggle-show {
 			display: block;
@@ -1576,7 +1574,7 @@
 	}
 
 	// header.scss
-	#featured-content .flex-row .flex-column .image-wrap {
+	.featured-content .flex-row .flex-column .image-wrap {
 		padding-bottom: 0;
 		height: 75px;
 	}
@@ -1887,7 +1885,7 @@
 	}
 
 	// header.scss
-	#page-welcome .site-callouts, #featured-content {
+	.page-welcome .site-callouts, .featured-content {
 		.flex-row {
 			display: block;
 			.flex-column {
@@ -1895,7 +1893,7 @@
 			}
 		}
 	}
-	#featured-content .flex-row {
+	.featured-content .flex-row {
 		margin-bottom: 30px;
 		.flex-column:last-child {
 			margin-bottom: 0;

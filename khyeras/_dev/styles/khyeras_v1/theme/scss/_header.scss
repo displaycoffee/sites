@@ -8,7 +8,7 @@
 /* Header - Header bar
 ========================================================================== */
 
-#page-header .headerbar {
+.headerbar {
 	background: url($images + 'header.jpg') center bottom no-repeat;
 	background-size: cover;
 	height: 500px;
@@ -94,7 +94,7 @@
 /* Header - Nav top
 ========================================================================== */
 
-#page-header .navbar {
+.navbar {
 	background: rgba($color-05, 0.75);
 	border-bottom: 1px solid $color-04;
 	@include position($type: fixed, $top: 0, $right: 0, $left: 0, $z: 999);
@@ -103,39 +103,13 @@
 	.wrapper {
 		@include flex-flow(row wrap);
 		align-items: center;
-		a, .guest-info a:hover {
+		a {
 			color: $color-01;
 		}
 		a, .icon.fa-chevron-down {
 			&:hover {
 				color: $color-06;
 			}
-		}
-		.guest-info a {
-			color: $color-06;
-		}
-		& > ul {
-			margin: 0 -10px;
-			& > li {
-				padding: 0 10px;
-				@include inline-block(middle);
-				& > .icon {
-					@include sizing(20px, 20px);
-					margin: 0 0 0 10px;
-					&.fa-chevron-down {
-						// Setting the variable here to use multiple transitions
-						$transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
-						@include transition($transform);
-						transform: rotate(0deg);
-					}
-				}
-				&.dropdown-visible > .icon.fa-chevron-down {
-					transform: rotate(180deg);
-				}
-			}
-		}
-		.user-menu {
-			margin: 0 -10px 0 auto;
 		}
 		.site-logo-text {
 			font-family: $font-03;
@@ -144,6 +118,28 @@
 			@include sizing(0, 0);
 			overflow: hidden;
 			@include toggle-content(hide, $transition: true);
+		}
+		.menu {
+			margin: 0 -10px;
+			& > li {
+				padding: 0 10px;
+				@include inline-block(middle);
+			}
+			.menu-label {
+				.icon {
+					@include sizing(20px, 20px);
+					margin: 0 0 0 10px;
+				}
+				.fa-chevron-down {
+					// Setting the variable here to use multiple transitions
+					$transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
+					@include transition($transform);
+					transform: rotate(0deg);
+				}
+			}
+			.dropdown-visible .menu-label .fa-chevron-down {
+				transform: rotate(180deg);
+			}
 		}
 		.dropdown {
 			top: 34px;
@@ -154,8 +150,11 @@
 				font-size: rem($global-font-size);
 			}
 		}
-		.user-info .dropdown {
-			top: 40px;
+		.user-menu {
+			margin: 0 -10px 0 auto;
+			.user-info .dropdown {
+				@include position($top: 40px, $right: 0, $left: auto);
+			}
 		}
 	}
 	&.sticky {
@@ -220,7 +219,7 @@
 /* Header - Nav top - Search Box
 ========================================================================== */
 
-#page-header .navbar .wrapper > ul > li.dropdown-container .search-box {
+.navbar .wrapper > ul > li.dropdown-container .search-box {
 	min-width: 400px;
 	@include position($left: -150%);
 }
@@ -305,7 +304,7 @@
 /* Page welcome
 ========================================================================== */
 
-#page-welcome {
+.page-welcome {
 	font-size: rem(13px);
 	.site-callouts {
 		order: -1;
@@ -397,7 +396,7 @@ a:hover .badge {
 /* Featured Content
 ========================================================================== */
 
-#featured-content {
+.featured-content {
 	margin: 0 0 10px 0;
 	.featured-title {
 		text-align: center;
@@ -434,7 +433,7 @@ a:hover .badge {
 				background: rgba($color-02, 0.60);
 				text-align: center;
 			}
-			.featured-content {
+			.featured-details {
 				position: relative;
 			}
 			.image-wrap {
