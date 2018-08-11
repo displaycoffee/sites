@@ -238,6 +238,41 @@ function scrollOnPage( selector, distance, position ) {
 	}
 }
 
+// Create dropdown toggle for main nav menu
+// This works differently from phpbb dropdown for desktop / mobile purposes
+function initializeDropdownMenu( menuTrigger, menuLinks ) {
+	var visible = 'dropdown-visible';
+	var notVisible = 'dropdown-not-visible';
+
+	var menuTrigger = jQuery( menuTrigger );
+	var menuLinksSelector = jQuery( menuLinks );
+
+	menuTrigger.off().on( 'click', function() {
+		var parentContainer = jQuery( this ).closest( menuLinks );
+
+		// Toggle casses on li containers
+		if ( parentContainer.hasClass( visible ) ) {
+			toggleVisibility( parentContainer );
+		} else {
+			toggleVisibility( menuLinksSelector );
+			parentContainer.removeClass( notVisible ).addClass( visible );
+		}
+	});
+
+	// If anything outside the menu trigger is clicked on, hide menus
+	if ( menuTrigger && menuTrigger.length ) {
+		jQuery( document ).off().on( 'click', function( event ) {
+			if ( !jQuery( event.target ).closest( menuLinks ).length ) {
+				toggleVisibility( menuLinksSelector );
+			}
+		});
+	}
+
+	function toggleVisibility( selector ) {
+		selector.removeClass( visible ).addClass( notVisible );
+	}
+}
+
 // Initialize Mobile Menu
 function initializeMobileMenu( options ) {
 	// Variables from mobile object
@@ -286,12 +321,12 @@ function initializeMobileMenu( options ) {
 
 				// In that mobile menu container, look for first level list and its items
 				menu.children( '.dropdown-container' ).each( function() {
-					jQuery('<i class="icon fa-chevron-right slide-submenu"></i>').appendTo( this );
+					jQuery( '<i class="icon fa-chevron-right slide-submenu"></i>' ).appendTo( this );
 				});
 
 				// Add/remove classes to slide second level menu open
 				var mainMenuLinks = jQuery( options.mobileContent + ' > ul > li' );
-				mainMenuLinks.find( ' .slide-submenu' ).off().on( 'click', function() {
+				mainMenuLinks.find( '.slide-submenu' ).off().on( 'click', function() {
 					var parentElement = jQuery( this ).parent();
 					if ( parentElement.hasClass( 'dropdown-open' ) ) {
 						mainMenuLinks.removeClass( 'dropdown-close' );

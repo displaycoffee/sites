@@ -1,43 +1,50 @@
-<ul class="user-menu" role="menu">
+<ul class="menu user-menu" role="menu">
 	<!-- IF S_REGISTERED_USER -->
 		<!-- IF S_DISPLAY_PM -->
 			<li>
-				<a href="{U_PRIVATEMSGS}" title="{L_PRIVATE_MESSAGES}">
-					<span>{L_PRIVATE_MESSAGES}</span>
-					<!-- IF PRIVATE_MESSAGE_COUNT > 0 -->
-						<span class="badge">
-							<!-- IF PRIVATE_MESSAGE_COUNT < 100 -->{PRIVATE_MESSAGE_COUNT}<!-- ELSE --><i class="icon fa-plus fa-fw" aria-hidden="true"></i><!-- ENDIF -->
-						</span>
-					<!-- ENDIF -->
-				</a>
+				<div class="menu-label">
+					<a href="{U_PRIVATEMSGS}" title="{L_PRIVATE_MESSAGES}">
+						<span>{L_PRIVATE_MESSAGES}</span>
+						<!-- IF PRIVATE_MESSAGE_COUNT > 0 -->
+							<span class="badge">
+								<!-- IF PRIVATE_MESSAGE_COUNT < 100 -->{PRIVATE_MESSAGE_COUNT}<!-- ELSE --><i class="icon fa-plus fa-fw" aria-hidden="true"></i><!-- ENDIF -->
+							</span>
+						<!-- ENDIF -->
+					</a>
+				</div>
 			</li>
 		<!-- ENDIF -->
 		<!-- IF S_NOTIFICATIONS_DISPLAY -->
 			<li class="dropdown-container notification-container">
-				<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger dropdown-toggle">
-					<span>{L_NOTIFICATIONS}</span>
-					<!-- IF NOTIFICATIONS_COUNT > 0 -->
-						<span class="badge">
-							<!-- IF NOTIFICATIONS_COUNT < 100 -->{NOTIFICATIONS_COUNT}<!-- ELSE --><i class="icon fa-plus fa-fw" aria-hidden="true"></i><!-- ENDIF -->
-						</span>
-					<!-- ENDIF -->
-				</a>
-				<!-- INCLUDE notification_dropdown.html -->
+				<div class="menu-label">
+					<a id="notification_list_button" class="menu-trigger">
+						<span>{L_NOTIFICATIONS}</span>
+						<!-- IF NOTIFICATIONS_COUNT > 0 -->
+							<span class="badge">
+								<!-- IF NOTIFICATIONS_COUNT < 100 -->{NOTIFICATIONS_COUNT}<!-- ELSE --><i class="icon fa-plus fa-fw" aria-hidden="true"></i><!-- ENDIF -->
+							</span>
+						<!-- ENDIF -->
+					</a>
+					<!-- INCLUDE notification_dropdown.html -->
+				</div>
 			</li>
 		<!-- ENDIF -->
 		<li class="dropdown-container user-info">
-			<a class="dropdown-trigger" title="Display Profile, Setting, and Logout Links" role="menuitem">
-				<span class="user-name">{CURRENT_USERNAME_SIMPLE}</span>
-				<div class="user-avatar">
-					<div class="image-wrap">
-						<!-- IF CURRENT_USER_AVATAR -->
-							{CURRENT_USER_AVATAR}
-						<!-- ELSE -->
-							<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
-						<!-- ENDIF -->
+			<div class="menu-label">
+				<a class="menu-trigger" title="Display Profile, Setting, and Logout Links" role="menuitem">
+					<!-- {CURRENT_USERNAME_SIMPLE} -->
+					<span class="user-name">Lorem ipsum dolor sit amet, consectetur adipisicin</span>
+					<div class="user-avatar">
+						<div class="image-wrap">
+							<!-- IF CURRENT_USER_AVATAR -->
+								{CURRENT_USER_AVATAR}
+							<!-- ELSE -->
+								<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
+							<!-- ENDIF -->
+						</div>
 					</div>
-				</div>
-			</a>
+				</a>
+			</div>
 			<div class="dropdown">
 				<ul class="dropdown-contents" role="menu">
 					<!-- EVENT navbar_header_profile_list_before -->
@@ -74,12 +81,14 @@
 		</li>
 	<!-- ELSE -->
 		<li class="guest-info">
-			<span class="user-name">
-				{L_GUEST}, why don't you <a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) --> or <a href="{U_REGISTER}" title="{L_REGISTER}">{L_REGISTER}</a><!-- ENDIF -->?
-			</span>
-			<div class="user-avatar">
-				<div class="image-wrap">
-					<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
+			<div class="menu-label">
+				<span class="user-name">
+					{L_GUEST}, why don't you <a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) --> or <a href="{U_REGISTER}" title="{L_REGISTER}">{L_REGISTER}</a><!-- ENDIF -->?
+				</span>
+				<div class="user-avatar">
+					<div class="image-wrap">
+						<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
+					</div>
 				</div>
 			</div>
 		</li>

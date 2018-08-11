@@ -52,6 +52,9 @@ jQuery( document ).ready( function( $ ) {
 		scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 	}
 
+	// Start navigation dropdown menus
+	initializeDropdownMenu( '.menu-trigger', '.menu > li' );
+
 	// Start the mobile menu
 	initializeMobileMenu({
 		menu          : '#page-header .navbar .wrapper > ul',

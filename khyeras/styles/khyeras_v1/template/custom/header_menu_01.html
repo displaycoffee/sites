@@ -1,7 +1,9 @@
-<ul class="nav-menu" role="menu">
+<ul class="menu nav-menu" role="menu">
 	<li class="dropdown-container">
-		<a href="{ROOT_PATH}about" title="About" role="menuitem"><span>About</span></a>
-		<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+		<div class="menu-label">
+			<a href="{ROOT_PATH}about" title="About" role="menuitem"><span>About</span></a>
+			<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+		</div>
 		<div class="dropdown">
 			<ul class="dropdown-contents" role="menu">
 				<li>
@@ -26,8 +28,10 @@
 		</div>
 	</li>
 	<li class="dropdown-container">
-		<a href="{ROOT_PATH}lore" title="Lore" role="menuitem"><span>Lore</span></a>
-		<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+		<div class="menu-label">
+			<a href="{ROOT_PATH}lore" title="Lore" role="menuitem"><span>Lore</span></a>
+			<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+		</div>
 		<div class="dropdown">
 			<ul class="dropdown-contents" role="menu">
 				<li>
@@ -58,8 +62,10 @@
 		</div>
 	</li>
 	<li class="dropdown-container">
-		<a href="{ROOT_PATH}setting" title="Setting" role="menuitem"><span>Setting</span></a>
-		<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+		<div class="menu-label">
+			<a href="{ROOT_PATH}setting" title="Setting" role="menuitem"><span>Setting</span></a>
+			<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+		</div>
 		<div class="dropdown">
 			<ul class="dropdown-contents" role="menu">
 				<li>
@@ -78,19 +84,21 @@
 		</div>
 	</li>
 	<li class="dropdown-container">
-		<!-- DEFINE $COMMUNITY_HEADER -->
-			<a title="Community" role="menuitem"><span>Community</span></a>
-		<!-- ENDDEFINE -->
-		<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
-			<!-- IF S_DISPLAY_MEMBERLIST -->
-				<a href="{U_MEMBERLIST}" title="{L_MEMBERLIST}" role="menuitem"><span>{L_MEMBERLIST}</span></a>
+		<div class="menu-label">
+			<!-- DEFINE $COMMUNITY_HEADER -->
+				<a title="Community" role="menuitem"><span>Community</span></a>
+			<!-- ENDDEFINE -->
+			<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
+				<!-- IF S_DISPLAY_MEMBERLIST -->
+					<a href="{U_MEMBERLIST}" title="{L_MEMBERLIST}" role="menuitem"><span>{L_MEMBERLIST}</span></a>
+				<!-- ELSE -->
+						{$COMMUNITY_HEADER}
+				<!-- ENDIF -->
 			<!-- ELSE -->
-					{$COMMUNITY_HEADER}
+				{$COMMUNITY_HEADER}
 			<!-- ENDIF -->
-		<!-- ELSE -->
-			{$COMMUNITY_HEADER}
-		<!-- ENDIF -->
-		<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+			<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+		</div>
 		<div class="dropdown">
 			<ul class="dropdown-contents" role="menu">
 				<!-- EVENT navbar_header_quick_links_before -->
@@ -124,8 +132,10 @@
 	<!-- EVENT overall_header_searchbox_before -->
 	<!-- IF S_DISPLAY_SEARCH -->
 		<li class="dropdown-container">
-			<a href="{U_SEARCH}" title="{L_SEARCH}" role="menuitem"><span>{L_SEARCH}</span></a>
-			<i class="icon icon-lg fa-chevron-down dropdown-trigger"></i>
+			<div class="menu-label">
+				<a href="{U_SEARCH}" title="{L_SEARCH}" role="menuitem"><span>{L_SEARCH}</span></a>
+				<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+			</div>
 			<div id="search-box" class="search-box search-header dropdown" role="search">
 				<div class="dropdown-contents">
 					<form action="{U_SEARCH}" method="get" id="search">
