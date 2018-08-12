@@ -74,10 +74,14 @@
 
 {% set bodyname = SCRIPT_NAME|lower %}
 {% if 'app/' in SCRIPT_NAME %}
-	{% set bodyname = 'page' %}
+	{% if 'thankslist/givens' in SCRIPT_NAME %}
+		{% set bodyname = 'search' %}
+	{% else %}
+		{% set bodyname = 'page' %}
+	{% endif %}
 {% endif %}
 
-<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS} section-{{ bodyname }}" data-class="section {{ bodyname }} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
+<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS} section-{{ bodyname }}{% if 'app/thankslist/givens' in SCRIPT_NAME %} section-thanks-search{% endif %}" data-class="section {{ bodyname }} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
 
 	{% set pm_count %}
 		{% if PRIVATE_MESSAGE_COUNT < 100 %}

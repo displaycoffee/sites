@@ -516,3 +516,75 @@ dl.faq + .top {
 		}
 	}
 }
+
+/* Thanks List
+========================================================================== */
+
+div[id*='list_thanks'], .member-thanks-list {
+	.post-buttons {
+		margin: -2px 0 0 0;
+		.button {
+			@include sizing(20px, 20px);
+			border-radius: 100%;
+			padding: 0;
+			.icon {
+				line-height: 20px;
+				font-size: rem(12px);
+			}
+		}
+		& ~ dl, & ~ dt, & ~ dd {
+			margin: 0 0 0 30px;
+		}
+	}
+}
+
+div[id*='list_thanks'] .post-buttons > li.responsive-menu {
+	display: none;
+}
+
+.member-thanks-list {
+	.column1, .column2 {
+		margin: 0 0 20px 0;
+	}
+	ul {
+		list-style: none;
+	}
+	dl {
+		dt, dd {
+			display: inline;
+		}
+		dd:before {
+			content: ' \002022 ';
+		}
+	}
+}
+
+#show_thanks, #show_thanked {
+	@include clearfix('&');
+	margin: 10px -10px 0 -10px;
+	& > span {
+		display: block;
+		margin: 0 0 0 -8px;
+		padding: 0 10px;
+		br:last-child {
+			display: none;
+		}
+	}
+}
+
+.section-thanks-search {
+	h2 + p .arrow-left, .post ul.searchresults li a {
+		&:before {
+			color: $color-01;
+			@include icon-font($fs: 12px);
+		}
+	}
+	h2 + p .arrow-left:before {
+		content: unicode($icon-chevron-left);
+		margin: 0 10px 0 0;
+	}
+	.post ul.searchresults li a:before {
+		content: unicode($icon-chevron-right);
+		margin: 0 0 0 10px;
+	}
+}

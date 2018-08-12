@@ -2,8 +2,6 @@
 
 <h2 class="memberlist-title">{PAGE_TITLE}</h2>
 
-<!-- EVENT memberlist_view_content_prepend -->
-
 <form method="post" action="{S_PROFILE_ACTION}" id="viewprofile">
 
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
@@ -253,6 +251,7 @@
 		<!-- ENDIF -->
 		<div class="panel bg2">
 			<div class="inner">
+				<!-- EVENT memberlist_view_content_prepend -->
 				<div class="user-contact">
 					<h3>{L_CONTACT_USER}</h3>
 					<div class="contact-icons">
@@ -331,6 +330,9 @@
 						<!-- EVENT memberlist_view_user_statistics_after -->
 					</dl>
 				</div>
+				<div class="extra-details">
+					<!-- EVENT memberlist_view_content_append -->
+				</div>
 			</div>
 		</div>
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
@@ -348,8 +350,6 @@
 <!-- ENDIF -->
 
 </form>
-
-<!-- EVENT memberlist_view_content_append -->
 
 <!-- INCLUDE jumpbox.html -->
 

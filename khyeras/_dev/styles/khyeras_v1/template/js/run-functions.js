@@ -5,6 +5,7 @@ addBodyClass();
 addForumImageClass();
 addFieldsetClasses();
 addNoPaginationClass();
+addThanksClass();
 noContentListing();
 addSearchIgnoredClass();
 checkForNewPM();

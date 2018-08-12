@@ -64,6 +64,23 @@ function addNoPaginationClass() {
 	}
 }
 
+// On user profile, check for thanks list content
+function addThanksClass() {
+	var extraDetailsTitle = document.querySelectorAll( '#viewprofile .extra-details h3' );
+
+	if ( extraDetailsTitle && extraDetailsTitle.length ) {
+		for ( var i = 0; i < extraDetailsTitle.length; i++ ) {
+			var title = extraDetailsTitle[i];
+
+			if ( title.innerHTML.indexOf( 'Thanks list' ) !== -1 ) {
+				// Add class to parent row
+				var parentRow = title.parentNode.parentNode;
+				parentRow.className += ( checkForClasses( parentRow ) + 'member-thanks-list' );
+			}
+		}
+	}
+}
+
 // Add a class to elements where there are no topics / forums
 function noContentListing() {
 	var noContentText = [
