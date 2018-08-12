@@ -1,13 +1,47 @@
+{% set pm_count %}
+	{% if PRIVATE_MESSAGE_COUNT < 100 %}
+		<span class="badge">{{ PRIVATE_MESSAGE_COUNT }}</span>
+	{% else %}
+		<span class="badge badge-plus">+</span>
+	{% endif %}
+{% endset %}
+
+{% set notify_count %}
+	{% if NOTIFICATIONS_COUNT < 2 %}
+		<span class="badge">{{ NOTIFICATIONS_COUNT }}</span>
+	{% else %}
+		<span class="badge badge-plus">+</span>
+	{% endif %}
+{% endset %}
+
 <nav class="navbar" role="navigation">
 	<div class="wrapper">
 		<div class="site-logo-text">
 			<a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->" title="<!-- IF U_SITE_HOME -->{L_SITE_HOME}<!-- ELSE -->{L_INDEX}<!-- ENDIF -->">{SITENAME}</a>
 		</div>
 		<div class="mobile-menu-button">
-			<span class="mobile-menu-icon">
-				<span class="lines"><span class="line"></span></span>
-			</span>
-			<span class="mobile-menu-text">Menu</span>
+			<div class="button-section">
+				<i class="icon rpg-icon rpg-pokecog" aria-hidden="true"></i>
+				<span class="mobile-menu-label mobile-menu-text">Menu</span>
+			</div>
+			<!-- IF S_REGISTERED_USER -->
+				<!-- IF S_DISPLAY_PM and PRIVATE_MESSAGE_COUNT > 0 -->
+					<div class="button-section">
+						<i class="icon rpg-icon rpg-scroll-unfurled" aria-hidden="true"></i>
+						<span class="mobile-menu-label">
+							{{ pm_count }}
+						</span>
+					</div>
+				<!-- ENDIF -->
+				<!-- IF S_NOTIFICATIONS_DISPLAY and NOTIFICATIONS_COUNT > 0 -->
+					<div class="button-section">
+						<i class="icon rpg-icon rpg-trumpet-flag" aria-hidden="true"></i>
+						<span class="mobile-menu-label">
+							{{ notify_count }}
+						</span>
+					</div>
+				<!-- ENDIF -->
+			<!-- ENDIF -->
 		</div>
 		<!-- INCLUDE custom/header_menu_01.html -->
 		<!-- INCLUDE custom/header_menu_02.html -->

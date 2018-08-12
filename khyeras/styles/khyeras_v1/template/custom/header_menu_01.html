@@ -137,20 +137,22 @@
 				<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
 			</div>
 			<div id="search-box" class="search-box search-header dropdown" role="search">
-				<div class="dropdown-contents">
-					<form action="{U_SEARCH}" method="get" id="search">
-						<fieldset>
-							<input name="keywords" id="keywords" type="search" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="inputbox search tiny" size="20" value="{SEARCH_WORDS}" placeholder="{L_SEARCH_MINI}" />
-							<button class="button button-search" type="submit" title="{L_SEARCH}">
-								<i class="icon fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">{L_SEARCH}</span>
-							</button>
-							<a href="{U_SEARCH}" title="{L_SEARCH_ADV}" class="button button-search-end">
-								<i class="icon fa-cog fa-fw" aria-hidden="true"></i><span class="sr-only">{L_SEARCH_ADV}</span>
-							</a>
-							{S_SEARCH_HIDDEN_FIELDS}
-						</fieldset>
-					</form>
-				</div>
+				<ul class="dropdown-contents">
+					<li>
+						<form action="{U_SEARCH}" method="get" id="search">
+							<fieldset>
+								<input name="keywords" id="keywords" type="search" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="inputbox search tiny" size="20" value="{SEARCH_WORDS}" placeholder="{L_SEARCH_MINI}" />
+								<button class="button button-search" type="submit" title="{L_SEARCH}">
+									<i class="icon fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">{L_SEARCH}</span>
+								</button>
+								<a href="{U_SEARCH}" title="{L_SEARCH_ADV}" class="button button-search-end">
+									<i class="icon fa-cog fa-fw" aria-hidden="true"></i><span class="sr-only">{L_SEARCH_ADV}</span>
+								</a>
+								{S_SEARCH_HIDDEN_FIELDS}
+							</fieldset>
+						</form>
+					</li>
+				</ul>
 			</div>
 		</li>
 	<!-- ENDIF -->

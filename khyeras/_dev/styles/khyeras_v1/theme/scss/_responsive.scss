@@ -51,8 +51,11 @@
 	}
 
 	// header.scss
-	.user-menu .user-info .user-name {
+	.user-menu .logged-in-info .user-name {
 		max-width: 115px;
+	}
+	.navbar.sticky .user-menu .logged-in-info .user-name {
+		max-width: 0;
 	}
 	.featured-content .flex-row .flex-column {
 		width: 25%;
@@ -272,43 +275,49 @@
 		.wrapper {
 			justify-content: center;
 			position: relative;
-			& > ul > li ul.dropdown-contents {
+		}
+		.menu {
+			.dropdown-container {
+				position: static;
+			}
+			.dropdown ul.dropdown-contents {
 				text-align: center;
-				margin: 0 0 -10px 0;
+				margin: 0 -10px -10px -10px;
 				& > li {
 					@include inline-block(top);
 					padding: 0 10px 10px 10px;
 					&.linked-account-title {
-						display: block;
 						margin-top: 0;
 						padding-top: 10px;
 					}
 				}
 			}
-			.user-menu {
-				margin: 10px -10px 0 -10px;
-				@include flex(full);
-				min-width: 1px;
-			}
-			.dropdown-container {
-				position: static;
-			}
-			.dropdown, .dropdown-container .search-box {
-				left: 0;
-				right: 0;
-			}
-			.dropdown, .dropdown.notification_list, .user-info .dropdown {
-				top: 73px;
-			}
 		}
-		&.sticky .wrapper {
-			.dropdown, .dropdown.notification_list, .user-info .dropdown {
+		.menu .dropdown, .menu .search-box, .user-menu .dropdown {
+			@include position($right: 0, $left: 0);
+		}
+		.menu .dropdown, .menu #notification_list, .user-menu .logged-in-info .dropdown {
+			top: 73px;
+		}
+		.user-menu .dropdown-container .dropdown-contents .linked-account-title,
+		.menu .search-box ul.dropdown-contents > li {
+			display: block;
+		}
+		.user-menu {
+			margin: 10px -10px 0 -10px;
+			@include flex(full);
+			min-width: 1px;
+		}
+		&.sticky {
+			.menu .dropdown, .menu #notification_list, .user-menu .logged-in-info .dropdown {
 				top: 80px;
 			}
 		}
 	}
-	.user-menu .user-info .user-name {
+	.user-menu .logged-in-info .user-name, .navbar.sticky .user-menu .logged-in-info .user-name {
 		max-width: none;
+	}
+	.user-menu .logged-in-info .user-name {
 		overflow: visible;
 		white-space: normal;
 	}
@@ -1133,10 +1142,7 @@
 		position: relative;
 		overflow: hidden;
 	}
-	.mobile-menu-button {
-		@include inline-block(middle);
-	}
-	#mobile-menu {
+	.mobile-menu-button, #mobile-menu {
 		display: block;
 	}
 	.headerbar .header-content {

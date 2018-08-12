@@ -6,9 +6,7 @@
 					<a href="{U_PRIVATEMSGS}" title="{L_PRIVATE_MESSAGES}">
 						<span>{L_PRIVATE_MESSAGES}</span>
 						<!-- IF PRIVATE_MESSAGE_COUNT > 0 -->
-							<span class="badge">
-								<!-- IF PRIVATE_MESSAGE_COUNT < 100 -->{PRIVATE_MESSAGE_COUNT}<!-- ELSE --><i class="icon fa-plus fa-fw" aria-hidden="true"></i><!-- ENDIF -->
-							</span>
+							{{ pm_count }}
 						<!-- ENDIF -->
 					</a>
 				</div>
@@ -20,20 +18,19 @@
 					<a id="notification_list_button" class="menu-trigger">
 						<span>{L_NOTIFICATIONS}</span>
 						<!-- IF NOTIFICATIONS_COUNT > 0 -->
-							<span class="badge">
-								<!-- IF NOTIFICATIONS_COUNT < 100 -->{NOTIFICATIONS_COUNT}<!-- ELSE --><i class="icon fa-plus fa-fw" aria-hidden="true"></i><!-- ENDIF -->
-							</span>
+							{{ notify_count }}
 						<!-- ENDIF -->
 					</a>
-					<!-- INCLUDE notification_dropdown.html -->
+					<i class="icon icon-lg fa-chevron-down menu-trigger mobile-menu-trigger"></i>
 				</div>
+				<!-- INCLUDE notification_dropdown.html -->
 			</li>
 		<!-- ENDIF -->
-		<li class="dropdown-container user-info">
+		<li class="dropdown-container logged-in-info">
 			<div class="menu-label">
 				<a class="menu-trigger" title="Display Profile, Setting, and Logout Links" role="menuitem">
-					<!-- {CURRENT_USERNAME_SIMPLE} -->
-					<span class="user-name">Lorem ipsum dolor sit amet, consectetur adipisicin</span>
+					<!-- Lorem ipsum dolor sit amet, consectetur adipisicin -->
+					<span class="user-name">{CURRENT_USERNAME_SIMPLE}</span>
 					<div class="user-avatar">
 						<div class="image-wrap">
 							<!-- IF CURRENT_USER_AVATAR -->
@@ -44,6 +41,7 @@
 						</div>
 					</div>
 				</a>
+				<i class="icon icon-lg fa-chevron-down menu-trigger mobile-menu-trigger"></i>
 			</div>
 			<div class="dropdown">
 				<ul class="dropdown-contents" role="menu">

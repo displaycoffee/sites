@@ -252,9 +252,10 @@ function initializeDropdownMenu( menuTrigger, menuLinks ) {
 
 		// Toggle casses on li containers
 		if ( parentContainer.hasClass( visible ) ) {
-			toggleVisibility( parentContainer );
+			menuLinksSelector.removeClass( notVisible );
+			parentContainer.removeClass( visible );
 		} else {
-			toggleVisibility( menuLinksSelector );
+			menuLinksSelector.removeClass( visible ).addClass( notVisible );
 			parentContainer.removeClass( notVisible ).addClass( visible );
 		}
 	});
@@ -263,13 +264,9 @@ function initializeDropdownMenu( menuTrigger, menuLinks ) {
 	if ( menuTrigger && menuTrigger.length ) {
 		jQuery( document ).off().on( 'click', function( event ) {
 			if ( !jQuery( event.target ).closest( menuLinks ).length ) {
-				toggleVisibility( menuLinksSelector );
+				menuLinksSelector.removeClass( visible ).removeClass( notVisible );
 			}
 		});
-	}
-
-	function toggleVisibility( selector ) {
-		selector.removeClass( visible ).addClass( notVisible );
 	}
 }
 
@@ -319,24 +316,6 @@ function initializeMobileMenu( options ) {
 				// Move menu to menu container
 				menu.detach().appendTo( mobileContent );
 
-				// In that mobile menu container, look for first level list and its items
-				menu.children( '.dropdown-container' ).each( function() {
-					jQuery( '<i class="icon fa-chevron-right slide-submenu"></i>' ).appendTo( this );
-				});
-
-				// Add/remove classes to slide second level menu open
-				var mainMenuLinks = jQuery( options.mobileContent + ' > ul > li' );
-				mainMenuLinks.find( '.slide-submenu' ).off().on( 'click', function() {
-					var parentElement = jQuery( this ).parent();
-					if ( parentElement.hasClass( 'dropdown-open' ) ) {
-						mainMenuLinks.removeClass( 'dropdown-close' );
-						parentElement.removeClass( 'dropdown-open' );
-					} else {
-						mainMenuLinks.addClass( 'dropdown-close' );
-						parentElement.removeClass( 'dropdown-close' ).addClass( 'dropdown-open' );
-					}
-				});
-
 				// After everything has been done, set mobile to true so it's not run again on resize
 				mobileOnce = true;
 			}
@@ -345,10 +324,9 @@ function initializeMobileMenu( options ) {
 			if ( mobileOnce ) {
 				// Remove close button, replace menu, remove slide menu toggle, and remove any extra slide-open class
 				menu.detach().appendTo( menuContainer );
-				jQuery( '.slide-submenu' ).remove();
-				jQuery( 'li' ).removeClass( 'dropdown-close' ).removeClass( 'dropdown-open' );
 				jQuery( 'body, html' ).removeClass( 'mobile-open' );
 				mobileMenu.removeClass( 'show' );
+
 				// Then set mobile to false again so we can start over
 				mobileOnce = false;
 			}
