@@ -29,17 +29,8 @@
 		<li class="dropdown-container logged-in-info">
 			<div class="menu-label">
 				<a class="menu-trigger" title="Display Profile, Setting, and Logout Links" role="menuitem">
-					<!-- Lorem ipsum dolor sit amet, consectetur adipisicin -->
 					<span class="user-name">{CURRENT_USERNAME_SIMPLE}</span>
-					<div class="user-avatar">
-						<div class="image-wrap">
-							<!-- IF CURRENT_USER_AVATAR -->
-								{CURRENT_USER_AVATAR}
-							<!-- ELSE -->
-								<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
-							<!-- ENDIF -->
-						</div>
-					</div>
+					{{ display_avatar }}
 				</a>
 				<i class="icon icon-lg fa-chevron-down menu-trigger mobile-menu-trigger"></i>
 			</div>
@@ -83,11 +74,7 @@
 				<span class="user-name">
 					{L_GUEST}, why don't you <a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a><!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) --> or <a href="{U_REGISTER}" title="{L_REGISTER}">{L_REGISTER}</a><!-- ENDIF -->?
 				</span>
-				<div class="user-avatar">
-					<div class="image-wrap">
-						<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
-					</div>
-				</div>
+				{{ display_avatar }}
 			</div>
 		</li>
 	<!-- ENDIF -->

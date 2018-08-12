@@ -85,17 +85,17 @@
 	</li>
 	<li class="dropdown-container">
 		<div class="menu-label">
-			<!-- DEFINE $COMMUNITY_HEADER -->
+			{% set community_header %}
 				<a title="Community" role="menuitem"><span>Community</span></a>
-			<!-- ENDDEFINE -->
+			{% endset %}
 			<!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
 				<!-- IF S_DISPLAY_MEMBERLIST -->
 					<a href="{U_MEMBERLIST}" title="{L_MEMBERLIST}" role="menuitem"><span>{L_MEMBERLIST}</span></a>
 				<!-- ELSE -->
-						{$COMMUNITY_HEADER}
+						{{ community_header }}
 				<!-- ENDIF -->
 			<!-- ELSE -->
-				{$COMMUNITY_HEADER}
+				{{ community_header }}
 			<!-- ENDIF -->
 			<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
 		</div>

@@ -79,6 +79,40 @@
 
 <body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS} section-{{ bodyname }}" data-class="section {{ bodyname }} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
 
+	{% set pm_count %}
+		{% if PRIVATE_MESSAGE_COUNT < 100 %}
+			<span class="badge">{{ PRIVATE_MESSAGE_COUNT }}</span>
+		{% else %}
+			<span class="badge badge-plus">+</span>
+		{% endif %}
+	{% endset %}
+
+	{% set notify_count %}
+		{% if NOTIFICATIONS_COUNT < 100 %}
+			<span class="badge">{{ NOTIFICATIONS_COUNT }}</span>
+		{% else %}
+			<span class="badge badge-plus">+</span>
+		{% endif %}
+	{% endset %}
+
+	{% set display_avatar %}
+		<div class="user-avatar">
+			<div class="image-wrap">
+				<!-- IF CURRENT_USER_AVATAR -->
+					{CURRENT_USER_AVATAR}
+				<!-- ELSE -->
+					<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
+				<!-- ENDIF -->
+			</div>
+		</div>
+	{% endset %}
+
+	{% set display_time %}
+		<p class="date-and-time"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF -->.<!-- IF S_USER_LOGGED_IN --> {CURRENT_TIME}.<!-- ENDIF --></p>
+	{% endset %}
+
+	{% set microdata = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' %}
+
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
 			You are using an <strong>outdated</strong> browser. Please <a href="//browsehappy.com/" target="_blank"><strong>upgrade your browser</strong></a> to improve your experience.
@@ -125,8 +159,6 @@
 			<!-- EVENT overall_header_headerbar_after -->
 		</header>
 
-		<!-- INCLUDE custom/header_define.html -->
-
 		<!-- INCLUDE custom/header_welcome.html -->
 
 		<!-- IF SCRIPT_NAME == 'index' -->
@@ -137,10 +169,9 @@
 			<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
 				<div class="wrapper">
 					<ul class="breadcrumbs">
-						<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
 						<!-- EVENT overall_header_breadcrumbs_before -->
 						<!-- IF U_SITE_HOME -->
-							<li class="crumb home" {$MICRODATA}>
+							<li class="crumb home" {{ microdata }}>
 								<a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home">
 									<i class="icon rpg-icon rpg-castle" aria-hidden="true"></i>
 									<span itemprop="title">{L_SITE_HOME}</span>
@@ -149,7 +180,7 @@
 						<!-- ENDIF -->
 						<!-- EVENT overall_header_breadcrumb_prepend -->
 							<!-- IF not U_SITE_HOME -->
-								<li class="crumb home" {$MICRODATA}>
+								<li class="crumb home" {{ microdata }}>
 									<a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index">
 										<i class="icon rpg-icon rpg-castle"></i>
 										<span itemprop="title">{L_INDEX}</span>
@@ -163,7 +194,7 @@
 								{% set breadcrumb_url = navlinks.U_VIEW_FORUM | replace({'app.php/': ''}) %}
 							{% endif %}
 							<!-- EVENT overall_header_navlink_prepend -->
-							<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->>
+							<li class="crumb" {{ microdata }}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->>
 								<i class="icon fa-chevron-right fa-fw"></i>
 								<a href="{{ breadcrumb_url }}" itemprop="url">
 									<span itemprop="title">{navlinks.FORUM_NAME}</span>

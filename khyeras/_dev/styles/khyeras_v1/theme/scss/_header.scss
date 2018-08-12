@@ -142,7 +142,10 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		}
 		.dropdown {
 			top: 34px;
+			min-width: 200px;
 			.dropdown-contents {
+				max-height: none;
+				overflow: visible;
 				padding: 0;
 				font-size: rem($global-font-size);
 			}
@@ -219,7 +222,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 	.guest-info a {
 		color: $color-06;
 		&:hover {
-			color: $color-01;
+			color: $color-07;
 		}
 	}
 	.dropdown-container .dropdown-contents .linked-account-title {
@@ -227,14 +230,14 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		padding: 10px 0 3px 0;
 		border-top: 1px dashed $color-04;
 	}
-	.linked-account {
-		.image-wrap, .username-coloured {
-			@include inline-block(middle);
-		}
+	.linked-account a {
+		position: relative;
+		padding: 0 0 0 30px;
+		display: inline-block;
 		.image-wrap {
+			@include position($type: absolute, $top: 0, $left: 0);
 			@include sizing(20px, 20px);
 			border-width: 1px;
-			margin: 0 5px 0 0;
 		}
 	}
 }
@@ -265,10 +268,6 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 	}
 	.footer {
 		text-align: center;
-	}
-	.dropdown-contents {
-		max-height: none;
-		overflow: visible;
 	}
 	ul {
 		margin: 0;
@@ -317,16 +316,14 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 ========================================================================== */
 
 .page-welcome {
-	font-size: rem(13px);
-	.site-callouts {
+	.site-details {
 		order: -1;
-		.introduction:first-line {
+		.introduction:first-line, .year {
 			@include spectral-common;
-			font-size: rem(17px);
-			line-height: 1.3;
+			font-size: rem(20px);
 		}
-		.flex-row .flex-column ul {
-			margin: 0 0 20px 14px;
+		.introduction:first-line {
+			line-height: 1.3;
 		}
 	}
 	.user-profile {
@@ -342,7 +339,6 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 			margin: 0 0 10px 0
 		}
 		p {
-			font-size: rem($global-font-size);
 			&:last-child, &:nth-last-child(2) {
 				margin-bottom: 20px;
 			}
@@ -352,33 +348,34 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 			font-variant: normal;
 			font-size: rem(40px);
 		}
-		.guest-register {
+		.guest-name {
 			color: $color-06;
 			&:hover {
 				color: $color-07;
 			}
 		}
 	}
-	.user-buttons {
-		text-align: center;
-		@include flex-flow(row wrap);
-		margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
-		& > li {
-			@include flex(adapt);
-			&.toggle {
-				display: none;
-				a {
-					cursor: pointer;
-				}
-			}
-			& > a {
-				display: block;
-				margin: 0 $ffs-half $ffs $ffs-half;
-				padding-left: 10px;
-				padding-right: 10px;
-				min-width: 80px;
-				font-size: rem($global-font-size);
-			}
+	.user-information {
+		&:before, &:after {
+			content: '';
+			display: block;
+			width: 100%;
+			border-top-style: dashed;
+			border-top-color: $color-04;
+			border-top-width: 0;
+		}
+	}
+	.site-links {
+		font-size: rem(13px);
+		ul {
+			margin: 0 0 20px 14px;
+		}
+	}
+	.toggle-buttons {
+		display: none;
+		.button {
+			display: block;
+			cursor: pointer;
 		}
 	}
 }
@@ -597,6 +594,9 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 			.user-name {
 				max-width: 234px;
 			}
+		}
+		.linked-account a .image-wrap {
+			top: 2px;
 		}
 	}
 	#notification_list {

@@ -328,15 +328,13 @@
 	.page-welcome {
 		.user-profile {
 			order: -2;
-			p:nth-last-child(2) {
-				margin-bottom: 10px;
-			}
-			.date-and-time {
-				display: block;
+			.user-avatar {
+				max-width: 125px;
 			}
 		}
-		.user-information .date-and-time {
-			display: none;
+		.user-information:before {
+			border-top-width: 1px;
+			margin: 0 0 20px 0;
 		}
 	}
 }
@@ -1174,62 +1172,50 @@
 			}
 		}
 	}
-	.page-welcome {
-		.user-buttons {
-			position: relative;
-			& > li {
-				&.dropdown-container {
-					position: static;
-				}
-				&.toggle {
-					display: block;
-				}
-				& > a {
-					padding-top: 5px;
-					padding-bottom: 5px;
-				}
-			}
-		}
-		.user-profile {
-			.user-avatar {
-				max-width: 125px;
-			}
-			h5 {
-				font-size: rem(35px);
-			}
-		}
-		.user-information > p:first-child {
-			text-align: center;
-		}
-		.site-callouts {
-			.introduction, .site-links {
-				display: none;
-			}
-			.site-links.toggle-show {
-				display: block;
-			}
-			.flex-row {
-				display: flex;
-				.flex-column {
-					width: 50%;
-				}
-			}
-		}
-	}
-	.featured-content {
+	.page-welcome .site-links, .featured-content {
 		display: none;
-		&.toggle-show {
-			display: block;
-		}
+	}
+	.page-welcome .site-links.toggle-show, .page-welcome .toggle-buttons, .featured-content.toggle-show {
+		display: block;
+	}
+	.page-welcome .site-links, .page-welcome .toggle-buttons, .featured-content {
 		.flex-row {
 			display: flex;
 			.flex-column {
 				width: 50%;
-				.image-wrap {
-					padding-bottom: 30%;
-				}
 			}
 		}
+	}
+	.page-welcome {
+		font-size: rem(13px);
+		.toggle-buttons, .user-information:after {
+			margin: 0 0 20px 0;
+		}
+		.site-details .introduction:first-line, .site-details .year, .site-links h5 {
+			font-size: rem(18px);
+		}
+		.user-profile .welcome-header {
+			font-size: rem(35px);
+		}
+		.user-information {
+			text-align: center;
+			&:before {
+				border-top-width: 0;
+				margin: 0;
+			}
+			&:after {
+				border-top-width: 1px;
+			}
+		}
+		.site-links {
+			text-align: left;
+		}
+		.toggle-buttons {
+			font-size: rem(14px);
+		}
+	}
+	.featured-content .flex-row .flex-column .image-wrap {
+		padding-bottom: 30%;
 	}
 }
 
@@ -1891,7 +1877,7 @@
 	}
 
 	// header.scss
-	.page-welcome .site-callouts, .featured-content {
+	.page-welcome .site-links, .featured-content {
 		.flex-row {
 			display: block;
 			.flex-column {
@@ -1899,11 +1885,11 @@
 			}
 		}
 	}
-	.featured-content .flex-row {
+	.page-welcome .user-profile .user-avatar {
+		max-width: 100px;
+	}
+	.featured-content {
 		margin-bottom: 30px;
-		.flex-column:last-child {
-			margin-bottom: 0;
-		}
 	}
 }
 

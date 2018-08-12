@@ -40,7 +40,7 @@ jQuery( document ).ready( function( $ ) {
 	formatDisplayActions();
 	hidePMPostBox();
 	addCPWrapper();
-	toggleMobileContent( '.toggle-links a', '#page-welcome .site-callouts .site-links' );
+	toggleMobileContent( '.toggle-links a', '#page-welcome .site-links' );
 	toggleMobileContent( '.toggle-featured a', '#featured-content' );
 	toggleMemberDisplay();
 	toggleMapDisplay();

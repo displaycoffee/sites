@@ -7,8 +7,8 @@
 <form method="post" action="{S_PROFILE_ACTION}" id="viewprofile">
 
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-	<!-- DEFINE $CHARACTER_CLASS = 'character-panel tab-panel show-panel' -->
-	<!-- DEFINE $WRITER_CLASS = 'writer-panel tab-panel hide-panel' -->
+	{% set character_class = 'character-panel tab-panel show-panel' %}
+	{% set writer_class = 'writer-panel tab-panel hide-panel' %}
 	<div id="tabs" class="tabs profile-tabs sub-panels" role="tablist">
 		<ul>
 			<li class="tab activetab">
@@ -66,7 +66,7 @@
 		</dl>
 
 		<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-			<dl class="left-box details profile-details {$CHARACTER_CLASS}">
+			<dl class="left-box details profile-details {{ character_class }}">
 				<dd class="character-card details-full">
 					<div class="level">
 						<div class="level-wrap">
@@ -118,7 +118,7 @@
 			</dl>
 		<!-- ENDIF -->
 
-		<dl class="left-box details profile-details<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' --> {$WRITER_CLASS}<!-- ENDIF -->">
+		<dl class="left-box details profile-details<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' --> {{ writer_class }}<!-- ENDIF -->">
 			<!-- EVENT memberlist_view_zebra_before -->
 			<!-- IF S_USER_LOGGED_IN and S_ZEBRA -->
 				<dt>Alliance{L_COLON}</dt>
@@ -176,7 +176,7 @@
 </div>
 
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-	<div class="{$CHARACTER_CLASS}" role="tabpanel">
+	<div class="{{ character_class }}" role="tabpanel">
 		<div class="panel bg2">
 			<div class="inner">
 				<div class="column1">
@@ -241,7 +241,7 @@
 
 <!-- EVENT memberlist_view_contact_before -->
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-	<div class="{$WRITER_CLASS}" role="tabpanel">
+	<div class="{{ writer_class }}" role="tabpanel">
 <!-- ENDIF -->
 		<!-- IF S_PROFILE_WRITING_PREFS -->
 			<div class="panel bg2">
