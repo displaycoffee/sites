@@ -34,11 +34,14 @@ h1, h2, h3, h4, h5, h6, p, figure, pre, code, dl {
 ul, ol {
 	padding: 0;
 	margin: 0 0 20px 40px;
-	&.list-mar-20 li {
+	&.list-mar-20 > li {
 		margin: 0 0 20px 0;
 		&:last-child {
 			margin-bottom: 0;
 		}
+	}
+	&.lower-alpha {
+		list-style-type: lower-alpha;	
 	}
 }
 

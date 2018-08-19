@@ -248,6 +248,14 @@ dl.faq + .top {
 	padding: 20px 0 0 0;
 }
 
+.content-image {
+	margin: 20px 0 0 0;
+	img {
+		padding: 5px;
+		border: 1px solid $color-04;
+	}
+}
+
 .key {
 	list-style: none;
 	margin-left: 0;

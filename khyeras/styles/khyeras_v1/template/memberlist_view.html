@@ -88,6 +88,10 @@
 					<dt>{PROFILE_C_CLASS_OPTS_NAME}{L_COLON}</dt>
 					<dd>{{ PROFILE_C_CLASS_OPTS_VALUE|replace({', ': ' and '}) }}</dd>
 				<!-- ENDIF -->
+				<!-- IF S_PROFILE_PRONUNCIATION -->
+					<dt>{PROFILE_PRONUNCIATION_NAME}{L_COLON}</dt>
+					<dd>{PROFILE_PRONUNCIATION_VALUE}</dd>
+				<!-- ENDIF -->
 				<!-- IF S_PROFILE_C_AGE -->
 					<dt>{PROFILE_C_AGE_NAME}{L_COLON}</dt>
 					<dd>{PROFILE_C_AGE_VALUE}</dd>
@@ -159,7 +163,7 @@
 			<!-- ENDIF -->
 			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
 			<!-- BEGIN custom_fields -->
-				<!-- IF custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_location' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_interests' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_occupation' or custom_fields.PROFILE_FIELD_IDENT eq 'pronouns' or custom_fields.PROFILE_FIELD_IDENT eq 'avatar_credit' or custom_fields.PROFILE_FIELD_IDENT eq 'sig_credit' -->
+				<!-- IF custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_location' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_interests' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_occupation' or (custom_fields.PROFILE_FIELD_IDENT eq 'pronunciation' and PROFILE_ACCOUNT_TYPE_VALUE == 'Writer') or custom_fields.PROFILE_FIELD_IDENT eq 'pronouns' or custom_fields.PROFILE_FIELD_IDENT eq 'avatar_credit' or custom_fields.PROFILE_FIELD_IDENT eq 'sig_credit' -->
 					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
 					<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
 				<!-- ENDIF -->
