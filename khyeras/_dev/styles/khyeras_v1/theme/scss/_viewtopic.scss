@@ -135,17 +135,6 @@
 				font-size: rem(13px);
 			}
 		}
-		.codebox {
-			& > p, pre {
-				margin: 0;
-			}
-			& > p {
-				margin: 0;
-				padding: 10px 20px;
-				background: $color-04;
-				color: $color-01;
-			}
-		}
 		.bbcode-center {
 			text-align: center;
 			img {

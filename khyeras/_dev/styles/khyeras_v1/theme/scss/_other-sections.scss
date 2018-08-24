@@ -372,6 +372,14 @@ dl.faq + .top {
 	}
 }
 
+.link-banners {
+	margin: 0 -2.5px 15px -2.5px;
+	img {
+		@include inline-block(middle);
+		margin: 0 2.5px 5px 2.5px;
+	}
+}
+
 /* Pages - Excerpts
 ========================================================================== */
 
