@@ -137,8 +137,12 @@
 		}
 		.bbcode-center {
 			text-align: center;
+			display: block;
 			img {
 				margin: 0 auto;
+			}
+			& + br + br {
+				display: none;
 			}
 		}
 	}

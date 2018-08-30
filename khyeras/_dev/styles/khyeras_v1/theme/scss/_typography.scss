@@ -107,13 +107,10 @@ a[class*='username']:hover, a:hover span[class*='username'] {
 /* Headers
 ========================================================================== */
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .header-title {
 	@include spectral-common;
 	font-weight: normal;
 	line-height: 1.1;
-}
-
-h1, h2, h3, h4, h5, h6 {
 	a {
 		color: $color-01;
 		&:hover {
@@ -122,27 +119,27 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-h1 {
+h1, .h1 {
 	// Forum name
 	font-size: rem(34px);
 }
 
-h2 {
+h2, .h2 {
 	// Forum header titles
 	font-size: rem(30px);
 }
 
-h3 {
+h3, .h3 {
 	// Sub-headers (also used as post headers, but defined later)
 	font-size: rem(26px);
 }
 
-h4 {
+h4, .h4 {
 	// Forum and topic list titles
 	font-size: rem(22px);
 }
 
-h5, h6 {
+h5, h6, .h5, .h6 {
 	font-size: rem(20px);
 }
 
