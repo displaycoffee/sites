@@ -15,6 +15,7 @@
 	#format-buttons {
 		margin: 0 0 $ffs-minus 0;
 		.button, select {
+			vertical-align: top;
 			margin: 0 0 $ffs 0;
 		}
 		select {
@@ -22,6 +23,20 @@
 			@include small-form-ele;
 			font-size: rem(13px);
 			min-height: 0;
+		}
+		.bbcode-s, .bbcode-center {
+			font-size: 0;
+			&:before {
+				content: '';
+				@include icon-font($lh: false);
+				line-height: 13px;
+			}
+		}
+		.bbcode-s:before {
+			content: unicode($icon-strikethrough);
+		}
+		.bbcode-center:before {
+			content: unicode($icon-align-center);
 		}
 	}
 	#smiley-box {
