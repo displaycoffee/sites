@@ -1,5 +1,12 @@
 <!-- INCLUDE overall_header.html -->
 
+{% macro field_lists(name, value) %}
+	{% if value %}
+		<dt>{{ name }}{L_COLON}</dt>
+		<dd>{{ value }}</dd>
+	{% endif %}
+{% endmacro %}
+
 <h2 class="memberlist-title">{PAGE_TITLE}</h2>
 
 <form method="post" action="{S_PROFILE_ACTION}" id="viewprofile">
@@ -76,50 +83,33 @@
 						<div class="stats"><!-- INCLUDE custom/stat_map.html --></div>
 					<!-- ENDIF -->
 				</dd>
-				<!-- IF S_PROFILE_C_EXPERIENCE -->
-					<dt>{PROFILE_C_EXPERIENCE_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_EXPERIENCE_VALUE}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_RACE_OPTS -->
-					<dt>{PROFILE_C_RACE_OPTS_NAME}{L_COLON}</dt>
-					<dd>{{ PROFILE_C_RACE_OPTS_VALUE|replace({', ': ' and '}) }}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_CLASS_OPTS -->
-					<dt>{PROFILE_C_CLASS_OPTS_NAME}{L_COLON}</dt>
-					<dd>{{ PROFILE_C_CLASS_OPTS_VALUE|replace({', ': ' and '}) }}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_PRONUNCIATION -->
-					<dt>{PROFILE_PRONUNCIATION_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_PRONUNCIATION_VALUE}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_AGE -->
-					<dt>{PROFILE_C_AGE_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_AGE_VALUE}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_GENDER -->
-					<dt>{PROFILE_C_GENDER_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_GENDER_VALUE}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_ORIGIN -->
-					<dt>{PROFILE_C_ORIGIN_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_ORIGIN_VALUE}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_RESIDENCE -->
-					<dt>{PROFILE_C_RESIDENCE_NAME}{L_COLON}</dt>
-					<dd>{PROFILE_C_RESIDENCE_VALUE}</dd>
-				<!-- ENDIF -->
-				<!-- IF S_PROFILE_C_RELIGION_TYPE -->
-					<dt>Religion{L_COLON}</dt>
-					<dd>
-						{PROFILE_C_RELIGION_TYPE_VALUE}
-						<!-- IF S_PROFILE_C_RELIGION_OPTS -->
-							 - {PROFILE_C_RELIGION_OPTS_VALUE}
-						<!-- ENDIF -->
-					</dd>
-				<!-- ENDIF -->
+				{% if S_PROFILE_C_RELIGION_TYPE %}
+					{% set religion_value = PROFILE_C_RELIGION_TYPE_VALUE %}
+					{% if S_PROFILE_C_RELIGION_OPTS %}
+						{% set religion_value = religion_value ~ ' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE %}
+					{% endif %}
+				{% endif %}
+				{% if PROFILE_C_EXPERIENCE_VALUE %}
+					{% set exp_value = PROFILE_C_EXPERIENCE_VALUE %}
+				{% else %}
+					{% set exp_value = '&#48;' %}
+				{% endif %}
+				{% set show_character_fields = {
+					'Experience'  				 : exp_value,
+					(PROFILE_C_RACE_OPTS_NAME)   : PROFILE_C_RACE_OPTS_VALUE|replace({', ': ' and '}),
+					(PROFILE_C_CLASS_OPTS_NAME)  : PROFILE_C_CLASS_OPTS_VALUE|replace({', ': ' and '}),
+					(PROFILE_C_AGE_NAME)         : PROFILE_C_AGE_VALUE,
+					(PROFILE_C_GENDER_NAME)      : PROFILE_C_GENDER_VALUE,
+					(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE,
+					(PROFILE_C_ORIGIN_NAME)      : PROFILE_C_ORIGIN_VALUE,
+					(PROFILE_C_RESIDENCE_NAME)   : PROFILE_C_RESIDENCE_VALUE,
+					'Religion' 					 : religion_value,
+				} %}
+				{% for name, value in show_character_fields %}
+					{{ _self.field_lists(name, value) }}
+				{% endfor %}
 			</dl>
 		<!-- ENDIF -->
-
 		<dl class="left-box details profile-details<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' --> {{ writer_class }}<!-- ENDIF -->">
 			<!-- EVENT memberlist_view_zebra_before -->
 			<!-- IF S_USER_LOGGED_IN and S_ZEBRA -->
@@ -157,17 +147,23 @@
 				<dt>{L_USER_IS_INACTIVE}{L_COLON}</dt>
 				<dd>{USER_INACTIVE_REASON}</dd>
 			<!-- ENDIF -->
-			<!-- IF AGE !== '' -->
-				<dt><!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->Writer <!-- ENDIF -->{L_AGE}{L_COLON}</dt>
-				<dd>{AGE}</dd>
-			<!-- ENDIF -->
 			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
-			<!-- BEGIN custom_fields -->
-				<!-- IF custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_location' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_interests' or custom_fields.PROFILE_FIELD_IDENT eq 'phpbb_occupation' or (custom_fields.PROFILE_FIELD_IDENT eq 'pronunciation' and PROFILE_ACCOUNT_TYPE_VALUE == 'Writer') or custom_fields.PROFILE_FIELD_IDENT eq 'pronouns' or custom_fields.PROFILE_FIELD_IDENT eq 'avatar_credit' or custom_fields.PROFILE_FIELD_IDENT eq 'sig_credit' -->
-					<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
-					<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
-				<!-- ENDIF -->
-			<!-- END custom_fields -->
+			{% if PROFILE_ACCOUNT_TYPE_VALUE == 'Writer' %}
+				{% set pronunciation_value = PROFILE_PRONUNCIATION_VALUE %}
+			{% endif %}
+			{% set show_writer_fields = {
+				'Age' 							: AGE,
+				(PROFILE_GENDER_NAME) 			: PROFILE_GENDER_VALUE,
+				(PROFILE_PRONUNCIATION_NAME)    : pronunciation_value,
+				(PROFILE_PHPBB_LOCATION_NAME)   : PROFILE_PHPBB_LOCATION_VALUE,
+				(PROFILE_PHPBB_INTERESTS_NAME)  : PROFILE_PHPBB_INTERESTS_VALUE,
+				(PROFILE_PHPBB_OCCUPATION_NAME) : PROFILE_PHPBB_OCCUPATION_VALUE,
+				(PROFILE_AVATAR_CREDIT_NAME)    : PROFILE_AVATAR_CREDIT_VALUE,
+				(PROFILE_SIG_CREDIT_NAME)       : PROFILE_SIG_CREDIT_VALUE,
+			} %}
+			{% for name, value in show_writer_fields %}
+				{{ _self.field_lists(name, value) }}
+			{% endfor %}
 			<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
 			<!-- IF S_GROUP_OPTIONS -->
 				<dt>{L_USERGROUPS}{L_COLON}</dt>
@@ -184,26 +180,16 @@
 				<div class="column1">
 					<h3>Physical Features</h3>
 					<dl class="details">
-						<!-- IF S_PROFILE_C_COMPLEXION -->
-							<dt>{PROFILE_C_COMPLEXION_NAME}{L_COLON}</dt>
-							<dd>{PROFILE_C_COMPLEXION_VALUE}</dd>
-						<!-- ENDIF -->
-						<!-- IF S_PROFILE_C_HAIR -->
-							<dt>{PROFILE_C_HAIR_NAME}{L_COLON}</dt>
-							<dd>{PROFILE_C_HAIR_VALUE}</dd>
-						<!-- ENDIF -->
-						<!-- IF S_PROFILE_C_EYES -->
-							<dt>{PROFILE_C_EYES_NAME}{L_COLON}</dt>
-							<dd>{PROFILE_C_EYES_VALUE}</dd>
-						<!-- ENDIF -->
-						<!-- IF S_PROFILE_C_HEIGHT -->
-							<dt>{PROFILE_C_HEIGHT_NAME}{L_COLON}</dt>
-							<dd>{PROFILE_C_HEIGHT_VALUE}</dd>
-						<!-- ENDIF -->
-						<!-- IF S_PROFILE_C_WEIGHT -->
-							<dt>{PROFILE_C_WEIGHT_NAME}{L_COLON}</dt>
-							<dd>{PROFILE_C_WEIGHT_VALUE}</dd>
-						<!-- ENDIF -->
+						{% set show_feature_fields = {
+							(PROFILE_C_COMPLEXION_NAME) : PROFILE_C_COMPLEXION_VALUE,
+							(PROFILE_C_HAIR_NAME)       : PROFILE_C_HAIR_VALUE,
+							(PROFILE_C_EYES_NAME)   	: PROFILE_C_EYES_VALUE,
+							(PROFILE_C_HEIGHT_NAME)  	: PROFILE_C_HEIGHT_VALUE,
+							(PROFILE_C_WEIGHT_NAME) 	: PROFILE_C_WEIGHT_VALUE
+						} %}
+						{% for name, value in show_feature_fields %}
+							{{ _self.field_lists(name, value) }}
+						{% endfor %}
 					</dl>
 					<p class="other-features"><strong>Other Features{L_COLON}</strong></p>
 					<!-- IF S_PROFILE_C_FEATURES -->
