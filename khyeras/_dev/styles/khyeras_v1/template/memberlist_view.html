@@ -69,7 +69,6 @@
 				</dd>
 			<!-- ENDIF -->
 		</dl>
-
 		<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 			<dl class="left-box details profile-details {{ character_class }}">
 				<dd class="character-card details-full">
@@ -83,19 +82,10 @@
 						<div class="stats"><!-- INCLUDE custom/stat_map.html --></div>
 					<!-- ENDIF -->
 				</dd>
-				{% if S_PROFILE_C_RELIGION_TYPE %}
-					{% set religion_value = PROFILE_C_RELIGION_TYPE_VALUE %}
-					{% if S_PROFILE_C_RELIGION_OPTS %}
-						{% set religion_value = religion_value ~ ' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE %}
-					{% endif %}
-				{% endif %}
-				{% if PROFILE_C_EXPERIENCE_VALUE %}
-					{% set exp_value = PROFILE_C_EXPERIENCE_VALUE %}
-				{% else %}
-					{% set exp_value = '&#48;' %}
-				{% endif %}
-				{% set show_character_fields = {
-					'Experience'  				 : exp_value,
+				{% set religion_value = (PROFILE_C_RELIGION_TYPE_VALUE) ~ (S_PROFILE_C_RELIGION_OPTS ? (' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE) : '') %}
+
+				{% set character_fields = {
+					'Experience'  				 : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
 					(PROFILE_C_RACE_OPTS_NAME)   : PROFILE_C_RACE_OPTS_VALUE|replace({', ': ' and '}),
 					(PROFILE_C_CLASS_OPTS_NAME)  : PROFILE_C_CLASS_OPTS_VALUE|replace({', ': ' and '}),
 					(PROFILE_C_AGE_NAME)         : PROFILE_C_AGE_VALUE,
@@ -105,7 +95,8 @@
 					(PROFILE_C_RESIDENCE_NAME)   : PROFILE_C_RESIDENCE_VALUE,
 					'Religion' 					 : religion_value,
 				} %}
-				{% for name, value in show_character_fields %}
+
+				{% for name, value in character_fields %}
 					{{ _self.field_lists(name, value) }}
 				{% endfor %}
 			</dl>
@@ -148,20 +139,27 @@
 				<dd>{USER_INACTIVE_REASON}</dd>
 			<!-- ENDIF -->
 			<!-- EVENT memberlist_view_non_contact_custom_fields_before -->
-			{% if PROFILE_ACCOUNT_TYPE_VALUE == 'Writer' %}
-				{% set pronunciation_value = PROFILE_PRONUNCIATION_VALUE %}
+			{% if S_PROFILE_C_WRITER_NAME %}
+				{% set writer_value %}
+					For more information, see <a href="{ROOT_PATH}{PROFILE_C_WRITER_NAME_CONTACT}">{PROFILE_C_WRITER_NAME_VALUE}</a>.
+				{% endset %}
+			{% else %}
+				{% set writer_value = '' %}
 			{% endif %}
-			{% set show_writer_fields = {
-				'Age' 							: AGE,
-				(PROFILE_GENDER_NAME) 			: PROFILE_GENDER_VALUE,
-				(PROFILE_PRONUNCIATION_NAME)    : pronunciation_value,
-				(PROFILE_PHPBB_LOCATION_NAME)   : PROFILE_PHPBB_LOCATION_VALUE,
-				(PROFILE_PHPBB_INTERESTS_NAME)  : PROFILE_PHPBB_INTERESTS_VALUE,
-				(PROFILE_PHPBB_OCCUPATION_NAME) : PROFILE_PHPBB_OCCUPATION_VALUE,
+
+			{% set writer_fields = {
+				'Age' 							: (S_PROFILE_C_WRITER_NAME ? '' : AGE),
+				(PROFILE_GENDER_NAME) 			: (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_GENDER_VALUE),
+				(PROFILE_PRONUNCIATION_NAME)    : (PROFILE_ACCOUNT_TYPE_VALUE == 'Writer' ? PROFILE_PRONUNCIATION_VALUE : ''),
+				(PROFILE_PHPBB_LOCATION_NAME)   : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_LOCATION_VALUE),
+				(PROFILE_PHPBB_INTERESTS_NAME)  : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_INTERESTS_VALUE),
+				(PROFILE_PHPBB_OCCUPATION_NAME) : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_OCCUPATION_VALUE),
+				(PROFILE_C_WRITER_NAME_NAME)    : writer_value,
 				(PROFILE_AVATAR_CREDIT_NAME)    : PROFILE_AVATAR_CREDIT_VALUE,
-				(PROFILE_SIG_CREDIT_NAME)       : PROFILE_SIG_CREDIT_VALUE,
+				(PROFILE_SIG_CREDIT_NAME)       : PROFILE_SIG_CREDIT_VALUE
 			} %}
-			{% for name, value in show_writer_fields %}
+
+			{% for name, value in writer_fields %}
 				{{ _self.field_lists(name, value) }}
 			{% endfor %}
 			<!-- EVENT memberlist_view_non_contact_custom_fields_after -->
@@ -180,14 +178,15 @@
 				<div class="column1">
 					<h3>Physical Features</h3>
 					<dl class="details">
-						{% set show_feature_fields = {
+						{% set feature_fields = {
 							(PROFILE_C_COMPLEXION_NAME) : PROFILE_C_COMPLEXION_VALUE,
 							(PROFILE_C_HAIR_NAME)       : PROFILE_C_HAIR_VALUE,
 							(PROFILE_C_EYES_NAME)   	: PROFILE_C_EYES_VALUE,
 							(PROFILE_C_HEIGHT_NAME)  	: PROFILE_C_HEIGHT_VALUE,
 							(PROFILE_C_WEIGHT_NAME) 	: PROFILE_C_WEIGHT_VALUE
 						} %}
-						{% for name, value in show_feature_fields %}
+
+						{% for name, value in feature_fields %}
 							{{ _self.field_lists(name, value) }}
 						{% endfor %}
 					</dl>
@@ -231,7 +230,7 @@
 <!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 	<div class="{{ writer_class }}" role="tabpanel">
 <!-- ENDIF -->
-		<!-- IF S_PROFILE_WRITING_PREFS -->
+		<!-- IF S_PROFILE_WRITING_PREFS and not S_PROFILE_C_WRITER_NAME -->
 			<div class="panel bg2">
 				<div class="inner">
 					<h3>{PROFILE_WRITING_PREFS_NAME}</h3>
@@ -242,54 +241,49 @@
 		<div class="panel bg2">
 			<div class="inner">
 				<!-- EVENT memberlist_view_content_prepend -->
-				<div class="user-contact">
-					<h3>{L_CONTACT_USER}</h3>
-					<div class="contact-icons">
-						<!-- IF U_EMAIL -->
-							<a href="{U_EMAIL}" title="{L_SEND_EMAIL_USER}">
-								<span class="contact-icon email-icon">{L_SEND_EMAIL_USER}</span>
-							</a>
-						<!-- ENDIF -->
-						<!-- IF U_PM -->
-							<a href="{U_PM}" title="{L_SEND_PRIVATE_MESSAGE}">
-								<span class="contact-icon pm-icon">{L_SEND_PRIVATE_MESSAGE}</span>
-							</a>
-						<!-- ENDIF -->
-						<!-- IF U_JABBER and S_JABBER_ENABLED -->
-							<a href="{U_JABBER}" onclick="popup(this.href, 750, 320); return false;" title="{L_SEND_JABBER_MESSAGE}">
-								<span class="contact-icon jabber-icon">{L_SEND_JABBER_MESSAGE}</span>
-							</a>
-						<!-- ENDIF -->
-						<!-- BEGIN custom_fields -->
-							<!-- IF custom_fields.S_PROFILE_CONTACT -->
-								<!-- IF custom_fields.PROFILE_FIELD_CONTACT and custom_fields.PROFILE_FIELD_IDENT neq 'c_writer_name' -->
+				<!-- IF not S_PROFILE_C_WRITER_NAME -->
+					<div class="user-contact">
+						<h3>{L_CONTACT_USER}</h3>
+						<div class="contact-icons">
+							<!-- IF U_EMAIL -->
+								<a href="{U_EMAIL}" title="{L_SEND_EMAIL_USER}">
+									<span class="contact-icon email-icon">{L_SEND_EMAIL_USER}</span>
+								</a>
+							<!-- ENDIF -->
+							<!-- IF U_PM -->
+								<a href="{U_PM}" title="{L_SEND_PRIVATE_MESSAGE}">
+									<span class="contact-icon pm-icon">{L_SEND_PRIVATE_MESSAGE}</span>
+								</a>
+							<!-- ENDIF -->
+							<!-- IF U_JABBER and S_JABBER_ENABLED -->
+								<a href="{U_JABBER}" onclick="popup(this.href, 750, 320); return false;" title="{L_SEND_JABBER_MESSAGE}">
+									<span class="contact-icon jabber-icon">{L_SEND_JABBER_MESSAGE}</span>
+								</a>
+							<!-- ENDIF -->
+							<!-- BEGIN custom_fields -->
+								<!-- IF custom_fields.S_PROFILE_CONTACT and custom_fields.PROFILE_FIELD_CONTACT -->
 									<a href="{custom_fields.PROFILE_FIELD_CONTACT}" title="{custom_fields.PROFILE_FIELD_DESC}">
 										<span class="contact-icon {custom_fields.PROFILE_FIELD_IDENT}-icon">{custom_fields.PROFILE_FIELD_DESC}</span>
 									</a>
 								<!-- ENDIF -->
+							<!-- END custom_fields -->
+						</div>
+						<dl class="details">
+							<!-- IF USER_JABBER -->
+								<dt>{L_JABBER}{L_COLON}</dt>
+								<dd>{USER_JABBER}</dd>
 							<!-- ENDIF -->
-						<!-- END custom_fields -->
-					</div>
-					<dl class="details">
-						<!-- IF USER_JABBER -->
-							<dt>{L_JABBER}{L_COLON}</dt>
-							<dd>{USER_JABBER}</dd>
-						<!-- ENDIF -->
-						<!-- EVENT memberlist_view_contact_custom_fields_before -->
-						<!-- BEGIN custom_fields -->
-							<!-- IF custom_fields.S_PROFILE_CONTACT -->
-								<!-- IF not custom_fields.PROFILE_FIELD_CONTACT -->
+							<!-- EVENT memberlist_view_contact_custom_fields_before -->
+							<!-- BEGIN custom_fields -->
+								<!-- IF custom_fields.S_PROFILE_CONTACT and not custom_fields.PROFILE_FIELD_CONTACT -->
 									<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
 									<dd>{custom_fields.PROFILE_FIELD_VALUE}</dd>
-								<!-- ELSEIF custom_fields.PROFILE_FIELD_IDENT eq 'c_writer_name' and PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-									<dt>{custom_fields.PROFILE_FIELD_NAME}{L_COLON}</dt>
-									<dd><a href="{ROOT_PATH}{custom_fields.PROFILE_FIELD_CONTACT}">{custom_fields.PROFILE_FIELD_VALUE}</a></dd>
 								<!-- ENDIF -->
-							<!-- ENDIF -->
-						<!-- END custom_fields -->
-						<!-- EVENT memberlist_view_contact_custom_fields_after -->
-					</dl>
-				</div>
+							<!-- END custom_fields -->
+							<!-- EVENT memberlist_view_contact_custom_fields_after -->
+						</dl>
+					</div>
+				<!-- ENDIF -->
 				<div class="user-stats">
 					<h3>{L_USER_FORUM}</h3>
 					<dl class="details">
