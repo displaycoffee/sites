@@ -227,6 +227,9 @@
 				max-width: 40px;
 			}
 		}
+		.crumb.home {
+			@include position($type: relative, $top: -1px);
+		}
 	}
 }
 

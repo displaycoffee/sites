@@ -1,20 +1,57 @@
-{% set breadcrumb_id = '' %}
-
-{% if 'app/races-' in SCRIPT_NAME %}
-	{% set breadcrumb_id = 'Races' %}
-{% elseif 'app/setting-' in SCRIPT_NAME %}
-	{% set breadcrumb_id = 'Setting' %}
-{% elseif 'app/religion-' in SCRIPT_NAME %}
-	{% set breadcrumb_id = 'Religion' %}
-{% elseif 'app/classes-' in SCRIPT_NAME %}
-	{% set breadcrumb_id = 'Classes' %}
-{% endif %}
-
-{% if breadcrumb_id %}
+{% macro breadcrumb(crumb) %}
+	{% set crumb_url = (crumb | replace({' ': '-'}) | lower) %}
+	{% if crumb == 'Tviyr' || crumb == 'Ninraih' || crumb == 'Irtuen Reaches' %}
+		{% set crumb_url = 'setting-' ~ crumb_url %}
+	{% endif %}
 	<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->>
 		<i class="icon fa-chevron-right fa-fw"></i>
-		<a href="{ROOT_PATH}{{ breadcrumb_id | lower }}" itemprop="url">
-			<span itemprop="title">{{ breadcrumb_id }}</span>
+		<a href="{ROOT_PATH}{{ crumb_url }}" itemprop="url">
+			<span itemprop="title">{{ crumb }}</span>
 		</a>
 	</li>
+{% endmacro %}
+
+{% set about_crumbs = [ 'app/rules', 'app/managing-your-account', 'app/getting-started' ] %}
+{% set lore_crumbs = [ 'app/history', 'app/timeline', 'app/glossary', 'app/magic' ] %}
+
+{% set first_crumb = '' %}
+
+{% if SCRIPT_NAME in about_crumbs %}
+	{% set first_crumb = 'About' %}
+{% elseif SCRIPT_NAME in lore_crumbs || 'app/races' in SCRIPT_NAME || 'app/classes' in SCRIPT_NAME || 'app/religion' in SCRIPT_NAME %}
+	{% set first_crumb = 'Lore' %}
+{% elseif 'app/setting-' in SCRIPT_NAME %}
+	{% set first_crumb = 'Setting' %}
+{% endif %}
+
+{% if first_crumb %}
+	{{ _self.breadcrumb(first_crumb) }}
+{% endif %}
+
+{% set second_crumb = '' %}
+
+{% if 'app/races-' in SCRIPT_NAME %}
+	{% set second_crumb = 'Races' %}
+{% elseif 'app/religion-' in SCRIPT_NAME %}
+	{% set second_crumb = 'Religion' %}
+{% elseif 'app/classes-' in SCRIPT_NAME %}
+	{% set second_crumb = 'Classes' %}
+{% endif %}
+
+{% if second_crumb %}
+	{{ _self.breadcrumb(second_crumb) }}
+{% endif %}
+
+{% set third_crumb = '' %}
+
+{% if 'app/setting-fellsgard' in SCRIPT_NAME || 'app/setting-verdant-row' in SCRIPT_NAME %}
+	{% set third_crumb = 'Tviyr' %}
+{% elseif 'app/setting-ajteire' in SCRIPT_NAME %}
+	{% set third_crumb = 'Ninraih' %}
+{% elseif 'app/setting-domrhask' in SCRIPT_NAME %}
+	{% set third_crumb = 'Irtuen Reaches' %}
+{% endif %}
+
+{% if third_crumb %}
+	{{ _self.breadcrumb(third_crumb) }}
 {% endif %}
