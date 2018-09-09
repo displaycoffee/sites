@@ -85,7 +85,7 @@ body {
 	font-size: rem($global-font-size);
 	line-height: 1.5;
 	font-weight: normal;
-	color: $color-01;
+	color: $color-00;
 }
 
 a {
@@ -112,9 +112,20 @@ h1, h2, h3, h4, h5, h6, .header-title {
 	font-weight: normal;
 	line-height: 1.1;
 	a {
-		color: $color-01;
+		color: $color-00;
 		&:hover {
 			color: $color-07;
+		}
+	}
+}
+
+.page-body {
+	h4, .h4, h5, .h5, h6, .h6 {
+		&, & a {
+			color: $color-07;
+		}
+		a:hover {
+			color: $color-00;
 		}
 	}
 }
@@ -212,5 +223,5 @@ h5, h6, .h5, .h6 {
 }
 
 .icon.icon-black, a:hover .icon.icon-black {
-	color: $color-01;
+	color: $color-00;
 }

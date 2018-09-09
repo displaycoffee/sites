@@ -20,7 +20,7 @@
 					font-size: rem(16px);
 					vertical-align: bottom;
 					margin: 0 5px 0 0;
-					color: $color-01;
+					color: $color-00;
 				}
 				&:not(.new-pm):before {
 					content: unicode($rpg-open-book);
@@ -31,7 +31,8 @@
 			}
 			&.active-subsection a {
 				font-weight: bold;
-				color: $color-07;
+				color: $color-00;
+				cursor: text;
 			}
 		}
 	}
@@ -141,6 +142,7 @@
 		&:before, &:after {
 			display: block;
 			background: $color-04;
+			color: $color-01;
 			padding: 10px 20px;
 			box-sizing: border-box;
 		}
@@ -265,7 +267,7 @@
 					font-size: rem(12px);
 					content: unicode($icon-chevron-left);
 					margin-right: 10px;
-					color: $color-01;
+					color: $color-00;
 				}
 			}
 		}

@@ -159,6 +159,7 @@
 .online {
 	position: relative;
 	&:before, &:after {
+		color: $color-01;
 		display: block;
 		@include position($type: absolute, $z: 10);
 	}

@@ -159,6 +159,7 @@
 				box-sizing: border-box;
 				line-height: $list-icon-size - 2px;
 				@include icon-font($family: game, $fs: false, $lh: false);
+				color: $color-01;
 				font-size: rem(24px);
 				text-align: center;
 				background: $color-04;
@@ -311,6 +312,20 @@ table {
 		}
 	}
 }
+
+/* Listing Header Link Colors
+========================================================================== */
+
+.topiclist > li.header, table.table1 thead tr,
+.section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
+	&, a {
+		color: $color-01;
+	}
+	a:hover {
+		color: $color-07;
+	}
+}
+
 
 /* Forum Rules
 ========================================================================== */

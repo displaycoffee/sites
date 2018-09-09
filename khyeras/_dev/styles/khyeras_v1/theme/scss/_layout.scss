@@ -81,15 +81,18 @@
 	@include position($type: fixed, $top: 0, $left: 0, $z: 100);
 	width: 100%;
 	background: $color-09;
-	border-bottom: 2px solid $color-09 - #333;
+	border-bottom: 2px solid mix($color-02, $color-09, 33.33%);
 	padding: 20px;
 	color: $color-08;
 	text-align: center;
 	a {
 		color: $color-07;
 		&:hover {
-			color: $color-08;
+			color: $color-06;
 		}
+	}
+	& + .wrap .navbar {
+		top: 63px;
 	}
 }
 
@@ -122,9 +125,9 @@
 			overflow-y: auto;
 			font-size: rem(13px);
 			a {
-				color: $color-01;
+				color: $color-00;
 				&:hover {
-					color: $color-06;
+					color: $color-07;
 				}
 			}
 			& > li {
@@ -200,7 +203,7 @@
 			.icon {
 				margin: 0 5px 0 0;
 				&.rpg-castle {
-					color: $color-01;
+					color: $color-00;
 					font-size: rem(18px);
 					margin: 0 10px 0 0;
 				}
@@ -281,7 +284,7 @@
 		a {
 			background: none;
 			border-radius: 0;
-			color: $color-01;
+			color: $color-00;
 			.icon {
 				font-size: rem(13px);
 				width: auto;
@@ -289,7 +292,7 @@
 			&, & .icon {
 				@include transition(color 0.3s ease-in-out);
 				&:hover {
-					color: $color-06;
+					color: $color-07;
 					background: none;
 				}
 			}
@@ -470,7 +473,7 @@
 			display: block;
 			&:before {
 				@include icon-font;
-				color: $color-01;
+				color: $color-00;
 				margin: 0 5px 0 0;
 			}
 			&[onclick*='false']:before {
@@ -729,6 +732,7 @@ dl.details {
 	@include sizing($list-icon-size - 2px, $list-icon-size - 2px);
 	border-radius: 100%;
 	border: 1px solid mix($color-01, $color-04, 5%);
+	color: $color-01;
 }
 
 .rpg-round-icon {

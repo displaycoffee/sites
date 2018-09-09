@@ -40,6 +40,9 @@ ul, ol {
 			margin-bottom: 0;
 		}
 	}
+	&.list-left-aligned {
+		margin-left: 14px;
+	}
 	&.lower-alpha {
 		list-style-type: lower-alpha;
 	}
@@ -53,7 +56,10 @@ dl.definition-list {
 	dt {
 		margin: 0 0 5px 0;
 		strong {
-			font-size: rem(16px);
+			font-size: rem(20px);
+			color: $color-07;
+			@include spectral-common;
+			font-weight: normal;
 		}
 	}
 	dd {
@@ -76,7 +82,7 @@ pre, code {
 	display: block;
 	font-family: 'Courier New', monospace;
 	background: $color-05;
-	color: $color-01;
+	color: $color-00;
 	padding: 20px;
 	white-space: pre-wrap;
 }

@@ -640,7 +640,7 @@
 							@include black-bar(50px, -10px, -10px);
 							border-bottom: 1px dashed $color-04;
 							z-index: 2;
-							color: $color-01;
+							color: $color-00;
 							@include spectral-common;
 							font-size: rem(20px);
 							font-weight: normal;
@@ -914,7 +914,11 @@
 				margin: 0;
 				@include black-bar(98px, 2px, 2px);
 				a {
+					color: $color-00;
 					@include ellipsis;
+					&:hover {
+						color: $color-07;
+					}
 				}
 			}
 			.rpg-icon-wrapper {
@@ -1956,7 +1960,7 @@
 			padding: 0 20px;
 		}
 		.site-logo-text {
-			font-size: rem(26px);			
+			font-size: rem(26px);
 		}
 		&.sticky {
 			.site-logo-text {

@@ -7,6 +7,7 @@
 	padding: 150px 0 0 0;
 	.footer-inner {
 		background: $color-04;
+		color: $color-01;
 		padding: 0 0 30px 0;
 		.flex-row .flex-column .copyright, .bottom-line {
 			font-size: rem(13px);
@@ -66,15 +67,6 @@
 		.icon {
 			line-height: 24px;
 		}
-		&:hover {
-			color: $color-06;
-		}
-	}
-	.alert_text h3 {
-		color: $color-01;
-		background: $color-04;
-		padding: 10px 20px;
-		margin: -20px -20px 20px -20px;
 	}
 	.submit-buttons {
 		margin: 0;

@@ -5,9 +5,21 @@ dl.faq dt, dl.faq + .top, #faqlinks dl.faq dd {
 	margin: 0 0 5px 0;
 }
 
-dl.faq + .top {
-	display: inline-block;
-	@include position($type: relative, $top: -15px, $left: -2px);
+dl.faq {
+	dt[id*='f'] strong {
+		@include spectral-common;
+		font-weight: normal;
+		line-height: 1.1;
+		font-size: rem(20px);
+		color: $color-07;
+	}
+	& + .top {
+		display: inline-block;
+		@include position($type: relative, $top: -15px, $left: -2px);
+		.icon {
+			color: $color-00;
+		}
+	}
 }
 
 #faqlinks dl.faq dd:last-child {
@@ -129,7 +141,7 @@ dl.faq + .top {
 					min-width: 50%;
 				}
 				.zebra a i {
-					color: $color-01;
+					color: $color-00;
 					font-size: rem(16px);
 					margin: 0 5px 0 0;
 					@include position($type: relative, $top: 1px);
@@ -140,9 +152,9 @@ dl.faq + .top {
 	.user-contact .contact-icons {
 		margin: 0 -5px 10px -5px;
 		a {
-			color: $color-01;
+			color: $color-00;
 			&:hover {
-				color: $color-06;
+				color: $color-07;
 			}
 			.contact-icon:before {
 				font-size: rem(20px);
@@ -514,7 +526,8 @@ dl.faq + .top {
 				font-family: $serif-fb;
 			}
 			h5 {
-				margin: 0 0 5px 0
+				margin: 0 0 5px 0;
+				color: $color-00;
 			}
 		}
 		&:nth-child(even) {
@@ -591,7 +604,7 @@ div[id*='list_thanks'] .post-buttons > li.responsive-menu {
 .section-thanks-search {
 	h2 + p .arrow-left, .post ul.searchresults li a {
 		&:before {
-			color: $color-01;
+			color: $color-00;
 			@include icon-font($fs: 12px);
 		}
 	}

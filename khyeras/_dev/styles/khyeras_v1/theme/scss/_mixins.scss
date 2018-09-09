@@ -242,10 +242,6 @@
 // Sortable headers
 @mixin sortable-headers {
 	a {
-		color: $color-01;
-		&:hover {
-			color: $color-06;
-		}
 		&[href*='mode=']:after {
 			@include icon-font;
 			margin: 0 0 0 10px;
