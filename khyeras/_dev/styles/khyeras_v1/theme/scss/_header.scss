@@ -26,7 +26,7 @@
 			color: $color-01;
 		}
 		.site-description, .site-quotes {
-			@include flex;
+			@include flex(grow);
 			max-width: 310px;
 		}
 		.site-description {
@@ -56,15 +56,19 @@
 				&:last-child {
 					margin: 0;
 				}
-			}
-			span {
-				@include quotes;
-				@include position($type: relative, $top: -5px);
-				&.quote-left {
-					margin: 0 10px 0 0;
-				}
-				&.quote-right {
-					margin: 0 0 0 10px;
+				&:not(.quote-author) {
+					&:before, &:after {
+						@include quotes(24px);
+						@include position($type: relative, $top: -5px);
+					}
+					&:before {
+						content: '\00201c';
+						margin: 0 5px 0 0;
+					}
+					&:after {
+						content: '\00201d';
+						margin: 0 0 0 5px;
+					}
 				}
 			}
 			.quote-author {

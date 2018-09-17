@@ -114,8 +114,8 @@ blockquote {
 	&:before {
 		@include position($type: absolute, $top: 0, $left: 0);
 		font-family: $font-02;
-		@include quotes;
-		content: '\00201C';
+		@include quotes(30px);
+		content: '\00201c';
 	}
 	blockquote {
 		max-width: none;
