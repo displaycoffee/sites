@@ -1,5 +1,5 @@
 /* CP - Layout
-========================================================================== */
+============================================== */
 
 .cp-wrapper {
 	@include flex-flow(row wrap);
@@ -134,7 +134,7 @@
 }
 
 /* UCP - Front Page
-========================================================================== */
+============================================== */
 
 .section-ucp-front-page .cp-main {
 	.topiclist {
@@ -160,7 +160,7 @@
 }
 
 /* UCP - Avatar (User & Groups)
-========================================================================== */
+============================================== */
 
 .section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details, .section-mcp-warnings {
 	.cp-main {
@@ -247,7 +247,7 @@
 }
 
 /* UCP - Drafts for Topics and PMs
-========================================================================== */
+============================================== */
 
 .section-ucp-manage-drafts, .section-ucp-manage-pm-drafts {
 	.cp-main #postform fieldset {
@@ -275,7 +275,7 @@
 }
 
 /* UCP - Attachments
-========================================================================== */
+============================================== */
 
 .section-ucp-attachments .cp-main .topiclist {
 	& > li.header dl dt a {
@@ -291,7 +291,7 @@
 
 /* UCP - Notifications - Manage & Edit
    Note: UCP area only. Header notifications in header.scss
-========================================================================== */
+============================================== */
 
 .section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
 	@include clearfix('&');
@@ -326,7 +326,7 @@
 }
 
 /* Send Password / Activation Email
-========================================================================== */
+============================================== */
 
 .section-ucp-send-password, .section-ucp-send-activation-email {
 	fieldset dl {
@@ -340,7 +340,7 @@
 }
 
 /* Registration & UCP - Profile
-========================================================================== */
+============================================== */
 
 #register, .section-ucp-edit-profile #ucp {
 	.character-fields {
@@ -390,7 +390,7 @@
 }
 
 /* UCP - Profile
-========================================================================== */
+============================================== */
 
 .section-ucp-edit-profile .cp-main fieldset dl dd label[for*='bday'] {
 	display: block;
@@ -400,14 +400,14 @@
 }
 
 /* UCP - Signature
-========================================================================== */
+============================================== */
 
 .section-ucp-edit-signature .cp-main fieldset.fields1 + h3 + fieldset {
 	margin: 0 0 20px 0;
 }
 
 /* UCP - Private Messages - Legend
-========================================================================== */
+============================================== */
 
 .cp-menu .cp-mini .mini .pm-legend {
 	position: relative;
@@ -433,7 +433,7 @@
 }
 
 /* UCP - Private Messages - Compose
-========================================================================== */
+============================================== */
 
 .section-ucp-compose-message .cp-main {
 	 #pmheader-postingbox {
@@ -494,7 +494,7 @@
 }
 
 /* UCP - Private Messages - Inbox
-========================================================================== */
+============================================== */
 
 .section-ucp-view-messages .cp-main #viewfolder {
 	& > .display-options {
@@ -580,7 +580,7 @@
 }
 
 /* UCP - Private Messages - Rules, folders, and settings
-========================================================================== */
+============================================== */
 
 .section-ucp-rules-folders-settings .cp-main {
 	.def-rules {
@@ -613,7 +613,7 @@
 }
 
 /* UCP - Edit memberships/groups
-========================================================================== */
+============================================== */
 
 .section-ucp-edit-memberships .cp-main fieldset {
 	@include clearfix('&');
@@ -639,7 +639,7 @@
 }
 
 /* UCP - Manage groups
-========================================================================== */
+============================================== */
 
 .section-ucp-manage-groups .cp-main fieldset dd {
 	span[style*='background-color'] {
@@ -662,7 +662,7 @@
 }
 
 /* MCP - Layout
-========================================================================== */
+============================================== */
 
 .mcp-main {
 	position: relative;
@@ -707,7 +707,7 @@
 }
 
 /* MCP - Front
-========================================================================== */
+============================================== */
 
 .mcp-main #mcp_queue {
 	.topiclist > li.header dl:after {
@@ -727,7 +727,7 @@
 }
 
 /* MCP - Approve Topic & Post
-========================================================================== */
+============================================== */
 
 [class*='section-mcp-approve-topic'], [class*='section-mcp-approve-post'] {
 	fieldset dl dt.empty-space {
@@ -739,7 +739,7 @@
 }
 
 /* MCP - Moderation Queue & Post Details
-========================================================================== */
+============================================== */
 
 .section-mcp-moderation-queue, .section-mcp-post-details {
 	.cp-main #mcp_chgposter fieldset dl dd {
@@ -766,7 +766,7 @@
 }
 
 /* MCP - View Topic
-========================================================================== */
+============================================== */
 
 .section-mcp-view-topic .cp-main {
 	.panel + .panel {
@@ -791,7 +791,7 @@
 }
 
 /* MCP - Report Details
-========================================================================== */
+============================================== */
 
 .section-mcp-reported-messages, .section-mcp-reported-pms {
 	.cp-main .post_details + hr + div {
@@ -800,7 +800,7 @@
 }
 
 /* MCP - User Notes & Moderator Logs
-========================================================================== */
+============================================== */
 
 .section-mcp-user-details, .section-mcp-moderator-logs {
 	.cp-main .action-bar.bar-top {
@@ -826,7 +826,7 @@
 }
 
 /* MCP - User Notes & Warning Profiles
-========================================================================== */
+============================================== */
 
 .section-mcp-user-details, .section-mcp-warnings {
 	.cp-main h2 + .panel h3 + div {
@@ -852,7 +852,7 @@
 }
 
 /* MCP - User Notes
-========================================================================== */
+============================================== */
 
 .section-mcp-user-details .cp-main #mcp {
 	position: relative;
@@ -867,7 +867,7 @@
 }
 
 /* MCP - Warnings
-========================================================================== */
+============================================== */
 
 .section-mcp-warnings .cp-main #warning {
 	& ~ br {
@@ -885,7 +885,7 @@
 }
 
 /* MCP - Banning
-========================================================================== */
+============================================== */
 
 body[class*='section-mcp-ban'] .cp-main fieldset dl dd label {
 	&:not([for*='banexclude']) {

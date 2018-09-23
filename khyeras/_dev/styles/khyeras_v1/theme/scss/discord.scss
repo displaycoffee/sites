@@ -1,0 +1,407 @@
+// Helpers
+@import 'variables';
+@import 'mixins';
+
+/* Root colors
+============================================== */
+
+@import url('//fonts.googleapis.com/css?family=Fira+Sans:300,300i,500,500i');
+
+:root {
+	--modal: $color-04;
+	--noroleusers: #ff00ff; // default user color
+	--main: $color-05;
+	--placeholder: $color-02;
+	--sidebardivider: $color-04;
+	--leftsidebar: $color-05;
+	--rightsidebar: $color-05;
+	--header: $color-04;
+	--chatmessage: #ff00ff; // font color
+	--discrim: #ff00ff; // font color
+	--chatbox: $color-04;
+}
+
+* {
+	&, &:before, &:after {
+		box-sizing: border-box;
+	}
+}
+
+html {
+	font-family: $font-01;
+	font-size: rem($global-font-size);
+	line-height: 1.5;
+}
+
+html, label, nav a, nav .brand-logo, .betatag, .chattimestamp, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
+input[type='text']:not(.browser-default):focus:not([readonly]) + label {
+	color: #ff00ff;
+}
+
+/* Resets
+============================================== */
+
+textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default), .btn, .btn-large, .navbar-fixed, .side-nav li, .side-nav li > a, footer, #footercontainer #messageboxouter {
+	height: auto;
+}
+
+textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default) {
+	min-height: 0;
+}
+
+/* Typography
+============================================== */
+
+html, #usercard .game .text {
+	font-weight: 300;
+}
+
+b, strong, optgroup, .chatusername, p.mentioned, .richembed .field-name, #usercard .bottag, #usercard .game {
+	font-weight: 500;
+}
+
+/* Form fields
+============================================== */
+
+textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default), .btn, .btn-large {
+	line-height: 1.45;
+	border-radius: 3px;
+}
+
+textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default) {
+	background: $color-01;
+	color: $color-08;
+	width: 100%;
+	box-sizing: border-box;
+	border: 0;
+	padding: 10px;
+	margin: 0;
+}
+
+input[type='text'] {
+	&:focus, &:not(.browser-default):focus, &:not(.browser-default):focus:not([readonly]), &:disabled, &:not(.browser-default):disabled {
+		border: 0;
+	}
+	&:focus, &:not(.browser-default):focus, &:not(.browser-default):focus:not([readonly]) {
+		box-shadow: none;
+	}
+	&:disabled, &:not(.browser-default):disabled {
+		color: mix($color-02, $color-13, 40%);
+		background: $color-13;
+		& + label {
+			color: $color-13;
+		}
+	}
+}
+
+input[type='radio']:not(:checked) + label:before, input[type='checkbox'].filled-in:checked + label:after, input[type='checkbox'].filled-in:not(:checked) + label:after {
+	border: 0;
+	background-color: $color-01;
+}
+
+input[type='radio']:checked {
+	&  + label:after {
+		background-color: $color-10;
+		border: 3px solid $color-01;
+	}
+}
+
+input[type='checkbox'] {
+	&.filled-in:checked + label:after, &.filled-in:not(:checked) + label:after {
+		@include sizing(16px, 16px);
+	}
+	&.filled-in:checked + label:before {
+		@include sizing(5px, 10px);
+		@include position($top: .5px, $left: 2px);
+		border-right-color: $color-10;
+		border-bottom-color: $color-10;
+	}
+}
+
+.btn, .btn-large, #logout_btn, #proceed_nsfw_btn {
+ 	background: $color-10;
+	&:hover {
+		background: $color-05;
+	}
+}
+
+.btn, .btn-large {
+	padding: 10px 20px;
+	text-transform: none;
+	letter-spacing: 1px;
+	&, &:hover {
+		box-shadow: none;
+	}
+}
+
+#logout_btn {
+	@include small-form-ele($padding: 5px);
+}
+
+#modal_invite_btn, #modal_invite_btn_invite_link {
+	padding: 10px 5px;
+	font-size: rem(12px);
+	display: block;
+}
+
+/* Header nav
+============================================== */
+
+.navbar-fixed nav {
+	background: var(--header);
+}
+
+
+
+//
+
+
+
+//
+
+// nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+//     height: 60px;
+//     line-height: 60px;
+// }
+//
+// .navbar-fixed .brand-logo {
+//     display: none;
+// }
+//
+// .navbar-fixed .nav-wrapper > .container:before {
+//     font-family: "Spectral",garamond,times new roman,serif;
+//     font-variant: small-caps;
+//     font-size: 20px;
+//     content: 'Chat With Us';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     display: block;
+//     margin: auto;
+//     text-align: center;
+// }
+//
+// #guild-nav, #members-nav {
+//     padding: 20px;
+// }
+//
+// .side-nav .subheader {
+//     line-height: normal;
+//     font-variant: none;
+// }
+//
+// .side-nav li > a, .side-nav .userView {
+//     padding: 0;
+// }
+//
+// .side-nav li, .side-nav #channeltopic {
+//     margin: 0 0 10px 0;
+// }
+//
+// .side-nav li, .side-nav li > a {
+//     line-height: 1.5;
+// }
+//
+// .side-nav li > a[id^=channel] {
+//     margin: 0;
+// }
+//
+// .side-nav img[src=''] + .membername {
+//     padding-left: 0;
+//     top: 6px;
+// }
+//
+//
+// .side-nav div.divider {
+//     margin: 0 -20px;
+//     background: none;
+// }
+//
+// .side-nav .userView .circle:hover {
+//     border-radius: 50%;
+// }
+//
+// .side-nav .userView .name {
+//     font-family: "Spectral",garamond,times new roman,serif;
+//     font-variant: small-caps;
+// }
+//
+// .side-nav #channeltopic {
+//     width: auto;
+//     font-size: inherit;
+// }
+//
+// #members-nav li>a.subheader {
+//     padding: 0;
+//     text-transform: none;
+// }
+//
+// #chatcontent {
+//     padding: 65px 0 10px 0;
+// }
+//
+// #chatcontent > p {
+//     border-top: 1px dashed #15212c;
+//     width: auto;
+//     padding: 10px 20px;
+//     margin: 0;
+// }
+//
+// #chatcontent > p:first-child {
+//     border-top: 0;
+// }
+//
+// #chatcontent .chatusername {
+//     color: #67e5e2;
+//     font-size: inherit;
+// }
+//
+// #chatcontent .chatusername .authorhash,
+// #chatcontent .chatusername .authordiscriminator {
+//    display: none;
+// }
+//
+// footer {
+//     background: #15212c;
+// }
+//
+// #footercontainer {
+//     width: auto;
+//     border: 0;
+//     margin: 0 -5px;
+//     padding: 10px 20px;
+//     -webkit-box-align: center;
+//     -webkit-align-items: center;
+//     -ms-flex-align: center;
+//     align-items: center;
+// }
+//
+// #footercontainer > div, #footercontainer #nameplate {
+//     margin: 0 5px;
+//     top: 0;
+// }
+//
+// #footercontainer .currentuserchip {
+//     padding: 0;
+//     margin: 0;
+// }
+//
+// #footercontainer .currentuserchip #currentuserimage_parent,
+// #footercontainer .currentuserchip #currentusername {
+//     vertical-align: middle;
+// }
+//
+// #footercontainer .currentuserchip #currentusername {
+//     left: 0;
+// }
+//
+// #footercontainer .currentuserchip #currentuserimage_parent {
+//     margin: 0;
+//     line-height: 0;
+// }
+//
+// #footercontainer #messageboxouter {
+//     webkit-box-flex: 1;
+//     -webkit-flex: 1 1 100%;
+//     -ms-flex: 1 1 100%;
+//     flex: 1 1 100%;
+//     overflow: visible;
+// }
+//
+// #footercontainer #messageboxouter, .footercontainer #visitor_mode_message {
+//     width: auto;
+// }
+//
+// #footercontainer #messageboxouter #visitor_login_btn {
+//     margin: 0 0 0 10px;
+// }
+//
+
+//
+// .modal {
+//     top: 0 !important;
+//     bottom: 0 !important;
+//     margin: auto;
+//     max-height: 90%;
+//     border-radius: 0;
+//     -webkit-box-shadow: none;
+//     box-shadow: none;
+// }
+//
+// .modal p, .modal #discordlogin_btn, .modal #guest_login_instr, .modal input[type='text'],
+// .modal #guestlogin_box:before {
+//     margin: 0 0 10px 0;
+// }
+//
+// .modal .modal-content {
+//     padding: 20px;
+// }
+//
+// .modal .row {
+//     margin: 0 -20px;
+// }
+//
+// .modal .row > .col {
+//     padding: 0 20px;
+// }
+//
+// .modal #discordlogin_btn_warn {
+//     font-style: italic;
+// }
+//
+// .modal #authfields .row {
+//     margin: 0;
+// }
+//
+// .modal #authfields .row .col {
+//     padding: 0;
+//     float: none;
+//     width: auto;
+// }
+//
+// .modal #guestlogin_box:before {
+//     content: '- OR -';
+//     display: block;
+//     font-size: 14px;
+//     font-style: italic;
+// }
+//
+// .modal #modal_guildinfobox {
+//     background-color: transparent;
+//     border-right: 1px dashed #0d171b;
+// }
+//
+// .modal label, .modal #discordlogin_btn_warn {
+//     font-size: 11px;
+// }
+//
+// .modal h4, #loginmodal h4 {
+//     font-size: 20px;
+// }
+//
+// .modal h4 {
+//     margin: 0 0 20px 0;
+//     font-family: "Spectral",garamond,times new roman,serif;
+//     font-variant: small-caps;
+// }
+//
+// #loginmodal, #loginmodal .flow-text {
+//     font-size: 12px;
+// }
+//
+// #userembedmodal .modal-content > .row:nth-child(2) > div {
+//     padding: 0 20px;
+// }
+//
+// #userembedmodal .modal-content > .row {
+//     margin-bottom: 20px;
+// }
+//
+// #userembedmodal .modal-content > .row:last-child {
+//     margin-bottom: 0;
+// }
+//
+// #userembedmodal #logout_btn {
+//     margin-right: 20px;
+// }

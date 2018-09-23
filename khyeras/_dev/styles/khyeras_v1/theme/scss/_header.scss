@@ -1,12 +1,12 @@
 /* Header
-========================================================================== */
+============================================== */
 
 #page-header {
 	margin: 0 0 60px 0;
 }
 
 /* Header - Header bar
-========================================================================== */
+============================================== */
 
 .headerbar {
 	background: url($images + 'header.jpg') center bottom no-repeat;
@@ -99,7 +99,7 @@
 $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 
 /* Header - Nav Menu
-========================================================================== */
+============================================== */
 
 .navbar {
 	background: rgba($color-05, 0.75);
@@ -183,7 +183,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 /* Header - Nav Menu
-========================================================================== */
+============================================== */
 
 .nav-menu .icon.fa-thumbs-o-up {
 	font-size: 0;
@@ -193,7 +193,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 /* Header - Nav Menu - Search Box
-========================================================================== */
+============================================== */
 
 .navbar .menu .search-box {
 	min-width: 400px;
@@ -201,7 +201,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 /* Header - User Menu
-========================================================================== */
+============================================== */
 
 .user-menu {
 	.image-wrap {
@@ -246,7 +246,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 
 /* Notifications
    Note: Header area only. UCP notifications in cp.scss
-========================================================================== */
+============================================== */
 
 #notification_list {
 	min-width: 450px;
@@ -321,7 +321,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 /* Page welcome
-========================================================================== */
+============================================== */
 
 .page-welcome {
 	.site-details {
@@ -389,7 +389,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 /* Badge
-========================================================================== */
+============================================== */
 
 .badge {
 	@include inline-block(top);
@@ -411,7 +411,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 /* Featured Content
-========================================================================== */
+============================================== */
 
 .featured-content {
 	margin: 0 0 10px 0;
@@ -467,7 +467,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 /* Mobile Button & Menu
-========================================================================== */
+============================================== */
 
 .mobile-menu-button, #mobile-menu {
 	display: none;

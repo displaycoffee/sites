@@ -1,5 +1,5 @@
 /* RPG Icon Variables
-========================================================================== */
+============================================== */
 
 $rpg-two-shadows: \e92f;
 $rpg-holy-grail: \e930;
@@ -49,7 +49,7 @@ $rpg-tied-scroll: \e922;
 $rpg-tinker: \e904;
 
 /* RPG Icon Classes
-========================================================================== */
+============================================== */
 
 .rpg-two-shadows:before {
 	content: unicode($rpg-two-shadows);
@@ -192,7 +192,7 @@ $rpg-tinker: \e904;
 
 
 /* RPG Icon Overrides
-========================================================================== */
+============================================== */
 
 .fa-bell, .fa-clock-o, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
 .fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-sliders, .fa-pencil-square-o, .fa-power-off, .fa-reply, .fa-shield, .fa-wrench {
@@ -252,7 +252,7 @@ $rpg-tinker: \e904;
 }
 
 /* Miscellaneous Icons - Uses RPG font
-========================================================================== */
+============================================== */
 
 $misc-icq: \e92b;
 $misc-jabber: \e92c;
@@ -260,7 +260,7 @@ $misc-aim: \e92e;
 $misc-discord: \e92d;
 
 /* Miscellaneous Icon Classes
-========================================================================== */
+============================================== */
 
 .misc-icq:before {
 	content: unicode($misc-icq);

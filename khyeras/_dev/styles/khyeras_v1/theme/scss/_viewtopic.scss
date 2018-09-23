@@ -1,9 +1,9 @@
 /* NOTE: Contains styles for viewing and previewing topics / PMs...
    Including signature previews
-========================================================================== */
+============================================== */
 
 /* View Topic - Body
-========================================================================== */
+============================================== */
 
 .postbody {
 	position: relative;
@@ -31,7 +31,7 @@
 }
 
 /* View Topic - Body - Deleted & Ignored
-========================================================================== */
+============================================== */
 
 .postprofile, .postbody div[id*='post_content'] {
 	&[style*='none'] {
@@ -42,7 +42,7 @@
 }
 
 /* View Topic - Body - Post Notices
-========================================================================== */
+============================================== */
 
 .postbody {
 	.post-notice, .rules {
@@ -88,7 +88,7 @@
 }
 
 /* View Topic - Body - Title
-========================================================================== */
+============================================== */
 
 .postbody {
 	&.ignore, & .ignore {
@@ -117,7 +117,7 @@
 }
 
 /* View Topic - Body - BBCode
-========================================================================== */
+============================================== */
 
 .postbody {
 	.content, .signature {
@@ -152,7 +152,7 @@
 }
 
 /* View Topic - Body - Attachments
-========================================================================== */
+============================================== */
 
 .postbody {
 	.inline-attachment, .attachbox {
@@ -251,7 +251,7 @@
 }
 
 /* View Topic - Polls
-========================================================================== */
+============================================== */
 
 fieldset.polls dl {
 	position: relative;
@@ -332,7 +332,7 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 }
 
 /* View Topic - Profile
-========================================================================== */
+============================================== */
 
 .post .postprofile {
 	.profile-contact {
@@ -361,7 +361,7 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 }
 
 /* View Topic - Topic & PM Layout (not preview or review)
-========================================================================== */
+============================================== */
 
 .post {
 	.inner {
@@ -387,14 +387,14 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 }
 
 /* View Topic - Topic Preview
-========================================================================== */
+============================================== */
 
 #preview .inner .content {
 	@include flex(full);
 }
 
 /* View Topic - Topic Review
-========================================================================== */
+============================================== */
 
 .review {
 	padding: 0 120px 0 0;
@@ -434,7 +434,7 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 }
 
 /* View Topic - Similar Topics
-========================================================================== */
+============================================== */
 
 .section-viewtopic .forumbg {
 	margin-top: $main-margin;
