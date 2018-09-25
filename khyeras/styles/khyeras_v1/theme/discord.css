@@ -32,7 +32,7 @@ input[type='text']:not(.browser-default):focus:not([readonly]) + label {
 
 /* Resets
 ============================================== */
-textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default), .btn, .btn-large, .navbar-fixed, .side-nav li, .side-nav li > a, footer, #footercontainer #messageboxouter {
+textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default), .btn, .btn-large, .navbar-fixed, nav, nav a.button-collapse, nav a.button-collapse i, .side-nav li, .side-nav li > a, footer, #footercontainer #messageboxouter {
   height: auto;
 }
 
@@ -141,4 +141,30 @@ input[type='checkbox'].filled-in:checked + label:before {
 ============================================== */
 .navbar-fixed nav {
   background: var(--header);
+  padding: 10px 20px;
+}
+
+.navbar-fixed nav, .navbar-fixed nav a.button-collapse, .navbar-fixed nav a.button-collapse i {
+  line-height: 1;
+}
+
+.navbar-fixed nav a.button-collapse {
+  margin: 0;
+}
+
+.navbar-fixed nav .brand-logo {
+  display: none;
+}
+
+.navbar-fixed nav .nav-wrapper > .container:before {
+  font-family: "Spectral", garamond, times new roman, serif;
+  font-variant: small-caps;
+  font-size: 20px;
+  content: 'Chat With Us';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  display: block;
+  text-align: center;
 }
