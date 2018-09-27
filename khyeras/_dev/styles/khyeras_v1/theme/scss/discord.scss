@@ -5,7 +5,7 @@
 /* Root colors
 ============================================== */
 
-@import url('//fonts.googleapis.com/css?family=Fira+Sans:300,300i,500,500i');
+@import url('//fonts.googleapis.com/css?family=Spectral|Fira+Sans:300,300i,500,500i');
 
 :root {
 	--modal: $color-04;
@@ -28,9 +28,14 @@
 }
 
 html {
+	font-size: $base-font-size + px;
+}
+
+body {
 	font-family: $font-01;
 	font-size: rem($global-font-size);
 	line-height: 1.5;
+	font-weight: 300;
 }
 
 html, label, nav a, nav .brand-logo, .betatag, .chattimestamp, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
@@ -49,6 +54,14 @@ textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser
 	min-height: 0;
 }
 
+.side-nav li > a, .side-nav .userView, #members-nav li > a.subheader, .membername {
+	padding: 0;
+}
+
+.membercircle {
+	margin: 0;
+}
+
 /* Typography
 ============================================== */
 
@@ -58,6 +71,10 @@ html, #usercard .game .text {
 
 b, strong, optgroup, .chatusername, p.mentioned, .richembed .field-name, #usercard .bottag, #usercard .game {
 	font-weight: 500;
+}
+
+#discord-members > li > a.subheader, #members-nav > li:nth-child(1) > a, #discord-members-count, #embed-discord-members-count, #members-nav > li:nth-child(4) > a, #guest-members-count, #members-nav > li:nth-child(6) > a {
+	text-transform: none;
 }
 
 /* Form fields
@@ -161,7 +178,7 @@ input[type='checkbox'] {
 	}
 	.nav-wrapper > .container:before {
 		@include spectral-common;
-		font-size: 20px;
+		font-size: rem(20px);
 		content: 'Chat With Us';
 		@include position($type: absolute, $top: 2px, $left: 0, $right: 0);
 		display: block;
@@ -169,62 +186,82 @@ input[type='checkbox'] {
 	}
 }
 
-//
-// #guild-nav, #members-nav {
-//     padding: 20px;
-// }
-//
-// .side-nav .subheader {
-//     line-height: normal;
-//     font-variant: none;
-// }
-//
-// .side-nav li > a, .side-nav .userView {
-//     padding: 0;
-// }
-//
-// .side-nav li, .side-nav #channeltopic {
-//     margin: 0 0 10px 0;
-// }
-//
-// .side-nav li, .side-nav li > a {
-//     line-height: 1.5;
-// }
-//
-// .side-nav li > a[id^=channel] {
-//     margin: 0;
-// }
-//
-// .side-nav img[src=''] + .membername {
-//     padding-left: 0;
-//     top: 6px;
-// }
-//
-//
-// .side-nav div.divider {
-//     margin: 0 -20px;
-//     background: none;
-// }
-//
-// .side-nav .userView .circle:hover {
-//     border-radius: 50%;
-// }
-//
-// .side-nav .userView .name {
-//     font-family: "Spectral",garamond,times new roman,serif;
-//     font-variant: small-caps;
-// }
-//
-// .side-nav #channeltopic {
-//     width: auto;
-//     font-size: inherit;
-// }
-//
-// #members-nav li>a.subheader {
-//     padding: 0;
-//     text-transform: none;
-// }
-//
+/* Side nav
+============================================== */
+
+#guild-nav, #members-nav {
+	padding: 20px;
+}
+
+#members-nav li>a.subheader {
+	text-transform: none;
+	&.role-title {
+		font-size: 14px !important;
+		margin-bottom: 0 !important;
+	}
+}
+
+.side-nav {
+	li, #channeltopic {
+		margin: 0 0 10px 0;
+	}
+	li {
+		&, & > a {
+			line-height: 1.5;
+		}
+		& > a {
+			font-weight: 300;
+			&[id^=channel] {
+				margin: 0 0 0 20px;
+			}
+		}
+	}
+	.userView .circle:hover {
+		border-radius: 50%;
+	}
+	.userView .name {
+		font-size: rem(22px);
+	}
+	.userView .name, .subheader {
+		@include spectral-common;
+	}
+	.subheader.channel-category, .subheader.role-title, #channeltopic {
+		font-size: inherit;
+	}
+	.subheader {
+		line-height: normal;
+		font-size: rem(18px);
+		&.channel-category, &.role-title {
+			font-family: $font-01;
+			font-variant: none;
+		}
+	}
+	div.divider {
+		margin: 0 -20px;
+		border-bottom: 1px dashed $color-04;
+		background: none;
+	}
+	#channeltopic {
+		width: auto;
+	}
+	img[src=''] + .membername {
+		padding-left: 0;
+		top: 6px;
+	}
+}
+
+.membername {
+	position: static;
+}
+
+.membercircle {
+	height: 30px;
+	& + .membername {
+		@include position($type: absolute, $left: 40px, $top: 5px);
+	}
+}
+
+
 // #chatcontent {
 //     padding: 65px 0 10px 0;
 // }

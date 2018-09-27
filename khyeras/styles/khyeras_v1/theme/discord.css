@@ -1,6 +1,6 @@
 /* Root colors
 ============================================== */
-@import url("//fonts.googleapis.com/css?family=Fira+Sans:300,300i,500,500i");
+@import url("//fonts.googleapis.com/css?family=Spectral|Fira+Sans:300,300i,500,500i");
 :root {
   --modal: #15212c;
   --noroleusers: #ff00ff;
@@ -20,9 +20,14 @@
 }
 
 html {
+  font-size: 16px;
+}
+
+body {
   font-family: "Fira Sans", arial, sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
+  font-weight: 300;
 }
 
 html, label, nav a, nav .brand-logo, .betatag, .chattimestamp, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
@@ -40,6 +45,14 @@ textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser
   min-height: 0;
 }
 
+.side-nav li > a, .side-nav .userView, #members-nav li > a.subheader, .membername {
+  padding: 0;
+}
+
+.membercircle {
+  margin: 0;
+}
+
 /* Typography
 ============================================== */
 html, #usercard .game .text {
@@ -48,6 +61,10 @@ html, #usercard .game .text {
 
 b, strong, optgroup, .chatusername, p.mentioned, .richembed .field-name, #usercard .bottag, #usercard .game {
   font-weight: 500;
+}
+
+#discord-members > li > a.subheader, #members-nav > li:nth-child(1) > a, #discord-members-count, #embed-discord-members-count, #members-nav > li:nth-child(4) > a, #guest-members-count, #members-nav > li:nth-child(6) > a {
+  text-transform: none;
 }
 
 /* Form fields
@@ -159,7 +176,7 @@ input[type='checkbox'].filled-in:checked + label:before {
 .navbar-fixed nav .nav-wrapper > .container:before {
   font-family: "Spectral", garamond, times new roman, serif;
   font-variant: small-caps;
-  font-size: 20px;
+  font-size: 1.25rem;
   content: 'Chat With Us';
   position: absolute;
   top: 2px;
@@ -167,4 +184,91 @@ input[type='checkbox'].filled-in:checked + label:before {
   right: 0;
   display: block;
   text-align: center;
+}
+
+/* Side nav
+============================================== */
+#guild-nav, #members-nav {
+  padding: 20px;
+}
+
+#members-nav li > a.subheader {
+  text-transform: none;
+}
+
+#members-nav li > a.subheader.role-title {
+  font-size: 14px !important;
+  margin-bottom: 0 !important;
+}
+
+.side-nav li, .side-nav #channeltopic {
+  margin: 0 0 10px 0;
+}
+
+.side-nav li, .side-nav li > a {
+  line-height: 1.5;
+}
+
+.side-nav li > a {
+  font-weight: 300;
+}
+
+.side-nav li > a[id^=channel] {
+  margin: 0 0 0 20px;
+}
+
+.side-nav .userView .circle:hover {
+  border-radius: 50%;
+}
+
+.side-nav .userView .name {
+  font-size: 1.375rem;
+}
+
+.side-nav .userView .name, .side-nav .subheader {
+  font-family: "Spectral", garamond, times new roman, serif;
+  font-variant: small-caps;
+}
+
+.side-nav .subheader.channel-category, .side-nav .subheader.role-title, .side-nav #channeltopic {
+  font-size: inherit;
+}
+
+.side-nav .subheader {
+  line-height: normal;
+  font-size: 1.125rem;
+}
+
+.side-nav .subheader.channel-category, .side-nav .subheader.role-title {
+  font-family: "Fira Sans", arial, sans-serif;
+  font-variant: none;
+}
+
+.side-nav div.divider {
+  margin: 0 -20px;
+  border-bottom: 1px dashed #15212c;
+  background: none;
+}
+
+.side-nav #channeltopic {
+  width: auto;
+}
+
+.side-nav img[src=''] + .membername {
+  padding-left: 0;
+  top: 6px;
+}
+
+.membername {
+  position: static;
+}
+
+.membercircle {
+  height: 30px;
+}
+
+.membercircle + .membername {
+  position: absolute;
+  top: 5px;
+  left: 40px;
 }
