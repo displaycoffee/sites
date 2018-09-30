@@ -46,7 +46,7 @@ input[type='text']:not(.browser-default):focus:not([readonly]) + label {
 /* Resets
 ============================================== */
 
-textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default), .btn, .btn-large, .navbar-fixed, nav, nav a.button-collapse, nav a.button-collapse i, .side-nav li, .side-nav li > a, footer, #footercontainer #messageboxouter {
+textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default), .btn, .btn-large, #wdt-emoji-search, #wdt-emoji-search:focus, .navbar-fixed, nav, nav a.button-collapse, nav a.button-collapse i, .side-nav li, .side-nav li > a, footer, #footercontainer #messageboxouter, #wdt-emoji-preview #wdt-emoji-preview-img {
 	height: auto;
 }
 
@@ -54,12 +54,21 @@ textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser
 	min-height: 0;
 }
 
-.side-nav li > a, .side-nav .userView, #members-nav li > a.subheader, .membername {
+.side-nav li > a, .side-nav .userView, #members-nav li > a.subheader, .membername, #footercontainer .currentuserchip, #wdt-emoji-preview, #wdt-emoji-preview #wdt-emoji-preview-img, .modal #authfields .row .col {
 	padding: 0;
 }
 
-.membercircle {
+.membercircle, #chatcontent > p, #footercontainer .currentuserchip, #footercontainer .currentuserchip #currentuserimage_parent, .modal #authfields .row, #userembedmodal .select-wrapper + p {
 	margin: 0;
+}
+
+.circle:hover {
+	border-radius: 50%;
+	background: none;
+}
+
+.navbar-fixed nav .brand-logo, #chatcontent .chatusername .authorhash, #chatcontent .chatusername .authordiscriminator, #footercontainer .currentuserchip #currentusername #curuser_discrim, #usercard .identity .hash, #usercard .identity .discriminator, #usercard .avatar + br {
+	display: none;
 }
 
 /* Typography
@@ -80,12 +89,13 @@ b, strong, optgroup, .chatusername, p.mentioned, .richembed .field-name, #userca
 /* Form fields
 ============================================== */
 
-textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default), .btn, .btn-large {
+textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default), .btn, .btn-large, #wdt-emoji-search, #wdt-emoji-search:focus {
 	line-height: 1.45;
 	border-radius: 3px;
+	font-size: inherit;
 }
 
-textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default) {
+textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default), #wdt-emoji-search, #wdt-emoji-search:focus {
 	background: $color-01;
 	color: $color-08;
 	width: 100%;
@@ -116,8 +126,11 @@ input[type='radio']:not(:checked) + label:before, input[type='checkbox'].filled-
 	background-color: $color-01;
 }
 
-input[type='radio']:checked {
-	&  + label:after {
+input[type='radio'] {
+	&:not(:checked) + label, &:checked + label {
+		font-size: inherit;
+	}
+	&:checked  + label:after {
 		background-color: $color-10;
 		border: 3px solid $color-01;
 	}
@@ -126,10 +139,11 @@ input[type='radio']:checked {
 input[type='checkbox'] {
 	&.filled-in:checked + label:after, &.filled-in:not(:checked) + label:after {
 		@include sizing(16px, 16px);
+		margin-top: 2px;
 	}
 	&.filled-in:checked + label:before {
 		@include sizing(5px, 10px);
-		@include position($top: .5px, $left: 2px);
+		@include position($top: 2.5px, $left: 2px);
 		border-right-color: $color-10;
 		border-bottom-color: $color-10;
 	}
@@ -173,9 +187,6 @@ input[type='checkbox'] {
 	a.button-collapse {
 		margin: 0;
 	}
-	.brand-logo {
-		display: none;
-	}
 	.nav-wrapper > .container:before {
 		@include spectral-common;
 		font-size: rem(20px);
@@ -215,9 +226,6 @@ input[type='checkbox'] {
 				margin: 0 0 0 20px;
 			}
 		}
-	}
-	.userView .circle:hover {
-		border-radius: 50%;
 	}
 	.userView .name {
 		font-size: rem(22px);
@@ -261,172 +269,239 @@ input[type='checkbox'] {
 	}
 }
 
+/* Chat
+============================================== */
 
-// #chatcontent {
-//     padding: 65px 0 10px 0;
-// }
-//
-// #chatcontent > p {
-//     border-top: 1px dashed #15212c;
-//     width: auto;
-//     padding: 10px 20px;
-//     margin: 0;
-// }
-//
-// #chatcontent > p:first-child {
-//     border-top: 0;
-// }
-//
-// #chatcontent .chatusername {
-//     color: #67e5e2;
-//     font-size: inherit;
-// }
-//
-// #chatcontent .chatusername .authorhash,
-// #chatcontent .chatusername .authordiscriminator {
-//    display: none;
-// }
-//
-// footer {
-//     background: #15212c;
-// }
-//
-// #footercontainer {
-//     width: auto;
-//     border: 0;
-//     margin: 0 -5px;
-//     padding: 10px 20px;
-//     -webkit-box-align: center;
-//     -webkit-align-items: center;
-//     -ms-flex-align: center;
-//     align-items: center;
-// }
-//
-// #footercontainer > div, #footercontainer #nameplate {
-//     margin: 0 5px;
-//     top: 0;
-// }
-//
-// #footercontainer .currentuserchip {
-//     padding: 0;
-//     margin: 0;
-// }
-//
-// #footercontainer .currentuserchip #currentuserimage_parent,
-// #footercontainer .currentuserchip #currentusername {
-//     vertical-align: middle;
-// }
-//
-// #footercontainer .currentuserchip #currentusername {
-//     left: 0;
-// }
-//
-// #footercontainer .currentuserchip #currentuserimage_parent {
-//     margin: 0;
-//     line-height: 0;
-// }
-//
-// #footercontainer #messageboxouter {
-//     webkit-box-flex: 1;
-//     -webkit-flex: 1 1 100%;
-//     -ms-flex: 1 1 100%;
-//     flex: 1 1 100%;
-//     overflow: visible;
-// }
-//
-// #footercontainer #messageboxouter, .footercontainer #visitor_mode_message {
-//     width: auto;
-// }
-//
-// #footercontainer #messageboxouter #visitor_login_btn {
-//     margin: 0 0 0 10px;
-// }
-//
+#chatcontent {
+	padding: 44px 0 10px;
+	& > p {
+		border-top: 1px dashed $color-04;
+		width: auto;
+		padding: 10px 20px;
+		&:first-child {
+			border-top: 0;
+		}
+		&.collapsed .chatmessage {
+			margin-top: 0;
+		}
+	}
+	.chatusername {
+		font-size: inherit;
+	}
+	.chatmessage {
+		margin-top: 10px;
+	}
+	span.reactions {
+		margin: 0 -2.5px -5px -2.5px;
+		.reaction {
+			background: rgba($color-02, 0.25);
+			margin: 0 2.5px 5px 2.5px;
+		}
+	}
+}
 
-//
-// .modal {
-//     top: 0 !important;
-//     bottom: 0 !important;
-//     margin: auto;
-//     max-height: 90%;
-//     border-radius: 0;
-//     -webkit-box-shadow: none;
-//     box-shadow: none;
-// }
-//
-// .modal p, .modal #discordlogin_btn, .modal #guest_login_instr, .modal input[type='text'],
-// .modal #guestlogin_box:before {
-//     margin: 0 0 10px 0;
-// }
-//
-// .modal .modal-content {
-//     padding: 20px;
-// }
-//
-// .modal .row {
-//     margin: 0 -20px;
-// }
-//
-// .modal .row > .col {
-//     padding: 0 20px;
-// }
-//
-// .modal #discordlogin_btn_warn {
-//     font-style: italic;
-// }
-//
-// .modal #authfields .row {
-//     margin: 0;
-// }
-//
-// .modal #authfields .row .col {
-//     padding: 0;
-//     float: none;
-//     width: auto;
-// }
-//
-// .modal #guestlogin_box:before {
-//     content: '- OR -';
-//     display: block;
-//     font-size: 14px;
-//     font-style: italic;
-// }
-//
-// .modal #modal_guildinfobox {
-//     background-color: transparent;
-//     border-right: 1px dashed #0d171b;
-// }
-//
-// .modal label, .modal #discordlogin_btn_warn {
-//     font-size: 11px;
-// }
-//
-// .modal h4, #loginmodal h4 {
-//     font-size: 20px;
-// }
-//
-// .modal h4 {
-//     margin: 0 0 20px 0;
-//     font-family: "Spectral",garamond,times new roman,serif;
-//     font-variant: small-caps;
-// }
-//
-// #loginmodal, #loginmodal .flow-text {
-//     font-size: 12px;
-// }
-//
-// #userembedmodal .modal-content > .row:nth-child(2) > div {
-//     padding: 0 20px;
-// }
-//
-// #userembedmodal .modal-content > .row {
-//     margin-bottom: 20px;
-// }
-//
-// #userembedmodal .modal-content > .row:last-child {
-//     margin-bottom: 0;
-// }
-//
-// #userembedmodal #logout_btn {
-//     margin-right: 20px;
-// }
+/* Footer
+============================================== */
+
+#footercontainer {
+	border: 0;
+	margin: 0 -5px;
+	padding: 10px 20px;
+	align-items: center;
+	&, #messageboxouter, #visitor_mode_message {
+		width: auto;
+	}
+	& > div, #nameplate {
+		margin: 0;
+		padding: 0 5px;
+		top: 0;
+	}
+	.currentuserchip #currentusername, #messageboxouter #visitor_login_btn {
+		margin: 0 0 0 10px;
+	}
+	.currentuserchip #currentuserimage_parent, #messageboxouter {
+		line-height: 0;
+	}
+	.currentuserchip {
+		#currentuserimage_parent, #currentusername {
+			vertical-align: middle;
+		}
+		#currentusername {
+			left: 0;
+		}
+		#currentuserimage_parent #currentuserimage {
+			margin-right: 0;
+		}
+	}
+	#messageboxouter {
+		@include flex(full);
+		overflow: visible;
+		#messagebox {
+			padding-right: 35px;
+		}
+	}
+	.wdt-emoji-picker {
+		top: 14px;
+	}
+}
+
+/* Emoji Popup
+============================================== */
+
+.wdt-emoji-popup {
+	height: 250px;
+	@include position($bottom: 0, $top: 0 !important, $right: 20px);
+	margin: auto;
+	overflow: hidden;
+	border-color: rgba($color-02, 0.80);
+	border-radius: 0;
+	&, h3 {
+		background: $color-04;
+	}
+	h3, #wdt-emoji-preview-bundle, #wdt-emoji-preview-text, #wdt-emoji-preview-name {
+		color: #ff00ff;
+	}
+	h3, #wdt-emoji-footer, #wdt-emoji-menu-header, .wdt-emoji {
+		padding: 5px;
+	}
+	h3, #wdt-emoji-preview-bundle,  {
+		font-size: inherit;
+	}
+	h3, #wdt-emoji-preview-name {
+		font-weight: 500;
+	}
+	.wdt-emoji-tab.active {
+		border-bottom-color: #67e5e2;
+	}
+	span.emoji-outer {
+		@include sizing(16px, 16px);
+	}
+	#wdt-emoji-footer, #wdt-emoji-menu-header {
+		background: $color-05;
+	}
+	#wdt-emoji-search {
+		margin: 10px;
+		width: 95%;
+	}
+	#wdt-emoji-preview-bundle {
+		bottom: 12px;
+		font-weight: 300;
+	}
+	#wdt-emoji-preview {
+		#wdt-emoji-preview-text {
+			top: 0;
+		}
+		#wdt-emoji-preview-img span.emoji-outer.emoji-sizer {
+			@include sizing(24px, 24px);
+		}
+	}
+}
+
+/* Modal
+============================================== */
+
+.modal {
+	@include position($bottom: 0 !important, $top: 0 !important);
+	margin: auto;
+	max-height: 75%;
+	border-radius: 0;
+	box-shadow: none;
+	&.bottom-sheet {
+		max-height: 55%;
+	}
+	p, #discordlogin_btn, #guest_login_instr, input[type='text'], #guestlogin_box:before {
+		margin: 0 0 10px 0;
+	}
+	h4, #loginmodal h4 {
+		font-size: rem(20px);
+	}
+	label, #discordlogin_btn_warn {
+		font-size: rem(12px);
+	}
+	h4 {
+		@include spectral-common;
+		margin: 0 0 10px 0;
+	}
+	.modal-content {
+		padding: 20px;
+	}
+	.row {
+		margin: 0 -10px;
+		& > .col {
+			padding: 0 10px;
+		}
+	}
+	#discordlogin_btn_warn, #guestlogin_box:before {
+		font-style: italic;
+	}
+	#authfields .row .col {
+		float: none;
+		width: auto;
+	}
+	#guestlogin_box:before {
+		content: '- OR -';
+		display: block;
+		font-size: rem(14px);
+		font-weight: 500;
+	}
+	#modal_guildinfobox {
+		background-color: transparent;
+		border-right: 1px dashed $color-05;
+	}
+}
+
+/* Login Modal
+============================================== */
+
+#loginmodal {
+	&, .flow-text {
+		font-size: rem(12px);
+	}
+}
+
+/* User Embed Modal
+============================================== */
+
+#userembedmodal {
+	.modal-content > .row {
+		margin-bottom: 20px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		&:nth-child(2) > div {
+			padding: 0 10px;
+		}
+	}
+	#logout_btn {
+		margin-right: 10px;
+		padding: 6px 5px 3px 5px;
+	}
+}
+
+/* User Card
+============================================== */
+
+#usercard {
+	.avatar, .badges {
+		margin: 0 0 10px 0;
+	}
+	.identity, .bottag, .role .bubble {
+		display: inline-block;
+	}
+	.identity, .bottag {
+		vertical-align: middle;
+	}
+	.bottag {
+		margin: 0 0 10px 10px;
+	}
+	.roles {
+		padding-left: 5px;
+		.bubble {
+			margin: 0 5px 10px 5px;
+			vertical-align: top;
+		}
+		.text {
+			color: #ff00ff;
+		}
+	}
+}
