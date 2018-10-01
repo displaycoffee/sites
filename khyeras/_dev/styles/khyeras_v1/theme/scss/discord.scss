@@ -8,16 +8,16 @@
 @import url('//fonts.googleapis.com/css?family=Spectral|Fira+Sans:300,300i,500,500i');
 
 :root {
-	--modal: $color-04;
-	--noroleusers: #ff00ff; // default user color
+	--modal: $color-05;
+	--noroleusers: $color-00; // default user color
 	--main: $color-05;
 	--placeholder: $color-02;
 	--sidebardivider: $color-04;
 	--leftsidebar: $color-05;
 	--rightsidebar: $color-05;
 	--header: $color-04;
-	--chatmessage: #ff00ff; // font color
-	--discrim: #ff00ff; // font color
+	--chatmessage: $color-00; // font color
+	--discrim: $color-00; // font color
 	--chatbox: $color-04;
 }
 
@@ -38,19 +38,23 @@ body {
 	font-weight: 300;
 }
 
-html, label, nav a, nav .brand-logo, .betatag, .chattimestamp, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
-input[type='text']:not(.browser-default):focus:not([readonly]) + label {
-	color: #ff00ff;
+html, label, .brand-logo, .betatag, .chatusername, .chattimestamp, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
+input[type='text']:not(.browser-default):focus:not([readonly]) + label, .wdt-emoji-popup h3, .wdt-emoji-popup #wdt-emoji-preview-bundle, .wdt-emoji-popup #wdt-emoji-preview-text, .wdt-emoji-popup #wdt-emoji-preview-name, #usercard .roles .text {
+	color: $color-00;
+}
+
+nav, nav a, #footercontainer #curuser_name, #footercontainer #visitor_mode_message {
+	color: $color-01;
 }
 
 /* Resets
 ============================================== */
 
-textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default), .btn, .btn-large, #wdt-emoji-search, #wdt-emoji-search:focus, .navbar-fixed, nav, nav a.button-collapse, nav a.button-collapse i, .side-nav li, .side-nav li > a, footer, #footercontainer #messageboxouter, #wdt-emoji-preview #wdt-emoji-preview-img {
+textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default), .btn, .btn-large, #wdt-emoji-search, #wdt-emoji-search:focus, .navbar-fixed, nav, nav a.button-collapse, nav a.button-collapse i, .side-nav li, .side-nav li > a, footer, #footercontainer #messageboxouter, #wdt-emoji-preview #wdt-emoji-preview-img, #mention-picker .mention-choice {
 	height: auto;
 }
 
-textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default) {
+textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser-default), #mention-picker {
 	min-height: 0;
 }
 
@@ -67,18 +71,18 @@ textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser
 	background: none;
 }
 
-.navbar-fixed nav .brand-logo, #chatcontent .chatusername .authorhash, #chatcontent .chatusername .authordiscriminator, #footercontainer .currentuserchip #currentusername #curuser_discrim, #usercard .identity .hash, #usercard .identity .discriminator, #usercard .avatar + br {
+.navbar-fixed nav .brand-logo, #chatcontent .chatusername .authorhash, #chatcontent .chatusername .authordiscriminator, #footercontainer .currentuserchip #currentusername #curuser_discrim, #usercard .identity .hash, #usercard .identity .discriminator, #usercard .avatar + br, .realname {
 	display: none;
 }
 
 /* Typography
 ============================================== */
 
-html, #usercard .game .text {
+html, #usercard .game .text, .side-nav li > a, .wdt-emoji-popup #wdt-emoji-preview-bundle {
 	font-weight: 300;
 }
 
-b, strong, optgroup, .chatusername, p.mentioned, .richembed .field-name, #usercard .bottag, #usercard .game {
+b, strong, optgroup, .chatusername, p.mentioned, .richembed .field-name, #usercard .bottag, #usercard .game, .wdt-emoji-popup h3, .wdt-emoji-popup #wdt-emoji-preview-name, .modal #guestlogin_box:before {
 	font-weight: 500;
 }
 
@@ -92,7 +96,7 @@ b, strong, optgroup, .chatusername, p.mentioned, .richembed .field-name, #userca
 textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default), .btn, .btn-large, #wdt-emoji-search, #wdt-emoji-search:focus {
 	line-height: 1.45;
 	border-radius: 3px;
-	font-size: inherit;
+	font-size: rem(14px);
 }
 
 textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default), #wdt-emoji-search, #wdt-emoji-search:focus {
@@ -103,6 +107,10 @@ textarea.materialize-textarea, input[type='text'], input[type='text']:not(.brows
 	border: 0;
 	padding: 10px;
 	margin: 0;
+}
+
+textarea {
+	height: auto !important;
 }
 
 input[type='text'] {
@@ -121,12 +129,20 @@ input[type='text'] {
 	}
 }
 
-input[type='radio']:not(:checked) + label:before, input[type='checkbox'].filled-in:checked + label:after, input[type='checkbox'].filled-in:not(:checked) + label:after {
+input[type='radio']:not(:checked) + label:before, input[type='checkbox'].filled-in:checked + label:after, input[type='checkbox'].filled-in:not(:checked) + label:after, #messagebox-filemodal {
 	border: 0;
 	background-color: $color-01;
 }
 
+input[type='radio']:not(:checked) + label, input[type='radio']:checked + label, input[type='checkbox'] + label {
+	padding: 0 10px 0 25px;
+}
+
 input[type='radio'] {
+	& + label:before,  & + label:after {
+		margin-left: 0;
+		margin-right: 0;
+	}
 	&:not(:checked) + label, &:checked + label {
 		font-size: inherit;
 	}
@@ -139,11 +155,11 @@ input[type='radio'] {
 input[type='checkbox'] {
 	&.filled-in:checked + label:after, &.filled-in:not(:checked) + label:after {
 		@include sizing(16px, 16px);
-		margin-top: 2px;
+		margin-top: 3px;
 	}
 	&.filled-in:checked + label:before {
 		@include sizing(5px, 10px);
-		@include position($top: 2.5px, $left: 2px);
+		@include position($top: 3.5px, $left: 2px);
 		border-right-color: $color-10;
 		border-bottom-color: $color-10;
 	}
@@ -152,7 +168,7 @@ input[type='checkbox'] {
 .btn, .btn-large, #logout_btn, #proceed_nsfw_btn {
  	background: $color-10;
 	&:hover {
-		background: $color-05;
+		background: $color-04;
 	}
 }
 
@@ -169,10 +185,10 @@ input[type='checkbox'] {
 	@include small-form-ele($padding: 5px);
 }
 
-#modal_invite_btn, #modal_invite_btn_invite_link {
-	padding: 10px 5px;
-	font-size: rem(12px);
-	display: block;
+#usercard-mention-btn, #modal_invite_btn, #modal_invite_btn_invite_link {
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 /* Header nav
@@ -204,11 +220,18 @@ input[type='checkbox'] {
 	padding: 20px;
 }
 
-#members-nav li>a.subheader {
-	text-transform: none;
-	&.role-title {
-		font-size: 14px !important;
-		margin-bottom: 0 !important;
+#guild-nav {
+	border-right: 1px solid $color-03;
+}
+
+#members-nav {
+	border-left: 1px solid $color-03;
+	li > a.subheader {
+		text-transform: none;
+		&.role-title {
+			font-size: 14px !important;
+			margin-bottom: 0 !important;
+		}
 	}
 }
 
@@ -220,11 +243,8 @@ input[type='checkbox'] {
 		&, & > a {
 			line-height: 1.5;
 		}
-		& > a {
-			font-weight: 300;
-			&[id^=channel] {
-				margin: 0 0 0 20px;
-			}
+		& > a[id^=channel] {
+			margin: 0 0 0 20px;
 		}
 	}
 	.userView .name {
@@ -294,8 +314,22 @@ input[type='checkbox'] {
 	span.reactions {
 		margin: 0 -2.5px -5px -2.5px;
 		.reaction {
-			background: rgba($color-02, 0.25);
+			background: rgba($color-02, 0.5);
 			margin: 0 2.5px 5px 2.5px;
+			padding: 5px;
+			height: auto;
+			font-size: rem(12px);
+			img, .count {
+				display: inline-block;
+			}
+			img {
+
+			}
+			.count {
+				float: none;
+				vertical-align: middle;
+				margin: 0 0 0 5px;
+			}
 		}
 	}
 }
@@ -353,13 +387,10 @@ input[type='checkbox'] {
 	@include position($bottom: 0, $top: 0 !important, $right: 20px);
 	margin: auto;
 	overflow: hidden;
-	border-color: rgba($color-02, 0.80);
+	border-color: $color-03;
 	border-radius: 0;
 	&, h3 {
-		background: $color-04;
-	}
-	h3, #wdt-emoji-preview-bundle, #wdt-emoji-preview-text, #wdt-emoji-preview-name {
-		color: #ff00ff;
+		background: $color-05;
 	}
 	h3, #wdt-emoji-footer, #wdt-emoji-menu-header, .wdt-emoji {
 		padding: 5px;
@@ -367,17 +398,20 @@ input[type='checkbox'] {
 	h3, #wdt-emoji-preview-bundle,  {
 		font-size: inherit;
 	}
-	h3, #wdt-emoji-preview-name {
-		font-weight: 500;
-	}
 	.wdt-emoji-tab.active {
 		border-bottom-color: #67e5e2;
 	}
 	span.emoji-outer {
 		@include sizing(16px, 16px);
 	}
-	#wdt-emoji-footer, #wdt-emoji-menu-header {
-		background: $color-05;
+	#wdt-emoji-menu-header, #wdt-emoji-footer {
+		background: $color-04;
+	}
+	#wdt-emoji-menu-header {
+		border-bottom-color: $color-03;
+	}
+	#wdt-emoji-footer {
+		border-top-color: $color-03;
 	}
 	#wdt-emoji-search {
 		margin: 10px;
@@ -385,7 +419,6 @@ input[type='checkbox'] {
 	}
 	#wdt-emoji-preview-bundle {
 		bottom: 12px;
-		font-weight: 300;
 	}
 	#wdt-emoji-preview {
 		#wdt-emoji-preview-text {
@@ -397,17 +430,55 @@ input[type='checkbox'] {
 	}
 }
 
+/* Mention Picker
+============================================== */
+
+#mention-picker {
+	@include position($bottom: 55px, $right: 20px);
+	max-width: 89.2%;
+	color: $color-08;
+	background: $color-01;
+	overflow: visible;
+	border-radius: 3px;
+	.mention-choice {
+		justify-content: flex-start;
+		&.selected {
+			background-color: transparent;
+		}
+	}
+}
+
+/* Dropdown Content
+============================================== */
+
+.dropdown-content {
+	border-radius: 0 0 3px 3px;
+	box-shadow: none;
+	li {
+		min-height: 1px;
+		& > a, & > span {
+			font-size: rem(12px);
+			color: $color-08;
+			padding: 5px 10px;
+		}
+	}
+}
+
 /* Modal
 ============================================== */
 
 .modal {
 	@include position($bottom: 0 !important, $top: 0 !important);
-	margin: auto;
-	max-height: 75%;
 	border-radius: 0;
+	border: 1px solid $color-03;
 	box-shadow: none;
+	max-height: 85%;
+	&, &.bottom-sheet {
+		margin: auto;
+		width: 85%;
+	}
 	&.bottom-sheet {
-		max-height: 55%;
+		max-height: 60%;
 	}
 	p, #discordlogin_btn, #guest_login_instr, input[type='text'], #guestlogin_box:before {
 		margin: 0 0 10px 0;
@@ -442,7 +513,6 @@ input[type='checkbox'] {
 		content: '- OR -';
 		display: block;
 		font-size: rem(14px);
-		font-weight: 500;
 	}
 	#modal_guildinfobox {
 		background-color: transparent;
@@ -478,10 +548,47 @@ input[type='checkbox'] {
 	}
 }
 
+/* NSFW Modal
+============================================== */
+
+#nsfwmodal i {
+	color: $color-11;
+}
+
+/* File Modal
+============================================== */
+
+#filemodal {
+	.progress {
+		background-color: $color-10;
+		.determinate {
+			background-color: mix(white, $color-10, 10%);
+		}
+	}
+	#filemodal-body {
+		#filemodal-left {
+			margin: 0 10px 0 0;
+		}
+		#messagebox-filemodal {
+			@include placeholder {
+				color: $color-02;
+			}
+		}
+	}
+}
+
 /* User Card
 ============================================== */
 
 #usercard {
+	.row .col {
+		&.m2 {
+			width: 25%;
+		}
+		&.m10 {
+			width: 75%;
+		}
+	}
 	.avatar, .badges {
 		margin: 0 0 10px 0;
 	}
@@ -499,9 +606,6 @@ input[type='checkbox'] {
 		.bubble {
 			margin: 0 5px 10px 5px;
 			vertical-align: top;
-		}
-		.text {
-			color: #ff00ff;
 		}
 	}
 }
