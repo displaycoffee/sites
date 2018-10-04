@@ -16,9 +16,10 @@
 	--leftsidebar: $color-05;
 	--rightsidebar: $color-05;
 	--header: $color-04;
+	--footer: $color-04;
 	--chatmessage: $color-00; // font color
 	--discrim: $color-00; // font color
-	--chatbox: $color-04;
+	--chatbox: $color-05;
 }
 
 * {
@@ -64,11 +65,6 @@ textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser
 
 .membercircle, #chatcontent > p, #footercontainer .currentuserchip, #footercontainer .currentuserchip #currentuserimage_parent, .modal #authfields .row, #userembedmodal .select-wrapper + p {
 	margin: 0;
-}
-
-.circle:hover {
-	border-radius: 50%;
-	background: none;
 }
 
 .navbar-fixed nav .brand-logo, #chatcontent .chatusername .authorhash, #chatcontent .chatusername .authordiscriminator, #footercontainer .currentuserchip #currentusername #curuser_discrim, #usercard .identity .hash, #usercard .identity .discriminator, #usercard .avatar + br, .realname {
@@ -166,6 +162,7 @@ input[type='checkbox'] {
 }
 
 .btn, .btn-large, #logout_btn, #proceed_nsfw_btn {
+	font-size: rem(13px);
  	background: $color-10;
 	&:hover {
 		background: $color-04;
@@ -187,8 +184,22 @@ input[type='checkbox'] {
 
 #usercard-mention-btn, #modal_invite_btn, #modal_invite_btn_invite_link {
 	width: 100%;
-	padding-left: 0;
-	padding-right: 0;
+	padding: 10px 0;
+}
+
+/* Avatars
+============================================== */
+
+.circle:hover {
+	border-radius: 50%;
+	background: none;
+}
+
+#usercard .avatar, #loginmodal #modal_guildiconcircle {
+	max-height: 100px;
+	max-width: 100%;
+	width: auto;
+	margin: 0 auto 10px auto;
 }
 
 /* Header nav
@@ -197,6 +208,7 @@ input[type='checkbox'] {
 .navbar-fixed nav {
 	background: var(--header);
 	padding: 10px 20px;
+	min-height: 44px;
 	&, a.button-collapse, a.button-collapse i {
 		line-height: 1;
 	}
@@ -220,22 +232,16 @@ input[type='checkbox'] {
 	padding: 20px;
 }
 
-#guild-nav {
-	border-right: 1px solid $color-03;
-}
-
-#members-nav {
-	border-left: 1px solid $color-03;
-	li > a.subheader {
-		text-transform: none;
-		&.role-title {
-			font-size: 14px !important;
-			margin-bottom: 0 !important;
-		}
+#members-nav li > a.subheader {
+	text-transform: none;
+	&.role-title {
+		font-size: 14px !important;
+		margin-bottom: 0 !important;
 	}
 }
 
 .side-nav {
+	box-shadow: none;
 	li, #channeltopic {
 		margin: 0 0 10px 0;
 	}
@@ -337,6 +343,10 @@ input[type='checkbox'] {
 /* Footer
 ============================================== */
 
+footer {
+	background: var(--footer);
+}
+
 #footercontainer {
 	border: 0;
 	margin: 0 -5px;
@@ -383,11 +393,11 @@ input[type='checkbox'] {
 ============================================== */
 
 .wdt-emoji-popup {
-	height: 250px;
-	@include position($bottom: 0, $top: 0 !important, $right: 20px);
+	height: 220px;
+	@include position($bottom: 0, $top: 0 !important, $right: 30px, $left: auto !important);
 	margin: auto;
 	overflow: hidden;
-	border-color: $color-03;
+	border: 0;
 	border-radius: 0;
 	&, h3 {
 		background: $color-05;
@@ -406,12 +416,11 @@ input[type='checkbox'] {
 	}
 	#wdt-emoji-menu-header, #wdt-emoji-footer {
 		background: $color-04;
+		border: 0;
 	}
-	#wdt-emoji-menu-header {
-		border-bottom-color: $color-03;
-	}
-	#wdt-emoji-footer {
-		border-top-color: $color-03;
+	.wdt-emoji-scroll-wrapper {
+		border-left: 1px solid $color-04;
+		border-right: 1px solid $color-04;
 	}
 	#wdt-emoji-search {
 		margin: 10px;
@@ -470,7 +479,6 @@ input[type='checkbox'] {
 .modal {
 	@include position($bottom: 0 !important, $top: 0 !important);
 	border-radius: 0;
-	border: 1px solid $color-03;
 	box-shadow: none;
 	max-height: 85%;
 	&, &.bottom-sheet {
@@ -498,8 +506,9 @@ input[type='checkbox'] {
 	}
 	.row {
 		margin: 0 -10px;
-		& > .col {
+		& > .col, #modal_guildinfobox {
 			padding: 0 10px;
+			margin: 0 0 10px 0;
 		}
 	}
 	#discordlogin_btn_warn, #guestlogin_box:before {
@@ -534,16 +543,18 @@ input[type='checkbox'] {
 
 #userembedmodal {
 	.modal-content > .row {
-		margin-bottom: 20px;
 		&:last-child {
-			margin-bottom: 0;
+			margin: 0;
 		}
 		&:nth-child(2) > div {
 			padding: 0 10px;
 		}
 	}
+	label[for='change_username_field'] {
+		display: block;
+		margin: 0 0 10px 0;
+	}
 	#logout_btn {
-		margin-right: 10px;
 		padding: 6px 5px 3px 5px;
 	}
 }
@@ -566,6 +577,9 @@ input[type='checkbox'] {
 		}
 	}
 	#filemodal-body {
+		#filemodal-right {
+			width: 100%;
+		}
 		#filemodal-left {
 			margin: 0 10px 0 0;
 		}
@@ -584,12 +598,13 @@ input[type='checkbox'] {
 	.row .col {
 		&.m2 {
 			width: 25%;
+			text-align: center;
 		}
 		&.m10 {
 			width: 75%;
 		}
 	}
-	.avatar, .badges {
+	.badges {
 		margin: 0 0 10px 0;
 	}
 	.identity, .bottag, .role .bubble {
@@ -606,6 +621,69 @@ input[type='checkbox'] {
 		.bubble {
 			margin: 0 5px 10px 5px;
 			vertical-align: top;
+		}
+	}
+}
+
+
+/* Resets
+============================================== */
+
+@include respond(767px) {
+	.modal .row > .col, #usercard .row .col.m2, #usercard .row .col.m10 {
+		width: auto;
+	}
+	.modal .row > .col {
+		float: none;
+	}
+}
+
+@include respond(600px) {
+	.btn, .btn-large {
+		width: 100%;
+	}
+	.btn, .btn-large, #loginmodal #modal_invite_btn, #loginmodal #modal_invite_btn_invite_link, #loginmodal #discordlogin_btn {
+		padding: 10px;
+		height: auto;
+		line-height: 1.45;
+		font-size: rem(13px);
+	}
+	.navbar-fixed nav a.button-collapse, #footercontainer #visitor_mode_message_note, #footercontainer #nameplate {
+		display: none;
+	}
+	.side-nav {
+		max-width: 75%;
+	}
+	#footercontainer #messageboxouter #visitor_login_btn {
+		margin: 0;
+	}
+	#loginmodal #authfield-choosetxt.flow-text, #loginmodal #custom_username_field, #nsfwmodal #dismiss_nsfw_btn {
+		margin: 0 0 10px 0;
+	}
+	#loginmodal {
+		h4, #guest_login_instr, #discordlogin_btn_warn, #authfield-choosetxt {
+			display: block;
+		}
+		h4 {
+			font-size: rem(20px);
+		}
+		#custom_username_field_label {
+			font-size: rem(12px);
+		}
+		#authfields {
+			margin-top: 0;
+		}
+	}
+}
+
+@include respond(500px) {
+	#loginmodal {
+		#modal_guildiconcircle {
+			max-width: 55px;
+		}
+		#modal_guildname {
+			text-align: left;
+			margin: 0 0 0 65px;
 		}
 	}
 }

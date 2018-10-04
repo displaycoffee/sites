@@ -498,8 +498,8 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 #mobile-menu {
-	background: $color-04;
-	border-right: 1px solid mix($color-02, $color-04, 25%);
+	background: $color-05;
+	border-right: 1px solid mix($color-02, $color-04, 50%);
 	@include position($type: fixed, $top: 0, $left: -($mobile-menu-width + 300), $z: 9999);
 	@include sizing($mobile-menu-width, 100%);
 	@include transition(left 0.3s ease-in-out);
@@ -523,8 +523,8 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		padding: 10px;
 	}
 	.menu .menu-label, .menu .dropdown-contents li, .menu .dropdown-contents > div {
-		border-top: 1px solid mix($color-01, $color-04, 05%);
-		border-bottom: 1px solid mix($color-02, $color-04, 25%);
+		border-top: 1px solid $color-04;
+		border-bottom: 1px solid mix($color-02, $color-04, 50%);
 	}
 	.mobile-menu-header .fa-times, .menu .menu-label .fa-chevron-down {
 		@include sizing(44px, 44px);
@@ -536,14 +536,14 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		cursor: pointer;
 	}
 	.mobile-menu-header {
-		border-bottom: 1px solid mix($color-02, $color-04, 25%);
+		border-bottom: 1px solid mix($color-02, $color-04, 50%);
 		.mobile-header {
 			font-size: rem(24px);
 			@include spectral-common;
 		}
 	}
 	.mobile-menu-content {
-		border-bottom: 1px solid mix($color-01, $color-04, 05%);
+		border-bottom: 1px solid $color-04;
 	}
 	.menu {
 		.menu-label .fa-chevron-down {
@@ -575,7 +575,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		.dropdown-visible {
 			.menu-label {
 				font-weight: bold;
-				background: mix($color-02, $color-04, 15%);
+				background: mix($color-02, $color-05, 15%);
 				.fa-chevron-down {
 					transform: rotate(-180deg);
 				}
@@ -610,6 +610,9 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 	#notification_list {
 		.header .header_settings, ul li {
 			font-size: rem(14px);
+		}
+		.header, .footer {
+			background: $color-05;
 		}
 		.header {
 			font-size: 0;

@@ -1,6 +1,7 @@
 /* RPG Icon Variables
 ============================================== */
 
+$rpg-burning-embers: \e932;
 $rpg-two-shadows: \e92f;
 $rpg-holy-grail: \e930;
 $rpg-hourglass: \e931;
@@ -51,6 +52,9 @@ $rpg-tinker: \e904;
 /* RPG Icon Classes
 ============================================== */
 
+.rpg-burning-embers:before {
+	content: unicode($rpg-burning-embers);
+}
 .rpg-two-shadows:before {
 	content: unicode($rpg-two-shadows);
 }
@@ -85,109 +89,109 @@ $rpg-tinker: \e904;
 	content: unicode($rpg-spell-book);
 }
 .rpg-open-book:before {
-    content: unicode($rpg-open-book);
+	content: unicode($rpg-open-book);
 }
 .rpg-quill-ink:before {
-    content: unicode($rpg-quill-ink);
+	content: unicode($rpg-quill-ink);
 }
 .rpg-quill:before {
-    content: unicode($rpg-quill);
+	content: unicode($rpg-quill);
 }
 .rpg-big-gear:before {
-    content: unicode($rpg-big-gear);
+	content: unicode($rpg-big-gear);
 }
 .rpg-castle:before {
-    content: unicode($rpg-castle);
+	content: unicode($rpg-castle);
 }
 .rpg-fangs:before {
-    content: unicode($rpg-fangs);
+	content: unicode($rpg-fangs);
 }
 .rpg-harpy:before {
-    content: unicode($rpg-harpy);
+	content: unicode($rpg-harpy);
 }
 .rpg-fire-silhouette:before {
-    content: unicode($rpg-fire-silhouette);
+	content: unicode($rpg-fire-silhouette);
 }
 .rpg-ghost-ally:before {
-    content: unicode($rpg-ghost-ally);
+	content: unicode($rpg-ghost-ally);
 }
 .rpg-transportation-rings:before {
-    content: unicode($rpg-transportation-rings);
+	content: unicode($rpg-transportation-rings);
 }
 .rpg-run:before {
-    content: unicode($rpg-run);
+	content: unicode($rpg-run);
 }
 .rpg-dragon-head:before {
-    content: unicode($rpg-dragon-head);
+	content: unicode($rpg-dragon-head);
 }
 .rpg-dwarf-face:before {
-    content: unicode($rpg-dwarf-face);
+	content: unicode($rpg-dwarf-face);
 }
 .rpg-elf-ear:before {
-    content: unicode($rpg-elf-ear);
+	content: unicode($rpg-elf-ear);
 }
 .rpg-clockwork:before {
-    content: unicode($rpg-clockwork);
+	content: unicode($rpg-clockwork);
 }
 .rpg-trumpet-flag:before {
-    content: unicode($rpg-trumpet-flag);
+	content: unicode($rpg-trumpet-flag);
 }
 .rpg-compass:before {
-    content: unicode($rpg-compass);
+	content: unicode($rpg-compass);
 }
 .rpg-padlock:before {
-    content: unicode($rpg-padlock);
+	content: unicode($rpg-padlock);
 }
 .rpg-key:before {
-    content: unicode($rpg-key);
+	content: unicode($rpg-key);
 }
 .rpg-secret-book:before {
-    content: unicode($rpg-secret-book);
+	content: unicode($rpg-secret-book);
 }
 .rpg-direction-sign:before {
-    content: unicode($rpg-direction-sign);
+	content: unicode($rpg-direction-sign);
 }
 .rpg-stabbed-note:before {
-    content: unicode($rpg-stabbed-note);
+	content: unicode($rpg-stabbed-note);
 }
 .rpg-white-book:before {
-    content: unicode($rpg-white-book);
+	content: unicode($rpg-white-book);
 }
 .rpg-book-cover:before {
-    content: unicode($rpg-book-cover);
+	content: unicode($rpg-book-cover);
 }
 .rpg-bookmarklet:before {
-    content: unicode($rpg-bookmarklet);
+	content: unicode($rpg-bookmarklet);
 }
 .rpg-evil-hand:before {
-    content: unicode($rpg-evil-hand);
+	content: unicode($rpg-evil-hand);
 }
 .rpg-shaking-hands:before {
-    content: unicode($rpg-shaking-hands);
+	content: unicode($rpg-shaking-hands);
 }
 .rpg-fairy:before {
-    content: unicode($rpg-fairy);
+	content: unicode($rpg-fairy);
 }
 .rpg-crossed-swords:before {
-    content: unicode($rpg-crossed-swords);
+	content: unicode($rpg-crossed-swords);
 }
 .rpg-gavel:before {
-    content: unicode($rpg-gavel);
+	content: unicode($rpg-gavel);
 }
 .rpg-hunting-horn:before {
-    content: unicode($rpg-hunting-horn);
+	content: unicode($rpg-hunting-horn);
 }
 .rpg-scroll-unfurled:before {
-    content: unicode($rpg-scroll-unfurled);
+	content: unicode($rpg-scroll-unfurled);
 }
 .rpg-thors-hammer:before {
-    content: unicode($rpg-thors-hammer);
+	content: unicode($rpg-thors-hammer);
 }
 .rpg-tied-scroll:before {
-    content: unicode($rpg-tied-scroll);
+	content: unicode($rpg-tied-scroll);
 }
 .rpg-tinker:before {
-    content: unicode($rpg-tinker);
+	content: unicode($rpg-tinker);
 }
 
 
@@ -195,7 +199,7 @@ $rpg-tinker: \e904;
 ============================================== */
 
 .fa-bell, .fa-clock-o, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
-.fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-sliders, .fa-pencil-square-o, .fa-power-off, .fa-reply, .fa-shield, .fa-wrench {
+.fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-sliders, .fa-pencil-square-o, .fa-power-off, .fa-reply, .fa-shield, .fa-trash, .fa-wrench {
 	font-family: 'Khyeras Icons';
 }
 
@@ -245,6 +249,10 @@ $rpg-tinker: \e904;
 
 .fa-sliders:before {
 	content: unicode($rpg-key);
+}
+
+.fa-trash:before {
+	content: unicode($rpg-burning-embers);
 }
 
 .fa-wrench:before {

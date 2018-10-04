@@ -9,7 +9,8 @@
 		background: $color-04;
 		color: $color-01;
 		padding: 0 0 30px 0;
-		.flex-row .flex-column .copyright, .bottom-line {
+		margin: 20px 0 0 0;
+		.footer-text {
 			font-size: rem(13px);
 		}
 		.flex-row .flex-column {
@@ -19,9 +20,6 @@
 			&.has-discord {
 				flex: 0 0 60%;
 			}
-			.copyright, .bottom-line {
-				font-size: rem(13px);
-			}
 			.button-wrapper {
 				margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
 				.button-link {
@@ -30,19 +28,18 @@
 				}
 			}
 		}
+		.discord-intro .icon {
+			font-size: rem(20px);
+			margin: 0 10px 0 0;
+		}
 		#discord-frame {
 			position: relative;
-			padding-bottom: 50%;
-			height: 0;
+			height: 450px;
 			overflow: hidden;
 			border: 10px solid $color-05;
 			iframe {
-				@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0);
 				@include sizing(100%, 100%);
 			}
-		}
-		.bottom-line {
-			text-align: center;
 		}
 	}
 }
@@ -70,11 +67,10 @@
 	margin: 0 auto;
 	padding: 20px;
 	background: $color-05;
-	border: 1px solid $color-03;
 	.alert_close {
 		@include position($type: absolute, $top: -10px, $right: -10px, $z: 2);
 		@include sizing(24px, 24px);
-		background: $color-03;
+		background: $color-05;
 		border-radius: 100%;
 		text-align: center;
 		color: $color-01;

@@ -10,9 +10,10 @@
   --leftsidebar: #0d171b;
   --rightsidebar: #0d171b;
   --header: #15212c;
+  --footer: #15212c;
   --chatmessage: #ededed;
   --discrim: #ededed;
-  --chatbox: #15212c;
+  --chatbox: #0d171b;
 }
 
 *, *:before, *:after {
@@ -55,11 +56,6 @@ textarea.materialize-textarea, input[type='text'], input[type=text]:not(.browser
 
 .membercircle, #chatcontent > p, #footercontainer .currentuserchip, #footercontainer .currentuserchip #currentuserimage_parent, .modal #authfields .row, #userembedmodal .select-wrapper + p {
   margin: 0;
-}
-
-.circle:hover {
-  border-radius: 50%;
-  background: none;
 }
 
 .navbar-fixed nav .brand-logo, #chatcontent .chatusername .authorhash, #chatcontent .chatusername .authordiscriminator, #footercontainer .currentuserchip #currentusername #curuser_discrim, #usercard .identity .hash, #usercard .identity .discriminator, #usercard .avatar + br, .realname {
@@ -158,6 +154,7 @@ input[type='checkbox'].filled-in:checked + label:before {
 }
 
 .btn, .btn-large, #logout_btn, #proceed_nsfw_btn {
+  font-size: 0.8125rem;
   background: #1c2f25;
 }
 
@@ -182,8 +179,21 @@ input[type='checkbox'].filled-in:checked + label:before {
 
 #usercard-mention-btn, #modal_invite_btn, #modal_invite_btn_invite_link {
   width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 10px 0;
+}
+
+/* Avatars
+============================================== */
+.circle:hover {
+  border-radius: 50%;
+  background: none;
+}
+
+#usercard .avatar, #loginmodal #modal_guildiconcircle {
+  max-height: 100px;
+  max-width: 100%;
+  width: auto;
+  margin: 0 auto 10px auto;
 }
 
 /* Header nav
@@ -191,6 +201,7 @@ input[type='checkbox'].filled-in:checked + label:before {
 .navbar-fixed nav {
   background: var(--header);
   padding: 10px 20px;
+  min-height: 44px;
 }
 
 .navbar-fixed nav, .navbar-fixed nav a.button-collapse, .navbar-fixed nav a.button-collapse i {
@@ -220,14 +231,6 @@ input[type='checkbox'].filled-in:checked + label:before {
   padding: 20px;
 }
 
-#guild-nav {
-  border-right: 1px solid #090909;
-}
-
-#members-nav {
-  border-left: 1px solid #090909;
-}
-
 #members-nav li > a.subheader {
   text-transform: none;
 }
@@ -235,6 +238,10 @@ input[type='checkbox'].filled-in:checked + label:before {
 #members-nav li > a.subheader.role-title {
   font-size: 14px !important;
   margin-bottom: 0 !important;
+}
+
+.side-nav {
+  box-shadow: none;
 }
 
 .side-nav li, .side-nav #channeltopic {
@@ -353,6 +360,10 @@ input[type='checkbox'].filled-in:checked + label:before {
 
 /* Footer
 ============================================== */
+footer {
+  background: var(--footer);
+}
+
 #footercontainer {
   border: 0;
   margin: 0 -5px;
@@ -413,13 +424,14 @@ input[type='checkbox'].filled-in:checked + label:before {
 /* Emoji Popup
 ============================================== */
 .wdt-emoji-popup {
-  height: 250px;
+  height: 220px;
   top: 0 !important;
   bottom: 0;
-  right: 20px;
+  left: auto !important;
+  right: 30px;
   margin: auto;
   overflow: hidden;
-  border-color: #090909;
+  border: 0;
   border-radius: 0;
 }
 
@@ -446,14 +458,12 @@ input[type='checkbox'].filled-in:checked + label:before {
 
 .wdt-emoji-popup #wdt-emoji-menu-header, .wdt-emoji-popup #wdt-emoji-footer {
   background: #15212c;
+  border: 0;
 }
 
-.wdt-emoji-popup #wdt-emoji-menu-header {
-  border-bottom-color: #090909;
-}
-
-.wdt-emoji-popup #wdt-emoji-footer {
-  border-top-color: #090909;
+.wdt-emoji-popup .wdt-emoji-scroll-wrapper {
+  border-left: 1px solid #15212c;
+  border-right: 1px solid #15212c;
 }
 
 .wdt-emoji-popup #wdt-emoji-search {
@@ -520,7 +530,6 @@ input[type='checkbox'].filled-in:checked + label:before {
   top: 0 !important;
   bottom: 0 !important;
   border-radius: 0;
-  border: 1px solid #090909;
   box-shadow: none;
   max-height: 85%;
 }
@@ -560,8 +569,9 @@ input[type='checkbox'].filled-in:checked + label:before {
   margin: 0 -10px;
 }
 
-.modal .row > .col {
+.modal .row > .col, .modal .row #modal_guildinfobox {
   padding: 0 10px;
+  margin: 0 0 10px 0;
 }
 
 .modal #discordlogin_btn_warn, .modal #guestlogin_box:before {
@@ -592,20 +602,20 @@ input[type='checkbox'].filled-in:checked + label:before {
 
 /* User Embed Modal
 ============================================== */
-#userembedmodal .modal-content > .row {
-  margin-bottom: 20px;
-}
-
 #userembedmodal .modal-content > .row:last-child {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 #userembedmodal .modal-content > .row:nth-child(2) > div {
   padding: 0 10px;
 }
 
+#userembedmodal label[for='change_username_field'] {
+  display: block;
+  margin: 0 0 10px 0;
+}
+
 #userembedmodal #logout_btn {
-  margin-right: 10px;
   padding: 6px 5px 3px 5px;
 }
 
@@ -623,6 +633,10 @@ input[type='checkbox'].filled-in:checked + label:before {
 
 #filemodal .progress .determinate {
   background-color: #33443b;
+}
+
+#filemodal #filemodal-body #filemodal-right {
+  width: 100%;
 }
 
 #filemodal #filemodal-body #filemodal-left {
@@ -649,13 +663,14 @@ input[type='checkbox'].filled-in:checked + label:before {
 ============================================== */
 #usercard .row .col.m2 {
   width: 25%;
+  text-align: center;
 }
 
 #usercard .row .col.m10 {
   width: 75%;
 }
 
-#usercard .avatar, #usercard .badges {
+#usercard .badges {
   margin: 0 0 10px 0;
 }
 
@@ -678,4 +693,61 @@ input[type='checkbox'].filled-in:checked + label:before {
 #usercard .roles .bubble {
   margin: 0 5px 10px 5px;
   vertical-align: top;
+}
+
+/* Resets
+============================================== */
+@media only screen and (max-width: 767px) {
+  .modal .row > .col, #usercard .row .col.m2, #usercard .row .col.m10 {
+    width: auto;
+  }
+  .modal .row > .col {
+    float: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .btn, .btn-large {
+    width: 100%;
+  }
+  .btn, .btn-large, #loginmodal #modal_invite_btn, #loginmodal #modal_invite_btn_invite_link, #loginmodal #discordlogin_btn {
+    padding: 10px;
+    height: auto;
+    line-height: 1.45;
+    font-size: 0.8125rem;
+  }
+  .navbar-fixed nav a.button-collapse, #footercontainer #visitor_mode_message_note, #footercontainer #nameplate {
+    display: none;
+  }
+  .side-nav {
+    max-width: 75%;
+  }
+  #footercontainer #messageboxouter #visitor_login_btn {
+    margin: 0;
+  }
+  #loginmodal #authfield-choosetxt.flow-text, #loginmodal #custom_username_field, #nsfwmodal #dismiss_nsfw_btn {
+    margin: 0 0 10px 0;
+  }
+  #loginmodal h4, #loginmodal #guest_login_instr, #loginmodal #discordlogin_btn_warn, #loginmodal #authfield-choosetxt {
+    display: block;
+  }
+  #loginmodal h4 {
+    font-size: 1.25rem;
+  }
+  #loginmodal #custom_username_field_label {
+    font-size: 0.75rem;
+  }
+  #loginmodal #authfields {
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #loginmodal #modal_guildiconcircle {
+    max-width: 55px;
+  }
+  #loginmodal #modal_guildname {
+    text-align: left;
+    margin: 0 0 0 65px;
+  }
 }
