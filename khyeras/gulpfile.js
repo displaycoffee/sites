@@ -57,6 +57,7 @@ if (phpBBFolder == 'styles') {
 	var sassSources = [
 		devSass + '/bidi.scss',
 		devSass + '/plupload.scss',
+		devSass + '/print.scss',
 		devSass + '/stylesheet.scss'
 	];
 
