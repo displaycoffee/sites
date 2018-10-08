@@ -11,9 +11,6 @@
 @import 'variables';
 @import 'mixins';
 
-// Vendor
-@import 'normalize';
-
 * {
 	margin: 0;
 	padding: 0;
@@ -21,13 +18,13 @@
 
 body {
 	font-family: $font-01;
-	font-size: 10.5pt;
+	font-size: 12pt;
 	line-height: 1.7;
 	font-weight: normal;
 	color: $color-02;
 }
 
-h1, h2, h3, h4, h5, h6, p, figure, pre, code, dl, hr, .content, .page-number {
+h1, h2, h3, h4, h5, h6, p, figure, dl, hr, blockquote, .content, .page-number, .codebox {
 	margin: 20px 0;
 }
 
@@ -36,19 +33,27 @@ h1 {
 }
 
 h2 {
-	font-size: 16pt;
+	font-size: 18pt;
 }
 
 h3 {
+	font-size: 16pt;
+}
+
+h4, h5, h6 {
 	font-size: 14pt;
 }
 
-h4, h5, h5 {
-	font-size: 12pt;
+.content a:after, .copyright {
+	font-size: 9pt;
+}
+
+blockquote, .codebox, .date, .author {
+	font-size: 10.5pt;
 }
 
 ul, ol {
-	margin: 20px 0 20px 40px;
+	margin: 20px 0 20px 46px;
 }
 
 a {
@@ -60,7 +65,8 @@ a {
 
 hr {
 	border: 0;
-	background: $color-02;
+	border-bottom: 1px dashed $color-22;
+	background: none;
 	height: 1px;
 }
 
@@ -70,85 +76,102 @@ hr {
 	max-width: 90%;
 }
 
-img, .noprint, .navbar, .box1, .divider, .signature, .skip_link, .codebox p, .postprofile, .grip-show {
+.spacer {
+	clear: both;
+}
+
+img, .noprint, .navbar, .box1, .divider, .signature, .skip_link, .codebox p > a, .postprofile, .grip-show, .page-number, #page-header h1 + p br, blockquote cite a[onclick*='href=hash'], .content blockquote cite a:after {
 	display: none;
+}
+
+blockquote cite, code, #page-header h1 + p a:before, #page-header h2 + p a:before, .copyright:before {
+	display: block;
+}
+
+blockquote cite .responsive-hide, #page-header h2, #page-header h2 + p, .date, .author, .emoji, .smilies {
+	display: inline-block;
+}
+
+blockquote {
+	padding: 0 0 0 30px;
+	position: relative;
+	&:before {
+		@include position($type: absolute, $top: 0, $left: 0);
+		@include quotes(30px);
+		content: '\00201c';
+	}
+	blockquote {
+		max-width: none;
+	}
+	cite {
+		border-bottom: 1px solid $color-22;
+		font-weight: bold;
+		margin: 0 0 10px 0;
+		padding: 0 0 10px 0;
+	}
+}
+
+.codebox {
+	border: 1px solid $color-22;
+	padding: 20px;
+	& > p {
+		font-weight: bold;
+		margin: -10px -20px 20px -20px;
+		padding: 0 10px 10px 20px;
+		border-bottom: 1px solid $color-22;
+	}
+}
+
+pre code {
+	white-space: pre-wrap;
+}
+
+#page-header {
+	border-bottom: 1px dashed $color-22;
+	margin: 0 0 20px 0;
+	padding: 0 0 20px 0;
+	h1, h2 {
+		margin: 0;
+	}
+	p {
+		margin: 0 0 10px 0;
+	}
+	h1, h2 {
+		& + p a {
+			position: relative;
+			padding-left: 25px;
+			&:before {
+				content: '-';
+				@include position($type: absolute, $top: -3px, $left: 10px);
+			}
+		}
+	}
 }
 
 .content {
 	overflow: hidden;
 	img {
-		display: inline;
+		&:not(.smilies), &:not(.emoji) {
+			display: inline;
+			max-height: 400px;
+		}
 	}
-	/* CSS2 Print tip from: http://www.alistapart.com/articles/goingtoprint/ */
-	a:link:after, a:visited:after {
+	a:after {
 		content: ' (' attr(href) ')';
-		font-size: 90%;
 	}
 }
 
-.copyright {
-	font-size: 75%;
+.emoji, .smilies {
+	vertical-align: text-bottom;
+	max-width: 20px;
+	max-height: 20px;
 }
 
-//
-// .author {
-// 	font-family: Verdana, Arial, Helvetica, sans-serif;
-// 	font-size: 75%;
-// 	margin-bottom: 0.6em;
-// }
-//
-// .date {
-// 	font-family: Verdana, Arial, Helvetica, sans-serif;
-// 	float: right;
-// 	position: relative;
-// 	text-align: right;
-// 	font-size: 75%;
-// }
-//
-// /* Dont want to print url for names or titles in content area */
-// .postbody .author a:link, .postbody .author a:visited,
-// html>body .postbody .author a:link:after,
-// html>body .postbody .author a:visited:after,
-// .postquote .quote-by a:link, .postquote .quote-by a:visited,
-// html>body .postquote .quote-by a:link:after,
-// html>body .postquote .quote-by a:visited:after,
-// html>body .postbody h1 a:link:after, html>body .postbody h2 a:link:after {
-// 	text-decoration: none;
-// 	content: "";
-// }
+.emoji {
+	min-height: 16px;
+	min-width: 16px;
+}
 
-//
-// /* Quote */
-// .postquote, blockquote {
-// 	font-size: 85%;
-// 	margin: 1em 18% 1em 4%;
-// 	padding: 0.5em;
-// 	position: relative;
-// 	line-height: 1.5em;
-// 	border: 1px #999999 solid;
-// }
-//
-// .postquote img { display: none; }
-// .postquote span { display: block; }
-// .postquote span .postquote { font-size: 100%; }
-// .quote-by, blockquote cite {
-// 	color: black;
-// 	display : block;
-// 	font-weight: bold;
-// }
-//
-
-// /* Misc page elements */
-// div.spacer { clear: both; }
-//
-// code { display: block; }
-
-//
-// /* stylelint-disable declaration-property-unit-whitelist */
-// .emoji {
-// 	min-height: 18px;
-// 	min-width: 18px;
-// 	height: 1em;
-// 	width: 1em;
-// }
-// /* stylelint-enable declaration-property-unit-whitelist */
+.copyright:before {
+	content: '\0000a9 2018 Khy\'eras RPG';
+}
