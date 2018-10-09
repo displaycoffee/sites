@@ -25,10 +25,17 @@
 								&copy; 2018 Khy'eras RPG<br />
 								Content and layout design by Adria/Memoria<br />
 								<!-- EVENT overall_footer_copyright_prepend -->
-								{CREDIT_LINE}
-								<!-- IF TRANSLATION_INFO --><br />{TRANSLATION_INFO}<!-- ENDIF -->
+								{{ CREDIT_LINE }}<br />
+								<a class="footer-link" href="{{ U_PRIVACY }}" title="{{ lang('PRIVACY_LINK') }}" role="menuitem">
+									<span class="footer-link-text">{{ lang('PRIVACY_LINK') }}</span>
+								</a>
+								<span class="bullet">&bull;</span>
+								<a class="footer-link" href="{{ U_TERMS_USE }}" title="{{ lang('TERMS_LINK') }}" role="menuitem">
+									<span class="footer-link-text">{{ lang('TERMS_LINK') }}</span>
+								</a>
+								<!-- IF TRANSLATION_INFO --><br />{{ TRANSLATION_INFO }}<!-- ENDIF -->
 								<!-- EVENT overall_footer_copyright_append -->
-								<!-- IF DEBUG_OUTPUT --><br />{DEBUG_OUTPUT}<!-- ENDIF -->
+								<!-- IF DEBUG_OUTPUT --><br />{{ DEBUG_OUTPUT }}<!-- ENDIF -->
 							</p>
 							<p class="footer-text">
 								<!-- EVENT overall_footer_timezone_before -->
@@ -99,24 +106,27 @@
 	<!-- IF S_COOKIE_NOTICE -->
 		<script src="{T_ASSETS_PATH}/cookieconsent/cookieconsent.min.js?assets_version={T_ASSETS_VERSION}"></script>
 		<script>
-			window.addEventListener("load", function(){
-				window.cookieconsent.initialise({
-					"palette": {
-						"popup": {
-							"background": "#0F538A"
+			if (typeof window.cookieconsent === "object") {
+				window.addEventListener("load", function(){
+					window.cookieconsent.initialise({
+						"palette": {
+							"popup": {
+								"background": "#0F538A"
+							},
+							"button": {
+								"background": "#E5E5E5"
+							}
 						},
-						"button": {
-							"background": "#E5E5E5"
+						"theme": "classic",
+						"content": {
+							"message": "{LA_COOKIE_CONSENT_MSG}",
+							"dismiss": "{LA_COOKIE_CONSENT_OK}",
+							"link": "{LA_COOKIE_CONSENT_INFO}",
+							"href": "{UA_PRIVACY}"
 						}
-					},
-					"theme": "classic",
-					"content": {
-						"message": "{LA_COOKIE_CONSENT_MSG}",
-						"dismiss": "{LA_COOKIE_CONSENT_OK}",
-						"link": "{LA_COOKIE_CONSENT_INFO}",
-						"href": "{LA_COOKIE_CONSENT_HREF}"
-					}
-				})});
+					});
+				});
+			}
 		</script>
 	<!-- ENDIF -->
 

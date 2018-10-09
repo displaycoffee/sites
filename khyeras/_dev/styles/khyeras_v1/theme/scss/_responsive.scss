@@ -1282,6 +1282,10 @@
 	}
 
 	// layout.scss
+	.atwho-container .atwho-view {
+		left: 70px !important;
+		right: 70px !important;
+	}
 	#nav-breadcrumbs ul li.home a {
 		.icon {
 			margin-right: 0;
@@ -1624,7 +1628,7 @@
 	input.button, input.button1, input.button2 {
 		width: 100%;
 	}
-	.button-icon-only, .mcp-main .postbody .post-buttons .button {
+	.button-icon-only, #postform #format-buttons .button, .mcp-main .postbody .post-buttons .button {
 		display: inline-block;
 	}
 	fieldset.submit-buttons {
@@ -1653,6 +1657,10 @@
 	// layout.scss
 	.forabg, .forumbg, .post, .panel {
 		border-width: 10px;
+	}
+	.atwho-container .atwho-view {
+		left: 60px !important;
+		right: 60px !important;
 	}
 	.action-bar, .display-actions .display-actions-wrapper {
 		& > {

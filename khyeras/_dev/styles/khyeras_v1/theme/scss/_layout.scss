@@ -96,8 +96,31 @@
 	}
 }
 
-/* Dropdown
+/* Dropdown & Mention Container
 ============================================== */
+
+.dropdown-container .dropdown, .atwho-container .atwho-view {
+	background: $color-05;
+	border: 1px solid $color-04;
+	padding: 20px;
+}
+
+.dropdown-container .dropdown .dropdown-contents, .atwho-container .atwho-view .atwho-view-ul {
+	font-size: rem(13px);
+	& > li {
+		padding: 0 0 3px 0;
+		&:last-child {
+			padding: 0;
+		}
+	}
+}
+
+.dropdown-container .dropdown .dropdown-contents a, .atwho-container .atwho-view .atwho-view-ul li {
+	color: $color-00;
+	&:hover {
+		color: $color-07;
+	}
+}
 
 .dropdown-container {
 	position: relative;
@@ -113,29 +136,13 @@
 		min-width: 160px;
 		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
 		margin: 0 !important;
-		padding: 20px;
 		text-align: left;
-		background: $color-05;
-		border: 1px solid $color-04;
 		.dropdown-contents {
 			margin: 0;
 			padding: 0 20px 0 0;
 			max-height: 300px;
 			max-width: none !important;
 			overflow-y: auto;
-			font-size: rem(13px);
-			a {
-				color: $color-00;
-				&:hover {
-					color: $color-07;
-				}
-			}
-			& > li {
-				padding: 0 0 3px 0;
-				&:last-child {
-					padding: 0;
-				}
-			}
 			&.dropdown-nonscroll {
 				padding: 0;
 			}
@@ -165,6 +172,22 @@
 		}
 		&.dropdown-left .dropdown {
 			@include position($right: 0, $left: auto);
+		}
+	}
+}
+
+.atwho-container .atwho-view {
+	border-radius: 0;
+	box-shadow: none;
+	color: $color-00;
+	.atwho-view-ul > li {
+		border-bottom: 0;
+		strong {
+			color: inherit;
+		}
+		&.cur {
+			background: none;
+			color: $color-07;
 		}
 	}
 }

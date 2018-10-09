@@ -153,12 +153,11 @@ abbr[title] {
 }
 
 .bullet {
-	display: inline-block;
 	padding: 0 5px;
 	font-family: $sans-serif-fb;
 	font-size: rem(20px);
-	line-height: 1;
-	@include position($type: relative, $top: 2px);
+	line-height: 0;
+	@include position($type: relative, $top: 4px);
 }
 
 a.anchor {
