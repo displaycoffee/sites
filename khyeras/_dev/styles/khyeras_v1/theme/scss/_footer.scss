@@ -22,8 +22,9 @@
 			}
 			.button-wrapper {
 				margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
+				@include clearfix('&');
 				.button-link {
-					@include inline-block(middle);
+					float: left;
 					margin: 0 $ffs-half $ffs $ffs-half;
 				}
 			}
