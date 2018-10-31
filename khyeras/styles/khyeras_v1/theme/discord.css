@@ -1,27 +1,13 @@
 /* Root colors
 ============================================== */
 @import url("//fonts.googleapis.com/css?family=Spectral|Fira+Sans:300,300i,500,500i");
-:root {
-  --modal: #0d171b;
-  --noroleusers: #ededed;
-  --main: #0d171b;
-  --placeholder: #000000;
-  --sidebardivider: #15212c;
-  --leftsidebar: #0d171b;
-  --rightsidebar: #0d171b;
-  --header: #15212c;
-  --footer: #15212c;
-  --chatmessage: #ededed;
-  --discrim: #ededed;
-  --chatbox: #0d171b;
-}
-
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
 html {
   font-size: 16px;
+  background-color: #0d171b;
 }
 
 body {
@@ -31,8 +17,8 @@ body {
   font-weight: 300;
 }
 
-html, label, .brand-logo, .betatag, .chatusername, .chattimestamp, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
-input[type='text']:not(.browser-default):focus:not([readonly]) + label, .wdt-emoji-popup h3, .wdt-emoji-popup #wdt-emoji-preview-bundle, .wdt-emoji-popup #wdt-emoji-preview-text, .wdt-emoji-popup #wdt-emoji-preview-name, #usercard .roles .text {
+html, label, .brand-logo, .betatag, .chatmessage, .chatusername, .chattimestamp, #curuser_discrim, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
+input[type='text']:not(.browser-default):focus:not([readonly]) + label, .wdt-emoji-popup h3, .wdt-emoji-popup #wdt-emoji-preview-bundle, .wdt-emoji-popup #wdt-emoji-preview-text, .wdt-emoji-popup #wdt-emoji-preview-name, #usercard .roles .text, #members-nav li > a {
   color: #ededed;
 }
 
@@ -153,6 +139,22 @@ input[type='checkbox'].filled-in:checked + label:before {
   border-bottom-color: #1c2f25;
 }
 
+::-webkit-input-placeholder {
+  color: #000000;
+}
+
+:-moz-placeholder {
+  color: #000000;
+}
+
+::-moz-placeholder {
+  color: #000000;
+}
+
+:-ms-input-placeholder {
+  color: #000000;
+}
+
 .btn, .btn-large, #logout_btn, #proceed_nsfw_btn {
   font-size: 0.8125rem;
   background: #1c2f25;
@@ -199,7 +201,7 @@ input[type='checkbox'].filled-in:checked + label:before {
 /* Header nav
 ============================================== */
 .navbar-fixed nav {
-  background: var(--header);
+  background: #15212c;
   padding: 10px 20px;
   min-height: 44px;
 }
@@ -229,6 +231,7 @@ input[type='checkbox'].filled-in:checked + label:before {
 ============================================== */
 #guild-nav, #members-nav {
   padding: 20px;
+  background-color: #0d171b;
 }
 
 #members-nav li > a.subheader {
@@ -361,7 +364,7 @@ input[type='checkbox'].filled-in:checked + label:before {
 /* Footer
 ============================================== */
 footer {
-  background: var(--footer);
+  background: #15212c;
 }
 
 #footercontainer {
@@ -527,6 +530,7 @@ footer {
 /* Modal
 ============================================== */
 .modal {
+  background-color: #0d171b;
   top: 0 !important;
   bottom: 0 !important;
   border-radius: 0;

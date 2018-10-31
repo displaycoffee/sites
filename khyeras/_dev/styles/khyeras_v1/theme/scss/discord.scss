@@ -7,21 +7,6 @@
 
 @import url('//fonts.googleapis.com/css?family=Spectral|Fira+Sans:300,300i,500,500i');
 
-:root {
-	--modal: $color-05;
-	--noroleusers: $color-00; // default user color
-	--main: $color-05;
-	--placeholder: $color-02;
-	--sidebardivider: $color-04;
-	--leftsidebar: $color-05;
-	--rightsidebar: $color-05;
-	--header: $color-04;
-	--footer: $color-04;
-	--chatmessage: $color-00; // font color
-	--discrim: $color-00; // font color
-	--chatbox: $color-05;
-}
-
 * {
 	&, &:before, &:after {
 		box-sizing: border-box;
@@ -30,6 +15,7 @@
 
 html {
 	font-size: $base-font-size + px;
+	background-color: $color-05;
 }
 
 body {
@@ -39,8 +25,8 @@ body {
 	font-weight: 300;
 }
 
-html, label, .brand-logo, .betatag, .chatusername, .chattimestamp, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
-input[type='text']:not(.browser-default):focus:not([readonly]) + label, .wdt-emoji-popup h3, .wdt-emoji-popup #wdt-emoji-preview-bundle, .wdt-emoji-popup #wdt-emoji-preview-text, .wdt-emoji-popup #wdt-emoji-preview-name, #usercard .roles .text {
+html, label, .brand-logo, .betatag, .chatmessage, .chatusername, .chattimestamp, #curuser_discrim, #chatcontent span.reactions .reaction, .side-nav, .side-nav .subheader, .side-nav li > a, .channel-hash,
+input[type='text']:not(.browser-default):focus:not([readonly]) + label, .wdt-emoji-popup h3, .wdt-emoji-popup #wdt-emoji-preview-bundle, .wdt-emoji-popup #wdt-emoji-preview-text, .wdt-emoji-popup #wdt-emoji-preview-name, #usercard .roles .text, #members-nav li > a {
 	color: $color-00;
 }
 
@@ -161,6 +147,10 @@ input[type='checkbox'] {
 	}
 }
 
+@include placeholder {
+	color: $color-02;
+}
+
 .btn, .btn-large, #logout_btn, #proceed_nsfw_btn {
 	font-size: rem(13px);
  	background: $color-10;
@@ -206,7 +196,7 @@ input[type='checkbox'] {
 ============================================== */
 
 .navbar-fixed nav {
-	background: var(--header);
+	background: $color-04;
 	padding: 10px 20px;
 	min-height: 44px;
 	&, a.button-collapse, a.button-collapse i {
@@ -230,6 +220,7 @@ input[type='checkbox'] {
 
 #guild-nav, #members-nav {
 	padding: 20px;
+	background-color: $color-05;
 }
 
 #members-nav li > a.subheader {
@@ -344,7 +335,7 @@ input[type='checkbox'] {
 ============================================== */
 
 footer {
-	background: var(--footer);
+	background: $color-04;
 }
 
 #footercontainer {
@@ -477,6 +468,7 @@ footer {
 ============================================== */
 
 .modal {
+	background-color: $color-05;
 	@include position($bottom: 0 !important, $top: 0 !important);
 	border-radius: 0;
 	box-shadow: none;
