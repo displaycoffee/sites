@@ -16,6 +16,8 @@
 	position: relative;
 	padding: 0 20px;
 	.header-content {
+		max-width: 800px;
+		margin: 0 auto;
 		@include flex-flow(row wrap);
 		justify-content: center;
 		align-items: center;
@@ -26,8 +28,7 @@
 			color: $color-01;
 		}
 		.site-description, .site-quotes {
-			@include flex(grow);
-			max-width: 310px;
+			@include flex(base);
 		}
 		.site-description {
 			text-align: right;
@@ -42,7 +43,7 @@
 			}
 			h3 {
 				font-family: $font-02;
-				font-size: rem(30px);
+				font-size: rem(28px);
 				text-shadow: 2px 1px 0 rgba($color-02, 0.65), 2px 1px 5px rgba($color-02, 0.75);
 				letter-spacing: 2px;
 			}
@@ -571,6 +572,9 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		}
 		.search-box .dropdown-contents form {
 			margin: 10px 0;
+			fieldset .button {
+				line-height: 1.25;
+			}
 		}
 		.dropdown-visible {
 			.menu-label {
