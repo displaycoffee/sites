@@ -26,23 +26,23 @@
 					@include position($type: absolute, $top: -9999px, $left: -9999px);
 				}
 				&.mark {
-					flex: 0 0 90px;
+					max-width: 90px;
 				}
 				&.topics, &.posts, &.views, &.extra {
-					flex: 0 0 120px;
+					max-width: 120px;
 				}
 				&.option {
 					// Option should be half of info width
-					flex: 0 0 125px;
+					max-width: 125px;
 				}
 				&.lastpost, &.time, &.info {
-					flex: 0 0 250px;
+					max-width: 250px;
 				}
 				&.moderation {
-					flex: 0 0 350px;
+					max-width: 350px;
 				}
 				&.redirect {
-					flex: 0 0 490px;
+					max-width: 490px;
 				}
 			}
 			&.forum_link dd:not(.redirect) {
@@ -258,12 +258,12 @@ table {
 		margin: 0 0 20px 0;
 		thead tr {
 			background: $color-04;
-			text-align: left;
 		}
 		tbody tr {
 			border-bottom: 1px dashed $color-04;
 		}
 		th, td {
+			text-align: left;
 			&.posts, &.mark {
 				width: 7%;
 			}

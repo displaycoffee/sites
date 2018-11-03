@@ -491,7 +491,7 @@
 		}
 	}
 	.left-box {
-		margin-right: auto;
+		@include flex(grow);
 	}
 	.mark-actions {
 		font-size: 0;

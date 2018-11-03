@@ -11,16 +11,16 @@
 	// viewlisting.scss
 	.topiclist > li dl dd {
 		&.topics, &.posts, &.views {
-			flex: 0 0 80px;
+			max-width: 80px;
 		}
 		&.lastpost, &.time, &.info {
-			flex: 0 0 180px;
+			max-width: 180px;
 		}
 		&.moderation {
-			flex: 0 0 300px;
+			max-width: 300px;
 		}
 		&.redirect {
-			flex: 0 0 340px;
+			max-width: 340px;
 		}
 	}
 	.styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image {
@@ -47,7 +47,7 @@
 		width: 50%;
 	}
 	.section-ucp-manage-groups .cp-main .topiclist > li dl dd.info {
-		flex: 0 0 250px;
+		max-width: 250px;
 	}
 
 	// header.scss
@@ -111,7 +111,10 @@
 			}
 			dd {
 				&.lastpost, &.redirect {
-					flex: 0 0 200px;
+					max-width: 200px;
+				}
+				&.topics, &.posts, &.views {
+					max-width: none;
 				}
 			}
 		}
@@ -389,14 +392,19 @@
 					display: block;
 					width: 200px;
 					padding: 0 10px;
-					content: 'Last Post';
+					content: 'Last post';
 					@include position($type: absolute, $top: -51px, $left: 0);
 				}
 			}
+			dl[class*='forum'] dd {
+				&.lastpost, &.redirect {
+					order: 2;
+					@include flex;
+					max-width: none;
+					margin: 10px 0 0 0;
+				}
+			}
 			dl[class*='forum'] dd.lastpost {
-				order: 2;
-				@include flex;
-				margin: 10px 0 0 0;
 				dfn {
 					position: static;
 				}
@@ -562,6 +570,11 @@
 			dl, &.row dl dd.mark {
 				display: block;
 			}
+			dl dd {
+				&.mark, &.extra, &.option, &.lastpost, &.time, &.info, &.moderation {
+					max-width: none;
+				}
+			}
 			&.header dl dt {
 				max-height: none;
 				white-space: normal;
@@ -621,9 +634,6 @@
 				display: none;
 			}
 			&.row dl {
-				dd.redirect, &:not([class*='forum']) dd.lastpost {
-					margin-top: 10px;
-				}
 				dd {
 					&.lastpost, &.redirect {
 						text-align: left;
@@ -672,8 +682,11 @@
 						}
 					}
 				}
-				&:not([class*='forum']) dd.lastpost dfn {
-					position: static;
+				&:not([class*='forum']) dd.lastpost {
+					margin-top: 10px;
+					dfn {
+						position: static;
+					}
 				}
 			}
 		}
@@ -1116,6 +1129,9 @@
 		.right-box {
 			width: 60%;
 		}
+	}
+	.section-ucp-manage-groups .cp-main .topiclist > li dl dd.info {
+		max-width: none;
 	}
 	.mcp-main #mcp_queue {
 		& ~ .panel table.table1 {

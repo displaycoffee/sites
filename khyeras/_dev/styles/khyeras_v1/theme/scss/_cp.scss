@@ -713,7 +713,7 @@
 	.topiclist > li.header dl:after {
 		display: block;
 		content: 'Mark';
-		flex: 0 0 90px;
+		width: 90px;
 		padding: 0 10px;
 		box-sizing: border-box;
 	}

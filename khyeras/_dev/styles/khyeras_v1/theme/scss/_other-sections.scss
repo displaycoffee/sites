@@ -129,7 +129,7 @@ dl.faq {
 		.inner {
 			@include flex-flow(row nowrap);
 			.postprofile {
-			    flex: 0 0 231px;
+				flex: 0 0 231px;
 				margin: 0 20px 20px 0;
 				padding: 0 20px 0 0;
 			}
@@ -424,8 +424,8 @@ dl.faq {
 		margin: 0 20px 0 0;
 		.image-wrap {
 			background-repeat: no-repeat;
-		    background-position: -9999px -9999px;
-		    background-size: cover;
+			background-position: -9999px -9999px;
+			background-size: cover;
 		}
 	}
 	.excerpt-details {
