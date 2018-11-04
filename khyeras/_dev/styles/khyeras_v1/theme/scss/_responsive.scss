@@ -455,7 +455,7 @@
 		}
 	}
 	.mcp-main {
-		.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
+		.forum-selection, .action-bar.actions-jump {
 			margin-bottom: 20px;
 		}
 		.forum-selection, .tabs-container .minitabs {
@@ -1593,7 +1593,7 @@
 		.cp-main .action-bar.bar-top .inputbox[type='search'] {
 			margin-top: $ffs;
 			& + .button2 {
-				top: -4px;
+				@include position($type: absolute, $top: 36px, $right: 15px);
 			}
 		}
 	}
@@ -1688,11 +1688,16 @@
 			}
 		}
 	}
-	.action-bar .topic-tools + .search-box {
-		float: right;
-		width: 100%;
-		margin-top: -40px;
-		padding-left: 90px;
+	.action-bar {
+		.topic-tools + .search-box {
+			float: right;
+			width: 100%;
+			margin-top: -40px;
+			padding-left: 90px;
+		}
+		.jumpbox {
+			display: block;
+		}
 	}
 	.display-actions .display-actions-wrapper {
 		[class*='button'] + [class*='button'] {
@@ -1907,17 +1912,12 @@
 			margin: $ffs 0;
 		}
 	}
-	.mcp-main {
-		.action-bar.actions-jump .jumpbox {
-			display: block;
-		}
-		.forum-selection label {
-			display: block;
-			select {
-				width: 100%;
-				max-width: none;
-				margin: $ffs 0;
-			}
+	.mcp-main .forum-selection label {
+		display: block;
+		select {
+			width: 100%;
+			max-width: none;
+			margin: $ffs 0;
 		}
 	}
 	.section-mcp-moderation-queue, .section-mcp-post-details {

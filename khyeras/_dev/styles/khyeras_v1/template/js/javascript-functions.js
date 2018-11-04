@@ -26,14 +26,16 @@ function addForumImageClass() {
 
 // Add classes to fieldset dl dd depending on conditions
 function addFieldsetClasses() {
-	var fieldsetDd = document.querySelectorAll( 'fieldset:not(.polls) dl:not(.pmlist) dd' );
+	var ddSelector = 'fieldset:not(.polls) dl:not(.pmlist) dd';
+	var fieldsetDd = document.querySelectorAll( ddSelector );
+	var fieldsetRadio = document.querySelectorAll( ddSelector + ' input[type="radio"]' );
 
 	if ( fieldsetDd && fieldsetDd.length ) {
 		for ( var i = 0; i < fieldsetDd.length; i++ ) {
 			var dd = fieldsetDd[i];
 
 			// Check if there are multiple children in the dd
-			if (dd.children.length > 1) {
+			if ( dd.children.length > 1 ) {
 				dd.className += ( checkForClasses( dd ) + 'has-multiple-fields' );
 			}
 
@@ -41,6 +43,14 @@ function addFieldsetClasses() {
 			if ( dd.innerHTML.indexOf( '&nbsp;' ) !== -1 ) {
 				dd.className += ( checkForClasses( dd ) + 'has-space' );
 			}
+		}
+	}
+
+	// Add radio button class to parent elements (labels)
+	if ( fieldsetRadio && fieldsetRadio.length ) {
+		for ( var i = 0; i < fieldsetRadio.length; i++ ) {
+			var radio = fieldsetRadio[i];
+			radio.parentNode.className += ( checkForClasses( radio.parentNode ) + 'has-radio-button' );
 		}
 	}
 }

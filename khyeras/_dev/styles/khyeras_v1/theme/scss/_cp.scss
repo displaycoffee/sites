@@ -379,6 +379,7 @@
 			}
 			.group-header, label {
 				margin: $ffs $ffs-half 0 $ffs-half;
+				padding: 0 5px 0 0;
 			}
 			.group-header {
 				display: block;
@@ -665,14 +666,17 @@
 ============================================== */
 
 .mcp-main {
-	position: relative;
+	&, .tabs-container {
+		position: relative;
+	}
 	#post_details.scrollable {
 		@include scrollable;
 	}
 	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
-		@include position($type: absolute, $top: 0, $right: 0);
+		@include position($type: absolute, $right: 0);
 	}
 	.forum-selection, .action-bar.actions-jump {
+		top: 0;
 		height: 40px;
 	}
 	.forum-selection {
@@ -690,7 +694,7 @@
 			vertical-align: middle;
 		}
 		& + h2 {
-			padding: 5px 325px 5px 0;
+			padding: 0 325px 7px 0;
 		}
 	}
 	.action-bar.actions-jump {
@@ -699,14 +703,19 @@
 			margin: 0;
 		}
 		& + h2 {
-			padding: 5px 200px 5px 0;
+			padding: 0 200px 7px 0;
 		}
 		.jumpbox .dropdown {
-			min-width: 318px;
+			min-width: 320px;
 		}
 	}
-	.tabs-container h2 {
-		padding: 1.5px 325px 1.5px 0;
+	.tabs-container {
+		h2 {
+			padding: 0 310px 0 0;
+		}
+		.minitabs {
+			bottom: -20px;
+		}
 	}
 }
 
@@ -815,15 +824,16 @@
 		}
 		.inputbox[type='search'] {
 			flex: 0 0 260px;
-			padding-right: 50px;
+			padding-right: 40px;
 			& + .button2 {
-				display: inline-block;
-				width: 40px;
+				display: block;
+				@include sizing(20px, 20px);
+				line-height: 1;
 				background: transparent url($images + 'search-icon.png') center center no-repeat;
 				font-size: 0;
-				padding: 10px 0;
-				margin: 0 0 0 -45px;
-				@include position($type: relative, $top: 5px);
+				padding: 2px;
+				margin: 0;
+				@include position($type: relative, $top: 5px, $right: 35px);
 			}
 		}
 	}

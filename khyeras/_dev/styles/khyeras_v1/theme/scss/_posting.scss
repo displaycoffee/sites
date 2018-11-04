@@ -89,6 +89,9 @@
 	& > div:last-child label {
 		margin: 0;
 	}
+	& > div:last-of-type {
+		margin: 0 0 15px 0;
+	}
 }
 
 /* Attach Panel

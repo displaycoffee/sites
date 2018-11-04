@@ -227,6 +227,9 @@ fieldset:not(.polls) {
 						margin: 0 $ffs;
 					}
 				}
+				.has-radio-button {
+					padding: 0 5px 0 0;
+				}
 			}
 			&#tz_select_date {
 				display: flex !important;

@@ -674,6 +674,7 @@
 				color: $color-01;
 				background: $color-10;
 				@include transition(background 0.3s ease-in-out);
+				border-radius: 3px 3px 0 0;
 			}
 			& > a:hover, &.activetab > a {
 				background: $color-04;
@@ -689,12 +690,7 @@
 	}
 }
 
-.tabs > ul > .tab > a {
-	border-radius: 3px 3px 0 0;
-}
-
 .minitabs > ul > .tab > a {
-	border-radius: 3px;
 	font-size: rem(13px);
 }
 
