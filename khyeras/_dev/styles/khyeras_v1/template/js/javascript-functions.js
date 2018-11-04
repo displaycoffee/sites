@@ -97,7 +97,7 @@ function noContentListing() {
 		for ( var i = 0; i < listing.length; i++ ) {
 			var list = listing[i];
 
-			if ( noContentText.indexOf( list.innerText ) !== -1 ) {
+			if ( noContentText.indexOf( list.innerText.trim() ) !== -1 ) {
 				list.className += ( checkForClasses( list ) + 'no-content' );
 			}
 		}

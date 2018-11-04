@@ -545,6 +545,7 @@
 		.left-box, .select-actions {
 			select, label {
 				width: 100%;
+				@include flex(base);
 			}
 		}
 		.left-box {
@@ -1576,6 +1577,7 @@
 	}
 	.mcp-main .action-bar.actions-jump .jumpbox.dropdown-visible .dropdown {
 		right: 0;
+		min-width: 1px;
 	}
 	.section-mcp-view-topic .cp-main #display-panel dl dd.has-multiple-fields.has-space select#st + label {
 		@include flex(full);

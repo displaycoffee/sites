@@ -694,11 +694,15 @@
 		}
 	}
 	.action-bar.actions-jump {
+		display: block;
 		&, .jumpbox {
 			margin: 0;
 		}
 		& + h2 {
 			padding: 5px 200px 5px 0;
+		}
+		.jumpbox .dropdown {
+			min-width: 318px;
 		}
 	}
 	.tabs-container h2 {

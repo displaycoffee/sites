@@ -108,7 +108,7 @@
 }
 
 .section-viewtopic .post .postbody > div > h3 {
-	padding-right: 200px;
+	padding-right: 230px;
 }
 
 #preview.post .postbody > h3 {
@@ -163,6 +163,7 @@
 			}
 			.attach-image {
 				display: inline-block;
+				max-width: 100%;
 				cursor: pointer;
 				margin: 0 0 5px 0;
 				position: relative;
