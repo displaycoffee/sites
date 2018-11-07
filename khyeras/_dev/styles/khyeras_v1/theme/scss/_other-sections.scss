@@ -214,20 +214,17 @@ dl.faq {
 	.forumbg, .action-bar.actions-jump {
 		clear: both;
 	}
-	table.table1 td {
-		span[style*='float'] {
-			float: none !important;
-			display: block;
-			position: relative;
-			margin: 5px 0;
-			&:before {
-				@include position($type: absolute, $top: 0, $left: 0);
-				content: 'IP:';
-				font-weight: bold;
-			}
-			& + br {
-				display: none;
-			}
+	table.table1 td span[style*='float'] {
+		float: none !important;
+		display: block;
+		position: relative;
+		&:before {
+			@include position($type: absolute, $top: 0, $left: 0);
+			content: 'IP:';
+			font-weight: bold;
+		}
+		& + br {
+			display: none;
 		}
 	}
 }
@@ -616,5 +613,13 @@ div[id*='list_thanks'] .post-buttons > li.responsive-menu {
 	.post ul.searchresults li a:before {
 		content: unicode($icon-chevron-right);
 		margin: 0 0 0 10px;
+	}
+}
+
+.section-page-list-of-thanks table.table1 {
+	th, td {
+		&.info {
+			display: none;
+		}
 	}
 }

@@ -67,8 +67,8 @@
 // Set text overflow with ellipsis
 @mixin ellipsis {
 	overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 // Set flex flow property
@@ -131,9 +131,9 @@
 
 	display: inline-block;
 	font-family: $family;
-  	font-weight: normal;
-  	font-style: normal;
-  	font-variant: normal;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
 
 	// Font size logic
 	@if ($fs != false) {
@@ -153,9 +153,9 @@
 		}
 	}
 
-  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
-  	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
+	text-rendering: auto; /* optimizelegibility throws things off #1094 */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 // Inline block
@@ -242,18 +242,21 @@
 // Sortable headers
 @mixin sortable-headers {
 	a {
-		&[href*='mode=']:after {
-			@include icon-font;
-			margin: 0 0 0 10px;
+		&[href*='sd='] {
 			position: relative;
+			padding: 0 20px 0 0;
+			&:after {
+				@include icon-font;
+				@include position($type: absolute, $right: 0);
+			}
 		}
-		&[href*='mode='][href*='sd=d']:after {
+		&[href*='sd=d']:after {
 			content: unicode($icon-sort-desc);
-			top: -2px;
+			top: -4px;
 		}
-		&[href*='mode='][href*='sd=a']:after {
+		&[href*='sd=a']:after {
 			content: unicode($icon-sort-asc);
-			top: 4px;
+			top: 3px;
 		}
 	}
 }

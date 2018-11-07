@@ -91,6 +91,24 @@ function addThanksClass() {
 	}
 }
 
+// Format rank and username display on member lists
+function moveRankText() {
+	var rankImgs = document.querySelectorAll( 'table.table1 .rank-img' );
+
+	if ( rankImgs && rankImgs.length ) {
+		for ( var i = 0; i < rankImgs.length; i++ ) {
+			var rank = rankImgs[i];
+
+			rank.parentNode.insertBefore(rank.nextSibling, rank);
+
+			// Also add "name" class to td elements
+			if (rank.parentNode.nodeName == 'TD' || rank.parentNode.nodeName == 'td') {
+				rank.parentNode.className += ( checkForClasses( rank.parentNode ) + 'name' );
+			}
+		}
+	}
+}
+
 // Add a class to elements where there are no topics / forums
 function noContentListing() {
 	var noContentText = [

@@ -264,11 +264,14 @@ table {
 		}
 		th, td {
 			text-align: left;
-			&.posts, &.mark {
+			&.mark {
 				width: 7%;
 			}
+			&.posts {
+				width: 11%;
+			}
 			&.active, &.joined, &.reportby {
-				width: 16%;
+				width: 18%;
 			}
 			&.info {
 				width: 20%;
@@ -284,6 +287,10 @@ table {
 			font-weight: normal;
 			padding: 10px;
 			@include sortable-headers;
+			.rank-img:before {
+				content: ' / ';
+				padding: 0 5px;
+			}
 		}
 		td {
 			padding: 20px 10px;
@@ -295,11 +302,13 @@ table {
 				font-style: normal;
 				@include position($type: absolute, $top: -9999px, $left: -9999px);
 			}
-		}
-		.rank-img {
-			float: right;
-			clear: right;
-			text-align: right;
+			.rank-img {
+				display: block;
+				&:before {
+					content: 'Rank: \0000A0';
+					font-weight: bold;
+				}
+			}
 		}
 	}
 }

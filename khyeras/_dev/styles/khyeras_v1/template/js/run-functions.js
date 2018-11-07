@@ -6,6 +6,7 @@ addForumImageClass();
 addFieldsetClasses();
 addNoPaginationClass();
 addThanksClass();
+moveRankText();
 noContentListing();
 addSearchIgnoredClass();
 checkForNewPM();

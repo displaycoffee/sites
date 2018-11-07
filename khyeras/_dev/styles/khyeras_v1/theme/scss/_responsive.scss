@@ -704,7 +704,9 @@
 		}
 		td {
 			padding: 0;
-			margin-top: 10px;
+			&, .rank-img {
+				margin-top: 10px;
+			}
 			&:first-child {
 				padding-left: 0;
 				margin-top: 0;
@@ -714,6 +716,13 @@
 			}
 			&.posts, &.mark, &.active, &.joined, &.reportby, &.info {
 				width: auto;
+			}
+			&.name dfn {
+				font-size: 0;
+				&:after {
+					font-size: rem($global-font-size);
+					content: 'Username: \0000A0';
+				}
 			}
 			&[style*='width'] {
 				width: auto !important;
@@ -731,14 +740,6 @@
 				&:after {
 					content: ': \0000A0';
 				}
-			}
-		}
-		.rank-img {
-			float: none;
-			text-align: left;
-			padding-right: 5px;
-			&:after {
-				content: ',';
 			}
 		}
 		&:not(.show-header) {
