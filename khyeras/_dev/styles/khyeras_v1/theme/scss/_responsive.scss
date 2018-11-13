@@ -880,7 +880,7 @@
 	.popup-wrap {
 		padding: 20px;
 		.page-body > a[onclick*='window.close'] {
-			@include position($top: 20px, $right: 20px);
+			@include position($top: 25px, $right: 20px);
 		}
 	}
 	.section-viewonline {
@@ -993,7 +993,7 @@
 				transform: rotate(90deg);
 				margin: 0 auto;
 				width: 20px;
-				@include position($type: relative, $left: 3px);
+				@include position($type: relative, $left: 2.5px);
 			}
 		}
 		&:nth-child(even) {
@@ -1077,8 +1077,13 @@
 			@include flex(full);
 		}
 	}
-	.section-ucp-compose-message .cp-main #pmheader-postingbox .column1 {
-		overflow: visible;
+	.section-ucp-compose-message .cp-main #pmheader-postingbox {
+		.column1 {
+			overflow: visible;
+		}
+		.inputbox {
+			height: auto;
+		}
 	}
 	.section-ucp-view-messages .cp-main #viewfolder > .display-options {
 		text-align: left;

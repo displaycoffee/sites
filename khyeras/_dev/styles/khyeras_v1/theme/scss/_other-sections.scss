@@ -191,8 +191,20 @@ dl.faq {
 		text-align: center;
 		font-size: rem(13px);
 	}
-	.page-body > a[onclick*='window.close'] {
-		@include position($type: absolute, $top: 30px, $right: 30px);
+	.page-body {
+		.solo {
+			padding: 0 30px 0 0;
+		}
+		& > a[onclick*='window.close'] {
+			@include position($type: absolute, $top: 35px, $right: 30px);
+			font-size: 0;
+			&:after {
+				content: unicode($icon-x);
+				@include icon-font;
+				font-size: rem(20px);
+				color: $color-00;
+			}
+		}
 	}
 }
 

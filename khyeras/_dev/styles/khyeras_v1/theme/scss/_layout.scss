@@ -196,6 +196,11 @@
 	}
 }
 
+#phpbb .mention {
+	color: $color-23;
+	font-weight: normal;
+}
+
 /* Loading Indicator
 ============================================== */
 
@@ -323,6 +328,9 @@
 					background: none;
 				}
 			}
+		}
+		.button {
+			line-height: 1.5;
 		}
 		&.page-jump {
 			position: static;

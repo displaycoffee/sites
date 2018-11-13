@@ -98,8 +98,8 @@ function moveRankText() {
 	if ( rankImgs && rankImgs.length ) {
 		for ( var i = 0; i < rankImgs.length; i++ ) {
 			var rank = rankImgs[i];
-
-			rank.parentNode.insertBefore(rank.nextSibling, rank);
+			
+			rank.parentNode.appendChild(rank);
 
 			// Also add "name" class to td elements
 			if (rank.parentNode.nodeName == 'TD' || rank.parentNode.nodeName == 'td') {
