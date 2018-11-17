@@ -18,6 +18,7 @@ addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
 checkImageDimensions( '.page-welcome .image-wrap img' );
 checkImageDimensions( '.postprofile .avatar img' );
+detectiPhone();
 
 var forumImage = '.forum-image img';
 checkImageDimensions( forumImage );
@@ -65,6 +66,7 @@ jQuery( document ).ready( function( $ ) {
 		mobileButton  : '.mobile-menu-button',
 		mobileMenu    : '#mobile-menu',
 		mobileContent : '.mobile-menu-content',
+		mobileOverlay : '#mobile-overlay',
 		width         : 768
 	});
 

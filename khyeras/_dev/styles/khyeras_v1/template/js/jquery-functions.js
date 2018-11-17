@@ -278,6 +278,7 @@ function initializeMobileMenu( options ) {
 	var mobileButton = jQuery( options.mobileButton );
 	var mobileMenu = jQuery( options.mobileMenu );
 	var mobileContent = jQuery( options.mobileContent );
+	var mobileOverlay = jQuery( options.mobileOverlay );
 	var width = options.width;
 
 	// Set a mobile false state (for window resize mainly)
@@ -294,8 +295,11 @@ function initializeMobileMenu( options ) {
 		}
 	}
 
-	// Add/remove classes when mobile menu button is clicked on
+	// Add/remove classes when mobile menu button or overlay is clicked on
 	mobileButton.off().on( 'click', function() {
+		toggleMobileMenu();
+	});
+	mobileOverlay.off().on( 'click', function() {
 		toggleMobileMenu();
 	});
 

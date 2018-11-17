@@ -45,25 +45,30 @@
 	}
 }
 
-/* Darken wrapper
+/* Darken wrapper / mobile overlay
 ============================================== */
 
-.darkenwrapper {
+.darkenwrapper, #mobile-overlay {
 	display: none;
-	@include position($type: relative, $z: 125);
-	.darken {
-		@include position($type: fixed, $top: 0, $left: 0, $z: 45);
-		@include sizing(100%, 100%);
-		background: rgba($color-02, 0.50);
-	}
 }
+
+.darkenwrapper .darken, #mobile-overlay {
+	@include position($type: fixed, $top: 0, $bottom: 0, $left: 0, $right: 0, $z: 1000);
+	background: rgba($color-02, 0.50);
+	margin: auto;
+}
+
+.mobile-open #mobile-overlay {
+	display: block;
+}
+
 
 /* phpBB Alert
 ============================================== */
 
 .phpbb_alert {
 	display: none;
-	@include position($type: fixed, $top: 150px, $right: 30px, $left: 30px, $z: 150);
+	@include position($type: fixed, $top: 150px, $right: 30px, $left: 30px, $z: 10001);
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 20px;

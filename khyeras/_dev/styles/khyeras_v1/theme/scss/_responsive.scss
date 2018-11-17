@@ -1139,7 +1139,7 @@
 	}
 	.section-ucp-manage-groups .cp-main .topiclist > li dl dd.info {
 		max-width: none;
-	}
+	}	
 	.mcp-main #mcp_queue {
 		& ~ .panel table.table1 {
 			th, td {
@@ -1496,7 +1496,7 @@
 			}
 		}
 		& ~ dd {
-			margin-left: 100px;
+			margin-left: 0;
 		}
 	}
 	#viewprofile .stats .stat-bar {
@@ -1865,9 +1865,11 @@
 			}
 		}
 	}
-	#register fieldset dl dd .group {
-		&, &.group-religion {
-			width: auto;
+	#register, .section-ucp-edit-profile #ucp {
+		fieldset dl dd .group {
+			&, &.group-religion {
+				width: auto;
+			}
 		}
 	}
 	.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
@@ -1991,14 +1993,9 @@
 					margin-top: 10px;
 				}
 			}
-			&.has-avatar {
-				.avatar-container {
-					float: none;
-					margin: 0 auto;
-				}
-				& ~ dd {
-					margin-left: 0;
-				}
+			&.has-avatar .avatar-container {
+				float: none;
+				margin: 0 auto;
 			}
 		}
 	}

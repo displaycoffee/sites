@@ -16,6 +16,16 @@ fieldset {
 	border: 0;
 }
 
+.inputbox, input[type='search'], textarea, select {
+	appearance: none;
+}
+
+.ios {
+	.inputbox, input[type='search'], textarea, select {
+		font-size: 16px;
+	}
+}
+
 .inputbox, textarea, select, .button, .button1, .button2 {
 	border: 0;
 	border-radius: 3px;

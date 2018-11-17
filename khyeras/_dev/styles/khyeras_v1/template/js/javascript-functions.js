@@ -98,7 +98,7 @@ function moveRankText() {
 	if ( rankImgs && rankImgs.length ) {
 		for ( var i = 0; i < rankImgs.length; i++ ) {
 			var rank = rankImgs[i];
-			
+
 			rank.parentNode.appendChild(rank);
 
 			// Also add "name" class to td elements
@@ -285,5 +285,12 @@ function addImageBackground( selector, respondDimensions ) {
 			// Set background image attribute
 			sImage.parentNode.setAttribute( 'style', 'background-image: url(' + responsiveImage + ');' );
 		}
+	}
+}
+
+// Detect if on iPhone device
+function detectiPhone() {
+	if ( navigator.userAgent.match( /iPhone|iPad|iPod/i ) ) {
+		body.className += ( checkForClasses( body ) + 'ios' );
 	}
 }
