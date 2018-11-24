@@ -45,7 +45,11 @@ fieldset {
 }
 
 select {
-	min-height: 40px;
+	padding-right: 30px;
+	background-image: url($images + 'chevron-down.png');
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: auto 10px;
 	option {
 		color: $color-08;
 	}

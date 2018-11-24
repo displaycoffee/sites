@@ -254,62 +254,79 @@
 /* View Topic - Polls
 ============================================== */
 
-fieldset.polls dl {
-	position: relative;
-	@include clearfix('&');
-	margin: 0 -10px 20px -10px;
-	&.voted {
-		font-weight: bold;
-	}
-	dt, dd {
-		line-height: 22px;
-		padding: 0 10px;
-	}
-	dt {
-		width: 30%;
-		float: left;
-	}
-	.poll_option_select {
-		& + .resultbar {
-			padding-left: 40px;
+fieldset.polls {
+	padding: 10px 0 0 0;
+	margin: 0 0 10px 0;
+	border-top: 1px dashed $color-04;
+	dl {
+		position: relative;
+		@include clearfix('&');
+		margin: 0 -10px 10px -10px;
+		&.voted {
+			font-weight: bold;
 		}
-	}
-	.poll_option_percent, .resultbar {
-		float: left;
-	}
-	.resultbar {
-		width: 50%;
-		div[class*='pollbar'] {
+		dt, dd {
+			line-height: 22px;
 			padding: 0 10px;
-			border-radius: 3px;
-			height: 22px;
 		}
-		div[style='width:0%;'], div[style='width: 0%;'] {
-			width: 20px !important;
-			padding: 0;
-			text-align: center;
+		dt {
+			width: 30%;
+			float: left;
+			label {
+				margin: 0;
+			}
 		}
-		.pollbar5 {
-			background: mix(white, $color-10, 10%);
+		.poll_option_select {
+			& + .resultbar {
+				padding-left: 40px;
+			}
 		}
-		.pollbar4 {
-			background: $color-10;
+		.poll_option_percent, .resultbar {
+			float: left;
 		}
-		.pollbar3 {
-			background: mix(black, $color-10, 10%);
+		.resultbar {
+			width: 50%;
+			div[class*='pollbar'] {
+				padding: 0 10px;
+				border-radius: 3px;
+				height: 22px;
+			}
+			div[style='width:0%;'], div[style='width: 0%;'] {
+				width: 20px !important;
+				padding: 0;
+				text-align: center;
+			}
+			.pollbar5 {
+				background: mix(white, $color-10, 10%);
+			}
+			.pollbar4 {
+				background: $color-10;
+			}
+			.pollbar3 {
+				background: mix(black, $color-10, 10%);
+			}
+			.pollbar2 {
+				background: mix(black, $color-10, 20%);
+			}
+			.pollbar1 {
+				background: mix(black, $color-10, 30%);
+			}
 		}
-		.pollbar2 {
-			background: mix(black, $color-10, 20%);
+		.poll_option_percent {
+			width: 20%;
 		}
-		.pollbar1 {
-			background: mix(black, $color-10, 30%);
+		.button1 {
+			margin: 0;
 		}
 	}
-	.poll_option_percent {
-		width: 20%;
-	}
-	.button1 {
-		margin: 0;
+}
+
+fieldset.polls dl[data-poll-option-id], #preview fieldset.polls dl {
+	&:after {
+		border-bottom: 1px dashed $color-04;
+		display: block;
+		margin: 0 10px;
+		padding: 10px 0 0 0;
 	}
 }
 
@@ -317,19 +334,14 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 	@include position($type: absolute, $top: 1px, $left: 30%);
 }
 
-.topic_poll .panel .content {
-	.author {
-		margin: 0;
-		.poll_max_votes {
-			display: block;
-			margin: 0 0 20px 0;
-		}
-	}
-	.vote-submitted {
-		margin: 0 0 20px 30%;
-		padding: 0 5px;
-		font-style: italic;
-	}
+.author + fieldset.polls {
+	margin-top: -10px;
+}
+
+.topic_poll .panel .content .vote-submitted {
+	margin: 0 0 20px 30%;
+	padding: 0 5px;
+	font-style: italic;
 }
 
 /* View Topic - Profile

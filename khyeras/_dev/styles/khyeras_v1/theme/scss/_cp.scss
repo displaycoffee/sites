@@ -829,6 +829,7 @@
 		&:before {
 			content: 'Search for keywords:';
 			margin: 10px 0 0 5px;
+			width: 140px;
 		}
 		.inputbox[type='search'] {
 			flex: 0 0 260px;

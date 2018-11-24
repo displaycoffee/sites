@@ -210,19 +210,25 @@ function updateProfileFields() {
 		});
 
 		// Build excluded class list from selected races
+		var kerasokaSelector = kerasokaSelector || false;
 		function createClassArray( rtype ) {
 			var classArray = [];
 			raceOpts.each( function() {
 				current = jQuery( this );
 				optText = getCheckText( current );
 
+				// Record is kerasoka seletor for checks later
+				if ( optText == 'Kerasoka' ) {
+					kerasokaSelector = current;
+				}
+
 				if ( current.is(':checked') ) {
 					var classList = characterRules[optText]['exClass'];
 
 					// Define allowed classes based on race type and checked boxes
 					if ( classList ) {
-						// Half-Breed dwarves can be magic users
-						if ( rtype == hb && optText == 'Dwarf' ) {
+						// Half-Breed dwarves can be magic users (as long as they are not Kerasoka)
+						if ( rtype == hb && optText == 'Dwarf' && !kerasokaSelector.is(':checked') ) {
 							classArray = dragonClasses;
 						} else {
 							classArray = mergeArray( classArray, classList );

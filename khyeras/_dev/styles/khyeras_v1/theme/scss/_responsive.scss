@@ -181,8 +181,17 @@
 	}
 
 	// other-sections.scss
-	#viewprofile .profile-panel .inner .postprofile {
-		flex: 0 0 176px;
+	#viewprofile {
+		.profile-panel .inner .postprofile {
+			flex: 0 0 176px;
+		}
+		.character-panel {
+			.column1, .column2 {
+				float: none;
+				width: auto;
+				padding: 0;
+			}
+		}
 	}
 	#search_memberlist fieldset.fields1 dl {
 		dt {
@@ -1139,7 +1148,7 @@
 	}
 	.section-ucp-manage-groups .cp-main .topiclist > li dl dd.info {
 		max-width: none;
-	}	
+	}
 	.mcp-main #mcp_queue {
 		& ~ .panel table.table1 {
 			th, td {
@@ -1370,6 +1379,12 @@
 			}
 		}
 	}
+	.sort-tools .dropdown .display-options label {
+		padding-right: calc(70% + 10px);
+		select {
+			width: 70%;
+		}
+	}
 	dl.details {
 		dt {
 			float: none;
@@ -1419,23 +1434,8 @@
 		}
 	}
 	fieldset.polls {
-		border-top: 1px dashed $color-04;
-		padding-top: 10px;
 		position: relative;
 		dl {
-			margin-bottom: 10px;
-			&:after {
-				border-bottom: 1px dashed $color-04;
-				display: block;
-				margin: 0 10px;
-				padding: 9px 0 0 0;
-			}
-			&:last-child:after {
-				height: 0;
-				border-bottom: 0;
-				padding-top: 0;
-				margin: 0;
-			}
 			dt {
 				float: none;
 				width: auto;
@@ -1596,10 +1596,15 @@
 		}
 	}
 	.section-mcp-user-details, .section-mcp-moderator-logs {
-		.cp-main .action-bar.bar-top .inputbox[type='search'] {
-			margin-top: $ffs;
-			& + .button2 {
-				@include position($type: absolute, $top: 36px, $right: 15px);
+		.cp-main .action-bar.bar-top {
+			&:before {
+				width: auto;
+			}
+			.inputbox[type='search'] {
+				margin-top: $ffs;
+				& + .button2 {
+					@include position($type: absolute, $top: 36px, $right: 15px);
+				}
 			}
 		}
 	}
@@ -1716,6 +1721,14 @@
 				margin-left: 0;
 				margin-top: $ffs;
 			}
+		}
+	}
+	.sort-tools .dropdown .display-options label {
+		padding: 0;
+		select {
+			width: 100%;
+			margin: $ffs 0 0 0;
+			position: static;
 		}
 	}
 	.rpg-round-icon, .map-round-icon {
