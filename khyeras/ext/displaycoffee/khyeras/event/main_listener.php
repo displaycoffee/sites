@@ -24,7 +24,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	{
  		return array(
  			'core.page_header' 	  => 'pf_variables',
-			'core.user_add_after' => 'add_account_group'
+			'core.user_add_after' => 'add_account_group',
+			'core.memberlist_view_profile' => 'add_stat_information',
+			'core.viewtopic_post_row_after' => 'add_stat_information2'
  		);
  	}
 
@@ -229,5 +231,26 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			    WHERE user_id = ' . (int) $user_id;
 			$this->db->sql_query($user_sql);
 		}
+	}
+
+	/**
+	 * Add user to account type group after activation
+	 */
+	public function add_stat_information($event)
+	{
+		var_dump($event);
+	}
+
+	/**
+	 * Add user to account type group after activation
+	 */
+	public function add_stat_information2($event)
+	{
+		//var_dump($event['post_row']);
+
+		$this->template->assign_block_vars('postrow.test', array(
+			'LEVEL' => $event['post_row']['POST_AUTHOR'],
+			'EXP' => $event['post_row']['PROFILE_C_EXPERIENCE_VALUE'],
+		));
 	}
  }

@@ -1,7 +1,7 @@
 <!-- {PROFILE_C_RACE_OPTS_VALUE}
 {PROFILE_C_CLASS_OPTS_VALUE} -->
 
-{% set headerlinks = {
+{% set thing = {
 	'Announcements': {
 		link01: {
 			name: 'Freed from Bhelests nightmares and undead legions, the realm of Khy\'eras',
@@ -31,3 +31,18 @@
 		}
 	}
 } %}
+
+{# LEVEL = (25 + sqrt((25 * 25) + (4 * 25) * X)) / (2 * 25) #}
+{# EXP NEEDED = ((25 * L) * L) - (25 * L) #}
+
+{% set current_exp = (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : 0) %}
+{% set current_lvl = 1 %}
+{% set modifier = 25 %}
+
+{% set square_root_number = ((modifier * modifier) + (4 * modifier) * current_exp) %}
+
+
+
+
+
+LEVEL: {{ current_lvl }}, MODIFIER: {{ modifier }}, SQN: {{ square_root_number }} 

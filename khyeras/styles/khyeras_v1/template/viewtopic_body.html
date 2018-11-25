@@ -169,6 +169,13 @@
 			<!-- ENDIF -->
 			<!-- EVENT viewtopic_body_postrow_rank_after -->
 
+			<p>
+				<!-- BEGIN postrow.test -->
+					level: {{ postrow.test.LEVEL }}<br />
+					exp: {{ postrow.test.EXP }}<br />
+				<!-- END postrow.test -->
+			</p>
+
 			<!-- IF postrow.PROFILE_ACCOUNT_TYPE_VALUE eq 'Character' -->
 				<dd class="profile-character-wrapper">
 					<div class="character-card">
