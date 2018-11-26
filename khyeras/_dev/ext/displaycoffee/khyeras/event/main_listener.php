@@ -49,7 +49,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	 * @param \phpbb\template\template	$template	Template object
  	 * @param \phpbb\user               $user       User object
  	 * @param string                    $php_ext    phpEx
- 	 */
+ 	*/
  	public function __construct(\phpbb\controller\helper $helper, \phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db)
  	{
  		$this->helper   = $helper;
@@ -60,7 +60,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
  	/**
  	 * Get data from profile fields
- 	 */
+ 	*/
  	public function pf_variables()
  	{
 		global $phpbb_container;
@@ -73,13 +73,13 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// Get the row of data with selected group_id
 		$group_array = array(
-		    'group_id' => $group_id
+			'group_id' => $group_id
 		);
 
 		// Create the SQL statement for group data
 		$group_sql = 'SELECT group_name
-	        FROM ' . GROUPS_TABLE . '
-	        WHERE ' . $this->db->sql_build_array('SELECT', $group_array);
+			FROM ' . GROUPS_TABLE . '
+			WHERE ' . $this->db->sql_build_array('SELECT', $group_array);
 
 		// Run the query
 		$group_result = $this->db->sql_query($group_sql);
@@ -109,18 +109,18 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// Associative array for grabbing multiple lang variables
 		// We only really need to do this for dropdowns and multi checkboxes
 		$pf_array = array(
-		    $acc_name => array(
-		        'field_id' 	=> $pf_user[$acc_name]['data']['field_id'],
-		        'option_id' => ($pf_user[$acc_name]['value']) - 1
-		    ),
+			$acc_name => array(
+				'field_id' 	=> $pf_user[$acc_name]['data']['field_id'],
+				'option_id' => ($pf_user[$acc_name]['value']) - 1
+			),
 			$race_opts => array(
-		        'field_id' 	=> $pf_user[$race_opts]['data']['field_id'],
-		        'option_id' => explode(';', $pf_user[$race_opts]['value'])
-		    ),
+				'field_id' 	=> $pf_user[$race_opts]['data']['field_id'],
+				'option_id' => explode(';', $pf_user[$race_opts]['value'])
+			),
 			$class_opts => array(
-		        'field_id' 	=> $pf_user[$class_opts]['data']['field_id'],
-		        'option_id' => explode(';', $pf_user[$class_opts]['value'])
-		    )
+				'field_id' 	=> $pf_user[$class_opts]['data']['field_id'],
+				'option_id' => explode(';', $pf_user[$class_opts]['value'])
+			)
 		);
 
 		// Loop through $pf_array and add info for each lang variable to $pf_lang
@@ -140,8 +140,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 					// Create the SQL statement for option data
 					$pf_sql = 'SELECT lang_value
-				        FROM ' . PROFILE_FIELDS_LANG_TABLE . '
-				        WHERE field_id="' . $value['field_id'] . '" AND option_id="' .  $option . '"';
+						FROM ' . PROFILE_FIELDS_LANG_TABLE . '
+						WHERE field_id="' . $value['field_id'] . '" AND option_id="' .  $option . '"';
 
 					// Run the query
 					$pf_result = $this->db->sql_query($pf_sql);
@@ -157,8 +157,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			{
 				// Create the SQL statement for lang data
 				$pf_sql = 'SELECT lang_value
-			        FROM ' . PROFILE_FIELDS_LANG_TABLE . '
-			        WHERE ' . $this->db->sql_build_array('SELECT', $value);
+					FROM ' . PROFILE_FIELDS_LANG_TABLE . '
+					WHERE ' . $this->db->sql_build_array('SELECT', $value);
 
 				// Run the query
 				$pf_result = $this->db->sql_query($pf_sql);
@@ -189,7 +189,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 	/**
 	 * Add user to account type group after activation
-	 */
+	*/
 	public function add_account_group($event)
 	{
 		// Get the user id and account type
@@ -209,10 +209,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		if ($acc_type == 2 || $acc_type == 3) {
 			// User group cp_data
 			$user_group_arr = array(
-			    'group_id'     => $group_number,
-			    'user_id' 	   => $user_id,
-			    'group_leader' => 0,
-			    'user_pending' => 0,
+				'group_id'     => $group_number,
+				'user_id' 	   => $user_id,
+				'group_leader' => 0,
+				'user_pending' => 0,
 			);
 
 			// Insert a new row into the db for new group
@@ -221,21 +221,21 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 			// User data
 			$user_array = array(
-			    'group_id'     => $group_number,
+				'group_id'     => $group_number,
 				'user_rank'    => $rank_number
 			);
 
 			// Update users table with default group id
 			$user_sql = 'UPDATE ' . USERS_TABLE . '
-			    SET ' . $this->db->sql_build_array('UPDATE', $user_array) . '
-			    WHERE user_id = ' . (int) $user_id;
+				SET ' . $this->db->sql_build_array('UPDATE', $user_array) . '
+				WHERE user_id = ' . (int) $user_id;
 			$this->db->sql_query($user_sql);
 		}
 	}
 
 	/**
 	 * Add user to account type group after activation
-	 */
+	*/
 	public function add_stat_information($event)
 	{
 		var_dump($event);
@@ -243,14 +243,38 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 	/**
 	 * Add user to account type group after activation
-	 */
+	*/
 	public function add_stat_information2($event)
 	{
-		//var_dump($event['post_row']);
+		$level = get_level($event['post_row']['PROFILE_C_EXPERIENCE_VALUE']);
 
 		$this->template->assign_block_vars('postrow.test', array(
-			'LEVEL' => $event['post_row']['POST_AUTHOR'],
-			'EXP' => $event['post_row']['PROFILE_C_EXPERIENCE_VALUE'],
+			'LEVEL' => $level,
+			'EXP'   => $event['post_row']['PROFILE_C_EXPERIENCE_VALUE']
 		));
 	}
  }
+
+/**
+  * Determine what user level is
+*/
+function get_level($exp)
+{
+	$level = calc_level(25, $exp);
+
+	// Add .5 to the multiplier every 5th level (6, 11, 16...)
+	if ($level > 5) {
+		$expMultiplier = 25 + (floor(($level - 1) / 5) * 0.5);
+		$level = calc_level($expMultiplier, $exp);
+	}
+
+	return $level;
+}
+
+/**
+ * Equation for level
+*/
+function calc_level($x, $exp)
+{
+	return ($x + sqrt(($x * $x) + (4 * $x) * $exp)) / (2 * $x);
+}
