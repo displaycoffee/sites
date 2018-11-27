@@ -260,13 +260,19 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 */
 function get_level($exp)
 {
-	$level = calc_level(25, $exp);
+	//$expMultiplier = 25;
+	// $level = calc_level(25, $exp);
+	//
+	// // Add .5 to the multiplier every 5th level (6, 11, 16...)
+	// //if ($level > 5) {
+	// 	$expMultiplier = 25 + floor(($level - 1) / 5) * 0.5;
+	// 	$level = calc_level($expMultiplier, $exp);
+	// //}
 
-	// Add .5 to the multiplier every 5th level (6, 11, 16...)
-	if ($level > 5) {
-		$expMultiplier = 25 + (floor(($level - 1) / 5) * 0.5);
-		$level = calc_level($expMultiplier, $exp);
-	}
+
+
+	$level = calc_level($exp);
+
 
 	return $level;
 }
@@ -274,7 +280,20 @@ function get_level($exp)
 /**
  * Equation for level
 */
-function calc_level($x, $exp)
+function calc_level($xp)
 {
-	return ($x + sqrt(($x * $x) + (4 * $x) * $exp)) / (2 * $x);
+	$levelsPerIncrement = 5;
+	$multiplierIncrement = 0.5;
+	$baseMultiplier = 25;
+	$maxLevel = 60;
+
+	for ($level = 1; $level <= $maxLevel; $level++)
+	{
+		$expMultiplier = $baseMultiplier + floor(($level - 1) / $levelsPerIncrement) * $multiplierIncrement;
+		$currXP = $expMultiplier * $level * ($level - 1);
+		if ($currXP > $xp)
+		{
+			return $level - 1;
+		}
+	}
 }
