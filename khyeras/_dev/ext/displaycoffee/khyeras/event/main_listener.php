@@ -246,10 +246,18 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	*/
 	public function add_stat_information2($event)
 	{
+
 		$level = get_level($event['post_row']['PROFILE_C_EXPERIENCE_VALUE']);
+		$race = $event['post_row']['PROFILE_C_RACE_OPTS_VALUE'];
+		$class = $event['post_row']['PROFILE_C_CLASS_OPTS_VALUE'];
+		$hp = $event['post_row']['PROFILE_C_RACE_OPTS_VALUE'];
+		$mp = $event['post_row']['PROFILE_C_RACE_OPTS_VALUE'];
+
+		//var_dump($event['post_row']);
 
 		$this->template->assign_block_vars('postrow.test', array(
-			'LEVEL' => $level,
+			//'LEVEL' => $level,
+			'LEVEL' => get_stat_modifier($race, $class),
 			'EXP'   => $event['post_row']['PROFILE_C_EXPERIENCE_VALUE']
 		));
 	}
@@ -260,40 +268,79 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 */
 function get_level($exp)
 {
-	//$expMultiplier = 25;
-	// $level = calc_level(25, $exp);
-	//
-	// // Add .5 to the multiplier every 5th level (6, 11, 16...)
-	// //if ($level > 5) {
-	// 	$expMultiplier = 25 + floor(($level - 1) / 5) * 0.5;
-	// 	$level = calc_level($expMultiplier, $exp);
-	// //}
+	$per_increment = 5;
+	$multiplier_increment = 0.5;
+	$base_increment = 25;
+	$max_level = 60;
 
-
-
-	$level = calc_level($exp);
-
-
-	return $level;
-}
-
-/**
- * Equation for level
-*/
-function calc_level($xp)
-{
-	$levelsPerIncrement = 5;
-	$multiplierIncrement = 0.5;
-	$baseMultiplier = 25;
-	$maxLevel = 60;
-
-	for ($level = 1; $level <= $maxLevel; $level++)
+	for ($level = 1; $level <= $max_level; $level++)
 	{
-		$expMultiplier = $baseMultiplier + floor(($level - 1) / $levelsPerIncrement) * $multiplierIncrement;
-		$currXP = $expMultiplier * $level * ($level - 1);
-		if ($currXP > $xp)
+		$multiplier = $base_increment + floor(($level - 1) / $per_increment) * $multiplier_increment;
+		$current_experience = $multiplier * $level * ($level - 1);
+		if ($current_experience > $exp)
 		{
 			return $level - 1;
 		}
 	}
+}
+
+/**
+  * Determine what total user hp/mp is
+*/
+function get_stat_modifier($race, $class)
+{
+	$base_hp = 20;
+	$base_mp = 15;
+
+	// HP/MP values for races
+	$race_list = [
+		'Dragon' 	   => ['HP' => 3, 'MP' => 2],
+		'Dwarf' 	   => ['HP' => 3, 'MP' => 0],
+		'Elemental'    => ['HP' => 1, 'MP' => 3],
+		'Fae' 	       => ['HP' => 1, 'MP' => 3],
+		'Ghost'        => ['HP' => 2, 'MP' => 2],
+		'Human' 	   => ['HP' => 2, 'MP' => 2],
+		'Kerasoka' 	   => ['HP' => 2, 'MP' => 0],
+		'Korcai' 	   => ['HP' => 2, 'MP' => 1],
+		'Lumeacia'     => ['HP' => 1, 'MP' => 3],
+		'Shapeshifter' => ['HP' => 2, 'MP' => 2],
+		'Ue\'drahc'    => ['HP' => 3, 'MP' => 2],
+		'Empty'        => ['HP' => 0, 'MP' => 0]
+	];
+
+	// HP/MP values for classes
+	$class_list = [
+		'Barbarian'   => ['HP' => 3, 'MP' => 0],
+		'Fighter'     => ['HP' => 3, 'MP' => 1],
+		'Paladin'     => ['HP' => 3, 'MP' => 2],
+		'Physical'    => ['HP' => 3, 'MP' => 1],
+		'Ranger' 	  => ['HP' => 2, 'MP' => 1],
+		'Monk' 		  => ['HP' => 2, 'MP' => 1],
+		'Rogue' 	  => ['HP' => 2, 'MP' => 1],
+		'Alchemist'   => ['HP' => 2, 'MP' => 2],
+		'Bard' 		  => ['HP' => 2, 'MP' => 2],
+		'Cleric'	  => ['HP' => 2, 'MP' => 3],
+		'Druid' 	  => ['HP' => 2, 'MP' => 3],
+		'Restoration' => ['HP' => 2, 'MP' => 3],
+		'Sorcerer'    => ['HP' => 1, 'MP' => 3],
+		'Summoner'    => ['HP' => 1, 'MP' => 3],
+		'Wizard'      => ['HP' => 1, 'MP' => 3],
+		'Magical'     => ['HP' => 1, 'MP' => 3],
+		'Empty'  	  => ['HP' => 0, 'MP' => 0]
+	];
+
+	$class_hp_mod = 0;
+	$class_mp_mod = 0;
+	$selected_classes = explode(', ', $class);
+
+	foreach ($selected_classes as $selected)
+	{
+		$class_hp_mod += $class_list[$selected]['HP'];
+		$class_mp_mod += $class_list[$selected]['MP'];
+	}
+
+	$class_hp_mod_avg = round($class_hp_mod / count($selected_classes));
+	$class_mp_mod_avg = round($class_mp_mod / count($selected_classes));
+
+	return $class_hp_mod_avg . ' - ' . $class_mp_mod_avg;
 }
