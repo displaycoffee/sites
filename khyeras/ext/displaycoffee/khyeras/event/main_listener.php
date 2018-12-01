@@ -25,8 +25,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  		return array(
  			'core.page_header' 	  => 'pf_variables',
 			'core.user_add_after' => 'add_account_group',
-			'core.memberlist_view_profile' => 'add_stat_information',
-			'core.viewtopic_post_row_after' => 'add_stat_information2'
+			'core.memberlist_view_profile' => 'add_life_information',
+			'core.viewtopic_post_row_after' => 'viewtopic_character_info'
  		);
  	}
 
@@ -236,7 +236,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	/**
 	 * Add user to account type group after activation
 	*/
-	public function add_stat_information($event)
+	public function add_life_information($event)
 	{
 		var_dump($event);
 	}
@@ -244,21 +244,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	/**
 	 * Add user to account type group after activation
 	*/
-	public function add_stat_information2($event)
+	public function viewtopic_character_info($event)
 	{
-
-		$level = get_level($event['post_row']['PROFILE_C_EXPERIENCE_VALUE']);
 		$race = $event['post_row']['PROFILE_C_RACE_OPTS_VALUE'];
 		$class = $event['post_row']['PROFILE_C_CLASS_OPTS_VALUE'];
-		$hp = $event['post_row']['PROFILE_C_RACE_OPTS_VALUE'];
-		$mp = $event['post_row']['PROFILE_C_RACE_OPTS_VALUE'];
+		$level = get_level($event['post_row']['PROFILE_C_EXPERIENCE_VALUE']);
 
-		//var_dump($event['post_row']);
-
-		$this->template->assign_block_vars('postrow.test', array(
-			//'LEVEL' => $level,
-			'LEVEL' => get_stat_modifier($race, $class),
-			'EXP'   => $event['post_row']['PROFILE_C_EXPERIENCE_VALUE']
+		$this->template->assign_block_vars('postrow.character', array(
+			'LEVEL'    => $level,
+			'TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
+			'TOTAL_MP' => get_life_modifier($race, $class, $level)[1]
 		));
 	}
  }
@@ -287,8 +282,9 @@ function get_level($exp)
 /**
   * Determine what total user hp/mp is
 */
-function get_stat_modifier($race, $class)
+function get_life_modifier($race, $class, $level)
 {
+	// Set base modifiers
 	$base_hp = 20;
 	$base_mp = 15;
 
@@ -307,6 +303,9 @@ function get_stat_modifier($race, $class)
 		'Ue\'drahc'    => ['HP' => 3, 'MP' => 2],
 		'Empty'        => ['HP' => 0, 'MP' => 0]
 	];
+
+	// Get race modifiers by calculating average
+	$race_modifiers = cal_life_modifier($race, $race_list);
 
 	// HP/MP values for classes
 	$class_list = [
@@ -329,18 +328,42 @@ function get_stat_modifier($race, $class)
 		'Empty'  	  => ['HP' => 0, 'MP' => 0]
 	];
 
-	$class_hp_mod = 0;
-	$class_mp_mod = 0;
-	$selected_classes = explode(', ', $class);
+	// Get class modifiers by calculating average
+	$class_modifiers = cal_life_modifier($class, $class_list);
 
-	foreach ($selected_classes as $selected)
-	{
-		$class_hp_mod += $class_list[$selected]['HP'];
-		$class_mp_mod += $class_list[$selected]['MP'];
+	// Add total hp/mp modifiers
+	$hp_modifer = $class_modifiers[0] + $race_modifiers[0];
+	$mp_modifer = $class_modifiers[1] + $race_modifiers[1];
+
+	// Get bonus modifier
+	$bonus_hp_modifier = 0;
+	$bonus_mp_modifier = 0;
+
+	if ($level % 10 == 0) {
+		$bonus_hp_modifier = ($level / 10) * $hp_modifer;
+		$bonus_mp_modifier = ($level / 10) * $mp_modifer;
 	}
 
-	$class_hp_mod_avg = round($class_hp_mod / count($selected_classes));
-	$class_mp_mod_avg = round($class_mp_mod / count($selected_classes));
+	// Get total hp/mp
+	$total_hp = (($base_hp + $class_modifiers[0] + $race_modifiers[0]) * round(($level / 2))) + $bonus_hp_modifier;
+	$total_mp = (($base_mp + $class_modifiers[1] + $race_modifiers[1]) * round(($level / 2))) + $bonus_mp_modifier;
 
-	return $class_hp_mod_avg . ' - ' . $class_mp_mod_avg;
+	return [$total_hp, $total_mp];
+}
+
+/**
+  * Calculate modifiers for hp and mp
+*/
+function cal_life_modifier($options, $list) {
+	$hp_mod = 0;
+	$mp_mod = 0;
+	$selected_options = explode(', ', $options);
+
+	foreach ($selected_options as $selected)
+	{
+		$hp_mod += $list[$selected]['HP'];
+		$mp_mod += $list[$selected]['MP'];
+	}
+
+	return [round($hp_mod / count($selected_options)), round($mp_mod / count($selected_options))];
 }

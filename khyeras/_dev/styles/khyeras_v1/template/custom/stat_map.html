@@ -1,109 +1,24 @@
 {# Set variables depending on what page we're on #}
 	{% if SCRIPT_NAME == 'viewtopic' %}
-		{% set race_opts = postrow.PROFILE_C_RACE_OPTS_VALUE %}
-		{% set class_opts = postrow.PROFILE_C_CLASS_OPTS_VALUE %}
 		{% set hp_name = postrow.PROFILE_C_HP_NAME %}
 		{% set hp_value = postrow.PROFILE_C_HP_VALUE %}
+		{% set hp_total = postrow.character.CHARACTER_TOTAL_HP %}
 		{% set mp_name = postrow.PROFILE_C_MP_NAME %}
 		{% set mp_value = postrow.PROFILE_C_MP_VALUE %}
+		{% set mp_total = postrow.character.CHARACTER_TOTAL_MP %}
 	{% else %}
-		{% set race_opts = PROFILE_C_RACE_OPTS_VALUE %}
-		{% set class_opts = PROFILE_C_CLASS_OPTS_VALUE %}
 		{% set hp_name = PROFILE_C_HP_NAME %}
 		{% set hp_value = PROFILE_C_HP_VALUE %}
+		{% set hp_total = CHARACTER_TOTAL_HP %}
 		{% set mp_name = PROFILE_C_MP_NAME %}
 		{% set mp_value = PROFILE_C_MP_VALUE %}
+		{% set mp_total = CHARACTER_TOTAL_MP %}
 	{% endif %}
 
-{# Base HP and MP value that everyone starts with #}
-
-	{% set base_hp = 20 %}
-	{% set base_mp = 15 %}
-
-{# Set race array #}
-
-	{% if race_opts %}
-		{% set race_array = race_opts | split(', ') %}
-	{% else %}
-		{% set race_array = ['Empty'] %}
-	{% endif %}
-
-{# Create race object with HP modifiers #}
-
-	{% set race_stat = {
-		'Dragon' 	   : { HP : 3, MP : 2 },
-		'Dwarf' 	   : { HP : 3, MP : 0 },
-		'Elemental'    : { HP : 1, MP : 3 },
-		'Fae' 	       : { HP : 1, MP : 3 },
-		'Ghost'        : { HP : 2, MP : 2 },
-		'Human' 	   : { HP : 2, MP : 2 },
-		'Kerasoka' 	   : { HP : 2, MP : 0 },
-		'Korcai' 	   : { HP : 2, MP : 1 },
-		'Lumeacia'     : { HP : 1, MP : 3 },
-		'Shapeshifter' : { HP : 2, MP : 2 },
-		'Ue\'drahc'    : { HP : 3, MP : 2 },
-		'Empty'        : { HP : 0, MP : 0 }
-	} %}
-
-{# Loop through races and get average modifier value #}
-
-	{% set race_hp_mod = 0 %}
-	{% set race_mp_mod = 0 %}
-	{% for race in race_array %}
-		{% set race_hp_mod = race_stat[race]['HP'] + race_hp_mod %}
-		{% set race_mp_mod = race_stat[race]['MP'] + race_mp_mod %}
-	{% endfor %}
-
-	{% set race_hp_mod_avg = (race_hp_mod / (race_array | length)) | round %}
-	{% set race_mp_mod_avg = (race_mp_mod / (race_array | length)) | round %}
-
-{# Set class array #}
-
-	{% if class_opts %}
-		{% set class_array = class_opts | split(', ') %}
-	{% else %}
-		{% set class_array = ['Empty'] %}
-	{% endif %}
-
-{# Create class object with HP modifiers #}
-
-	{% set class_stat = {
-		'Barbarian' : { HP : 3, MP : 0 },
-		'Fighter'   : { HP : 3, MP : 1 },
-		'Paladin'   : { HP : 3, MP : 2 },
-		'Physical'  : { HP : 3, MP : 1 },
-		'Ranger'    : { HP : 2, MP : 1 },
-		'Monk' 		: { HP : 2, MP : 1 },
-		'Rogue' 	: { HP : 2, MP : 1 },
-		'Alchemist' : { HP : 2, MP : 2 },
-		'Bard' 		: { HP : 2, MP : 2 },
-		'Cleric' 	: { HP : 2, MP : 3 },
-		'Druid' 	: { HP : 2, MP : 3 },
-		'Healing'   : { HP : 2, MP : 3 },
-		'Sorcerer'  : { HP : 1, MP : 3 },
-		'Summoner'  : { HP : 1, MP : 3 },
-		'Wizard'    : { HP : 1, MP : 3 },
-		'Magical'   : { HP : 1, MP : 3 },
-		'Empty'     : { HP : 0, MP : 0 }
-	} %}
-
-{# Loop through classes and get average modifier value #}
-
-	{% set class_hp_mod = 0 %}
-	{% set class_mp_mod = 0 %}
-	{% for class in class_array %}
-		{% set class_hp_mod = class_stat[class]['HP'] + class_hp_mod %}
-		{% set class_mp_mod = class_stat[class]['MP'] + class_mp_mod %}
-	{% endfor %}
-
-	{% set class_hp_mod_avg = (class_hp_mod / (class_array | length)) | round %}
-	{% set class_mp_mod_avg = (class_mp_mod / (class_array | length)) | round %}
 
 {# Get HP and MP Total #}
 
-	{% set hp_total = base_hp + race_hp_mod_avg + class_hp_mod_avg %}
 	{% set hp_current = hp_total - hp_value %}
-	{% set mp_total = base_mp + race_mp_mod_avg + class_mp_mod_avg %}
 	{% set mp_current = mp_total - mp_value %}
 
 {# Display and calculate stat bars #}
