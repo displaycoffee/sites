@@ -23,9 +23,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	static public function getSubscribedEvents()
  	{
  		return array(
- 			'core.page_header' 	  => 'pf_variables',
-			'core.user_add_after' => 'add_account_group',
-			'core.memberlist_view_profile' => 'add_life_information',
+ 			'core.page_header' 	  			=> 'user_info',
+			'core.user_add_after' 		    => 'add_account_group',
+			'core.memberlist_view_profile'  => 'memberlist_character_info',
 			'core.viewtopic_post_row_after' => 'viewtopic_character_info'
  		);
  	}
@@ -61,7 +61,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	/**
  	 * Get data from profile fields
  	*/
- 	public function pf_variables()
+ 	public function user_info()
  	{
 		global $phpbb_container;
 
@@ -177,11 +177,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
-			'KHY_GROUP_ID'     => $group_id,
-			'KHY_GROUP_NAME'   => $group_row['group_name'],
-			'KHY_ACCOUNT_TYPE' => $pf_lang[$acc_name],
-			'KHY_RACE'   	   => $pf_lang[$race_opts],
-			'KHY_CLASS'   	   => $pf_lang[$class_opts]
+			'KHY_USER_GROUP_ID'     => $group_id,
+			'KHY_USER_GROUP_NAME'   => $group_row['group_name'],
+			'KHY_USER_ACCOUNT_TYPE' => $pf_lang[$acc_name],
+			'KHY_USER_RACE'   	    => $pf_lang[$race_opts],
+			'KHY_USER_CLASS'   	    => $pf_lang[$class_opts],
+			'KHY_USER_LEVEL'   	    => get_level($pf_user['c_experience']['value'])
  		));
 
 		// --- END --- Variable Assignment
@@ -221,8 +222,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 			// User data
 			$user_array = array(
-				'group_id'     => $group_number,
-				'user_rank'    => $rank_number
+				'group_id'  => $group_number,
+				'user_rank' => $rank_number
 			);
 
 			// Update users table with default group id
@@ -234,27 +235,45 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	}
 
 	/**
-	 * Add user to account type group after activation
+	 * Determine member stats for memberlist_view page
 	*/
-	public function add_life_information($event)
+	public function memberlist_character_info($event)
 	{
-		var_dump($event);
+		$pf = $event['profile_fields']['row'];
+
+		// Only assign these variable if character account
+		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
+			$race = $pf['PROFILE_C_RACE_OPTS_VALUE'];
+			$class = $pf['PROFILE_C_CLASS_OPTS_VALUE'];
+			$level = get_level($pf['PROFILE_C_EXPERIENCE_VALUE']);
+
+			$this->template->assign_vars(array(
+				'KHY_MEMBER_LEVEL'    => $level,
+				'KHY_MEMBER_TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
+				'KHY_MEMBER_TOTAL_MP' => get_life_modifier($race, $class, $level)[1]
+	 		));
+		}
 	}
 
 	/**
-	 * Add user to account type group after activation
+	 * Determine member stats for viewtopic_body page
 	*/
 	public function viewtopic_character_info($event)
 	{
-		$race = $event['post_row']['PROFILE_C_RACE_OPTS_VALUE'];
-		$class = $event['post_row']['PROFILE_C_CLASS_OPTS_VALUE'];
-		$level = get_level($event['post_row']['PROFILE_C_EXPERIENCE_VALUE']);
+		$pr = $event['post_row'];
 
-		$this->template->assign_block_vars('postrow.character', array(
-			'LEVEL'    => $level,
-			'TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
-			'TOTAL_MP' => get_life_modifier($race, $class, $level)[1]
-		));
+		// Only assign these variable if character account
+		if ($pr['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
+			$race = $pr['PROFILE_C_RACE_OPTS_VALUE'];
+			$class = $pr['PROFILE_C_CLASS_OPTS_VALUE'];
+			$level = get_level($pr['PROFILE_C_EXPERIENCE_VALUE']);
+
+			$this->template->assign_block_vars('postrow.khy', array(
+				'PROFILE_LEVEL'    => $level,
+				'PROFILE_TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
+				'PROFILE_TOTAL_MP' => get_life_modifier($race, $class, $level)[1]
+			));
+		}
 	}
  }
 

@@ -13,15 +13,15 @@
 						<!-- ELSE -->
 							<h5 class="welcome-header">Welcome, <a href="{U_REGISTER}" class="guest-name" title="{L_REGISTER}">{L_GUEST}</a>.</h5>
 						<!-- ENDIF -->
-						<!-- IF KHY_GROUP_NAME == 'Characters' -->
+						<!-- IF KHY_USER_GROUP_NAME == 'Characters' -->
 							<p class="level">
-								Level 01
+								Level {{ KHY_USER_LEVEL }}
 							</p>
 							<p class="race-and-class">
-								{{ KHY_RACE | replace({',': ' and'}) }}
-								<!-- IF KHY_CLASS -->
+								{{ KHY_USER_RACE | replace({',': ' and'}) }}
+								<!-- IF KHY_USER_CLASS -->
 									<span class="separator">/</span>
-									{{ KHY_CLASS | replace({',': ' and'}) }}
+									{{ KHY_USER_CLASS | replace({',': ' and'}) }}
 								<!-- ENDIF -->
 							</p>
 						<!-- ELSEIF S_REGISTERED_USER -->

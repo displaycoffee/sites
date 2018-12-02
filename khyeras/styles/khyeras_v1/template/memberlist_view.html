@@ -71,19 +71,34 @@
 		</dl>
 		<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 			<dl class="left-box details profile-details {{ character_class }}">
-				<dd>
-					<strong>testing things:</strong>&nbsp;&nbsp;&nbsp;
-					<!-- INCLUDE custom/level.html -->
-				</dd>
 				<dd class="character-card details-full">
 					<div class="level">
 						<div class="level-wrap">
 							<span class="level-name">Level</span>
-							<span class="level-value">01</span>
+							<span class="level-value">{{ KHY_MEMBER_LEVEL }}</span>
 						</div>
 					</div>
 					<!-- IF S_PROFILE_C_HP or S_PROFILE_C_MP -->
-						<div class="stats"><!-- INCLUDE custom/stat_map.html --></div>
+						{% set remaining_hp = KHY_MEMBER_TOTAL_HP - PROFILE_C_HP_VALUE %}
+						{% set remaining_mp = KHY_MEMBER_TOTAL_MP - PROFILE_C_MP_VALUE %}
+						<div class="stats">
+							{% if S_PROFILE_C_HP %}
+								<div class="stat-bar stat-bar-small hp-bar">
+									<div class="stat-bar-inner" style="width: {{ ((remaining_hp / KHY_MEMBER_TOTAL_HP) * 100) | number_format(2) }}%"></div>
+									<div class="stat-bar-label">
+										{{ remaining_hp }} / {{ KHY_MEMBER_TOTAL_HP }} {{ PROFILE_C_HP_NAME }}
+									</div>
+								</div>
+							{% endif %}
+							{% if S_PROFILE_C_MP %}
+								<div class="stat-bar stat-bar-small mp-bar">
+									<div class="stat-bar-inner" style="width: {{ ((remaining_mp / KHY_MEMBER_TOTAL_MP) * 100) | number_format(2) }}%"></div>
+									<div class="stat-bar-label">
+										{{ remaining_mp }} / {{ KHY_MEMBER_TOTAL_MP }} {{ PROFILE_C_MP_NAME }}
+									</div>
+								</div>
+							{% endif %}
+						</div>
 					<!-- ENDIF -->
 				</dd>
 				{% set religion_value = (PROFILE_C_RELIGION_TYPE_VALUE) ~ (S_PROFILE_C_RELIGION_OPTS ? (' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE) : '') %}

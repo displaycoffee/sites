@@ -168,40 +168,39 @@
 				</dd>
 			<!-- ENDIF -->
 			<!-- EVENT viewtopic_body_postrow_rank_after -->
-
 			<!-- IF postrow.PROFILE_ACCOUNT_TYPE_VALUE eq 'Character' -->
 				<dd class="profile-character-wrapper">
 					<div class="character-card">
-						<!-- BEGIN postrow.character -->
+						<!-- BEGIN postrow.khy -->
 							<div class="level level-small">
 								<div class="level-wrap">
 									<span class="level-name">Level</span>
-									<span class="level-value">{{ postrow.character.LEVEL }}</span>
+									<span class="level-value">{{ postrow.khy.PROFILE_LEVEL }}</span>
 								</div>
 							</div>
 							<!-- IF postrow.S_PROFILE_C_HP or postrow.S_PROFILE_C_MP -->
-								{% set remaining_hp = postrow.character.TOTAL_HP - postrow.PROFILE_C_HP_VALUE %}
-								{% set remaining_mp = postrow.character.TOTAL_MP - postrow.PROFILE_C_MP_VALUE %}
+								{% set remaining_hp = postrow.khy.PROFILE_TOTAL_HP - postrow.PROFILE_C_HP_VALUE %}
+								{% set remaining_mp = postrow.khy.PROFILE_TOTAL_MP - postrow.PROFILE_C_MP_VALUE %}
 								<div class="stats stats-small">
 									{% if postrow.S_PROFILE_C_HP %}
 										<div class="stat-bar stat-bar-small hp-bar">
-											<div class="stat-bar-inner" style="width: {{ ((remaining_hp / postrow.character.TOTAL_HP) * 100) | number_format(2) }}%"></div>
+											<div class="stat-bar-inner" style="width: {{ ((remaining_hp / postrow.khy.PROFILE_TOTAL_HP) * 100) | number_format(2) }}%"></div>
 											<div class="stat-bar-label">
-												{{ remaining_hp }} / {{ postrow.character.TOTAL_HP }} {{ postrow.PROFILE_C_HP_NAME }}
+												{{ remaining_hp }} / {{ postrow.khy.PROFILE_TOTAL_HP }} {{ postrow.PROFILE_C_HP_NAME }}
 											</div>
 										</div>
 									{% endif %}
 									{% if postrow.S_PROFILE_C_MP %}
 										<div class="stat-bar stat-bar-small mp-bar">
-											<div class="stat-bar-inner" style="width: {{ ((remaining_mp / postrow.character.TOTAL_MP) * 100) | number_format(2) }}%"></div>
+											<div class="stat-bar-inner" style="width: {{ ((remaining_mp / postrow.khy.PROFILE_TOTAL_MP) * 100) | number_format(2) }}%"></div>
 											<div class="stat-bar-label">
-												{{ remaining_mp }} / {{ postrow.character.TOTAL_MP }} {{ postrow.PROFILE_C_MP_NAME }}
+												{{ remaining_mp }} / {{ postrow.khy.PROFILE_TOTAL_MP }} {{ postrow.PROFILE_C_MP_NAME }}
 											</div>
 										</div>
 									{% endif %}
 								</div>
 							<!-- ENDIF -->
-						<!-- END postrow.character -->
+						<!-- END postrow.khy -->
 					</div>
 					<!-- IF postrow.S_PROFILE_C_RACE_OPTS or postrow.PROFILE_C_CLASS_OPTS_VALUE -->
 						<div class="race-and-class">
