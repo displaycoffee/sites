@@ -189,52 +189,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	}
 
 	/**
-	 * Add user to account type group after activation
-	*/
-	public function add_account_group($event)
-	{
-		// Get the user id and account type
-		$user_id = $event['user_id'];
-		$acc_type = $event['cp_data']['pf_account_type'];
-
-		// Check the account type field
-		// Writer > 2 / group_id > 8 / rank > 4 | Character > 3 / group_id > 9 / rank > 5
-		if ($acc_type == 2) {
-			$group_number = '8';
-			$rank_number = '4';
-		} else if ($acc_type == 3) {
-			$group_number = '9';
-			$rank_number = '5';
-		}
-
-		if ($acc_type == 2 || $acc_type == 3) {
-			// User group cp_data
-			$user_group_arr = array(
-				'group_id'     => $group_number,
-				'user_id' 	   => $user_id,
-				'group_leader' => 0,
-				'user_pending' => 0,
-			);
-
-			// Insert a new row into the db for new group
-			$user_group_sql = 'INSERT INTO ' . USER_GROUP_TABLE . ' ' . $this->db->sql_build_array('INSERT', $user_group_arr);
-			$this->db->sql_query($user_group_sql);
-
-			// User data
-			$user_array = array(
-				'group_id'  => $group_number,
-				'user_rank' => $rank_number
-			);
-
-			// Update users table with default group id
-			$user_sql = 'UPDATE ' . USERS_TABLE . '
-				SET ' . $this->db->sql_build_array('UPDATE', $user_array) . '
-				WHERE user_id = ' . (int) $user_id;
-			$this->db->sql_query($user_sql);
-		}
-	}
-
-	/**
 	 * Determine member stats for memberlist_view page
 	*/
 	public function memberlist_character_info($event)
@@ -275,7 +229,54 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			));
 		}
 	}
- }
+
+	/**
+	 * Add user to account type group after activation
+	*/
+	public function add_account_group($event)
+	{
+		// Get the user id and account type
+		$user_id = $event['user_id'];
+		$acc_type = $event['cp_data']['pf_account_type'];
+
+		// Check the account type field
+		// Writer > 2 / group_id > 8 / rank > 4
+		// Character > 3 / group_id > 9 / rank > 5
+		if ($acc_type == 2) {
+			$group_number = '8';
+			$rank_number = '4';
+		} else if ($acc_type == 3) {
+			$group_number = '9';
+			$rank_number = '5';
+		}
+
+		if ($acc_type == 2 || $acc_type == 3) {
+			// User group cp_data
+			$user_group_arr = array(
+				'group_id'     => $group_number,
+				'user_id' 	   => $user_id,
+				'group_leader' => 0,
+				'user_pending' => 0,
+			);
+
+			// Insert a new row into the db for new group
+			$user_group_sql = 'INSERT INTO ' . USER_GROUP_TABLE . ' ' . $this->db->sql_build_array('INSERT', $user_group_arr);
+			$this->db->sql_query($user_group_sql);
+
+			// User data
+			$user_array = array(
+				'group_id'  => $group_number,
+				'user_rank' => $rank_number
+			);
+
+			// Update users table with default group id
+			$user_sql = 'UPDATE ' . USERS_TABLE . '
+				SET ' . $this->db->sql_build_array('UPDATE', $user_array) . '
+				WHERE user_id = ' . (int) $user_id;
+			$this->db->sql_query($user_sql);
+		}
+	}
+}
 
 /**
   * Determine what user level is
@@ -286,15 +287,20 @@ function get_level($exp)
 	$multiplier_increment = 0.5;
 	$base_increment = 25;
 	$max_level = 60;
+	$max_exp = 107970;
 
-	for ($level = 1; $level <= $max_level; $level++)
-	{
-		$multiplier = $base_increment + floor(($level - 1) / $per_increment) * $multiplier_increment;
-		$current_experience = $multiplier * $level * ($level - 1);
-		if ($current_experience > $exp)
+	if ($exp < $max_exp) {
+		for ($level = 1; $level <= $max_level; $level++)
 		{
-			return $level - 1;
+			$multiplier = $base_increment + floor(($level - 1) / $per_increment) * $multiplier_increment;
+			$current_experience = $multiplier * $level * ($level - 1);
+			if ($current_experience > $exp)
+			{
+				return $level - 1;
+			}
 		}
+	} else {
+		return 60;
 	}
 }
 

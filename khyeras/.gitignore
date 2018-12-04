@@ -25,6 +25,8 @@ vendor/
 # Extensions
 ext/*
 !ext/displaycoffee/
+!ext/displaycoffee/**/
+!_dev/ext/displaycoffee/**/
 
 # Styles
 styles/*

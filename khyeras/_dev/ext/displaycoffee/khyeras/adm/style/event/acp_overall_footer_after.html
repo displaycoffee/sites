@@ -1,0 +1,17 @@
+<script>
+	// Custom acp code to alter field_maxlen values
+	var profileFieldEdit = document.querySelector( '#add_profile_field' );
+
+	if ( profileFieldEdit && profileFieldEdit.length ) {
+		// Check if on step 2 of the edit profile field section in acp
+		if ( profileFieldEdit.getAttribute( 'action' ).indexOf( '&action=edit&step=2' ) !== -1 ) {
+			var maxNumberField = document.querySelectorAll( '#add_profile_field input[name="field_maxlen"]' );
+
+			// For each field_maxlen input, increase the max input
+			for ( var i = 0; i < maxNumberField.length; i++ ) {
+				// Default max number for phpbb is 99999
+				maxNumberField[i].setAttribute( 'max', '120000' );
+			}
+		}
+	}
+</script>
