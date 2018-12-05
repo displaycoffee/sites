@@ -35,7 +35,7 @@
 						<div class="avatar">{AVATAR_IMG}</div>
 					</div>
 				<!-- ENDIF -->
-				<span class="username-coloured"<!-- IF USER_COLOR --> style="color: {USER_COLOR};"<!-- ENDIF -->>{USERNAME}</span>
+				<!-- EVENT memberlist_view_username_prepend --><!-- IF USER_COLOR --><span  class="username-coloured" style="color: {USER_COLOR};"><!-- ELSE --><span><!-- ENDIF -->{USERNAME}</span><!-- EVENT memberlist_view_username_append -->
 			</dt>
 			<!-- IF AVATAR_IMG -->
 				<!-- EVENT memberlist_view_rank_avatar_before -->

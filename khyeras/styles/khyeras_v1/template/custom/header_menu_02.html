@@ -37,9 +37,11 @@
 			<div class="dropdown">
 				<ul class="dropdown-contents" role="menu">
 					<!-- EVENT navbar_header_profile_list_before -->
-					<li>
-						<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem"><span>{L_READ_PROFILE}</span></a>
-					</li>
+					<!-- IF U_USER_PROFILE -->
+						<li>
+							<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem"><span>{L_READ_PROFILE}</span></a>
+						</li>
+					<!-- ENDIF -->	
 					<li>
 						<a href="{U_SEARCH_SELF}" title="{L_SEARCH_SELF}" role="menuitem"><span>{L_SEARCH_SELF}</span></a>
 					</li>

@@ -173,29 +173,6 @@ function checkForEmpty( selector ) {
 	}
 }
 
-// Remove any HTML characters that get add when saving drafts from post area
-function removeHTMLFromDraft() {
-	// General postform selector
-	var postForm = ' #postform #message';
-
-	// Clean HTML when loading from UCP > Manage Drafts
-	var draftArea = document.querySelectorAll( '.section-ucp-manage-drafts' + postForm );
-
-	if ( draftArea && draftArea.length ) {
-		var draftValue = cleanHTML( draftArea[0].value );
-		draftArea[0].value = draftValue;
-	}
-
-	// Clean HTML when loading from Posting > Load Draft
-	var posting = document.querySelectorAll( '.section-posting' );
-
-	if ( posting && posting.length && window.location.href.indexOf( '&d=' ) !== -1 ) {
-		var postArea = document.querySelectorAll( '.section-posting' + postForm );
-		var postValue = cleanHTML( postArea[0].value );
-		postArea[0].value = postValue;
-	}
-}
-
 // Generate banner code
 function bannerCodeGenerator(bannerImages, bannerCode) {
 	var codeBlock = document.querySelector(bannerCode);

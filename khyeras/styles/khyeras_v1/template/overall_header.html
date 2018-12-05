@@ -115,7 +115,7 @@
 		<p class="date-and-time"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF -->.<!-- IF S_USER_LOGGED_IN --> {CURRENT_TIME}.<!-- ENDIF --></p>
 	{% endset %}
 
-	{% set microdata = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' %}
+	{% set microdata = ' itemtype="http://schema.org/ListItem" itemprop="itemListElement" itemscope' %}
 
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
@@ -158,7 +158,7 @@
 		{% if navlinks|length > 0 %}
 			<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
 				<div class="wrapper">
-					<ul class="breadcrumbs">
+					<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
 						<!-- EVENT overall_header_breadcrumbs_before -->
 						<!-- IF U_SITE_HOME -->
 							<li class="crumb home" {{ microdata }}>
