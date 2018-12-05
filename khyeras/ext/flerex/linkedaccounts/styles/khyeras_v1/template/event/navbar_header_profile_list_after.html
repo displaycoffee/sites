@@ -1,0 +1,31 @@
+{% if switchable_account %}
+	{% INCLUDEJS '@flerex_linkedaccounts/switcher.js' %}
+		<li class="linked-account-title">
+			<strong>{{ lang('LINKED_ACCOUNTS') }}:</strong>
+		</li>
+		{% for account in switchable_account %}
+			<li class="linked-account">
+				{% if U_CAN_LINK_ACCOUNT %}
+					<a href="{{ account.SWITCH_LINK }}" role="menuitem" data-ajax="flerex.linked_accounts.switch" data-refresh="true">
+						<div class="image-wrap">
+							{% if account.AVATAR %}
+								{{ account.AVATAR }}
+							{% else %}
+								<img src="{{ T_THEME_PATH }}/images/no_avatar.gif" class="avatar" alt="">
+							{% endif %}
+						</div>
+						{{ account.NAME }}
+					</a>
+				{% else %}
+					<div class="image-wrap">
+						{% if account.AVATAR %}
+							{{ account.AVATAR }}
+						{% else %}
+							<img src="{{ T_THEME_PATH }}/images/no_avatar.gif" class="avatar" alt="">
+						{% endif %}
+					</div>
+					{{ account.NAME }}
+				{% endif %}
+			</li>
+		{% endfor %}
+{% endif %}

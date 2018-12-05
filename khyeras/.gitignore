@@ -24,9 +24,30 @@ vendor/
 
 # Extensions
 ext/*
+
+# Extensions - displaycoffee
 !ext/displaycoffee/
 !ext/displaycoffee/**/
 !_dev/ext/displaycoffee/**/
+
+# Extensions - flerex
+!ext/flerex/
+ext/flerex/*
+!ext/flerex/linkedaccounts/
+ext/flerex/linkedaccounts/*
+!ext/flerex/linkedaccounts/styles/
+ext/flerex/linkedaccounts/styles/*
+!ext/flerex/linkedaccounts/styles/khyeras_v1/
+
+# Extensions - javiexin
+!ext/javiexin/
+ext/javiexin/*
+!ext/javiexin/advancedpf/
+ext/javiexin/advancedpf/*
+!ext/javiexin/advancedpf/profilefields/
+!ext/javiexin/advancedpf/styles/
+ext/javiexin/advancedpf/styles/*
+!ext/javiexin/advancedpf/styles/khyeras_v1/
 
 # Styles
 styles/*

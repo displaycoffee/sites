@@ -1,8 +1,9 @@
 <script>
 	// Custom acp code to alter field_maxlen values
 	var profileFieldEdit = document.querySelector( '#add_profile_field' );
+	var experienceField = document.querySelector( 'input[type="hidden"][value="c_experience"]' );
 
-	if ( profileFieldEdit && profileFieldEdit.length ) {
+	if ( profileFieldEdit && profileFieldEdit.length && experienceField ) {
 		// Check if on step 2 of the edit profile field section in acp
 		if ( profileFieldEdit.getAttribute( 'action' ).indexOf( '&action=edit&step=2' ) !== -1 ) {
 			var maxNumberField = document.querySelectorAll( '#add_profile_field input[name="field_maxlen"]' );
