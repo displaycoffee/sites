@@ -43,8 +43,9 @@ jQuery( document ).ready( function( $ ) {
 	formatDisplayActions();
 	hidePMPostBox();
 	addCPWrapper();
-	toggleMobileContent( '.toggle-links a', '#page-welcome .site-links' );
-	toggleMobileContent( '.toggle-featured a', '#featured-content' );
+	toggleContent( '.toggle-links a', '#page-welcome .site-links', '' );
+	toggleContent( '.toggle-featured a', '#featured-content', '' );
+	toggleContent( '.bbcode-hidden-toggle', '.bbcode-hidden-text', 'prev' );
 	toggleMemberDisplay();
 	toggleMapDisplay();
 

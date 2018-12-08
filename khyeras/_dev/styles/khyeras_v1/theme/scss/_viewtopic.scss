@@ -135,7 +135,7 @@
 				font-size: rem(13px);
 			}
 		}
-		.strike-through {
+		.bbcode-strike-through {
 			text-decoration: line-through;
 		}
 		.bbcode-center {
@@ -146,6 +146,27 @@
 			}
 			& + br + br {
 				display: none;
+			}
+		}
+		.bbcode-hidden-text {
+			@include position($type: absolute, $top: -9999px, $left: -9999px);
+			@include toggle-content(hide);
+			&.toggle-show {
+				position: static;
+				@include toggle-content(show, $transition: true);
+				& + .bbcode-hidden-toggle {
+					padding: 0 0 0 5px;
+				}
+			}
+		}
+		.bbcode-hidden-toggle {
+			font-style: italic;
+			cursor: pointer;
+			.icon {
+				font-size: rem(10px);
+				position: relative;
+				top: -1.5px;
+				padding: 0 2px 0 0;
 			}
 		}
 	}

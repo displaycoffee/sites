@@ -163,10 +163,19 @@ input[type='search']::-webkit-search-cancel-button {
 	@include small-form-ele($padding: 5px);
 }
 
-.format-buttons button:not(.button-icon-only) {
-	@include small-form-ele($padding: 6px 10px);
-	font-size: rem(13px);
-	text-transform: uppercase;
+.format-buttons {
+	button:not(.button-icon-only), select  {
+		font-size: rem(13px);
+		@include small-form-ele($padding: 6px 10px);
+	}
+	button:not(.button-icon-only) {
+		text-transform: uppercase;
+	}
+	select {
+		min-height: 0;
+		width: auto;
+		padding-right: 30px;
+	}
 }
 
 fieldset.submit-buttons {

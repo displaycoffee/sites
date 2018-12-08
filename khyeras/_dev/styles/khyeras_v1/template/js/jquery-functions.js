@@ -110,17 +110,28 @@ function addCPWrapper() {
 	}
 }
 
-// Show/hide selected content on mobile
-function toggleMobileContent( button, selector ) {
-	var buttonToggle = jQuery( button );
-	var selectorToggle = jQuery( selector );
+// Show/hide selected content
+function toggleContent( button, selector, type ) {
+	var button = jQuery( button );
 
-	if ( buttonToggle && buttonToggle.length || selectorToggle && selectorToggle.length ) {
-		buttonToggle.off().on( 'click', function() {
-			if ( selectorToggle.hasClass( 'toggle-show' ) ) {
-				selectorToggle.removeClass( 'toggle-show' );
+	if ( button && button.length ) {
+		// Add button click event
+		button.off().on( 'click', function() {
+			var current = jQuery( this );
+
+			// Change content selector depending on type
+			var content = jQuery( selector );
+			if ( type == 'prev' ) {
+				content = current.prev( selector );
+			} else if ( type == 'next' ) {
+				content = current.next( selector );
+			}
+
+			// Add or remove toggle classes
+			if ( content.hasClass( 'toggle-show' ) ) {
+				content.removeClass( 'toggle-show' );
 			} else {
-				selectorToggle.addClass( 'toggle-show' );
+				content.addClass( 'toggle-show' );
 			}
 		});
 	}

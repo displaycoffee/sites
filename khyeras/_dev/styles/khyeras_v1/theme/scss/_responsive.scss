@@ -1223,11 +1223,16 @@
 			}
 		}
 	}
-	.page-welcome .site-links, .featured-content {
-		display: none;
-	}
-	.page-welcome .site-links.toggle-show, .page-welcome .toggle-buttons, .featured-content.toggle-show {
+	.page-welcome .toggle-buttons {
 		display: block;
+	}
+	.page-welcome .site-links, .featured-content {
+		@include position($type: absolute, $top: -9999px, $left: -9999px);
+		@include toggle-content(hide);
+		&.toggle-show {
+			position: static;
+			@include toggle-content(show, $transition: true);
+		}
 	}
 	.page-welcome .site-links, .page-welcome .toggle-buttons, .featured-content {
 		.flex-row {

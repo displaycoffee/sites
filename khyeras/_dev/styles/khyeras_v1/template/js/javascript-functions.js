@@ -174,30 +174,30 @@ function checkForEmpty( selector ) {
 }
 
 // Generate banner code
-function bannerCodeGenerator(bannerImages, bannerCode) {
-	var codeBlock = document.querySelector(bannerCode);
+function bannerCodeGenerator( bannerImages, bannerCode ) {
+	var codeBlock = document.querySelector( bannerCode );
 
-	if (codeBlock) {
+	if ( codeBlock ) {
 		// Re-usable variables
 		var codeHTML = codeBlock.innerHTML;
 		var currentImage = codeHTML.match(/src=\"(.*?)\"/)[1];
 		var currentAlt = codeHTML.match(/alt=\"(.*?)\"/)[1];
 
 		// Loop through all banner images and attach onclick event
-		var bannerArray = document.querySelectorAll(bannerImages);
-		for (var i = 0; i < bannerArray.length; i++) {
-			bannerArray[i].onclick = function(e) {
-				changeBannerCode(e, currentImage, currentAlt);
+		var bannerArray = document.querySelectorAll( bannerImages );
+		for ( var i = 0; i < bannerArray.length; i++ ) {
+			bannerArray[i].onclick = function( e ) {
+				changeBannerCode( e, currentImage, currentAlt );
 			};
 		}
 
 		// Function to change banner code
-		function changeBannerCode(e, image, alt) {
+		function changeBannerCode( e, image, alt ) {
 			// Element that has been clicked
 			var selector = e.target || e.srcElement;
 
 			// Replace current image src and alt with new element alt and src
-			codeBlock.innerHTML = codeHTML.replace(image, selector.getAttribute('src')).replace(alt, selector.getAttribute('alt'));
+			codeBlock.innerHTML = codeHTML.replace( image, selector.getAttribute( 'src' ) ).replace( alt, selector.getAttribute( 'alt' ) );
 		}
 	}
 }
