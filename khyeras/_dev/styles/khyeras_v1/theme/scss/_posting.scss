@@ -12,18 +12,15 @@
 	#colour_palette {
 		margin: 0 0 20px 0;
 	}
+	#topic_desc {
+		height: 75px;
+	}
 	#format-buttons {
 		margin: 0 0 $ffs-minus 0;
 		.button, select {
 			vertical-align: top;
 			margin: 0 0 $ffs 0;
 		}
-		// select {
-		// 	width: auto;
-		// 	@include small-form-ele($padding: 6px 30px 6px 10px);
-		// 	font-size: rem(13px);
-		// 	min-height: 0;
-		// }
 		.bbcode-s, .bbcode-center, .bbcode-hidden, .bbcode-mention, .bbcode-user {
 			font-size: 0;
 			&:before {

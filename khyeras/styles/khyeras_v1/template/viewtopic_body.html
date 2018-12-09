@@ -407,6 +407,15 @@
 				</div>
 			<!-- ENDIF -->
 
+			{% set forum_ids = [11, 12, 13, 14, 15, 16, 17, 18, 30] %}
+			{% if FORUM_ID in forum_ids %}
+				<!-- BEGIN postrow.khy -->
+					<div class="word-count">
+						<strong>Word count:</strong> {postrow.khy.WORD_COUNT}
+					</div>
+				<!-- END postrow.khy -->
+			{% endif %}
+
 			<!-- IF postrow.BUMPED_MESSAGE --><div class="notice"><br /><br />{postrow.BUMPED_MESSAGE}</div><!-- ENDIF -->
 			<!-- EVENT viewtopic_body_postrow_post_notices_after -->
 			<!-- IF postrow.SIGNATURE --><div id="sig{postrow.POST_ID}" class="signature">{postrow.SIGNATURE}</div><!-- ENDIF -->

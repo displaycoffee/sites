@@ -17,11 +17,14 @@
 			}
 		}
 	}
-	.author {
+	.author, .word-count {
 		font-size: rem(13px);
 	}
 	.content {
 		margin: 0 0 20px 0;
+	}
+	.word-count {
+		margin: 20px 0 0 0;
 	}
 	.signature {
 		border-top: 1px dashed $color-04;

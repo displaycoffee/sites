@@ -577,8 +577,11 @@ div[id*='list_thanks'], .member-thanks-list {
 	}
 }
 
-div[id*='list_thanks'] .post-buttons > li.responsive-menu {
-	display: none;
+div[id*='list_thanks'] {
+	margin: 20px 0 0 0;
+	.post-buttons > li.responsive-menu {
+		display: none;
+	}
 }
 
 .member-thanks-list {

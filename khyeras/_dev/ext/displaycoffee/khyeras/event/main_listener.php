@@ -215,6 +215,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	public function viewtopic_character_info($event)
 	{
 		$pr = $event['post_row'];
+		$character_details = array();
 
 		// Only assign these variable if character account
 		if ($pr['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
@@ -222,12 +223,21 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			$class = $pr['PROFILE_C_CLASS_OPTS_VALUE'];
 			$level = get_level($pr['PROFILE_C_EXPERIENCE_VALUE']);
 
-			$this->template->assign_block_vars('postrow.khy', array(
+			$character_details = array(
 				'PROFILE_LEVEL'    => $level,
 				'PROFILE_TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
 				'PROFILE_TOTAL_MP' => get_life_modifier($race, $class, $level)[1]
-			));
+			);
 		}
+
+		// Clean description by removing html and bbcode for word count
+		$desc = preg_replace('/(\[.*?\])/', '', strip_tags($pr['MESSAGE'], ''));
+		$desc_count = array(
+			'WORD_COUNT' => str_word_count($desc)
+		);
+
+		// Assign viewtopic variables
+		$this->template->assign_block_vars('postrow.khy', array_merge($character_details, $desc_count));
 	}
 
 	/**
