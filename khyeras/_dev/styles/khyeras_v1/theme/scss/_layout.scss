@@ -851,18 +851,27 @@ dl.details {
 /* Positioned Images
 ============================================== */
 
-.image-wide, .image-tall {
-	@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0);
+.image-fit-width, .image-fit-height {
+	max-width: 100%;
+	max-height: 100%;
+	@include sizing(auto !important, auto !important);
+	border: 0;
 	margin: auto;
+	@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0);
 }
 
-.image-wide {
-	width: auto !important;
+.image-fit-width {
+	width: 100% !important;
+	max-height: none;
+}
+
+.image-fit-width:not(.image-centered) {
+	bottom: auto;
+}
+
+.image-fit-height {
+	height: 100% !important;
 	max-width: none;
-	height: 100%;
-	@include position($left: -50%, $right: -50%);
-}
-
-.image-tall {
-	top: 25%;
+	left: -100%;
+	right: -100%;
 }

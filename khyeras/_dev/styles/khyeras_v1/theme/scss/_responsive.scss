@@ -944,6 +944,9 @@
 			border-width: 2px;
 			box-shadow: none;
 			padding-bottom: 0;
+			&[style*='sorcerer'], &[style*='summoner'], &[style*='bard'] {
+				background-position: center -50px;
+			}
 			img {
 				display: none;
 			}
@@ -1559,6 +1562,11 @@
 				}
 			}
 		}
+	}
+	.excerpt .excerpt-image .image-wrap {
+		&[style*='sorcerer'], &[style*='summoner'], &[style*='bard'] {
+			background-position: center top;
+		}		
 	}
 	.section-page-map #tabs {
 		display: none;

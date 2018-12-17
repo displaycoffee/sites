@@ -230,11 +230,21 @@ function checkImageDimensions( selector ) {
 	if ( imageSelector && imageSelector.length ) {
 		for ( var i = 0; i < imageSelector.length; i++ ) {
 			var sImage = imageSelector[i];
+			var imageWidth = sImage.clientWidth;
+			var imageHeight = sImage.clientHeight;
+			var parentWidth = sImage.parentNode.clientWidth;
+			var parentHeight = sImage.parentNode.clientHeight;
+			var centerThreshold = Math.round( ( imageWidth / parentWidth ) * 100 ); // Determine when images should be centered
 
-			if ( sImage.naturalWidth > sImage.naturalHeight ) {
-				sImage.className += ( checkForClasses( sImage ) + 'image-wide' );
-			} else if ( sImage.naturalHeight > sImage.naturalWidth ) {
-				sImage.className += ( checkForClasses( sImage ) + 'image-tall' );
+			if ( parentHeight > imageHeight ) {
+				sImage.className += ( checkForClasses( sImage ) + 'image-fit-height' );
+			} else {
+				if ( imageWidth != imageHeight ) {
+					sImage.className += ( checkForClasses( sImage ) + 'image-fit-width' );
+					if ( centerThreshold >= 90 ) {
+						sImage.className += ( checkForClasses( sImage ) + 'image-centered' );
+					}
+				}
 			}
 		}
 	}
