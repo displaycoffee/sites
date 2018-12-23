@@ -23,14 +23,16 @@ if (phpBBFolder == 'styles') {
 	/* Development Variables
 	   ---------------------------------------------- */
 
-	var dev = '_dev/styles/khyeras_v1';
+	//var dev = '_dev/styles/khyeras_v1';
+	var dev = '_dev/styles/khyeras_light_v1';
 	var devJS = dev + '/template/js';
 	var devSass = dev + '/theme/scss';
 
 	/* Distribution Variables
 	   ---------------------------------------------- */
 
-	var dist = 'styles/khyeras_v1/';
+	//var dist = 'styles/khyeras_v1/';
+	var dist = 'styles/khyeras_light_v1/';
 	var distJS = dist + '/template';
 	var distCSS = dist + '/theme';
 

@@ -1,0 +1,301 @@
+// Also includes functions in addition to mixins
+
+// Black transparent bar
+@mixin black-bar($t, $l, $r) {
+	@include position($type: absolute, $top: $t, $left: $l, $right: $r);
+	height: 50px;
+	line-height: 50px;
+	padding: 0 20px;
+	background: rgba($color-01, .50);
+}
+
+// Clearfix
+@mixin clearfix($selector) {
+	#{$selector}:before, #{$selector}:after {
+		content: '';
+		display: table;
+		zoom: 1;
+	}
+	#{$selector}:after {
+		clear: both;
+	}
+}
+
+// For hiding / showing content
+@mixin toggle-content($state, $transition: '') {
+	@if $state == hide {
+		opacity: 0;
+		visibility: hidden;
+	}
+	@if $state == show {
+		visibility: visible;
+		opacity: 1;
+	}
+	@if ($transition == true) {
+		@include transition(opacity 0.5s ease);
+	}
+}
+
+// PX to EM conversion
+// From https://css-tricks.com/snippets/sass/px-to-em-functions
+@function em($pixels, $context: $base-font-size) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1em;
+}
+
+// PX to REM conversion
+// Modified from https://css-tricks.com/snippets/sass/px-to-em-functions
+@function rem($pixels, $context: $base-font-size) {
+	@if (unitless($pixels)) {
+		$pixels: $pixels * 1px;
+	}
+
+	@if (unitless($context)) {
+		$context: $context * 1px;
+	}
+
+	@return $pixels / $context * 1rem;
+}
+
+// Set text overflow with ellipsis
+@mixin ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// Set flex flow property
+// flex: grow - shrink - basis
+@mixin flex($type: '') {
+	@if $type == grow {
+		flex: 1 0 auto;
+	} @else if $type == base {
+		flex: 1 1 0%;
+	} @else if $type == full {
+		flex: 1 1 100%;
+	} @else if $type == max {
+		flex: 0 0 auto;
+	} @else if $type == adapt {
+		flex: 1 1 auto;
+	} @else {
+		flex: 0 1 auto;
+	}
+}
+
+// Flex flow
+@mixin flex-flow($flow) {
+	display: flex;
+	flex-flow: $flow;
+}
+
+// Flex flow inline
+@mixin flex-flow-inline($flow) {
+	display: inline-flex;
+	flex-flow: $flow;
+}
+
+// Responsive reset for flex
+@mixin flex-reset($selector) {
+	display: block;
+	#{$selector} {
+		width: auto;
+	}
+}
+
+// Icon properties for forum/topic listing
+@mixin forum-icon($icon) {
+	dt:before {
+		content: unicode($icon);
+	}
+}
+
+// FontAwesome properties
+@mixin icon-font($family: '', $fs: '', $lh: '') {
+	// Font family logic
+	@if ($family != '') {
+		@if ($family == 'game') {
+			$family: 'Khyeras Icons';
+		} @else {
+			$family: $family;
+		}
+	} @else {
+		$family: 'FontAwesome';
+	}
+
+	display: inline-block;
+	font-family: $family;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+
+	// Font size logic
+	@if ($fs != false) {
+		@if ($fs != '') {
+			font-size: $fs;
+		} @else {
+			font-size: rem($global-font-size);
+		}
+	}
+
+	// Line height logic
+	@if ($lh != false) {
+		@if ($lh != '') {
+			line-height: $lh;
+		} @else {
+			line-height: 1;
+		}
+	}
+
+	text-rendering: auto; /* optimizelegibility throws things off #1094 */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Inline block
+@mixin inline-block($vertical-align) {
+	display: inline-block;
+	vertical-align: $vertical-align;
+}
+
+// Placeholder
+// Examples: @include placeholder {}, :focus{@include placeholder {}}, or input {@include placeholder {}}
+@mixin placeholder {
+	&::-webkit-input-placeholder {@content}
+	&:-moz-placeholder           {@content}
+	&::-moz-placeholder          {@content}
+	&:-ms-input-placeholder      {@content}
+}
+
+// Quote characters
+@mixin quotes($fs) {
+	font-size: rem($fs);
+	@include inline-block(middle);
+	@include sizing(12px, 12px);
+	line-height: 1.2;
+}
+
+// Mixin for positioning
+@mixin position($type: '', $top: '', $bottom: '', $left: '', $right: '', $z: '') {
+	@if ($type != '') {
+		position: $type;
+	}
+	@if ($top != '') {
+		top: $top;
+	}
+	@if ($bottom != '') {
+		bottom: $bottom;
+	}
+	@if ($left != '') {
+		left: $left;
+	}
+	@if ($right != '') {
+		right: $right;
+	}
+	@if ($z != '') {
+		z-index: $z;
+	}
+}
+
+// Reset font sizing for responsive button spacing
+@mixin reset-font-size($selector) {
+	font-size: 0;
+	#{$selector} {
+		font-size: rem($global-font-size);
+	}
+}
+
+// Reset inner element styling
+@mixin reset-inner {
+	background: none;
+	margin: 0;
+	padding: 0;
+}
+
+// Responsive max-width media query
+@mixin respond($breakpoint) {
+	@media only screen and (max-width: $breakpoint) {
+		@content;
+	}
+}
+
+// Sizing for elements
+@mixin sizing($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+// Smaller sized form elements
+@mixin small-form-ele($padding: 5px 10px, $lh: '') {
+	padding: $padding;
+	@if ($lh != false) {
+		line-height: 1;
+	}
+}
+
+// Sortable headers
+@mixin sortable-headers {
+	a {
+		&[href*='sd='] {
+			position: relative;
+			padding: 0 20px 0 0;
+			&:after {
+				@include icon-font;
+				@include position($type: absolute, $right: 0);
+			}
+		}
+		&[href*='sd=d']:after {
+			content: unicode($icon-sort-desc);
+			top: -4px;
+		}
+		&[href*='sd=a']:after {
+			content: unicode($icon-sort-asc);
+			top: 3px;
+		}
+	}
+}
+
+// Common spectral font styles
+@mixin spectral-common {
+	font-family: $font-02;
+	font-variant: small-caps;
+}
+
+// Transition
+@mixin transition($value) {
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-o-transition: $value;
+	transition: $value;
+}
+
+// Scrollable ucp containers
+@mixin scrollable {
+	overflow: visible !important;
+	.scrollable-wrapper {
+		max-height: 380px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: 0 20px 0 0;
+	}
+	&[style*='max-height'][style*='none'] {
+		.scrollable-wrapper {
+			max-height: none;
+			overflow: visible;
+			padding: 0;
+		}
+	}
+}
+
+// Unicode mixin
+// Mostly for making sure icons output correctly
+// https://github.com/sass/sass/issues/1395#issuecomment-65548751
+@function unicode($str){
+    @return unquote("\'") + $str + unquote("\'");
+}

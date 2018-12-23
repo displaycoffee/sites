@@ -1,0 +1,195 @@
+/* NOTE: Contains styles for posting topics, PMs, and signatures
+============================================== */
+
+/* Posting Box
+============================================== */
+
+.section-posting #preview ~ #postingbox {
+	margin-top: 30px;
+}
+
+#postform {
+	#colour_palette {
+		margin: 0 0 20px 0;
+	}
+	#topic_desc {
+		height: 75px;
+	}
+	#format-buttons {
+		margin: 0 0 $ffs-minus 0;
+		.button, select {
+			vertical-align: top;
+			margin: 0 0 $ffs 0;
+		}
+		.bbcode-s, .bbcode-center, .bbcode-hidden, .bbcode-mention, .bbcode-user {
+			font-size: 0;
+			&:before {
+				content: '';
+				@include icon-font($lh: false);
+				line-height: 13px;
+			}
+		}
+		.bbcode-s:before {
+			content: unicode($icon-strikethrough);
+		}
+		.bbcode-center:before {
+			content: unicode($icon-align-center);
+		}
+		.bbcode-hidden:before {
+			content: unicode($icon-eye);
+		}
+		.bbcode-mention:before {
+			content: unicode($icon-comment);
+		}
+		.bbcode-user:before {
+			content: unicode($icon-user);
+		}
+	}
+	#smiley-box {
+		margin: 0 (-$ffs-half);
+		padding: 0 0 0 20px;
+		float: right;
+		width: 230px;
+		& > a {
+			margin: 0 $ffs-half;
+			&, img {
+				@include inline-block(middle);
+			}
+		}
+		.bbcode-status {
+			margin: 20px 0 0 0;
+		}
+	}
+	#message-box {
+		overflow: hidden;
+	}
+}
+
+/* Color Palette
+============================================== */
+
+#color_palette_placeholder table {
+	max-width: 600px;
+	&, tbody, tr {
+		display: block;
+		line-height: 0;
+	}
+	td {
+		@include inline-block(middle);
+		@include sizing(4% !important, auto !important);
+		border-right: 1px solid $color-02;
+		border-bottom: 1px solid $color-02;
+		a {
+			@include sizing(100% !important, 0 !important);
+			padding-bottom: 100%;
+			overflow: hidden;
+		}
+	}
+}
+
+/* Options Panel
+============================================== */
+
+#options-panel fieldset {
+	margin: 0 0 20px 0;
+	& > div:last-child label {
+		margin: 0;
+	}
+	& > div:last-of-type {
+		margin: 0 0 15px 0;
+	}
+}
+
+/* Attach Panel
+============================================== */
+
+#attach-panel {
+	#attach-panel-multi {
+		margin: 0 0 20px 0;
+		display: none;
+	}
+	#file-list-container table.table1 {
+		margin: 0;
+		tbody tr:last-child {
+			border-bottom-color: transparent;
+		}
+		th {
+			&.attach-name {
+				width: 50%;
+			}
+			&.attach-comment {
+				width: 30%;
+			}
+		}
+		td {
+			vertical-align: middle;
+			&.attach-name {
+				.file-name, .attach-controls {
+					@include inline-block(middle);
+					position: relative;
+				}
+				.file-name {
+					width: 39%;
+				}
+				.attach-controls {
+					width: 59%;
+					@include position($type: relative, $right: -1%);
+					text-align: right;
+				}
+			}
+			&.attach-status .file-status {
+				&:before {
+					@include icon-font($fs: false);
+					font-size: rem(20px);
+				}
+				&.file-uploaded:before {
+					content: unicode($icon-check-circle);
+					color: $color-06;
+				}
+				&.file-error:before {
+					content: unicode($icon-exclamation-triangle);
+					color: $color-11;
+				}
+				&.file-working:before {
+					content: unicode($icon-spinner);
+					color: $color-07;
+					animation: fa-spin 2s infinite linear;
+				}
+			}
+		}
+	}
+}
+
+.nojs .file-inline-bbcode {
+	display: none;
+}
+
+/* File Progress Bars (for attachments)
+============================================== */
+
+.file-progress, .file-progress .file-progress-bar,
+.file-total-progress, .file-total-progress-bar {
+	display: block;
+}
+
+.file-progress-bar, .file-total-progress-bar {
+	@include sizing(0, 100%);
+	border-radius: 3px;
+}
+
+.file-progress {
+	@include sizing(100%, 10px);
+}
+
+.file-progress-bar {
+	background-color: $color-10;
+}
+
+.file-total-progress {
+	@include sizing(100%, 5px);
+	margin: 0 0 -5px 0;
+}
+
+.file-total-progress-bar {
+	background-color: $color-06;
+}

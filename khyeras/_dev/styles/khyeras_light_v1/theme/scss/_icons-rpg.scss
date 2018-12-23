@@ -1,0 +1,284 @@
+/* RPG Icon Variables
+============================================== */
+
+$rpg-burning-embers: \e932;
+$rpg-two-shadows: \e92f;
+$rpg-holy-grail: \e930;
+$rpg-hourglass: \e931;
+$rpg-achievement: \e929;
+$rpg-stars-stack: \e92a;
+$rpg-wooden-door: \e927;
+$rpg-portal: \e928;
+$rpg-cross-shield: \e924;
+$rpg-stone-crafting: \e925;
+$rpg-pokecog: \e926;
+$rpg-spell-book: \e918;
+$rpg-open-book: \e923;
+$rpg-quill-ink: \e900;
+$rpg-quill: \e901;
+$rpg-big-gear: \e902;
+$rpg-castle: \e905;
+$rpg-fangs: \e906;
+$rpg-harpy: \e907;
+$rpg-fire-silhouette: \e908;
+$rpg-ghost-ally: \e909;
+$rpg-transportation-rings: \e90a;
+$rpg-run: \e90b;
+$rpg-dragon-head: \e90c;
+$rpg-dwarf-face: \e90d;
+$rpg-elf-ear: \e90e;
+$rpg-clockwork: \e90f;
+$rpg-trumpet-flag: \e910;
+$rpg-compass: \e911;
+$rpg-padlock: \e912;
+$rpg-key: \e913;
+$rpg-secret-book: \e914;
+$rpg-direction-sign: \e915;
+$rpg-stabbed-note: \e916;
+$rpg-white-book: \e917;
+$rpg-book-cover: \e919;
+$rpg-bookmarklet: \e91a;
+$rpg-evil-hand: \e91b;
+$rpg-shaking-hands: \e91c;
+$rpg-fairy: \e91d;
+$rpg-crossed-swords: \e91e;
+$rpg-gavel: \e91f;
+$rpg-hunting-horn: \e920;
+$rpg-scroll-unfurled: \e921;
+$rpg-thors-hammer: \e903;
+$rpg-tied-scroll: \e922;
+$rpg-tinker: \e904;
+
+/* RPG Icon Classes
+============================================== */
+
+.rpg-burning-embers:before {
+	content: unicode($rpg-burning-embers);
+}
+.rpg-two-shadows:before {
+	content: unicode($rpg-two-shadows);
+}
+.rpg-holy-grail:before {
+	content: unicode($rpg-holy-grail);
+}
+.rpg-hourglass:before {
+	content: unicode($rpg-hourglass);
+}
+.rpg-achievement:before {
+	content: unicode($rpg-achievement);
+}
+.rpg-stars-stack:before {
+	content: unicode($rpg-stars-stack);
+}
+.rpg-wooden-door:before {
+	content: unicode($rpg-wooden-door);
+}
+.rpg-portal:before {
+	content: unicode($rpg-portal);
+}
+.rpg-cross-shield:before {
+	content: unicode($rpg-cross-shield);
+}
+.rpg-stone-crafting:before {
+	content: unicode($rpg-stone-crafting);
+}
+.rpg-pokecog:before {
+	content: unicode($rpg-pokecog);
+}
+.rpg-spell-book:before {
+	content: unicode($rpg-spell-book);
+}
+.rpg-open-book:before {
+	content: unicode($rpg-open-book);
+}
+.rpg-quill-ink:before {
+	content: unicode($rpg-quill-ink);
+}
+.rpg-quill:before {
+	content: unicode($rpg-quill);
+}
+.rpg-big-gear:before {
+	content: unicode($rpg-big-gear);
+}
+.rpg-castle:before {
+	content: unicode($rpg-castle);
+}
+.rpg-fangs:before {
+	content: unicode($rpg-fangs);
+}
+.rpg-harpy:before {
+	content: unicode($rpg-harpy);
+}
+.rpg-fire-silhouette:before {
+	content: unicode($rpg-fire-silhouette);
+}
+.rpg-ghost-ally:before {
+	content: unicode($rpg-ghost-ally);
+}
+.rpg-transportation-rings:before {
+	content: unicode($rpg-transportation-rings);
+}
+.rpg-run:before {
+	content: unicode($rpg-run);
+}
+.rpg-dragon-head:before {
+	content: unicode($rpg-dragon-head);
+}
+.rpg-dwarf-face:before {
+	content: unicode($rpg-dwarf-face);
+}
+.rpg-elf-ear:before {
+	content: unicode($rpg-elf-ear);
+}
+.rpg-clockwork:before {
+	content: unicode($rpg-clockwork);
+}
+.rpg-trumpet-flag:before {
+	content: unicode($rpg-trumpet-flag);
+}
+.rpg-compass:before {
+	content: unicode($rpg-compass);
+}
+.rpg-padlock:before {
+	content: unicode($rpg-padlock);
+}
+.rpg-key:before {
+	content: unicode($rpg-key);
+}
+.rpg-secret-book:before {
+	content: unicode($rpg-secret-book);
+}
+.rpg-direction-sign:before {
+	content: unicode($rpg-direction-sign);
+}
+.rpg-stabbed-note:before {
+	content: unicode($rpg-stabbed-note);
+}
+.rpg-white-book:before {
+	content: unicode($rpg-white-book);
+}
+.rpg-book-cover:before {
+	content: unicode($rpg-book-cover);
+}
+.rpg-bookmarklet:before {
+	content: unicode($rpg-bookmarklet);
+}
+.rpg-evil-hand:before {
+	content: unicode($rpg-evil-hand);
+}
+.rpg-shaking-hands:before {
+	content: unicode($rpg-shaking-hands);
+}
+.rpg-fairy:before {
+	content: unicode($rpg-fairy);
+}
+.rpg-crossed-swords:before {
+	content: unicode($rpg-crossed-swords);
+}
+.rpg-gavel:before {
+	content: unicode($rpg-gavel);
+}
+.rpg-hunting-horn:before {
+	content: unicode($rpg-hunting-horn);
+}
+.rpg-scroll-unfurled:before {
+	content: unicode($rpg-scroll-unfurled);
+}
+.rpg-thors-hammer:before {
+	content: unicode($rpg-thors-hammer);
+}
+.rpg-tied-scroll:before {
+	content: unicode($rpg-tied-scroll);
+}
+.rpg-tinker:before {
+	content: unicode($rpg-tinker);
+}
+
+
+/* RPG Icon Overrides
+============================================== */
+
+.fa-bell, .fa-clock-o, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
+.fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-sliders, .fa-pencil-square-o, .fa-power-off, .fa-reply, .fa-shield, .fa-trash, .fa-wrench {
+	font-family: 'Khyeras Icons';
+}
+
+.fa-bell:before {
+	content: unicode($rpg-trumpet-flag);
+}
+
+.fa-clock-o:before {
+	content: unicode($rpg-hourglass);
+}
+
+.fa-cog:before, .fa-cogs:before {
+	content: unicode($rpg-pokecog);
+}
+
+.fa-file:before, .fa-file-o:before {
+	content: unicode($rpg-scroll-unfurled);
+}
+
+.fa-gavel:before {
+	content: unicode($rpg-thors-hammer);
+}
+
+.fa-home:before {
+	content: unicode($rpg-castle);
+}
+
+.fa-inbox:before {
+	content: unicode($rpg-open-book);
+}
+
+.fa-lock:before {
+	content: unicode($rpg-padlock);
+}
+
+.fa-pencil:before, .fa-pencil-square-o:before, .fa-reply:before {
+	content: unicode($rpg-quill);
+}
+
+.fa-power-off:before {
+	content: unicode($rpg-portal);
+}
+
+.fa-shield:before {
+	content: unicode($rpg-cross-shield);
+}
+
+.fa-sliders:before {
+	content: unicode($rpg-key);
+}
+
+.fa-trash:before {
+	content: unicode($rpg-burning-embers);
+}
+
+.fa-wrench:before {
+	content: unicode($rpg-stone-crafting);
+}
+
+/* Miscellaneous Icons - Uses RPG font
+============================================== */
+
+$misc-icq: \e92b;
+$misc-jabber: \e92c;
+$misc-aim: \e92e;
+$misc-discord: \e92d;
+
+/* Miscellaneous Icon Classes
+============================================== */
+
+.misc-icq:before {
+	content: unicode($misc-icq);
+}
+.misc-jabber:before {
+	content: unicode($misc-jabber);
+}
+.misc-aim:before {
+	content: unicode($misc-aim);
+}
+.misc-discord:before {
+	content: unicode($misc-discord);
+}

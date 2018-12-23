@@ -1,0 +1,877 @@
+/* General layout
+============================================== */
+
+.wrapper {
+	max-width: 1300px;
+	margin: 0 auto;
+	padding: 0 20px;
+	&.full-wrapper {
+		max-width: none;
+	}
+}
+
+.flex-row {
+	@include flex-flow(row wrap);
+	.flex-column {
+		@include flex(base);
+	}
+	&.flex-row-05 {
+		margin: 0 -5px;
+		.flex-column {
+			padding: 0 5px;
+		}
+	}
+	&.flex-row-10 {
+		margin: 0 -10px;
+		.flex-column {
+			padding: 0 10px;
+		}
+	}
+	&.flex-row-20 {
+		margin: 0 -20px;
+		.flex-column {
+			padding: 0 20px;
+		}
+	}
+	&.flex-row-30 {
+		margin: 0 -30px;
+		.flex-column {
+			padding: 0 30px;
+		}
+	}
+}
+
+.column1, .column2 {
+	width: 50%;
+}
+
+.column3 {
+	width: 40%;
+}
+
+.column4 {
+	width: 60%;
+}
+
+.column1, .column3 {
+	float: left;
+	clear: left;
+	padding: 0 10px 0 0;
+}
+
+.column2, .column4 {
+	float: right;
+	clear: right;
+	padding: 0 0 0 10px;
+}
+
+.image-wrap {
+	line-height: 0;
+	overflow: hidden;
+}
+
+.read-more {
+	font-style: italic;
+}
+
+/* Browser Upgrade / Browse Happy
+============================================== */
+
+.browserupgrade {
+	@include position($type: fixed, $top: 0, $left: 0, $z: 100);
+	width: 100%;
+	background: $color-09;
+	border-bottom: 2px solid mix($color-02, $color-09, 33.33%);
+	padding: 20px;
+	color: $color-08;
+	text-align: center;
+	a {
+		color: $color-07;
+		&:hover {
+			color: $color-06;
+		}
+	}
+	& + .wrap .navbar {
+		top: 63px;
+	}
+}
+
+/* Dropdown & Mention Container
+============================================== */
+
+.dropdown-container .dropdown, .atwho-container .atwho-view {
+	background: $color-05;
+	border: 1px solid $color-04;
+	padding: 20px;
+}
+
+.dropdown-container .dropdown .dropdown-contents, .atwho-container .atwho-view .atwho-view-ul {
+	font-size: rem(13px);
+	& > li {
+		padding: 0 0 3px 0;
+		&:last-child {
+			padding: 0;
+		}
+	}
+}
+
+.dropdown-container .dropdown .dropdown-contents a, .atwho-container .atwho-view .atwho-view-ul li {
+	color: $color-00;
+	&:hover {
+		color: $color-07;
+	}
+}
+
+.dropdown-container {
+	position: relative;
+	.dropdown-toggle, .menu-trigger {
+		cursor: pointer;
+	}
+	.pointer {
+		display: none;
+	}
+	.dropdown {
+		@include toggle-content(hide);
+		display: block !important;
+		min-width: 185px;
+		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+		margin: 0 !important;
+		text-align: left;
+		.dropdown-contents {
+			margin: 0;
+			padding: 0 20px 0 0;
+			max-height: 300px;
+			max-width: none !important;
+			overflow-y: auto;
+			&.dropdown-nonscroll {
+				padding: 0;
+			}
+			.button-icon-only {
+				padding: 0;
+				line-height: inherit;
+			}
+		}
+ 	}
+	&.dropdown-visible {
+		.dropdown {
+			@include toggle-content(show, $transition: true);
+			@include position($top: 27px, $left: 0, $z: 50);
+		}
+		.button ~ .dropdown {
+			top: 50px;
+		}
+		.button-icon-only ~ .dropdown {
+			top: 35px;
+		}
+		&.dropdown-up {
+			.dropdown {
+				@include position($top: auto, $bottom: 30px);
+			}
+			.button ~ .dropdown {
+				bottom: 50px;
+			}
+			.button-icon-only ~ .dropdown {
+				bottom: 35px;
+			}
+		}
+		&.dropdown-left .dropdown {
+			@include position($right: 0, $left: auto);
+		}
+	}
+}
+
+.atwho-container .atwho-view {
+	border-radius: 0;
+	box-shadow: none;
+	color: $color-00;
+	.atwho-view-ul > li {
+		border-bottom: 0;
+		strong {
+			color: inherit;
+		}
+		&.cur {
+			background: none;
+			color: $color-07;
+		}
+	}
+}
+
+#phpbb .mention {
+	color: $color-23;
+	font-weight: normal;
+}
+
+/* Loading Indicator
+============================================== */
+
+.loading_indicator {
+	background: rgba($color-02, 0.65) url($images + 'loading.gif') center center no-repeat;
+	border-radius: 5px;
+	display: none;
+	margin-top: -50px;
+	margin-left: -50px;
+	@include sizing(50px, 50px);
+	@include position($type: fixed, $top: 50%, $left: 50%, $z: 51);
+}
+
+/* Breadcrumbs
+============================================== */
+
+#nav-breadcrumbs {
+	margin: 0 0 30px 0;
+	ul {
+		margin: 0 -2.5px;
+		li {
+			padding: 1.5px 2.5px;
+			&, & > a, & > i {
+				vertical-align: middle;
+			}
+			&, a {
+				display: inline-block;
+			}
+			a {
+				@include ellipsis;
+			}
+			.icon {
+				margin: 0 5px 0 0;
+				&.rpg-castle {
+					color: $color-00;
+					font-size: rem(18px);
+					margin: 0 10px 0 0;
+				}
+				&.rpg-castle + span {
+					margin-left: 0;
+				}
+			}
+			.fa-chevron-right {
+				font-size: rem(13px);
+			}
+			&.wrapped-max a {
+				max-width: 120px;
+			}
+			&.wrapped-wide a {
+				max-width: 100px;
+			}
+			&.wrapped-medium a {
+				max-width: 80px;
+			}
+			&.wrapped-small a {
+				max-width: 60px;
+			}
+			&.wrapped-tiny a {
+				max-width: 40px;
+			}
+		}
+		.crumb.home {
+			@include position($type: relative, $top: -1px);
+		}
+	}
+}
+
+/* Main Boxes (Inner)
+============================================== */
+
+.forabg, .forumbg, .post, .panel {
+	border: 20px solid rgba($color-01, 0.40);
+	.inner {
+		background: rgba($color-01, 0.30);
+		margin: 1px;
+		padding: 20px 20px 0 20px;
+	}
+}
+
+.forabg, .panel {
+	margin: 0 0 $main-margin 0;
+}
+
+.post, .topicreview, .forumbg, #qr_postform .panel, #agreement .panel, .topic_poll .panel {
+	margin: 0 0 20px 0;
+}
+
+.panel .panel, .panel .post {
+	border: 0;
+	margin: 0;
+	.inner {
+		@include reset-inner;
+	}
+}
+
+/* Pagination
+============================================== */
+
+.pagination > ul {
+	margin: 0 -5px;
+	@include inline-block(bottom);
+	position: relative;
+	& > li {
+		@include inline-block(middle);
+		&.active span, a {
+			padding: 0 5px;
+		}
+		&.active span {
+			display: inline-block;
+			color: $color-06;
+			font-weight: bold;
+		}
+		a {
+			background: none;
+			border-radius: 0;
+			color: $color-00;
+			.icon {
+				font-size: rem(13px);
+				width: auto;
+			}
+			&, & .icon {
+				@include transition(color 0.3s ease-in-out);
+				&:hover {
+					color: $color-07;
+					background: none;
+				}
+			}
+		}
+		.button {
+			line-height: 1.5;
+		}
+		&.page-jump {
+			position: static;
+			.dropdown {
+				max-width: 300px;
+				margin: 0 0 0 auto !important;
+				.dropdown-contents {
+					position: relative;
+					padding: 0 55px;
+					li:first-child, .page-jump-form .button2 {
+						@include position($type: absolute, $top: 0);
+						width: 50px;
+					}
+					li:first-child {
+						left: 0;
+					}
+					.page-jump-form {
+						.inputbox {
+							margin: 0;
+							width: 100%;
+						}
+						.button2 {
+							right: 0;
+							padding: 10px 0;
+						}
+					}
+				}
+			}
+			&.dropdown-visible .dropdown {
+				@include position($left: 5px, $right: 5px);
+			}
+		}
+	}
+}
+
+.topiclist > li dl {
+	dt, dd {
+		.pagination > ul {
+			margin: 0 -2.5px;
+			& > li {
+				&.active span, a {
+					padding: 0 2.5px;
+				}
+			}
+		}
+	}
+}
+
+.no-pagination {
+	&.section-viewforum {
+		.action-bar.bar-top, .action-bar.bar-bottom {
+			.pagination {
+				@include reset-font-size('[data-ajax="mark_topics_read"]');
+			}
+		}
+	}
+	&.section-search-search {
+		.action-bar.bar-top, .action-bar.bottom {
+			display: none;
+		}
+	}
+	&.section-memberlist-members {
+		.action-bar.bar-top .pagination, .action-bar.bottom {
+			display: none;
+		}
+	}
+	&.section-mcp-view-forum {
+		.action-bar.bar-top, .action-bar.bottom .pagination {
+			display: none;
+		}
+	}
+	&.section-mcp-moderator-logs, &.section-mcp-user-details {
+		.action-bar .pagination {
+			display: none;
+		}
+	}
+}
+
+/* No Content
+============================================== */
+
+.panel .inner.no-content {
+	padding-bottom: 20px;
+}
+
+/* Action Bar & Display Actions
+============================================== */
+
+.action-bar, .display-actions .display-actions-wrapper {
+	// Always keep clearfix to account for weird margin collapse spacing
+	@include clearfix('&');
+	margin: -10px -5px 20px -5px;
+	@include flex-flow(row wrap);
+	align-items: center;
+	label {
+		display: inline-block;
+	}
+	select {
+		width: auto;
+	}
+	br {
+		display: none;
+	}
+	& > * {
+		margin: 10px 5px 0 5px;
+		@include flex;
+		label, select {
+			margin: 0;
+		}
+	}
+}
+
+.action-bar .pagination, .action-bar .jumpbox, .display-actions .display-actions-wrapper .mark-actions {
+	text-align: right;
+}
+
+/* Action Bar
+============================================== */
+
+.action-bar {
+	& > .dropdown-container, & > form, & > a:not(.button) {
+		display: inline-block;
+	}
+	.pagination, .jumpbox {
+		@include flex(base);
+	}
+	.pagination > ul {
+		padding-left: 10px;
+	}
+	&.bar-top .search-box {
+		flex: 0 0 300px;
+	}
+	&.actions-jump {
+		margin-top: 0;
+		margin-bottom: $main-margin;
+		.jumpbox-return .icon {
+			width: auto;
+			margin: 0 5px 0 0;
+		}
+	}
+}
+
+.forabg, .panel {
+	& + .action-bar.actions-jump {
+		margin-top: -10px;
+	}
+}
+
+/* Display Actions
+============================================== */
+
+.display-actions .display-actions-wrapper {
+	justify-content: flex-end;
+	[class*='button'] + [class*='button'] {
+		margin-left: 0;
+	}
+	.left-box, .select-actions {
+		@include flex-flow(row nowrap);
+		& > {
+			select, label, .button1, .button2 {
+				@include flex;
+			}
+		}
+		.button1, .button2 {
+			margin-left: $ffs;
+		}
+	}
+	.left-box {
+		@include flex(grow);
+	}
+	.mark-actions {
+		font-size: 0;
+		a {
+			font-size: rem($global-font-size);
+			display: block;
+			&:before {
+				@include icon-font;
+				color: $color-00;
+				margin: 0 5px 0 0;
+			}
+			&[onclick*='false']:before {
+				content: unicode($icon-x);
+			}
+			&[onclick*='true']:before {
+				content: unicode($icon-check);
+			}
+		}
+	}
+}
+
+/* Jumpbox
+============================================== */
+
+.jumpbox .dropdown .dropdown-contents li {
+	.jumpbox-cat-link {
+		padding: 0 0 10px 0;
+		margin: 10px 0;
+		border-bottom: 1px dashed $color-04;
+		font-weight: bold;
+	}
+	&:first-child .jumpbox-cat-link {
+		margin-top: 0;
+	}
+}
+
+/* Sort Tools
+============================================== */
+
+.sort-tools .dropdown .display-options {
+	label {
+		position: relative;
+		padding: 12.5px 160px 0 0;
+		margin: 0 0 10px 0;
+		min-height: 40px;
+		display: block;
+		line-height: 1;
+		select {
+			width: 150px;
+			@include position($type: absolute, $top: 0, $right: 0);
+		}
+	}
+	.button2 {
+		width: 100%;
+	}
+}
+
+/* Caret
+   Note: Used on drop down menus buttons
+============================================== */
+
+.caret {
+	border-left: 1px solid $color-01;
+	padding: 0 0 0 8px;
+}
+
+.jumpbox .caret {
+	margin: 0 0 0 8px;
+}
+
+/* Contact Icons
+   Note: User profile on viewtopic and viewpm
+============================================== */
+
+.contact-icons {
+	a {
+		@include inline-block(middle);
+		margin: 0 5px 10px 5px;
+		text-align: center;
+		.contact-icon {
+			@include icon-font($fs: false);
+			font-size: 0;
+			&:before {
+				font-size: rem(16px);
+			}
+			&.pm-icon:before {
+				content: unicode($icon-inbox);
+			}
+			&.email-icon:before {
+				content: unicode($icon-envelope);
+			}
+			&.phpbb_website-icon:before {
+				content: unicode($icon-world);
+			}
+			&.phpbb_yahoo-icon:before {
+				content: unicode($icon-yahoo);
+			}
+			&.phpbb_facebook-icon:before {
+				content: unicode($icon-facebook);
+			}
+			&.phpbb_twitter-icon:before {
+				content: unicode($icon-twitter);
+			}
+			&.phpbb_skype-icon:before {
+				content: unicode($icon-skype);
+			}
+			&.phpbb_youtube-icon:before {
+				content: unicode($icon-youtube);
+			}
+			&.phpbb_googleplus-icon:before {
+				content: unicode($icon-gplus);
+			}
+			&.phpbb_wlm-icon:before {
+				content: unicode($icon-windows);
+			}
+			&.jabber-icon, &.phpbb_aol-icon, &.phpbb_icq-icon,
+			&.contact_discord-icon {
+				font-family: 'Khyeras Icons';
+			}
+			&.jabber-icon:before {
+				content: unicode($misc-jabber);
+			}
+			&.contact_discord-icon:before {
+				content: unicode($misc-discord);
+			}
+			&.phpbb_aol-icon:before {
+				content: unicode($misc-aim);
+			}
+			&.phpbb_icq-icon:before {
+				content: unicode($misc-icq);
+			}
+		}
+	}
+}
+
+/* Stat Blocks
+============================================== */
+
+.stat-block {
+	margin: 0 0 $main-margin 0;
+	h3 {
+		margin: 0 0 10px 0;
+	}
+}
+
+/* Notice & Error
+============================================== */
+
+.notice, .error {
+	margin: 0 0 20px 0;
+}
+
+.notice {
+	font-size: rem(13px);
+}
+
+.error {
+	font-weight: bold;
+}
+
+/* Tabs & Minitabs
+============================================== */
+
+.tabs, .minitabs {
+	& > ul {
+		position: relative;
+		margin: 0;
+		@include flex-flow(row wrap);
+		align-items: flex-end;
+		& > .tab {
+			margin: 0 2px 0 0;
+			&:last-child {
+				margin: 0;
+			}
+			& > a {
+				cursor: pointer;
+				display: block;
+				white-space: nowrap;
+				padding: 5px 10px;
+				color: $color-01;
+				background: $color-10;
+				@include transition(background 0.3s ease-in-out);
+				border-radius: 3px 3px 0 0;
+			}
+			& > a:hover, &.activetab > a {
+				background: $color-04;
+			}
+			&.activetab > a, &.responsive-tab > .responsive-tab-link {
+				padding: 7px 12px;
+				font-weight: bold;
+			}
+			&.responsive-tab > .responsive-tab-link {
+				font-size: 0;
+			}
+		}
+	}
+}
+
+.minitabs > ul > .tab > a {
+	font-size: rem(13px);
+}
+
+.responsive-tab {
+	position: static;
+	& > .responsive-tab-link {
+		&:before, &:after {
+			content: '';
+			display: block;
+			@include sizing(16px, 2px);
+		}
+		&:before {
+			border-bottom: 2px solid $color-01;
+			border-top: 2px solid $color-01;
+		}
+		&:after {
+			border-bottom: 2px solid $color-01;
+		}
+	}
+	.dropdown .dropdown-contents > li > a {
+		cursor: pointer;
+	}
+	&.dropdown-visible .tab-dropdown.dropdown {
+		@include position($top: 35px, $left: 0, $right: 0);
+	}
+}
+
+/* Details
+============================================== */
+
+dl.details {
+	@include clearfix('&');
+	margin: 0 -10px 15px -10px;
+	dt, dd {
+		padding: 0 10px;
+		margin: 0 0 5px 0;
+	}
+	dt {
+		font-weight: bold;
+		float: left;
+		width: 200px;
+	}
+	dd {
+		margin-left: 200px;
+		min-height: 21px;
+		&.details-full {
+			margin-left: 0;
+		}
+	}
+	&.details-mar20 {
+		margin-bottom: 0;
+		dd, dt {
+			margin-bottom: 20px;
+		}
+	}
+}
+
+/* Icon Circles
+============================================== */
+
+.rpg-round-icon, .map-round-icon {
+	@include sizing($list-icon-size - 2px, $list-icon-size - 2px);
+	border-radius: 100%;
+	border: 1px solid mix($color-01, $color-04, 5%);
+	color: $color-01;
+}
+
+.rpg-round-icon {
+	line-height: $list-icon-size - 4px;
+	background: $color-04;
+	font-size: rem(18px);
+	text-align: center;
+}
+
+.rpg-round-icon-lg {
+	@include sizing($list-icon-lg-size - 2px, $list-icon-lg-size - 2px);
+	line-height: $list-icon-lg-size - 4px;
+	font-size: rem(28px);
+}
+
+.rpg-round-icon-green {
+	background: $color-10;
+	border: 1px solid mix($color-01, $color-10, 5%);
+}
+
+.rpg-round-icon-orange {
+	background: $color-19;
+	border: 1px solid mix($color-01, $color-19, 5%);
+}
+
+.rpg-round-icon-purple {
+	background: $color-21;
+	border: 1px solid mix($color-01, $color-21, 5%);
+}
+
+.rpg-round-icon-red {
+	background: $color-16;
+	border: 1px solid mix($color-01, $color-16, 5%);
+}
+
+.rpg-round-icon-yellow {
+	background: $color-20;
+	border: 1px solid mix($color-01, $color-20, 5%);
+}
+
+.map-round-icon {
+	display: inline-block;
+	overflow: hidden;
+}
+
+.rpg-icon-wrapper {
+	line-height: 0;
+	margin: 0 -5px;
+	.rpg-round-icon {
+		margin: 0 5px;
+	}
+}
+
+/* Round Images
+============================================== */
+
+.postprofile dt.has-avatar .avatar-container > .avatar,
+.styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image dt .forum-image {
+	display: block;
+	line-height: 0;
+}
+
+.postprofile dt.has-avatar .avatar-container > .avatar, #page-welcome .user-profile .user-avatar .image-wrap,
+.excerpt .excerpt-image .image-wrap, .styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image dt .forum-image {
+	border: 5px solid $color-04;
+	border-radius: 100%;
+	overflow: hidden;
+	box-shadow: 0 0 10px 5px rgba($color-02, 0.15);
+	img {
+		width: 100%;
+	}
+}
+
+.postprofile dt.has-avatar .avatar-container > .avatar, #page-welcome .user-profile .user-avatar .image-wrap,
+.excerpt .excerpt-image .image-wrap {
+	height: 0;
+	padding-bottom: calc(100% - 10px);;
+	position: relative;
+}
+
+.pm .postprofile dt.has-avatar .avatar-container > .avatar {
+	box-shadow: 0 0 10px 5px rgba($color-02, 0.10);
+}
+
+/* Positioned Images
+============================================== */
+
+.image-fit-width, .image-fit-height {
+	max-width: 100%;
+	max-height: 100%;
+	@include sizing(auto !important, auto !important);
+	border: 0;
+	margin: auto;
+	@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0);
+}
+
+.image-fit-width {
+	width: 100% !important;
+	max-height: none;
+}
+
+.image-fit-width:not(.image-centered) {
+	bottom: auto;
+}
+
+.image-fit-height {
+	height: 100% !important;
+	max-width: none;
+	left: -100%;
+	right: -100%;
+}

@@ -1,0 +1,636 @@
+/* Header
+============================================== */
+
+#page-header {
+	margin: 0 0 60px 0;
+}
+
+/* Header - Header bar
+============================================== */
+
+.headerbar {
+	background: url($images + 'header.jpg') center bottom no-repeat;
+	background-size: cover;
+	height: 500px;
+	overflow: hidden;
+	position: relative;
+	padding: 0 20px;
+	.header-content {
+		max-width: 800px;
+		margin: 0 auto;
+		@include flex-flow(row wrap);
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+		height: 100%;
+		@include position($type: relative, $z: 2);
+		&, a {
+			color: $color-01;
+		}
+		.site-description, .site-quotes {
+			@include flex(base);
+		}
+		.site-description {
+			text-align: right;
+			h1, h3 {
+				margin: 0;
+			}
+			h1 {
+				font-family: $font-03;
+				font-size: rem(100px);
+				font-variant: normal;
+				text-shadow: 2px 2px 0 rgba($color-02, 0.65);
+			}
+			h3 {
+				font-family: $font-02;
+				font-size: rem(28px);
+				text-shadow: 2px 1px 0 rgba($color-02, 0.65), 2px 1px 5px rgba($color-02, 0.75);
+				letter-spacing: 2px;
+			}
+		}
+		.site-quotes {
+			font-family: $font-02;
+			text-shadow: 1px 1px 0 rgba($color-02, 0.65), 1px 1px 5px rgba($color-02, 0.75);
+			font-size: rem($global-font-size);
+			p {
+				margin: 0 0 10px 0;
+				&:last-child {
+					margin: 0;
+				}
+				&:not(.quote-author) {
+					&:before, &:after {
+						@include quotes(24px);
+						@include position($type: relative, $top: -5px);
+					}
+					&:before {
+						content: '\00201c';
+						margin: 0 5px 0 0;
+					}
+					&:after {
+						content: '\00201d';
+						margin: 0 0 0 5px;
+					}
+				}
+			}
+			.quote-author {
+				text-align: right;
+			}
+		}
+		.header-divider {
+			flex: 0 0 1px;
+			margin: 0 40px;
+			height: 40%;
+			&:before {
+				content: '';
+				display: block;
+				background: $color-01;
+				@include sizing(100%, 100%);
+				box-shadow: 1px 1px 0 0 rgba($color-01, 0.40);
+			}
+		}
+	}
+ 	.header-overlay {
+		height: 125px;
+		background: url($images + 'header-background.png') center -65px repeat-x;
+		@include position($type: absolute, $bottom: 0, $left: 0, $right: 0, $z: 1);
+	}
+}
+
+// Setting the variable here to use multiple transitions
+$transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
+
+/* Header - Nav Menu
+============================================== */
+
+.navbar {
+	background: rgba($color-05, 0.75);
+	border-bottom: 1px solid $color-04;
+	@include position($type: fixed, $top: 0, $right: 0, $left: 0, $z: 999);
+	text-align: center;
+	padding: 10px 0;
+	.wrapper {
+		@include flex-flow(row wrap);
+		align-items: center;
+	}
+	a {
+		color: $color-00;
+	}
+	a, .icon.fa-chevron-down {
+		&:hover {
+			color: $color-07;
+		}
+	}
+	.site-logo-text {
+		font-family: $font-03;
+		font-size: rem(30px);
+		line-height: 1;
+		@include sizing(0, 0);
+		overflow: hidden;
+		@include toggle-content(hide, $transition: true);
+	}
+	.menu {
+		margin: 0 -10px;
+		& > li {
+			padding: 0 10px;
+			@include inline-block(middle);
+		}
+		.menu-label {
+			.fa-chevron-down {
+				@include transition($transform);
+				transform: rotate(0deg);
+				@include sizing(20px, 20px);
+				margin: 0 0 0 10px;
+			}
+			.mobile-menu-trigger {
+				display: none;
+			}
+		}
+		.dropdown {
+			top: 35px;
+			min-width: 200px;
+			.dropdown-contents {
+				max-height: none;
+				overflow: visible;
+				padding: 0;
+				font-size: rem($global-font-size);
+			}
+		}
+		.dropdown-visible .menu-label .fa-chevron-down {
+			transform: rotate(180deg);
+		}
+	}
+	.user-menu {
+		margin: 1px -10px 0 auto;
+		.dropdown {
+			@include position($right: 0, $left: auto);
+		}
+		.logged-in-info .dropdown {
+			top: 40px;
+		}
+	}
+	&.sticky {
+		background: rgba($color-05, 1.0);
+		box-shadow: 0 4px 8px 0 rgba($color-02, .10);
+		.site-logo-text {
+			margin: 0 20px 0 0;
+			@include toggle-content(show);
+			overflow: visible;
+			@include sizing(auto, auto);
+		}
+		.user-menu .logged-in-info .user-name {
+			max-width: 210px;
+		}
+	}
+}
+
+/* Header - Nav Menu
+============================================== */
+
+.nav-menu .icon.fa-thumbs-o-up {
+	font-size: 0;
+	& + span {
+		margin: 0;
+	}
+}
+
+/* Header - Nav Menu - Search Box
+============================================== */
+
+.navbar .menu .search-box {
+	min-width: 400px;
+	@include position($left: -150%);
+}
+
+/* Header - User Menu
+============================================== */
+
+.user-menu {
+	.image-wrap {
+		@include sizing(30px, 30px);
+		border: 2px solid $color-04;
+	}
+	.user-name, .user-avatar {
+		@include inline-block(middle);
+	}
+	.user-avatar {
+		margin: 0 0 0 10px;
+		.image-wrap {
+			border-radius: 100%;
+		}
+	}
+	.logged-in-info .user-name {
+		max-width: 285px;
+		@include ellipsis;
+	}
+	.guest-info a {
+		color: $color-06;
+		&:hover {
+			color: $color-07;
+		}
+	}
+	.dropdown-container .dropdown-contents .linked-account-title {
+		margin: 7px 0 0 0;
+		padding: 10px 0 3px 0;
+		border-top: 1px dashed $color-04;
+	}
+	.linked-account a {
+		position: relative;
+		padding: 0 0 0 30px;
+		display: inline-block;
+		.image-wrap {
+			@include position($type: absolute, $top: 0, $left: 0);
+			@include sizing(20px, 20px);
+			border-width: 1px;
+		}
+	}
+}
+
+/* Notifications
+   Note: Header area only. UCP notifications in cp.scss
+============================================== */
+
+#notification_list {
+	min-width: 450px;
+	padding: 0;
+	.header, .footer, ul li {
+		padding: 10px 20px;
+	}
+	.header, .footer {
+		background: $color-04;
+		font-size: rem(15px);
+		&, a {
+			color: $color-01;
+		}
+		a:hover {
+			color: $color-07;
+		}
+	}
+	.header .header_settings, ul li {
+		font-size: rem(13px);
+	}
+	.header {
+		padding-right: 170px;
+		position: relative;
+		.header_settings {
+			@include position($type: absolute, $top: 14px, $right: 20px);
+		}
+	}
+	.footer {
+		text-align: center;
+	}
+	ul {
+		margin: 0;
+		max-height: 295px;
+		overflow-y: auto;
+		li {
+			position: relative;
+			border-bottom: 1px dashed $color-04;
+			&:last-child {
+				border-bottom: 0;
+			}
+			.notification-block {
+				@include clearfix('&');
+				display: block;
+				.image-wrap {
+					margin: 0 10px 0 0;
+					float: left;
+				}
+				.notification_text {
+					overflow: hidden;
+					padding: 0 25px 0 0;
+					p {
+						display: inline;
+					}
+					.notification-time {
+						&:before {
+							content: ' on ';
+						}
+						&:after {
+							content: '.';
+						}
+					}
+				}
+			}
+			.icon-mark {
+				@include position($type: absolute, $top: 10px, $right: 20px, $z: 2);
+				.icon {
+					width: auto;
+				}
+			}
+		}
+	}
+}
+
+/* Page welcome
+============================================== */
+
+.page-welcome {
+	.site-details {
+		order: -1;
+		.introduction:first-line, .year {
+			@include spectral-common;
+			font-size: rem(20px);
+		}
+		.introduction:first-line {
+			line-height: 1.3;
+		}
+	}
+	.user-profile {
+		text-align: center;
+		.date-and-time {
+			display: none;
+		}
+		.user-avatar {
+			max-width: 150px;
+			margin: -75px auto 20px auto;
+		}
+		h5, p {
+			margin: 0 0 10px 0
+		}
+		p {
+			&:last-child, &:nth-last-child(2) {
+				margin-bottom: 20px;
+			}
+		}
+		.welcome-header {
+			font-family: $font-03;
+			font-variant: normal;
+			font-size: rem(40px);
+		}
+		.guest-name {
+			color: $color-06;
+			&:hover {
+				color: $color-07;
+			}
+		}
+	}
+	.user-information {
+		&:before, &:after {
+			content: '';
+			display: block;
+			width: 100%;
+			border-top-style: dashed;
+			border-top-color: $color-04;
+			border-top-width: 0;
+		}
+	}
+	.site-links {
+		font-size: rem(13px);
+		ul {
+			margin: 0 0 20px 14px;
+		}
+	}
+	.toggle-buttons {
+		display: none;
+		.button {
+			display: block;
+			cursor: pointer;
+		}
+	}
+}
+
+/* Badge
+============================================== */
+
+.badge {
+	@include inline-block(top);
+	@include sizing(20px, 20px);
+	line-height: 20px;
+	background-color: $color-11;
+	border-radius: 100%;
+	text-align: center;
+	font-weight: normal;
+	font-size: rem(10px);
+	margin: 0 0 0 10px;
+	&.badge-plus {
+		font-size: rem(20px);
+	}
+}
+
+.badge, a:hover .badge {
+	color: $color-01;
+}
+
+/* Featured Content
+============================================== */
+
+.featured-content {
+	margin: 0 0 10px 0;
+	.featured-title {
+		text-align: center;
+		margin: 0 -5px 20px -5px;
+		.icon {
+			margin: 0 5px;
+			@include position($type: relative, $top: -2.5px);
+		}
+	}
+	.flex-row {
+		align-items: center;
+		margin-bottom: 20px;
+		.flex-column {
+			margin: 0 0 10px 0;
+			a {
+				display: block;
+				border: 10px solid rgba($color-01, 0.40);
+				overflow: hidden;
+				color: $color-00;
+				&:hover {
+					color: $color-07;
+					img {
+						transform: scale(1.3,1.3);
+					}
+				}
+			}
+			p {
+				@include position($type: absolute, $bottom: 0, $left: 0, $right: 0);
+				padding: 0 10px;
+				margin: 0;
+				height: 30px;
+				line-height: 30px;
+				@include ellipsis;
+				background: rgba($color-02, 0.60);
+				text-align: center;
+			}
+			.featured-details {
+				position: relative;
+			}
+			.image-wrap {
+				@include sizing(100%, 0);
+				padding: 0 0 55% 0;
+				img {
+					margin: -25% 0 0 0;
+					width: 100%;
+					@include transition(transform 0.5s ease-in-out);
+				}
+			}
+		}
+	}
+}
+
+/* Mobile Button & Menu
+============================================== */
+
+.mobile-menu-button, #mobile-menu {
+	display: none;
+}
+
+.mobile-menu-button {
+	cursor: pointer;
+	margin: 0 -10px;
+	.button-section, .rpg-icon, .mobile-menu-label {
+		vertical-align: middle;
+	}
+	.button-section, .mobile-menu-label {
+		display: inline-block;
+	}
+	.button-section {
+		padding: 0 10px;
+	}
+	.mobile-menu-text {
+		position: relative;
+		top: 2px;
+	}
+	.badge {
+		margin: 0;
+	}
+	.rpg-icon {
+		font-size: rem(25px);
+	}
+}
+
+#mobile-menu {
+	background: $color-05;
+	border-right: 1px solid mix($color-02, $color-04, 50%);
+	@include position($type: fixed, $top: 0, $left: -($mobile-menu-width + 300), $z: 9999);
+	@include sizing($mobile-menu-width, 100%);
+	@include transition(left 0.3s ease-in-out);
+	&.show {
+		left: 0;
+		box-shadow: 7px 0 5px -2px rgba($color-02, 0.10);
+	}
+	&, a {
+		color: $color-01;
+	}
+	&, ul {
+		font-size: rem(16px);
+	}
+	ul, .user-menu .dropdown-container .dropdown-contents .linked-account-title {
+		margin: 0;
+	}
+	.mobile-menu-header, .menu .menu-label {
+		position: relative;
+	}
+	.mobile-menu-header, .menu .menu-label, .menu .dropdown-contents li, .menu .dropdown-contents > div {
+		padding: 10px;
+	}
+	.menu .menu-label, .menu .dropdown-contents li, .menu .dropdown-contents > div {
+		border-top: 1px solid $color-04;
+		border-bottom: 1px solid mix($color-02, $color-04, 50%);
+	}
+	.mobile-menu-header .fa-times, .menu .menu-label .fa-chevron-down {
+		@include sizing(44px, 44px);
+		line-height: 44px;
+		font-size: rem(20px);
+		@include position($type: absolute, $right: 0, $top: 0, $bottom: 0, $z: 10);
+		margin: auto;
+		text-align: center;
+		cursor: pointer;
+	}
+	.mobile-menu-header {
+		border-bottom: 1px solid mix($color-02, $color-04, 50%);
+		.mobile-header {
+			font-size: rem(24px);
+			@include spectral-common;
+		}
+	}
+	.mobile-menu-content {
+		border-bottom: 1px solid $color-04;
+	}
+	.menu {
+		.menu-label .fa-chevron-down {
+			@include transition($transform);
+			&:before {
+				content: unicode($icon-chevron-right);
+			}
+		}
+		.dropdown {
+			display: block;
+			@include sizing(0, 0);
+			min-width: 0;
+			margin-left: -($mobile-menu-width) !important;
+			border: 0;
+			background: none;
+			@include transition(margin-left 0.5s ease-in-out);
+			position: static;
+			&, .dropdown-contents {
+				padding: 0;
+			}
+			.dropdown-contents {
+				max-height: none;
+				overflow: visible;
+			}
+		}
+		.search-box .dropdown-contents form {
+			margin: 10px 0;
+		}
+		.dropdown-visible {
+			.menu-label {
+				font-weight: bold;
+				background: mix($color-02, $color-05, 15%);
+				.fa-chevron-down {
+					transform: rotate(-180deg);
+				}
+			}
+			.dropdown {
+				@include sizing(auto, auto);
+				margin-left: 0 !important;
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+		.dropdown-not-visible {
+			display: none;
+		}
+	}
+	.user-menu {
+		.logged-in-info .user-name {
+			max-width: 190px;
+		}
+		.guest-info {
+			a {
+				color: $color-06;
+			}
+			.user-name {
+				max-width: 234px;
+			}
+		}
+		.linked-account a .image-wrap {
+			top: 2px;
+		}
+	}
+	#notification_list {
+		.header .header_settings, ul li {
+			font-size: rem(14px);
+		}
+		.header, .footer {
+			background: $color-05;
+		}
+		.header {
+			font-size: 0;
+			.header_settings {
+				position: static;
+				font-size: rem(14px);
+			}
+		}
+		.footer {
+			text-align: left;
+		}
+		ul {
+			max-height: none;
+			overflow: visible;
+			li .icon-mark {
+				right: 10px;
+			}
+		}
+	}
+}

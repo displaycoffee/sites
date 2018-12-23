@@ -1,0 +1,917 @@
+/* CP - Layout
+============================================== */
+
+.cp-wrapper {
+	@include flex-flow(row wrap);
+	align-items: flex-start;
+}
+
+.cp-menu {
+	flex: 0 0 200px;
+	margin: 0 20px 20px 0;
+	min-height: 150px;
+	.navigation ul {
+		margin: 0;
+		li {
+			margin: 0 0 5px 0;
+			a[href*='folder'] {
+				&:before {
+					@include icon-font($family: game, $fs: false, $lh: false);
+					font-size: rem(16px);
+					vertical-align: bottom;
+					margin: 0 5px 0 0;
+					color: $color-00;
+				}
+				&:not(.new-pm):before {
+					content: unicode($rpg-open-book);
+				}
+				&.new-pm:before {
+					content: unicode($rpg-secret-book);
+				}
+			}
+			&.active-subsection a {
+				font-weight: bold;
+				color: $color-00;
+				cursor: text;
+			}
+		}
+	}
+	.cp-mini {
+		margin: 15px 0 0 0;
+		.mini {
+			dt, dd {
+				margin: 0 0 5px 0;
+			}
+			dt {
+				font-weight: bold;
+			}
+		}
+		.friend-online, .friend-offline {
+			.button2 {
+				@include small-form-ele;
+				margin: 0 0 0 $ffs;
+			}
+		}
+		.friend-offline {
+			font-style: italic;
+			opacity: 0.70;
+		}
+		.inner {
+			@include reset-inner;
+		}
+	}
+}
+
+.cp-main {
+	@include flex(base);
+	.panel, .post.pm, .topicreview {
+		width: 100%;
+		display: inline-block;
+		background: $color-05;
+		padding: 20px 20px 0 20px;
+		margin: 0 0 20px 0;
+	}
+	.postbody .attachbox, pre, code {
+		background: rgba($color-02,0.20);
+	}
+	pre code, code pre {
+		background: none;
+	}
+	.topiclist {
+		& + p > strong {
+			display: block;
+			margin: 20px;
+		}
+		&.cplist {
+			margin: 0 0 20px 0;
+			& + br {
+				display: none;
+			}
+			& > li.row dl dt {
+				.list-inner {
+					position: relative;
+				}
+				.pagination {
+					& ~ .responsive-hide, & ~ .responsive-show {
+						padding-bottom: 24px;
+					}
+				}
+				.pagination {
+					@include position($type: absolute, $bottom: 0, $left: 0);
+					height: 24px;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+	.topicreview {
+		&.scrollable {
+			padding-bottom: 20px;
+		}
+		&[style*='max-height'][style*='none'] {
+			padding-bottom: 0;
+		}
+		.post {
+			border-bottom: 1px dashed $color-04;
+			margin: 0 0 20px 0;
+			.post-buttons {
+				label[for*='post_id_list_select'] {
+					margin: 2px 0 0 0;
+					input[type='checkbox'] {
+						margin: 0 0 0 $ffs-half;
+					}
+				}
+			}
+			&.post-ignore:last-child {
+				padding: 0;
+			}
+			&:last-child {
+				border: 0;
+				margin: 0;
+			}
+		}
+	}
+}
+
+/* UCP - Front Page
+============================================== */
+
+.section-ucp-front-page .cp-main {
+	.topiclist {
+		position: relative;
+		&:before, &:after {
+			display: block;
+			background: $color-04;
+			color: $color-01;
+			padding: 10px 20px;
+			box-sizing: border-box;
+		}
+		&:before {
+			content: 'Topic';
+			padding-right: 270px;
+		}
+		&:after {
+			content: 'Last Post';
+			padding-left: 10px;
+			@include position($type: absolute, $top: 0, $right: 0);
+			width: 260px;
+		}
+	}
+}
+
+/* UCP - Avatar (User & Groups)
+============================================== */
+
+.section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details, .section-mcp-warnings {
+	.cp-main {
+		.avatar, img[src*='no_avatar.gif'] {
+			border: 5px solid $color-04;
+			margin: 0 0 10px 0;
+		}
+		img[src*='no_avatar.gif'] {
+			max-height: 200px;
+		}
+	}
+}
+
+.cp-main {
+	fieldset dl dd {
+		label[for*='_width']:after {
+			content: ' in width';
+		}
+		label[for*='_height']:after {
+			content: ' in height';
+		}
+	}
+	[id*='avatar_option_avatar_driver'] > p {
+		margin: -10px 0 20px $ffi-01;
+		font-style: italic;
+		font-size: rem(13px);
+	}
+	#avatar_option_avatar_driver_local {
+		fieldset {
+			position: relative;
+			label[for='category']:before, input[type='submit'][name='avatar_local_go'] {
+				@include position($type: absolute, $top: 0);
+			}
+			label[for='category'] {
+				margin: 0 65px 0 300px;
+				@include reset-font-size('&:before, select');
+				&:before {
+					content: 'Category:';
+					left: 0;
+				}
+			}
+			input[type='submit'][name='avatar_local_go'] {
+				width: 60px;
+				right: 0;
+			}
+		}
+	}
+	.gallery {
+		clear: both;
+		@include flex-flow(row wrap);
+		margin: 0 -5px 10px -5px;
+		label {
+			@include flex;
+			width: 16.6666%;
+			margin: 0 0 10px 0;
+			padding: 0 5px;
+			text-align: center;
+			position: relative;
+			img {
+				margin: 0 auto;
+				border: 5px solid $color-04;
+			}
+			input[type='radio'], &:before {
+				position: absolute;
+			}
+			input[type='radio'] {
+				@include sizing(14px, 14px);
+				@include position($top: 13px, $right: 17px, $z: 2);
+				margin-right: 0;
+			}
+			&:before {
+				content: '';
+				display: block;
+				@include sizing(19px, 19px);
+				border-radius: 100%;
+				background: $color-04;
+				@include position($top: 10px, $right: 15px, $z: 1);
+			}
+			br {
+				display: none;
+			}
+		}
+	}
+}
+
+/* UCP - Drafts for Topics and PMs
+============================================== */
+
+.section-ucp-manage-drafts, .section-ucp-manage-pm-drafts {
+	.cp-main #postform fieldset {
+		position: relative;
+		padding-bottom: 40px;
+		#smiley-box {
+			@include sizing(auto, 20px);
+			float: none;
+			margin: 0;
+			padding: 0;
+			@include position($type: absolute, $bottom: 20px, $left: 0);
+			overflow: hidden;
+			strong {
+				font-weight: normal;
+				a:before {
+					@include icon-font($fs: false);
+					font-size: rem(12px);
+					content: unicode($icon-chevron-left);
+					margin-right: 10px;
+					color: $color-00;
+				}
+			}
+		}
+	}
+}
+
+/* UCP - Attachments
+============================================== */
+
+.section-ucp-attachments .cp-main .topiclist {
+	& > li.header dl dt a {
+		font-family: $font-01;
+		font-variant: normal;
+		font-size: rem($global-font-size);
+	}
+	& > li.row dl dt .topictitle.attachment-filename {
+		margin: 0;
+		display: inline;
+	}
+}
+
+/* UCP - Notifications - Manage & Edit
+   Note: UCP area only. Header notifications in header.scss
+============================================== */
+
+.section-ucp-manage-notifications .cp-main .notification_list .topiclist > li.row dl dt .list-inner {
+	@include clearfix('&');
+	.image-wrap, .notifications {
+		overflow: hidden;
+	}
+	.image-wrap {
+		width: 100px;
+		max-height: 125px;
+		margin: 0 20px 0 0;
+		float: left;
+		border: 2px solid $color-04;
+	}
+	.notifications {
+		p {
+			margin: 0 0 5px 0;
+		}
+		& > p:last-child {
+			margin: 0;
+		}
+	}
+}
+
+.section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
+	background: rgba($color-01, 0.30);
+	border-bottom-style: solid;
+	border-top: 1px solid $color-04;
+	td {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
+
+/* Send Password / Activation Email
+============================================== */
+
+.section-ucp-send-password, .section-ucp-send-activation-email {
+	fieldset dl {
+		dt.empty-space + dd {
+			margin-left: 0;
+		}
+		dd.has-multiple-fields.has-space {
+			justify-content: center;
+		}
+	}
+}
+
+/* Registration & UCP - Profile
+============================================== */
+
+#register, .section-ucp-edit-profile #ucp {
+	.character-fields {
+		@include toggle-content(show, $transition: true);
+	}
+	.hide-fields {
+		@include toggle-content(hide);
+		@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+	}
+	.error {
+		font-weight: normal;
+		padding: 10px;
+		border-radius: 3px;
+		background: mix(white, $color-11, 80%);
+		&, a {
+			color: $color-08
+		}
+		a:hover {
+			color: $color-07;
+		}
+		.error-msg {
+			display: block;
+		}
+		&.account-type {
+			margin: 0;
+		}
+	}
+	fieldset dl dd {
+		.group {
+			width: 33.33%;
+			margin: 0 -2.5px;
+			padding: 0 $ffs-half;
+			align-self: flex-start;
+			&.group-religion {
+				width: 50%;
+			}
+			.group-header, label {
+				margin: $ffs $ffs-half 0 $ffs-half;
+				padding: 0 5px 0 0;
+			}
+			.group-header {
+				display: block;
+				font-weight: bold;
+				font-size: rem(15px);
+			}
+		}
+	}
+}
+
+/* UCP - Profile
+============================================== */
+
+.section-ucp-edit-profile .cp-main fieldset dl dd label[for*='bday'] {
+	display: block;
+	select {
+		width: auto;
+	}
+}
+
+/* UCP - Signature
+============================================== */
+
+.section-ucp-edit-signature .cp-main fieldset.fields1 + h3 + fieldset {
+	margin: 0 0 20px 0;
+}
+
+/* UCP - Private Messages - Legend
+============================================== */
+
+.cp-menu .cp-mini .mini .pm-legend {
+	position: relative;
+	padding: 0 0 0 21px;
+	.imageset {
+		display: block;
+		@include position($type: absolute, $top: 0, $left: 0);
+		@include sizing(16px, 16px);
+		border-radius: 3px;
+	}
+	&.pm_marked_colour .imageset {
+		background: $color-06;
+	}
+	&.pm_replied_colour .imageset {
+		background: $color-07;
+	}
+	&.pm_friend_colour .imageset {
+		background: $color-14;
+	}
+	&.pm_foe_colour .imageset {
+		background: $color-11;
+	}
+}
+
+/* UCP - Private Messages - Compose
+============================================== */
+
+.section-ucp-compose-message .cp-main {
+	 #pmheader-postingbox {
+		 label strong {
+			 font-weight: normal;
+		 }
+		.inputbox {
+			height: 110px;
+		}
+		label[for='group_list'] ~ br {
+			display: none;
+		}
+		dl.pmlist {
+			dt label strong {
+				display: block;
+				margin: 0 0 $ffs 0;
+			}
+			dd.recipients {
+				margin: 20px 0 (-$ffs) 0;
+				.button2 {
+					margin-bottom: $ffs;
+				}
+			}
+		}
+		.column1 {
+			width: auto;
+			float: none;
+			overflow: hidden;
+			& + hr {
+				& ~ .column1, & ~ .column2 {
+					float: none;
+					width: auto;
+					padding: 0;
+					overflow: visible;
+				}
+			}
+		}
+		.recipients ul {
+			margin: -5px -5px 0 -5px;
+			li {
+				@include inline-block(middle);
+				margin: 5px 5px 0 5px;
+				.button2 {
+					padding: 0;
+					@include sizing(20px, 20px);
+					line-height: 20px;
+					margin: 0 $ffs 0 0;
+					border-radius: 100%;
+					font-weight: bold;
+					@include position($type: relative, $top: -2px);
+				}
+				a strong {
+					font-weight: normal;
+				}
+			}
+		}
+	}
+}
+
+/* UCP - Private Messages - Inbox
+============================================== */
+
+.section-ucp-view-messages .cp-main #viewfolder {
+	& > .display-options {
+		text-align: center;
+		margin: 0 0 20px 0;
+		@include clearfix('&');
+		.left-box, .right-box {
+			display: inline-block;
+			position: relative;
+			.icon {
+				@include position($type: absolute, $top: 0, $bottom: 0);
+				margin: auto;
+				@include sizing(10px, 12px);
+			}
+			span {
+				margin: 0;
+			}
+		}
+		.left-box {
+			float: left;
+			padding: 0 5px 0 20px;
+			.icon {
+				left: 0;
+			}
+		}
+		.right-box {
+			float: right;
+			padding: 0 20px 0 5px;
+			.icon {
+				right: 0;
+			}
+		}
+		label, select {
+			margin: 0;
+		}
+		label {
+			display: inline-block;
+		}
+		select {
+			width: auto;
+		}
+		&:not(.clearfix) {
+			line-height: 40px;
+		}
+	}
+	.topiclist > li.row {
+		&[class*='pm_'] dl {
+			position: relative;
+			&:before, &:after {
+				content: '';
+				display: block;
+				@include sizing(5px, 100%);
+				@include position($type: absolute, $top: 0, $bottom: 0);
+			}
+			&:before {
+				left: -10px;
+			}
+			&:after {
+				right: -10px;
+			}
+		}
+		&.pm_marked_colour dl {
+			&:before, &:after {
+				background: $color-06;
+			}
+		}
+		&.pm_replied_colour dl {
+			&:before, &:after {
+				background: $color-07;
+			}
+		}
+		&.pm_friend_colour dl {
+			&:before, &:after {
+				background: $color-14;
+			}
+		}
+		&.pm_foe_colour dl {
+			&:before, &:after {
+				background: $color-11;
+			}
+		}
+	}
+}
+
+/* UCP - Private Messages - Rules, folders, and settings
+============================================== */
+
+.section-ucp-rules-folders-settings .cp-main {
+	.def-rules {
+		display: inline-block;
+		margin-left: 15px;
+		li {
+			margin: 0 0 10px 0;
+			padding: 0 110px 0 0;
+			position: relative;
+			.right-box {
+				@include position($type: absolute, $top: -3px, $right: 0);
+				.button2 {
+					@include small-form-ele;
+				}
+			}
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+	fieldset dl dd {
+		margin-top: 0 !important;
+		&.has-multiple-fields {
+			margin-top: -$ffs !important;
+		}
+		label[for='remove_action1'], label[for='full_action2'] {
+			@include flex(full);
+		}
+	}
+}
+
+/* UCP - Edit memberships/groups
+============================================== */
+
+.section-ucp-edit-memberships .cp-main fieldset {
+	@include clearfix('&');
+	margin: 0 0 20px 0;
+	.left-box, .right-box {
+		width: 50%;
+	}
+	.left-box {
+		float: left;
+	}
+	.right-box {
+		float: right;
+		@include flex-flow(row nowrap);
+		align-items: center;
+		@include reset-font-size('> *');
+		label {
+			margin: 0;
+		}
+		select {
+			margin: 0 $ffs;
+		}
+	}
+}
+
+/* UCP - Manage groups
+============================================== */
+
+.section-ucp-manage-groups .cp-main fieldset dd {
+	span[style*='background-color'] {
+		border-radius: 3px;
+		@include sizing(16px, 16px);
+		display: block;
+		@include position($type: relative, $top: -1px);
+	}
+	#color_palette_toggle {
+		&:before {
+			content: '[ ';
+		}
+		&:after {
+			content: ' ]';
+		}
+	}
+	#color_palette_placeholder {
+		@include flex(full);
+	}
+}
+
+/* UCP - Manage linked accounts
+============================================== */
+
+.section-ucp-account-management .cp-main table.table1 td label {
+	display: inline-block;
+	margin: 0;
+}
+
+/* MCP - Layout
+============================================== */
+
+.mcp-main {
+	&, .tabs-container {
+		position: relative;
+	}
+	#post_details.scrollable {
+		@include scrollable;
+	}
+	.forum-selection, .action-bar.actions-jump, .tabs-container .minitabs {
+		@include position($type: absolute, $right: 0);
+	}
+	.forum-selection, .action-bar.actions-jump {
+		top: 0;
+		height: 40px;
+	}
+	.forum-selection {
+		label {
+			display: inline-block;
+			&, select {
+				margin: 0;
+			}
+			select {
+				width: auto;
+				max-width: 200px;
+			}
+		}
+		label, .button2 {
+			vertical-align: middle;
+		}
+		& + h2 {
+			padding: 0 325px 7px 0;
+		}
+	}
+	.action-bar.actions-jump {
+		display: block;
+		&, .jumpbox {
+			margin: 0;
+		}
+		& + h2 {
+			padding: 0 200px 7px 0;
+		}
+		.jumpbox .dropdown {
+			min-width: 320px;
+		}
+	}
+	.tabs-container {
+		h2 {
+			padding: 0 310px 0 0;
+		}
+		.minitabs {
+			bottom: -20px;
+		}
+	}
+}
+
+/* MCP - Front
+============================================== */
+
+.mcp-main #mcp_queue {
+	.topiclist > li.header dl:after {
+		display: block;
+		content: 'Mark';
+		width: 90px;
+		padding: 0 10px;
+		box-sizing: border-box;
+	}
+	& ~ .panel table.table1 {
+		th, td {
+			&:first-child {
+				width: 40%;
+			}
+		}
+	}
+}
+
+/* MCP - Approve Topic & Post
+============================================== */
+
+[class*='section-mcp-approve-topic'], [class*='section-mcp-approve-post'] {
+	fieldset dl dt.empty-space {
+		display: none;
+		& ~ dd {
+			margin-left: 0;
+		}
+	}
+}
+
+/* MCP - Moderation Queue & Post Details
+============================================== */
+
+.section-mcp-moderation-queue, .section-mcp-post-details {
+	.cp-main #mcp_chgposter fieldset dl dd {
+		margin-top: 0 !important;
+		&.has-multiple-fields {
+			margin-top: -($ffs) !important;
+			br {
+				display: none;
+				& + span {
+					@include flex(full);
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+.section-mcp-deleted-topics .cp-main .topiclist > li dl {
+	dt .list-inner .responsive-show, dd.moderation {
+		span br {
+			display: none;
+		}
+	}
+}
+
+/* MCP - View Topic
+============================================== */
+
+.section-mcp-view-topic .cp-main {
+	.panel + .panel {
+		@include reset-inner;
+		display: block;
+		width: auto;
+	}
+	#display-panel dl dd.has-multiple-fields.has-space {
+		label {
+			display: block;
+		}
+		select#st {
+			@include flex(full);
+		}
+		select#sk {
+			width: auto;
+		}
+	}
+	#merge-panel dl dt label[for='to_topic_id'] {
+		padding-top: 10px;
+	}
+}
+
+/* MCP - Report Details
+============================================== */
+
+.section-mcp-reported-messages, .section-mcp-reported-pms {
+	.cp-main .post_details + hr + div {
+		margin: 0 0 20px 0;
+	}
+}
+
+/* MCP - User Notes & Moderator Logs
+============================================== */
+
+.section-mcp-user-details, .section-mcp-moderator-logs {
+	.cp-main .action-bar.bar-top {
+		@include reset-font-size('& > *, &:before');
+		&:before {
+			content: 'Search for keywords:';
+			margin: 10px 0 0 5px;
+			width: 140px;
+		}
+		.inputbox[type='search'] {
+			flex: 0 0 260px;
+			padding-right: 40px;
+			& + .button2 {
+				display: block;
+				@include sizing(20px, 20px);
+				line-height: 1;
+				background: transparent url($images + 'search-icon.png') center center no-repeat;
+				font-size: 0;
+				padding: 2px;
+				margin: 0;
+				@include position($type: relative, $top: 5px, $right: 35px);
+			}
+		}
+	}
+}
+
+/* MCP - User Notes & Warning Profiles
+============================================== */
+
+.section-mcp-user-details, .section-mcp-warnings {
+	.cp-main h2 + .panel h3 + div {
+		@include flex-flow(row nowrap);
+		.column1, .column2 {
+			width: auto;
+			float: none;
+			padding: 0;
+			@include flex;
+		}
+		.column1 {
+			& > div {
+				max-width: 221px;
+				margin: 0 20px 20px 0;
+				padding: 0 20px 0 0;
+				border-right: 1px dashed $color-04;
+			}
+			.avatar {
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+/* MCP - User Notes
+============================================== */
+
+.section-mcp-user-details .cp-main #mcp {
+	position: relative;
+	.display-actions {
+		padding-right: 95px;
+		& + .display-actions {
+			width: 95px;
+			padding-right: 0;
+			@include position($type: absolute, $bottom: -1px, $right: 0);
+		}
+	}
+}
+
+/* MCP - Warnings
+============================================== */
+
+.section-mcp-warnings .cp-main #warning {
+	& ~ br {
+		display: none;
+	}
+	& ~ .panel {
+		display: block;
+		width: auto;
+		padding: 0;
+		background: none;
+		dd {
+			margin-left: 0;
+		}
+	}
+}
+
+/* MCP - Banning
+============================================== */
+
+body[class*='section-mcp-ban'] .cp-main fieldset dl dd label {
+	&:not([for*='banexclude']) {
+		display: block;
+	}
+}

@@ -1,0 +1,227 @@
+/* Font kits
+============================================== */
+
+@font-face {
+	font-family: 'Selima';
+	src: url($fonts + 'selima.woff2') format('woff2'),
+		 url($fonts + 'selima.woff') format('woff'),
+		 url($fonts + 'selima.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url($fonts + 'firasans-light.woff2') format('woff2'),
+		 url($fonts + 'firasans-light.woff') format('woff'),
+		 url($fonts + 'firasans-light.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url($fonts + 'firasans-light-italic.woff2') format('woff2'),
+		 url($fonts + 'firasans-light-italic.woff') format('woff'),
+		 url($fonts + 'firasans-light-italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url($fonts + 'firasans-medium.woff2') format('woff2'),
+		 url($fonts + 'firasans-medium.woff') format('woff'),
+		 url($fonts + 'firasans-medium.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url($fonts + 'firasans-medium-italic.woff2') format('woff2'),
+		 url($fonts + 'firasans-medium-italic.woff') format('woff'),
+		 url($fonts + 'firasans-medium-italic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Spectral';
+	src: url($fonts + 'spectral.woff2') format('woff2'),
+		 url($fonts + 'spectral.woff') format('woff'),
+		 url($fonts + 'spectral.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Spectral';
+	src: url($fonts + 'spectral-italic.woff2') format('woff2'),
+		 url($fonts + 'spectral-italic.woff') format('woff'),
+		 url($fonts + 'spectral-italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Khyeras Icons';
+	src: url($fonts + 'khyeras-icons.woff2') format('woff2'),
+		 url($fonts + 'khyeras-icons.woff') format('woff'),
+		 url($fonts + 'khyeras-icons.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* General text elements
+============================================== */
+
+html {
+	font-size: $base-font-size + px;
+}
+
+body {
+	font-family: $font-01;
+	font-size: rem($global-font-size);
+	line-height: 1.5;
+	font-weight: normal;
+	color: $color-00;
+}
+
+a {
+	color: $color-06;
+	text-decoration: none;
+	&:hover {
+		color: $color-07;
+	}
+}
+
+a, a span[class*='username'] {
+	@include transition(color 0.3s ease-in-out);
+}
+
+a[class*='username']:hover, a:hover span[class*='username'] {
+	color: $color-07 !important;
+}
+
+/* Headers
+============================================== */
+
+h1, h2, h3, h4, h5, h6, .header-title {
+	@include spectral-common;
+	font-weight: normal;
+	line-height: 1.1;
+	a {
+		color: $color-00;
+		&:hover {
+			color: $color-07;
+		}
+	}
+}
+
+.page-body {
+	h4, .h4, h5, .h5, h6, .h6 {
+		&, & a {
+			color: $color-07;
+		}
+		a:hover {
+			color: $color-00;
+		}
+	}
+}
+
+h1, .h1 {
+	// Forum name
+	font-size: rem(34px);
+}
+
+h2, .h2 {
+	// Forum header titles
+	font-size: rem(30px);
+}
+
+h3, .h3 {
+	// Sub-headers (also used as post headers, but defined later)
+	font-size: rem(26px);
+}
+
+h4, .h4 {
+	// Forum and topic list titles
+	font-size: rem(22px);
+}
+
+h5, h6, .h5, .h6 {
+	font-size: rem(20px);
+}
+
+/* Icon Families, Colors, and Sizes
+============================================== */
+
+.icon  {
+	@include icon-font($fs: false);
+	font-size: rem($global-font-size);
+}
+
+.icon.rpg-icon, .icon.misc-icon {
+	font-family: 'Khyeras Icons';
+}
+
+.icon.icon-xxl {
+	font-size: rem(22px);
+}
+
+.icon.icon-xl {
+	font-size: rem(18px);
+}
+
+.icon.icon-lg {
+	font-size: rem(16px);
+}
+
+.icon.icon-md {
+	font-size: rem($global-font-size);
+}
+
+.icon.icon-sm {
+	font-size: rem(12px);
+}
+
+.icon-tiny {
+	font-size: rem(10px);
+}
+
+.icon + span:not(.sr-only), .icon + .sr-only + span:not(.sr-only), span:not(.sr-only) + .icon {
+	margin: 0 0 0 5px;
+}
+
+.icon.icon-blue, a:hover .icon.icon-blue {
+	color: $color-07;
+}
+
+.icon.icon-green, a:hover .icon.icon-green {
+	color: $color-06;
+}
+
+.icon.icon-red, a:hover .icon.icon-red {
+	color: $color-11;
+}
+
+.icon.icon-orange, a:hover .icon.icon-orange {
+	color: $color-14;
+}
+
+.icon.icon-bluegray, a:hover .icon.icon-bluegray {
+	color: $color-15;
+}
+
+.icon.icon-gray, a:hover .icon.icon-gray {
+	color: $color-12;
+}
+
+.icon.icon-lightgray, a:hover .icon.icon-lightgray {
+	color: $color-13;
+}
+
+.icon.icon-black, a:hover .icon.icon-black {
+	color: $color-00;
+}
