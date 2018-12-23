@@ -6,8 +6,8 @@
 	margin: 70px 0 0 0;
 	padding: 150px 0 0 0;
 	.footer-inner {
-		background: $color-04;
-		color: $color-01;
+		background: $color-01;
+		color: $white-02;
 		padding: 0 0 30px 0;
 		margin: 20px 0 0 0;
 		.footer-text {
@@ -37,7 +37,7 @@
 			position: relative;
 			height: 450px;
 			overflow: hidden;
-			border: 10px solid $color-05;
+			border: 10px solid $color-02;
 			iframe {
 				@include sizing(100%, 100%);
 			}
@@ -54,7 +54,7 @@
 
 .darkenwrapper .darken, #mobile-overlay {
 	@include position($type: fixed, $top: 0, $bottom: 0, $left: 0, $right: 0, $z: 1000);
-	background: rgba($color-02, 0.50);
+	background: $dark-rgb-10;
 	margin: auto;
 }
 
@@ -72,14 +72,14 @@
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 20px;
-	background: $color-05;
+	background: $color-02;
 	.alert_close {
 		@include position($type: absolute, $top: -10px, $right: -10px, $z: 2);
 		@include sizing(24px, 24px);
-		background: $color-05;
+		background: $color-02;
 		border-radius: 100%;
 		text-align: center;
-		color: $color-01;
+		color: $white-03;
 		.icon {
 			line-height: 24px;
 		}
@@ -112,11 +112,11 @@
 	@include toggle-content(hide);
 	@include sizing(40px, 40px);
 	border-radius: 3px;
-	background: $color-10;
+	background: $color-05;
 	padding: 10px;
 	text-align: center;
 	&, &:hover {
-		color: $color-01;
+		color: $white-03;
 	}
 	&.scroll-to-visible {
 		z-index: 999;

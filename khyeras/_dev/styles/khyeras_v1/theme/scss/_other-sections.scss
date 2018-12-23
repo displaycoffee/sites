@@ -11,7 +11,7 @@ dl.faq {
 		font-weight: normal;
 		line-height: 1.1;
 		font-size: rem(20px);
-		color: $color-07;
+		color: $color-03;
 	}
 	& + .top {
 		display: inline-block;
@@ -54,8 +54,8 @@ dl.faq {
 		}
 		.postbody {
 			.posthilit {
-				background: $color-09;
-				color: $color-08;
+				background: $color-07;
+				color: $color-06;
 				padding: 2.5px 5px;
 			}
 			h3 .posthilit {
@@ -82,7 +82,7 @@ dl.faq {
 
 #memberlist_search {
 	h2, #search_memberlist {
-		background: rgba($color-02, 0.20);
+		background: $dark-rgb-01;
 	}
 	h2 {
 		margin: 1px 1px 0 1px;
@@ -154,7 +154,7 @@ dl.faq {
 		a {
 			color: $color-00;
 			&:hover {
-				color: $color-07;
+				color: $color-03;
 			}
 			.contact-icon:before {
 				font-size: rem(20px);
@@ -250,22 +250,22 @@ dl.faq {
 
 .quick-links {
 	&.quick-links-both {
-		border-bottom: 1px dashed $color-04;
-		border-top: 1px dashed $color-04;
+		border-bottom: 1px dashed $color-01;
+		border-top: 1px dashed $color-01;
 		padding: 20px 0;
 	}
 	&.quick-links-bottom {
-		border-bottom: 1px dashed $color-04;
+		border-bottom: 1px dashed $color-01;
 		padding: 0 0 20px 0;
 	}
 	&.quick-links-top {
-		border-top: 1px dashed $color-04;
+		border-top: 1px dashed $color-01;
 		padding: 20px 0 0 0;
 	}
 }
 
 .page-content-section {
-	border-top: 1px dashed $color-04;
+	border-top: 1px dashed $color-01;
 	padding: 20px 0 0 0;
 }
 
@@ -273,7 +273,7 @@ dl.faq {
 	margin: 20px 0 0 0;
 	img {
 		padding: 5px;
-		border: 1px solid $color-04;
+		border: 1px solid $color-01;
 	}
 }
 
@@ -331,10 +331,10 @@ dl.faq {
 				padding: 10px 20px;
 			}
 			&.chart-check .chart-data-wrap {
-				background: $color-17;
+				background: $color-14;
 			}
 			&.chart-remove .chart-data-wrap {
-				background: $color-18;
+				background: $color-15;
 			}
 			.chart-label {
 				display: block;
@@ -350,11 +350,11 @@ dl.faq {
 
 .banner {
 	margin: 0 0 20px 0;
-	border: 2px solid $color-04;
+	border: 2px solid $color-01;
 	position: relative;
 	&.banner-aligned {
 		border: 0;
-		border-bottom: 1px solid $color-04;
+		border-bottom: 1px solid $color-01;
 		margin: -20px -20px 20px -20px;
 	}
 	&.banner-vertical {
@@ -368,7 +368,7 @@ dl.faq {
 		}
 	}
 	.banner-content {
-		background: rgba($color-02, 0.60);
+		background: $dark-rgb-11;
 		padding: 20px;
 		@include position($type: absolute, $bottom: 0, $left: 0, $right: 0);
 		.main-title, .sub-title {
@@ -491,7 +491,7 @@ dl.faq {
 		overflow: hidden;
 		@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0, $z: 1);
 		margin: auto;
-		border-right: 1px dashed $color-04;
+		border-right: 1px dashed $color-01;
 	}
 	.timeline-row {
 		z-index: 2;
@@ -514,11 +514,11 @@ dl.faq {
 					width: 25%;
 				}
 				&:before {
-					border-top: 2px solid $color-04;
+					border-top: 2px solid $color-01;
 					margin: 0 auto 10px auto;
 				}
 				&:after {
-					border-bottom: 2px solid $color-04;
+					border-bottom: 2px solid $color-01;
 					margin: 5px auto 0 auto;
 				}
 			}

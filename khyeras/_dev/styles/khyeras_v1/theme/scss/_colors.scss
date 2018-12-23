@@ -1,0 +1,103 @@
+// Main Colors
+// ============================================== //
+
+$color-00: #ededed; // very light gray
+$color-01: #15212c; // very dark blue
+$color-02: #0d171b; // very dark blue
+$color-03: #7ea8c2; // blue
+$color-04: #a4c27e; // green
+$color-05: #1c2f25; // dark green
+$color-06: #333333; // blackish
+$color-07: #fcfcce; // pale yellow
+$color-08: #b30832; // red
+$color-09: #777777; // gray
+$color-10: #aaaaaa; // gray
+$color-11: #f0a06a; // orange
+$color-12: #5e6c85; // blue gray
+$color-13: #591818; // red
+$color-14: #266296; // blue
+$color-15: #962626; // red
+$color-16: #ad7337; // orange
+$color-17: #ae973f; // yellow
+$color-18: #4d2e56; // purple
+$color-19: #666666; // gray
+$color-20: #67e5e2; // bright blue
+
+// White Colors
+// ============================================== //
+
+$white-00: #ffffff; // rgb and mixes
+$white-01: #ffffff; // forum headers, notification headers
+$white-02: #ffffff; // footer
+$white-03: #ffffff; // icons - alert, scroll, forum
+$white-04: #ffffff; // input fields
+$white-05: #ffffff; // button text, badge text, tabs, ribbon text
+$white-06: #ffffff; // header text
+$white-07: #ffffff; // mobile menu text
+
+// Black Colors
+// ============================================== //
+
+$black-00: #000000; // rgb and mixes
+$black-01: #000000; // form fields
+$black-02: #000000; // color palette table
+$black-03: #000000; // print body color
+
+// Light RGB
+// ============================================== //
+
+$light-rgb-00: rgba($white-00, 0.00); // webkit highlight
+
+// Dark RGB
+// ============================================== //
+
+$dark-rgb-00: rgba($black-00, 0.15); // cp avatar shadow, cp ribbon shadow
+$dark-rgb-01: rgba($black-00, 0.20); // main box background
+$dark-rgb-03: rgba($black-00, 0.20); // cp postbody, attachbox, pre/code, big-column
+$dark-rgb-04: rgba($black-00, 0.25); // stick nav shadow
+$dark-rgb-05: rgba($black-00, 0.25); // avatar shadow, ribbon shadow
+$dark-rgb-06: rgba($black-00, 0.30); // divider shadow
+$dark-rgb-07: rgba($black-00, 0.30); // main box border
+$dark-rgb-08: rgba($black-00, 0.35); // mobile menu shadow
+$dark-rgb-09: rgba($black-00, 0.40); // stat bar box shadow
+$dark-rgb-10: rgba($black-00, 0.40); // stat bar text shadow
+$dark-rgb-10: rgba($black-00, 0.50); // darken overlay, discord reactions
+$dark-rgb-11: rgba($black-00, 0.60); // featured overlay, black-bar, banner-content
+$dark-rgb-12: rgba($black-00, 0.65); // header text shadow
+$dark-rgb-13: rgba($black-00, 0.65); // loading indicator
+$dark-rgb-14: rgba($black-00, 0.75); // header dark text shadow
+
+// Other RGB
+// ============================================== //
+
+$other-rgb-00: rgba($color-02, 0.75); // navbar
+$other-rgb-01: rgba($color-02, 1.00); // sticky nav
+
+// Light Mixes
+// ============================================== //
+
+$light-mix-01: mix($white-00, $color-01, 05.00%); // very dark blue
+$light-mix-02: mix($white-00, $color-03, 60.00%); // blue
+$light-mix-03: mix($white-00, $color-05, 05.00%); // dark green
+$light-mix-04: mix($white-00, $color-05, 10.00%); // dark green
+$light-mix-05: mix($white-00, $color-08, 80.00%); // red
+$light-mix-06: mix($white-00, $color-16, 05.00%); // orange
+$light-mix-07: mix($white-00, $color-13, 05.00%); // red
+$light-mix-08: mix($white-00, $color-18, 05.00%); // purple
+$light-mix-09: mix($white-00, $color-17, 05.00%); // yellow
+
+// Dark Mixes
+// ============================================== //
+
+$dark-mix-01: mix($black-00, $color-01, 50.00%); // very dark blue
+$dark-mix-02: mix($black-00, $color-02, 15.00%); // very dark blue
+$dark-mix-03: mix($black-00, $color-05, 10.00%); // dark green
+$dark-mix-04: mix($black-00, $color-05, 20.00%); // dark green
+$dark-mix-05: mix($black-00, $color-05, 30.00%); // dark green
+$dark-mix-06: mix($black-00, $color-05, 35.00%); // dark green
+$dark-mix-07: mix($black-00, $color-07, 33.33%); // pale yellow
+$dark-mix-08: mix($black-00, $color-10, 40.00%); // gray mix
+$dark-mix-09: mix($black-00, $color-14, 33.33%); // blue
+$dark-mix-10: mix($black-00, $color-14, 50.00%); // blue
+$dark-mix-11: mix($black-00, $color-15, 33.33%); // red
+$dark-mix-12: mix($black-00, $color-15, 50.00%); // red

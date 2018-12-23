@@ -1,5 +1,6 @@
 // Helpers
 @import 'variables';
+@import 'colors';
 @import 'mixins';
 
 /* Root colors
@@ -15,7 +16,7 @@
 
 html {
 	font-size: $base-font-size + px;
-	background-color: $color-05;
+	background-color: $color-02;
 }
 
 body {
@@ -31,7 +32,7 @@ input[type='text']:not(.browser-default):focus:not([readonly]) + label, .wdt-emo
 }
 
 nav, nav a, #footercontainer #curuser_name, #footercontainer #visitor_mode_message {
-	color: $color-01;
+	color: $white-01;
 }
 
 /* Resets
@@ -82,8 +83,8 @@ textarea.materialize-textarea, input[type='text'], input[type='text']:not(.brows
 }
 
 textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default), #wdt-emoji-search, #wdt-emoji-search:focus {
-	background: $color-01;
-	color: $color-08;
+	background: $white-04;
+	color: $color-06;
 	width: 100%;
 	box-sizing: border-box;
 	border: 0;
@@ -103,17 +104,17 @@ input[type='text'] {
 		box-shadow: none;
 	}
 	&:disabled, &:not(.browser-default):disabled {
-		color: mix($color-02, $color-13, 40%);
-		background: $color-13;
+		color: $dark-mix-08;
+		background: $color-10;
 		& + label {
-			color: $color-13;
+			color: $color-10;
 		}
 	}
 }
 
 input[type='radio']:not(:checked) + label:before, input[type='checkbox'].filled-in:checked + label:after, input[type='checkbox'].filled-in:not(:checked) + label:after, #messagebox-filemodal {
 	border: 0;
-	background-color: $color-01;
+	background-color: $white-04;
 }
 
 input[type='radio']:not(:checked) + label, input[type='radio']:checked + label, input[type='checkbox'] + label {
@@ -129,8 +130,8 @@ input[type='radio'] {
 		font-size: inherit;
 	}
 	&:checked  + label:after {
-		background-color: $color-10;
-		border: 3px solid $color-01;
+		background-color: $color-05;
+		border: 3px solid $white-04;
 	}
 }
 
@@ -142,20 +143,20 @@ input[type='checkbox'] {
 	&.filled-in:checked + label:before {
 		@include sizing(5px, 10px);
 		@include position($top: 3.5px, $left: 2px);
-		border-right-color: $color-10;
-		border-bottom-color: $color-10;
+		border-right-color: $color-05;
+		border-bottom-color: $color-05;
 	}
 }
 
 @include placeholder {
-	color: $color-02;
+	color: $black-01;
 }
 
 .btn, .btn-large, #logout_btn, #proceed_nsfw_btn {
 	font-size: rem(13px);
- 	background: $color-10;
+ 	background: $color-05;
 	&:hover {
-		background: $color-04;
+		background: $color-01;
 	}
 }
 
@@ -196,7 +197,7 @@ input[type='checkbox'] {
 ============================================== */
 
 .navbar-fixed nav {
-	background: $color-04;
+	background: $color-01;
 	padding: 10px 20px;
 	min-height: 44px;
 	&, a.button-collapse, a.button-collapse i {
@@ -220,7 +221,7 @@ input[type='checkbox'] {
 
 #guild-nav, #members-nav {
 	padding: 20px;
-	background-color: $color-05;
+	background-color: $color-02;
 }
 
 #members-nav li > a.subheader {
@@ -263,7 +264,7 @@ input[type='checkbox'] {
 	}
 	div.divider {
 		margin: 0 -20px;
-		border-bottom: 1px dashed $color-04;
+		border-bottom: 1px dashed $color-01;
 		background: none;
 	}
 	#channeltopic {
@@ -292,7 +293,7 @@ input[type='checkbox'] {
 #chatcontent {
 	padding: 44px 0 10px;
 	& > p {
-		border-top: 1px dashed $color-04;
+		border-top: 1px dashed $color-01;
 		width: auto;
 		padding: 10px 20px;
 		&:first-child {
@@ -311,16 +312,13 @@ input[type='checkbox'] {
 	span.reactions {
 		margin: 0 -2.5px -5px -2.5px;
 		.reaction {
-			background: rgba($color-02, 0.5);
+			background: $dark-rgb-10;
 			margin: 0 2.5px 5px 2.5px;
 			padding: 5px;
 			height: auto;
 			font-size: rem(12px);
 			img, .count {
 				display: inline-block;
-			}
-			img {
-
 			}
 			.count {
 				float: none;
@@ -335,7 +333,7 @@ input[type='checkbox'] {
 ============================================== */
 
 footer {
-	background: $color-04;
+	background: $color-01;
 }
 
 #footercontainer {
@@ -391,7 +389,7 @@ footer {
 	border: 0;
 	border-radius: 0;
 	&, h3 {
-		background: $color-05;
+		background: $color-02;
 	}
 	h3, #wdt-emoji-footer, #wdt-emoji-menu-header, .wdt-emoji {
 		padding: 5px;
@@ -406,12 +404,12 @@ footer {
 		@include sizing(16px, 16px);
 	}
 	#wdt-emoji-menu-header, #wdt-emoji-footer {
-		background: $color-04;
+		background: $color-01;
 		border: 0;
 	}
 	.wdt-emoji-scroll-wrapper {
-		border-left: 1px solid $color-04;
-		border-right: 1px solid $color-04;
+		border-left: 1px solid $color-01;
+		border-right: 1px solid $color-01;
 	}
 	#wdt-emoji-search {
 		margin: 10px;
@@ -436,8 +434,8 @@ footer {
 #mention-picker {
 	@include position($bottom: 55px, $right: 20px);
 	max-width: 89.2%;
-	color: $color-08;
-	background: $color-01;
+	color: $color-06;
+	background: $white-04;
 	overflow: visible;
 	border-radius: 3px;
 	.mention-choice {
@@ -458,7 +456,7 @@ footer {
 		min-height: 1px;
 		& > a, & > span {
 			font-size: rem(12px);
-			color: $color-08;
+			color: $color-06;
 			padding: 5px 10px;
 		}
 	}
@@ -468,7 +466,7 @@ footer {
 ============================================== */
 
 .modal {
-	background-color: $color-05;
+	background-color: $color-02;
 	@include position($bottom: 0 !important, $top: 0 !important);
 	border-radius: 0;
 	box-shadow: none;
@@ -517,7 +515,7 @@ footer {
 	}
 	#modal_guildinfobox {
 		background-color: transparent;
-		border-right: 1px dashed $color-05;
+		border-right: 1px dashed $color-02;
 	}
 }
 
@@ -555,7 +553,7 @@ footer {
 ============================================== */
 
 #nsfwmodal i {
-	color: $color-11;
+	color: $color-08;
 }
 
 /* File Modal
@@ -563,9 +561,9 @@ footer {
 
 #filemodal {
 	.progress {
-		background-color: $color-10;
+		background-color: $color-05;
 		.determinate {
-			background-color: mix(white, $color-10, 10%);
+			background-color: $light-mix-04;
 		}
 	}
 	#filemodal-body {
@@ -577,7 +575,7 @@ footer {
 		}
 		#messagebox-filemodal {
 			@include placeholder {
-				color: $color-02;
+				color: $black-01;
 			}
 		}
 	}

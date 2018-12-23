@@ -3,7 +3,7 @@
 ============================================== */
 
 .postprofile {
-	border-right: 1px dashed $color-04;
+	border-right: 1px dashed $color-01;
 	dt a[class*='username'], dt span[class*='username'], .profile-rank {
 		font-family: $font-02;
 	}
@@ -98,7 +98,7 @@
 		position: relative;
 		height: 20px;
 		border: 2px solid;
-		box-shadow: inset 0 0 6px 3px rgba($color-02, 0.40);
+		box-shadow: inset 0 0 6px 3px $dark-rgb-09;
 		border-radius: 3px;
 		margin: 0 0 5px 0;
 		.stat-bar-inner {
@@ -108,24 +108,24 @@
 			@include position($type: absolute, $bottom: -8.5px, $left: 0, $right: 0);
 			line-height: 1;
 			text-align: center;
-			text-shadow: 1px 1px 0 rgba($color-02, 0.40), 2px 2px 0 rgba($color-02, 0.40);
+			text-shadow: 1px 1px 0 $dark-rgb-10, 2px 2px 0 $dark-rgb-10;
 			@include spectral-common;
 		}
 		& + .stat-bar {
 			margin-top: 15px;
 		}
 		&.hp-bar {
-			border-color: mix($color-02, $color-18, 33.33%);
-			background: mix($color-02, $color-18, 50%);
+			border-color: $dark-mix-11;
+			background: $dark-mix-12;
 			.stat-bar-inner {
-				background: $color-18;
+				background: $color-15;
 			}
 		}
 		&.mp-bar {
-			border-color: mix($color-02, $color-17, 33.33%);
-			background: mix($color-02, $color-17, 50%);
+			border-color: $dark-mix-09;
+			background: $dark-mix-10;
 			.stat-bar-inner {
-				background: $color-17;
+				background: $color-14;
 			}
 		}
 	}
@@ -159,7 +159,7 @@
 .online {
 	position: relative;
 	&:before, &:after {
-		color: $color-01;
+		color: $white-05;
 		display: block;
 		@include position($type: absolute, $z: 10);
 	}
@@ -169,18 +169,18 @@
 		font-family: 'FontAwesome', $font-01;
 		font-size: rem($global-font-size);
 		border-right: 8px inset transparent;
-		border-bottom: 12px solid $color-10;
-		border-top: 12px solid $color-10;
+		border-bottom: 12px solid $color-05;
+		border-top: 12px solid $color-05;
 		line-height: 0;
 		padding: 0 10px;
 		text-align: center;
-		box-shadow: 0 8px 6px -6px rgba($color-02, 0.25);
+		box-shadow: 0 8px 6px -6px $dark-rgb-05;
 	}
 	&:after {
 		content: '';
 		@include sizing(0, 0);
 		border-left: 12px inset transparent;
-		border-top: 8px solid mix($color-02, $color-10, 35%);
+		border-top: 8px solid $dark-mix-06;
 	}
 }
 
@@ -206,7 +206,7 @@
 	}
 	&:before {
 		top: 15px;
-		box-shadow: 0 8px 6px -6px rgba($color-02, 0.15);
+		box-shadow: 0 8px 6px -6px $dark-rgb-00;
 	}
 	&:after {
 		top: 39px;
