@@ -15,7 +15,7 @@ html, body {
 body {
 	height: 100%;
 	-webkit-print-color-adjust: exact;
-	-webkit-tap-highlight-color: rgba($color-01, 0);
+	-webkit-tap-highlight-color: $light-rgb-00;
 	backface-visibility: hidden;
 	background: url($images + 'background.png') 0 0 repeat;
 }
@@ -56,7 +56,7 @@ dl.definition-list {
 		margin: 0 0 5px 0;
 		strong {
 			font-size: rem(20px);
-			color: $color-07;
+			color: $color-03;
 			@include spectral-common;
 			font-weight: normal;
 		}
@@ -80,7 +80,7 @@ code {
 pre, code {
 	display: block;
 	font-family: 'Courier New', monospace;
-	background: $color-05;
+	background: $color-02;
 	color: $color-00;
 	padding: 20px;
 	white-space: pre-wrap;
@@ -100,8 +100,8 @@ pre code, code pre {
 	& > p {
 		margin: 0;
 		padding: 10px 20px;
-		background: $color-04;
-		color: $color-01;
+		background: $color-01;
+		color: $white-01;
 	}
 }
 
@@ -120,7 +120,7 @@ blockquote {
 		max-width: none;
 	}
 	cite {
-		border-bottom: 1px solid $color-04;
+		border-bottom: 1px solid $color-01;
 		display: block;
 		margin: 0 0 10px 0;
 		padding: 0 0 10px 0;
@@ -131,7 +131,7 @@ hr {
 	margin: 0 0 20px 0;
 	height: 0;
 	border: 0;
-	border-bottom: 1px solid $color-04;
+	border-bottom: 1px solid $color-01;
 	display: none;
 	&.dashed {
 		border-bottom-style: dashed;

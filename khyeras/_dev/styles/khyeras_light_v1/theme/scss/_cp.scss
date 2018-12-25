@@ -67,12 +67,12 @@
 	.panel, .post.pm, .topicreview {
 		width: 100%;
 		display: inline-block;
-		background: $color-05;
+		background: $color-02;
 		padding: 20px 20px 0 20px;
 		margin: 0 0 20px 0;
 	}
 	.postbody .attachbox, pre, code {
-		background: rgba($color-02,0.20);
+		background: $dark-rgb-03;
 	}
 	pre code, code pre {
 		background: none;
@@ -112,7 +112,7 @@
 			padding-bottom: 0;
 		}
 		.post {
-			border-bottom: 1px dashed $color-04;
+			border-bottom: 1px dashed $color-01;
 			margin: 0 0 20px 0;
 			.post-buttons {
 				label[for*='post_id_list_select'] {
@@ -141,8 +141,8 @@
 		position: relative;
 		&:before, &:after {
 			display: block;
-			background: $color-04;
-			color: $color-01;
+			background: $color-01;
+			color: $white-01;
 			padding: 10px 20px;
 			box-sizing: border-box;
 		}
@@ -165,7 +165,7 @@
 .section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details, .section-mcp-warnings {
 	.cp-main {
 		.avatar, img[src*='no_avatar.gif'] {
-			border: 5px solid $color-04;
+			border: 5px solid $color-01;
 			margin: 0 0 10px 0;
 		}
 		img[src*='no_avatar.gif'] {
@@ -221,7 +221,7 @@
 			position: relative;
 			img {
 				margin: 0 auto;
-				border: 5px solid $color-04;
+				border: 5px solid $color-01;
 			}
 			input[type='radio'], &:before {
 				position: absolute;
@@ -236,7 +236,7 @@
 				display: block;
 				@include sizing(19px, 19px);
 				border-radius: 100%;
-				background: $color-04;
+				background: $color-01;
 				@include position($top: 10px, $right: 15px, $z: 1);
 			}
 			br {
@@ -303,7 +303,7 @@
 		max-height: 125px;
 		margin: 0 20px 0 0;
 		float: left;
-		border: 2px solid $color-04;
+		border: 2px solid $color-01;
 	}
 	.notifications {
 		p {
@@ -316,9 +316,10 @@
 }
 
 .section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
-	background: rgba($color-01, 0.30);
+
+	background: $dark-rgb-03;
 	border-bottom-style: solid;
-	border-top: 1px solid $color-04;
+	border-top: 1px solid $color-01;
 	td {
 		padding-top: 10px;
 		padding-bottom: 10px;
@@ -354,12 +355,12 @@
 		font-weight: normal;
 		padding: 10px;
 		border-radius: 3px;
-		background: mix(white, $color-11, 80%);
+		background: $light-mix-05;
 		&, a {
-			color: $color-08
+			color: $color-06
 		}
 		a:hover {
-			color: $color-07;
+			color: $color-03;
 		}
 		.error-msg {
 			display: block;
@@ -420,16 +421,16 @@
 		border-radius: 3px;
 	}
 	&.pm_marked_colour .imageset {
-		background: $color-06;
+		background: $color-04;
 	}
 	&.pm_replied_colour .imageset {
-		background: $color-07;
+		background: $color-03;
 	}
 	&.pm_friend_colour .imageset {
-		background: $color-14;
+		background: $color-11;
 	}
 	&.pm_foe_colour .imageset {
-		background: $color-11;
+		background: $color-08;
 	}
 }
 
@@ -559,22 +560,22 @@
 		}
 		&.pm_marked_colour dl {
 			&:before, &:after {
-				background: $color-06;
+				background: $color-04;
 			}
 		}
 		&.pm_replied_colour dl {
 			&:before, &:after {
-				background: $color-07;
+				background: $color-03;
 			}
 		}
 		&.pm_friend_colour dl {
 			&:before, &:after {
-				background: $color-14;
+				background: $color-11;
 			}
 		}
 		&.pm_foe_colour dl {
 			&:before, &:after {
-				background: $color-11;
+				background: $color-08;
 			}
 		}
 	}
@@ -865,7 +866,7 @@
 				max-width: 221px;
 				margin: 0 20px 20px 0;
 				padding: 0 20px 0 0;
-				border-right: 1px dashed $color-04;
+				border-right: 1px dashed $color-01;
 			}
 			.avatar {
 				margin: 0 auto;

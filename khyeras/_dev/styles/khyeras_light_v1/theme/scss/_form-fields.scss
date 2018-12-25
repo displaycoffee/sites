@@ -2,12 +2,12 @@
 ============================================== */
 
 @include placeholder {
-	color: $color-02;
+	color: $black-01;
 	@include transition(color 0.3s ease-in-out);
 }
 
 :focus{@include placeholder {
-	color: $color-02;
+	color: $black-01;
 }}
 
 fieldset {
@@ -33,8 +33,8 @@ fieldset {
 }
 
 .inputbox, textarea, select {
-	background: $color-01;
-	color: $color-08;
+	background: $white-04;
+	color: $color-06;
 	width: 100%;
 	padding: 10px;
 	margin: 0 0 20px 0;
@@ -51,7 +51,7 @@ select {
 	background-position: right 10px center;
 	background-size: auto 10px;
 	option {
-		color: $color-08;
+		color: $color-06;
 	}
 }
 
@@ -86,14 +86,14 @@ button, html input, option, select, textarea {
 
 button, option {
 	&[disabled] {
-		color: $color-13;
+		color: $color-10;
 	}
 }
 
 html input, select, textarea {
 	&[disabled] {
-		color: mix($color-02, $color-13, 40%);
-		background: $color-13;
+		color: $dark-mix-08;
+		background: $color-10;
 	}
 }
 
@@ -112,7 +112,7 @@ input[type='search']::-webkit-search-cancel-button {
 .search-box form fieldset {
 	position: relative;
 	padding: 0 75px 0 0;
-	background: $color-01;
+	background: $white-04;
 	border-radius: 3px;
 	input[type='search'] {
 		margin: 0;
@@ -129,11 +129,11 @@ input[type='search']::-webkit-search-cancel-button {
 			width: auto;
 			font-size: inherit;
 			line-height: 0;
-			color: $color-12;
+			color: $color-09;
 			@include transition(color 0.3s ease-in-out);
 		}
 		&:hover .icon {
-			color: $color-13;
+			color: $color-10;
 		}
 	}
 	button.button {
@@ -146,15 +146,15 @@ input[type='search']::-webkit-search-cancel-button {
 
 .button, .button1, .button2 {
 	display: inline-block;
-	background: $color-10;
-	color: $color-01;
+	background: $color-05;
+	color: $white-05;
 	text-align: center;
 	@include transition(background 0.3s ease-in-out);
 	padding: 10px 20px;
 	&:hover {
-		background: $color-04;
+		background: $color-01;
 		&, .icon {
-			color: $color-01;
+			color: $white-05;
 		}
 	}
 }

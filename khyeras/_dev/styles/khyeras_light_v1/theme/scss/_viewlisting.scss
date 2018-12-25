@@ -50,7 +50,7 @@
 			}
 		}
 		&.header {
-			background: $color-04;
+			background: $color-01;
 			padding: 10px 20px;
 			dl {
 				align-items: center;
@@ -65,20 +65,20 @@
 		}
 		&.row {
 			padding: 20px;
-			border-bottom: 1px dashed $color-04;
+			border-bottom: 1px dashed $color-01;
 			a .icon {
 				&.fa-exclamation, &.fa-question {
-					background: $color-09;
+					background: $color-07;
 					@include sizing(18px, 18px);
 					line-height: 18px;
 					border-radius: 100%;
 					text-align: center;
 				}
 				&.fa-exclamation {
-					background: mix(white, $color-11, 80%);
+					background: $light-mix-05;
 				}
 				&.fa-question {
-					background: mix(white, $color-07, 60%);
+					background: $light-mix-02;
 				}
 			}
 			dl {
@@ -159,27 +159,27 @@
 				box-sizing: border-box;
 				line-height: $list-icon-size - 2px;
 				@include icon-font($family: game, $fs: false, $lh: false);
-				color: $color-01;
+				color: $white-03;
 				font-size: rem(24px);
 				text-align: center;
-				background: $color-04;
-				border: 1px solid mix($color-01, $color-04, 5%);
+				background: $color-01;
+				border: 1px solid $light-mix-03;
 				border-radius: 100%;
 			}
 		}
 		&[class*='hot'] dt:before {
-			background: $color-16;
-			border: 1px solid mix($color-01, $color-16, 5%);
+			background: $color-13;
+			border: 1px solid $light-mix-07;
 		}
 		&[class*='unread'] dt:before {
-			background: $color-10;
-			border: 1px solid mix($color-01, $color-10, 5%);
+			background: $color-05;
+			border: 1px solid $light-mix-03;
 		}
 		&[class*='mine'] dt:after {
 			@include position($type: absolute, $top: 0, $left: 10px, $z: 3);
 			@include icon-font;
 			content: unicode($icon-star);
-			color: $color-14;
+			color: $color-11;
 		}
 	}
 	.forum_link, .topic_moved {
@@ -257,10 +257,10 @@ table {
 	&.table1 {
 		margin: 0 0 20px 0;
 		thead tr {
-			background: $color-04;
+			background: $color-01;
 		}
 		tbody tr {
-			border-bottom: 1px dashed $color-04;
+			border-bottom: 1px dashed $color-01;
 		}
 		th, td {
 			text-align: left;
@@ -328,10 +328,10 @@ table {
 .topiclist > li.header, table.table1 thead tr,
 .section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
 	&, a {
-		color: $color-01;
+		color: $white-01;
 	}
 	a:hover {
-		color: $color-07;
+		color: $color-03;
 	}
 }
 

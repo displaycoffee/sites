@@ -77,8 +77,8 @@
 	td {
 		@include inline-block(middle);
 		@include sizing(4% !important, auto !important);
-		border-right: 1px solid $color-02;
-		border-bottom: 1px solid $color-02;
+		border-right: 1px solid $black-02;
+		border-bottom: 1px solid $black-02;
 		a {
 			@include sizing(100% !important, 0 !important);
 			padding-bottom: 100%;
@@ -144,15 +144,15 @@
 				}
 				&.file-uploaded:before {
 					content: unicode($icon-check-circle);
-					color: $color-06;
+					color: $color-04;
 				}
 				&.file-error:before {
 					content: unicode($icon-exclamation-triangle);
-					color: $color-11;
+					color: $color-08;
 				}
 				&.file-working:before {
 					content: unicode($icon-spinner);
-					color: $color-07;
+					color: $color-03;
 					animation: fa-spin 2s infinite linear;
 				}
 			}
@@ -182,7 +182,7 @@
 }
 
 .file-progress-bar {
-	background-color: $color-10;
+	background-color: $color-05;
 }
 
 .file-total-progress {
@@ -191,5 +191,5 @@
 }
 
 .file-total-progress-bar {
-	background-color: $color-06;
+	background-color: $color-04;
 }

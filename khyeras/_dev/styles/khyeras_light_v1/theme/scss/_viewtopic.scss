@@ -27,7 +27,7 @@
 		margin: 20px 0 0 0;
 	}
 	.signature {
-		border-top: 1px dashed $color-04;
+		border-top: 1px dashed $color-01;
 		margin: 30px 0 20px 0;
 		padding: 30px 0 0 0;
 	}
@@ -52,26 +52,26 @@
 		padding: 10px;
 		border-radius: 3px;
 		&, a {
-			color: $color-08;
+			color: $color-06;
 		}
 		a:hover {
-			color: $color-07;
+			color: $color-03;
 		}
 	}
 	.post-notice {
-		background: $color-09;
+		background: $color-07;
 		&.reported, &.post-red {
-			background: mix(white, $color-11, 80%);
+			background: $light-mix-05;
 		}
 		&.unapproved, &.post-blue {
-			background: mix(white, $color-07, 60%);
+			background: $light-mix-02;
 			.icon-red {
-				color: $color-07;
+				color: $color-03;
 			}
 		}
 	}
 	.rules {
-		background: mix(white, $color-07, 60%);
+		background: $light-mix-02;
 		font-size: rem(13px);
 		&:before {
 			content: 'Rules: ';
@@ -201,7 +201,7 @@
 					background: none;
 					border: none;
 					@include position($type: absolute, $top: 10px, $right: 10px, $z: 2);
-					color: $color-04;
+					color: $color-01;
 				}
 			}
 			dd {
@@ -237,13 +237,13 @@
 	.attachbox {
 		padding: 20px 20px 10px 20px;
 		margin: 0 auto 20px auto;
-		background: $color-05;
+		background: $color-02;
 		@include flex-flow(row wrap);
 		& > dt {
 			@include flex(full);
 			order: 1;
-			background: $color-04;
-			color: $color-01;
+			background: $color-01;
+			color: $white-01;
 			padding: 10px 20px;
 			margin: -20px -20px 20px -20px;
 			min-width: 1px;
@@ -281,7 +281,7 @@
 fieldset.polls {
 	padding: 10px 0 0 0;
 	margin: 0 0 10px 0;
-	border-top: 1px dashed $color-04;
+	border-top: 1px dashed $color-01;
 	dl {
 		position: relative;
 		@include clearfix('&');
@@ -321,19 +321,19 @@ fieldset.polls {
 				text-align: center;
 			}
 			.pollbar5 {
-				background: mix(white, $color-10, 10%);
+				background: $light-mix-04;
 			}
 			.pollbar4 {
-				background: $color-10;
+				background: $color-05;
 			}
 			.pollbar3 {
-				background: mix(black, $color-10, 10%);
+				background: $dark-mix-03;
 			}
 			.pollbar2 {
-				background: mix(black, $color-10, 20%);
+				background: $dark-mix-04;
 			}
 			.pollbar1 {
-				background: mix(black, $color-10, 30%);
+				background: $dark-mix-05;
 			}
 		}
 		.poll_option_percent {
@@ -347,7 +347,7 @@ fieldset.polls {
 
 fieldset.polls dl[data-poll-option-id], #preview fieldset.polls dl {
 	&:after {
-		border-bottom: 1px dashed $color-04;
+		border-bottom: 1px dashed $color-01;
 		display: block;
 		margin: 0 10px;
 		padding: 10px 0 0 0;
@@ -389,8 +389,8 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		margin-top: 20px;
 		margin-bottom: 20px;
 		padding: 15px 0 10px 0;
-		border-top: 1px dashed $color-04;
-		border-bottom: 1px dashed $color-04;
+		border-top: 1px dashed $color-01;
+		border-bottom: 1px dashed $color-01;
 		.race-and-class {
 			margin: 5px 0 0 0;
 		}

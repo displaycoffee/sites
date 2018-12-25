@@ -2,7 +2,8 @@
 // ============================================== //
 
 $assets: '../theme';
-$fonts: $assets + '/fonts/';
+$assets2: '../../../styles/khyeras_v1/theme';
+$fonts: $assets2 + '/fonts/';
 $images: $assets + '/images/';
 $phpbb-images: '../../../images/content/';
 
@@ -12,34 +13,6 @@ $phpbb-images: '../../../images/content/';
 $overall: section-overall;
 $ucp: section-ucp;
 $mcp: section-mcp;
-
-// Colors
-// ============================================== //
-
-$color-00: #544d44; // very light gray ***
-$color-01: #ffffff; // white
-$color-02: #000000; // black
-$color-03: #090909; // blackish
-$color-04: #bdb6a2; // very dark blue ***
-$color-05: #f4f0e4; // very dark blue ***
-$color-06: #6b96b9; // green ***
-$color-07: #6f9031; // blue ***
-$color-08: #333333; // blackish
-$color-09: #fcfcce; // pale yellow
-$color-10: #4e5d69; // dark green ***
-$color-11: #b30832; // red
-$color-12: #777777; // gray
-$color-13: #aaaaaa; // gray
-$color-14: #f0a06a; // orange
-$color-15: #5e6c85; // blue gray
-$color-16: #591818; // red
-$color-17: #266296; // blue
-$color-18: #962626; // red
-$color-19: #ad7337; // orange
-$color-20: #ae973f; // yellow
-$color-21: #4d2e56; // purple
-$color-22: #666666; // gray
-$color-23: #67e5e2; // bright blue
 
 // Fonts
 // ============================================== //
