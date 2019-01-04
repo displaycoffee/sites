@@ -1,27 +1,27 @@
 // Main Colors
 // ============================================== //
 
-$color-00: #ededed; // very light gray
-$color-01: #15212c; // very dark blue
-$color-02: #0d171b; // very dark blue
-$color-03: #7ea8c2; // blue
-$color-04: #a4c27e; // green
-$color-05: #1c2f25; // dark green
-$color-06: #333333; // blackish
-$color-07: #fcfcce; // pale yellow
-$color-08: #b30832; // red
-$color-09: #777777; // gray
-$color-10: #aaaaaa; // gray
-$color-11: #f0a06a; // orange
-$color-12: #5e6c85; // blue gray
-$color-13: #591818; // red
-$color-14: #266296; // blue
-$color-15: #962626; // red
-$color-16: #ad7337; // orange
-$color-17: #ae973f; // yellow
-$color-18: #4d2e56; // purple
-$color-19: #666666; // gray
-$color-20: #67e5e2; // bright blue
+$color-00: #ededed; // main font
+$color-01: #15212c; // forum headers, footer, img borders, read icon, button hover, rpg icon
+$color-02: #0d171b; // mobile menu, sticky nav, dropdown containers, attachbox, pre/code
+$color-03: #7ea8c2; // main link hover, sub-headers, icon-blue
+$color-04: #a4c27e; // main link, icon-green
+$color-05: #1c2f25; // buttons, tabs, rpg icon green, online ribbon, unread icon, poll bar
+$color-06: #333333; // form fields fonts, notice/error font
+$color-07: #fcfcce; // browser upgrade, highlight, notices
+$color-08: #b30832; // notify badge, icon-red
+$color-09: #777777; // search-box icon, icon-gray
+$color-10: #aaaaaa; // disabled form field, search-box icon hover
+$color-11: #f0a06a; // icon-orange, star topic icon
+$color-12: #5e6c85; // icon-bluegray
+$color-13: #591818; // rpg icon red, hot icon
+$color-14: #266296; // half-breed chart check, mp bar
+$color-15: #962626; // half-breed chart remove, hp bar
+$color-16: #ad7337; // rpg icon orange
+$color-17: #ae973f; // rpg icon yellow
+$color-18: #4d2e56; // rpg icon purple
+$color-19: #666666; // print.css main color
+$color-20: #67e5e2; // topic mention, user colors
 
 // White Colors
 // ============================================== //
@@ -39,7 +39,7 @@ $white-07: #ffffff; // mobile menu text
 // ============================================== //
 
 $black-00: #000000; // rgb and mixes
-$black-01: #000000; // form fields
+$black-01: #000000; // field placeholder
 $black-02: #000000; // color palette table
 $black-03: #000000; // print body color
 
@@ -71,20 +71,19 @@ $dark-rgb-14: rgba($black-00, 0.75); // header dark text shadow
 // ============================================== //
 
 $other-rgb-00: rgba($color-02, 0.75); // navbar
-$other-rgb-01: rgba($color-02, 1.00); // sticky nav
 
 // Light Mixes
 // ============================================== //
 
-$light-mix-01: mix($white-00, $color-01, 05.00%); // very dark blue
-$light-mix-02: mix($white-00, $color-03, 60.00%); // blue
-$light-mix-03: mix($white-00, $color-05, 05.00%); // dark green
-$light-mix-04: mix($white-00, $color-05, 10.00%); // dark green
-$light-mix-05: mix($white-00, $color-08, 80.00%); // red
-$light-mix-06: mix($white-00, $color-16, 05.00%); // orange
-$light-mix-07: mix($white-00, $color-13, 05.00%); // red
-$light-mix-08: mix($white-00, $color-18, 05.00%); // purple
-$light-mix-09: mix($white-00, $color-17, 05.00%); // yellow
+$light-mix-01: mix($white-00, $color-01, 05.00%); // rpg icon border, read icon border
+$light-mix-02: mix($white-00, $color-03, 60.00%); // question icon, unapproved, post-blue, rules
+$light-mix-03: mix($white-00, $color-05, 05.00%); // rpg icon green border, unread icon border
+$light-mix-04: mix($white-00, $color-05, 10.00%); // pollbar
+$light-mix-05: mix($white-00, $color-08, 80.00%); // exclamation icon, reported, post-red
+$light-mix-06: mix($white-00, $color-16, 05.00%); // rpg icon orange border
+$light-mix-07: mix($white-00, $color-13, 05.00%); // rpg icon red border, hot icon border
+$light-mix-08: mix($white-00, $color-18, 05.00%); // rpg icon purple border
+$light-mix-09: mix($white-00, $color-17, 05.00%); // rpg icon yellow border
 
 // Dark Mixes
 // ============================================== //
