@@ -32,7 +32,7 @@ input[type='text']:not(.browser-default):focus:not([readonly]) + label, .wdt-emo
 }
 
 nav, nav a, #footercontainer #curuser_name, #footercontainer #visitor_mode_message {
-	color: $white-01;
+	color: $light-01;
 }
 
 /* Resets
@@ -83,7 +83,7 @@ textarea.materialize-textarea, input[type='text'], input[type='text']:not(.brows
 }
 
 textarea.materialize-textarea, input[type='text'], input[type='text']:not(.browser-default), #wdt-emoji-search, #wdt-emoji-search:focus {
-	background: $white-04;
+	background: $light-04;
 	color: $color-06;
 	width: 100%;
 	box-sizing: border-box;
@@ -104,7 +104,7 @@ input[type='text'] {
 		box-shadow: none;
 	}
 	&:disabled, &:not(.browser-default):disabled {
-		color: $dark-mix-08;
+		color: map-get($color-set-10, dark-00);
 		background: $color-10;
 		& + label {
 			color: $color-10;
@@ -114,7 +114,7 @@ input[type='text'] {
 
 input[type='radio']:not(:checked) + label:before, input[type='checkbox'].filled-in:checked + label:after, input[type='checkbox'].filled-in:not(:checked) + label:after, #messagebox-filemodal {
 	border: 0;
-	background-color: $white-04;
+	background-color: $light-04;
 }
 
 input[type='radio']:not(:checked) + label, input[type='radio']:checked + label, input[type='checkbox'] + label {
@@ -131,7 +131,7 @@ input[type='radio'] {
 	}
 	&:checked  + label:after {
 		background-color: $color-05;
-		border: 3px solid $white-04;
+		border: 3px solid $light-04;
 	}
 }
 
@@ -149,7 +149,7 @@ input[type='checkbox'] {
 }
 
 @include placeholder {
-	color: $black-01;
+	color: $dark-01;
 }
 
 .btn, .btn-large, #logout_btn, #proceed_nsfw_btn {
@@ -312,7 +312,7 @@ input[type='checkbox'] {
 	span.reactions {
 		margin: 0 -2.5px -5px -2.5px;
 		.reaction {
-			background: $dark-rgb-10;
+			background: map-get($dark-set, dark-10);
 			margin: 0 2.5px 5px 2.5px;
 			padding: 5px;
 			height: auto;
@@ -435,7 +435,7 @@ footer {
 	@include position($bottom: 55px, $right: 20px);
 	max-width: 89.2%;
 	color: $color-06;
-	background: $white-04;
+	background: $light-04;
 	overflow: visible;
 	border-radius: 3px;
 	.mention-choice {
@@ -563,7 +563,7 @@ footer {
 	.progress {
 		background-color: $color-05;
 		.determinate {
-			background-color: $light-mix-04;
+			background-color: map-get($color-set-05, light-01);
 		}
 	}
 	#filemodal-body {
@@ -575,7 +575,7 @@ footer {
 		}
 		#messagebox-filemodal {
 			@include placeholder {
-				color: $black-01;
+				color: $dark-01;
 			}
 		}
 	}

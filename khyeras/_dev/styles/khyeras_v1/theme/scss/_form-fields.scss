@@ -2,12 +2,12 @@
 ============================================== */
 
 @include placeholder {
-	color: $black-01;
+	color: $dark-01;
 	@include transition(color 0.3s ease-in-out);
 }
 
 :focus{@include placeholder {
-	color: $black-01;
+	color: $dark-01;
 }}
 
 fieldset {
@@ -33,7 +33,7 @@ fieldset {
 }
 
 .inputbox, textarea, select {
-	background: $white-04;
+	background: $light-04;
 	color: $color-06;
 	width: 100%;
 	padding: 10px;
@@ -92,7 +92,7 @@ button, option {
 
 html input, select, textarea {
 	&[disabled] {
-		color: $dark-mix-08;
+		color: map-get($color-set-10, dark-00);
 		background: $color-10;
 	}
 }
@@ -112,7 +112,7 @@ input[type='search']::-webkit-search-cancel-button {
 .search-box form fieldset {
 	position: relative;
 	padding: 0 75px 0 0;
-	background: $white-04;
+	background: $light-04;
 	border-radius: 3px;
 	input[type='search'] {
 		margin: 0;
@@ -147,14 +147,14 @@ input[type='search']::-webkit-search-cancel-button {
 .button, .button1, .button2 {
 	display: inline-block;
 	background: $color-05;
-	color: $white-05;
+	color: $light-05;
 	text-align: center;
 	@include transition(background 0.3s ease-in-out);
 	padding: 10px 20px;
 	&:hover {
 		background: $color-01;
 		&, .icon {
-			color: $white-05;
+			color: $light-05;
 		}
 	}
 }

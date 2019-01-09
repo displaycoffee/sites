@@ -77,8 +77,8 @@
 	td {
 		@include inline-block(middle);
 		@include sizing(4% !important, auto !important);
-		border-right: 1px solid $black-02;
-		border-bottom: 1px solid $black-02;
+		border-right: 1px solid $dark-02;
+		border-bottom: 1px solid $dark-02;
 		a {
 			@include sizing(100% !important, 0 !important);
 			padding-bottom: 100%;

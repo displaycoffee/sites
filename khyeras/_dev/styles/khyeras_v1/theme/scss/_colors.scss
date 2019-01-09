@@ -2,7 +2,7 @@
 // ============================================== //
 
 $color-00: #ededed; // main font
-$color-01: #15212c; // forum headers, footer, img borders, read icon, button hover, rpg icon
+$color-01: #15212c; // form headers, footer, image borders, read icon, button hover
 $color-02: #0d171b; // mobile menu, sticky nav, dropdown containers, attachbox, pre/code
 $color-03: #7ea8c2; // main link hover, sub-headers, icon-blue
 $color-04: #a4c27e; // main link, icon-green
@@ -15,88 +15,115 @@ $color-10: #aaaaaa; // disabled form field, search-box icon hover
 $color-11: #f0a06a; // icon-orange, star topic icon
 $color-12: #5e6c85; // icon-bluegray
 $color-13: #591818; // rpg icon red, hot icon
-$color-14: #266296; // half-breed chart check, mp bar
-$color-15: #962626; // half-breed chart remove, hp bar
+$color-14: #266296; // half-breed chart check, mp bar inner
+$color-15: #962626; // half-breed chart remove, hp bar inner
 $color-16: #ad7337; // rpg icon orange
 $color-17: #ae973f; // rpg icon yellow
 $color-18: #4d2e56; // rpg icon purple
 $color-19: #666666; // print.css main color
 $color-20: #67e5e2; // topic mention, user colors
 
-// White Colors
+// Color Sets
 // ============================================== //
 
-$white-00: #ffffff; // rgb and mixes
-$white-01: #ffffff; // forum headers, notification headers
-$white-02: #ffffff; // footer
-$white-03: #ffffff; // icons - alert, scroll, forum
-$white-04: #ffffff; // input fields
-$white-05: #ffffff; // button text, badge text, tabs, ribbon text
-$white-06: #ffffff; // header text
-$white-07: #ffffff; // mobile menu text
+$color-light: #ffffff;
+$color-dark: #000000;
 
-// Black Colors
+$color-set-01: (
+	light-00 : mix($color-light, $color-01, 05.00%), // rpg icon border, read icon border
+	dark-00  : mix($color-dark, $color-01, 50.00%) // mobile menu border, sticky logo border
+);
+
+$color-set-02: (
+	rgb-00  : rgba($color-02, 0.75), // navbar
+	dark-00 : mix($color-dark, $color-02, 15.00%) // mobile menu label background
+);
+
+$color-set-03: (
+	light-00 : mix($color-light, $color-03, 60.00%) // question icon, unapproved/post-blue, rules
+);
+
+$color-set-05: (
+	light-00 : mix($color-light, $color-05, 05.00%), // rpg green icon border, unread icon border
+	light-01 : mix($color-light, $color-05, 10.00%), // pollbar5, file progress
+	dark-00  : mix($color-dark, $color-05, 10.00%), // pollbar3
+	dark-01  : mix($color-dark, $color-05, 20.00%), // pollbar2
+	dark-02  : mix($color-dark, $color-05, 30.00%), // pollbar1
+	dark-03  : mix($color-dark, $color-05, 35.00%), // online ribbon shadow
+);
+
+$color-set-07: (
+	dark-00 : mix($color-dark, $color-07, 33.33%) // browser upgrade border
+);
+
+$color-set-08: (
+	light-00 : mix($color-light, $color-08, 80.00%) // register error, exclamation icon, reported/post-red
+);
+
+$color-set-10: (
+	dark-00 : mix($color-dark, $color-10, 40.00%) // disabled field text
+);
+
+$color-set-13: (
+	light-00 : mix($color-light, $color-13, 05.00%) // rpg red icon border, hot icon border
+);
+
+$color-set-14: (
+	dark-00 : mix($color-dark, $color-14, 33.33%), // mp bar border
+	dark-01 : mix($color-dark, $color-14, 50.00%) // mp bar background
+);
+
+$color-set-15: (
+	dark-00 : mix($color-dark, $color-15, 33.33%), // hp bar border
+	dark-01 : mix($color-dark, $color-15, 50.00%) // hp bar background
+);
+
+$color-set-16: (
+	light-00 : mix($color-light, $color-16, 05.00%) // rpg orange icon border
+);
+
+$color-set-17: (
+	light-00 : mix($color-light, $color-17, 05.00%) // rpg yellow icon border
+);
+
+$color-set-18: (
+	light-00 : mix($color-light, $color-18, 05.00%) // rpg purple icon border
+);
+
+// Light Colors
 // ============================================== //
 
-$black-00: #000000; // rgb and mixes
-$black-01: #000000; // field placeholder
-$black-02: #000000; // color palette table
-$black-03: #000000; // print body color
+$light-00: #ffffff; // rgb and mixes
+$light-01: #ffffff; // forum headers, notification headers
+$light-02: #ffffff; // footer
+$light-03: #ffffff; // icons - alert, scroll, forum
+$light-04: #ffffff; // input fields
+$light-05: #ffffff; // button text, badge text, tabs, ribbon text
+$light-06: #ffffff; // header text
+$light-07: #ffffff; // mobile menu text
 
-// Light RGB
+// Dark Colors
 // ============================================== //
 
-$light-rgb-00: rgba($white-00, 0.00); // webkit highlight
+$dark-00: #000000; // rgb and mixes
+$dark-01: #000000; // field placeholder
+$dark-02: #000000; // color palette table
+$dark-03: #000000; // print body color
 
-// Dark RGB
-// ============================================== //
-
-$dark-rgb-00: rgba($black-00, 0.15); // cp avatar shadow, cp ribbon shadow
-$dark-rgb-01: rgba($black-00, 0.20); // main box background
-$dark-rgb-03: rgba($black-00, 0.20); // cp postbody, attachbox, pre/code, big-column
-$dark-rgb-04: rgba($black-00, 0.25); // stick nav shadow
-$dark-rgb-05: rgba($black-00, 0.25); // avatar shadow, ribbon shadow
-$dark-rgb-06: rgba($black-00, 0.30); // divider shadow
-$dark-rgb-07: rgba($black-00, 0.30); // main box border
-$dark-rgb-08: rgba($black-00, 0.35); // mobile menu shadow
-$dark-rgb-09: rgba($black-00, 0.40); // stat bar box shadow
-$dark-rgb-10: rgba($black-00, 0.40); // stat bar text shadow
-$dark-rgb-10: rgba($black-00, 0.50); // darken overlay, discord reactions
-$dark-rgb-11: rgba($black-00, 0.60); // featured overlay, black-bar, banner-content
-$dark-rgb-12: rgba($black-00, 0.65); // header text shadow
-$dark-rgb-13: rgba($black-00, 0.65); // loading indicator
-$dark-rgb-14: rgba($black-00, 0.75); // header dark text shadow
-
-// Other RGB
-// ============================================== //
-
-$other-rgb-00: rgba($color-02, 0.75); // navbar
-
-// Light Mixes
-// ============================================== //
-
-$light-mix-01: mix($white-00, $color-01, 05.00%); // rpg icon border, read icon border
-$light-mix-02: mix($white-00, $color-03, 60.00%); // question icon, unapproved, post-blue, rules
-$light-mix-03: mix($white-00, $color-05, 05.00%); // rpg icon green border, unread icon border
-$light-mix-04: mix($white-00, $color-05, 10.00%); // pollbar
-$light-mix-05: mix($white-00, $color-08, 80.00%); // exclamation icon, reported, post-red
-$light-mix-06: mix($white-00, $color-16, 05.00%); // rpg icon orange border
-$light-mix-07: mix($white-00, $color-13, 05.00%); // rpg icon red border, hot icon border
-$light-mix-08: mix($white-00, $color-18, 05.00%); // rpg icon purple border
-$light-mix-09: mix($white-00, $color-17, 05.00%); // rpg icon yellow border
-
-// Dark Mixes
-// ============================================== //
-
-$dark-mix-01: mix($black-00, $color-01, 50.00%); // very dark blue
-$dark-mix-02: mix($black-00, $color-02, 15.00%); // very dark blue
-$dark-mix-03: mix($black-00, $color-05, 10.00%); // dark green
-$dark-mix-04: mix($black-00, $color-05, 20.00%); // dark green
-$dark-mix-05: mix($black-00, $color-05, 30.00%); // dark green
-$dark-mix-06: mix($black-00, $color-05, 35.00%); // dark green
-$dark-mix-07: mix($black-00, $color-07, 33.33%); // pale yellow
-$dark-mix-08: mix($black-00, $color-10, 40.00%); // gray mix
-$dark-mix-09: mix($black-00, $color-14, 33.33%); // blue
-$dark-mix-10: mix($black-00, $color-14, 50.00%); // blue
-$dark-mix-11: mix($black-00, $color-15, 33.33%); // red
-$dark-mix-12: mix($black-00, $color-15, 50.00%); // red
+$dark-set: (
+	dark-00 : rgba($dark-00, 0.15), // cp avatar shadow, cp ribbon shadow
+	dark-01 : rgba($dark-00, 0.20), // main box background
+	dark-02 : rgba($dark-00, 0.20), // cp postbody, attachbox, pre/code, big-column
+	dark-03 : rgba($dark-00, 0.25), // stick nav shadow
+	dark-04 : rgba($dark-00, 0.25), // avatar shadow, ribbon shadow
+	dark-05 : rgba($dark-00, 0.30), // divider shadow
+	dark-06 : rgba($dark-00, 0.30), // main box border
+	dark-07 : rgba($dark-00, 0.35), // mobile menu shadow
+	dark-08 : rgba($dark-00, 0.40), // stat bar box shadow
+	dark-09 : rgba($dark-00, 0.40), // stat bar text shadow
+	dark-10 : rgba($dark-00, 0.50), // darken overlay, discord reactions
+	dark-11 : rgba($dark-00, 0.60), // featured overlay, black-bar, banner-content
+	dark-12 : rgba($dark-00, 0.65), // header text shadow
+	dark-13 : rgba($dark-00, 0.65), // loading indicator
+	dark-14 : rgba($dark-00, 0.75) // header dark text shadow
+);

@@ -7,7 +7,7 @@
 	padding: 150px 0 0 0;
 	.footer-inner {
 		background: $color-01;
-		color: $white-02;
+		color: $light-02;
 		padding: 0 0 30px 0;
 		margin: 20px 0 0 0;
 		.footer-text {
@@ -54,7 +54,7 @@
 
 .darkenwrapper .darken, #mobile-overlay {
 	@include position($type: fixed, $top: 0, $bottom: 0, $left: 0, $right: 0, $z: 1000);
-	background: $dark-rgb-10;
+	background: map-get($dark-set, dark-10);
 	margin: auto;
 }
 
@@ -79,7 +79,7 @@
 		background: $color-02;
 		border-radius: 100%;
 		text-align: center;
-		color: $white-03;
+		color: $light-03;
 		.icon {
 			line-height: 24px;
 		}
@@ -116,7 +116,7 @@
 	padding: 10px;
 	text-align: center;
 	&, &:hover {
-		color: $white-03;
+		color: $light-03;
 	}
 	&.scroll-to-visible {
 		z-index: 999;

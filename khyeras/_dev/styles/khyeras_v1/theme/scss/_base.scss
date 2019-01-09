@@ -15,7 +15,7 @@ html, body {
 body {
 	height: 100%;
 	-webkit-print-color-adjust: exact;
-	-webkit-tap-highlight-color: $light-rgb-00;
+	-webkit-tap-highlight-color: rgba($light-00, 0.00);
 	backface-visibility: hidden;
 	background: url($images + 'background.png') 0 0 repeat;
 }
@@ -101,7 +101,7 @@ pre code, code pre {
 		margin: 0;
 		padding: 10px 20px;
 		background: $color-01;
-		color: $white-01;
+		color: $light-01;
 	}
 }
 

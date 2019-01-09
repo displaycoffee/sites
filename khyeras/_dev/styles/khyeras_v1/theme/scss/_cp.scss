@@ -72,7 +72,7 @@
 		margin: 0 0 20px 0;
 	}
 	.postbody .attachbox, pre, code {
-		background: $dark-rgb-03;
+		background: map-get($dark-set, dark-02);
 	}
 	pre code, code pre {
 		background: none;
@@ -142,7 +142,7 @@
 		&:before, &:after {
 			display: block;
 			background: $color-01;
-			color: $white-01;
+			color: $light-01;
 			padding: 10px 20px;
 			box-sizing: border-box;
 		}
@@ -317,7 +317,7 @@
 
 .section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
 
-	background: $dark-rgb-03;
+	background: map-get($dark-set, dark-02);
 	border-bottom-style: solid;
 	border-top: 1px solid $color-01;
 	td {
@@ -355,7 +355,7 @@
 		font-weight: normal;
 		padding: 10px;
 		border-radius: 3px;
-		background: $light-mix-05;
+		background: map-get($color-set-08, light-00);
 		&, a {
 			color: $color-06
 		}
