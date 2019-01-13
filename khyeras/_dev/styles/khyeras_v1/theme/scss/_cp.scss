@@ -355,7 +355,7 @@
 		font-weight: normal;
 		padding: 10px;
 		border-radius: 3px;
-		background: map-get($color-set-08, light-00);
+		background: map-get($color-set-08, light-01);
 		&, a {
 			color: $color-06
 		}
@@ -427,7 +427,7 @@
 		background: $color-03;
 	}
 	&.pm_friend_colour .imageset {
-		background: $color-11;
+		background: $color-12;
 	}
 	&.pm_foe_colour .imageset {
 		background: $color-08;
@@ -570,7 +570,7 @@
 		}
 		&.pm_friend_colour dl {
 			&:before, &:after {
-				background: $color-11;
+				background: $color-12;
 			}
 		}
 		&.pm_foe_colour dl {

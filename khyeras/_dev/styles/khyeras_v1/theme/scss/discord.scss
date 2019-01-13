@@ -104,10 +104,10 @@ input[type='text'] {
 		box-shadow: none;
 	}
 	&:disabled, &:not(.browser-default):disabled {
-		color: map-get($color-set-10, dark-00);
-		background: $color-10;
+		color: map-get($color-set-11, dark-00);
+		background: $color-11;
 		& + label {
-			color: $color-10;
+			color: $color-11;
 		}
 	}
 }
@@ -312,7 +312,7 @@ input[type='checkbox'] {
 	span.reactions {
 		margin: 0 -2.5px -5px -2.5px;
 		.reaction {
-			background: map-get($dark-set, dark-10);
+			background: map-get($dark-set, dark-09);
 			margin: 0 2.5px 5px 2.5px;
 			padding: 5px;
 			height: auto;

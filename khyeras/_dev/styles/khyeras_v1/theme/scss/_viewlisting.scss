@@ -75,7 +75,7 @@
 					text-align: center;
 				}
 				&.fa-exclamation {
-					background: map-get($color-set-08, light-00);
+					background: map-get($color-set-08, light-01);
 				}
 				&.fa-question {
 					background: map-get($color-set-03, light-00);
@@ -168,8 +168,8 @@
 			}
 		}
 		&[class*='hot'] dt:before {
-			background: $color-13;
-			border: 1px solid map-get($color-set-13, light-00);
+			background: $color-08;
+			border: 1px solid map-get($color-set-08, light-00);
 		}
 		&[class*='unread'] dt:before {
 			background: $color-05;
@@ -179,7 +179,7 @@
 			@include position($type: absolute, $top: 0, $left: 10px, $z: 3);
 			@include icon-font;
 			content: unicode($icon-star);
-			color: $color-11;
+			color: $color-12;
 		}
 	}
 	.forum_link, .topic_moved {

@@ -86,14 +86,14 @@ button, html input, option, select, textarea {
 
 button, option {
 	&[disabled] {
-		color: $color-10;
+		color: $color-11;
 	}
 }
 
 html input, select, textarea {
 	&[disabled] {
-		color: map-get($color-set-10, dark-00);
-		background: $color-10;
+		color: map-get($color-set-11, dark-00);
+		background: $color-11;
 	}
 }
 
@@ -129,11 +129,11 @@ input[type='search']::-webkit-search-cancel-button {
 			width: auto;
 			font-size: inherit;
 			line-height: 0;
-			color: $color-09;
+			color: $color-10;
 			@include transition(color 0.3s ease-in-out);
 		}
 		&:hover .icon {
-			color: $color-10;
+			color: $color-11;
 		}
 	}
 	button.button {

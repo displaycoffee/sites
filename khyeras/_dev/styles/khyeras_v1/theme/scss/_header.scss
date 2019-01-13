@@ -39,18 +39,18 @@
 				font-family: $font-03;
 				font-size: rem(100px);
 				font-variant: normal;
-				text-shadow: 2px 2px 0 map-get($dark-set, dark-12);
+				text-shadow: 2px 2px 0 map-get($dark-set, dark-11);
 			}
 			h3 {
 				font-family: $font-02;
 				font-size: rem(28px);
-				text-shadow: 2px 1px 0 map-get($dark-set, dark-12), 2px 1px 5px map-get($dark-set, dark-14);
+				text-shadow: 2px 1px 0 map-get($dark-set, dark-11), 2px 1px 5px map-get($dark-set, dark-13);
 				letter-spacing: 2px;
 			}
 		}
 		.site-quotes {
 			font-family: $font-02;
-			text-shadow: 1px 1px 0 map-get($dark-set, dark-12), 1px 1px 5px map-get($dark-set, dark-14);
+			text-shadow: 1px 1px 0 map-get($dark-set, dark-11), 1px 1px 5px map-get($dark-set, dark-13);
 			font-size: rem($global-font-size);
 			p {
 				margin: 0 0 10px 0;
@@ -112,8 +112,8 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		@include flex-flow(row wrap);
 		align-items: center;
 	}
-	a {
-		color: $color-00;
+	a, .icon.fa-chevron-down {
+		color: map-get($color-set-00, light-00);
 	}
 	a, .icon.fa-chevron-down {
 		&:hover {
@@ -448,7 +448,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 				height: 30px;
 				line-height: 30px;
 				@include ellipsis;
-				background: map-get($dark-set, dark-11);
+				background: map-get($dark-set, dark-10);
 				text-align: center;
 			}
 			.featured-details {
@@ -506,7 +506,6 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 	@include transition(left 0.3s ease-in-out);
 	&.show {
 		left: 0;
-		box-shadow: 7px 0 5px -2px map-get($dark-set, dark-07);
 	}
 	&, a {
 		color: $light-07;

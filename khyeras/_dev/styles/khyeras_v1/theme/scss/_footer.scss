@@ -54,7 +54,7 @@
 
 .darkenwrapper .darken, #mobile-overlay {
 	@include position($type: fixed, $top: 0, $bottom: 0, $left: 0, $right: 0, $z: 1000);
-	background: map-get($dark-set, dark-10);
+	background: map-get($dark-set, dark-09);
 	margin: auto;
 }
 
