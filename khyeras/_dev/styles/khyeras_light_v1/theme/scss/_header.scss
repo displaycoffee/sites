@@ -25,7 +25,7 @@
 		height: 100%;
 		@include position($type: relative, $z: 2);
 		&, a {
-			color: $white-06;
+			color: $light-06;
 		}
 		.site-description, .site-quotes {
 			@include flex(base);
@@ -39,18 +39,18 @@
 				font-family: $font-03;
 				font-size: rem(100px);
 				font-variant: normal;
-				text-shadow: 2px 2px 0 $dark-rgb-12;
+				text-shadow: 2px 2px 0 map-get($dark-set, dark-11);
 			}
 			h3 {
 				font-family: $font-02;
 				font-size: rem(28px);
-				text-shadow: 2px 1px 0 $dark-rgb-12, 2px 1px 5px $dark-rgb-14;
+				text-shadow: 2px 1px 0 map-get($dark-set, dark-11), 2px 1px 5px map-get($dark-set, dark-13);
 				letter-spacing: 2px;
 			}
 		}
 		.site-quotes {
 			font-family: $font-02;
-			text-shadow: 1px 1px 0 $dark-rgb-12, 1px 1px 5px $dark-rgb-14;
+			text-shadow: 1px 1px 0 map-get($dark-set, dark-11), 1px 1px 5px map-get($dark-set, dark-13);
 			font-size: rem($global-font-size);
 			p {
 				margin: 0 0 10px 0;
@@ -83,9 +83,9 @@
 			&:before {
 				content: '';
 				display: block;
-				background: $white-06;
+				background: $light-06;
 				@include sizing(100%, 100%);
-				box-shadow: 1px 1px 0 0 $dark-rgb-06;
+				box-shadow: 1px 1px 0 0 map-get($dark-set, dark-05);
 			}
 		}
 	}
@@ -103,7 +103,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 ============================================== */
 
 .navbar {
-	background: $other-rgb-00;
+	background: map-get($color-set-02, rgb-00);
 	border-bottom: 1px solid $color-01;
 	@include position($type: fixed, $top: 0, $right: 0, $left: 0, $z: 999);
 	text-align: center;
@@ -112,8 +112,8 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		@include flex-flow(row wrap);
 		align-items: center;
 	}
-	a {
-		color: $color-00;
+	a, .icon.fa-chevron-down {
+		color: map-get($color-set-00, light-00);
 	}
 	a, .icon.fa-chevron-down {
 		&:hover {
@@ -169,8 +169,8 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		}
 	}
 	&.sticky {
-		background: $other-rgb-01;
-		box-shadow: 0 4px 8px 0 $dark-rgb-04;
+		background: $color-02;
+		box-shadow: 0 4px 8px 0 map-get($dark-set, dark-03);
 		.site-logo-text {
 			margin: 0 20px 0 0;
 			@include toggle-content(show);
@@ -259,7 +259,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		background: $color-01;
 		font-size: rem(15px);
 		&, a {
-			color: $white-01;
+			color: $light-01;
 		}
 		a:hover {
 			color: $color-03;
@@ -408,7 +408,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 }
 
 .badge, a:hover .badge {
-	color: $white-05;
+	color: $light-05;
 }
 
 /* Featured Content
@@ -431,7 +431,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 			margin: 0 0 10px 0;
 			a {
 				display: block;
-				border: 10px solid $dark-rgb-07;
+				border: 10px solid map-get($dark-set, dark-06);
 				overflow: hidden;
 				color: $color-00;
 				&:hover {
@@ -448,7 +448,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 				height: 30px;
 				line-height: 30px;
 				@include ellipsis;
-				background: $dark-rgb-11;
+				background: map-get($dark-set, dark-10);
 				text-align: center;
 			}
 			.featured-details {
@@ -500,16 +500,15 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 
 #mobile-menu {
 	background: $color-02;
-	border-right: 1px solid $dark-mix-01;
+	border-right: 1px solid map-get($color-set-01, dark-00);
 	@include position($type: fixed, $top: 0, $left: -($mobile-menu-width + 300), $z: 9999);
 	@include sizing($mobile-menu-width, 100%);
 	@include transition(left 0.3s ease-in-out);
 	&.show {
 		left: 0;
-		box-shadow: 7px 0 5px -2px $dark-rgb-08;
 	}
 	&, a {
-		color: $white-07;
+		color: $light-07;
 	}
 	&, ul {
 		font-size: rem(16px);
@@ -525,7 +524,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 	}
 	.menu .menu-label, .menu .dropdown-contents li, .menu .dropdown-contents > div {
 		border-top: 1px solid $color-01;
-		border-bottom: 1px solid $dark-mix-01;
+		border-bottom: 1px solid map-get($color-set-01, dark-00);
 	}
 	.mobile-menu-header .fa-times, .menu .menu-label .fa-chevron-down {
 		@include sizing(44px, 44px);
@@ -537,7 +536,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		cursor: pointer;
 	}
 	.mobile-menu-header {
-		border-bottom: 1px solid $dark-mix-01;
+		border-bottom: 1px solid map-get($color-set-01, dark-00);
 		.mobile-header {
 			font-size: rem(24px);
 			@include spectral-common;
@@ -576,7 +575,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		.dropdown-visible {
 			.menu-label {
 				font-weight: bold;
-				background: $dark-mix-02;
+				background: map-get($color-set-02, dark-00);
 				.fa-chevron-down {
 					transform: rotate(-180deg);
 				}

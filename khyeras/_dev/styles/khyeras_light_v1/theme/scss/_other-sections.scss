@@ -82,7 +82,7 @@ dl.faq {
 
 #memberlist_search {
 	h2, #search_memberlist {
-		background: $dark-rgb-01;
+		background: map-get($dark-set, dark-01);
 	}
 	h2 {
 		margin: 1px 1px 0 1px;
@@ -331,10 +331,13 @@ dl.faq {
 				padding: 10px 20px;
 			}
 			&.chart-check .chart-data-wrap {
-				background: $color-14;
+				background: $color-09;
 			}
 			&.chart-remove .chart-data-wrap {
-				background: $color-15;
+				background: $color-08;
+			}
+			.chart-label, .icon {
+				color: $light-03;
 			}
 			.chart-label {
 				display: block;
@@ -368,7 +371,7 @@ dl.faq {
 		}
 	}
 	.banner-content {
-		background: $dark-rgb-11;
+		background: map-get($dark-set, dark-10);
 		padding: 20px;
 		@include position($type: absolute, $bottom: 0, $left: 0, $right: 0);
 		.main-title, .sub-title {

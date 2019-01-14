@@ -61,17 +61,17 @@
 	.post-notice {
 		background: $color-07;
 		&.reported, &.post-red {
-			background: $light-mix-05;
+			background: map-get($color-set-08, light-00);
 		}
 		&.unapproved, &.post-blue {
-			background: $light-mix-02;
+			background: map-get($color-set-03, light-00);
 			.icon-red {
 				color: $color-03;
 			}
 		}
 	}
 	.rules {
-		background: $light-mix-02;
+		background: map-get($color-set-03, light-00);
 		font-size: rem(13px);
 		&:before {
 			content: 'Rules: ';
@@ -243,7 +243,7 @@
 			@include flex(full);
 			order: 1;
 			background: $color-01;
-			color: $white-01;
+			color: $light-01;
 			padding: 10px 20px;
 			margin: -20px -20px 20px -20px;
 			min-width: 1px;
@@ -314,6 +314,7 @@ fieldset.polls {
 				padding: 0 10px;
 				border-radius: 3px;
 				height: 22px;
+				color: $light-03;
 			}
 			div[style='width:0%;'], div[style='width: 0%;'] {
 				width: 20px !important;
@@ -321,19 +322,19 @@ fieldset.polls {
 				text-align: center;
 			}
 			.pollbar5 {
-				background: $light-mix-04;
+				background: map-get($color-set-05, light-01);
 			}
 			.pollbar4 {
 				background: $color-05;
 			}
 			.pollbar3 {
-				background: $dark-mix-03;
+				background: map-get($color-set-05, dark-00);
 			}
 			.pollbar2 {
-				background: $dark-mix-04;
+				background: map-get($color-set-05, dark-01);
 			}
 			.pollbar1 {
-				background: $dark-mix-05;
+				background: map-get($color-set-05, dark-02);
 			}
 		}
 		.poll_option_percent {

@@ -6,7 +6,7 @@
 	height: 50px;
 	line-height: 50px;
 	padding: 0 20px;
-	background: $dark-rgb-11;
+	background: map-get($dark-set, dark-10);
 }
 
 // Clearfix

@@ -22,7 +22,7 @@ body {
 	font-size: 12pt;
 	line-height: 1.7;
 	font-weight: normal;
-	color: $black-03;
+	color: $dark-03;
 }
 
 h1, h2, h3, h4, h5, h6, p, figure, dl, hr, blockquote, .content, .page-number, .codebox {
@@ -60,13 +60,13 @@ ul, ol {
 a {
 	&, &:link, &:visited, &:active {
 		text-decoration: underline;
-		color: $color-19;
+		color: $color-16;
 	}
 }
 
 hr {
 	border: 0;
-	border-bottom: 1px dashed $color-19;
+	border-bottom: 1px dashed $color-16;
 	background: none;
 	height: 1px;
 }
@@ -105,7 +105,7 @@ blockquote {
 		max-width: none;
 	}
 	cite {
-		border-bottom: 1px solid $color-19;
+		border-bottom: 1px solid $color-16;
 		font-weight: bold;
 		margin: 0 0 10px 0;
 		padding: 0 0 10px 0;
@@ -113,13 +113,13 @@ blockquote {
 }
 
 .codebox {
-	border: 1px solid $color-19;
+	border: 1px solid $color-16;
 	padding: 20px;
 	& > p {
 		font-weight: bold;
 		margin: -10px -20px 20px -20px;
 		padding: 0 10px 10px 20px;
-		border-bottom: 1px solid $color-19;
+		border-bottom: 1px solid $color-16;
 	}
 }
 
@@ -128,7 +128,7 @@ pre code {
 }
 
 #page-header {
-	border-bottom: 1px dashed $color-19;
+	border-bottom: 1px dashed $color-16;
 	margin: 0 0 20px 0;
 	padding: 0 0 20px 0;
 	h1, h2 {
