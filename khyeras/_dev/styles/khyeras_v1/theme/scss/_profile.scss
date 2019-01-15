@@ -108,7 +108,7 @@
 			@include position($type: absolute, $bottom: -8.5px, $left: 0, $right: 0);
 			line-height: 1;
 			text-align: center;
-			text-shadow: 1px 1px 0 map-get($dark-set, dark-08), 2px 2px 0 map-get($dark-set, dark-08);
+			text-shadow: 1px 1px 0 map-get($dark-set, dark-08), 1px 1px 0 map-get($dark-set, dark-08);
 			@include spectral-common;
 		}
 		& + .stat-bar {

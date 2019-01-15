@@ -575,7 +575,6 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		.dropdown-visible {
 			.menu-label {
 				font-weight: bold;
-				background: map-get($color-set-02, dark-00);
 				.fa-chevron-down {
 					transform: rotate(-180deg);
 				}

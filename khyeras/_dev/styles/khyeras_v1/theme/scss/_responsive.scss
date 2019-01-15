@@ -600,7 +600,7 @@
 				&.row-item {
 					padding-left: 0;
 					dt {
-						min-height: ($list-icon-size + 2 + 5);
+						min-height: ($list-icon-size + 5);
 						&:before {
 							position: static;
 							margin: 0 20px 5px 0;
@@ -1745,20 +1745,19 @@
 		}
 	}
 	.rpg-round-icon, .map-round-icon {
-		@include sizing($list-icon-size - 8px, $list-icon-size - 8px);
+		@include sizing($responsive-icon-size, $responsive-icon-size);
 	}
 	.rpg-round-icon {
-		line-height: $list-icon-size - 10px;
+		line-height: $responsive-icon-size;
 		font-size: rem(16px);
 	}
 	.rpg-round-icon-lg {
-		@include sizing($list-icon-lg-size - 12px, $list-icon-lg-size - 12px);
-		line-height: $list-icon-lg-size - 14px;
+		@include sizing($responsive-icon-lg-size, $responsive-icon-lg-size);
+		line-height: $responsive-icon-lg-size;
 		font-size: rem(24px);
 	}
 
 	// viewlisting.scss
-	$responsive-icon-size: $list-icon-size - 8px;
 	.topiclist > li.row dl {
 		dt[style*='images/icons'] {
 			background-position: 56px 1px;
@@ -1767,10 +1766,10 @@
 			@include sizing($responsive-icon-size, $responsive-icon-size);
 		}
 		&.row-item dt {
-			min-height: ($responsive-icon-size + 2 + 5);
+			min-height: ($responsive-icon-size + 5);
 			&:before {
 				margin-right: 10px;
-				line-height: $responsive-icon-size - 2px;
+				line-height: $responsive-icon-size;
 				font-size: rem(16px);
 			}
 		}

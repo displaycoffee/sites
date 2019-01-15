@@ -398,7 +398,7 @@ footer {
 		font-size: inherit;
 	}
 	.wdt-emoji-tab.active {
-		border-bottom-color: #67e5e2;
+		border-bottom-color: $color-17;
 	}
 	span.emoji-outer {
 		@include sizing(16px, 16px);
@@ -563,7 +563,7 @@ footer {
 	.progress {
 		background-color: $color-05;
 		.determinate {
-			background-color: map-get($color-set-05, light-01);
+			background-color: map-get($color-set-05, light-00);
 		}
 	}
 	#filemodal-body {

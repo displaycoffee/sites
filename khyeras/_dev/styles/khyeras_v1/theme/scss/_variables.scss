@@ -38,5 +38,7 @@ $ffs-minus: (20 - $ffs);
 $ffs-half: ($ffs / 2);
 $list-icon-size: 42px;
 $list-icon-lg-size: 62px;
+$responsive-icon-size: $list-icon-size - 10px;
+$responsive-icon-lg-size: $list-icon-lg-size - 10px;
 $main-margin: 30px;
 $mobile-menu-width: 300px;

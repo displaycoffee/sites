@@ -15,10 +15,10 @@ $color-10: #777777; // search-box icon, icon-gray
 $color-11: #aaaaaa; // disabled form field, search-box icon hover
 $color-12: #f19051; // icon-orange, star topic icon, rpg icon orange
 $color-13: #5e6c85; // icon-bluegray
-$color-14: #e8d261; // rpg icon yellow
+$color-14: #d6bf4c; // rpg icon yellow
 $color-15: #4d2e56; // rpg icon purple
 $color-16: #666666; // print.css main color
-$color-17: #67e5e2; // topic mention, user colors
+$color-17: #73abd0; // topic mention, user colors
 
 // Color Sets
 // ============================================== //
@@ -31,22 +31,19 @@ $color-set-00: (
 );
 
 $color-set-01: (
-	light-00 : mix($white, $color-01, 5%), // rpg icon border, read icon border
-	dark-00  : mix($black, $color-01, 50%) // mobile menu border, sticky logo border
+	dark-00 : mix($black, $color-01, 50%) // mobile menu border, sticky logo border
 );
 
 $color-set-02: (
-	rgb-00  : rgba($color-02, .75), // navbar
-	dark-00 : mix($black, $color-02, 15%) // mobile menu label background
+	rgb-00 : rgba($color-02, .75), // navbar
 );
 
 $color-set-03: (
-	light-00 : mix($white, $color-03, 60%) // question icon, unapproved/post-blue, rules
+	light-00 : mix($white, $color-03, 80%) // question icon background, unapproved/post-blue, rules
 );
 
 $color-set-05: (
-	light-00 : mix($white, $color-05, 5%), // rpg green icon border, unread icon border
-	light-01 : mix($white, $color-05, 10%), // pollbar5, file progress
+	light-00 : mix($white, $color-05, 10%), // pollbar5, file progress
 	dark-00  : mix($black, $color-05, 10%), // pollbar3
 	dark-01  : mix($black, $color-05, 20%), // pollbar2
 	dark-02  : mix($black, $color-05, 30%), // pollbar1
@@ -54,22 +51,13 @@ $color-set-05: (
 );
 
 $color-set-07: (
-	dark-00 : mix($black, $color-07, 33.33%) // browser upgrade border
+	dark-00 : mix($black, $color-07, 10%) // browser upgrade border
 );
 
 $color-set-08: (
-	light-00 : mix($white, $color-08, 5%), // rpg red icon border, hot icon border
-	light-01 : mix($white, $color-08, 60%), // register error, exclamation icon, reported/post-red
+	light-00 : mix($white, $color-08, 80%), // register error, exclamation icon bg, reported/post-red
 	dark-00  : mix($black, $color-08, 33.33%), // hp bar border
 	dark-01  : mix($black, $color-08, 50%), // hp bar background
-);
-
-$color-set-11: (
-	dark-00 : mix($black, $color-11, 40%) // disabled field text
-);
-
-$color-set-12: (
-	light-00 : mix($white, $color-12, 5%) // rpg orange icon border
 );
 
 $color-set-09: (
@@ -77,12 +65,8 @@ $color-set-09: (
 	dark-01 : mix($black, $color-09, 50%) // mp bar background
 );
 
-$color-set-14: (
-	light-00 : mix($white, $color-14, 5%) // rpg yellow icon border
-);
-
-$color-set-15: (
-	light-00 : mix($white, $color-15, 5%) // rpg purple icon border
+$color-set-11: (
+	dark-00 : mix($black, $color-11, 40%) // disabled field text
 );
 
 // Light Colors
