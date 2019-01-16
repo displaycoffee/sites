@@ -82,7 +82,7 @@ dl.faq {
 
 #memberlist_search {
 	h2, #search_memberlist {
-		background: map-get($dark-set, dark-01);
+		background: map-get($dark-set, dark-00);
 	}
 	h2 {
 		margin: 1px 1px 0 1px;
@@ -368,7 +368,7 @@ dl.faq {
 		}
 	}
 	.banner-content {
-		background: map-get($dark-set, dark-10);
+		background: map-get($dark-set, dark-07);
 		padding: 20px;
 		@include position($type: absolute, $bottom: 0, $left: 0, $right: 0);
 		.main-title, .sub-title {

@@ -90,18 +90,15 @@ $dark-02: #000000; // color palette table
 $dark-03: #000000; // print body color
 
 $dark-set: (
-	dark-00 : rgba($dark-00, .15), // cp avatar shadow, cp ribbon shadow
-	dark-01 : rgba($dark-00, .20), // main box background
-	dark-02 : rgba($dark-00, .20), // cp postbody, attachbox, pre/code, big-column
-	dark-03 : rgba($dark-00, .25), // stick nav shadow
-	dark-04 : rgba($dark-00, .25), // avatar shadow, ribbon shadow
-	dark-05 : rgba($dark-00, .30), // divider shadow
-	dark-06 : rgba($dark-00, .30), // main box border
-	dark-07 : rgba($dark-00, .40), // stat bar box shadow
-	dark-08 : rgba($dark-00, .40), // stat bar text shadow
-	dark-09 : rgba($dark-00, .50), // darken overlay, discord reactions
-	dark-10 : rgba($dark-00, .60), // featured overlay, black-bar, banner-content
-	dark-11 : rgba($dark-00, .65), // header text shadow
-	dark-12 : rgba($dark-00, .65), // loading indicator
-	dark-13 : rgba($dark-00, .75) // header dark text shadow
+	dark-00 : rgba($dark-00, .20), // main box background
+	dark-01 : rgba($dark-00, .20), // cp postbody, attachbox, pre/code, big-column
+	dark-02 : rgba($dark-00, .30), // divider shadow
+	dark-03 : rgba($dark-00, .30), // main box border
+	dark-04 : rgba($dark-00, .40), // stat bar box shadow
+	dark-05 : rgba($dark-00, .40), // stat bar text shadow
+	dark-06 : rgba($dark-00, .50), // darken overlay, discord reactions
+	dark-07 : rgba($dark-00, .60), // featured overlay, black-bar, banner-content
+	dark-08 : rgba($dark-00, .65), // header text shadow
+	dark-09 : rgba($dark-00, .65), // loading indicator
+	dark-10 : rgba($dark-00, .75) // header dark text shadow
 );

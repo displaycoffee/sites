@@ -205,7 +205,7 @@
 ============================================== */
 
 .loading_indicator {
-	background: map-get($dark-set, dark-12) url($images + 'loading.gif') center center no-repeat;
+	background: map-get($dark-set, dark-09) url($images + 'loading.gif') center center no-repeat;
 	border-radius: 5px;
 	display: none;
 	margin-top: -50px;
@@ -272,9 +272,9 @@
 ============================================== */
 
 .forabg, .forumbg, .post, .panel {
-	border: 20px solid map-get($dark-set, dark-06);
+	border: 20px solid map-get($dark-set, dark-03);
 	.inner {
-		background: map-get($dark-set, dark-01);
+		background: map-get($dark-set, dark-00);
 		margin: 1px;
 		padding: 20px 20px 0 20px;
 	}
@@ -825,7 +825,6 @@ dl.details {
 	border: 5px solid $color-01;
 	border-radius: 100%;
 	overflow: hidden;
-	box-shadow: 0 0 10px 5px map-get($dark-set, dark-04);
 	img {
 		width: 100%;
 	}
@@ -836,10 +835,6 @@ dl.details {
 	height: 0;
 	padding-bottom: calc(100% - 10px);;
 	position: relative;
-}
-
-.pm .postprofile dt.has-avatar .avatar-container > .avatar {
-	box-shadow: 0 0 10px 5px map-get($dark-set, dark-00);
 }
 
 /* Positioned Images

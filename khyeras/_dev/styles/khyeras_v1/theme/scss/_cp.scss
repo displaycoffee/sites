@@ -72,7 +72,7 @@
 		margin: 0 0 20px 0;
 	}
 	.postbody .attachbox, pre, code {
-		background: map-get($dark-set, dark-02);
+		background: map-get($dark-set, dark-01);
 	}
 	pre code, code pre {
 		background: none;
@@ -317,7 +317,7 @@
 
 .section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
 
-	background: map-get($dark-set, dark-02);
+	background: map-get($dark-set, dark-01);
 	border-bottom-style: solid;
 	border-top: 1px solid $color-01;
 	td {

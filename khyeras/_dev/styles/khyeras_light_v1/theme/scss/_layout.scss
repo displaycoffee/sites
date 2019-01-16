@@ -205,7 +205,7 @@
 ============================================== */
 
 .loading_indicator {
-	background: map-get($dark-set, dark-12) url($images + 'loading.gif') center center no-repeat;
+	background: map-get($dark-set, dark-09) url($images + 'loading.gif') center center no-repeat;
 	border-radius: 5px;
 	display: none;
 	margin-top: -50px;
@@ -272,9 +272,9 @@
 ============================================== */
 
 .forabg, .forumbg, .post, .panel {
-	border: 20px solid map-get($dark-set, dark-06);
+	border: 20px solid map-get($dark-set, dark-03);
 	.inner {
-		background: map-get($dark-set, dark-01);
+		background: map-get($dark-set, dark-00);
 		margin: 1px;
 		padding: 20px 20px 0 20px;
 	}
@@ -685,7 +685,7 @@
 				border-radius: 3px 3px 0 0;
 			}
 			& > a:hover, &.activetab > a {
-				background: $color-01;
+				background: $color-03;
 			}
 			&.activetab > a, &.responsive-tab > .responsive-tab-link {
 				padding: 7px 12px;
@@ -760,48 +760,42 @@ dl.details {
 ============================================== */
 
 .rpg-round-icon, .map-round-icon {
-	@include sizing($list-icon-size - 2px, $list-icon-size - 2px);
+	@include sizing($list-icon-size, $list-icon-size);
 	border-radius: 100%;
-	border: 1px solid map-get($color-set-01, light-00);
 	color: $light-03;
 }
 
 .rpg-round-icon {
-	line-height: $list-icon-size - 4px;
+	line-height: $list-icon-size;
 	background: $color-01;
 	font-size: rem(18px);
 	text-align: center;
 }
 
 .rpg-round-icon-lg {
-	@include sizing($list-icon-lg-size - 2px, $list-icon-lg-size - 2px);
-	line-height: $list-icon-lg-size - 4px;
+	@include sizing($list-icon-lg-size, $list-icon-lg-size);
+	line-height: $list-icon-lg-size;
 	font-size: rem(28px);
 }
 
 .rpg-round-icon-green {
 	background: $color-05;
-	border: 1px solid map-get($color-set-05, light-00);
 }
 
 .rpg-round-icon-orange {
 	background: $color-12;
-	border: 1px solid map-get($color-set-12, light-00);
 }
 
 .rpg-round-icon-purple {
 	background: $color-15;
-	border: 1px solid map-get($color-set-15, light-00);
 }
 
 .rpg-round-icon-red {
 	background: $color-08;
-	border: 1px solid map-get($color-set-08, light-00);
 }
 
 .rpg-round-icon-yellow {
 	background: $color-14;
-	border: 1px solid map-get($color-set-14, light-00);
 }
 
 .map-round-icon {
@@ -831,7 +825,6 @@ dl.details {
 	border: 5px solid $color-01;
 	border-radius: 100%;
 	overflow: hidden;
-	box-shadow: 0 0 10px 5px map-get($dark-set, dark-04);
 	img {
 		width: 100%;
 	}
@@ -842,10 +835,6 @@ dl.details {
 	height: 0;
 	padding-bottom: calc(100% - 10px);;
 	position: relative;
-}
-
-.pm .postprofile dt.has-avatar .avatar-container > .avatar {
-	box-shadow: 0 0 10px 5px map-get($dark-set, dark-00);
 }
 
 /* Positioned Images

@@ -39,18 +39,18 @@
 				font-family: $font-03;
 				font-size: rem(100px);
 				font-variant: normal;
-				text-shadow: 2px 2px 0 map-get($dark-set, dark-11);
+				text-shadow: 2px 2px 0 map-get($dark-set, dark-08);
 			}
 			h3 {
 				font-family: $font-02;
 				font-size: rem(28px);
-				text-shadow: 2px 1px 0 map-get($dark-set, dark-11), 2px 1px 5px map-get($dark-set, dark-13);
+				text-shadow: 2px 1px 0 map-get($dark-set, dark-08), 2px 1px 5px map-get($dark-set, dark-10);
 				letter-spacing: 2px;
 			}
 		}
 		.site-quotes {
 			font-family: $font-02;
-			text-shadow: 1px 1px 0 map-get($dark-set, dark-11), 1px 1px 5px map-get($dark-set, dark-13);
+			text-shadow: 1px 1px 0 map-get($dark-set, dark-08), 1px 1px 5px map-get($dark-set, dark-10);
 			font-size: rem($global-font-size);
 			p {
 				margin: 0 0 10px 0;
@@ -85,7 +85,7 @@
 				display: block;
 				background: $light-06;
 				@include sizing(100%, 100%);
-				box-shadow: 1px 1px 0 0 map-get($dark-set, dark-05);
+				box-shadow: 1px 1px 0 0 map-get($dark-set, dark-02);
 			}
 		}
 	}
@@ -170,7 +170,6 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 	}
 	&.sticky {
 		background: $color-02;
-		box-shadow: 0 4px 8px 0 map-get($dark-set, dark-03);
 		.site-logo-text {
 			margin: 0 20px 0 0;
 			@include toggle-content(show);
@@ -431,7 +430,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 			margin: 0 0 10px 0;
 			a {
 				display: block;
-				border: 10px solid map-get($dark-set, dark-06);
+				border: 10px solid map-get($dark-set, dark-03);
 				overflow: hidden;
 				color: $color-00;
 				&:hover {
@@ -448,7 +447,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 				height: 30px;
 				line-height: 30px;
 				@include ellipsis;
-				background: map-get($dark-set, dark-10);
+				background: map-get($dark-set, dark-07);
 				text-align: center;
 			}
 			.featured-details {
@@ -500,7 +499,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 
 #mobile-menu {
 	background: $color-02;
-	border-right: 1px solid map-get($color-set-01, dark-00);
+	border-right: 1px solid $color-01;
 	@include position($type: fixed, $top: 0, $left: -($mobile-menu-width + 300), $z: 9999);
 	@include sizing($mobile-menu-width, 100%);
 	@include transition(left 0.3s ease-in-out);
@@ -575,7 +574,6 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		.dropdown-visible {
 			.menu-label {
 				font-weight: bold;
-				background: map-get($color-set-02, dark-00);
 				.fa-chevron-down {
 					transform: rotate(-180deg);
 				}

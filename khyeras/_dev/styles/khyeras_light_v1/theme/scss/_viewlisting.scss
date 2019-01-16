@@ -75,7 +75,7 @@
 					text-align: center;
 				}
 				&.fa-exclamation {
-					background: map-get($color-set-08, light-01);
+					background: map-get($color-set-08, light-00);
 				}
 				&.fa-question {
 					background: map-get($color-set-03, light-00);
@@ -157,23 +157,20 @@
 			dt:before {
 				z-index: 2;
 				box-sizing: border-box;
-				line-height: $list-icon-size - 2px;
+				line-height: $list-icon-size;
 				@include icon-font($family: game, $fs: false, $lh: false);
 				color: $light-03;
 				font-size: rem(24px);
 				text-align: center;
 				background: $color-01;
-				border: 1px solid map-get($color-set-01, light-00);
 				border-radius: 100%;
 			}
 		}
 		&[class*='hot'] dt:before {
 			background: $color-08;
-			border: 1px solid map-get($color-set-08, light-00);
 		}
 		&[class*='unread'] dt:before {
 			background: $color-05;
-			border: 1px solid map-get($color-set-05, light-00);
 		}
 		&[class*='mine'] dt:after {
 			@include position($type: absolute, $top: 0, $left: 10px, $z: 3);

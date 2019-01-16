@@ -312,7 +312,7 @@ input[type='checkbox'] {
 	span.reactions {
 		margin: 0 -2.5px -5px -2.5px;
 		.reaction {
-			background: map-get($dark-set, dark-09);
+			background: map-get($dark-set, dark-06);
 			margin: 0 2.5px 5px 2.5px;
 			padding: 5px;
 			height: auto;
@@ -398,7 +398,7 @@ footer {
 		font-size: inherit;
 	}
 	.wdt-emoji-tab.active {
-		border-bottom-color: #67e5e2;
+		border-bottom-color: $color-17;
 	}
 	span.emoji-outer {
 		@include sizing(16px, 16px);
@@ -563,7 +563,7 @@ footer {
 	.progress {
 		background-color: $color-05;
 		.determinate {
-			background-color: map-get($color-set-05, light-01);
+			background-color: map-get($color-set-05, light-00);
 		}
 	}
 	#filemodal-body {

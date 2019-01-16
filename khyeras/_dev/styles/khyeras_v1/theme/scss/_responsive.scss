@@ -289,6 +289,9 @@
 			position: relative;
 		}
 		.menu {
+			.dropdown {
+				margin: 0 -1px !important;
+			}
 			.dropdown-container {
 				position: static;
 			}
@@ -663,7 +666,6 @@
 							border-radius: 0;
 							border: 0;
 							background-position: center bottom;
-							box-shadow: none;
 							img {
 								display: none;
 							}
@@ -942,7 +944,6 @@
 			background-position: center top;
 			border-radius: 0;
 			border-width: 2px;
-			box-shadow: none;
 			padding-bottom: 0;
 			&[style*='sorcerer'], &[style*='summoner'], &[style*='bard'] {
 				background-position: center -50px;
