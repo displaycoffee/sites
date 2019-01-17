@@ -56,6 +56,9 @@ jQuery( document ).ready( function( $ ) {
 		scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 	}
 
+	// Start the discord list build
+	initializeDiscordList();
+
 	// Start navigation dropdown menus
 	initializeDropdownMenu( '.menu-trigger', '.menu > li' );
 

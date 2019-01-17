@@ -29,17 +29,19 @@
 				}
 			}
 		}
-		.discord-intro .icon {
-			font-size: rem(20px);
-			margin: 0 10px 0 0;
-		}
-		#discord-frame {
-			position: relative;
-			height: 450px;
-			overflow: hidden;
-			border: 10px solid $color-02;
-			iframe {
-				@include sizing(100%, 100%);
+		.discord-channel-status {
+			.discord-channel-list {
+				list-style: none;
+				margin: 0 0 20px 0;
+				li {
+					@include inline-block(top);
+					.image-wrap {
+						display: inline-block;
+						@include sizing(30px, 30px);
+						border-radius: 100%;
+						border: 2px solid $color-02;
+					}
+				}
 			}
 		}
 	}

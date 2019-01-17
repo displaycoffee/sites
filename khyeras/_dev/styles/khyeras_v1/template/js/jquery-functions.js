@@ -249,6 +249,54 @@ function scrollOnPage( selector, distance, position ) {
 	}
 }
 
+// Build discord list display
+function initializeDiscordList() {
+	var discordList = jQuery( '.discord-channel-status .discord-channel-list' );
+	var noUsersHtml = '<li>There\'s no one online right now. :( Check back later.</li>';
+
+	var discordWidget = jQuery.ajax({
+		type: 'GET',
+		url: 'https://discordapp.com/api/guilds/482924002411806732/widget.json',
+		dataType: 'json'
+	});
+
+	discordWidget.done( function( data ) {
+		var test = data['members'];
+		var members = data['members'];
+		//var members = test.concat(test, test, test, test, test, test, test, test, test, test, test)
+
+		if ( members ) {
+			var totalMembers = members.length;
+			var membersLimit = 12;
+
+			for ( var i = 0; i < totalMembers; i++ ) {
+				if ( i == membersLimit ) {
+					break;
+				}
+
+				var current = members[i];
+
+				var memberImage = '<span class="image-wrap"><img src="//cdn.discordapp.com/avatars/' + current['id'] + '/' + current['avatar'] + '.jpg" alt="' + current['username'] + '" class="discord-avatar user-avatar" /></span>';
+				var memberName = '<span class="discord-user">' + current['username'] + '</span>'
+				var memberHTML = '<li class="discord-status-' + current['status'] + '">' + memberImage + memberName + '</li>';
+
+				discordList.append( memberHTML );
+			}
+
+			// If there are more than the user limit, add invite link
+			if ( members.length > membersLimit ) {
+				discordList.append( '<li class="discord-more-users"><a href="//discord.gg/MXtzbmw">...more users online</a></li>' );
+			}
+		} else {
+			discordList.append( noUsersHtml );
+		}
+	});
+
+	discordWidget.fail( function() {
+		discordList.append( noUsersHtml );
+	});
+}
+
 // Create dropdown toggle for main nav menu
 // This works differently from phpbb dropdown for desktop / mobile purposes
 function initializeDropdownMenu( menuTrigger, menuLinks ) {
