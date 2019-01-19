@@ -261,31 +261,50 @@ function initializeDiscordList() {
 	});
 
 	discordWidget.done( function( data ) {
-		var test = data['members'];
+		// List of members, admins, and moderators
 		var members = data['members'];
-		//var members = test.concat(test, test, test, test, test, test, test, test, test, test, test)
+		var admins = [ 'displaycoffee' ];
+		var moderators = [];
 
 		if ( members ) {
 			var totalMembers = members.length;
-			var membersLimit = 12;
+			var membersLimit = 11;
 
 			for ( var i = 0; i < totalMembers; i++ ) {
+				// Break if limit has been reached
 				if ( i == membersLimit ) {
 					break;
 				}
 
+				// Current member data
 				var current = members[i];
 
-				var memberImage = '<span class="image-wrap"><img src="//cdn.discordapp.com/avatars/' + current['id'] + '/' + current['avatar'] + '.jpg" alt="' + current['username'] + '" class="discord-avatar user-avatar" /></span>';
-				var memberName = '<span class="discord-user">' + current['username'] + '</span>'
-				var memberHTML = '<li class="discord-status-' + current['status'] + '">' + memberImage + memberName + '</li>';
+				// Set special user class
+				if ( admins.indexOf( current['username'] ) > -1 ) {
+					var discordClass = 'discord-admin';
+				} else if ( moderators.indexOf( current['username'] ) > -1 ) {
+					var discordClass = 'discord-moderator';
+				} else {
+					var discordClass = 'discord-user';
+				}
+
+				// Set image url
+				if ( current['avatar'] ) {
+					var imageUrl = '//cdn.discordapp.com/avatars/' + current['id'] + '/' + current['avatar'] + '.jpg';
+				} else {
+					var imageUrl = './styles/khyeras_v1/theme/images/no_avatar.gif'
+				}
+
+				var memberImage = '<span class="discord-avatar image-wrap"><img src="' + imageUrl + '" class="user-avatar" /></span>';
+				var memberName = '<span class="discord-username">' + current['username'] + '</span>'
+				var memberHTML = '<li class="' + discordClass + ' discord-status-' + current['status'] + '">' + memberImage + memberName + '</li>';
 
 				discordList.append( memberHTML );
 			}
 
 			// If there are more than the user limit, add invite link
 			if ( members.length > membersLimit ) {
-				discordList.append( '<li class="discord-more-users"><a href="//discord.gg/MXtzbmw">...more users online</a></li>' );
+				discordList.append( '<li class="discord-more-users"><a href="//discord.gg/MXtzbmw" target="_blank">...more users online</a></li>' );
 			}
 		} else {
 			discordList.append( noUsersHtml );

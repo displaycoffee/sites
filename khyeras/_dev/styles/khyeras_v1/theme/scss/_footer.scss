@@ -29,18 +29,49 @@
 				}
 			}
 		}
+		.contact-icons a {
+			color: $light-03;
+			&:hover {
+				color: $color-03;
+			}
+			.contact-icon:before {
+				font-size: rem(25px);
+			}
+		}
 		.discord-channel-status {
 			.discord-channel-list {
 				list-style: none;
-				margin: 0 0 20px 0;
+				margin: 0 -5px 10px -5px;
 				li {
-					@include inline-block(top);
-					.image-wrap {
+					vertical-align: top;
+					margin: 0 5px 10px 5px;
+					&, span, a {
 						display: inline-block;
+					}
+					.image-wrap, .discord-username {
+						vertical-align: middle;
+					}
+					.image-wrap {
 						@include sizing(30px, 30px);
 						border-radius: 100%;
 						border: 2px solid $color-02;
+						margin: 0 5px 0 0;
 					}
+					.discord-username {
+						color: $color-17;
+					}
+				}
+				.discord-status-idle {
+					font-style: italic;
+				}
+				.discord-admin .discord-username {
+					color: #ed6565;
+				}
+				.discord-moderator .discord-username {
+					color: #b490d2;
+				}
+				.discord-more-users a {
+					margin: 5px 0 0 0;
 				}
 			}
 		}

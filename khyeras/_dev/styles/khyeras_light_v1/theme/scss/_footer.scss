@@ -29,17 +29,50 @@
 				}
 			}
 		}
-		.discord-intro .icon {
-			font-size: rem(20px);
-			margin: 0 10px 0 0;
+		.contact-icons a {
+			color: $color-00;
+			&:hover {
+				color: $color-03;
+			}
+			.contact-icon:before {
+				font-size: rem(25px);
+			}
 		}
-		#discord-frame {
-			position: relative;
-			height: 450px;
-			overflow: hidden;
-			border: 10px solid $color-02;
-			iframe {
-				@include sizing(100%, 100%);
+		.discord-channel-status {
+			.discord-channel-list {
+				list-style: none;
+				margin: 0 -5px 10px -5px;
+				li {
+					vertical-align: top;
+					margin: 0 5px 10px 5px;
+					&, span, a {
+						display: inline-block;
+					}
+					.image-wrap, .discord-username {
+						vertical-align: middle;
+					}
+					.image-wrap {
+						@include sizing(30px, 30px);
+						border-radius: 100%;
+						border: 2px solid $color-00;
+						margin: 0 5px 0 0;
+					}
+					.discord-username {
+						color: $color-17;
+					}
+				}
+				.discord-status-idle {
+					font-style: italic;
+				}
+				.discord-admin .discord-username {
+					color: #ed6565;
+				}
+				.discord-moderator .discord-username {
+					color: #b490d2;
+				}
+				.discord-more-users a {
+					margin: 5px 0 0 0;
+				}
 			}
 		}
 	}

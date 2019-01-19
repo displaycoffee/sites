@@ -524,16 +524,8 @@
 /* Jumpbox
 ============================================== */
 
-.jumpbox .dropdown .dropdown-contents li {
-	.jumpbox-cat-link {
-		padding: 0 0 10px 0;
-		margin: 10px 0;
-		border-bottom: 1px dashed $color-01;
-		font-weight: bold;
-	}
-	&:first-child .jumpbox-cat-link {
-		margin-top: 0;
-	}
+.jumpbox .dropdown .dropdown-contents li .jumpbox-cat-link {
+	font-weight: bold;
 }
 
 /* Sort Tools
@@ -575,6 +567,7 @@
 ============================================== */
 
 .contact-icons {
+	margin: 0 -5px 10px -5px;
 	a {
 		@include inline-block(middle);
 		margin: 0 5px 10px 5px;
