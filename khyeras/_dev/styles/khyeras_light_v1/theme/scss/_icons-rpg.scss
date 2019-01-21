@@ -1,7 +1,9 @@
 /* RPG Icon Variables
 ============================================== */
 
-$rpg-burning-embers: \e932;
+$rpg-burning-embers: \e934;
+$rpg-cash: \e932;
+$rpg-two-coins: \e933;
 $rpg-two-shadows: \e92f;
 $rpg-holy-grail: \e930;
 $rpg-hourglass: \e931;
@@ -17,6 +19,8 @@ $rpg-open-book: \e923;
 $rpg-quill-ink: \e900;
 $rpg-quill: \e901;
 $rpg-big-gear: \e902;
+$rpg-thors-hammer: \e903;
+$rpg-tinker: \e904;
 $rpg-castle: \e905;
 $rpg-fangs: \e906;
 $rpg-harpy: \e907;
@@ -45,15 +49,19 @@ $rpg-crossed-swords: \e91e;
 $rpg-gavel: \e91f;
 $rpg-hunting-horn: \e920;
 $rpg-scroll-unfurled: \e921;
-$rpg-thors-hammer: \e903;
 $rpg-tied-scroll: \e922;
-$rpg-tinker: \e904;
 
 /* RPG Icon Classes
 ============================================== */
 
 .rpg-burning-embers:before {
 	content: unicode($rpg-burning-embers);
+}
+.rpg-cash:before {
+	content: unicode($rpg-cash);
+}
+.rpg-two-coins:before {
+	content: unicode($rpg-two-coins);
 }
 .rpg-two-shadows:before {
 	content: unicode($rpg-two-shadows);
@@ -99,6 +107,12 @@ $rpg-tinker: \e904;
 }
 .rpg-big-gear:before {
 	content: unicode($rpg-big-gear);
+}
+.rpg-thors-hammer:before {
+	content: unicode($rpg-thors-hammer);
+}
+.rpg-tinker:before {
+	content: unicode($rpg-tinker);
 }
 .rpg-castle:before {
 	content: unicode($rpg-castle);
@@ -184,16 +198,9 @@ $rpg-tinker: \e904;
 .rpg-scroll-unfurled:before {
 	content: unicode($rpg-scroll-unfurled);
 }
-.rpg-thors-hammer:before {
-	content: unicode($rpg-thors-hammer);
-}
 .rpg-tied-scroll:before {
 	content: unicode($rpg-tied-scroll);
 }
-.rpg-tinker:before {
-	content: unicode($rpg-tinker);
-}
-
 
 /* RPG Icon Overrides
 ============================================== */
@@ -262,14 +269,17 @@ $rpg-tinker: \e904;
 /* Miscellaneous Icons - Uses RPG font
 ============================================== */
 
+$misc-discord: \e92d;
 $misc-icq: \e92b;
 $misc-jabber: \e92c;
 $misc-aim: \e92e;
-$misc-discord: \e92d;
 
 /* Miscellaneous Icon Classes
 ============================================== */
 
+.misc-discord:before {
+	content: unicode($misc-discord);
+}
 .misc-icq:before {
 	content: unicode($misc-icq);
 }
@@ -278,7 +288,4 @@ $misc-discord: \e92d;
 }
 .misc-aim:before {
 	content: unicode($misc-aim);
-}
-.misc-discord:before {
-	content: unicode($misc-discord);
 }

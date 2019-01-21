@@ -200,11 +200,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			$race = $pf['PROFILE_C_RACE_OPTS_VALUE'];
 			$class = $pf['PROFILE_C_CLASS_OPTS_VALUE'];
 			$level = get_level($pf['PROFILE_C_EXPERIENCE_VALUE']);
+			$currency = calc_currency($pf['PROFILE_C_COPPER_VALUE']);
 
 			$this->template->assign_vars(array(
 				'KHY_MEMBER_LEVEL'    => $level,
 				'KHY_MEMBER_TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
-				'KHY_MEMBER_TOTAL_MP' => get_life_modifier($race, $class, $level)[1]
+				'KHY_MEMBER_TOTAL_MP' => get_life_modifier($race, $class, $level)[1],
+				'KHY_MEMBER_COPPER'   => $currency['Copper'],
+				'KHY_MEMBER_SILVER'   => $currency['Silver'],
+				'KHY_MEMBER_GOLD'     => $currency['Gold'],
+				'KHY_MEMBER_PLATINUM' => $currency['Platinum']
 	 		));
 		}
 	}
@@ -222,11 +227,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			$race = $pr['PROFILE_C_RACE_OPTS_VALUE'];
 			$class = $pr['PROFILE_C_CLASS_OPTS_VALUE'];
 			$level = get_level($pr['PROFILE_C_EXPERIENCE_VALUE']);
+			$currency = calc_currency($pr['PROFILE_C_COPPER_VALUE']);
 
 			$character_details = array(
-				'PROFILE_LEVEL'    => $level,
+				'PROFILE_LEVEL'	   => $level,
 				'PROFILE_TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
-				'PROFILE_TOTAL_MP' => get_life_modifier($race, $class, $level)[1]
+				'PROFILE_TOTAL_MP' => get_life_modifier($race, $class, $level)[1],
+				'PROFILE_COPPER'   => $currency['Copper'],
+				'PROFILE_SILVER'   => $currency['Silver'],
+				'PROFILE_GOLD' 	   => $currency['Gold'],
+				'PROFILE_PLATINUM' => $currency['Platinum']
 			);
 		}
 
@@ -401,4 +411,27 @@ function cal_life_modifier($options, $list) {
 	}
 
 	return [round($hp_mod / count($selected_options)), round($mp_mod / count($selected_options))];
+}
+
+/**
+  * Calculate currency total
+*/
+function calc_currency($total_copper) {
+	$currency_ratio = 100;
+
+	$copper = $total_copper % $currency_ratio;
+	$total_silver = $total_copper / $currency_ratio;
+	$silver = $total_silver % $currency_ratio;
+	$total_gold = $total_silver / $currency_ratio;
+	$gold = $total_gold % $currency_ratio;
+	$platinum = floor($total_gold / $currency_ratio);
+
+	$currency = [
+		'Copper'   => $copper,
+		'Silver'   => $silver,
+		'Gold' 	   => $gold,
+		'Platinum' => $platinum
+	];
+
+	return $currency;
 }

@@ -20,8 +20,7 @@
 							<p class="race-and-class">
 								{{ KHY_USER_RACE | replace({',': ' and'}) }}
 								<!-- IF KHY_USER_CLASS -->
-									<span class="separator">/</span>
-									{{ KHY_USER_CLASS | replace({',': ' and'}) }}
+									 / {{ KHY_USER_CLASS | replace({',': ' and'}) }}
 								<!-- ENDIF -->
 							</p>
 						<!-- ELSEIF S_REGISTERED_USER -->

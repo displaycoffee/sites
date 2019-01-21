@@ -40,23 +40,6 @@
 	}
 }
 
-/* Race and Class - Includes Header Welcome
-============================================== */
-
-.race-and-class {
-	.icon, .separator {
-		vertical-align: middle;
-	}
-	.icon {
-		font-size: rem(22px);
-	}
-	.separator {
-		display: inline-block;
-		font-weight: bold;
-		@include position(relative, -2px);
-	}
-}
-
 /* Level - Includes Header Welcome
 ============================================== */
 
@@ -151,6 +134,35 @@
 	.stats {
 		@include flex(base);
 		margin: 0 0 0 10px;
+	}
+}
+
+/* Character Currency
+============================================== */
+
+.character-currency {
+	span {
+		font-weight: bold;
+		font-style: italic;
+		font-size: rem(12px);
+	}
+	.currency-p {
+		color: $color-18;
+	}
+	.currency-g {
+		color: $color-19;
+	}
+	.currency-s {
+		color: $color-20;
+	}
+	.currency-c {
+		color: $color-21;
+	}
+	.icon {
+		color: $color-21;
+		& + span:not(.sr-only) {
+			margin: 0;
+		}
 	}
 }
 
