@@ -1,0 +1,96 @@
+{% include 'overall_header.html' %}
+
+{% set achievements = {
+	'Fellsgard': {
+		achievement01: {
+			title: 'The Three Beacons',
+			description: 'Observe the lighthouses and reflect on the structures that may or may not inspire.',
+			requirements: 'Bacon.',
+			reward: 'More bacon and 10 experience.',
+			icon: 'rpg-open-book'
+		},
+		achievement02: {
+			title: 'An Ill Favored Wind',
+			description: 'Check out a windmill in the farmlands, notice a defect, and suggest a fix.',
+			requirements: 'Hot chocolate and whipped cream.',
+			reward: 'Kittens and 15 experience.',
+			icon: 'rpg-round-icon-green rpg-castle'
+		},
+		achievement03: {
+			title: 'Westward Bazaar',
+			description: 'Visit the markets to the west and buy a unique and astonishing object.',
+			requirements: '10 platinum and kiss an old man.',
+			reward: 'Tin foil hat and 2 experience.',
+			icon: 'rpg-round-icon-red rpg-crossed-swords'
+		},
+		achievement04: {
+			title: 'Upward Opinions',
+			description: 'The northern district holds housing for wealthy citizens. Walk along the streets and describe how others react.',
+			requirements: 'Frequent buyer\'s card with eight out of 10 holes punched.',
+			reward: 'A gryphon with a gold chain necklace.',
+			icon: 'rpg-round-icon-orange rpg-two-shadows'
+		}
+	},
+	'Verdant Row': {
+		achievement01: {
+			title: 'On the Way',
+			description: 'Stop for the night in Verdant Row on your way to/from Fellsgard or Ajteire.',
+			requirements: 'Two sugar cubes and a crayon.',
+			reward: '0 experience. The cake was a lie.',
+			icon: 'rpg-round-icon-orange rpg-two-shadows'
+		},
+		achievement02: {
+			title: 'Close Encounters',
+			description: 'Unexpectedly pass through three or more different spirits while walking through the town and describe their appearances or (lack of) reactions.',
+			requirements: 'Fox Mulder.',
+			reward: '50 experience and the Ghost Busters.',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail'
+		},
+		achievement03: {
+			title: 'The Latest News',
+			description: 'Overhear conversations or discuss with folk recent events that have been happening along Verdant Row\'s nearby roads.',
+			requirements: 'Yell, "I\'m the king of the world!"',
+			reward: 'Date with Kate Winslet, 3.5px experience, and 100 gold.',
+			icon: 'rpg-round-icon-purple rpg-portal'
+		}
+	}
+} %}
+
+<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
+
+<div class="panel">
+	<div class="inner">
+		<div class="content pages-content">
+			{{ PAGE_CONTENT }}
+			{% if achievements %}
+				{% for key, achievement in achievements %}
+					{% set section_id = (key | replace({' ': '-'}) | lower) %}
+					<section id="{{ section_id }}" class="page-content-section">
+						<h3>{{ key }}</h3>
+						<div class="card-grid">
+							{% for detail in achievement %}
+								{% set card_id = section_id  ~ '-' ~ (detail.title | replace({'"' : '', ',' : '', '\'' : '', ' ': '-'}) | lower) %}
+								<div id="{{ card_id }}" class="card-block">
+									<h5 class="card-title">{{ detail.title }}</h5>
+									<div class="rpg-icon-wrapper">
+										<i class="icon rpg-round-icon rpg-icon {{ detail.icon }}" aria-hidden="true"></i>
+									</div>
+									<p class="card-description">{{ detail.description }}</p>
+									<dl class="details">
+										<dt>Requirements:</dt>
+										<dd>{{ detail.requirements }}</dd>
+										<dt>Rewards:</dt>
+										<dd>{{ detail.reward }}</dd>
+									</dl>
+								</div>
+							{% endfor %}
+						</div>
+					</section>
+				{% endfor %}
+			{% endif %}
+		</div>
+		{% EVENT phpbb_pages_after_page_content %}
+	</div>
+</div>
+
+{% include 'overall_footer.html' %}
