@@ -1406,13 +1406,17 @@
 	dl.details {
 		dt {
 			float: none;
-			width: auto;
 			&.empty-space {
 				display: none;
 			}
 		}
-		dd {
-			margin-left: 20px;
+		&, &.details-small {
+			dt {
+				width: auto;
+			}
+			dd {
+				margin-left: 20px;
+			}
 		}
 		&.details-mar20 {
 			dt {
@@ -1576,14 +1580,6 @@
 	.excerpt .excerpt-image .image-wrap {
 		&[style*='sorcerer'], &[style*='summoner'], &[style*='bard'] {
 			background-position: center top;
-		}
-	}
-	.card-grid .card-block dl.details {
-		dt {
-			width: auto;
-		}
-		dd {
-			margin-left: 20px;
 		}
 	}
 	.section-page-map #tabs {

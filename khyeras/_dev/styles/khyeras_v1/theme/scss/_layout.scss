@@ -741,6 +741,14 @@ dl.details {
 			margin-left: 0;
 		}
 	}
+	&.details-small {
+		dt {
+			width: 125px;
+		}
+		dd {
+			margin-left: 125px;
+		}
+	}
 	&.details-mar20 {
 		margin-bottom: 0;
 		dd, dt {

@@ -453,30 +453,16 @@ dl.faq {
 	margin: 0 -10px;
 	.card-block {
 		width: 33.33%;
-		@include flex;
+		@include flex();
 		padding: 0 10px;
 		margin: 0 0 20px 0;
-		position: relative;
 		.rpg-icon-wrapper {
 			float: left;
 			clear: right;
 			padding: 0 15px 20px 0;
 		}
-		.card-title {
-			// background: $color-01;
-			// color: $light-01;
-			// @include ellipsis;
-			// line-height: 1;
-			// padding: 12px 20px 10px 20px;
-		}
 		dl.details {
 			clear: both;
-			dt {
-				width: 125px;
-			}
-			dd {
-				margin-left: 125px;
-			}
 		}
 	}
 }
