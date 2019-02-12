@@ -464,6 +464,22 @@ dl.faq {
 		dl.details {
 			clear: both;
 		}
+		.card-completed-text {
+			margin: -10px 0 20px 0;
+			color: $color-04;
+			font-style: italic;
+			.icon {
+				margin: 0 5px 0 0;
+			}
+		}
+		&.card-completed {
+			.rpg-round-icon {
+				background: $color-10;
+			}
+			.card-description, dl.details {
+				opacity: 0.50;
+			}
+		}
 	}
 }
 

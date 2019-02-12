@@ -62,6 +62,10 @@
 	<div class="inner">
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
+
+			{% set completed_achievements = KHY_USER_ACHIEVEMENTS | split(',') %}
+			{{ completed_achievements }}
+
 			{% if achievements %}
 				{% for key, achievement in achievements %}
 					{% set section_id = (key | replace({' ': '-'}) | lower) %}
@@ -70,8 +74,11 @@
 						<div class="card-grid">
 							{% for detail in achievement %}
 								{% set card_id = section_id  ~ '-' ~ (detail.title | replace({'"' : '', ',' : '', '\'' : '', ' ': '-'}) | lower) %}
-								<div id="{{ card_id }}" class="card-block">
+								<div id="{{ card_id }}" class="card-block{% if card_id in completed_achievements %} card-completed{% endif %}">
 									<h5 class="card-title">{{ detail.title }}</h5>
+									{% if card_id in completed_achievements %}
+										<p class="card-completed-text"><i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>Achievement complete!</p>
+									{% endif %}
 									<div class="rpg-icon-wrapper">
 										<i class="icon rpg-round-icon rpg-icon {{ detail.icon }}" aria-hidden="true"></i>
 									</div>
@@ -82,6 +89,7 @@
 										<dt>Rewards:</dt>
 										<dd>{{ detail.reward }}</dd>
 									</dl>
+
 								</div>
 							{% endfor %}
 						</div>

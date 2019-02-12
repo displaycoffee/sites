@@ -185,6 +185,13 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			'KHY_USER_LEVEL'   	    => get_level($pf_user['c_experience']['value'])
  		));
 
+		// Add list of completed achievements only for achievement page
+		if ($this->user->page && $this->user->page['page'] == 'app.php/achievements') {
+			$this->template->assign_vars(array(
+				'KHY_USER_ACHIEVEMENTS' => $pf_user['c_achievements']['value']
+	 		));
+		}
+
 		// --- END --- Variable Assignment
  	}
 
