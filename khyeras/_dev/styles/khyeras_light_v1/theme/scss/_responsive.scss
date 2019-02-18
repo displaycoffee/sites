@@ -233,6 +233,9 @@
 	.excerpt .excerpt-image {
 		flex: 0 0 150px;
 	}
+	.card-grid .card-block {
+		width: 50%;
+	}
 
 	// cp.scss
 	.cp-wrapper {
@@ -904,7 +907,7 @@
 	}
 	.banner.banner-vertical {
 		border: 0;
-	    border-bottom: 1px solid $color-01;
+		border-bottom: 1px solid $color-01;
 		padding-bottom: 80%;
 		margin: -20px -20px 20px -20px;
 		img {
@@ -987,6 +990,12 @@
 	.section-page-setting, .section-page-tviyr, .section-page-ninraih, .section-page-irtuen-reaches {
 		.excerpt .excerpt-image .image-wrap {
 			background-position: center bottom;
+		}
+	}
+	.card-grid {
+		display: block;
+		.card-block {
+			width: auto;
 		}
 	}
 	.timeline .timeline-row {
@@ -1397,13 +1406,17 @@
 	dl.details {
 		dt {
 			float: none;
-			width: auto;
 			&.empty-space {
 				display: none;
 			}
 		}
-		dd {
-			margin-left: 20px;
+		&, &.details-small {
+			dt {
+				width: auto;
+			}
+			dd {
+				margin-left: 20px;
+			}
 		}
 		&.details-mar20 {
 			dt {

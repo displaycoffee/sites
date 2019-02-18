@@ -266,7 +266,7 @@ function initializeDiscordList() {
 		var admins = [ 'displaycoffee' ];
 		var moderators = [];
 
-		if ( members ) {
+		if ( members && members.length > 0 ) {
 			var totalMembers = members.length;
 			var membersLimit = 11;
 
