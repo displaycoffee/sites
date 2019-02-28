@@ -13,6 +13,7 @@
 
 {% set about_crumbs = [ 'app/rules', 'app/managing-your-account', 'app/getting-started' ] %}
 {% set lore_crumbs = [ 'app/history', 'app/short-history', 'app/timeline', 'app/glossary', 'app/magic' ] %}
+{% set gameplay_crumbs = [ 'app/achievements', 'app/leveling', 'app/quests' ] %}
 
 {% set first_crumb = '' %}
 
@@ -22,6 +23,8 @@
 	{% set first_crumb = 'Lore' %}
 {% elseif 'app/setting-' in SCRIPT_NAME %}
 	{% set first_crumb = 'Setting' %}
+{% elseif SCRIPT_NAME in gameplay_crumbs %}
+	{% set first_crumb = 'Gameplay' %}
 {% endif %}
 
 {% if first_crumb %}
