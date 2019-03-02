@@ -1,5 +1,7 @@
 {% include 'overall_header.html' %}
 
+{% set max_level = 60 %}
+
 {% set levels = {
 	'25.0': range(01, 05),
 	'25.5': range(06, 10),
@@ -12,8 +14,19 @@
 	'29.0': range(41, 45),
 	'29.5': range(46, 50),
 	'30.0': range(51, 55),
-	'30.5': range(56, 60)
+	'30.5': range(56, max_level)
 } %}
+
+{% set leveling_header %}
+	<ul class="topiclist">
+		<li class="header">
+			<dl>
+				<dt class="leveling-chart-level">Level</dt>
+				<dd class="leveling-chart-exp">Experience</dd>
+			</dl>
+		</li>
+	</ul>
+{% endset %}
 
 <h2 class="pages-title">{{ PAGE_TITLE }}</h2>
 <div class="panel">
@@ -23,20 +36,28 @@
 
 			{% if levels %}
 				<div class="leveling-chart">
-					<div class="leveling-chart-row leveling-chart-header">
-						<div class="leveling-chart-column leveling-chart-level">Level</div>
-						<div class="leveling-chart-column leveling-chart-experience">Experience</div>
-						<div class="leveling-chart-column leveling-chart-level">Level</div>
-						<div class="leveling-chart-column leveling-chart-experience">Experience</div>
-					</div>
-					<div class="leveling-chart-row leveling-chart-values">
-						{% for key, level in levels %}
-							{% for i in level %}
-								{% set experience = key * i * (i - 1) %}
-								<div class="leveling-chart-column leveling-chart-level">{{ i }}</div>
-								<div class="leveling-chart-column leveling-chart-experience">{{ experience }}</div>
+					<div class="leveling-chart-column">
+						{{ leveling_header }}
+						<ul class="topiclist">
+							{% for key, level in levels %}
+								{% for i in level %}
+									{% set experience = key * i * (i - 1) %}
+									<li class="row">
+										<dl>
+											<dt class="leveling-chart-level">{{ i }}</dt>
+											<dd class="leveling-chart-exp">{{ experience }}</dd>
+										</dl>
+									</li>
+									{% if i == 15 || i == 30 || i == 45 %}
+											</ul>
+										</div>
+										<div class="leveling-chart-column">
+											{{ leveling_header }}
+											<ul class="topiclist">
+									{% endif %}
+								{% endfor %}
 							{% endfor %}
-						{% endfor %}
+						</ul>
 					</div>
 				</div>
 			{% endif %}

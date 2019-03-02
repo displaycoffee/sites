@@ -593,6 +593,20 @@ dl.faq {
 	}
 }
 
+/* Pages - Leveling
+============================================== */
+
+.leveling-chart {
+	@include flex-flow(row nowrap);
+	margin: 0 0 20px 0;
+	.leveling-chart-column {
+		@include flex(base);
+		.topiclist > li dl dt.leveling-chart-level {
+			max-width: 100px;
+		}
+	}
+}
+
 /* Thanks List
 ============================================== */
 
