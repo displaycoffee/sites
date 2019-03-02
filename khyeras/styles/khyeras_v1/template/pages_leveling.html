@@ -1,0 +1,48 @@
+{% include 'overall_header.html' %}
+
+{% set levels = {
+	'25.0': range(01, 05),
+	'25.5': range(06, 10),
+	'26.0': range(11, 15),
+	'26.5': range(16, 20),
+	'27.0': range(21, 25),
+	'27.5': range(26, 30),
+	'28.0': range(31, 35),
+	'28.5': range(36, 40),
+	'29.0': range(41, 45),
+	'29.5': range(46, 50),
+	'30.0': range(51, 55),
+	'30.5': range(56, 60)
+} %}
+
+<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
+<div class="panel">
+	<div class="inner">
+		<div class="content pages-content">
+			{{ PAGE_CONTENT }}
+
+			{% if levels %}
+				<div class="leveling-chart">
+					<div class="leveling-chart-row leveling-chart-header">
+						<div class="leveling-chart-column leveling-chart-level">Level</div>
+						<div class="leveling-chart-column leveling-chart-experience">Experience</div>
+						<div class="leveling-chart-column leveling-chart-level">Level</div>
+						<div class="leveling-chart-column leveling-chart-experience">Experience</div>
+					</div>
+					<div class="leveling-chart-row leveling-chart-values">
+						{% for key, level in levels %}
+							{% for i in level %}
+								{% set experience = key * i * (i - 1) %}
+								<div class="leveling-chart-column leveling-chart-level">{{ i }}</div>
+								<div class="leveling-chart-column leveling-chart-experience">{{ experience }}</div>
+							{% endfor %}
+						{% endfor %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+		{% EVENT phpbb_pages_after_page_content %}
+	</div>
+</div>
+
+{% include 'overall_footer.html' %}
