@@ -14,11 +14,19 @@
 	'29.0': range(41, 45),
 	'29.5': range(46, 50),
 	'30.0': range(51, 55),
-	'30.5': range(56, max_level)
+	'30.5': range(56, 60),
+	'31.0': range(61, 65),
+	'31.5': range(66, 70),
+	'32.0': range(71, 75),
+	'32.5': range(76, 80),
+	'33.0': range(81, 85),
+	'33.5': range(86, 90),
+	'34.0': range(91, 95),
+	'34.5': range(96, 100)
 } %}
 
 {% set leveling_header %}
-	<ul class="topiclist">
+	<ul class="topiclist topiclist-header">
 		<li class="header">
 			<dl>
 				<dt class="leveling-chart-level">Level</dt>
@@ -33,22 +41,21 @@
 	<div class="inner">
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
-
 			{% if levels %}
 				<div class="leveling-chart">
 					<div class="leveling-chart-column">
 						{{ leveling_header }}
 						<ul class="topiclist">
 							{% for key, level in levels %}
-								{% for i in level %}
+								{% for i in level if i <= max_level %}
 									{% set experience = key * i * (i - 1) %}
 									<li class="row">
 										<dl>
 											<dt class="leveling-chart-level">{{ i }}</dt>
-											<dd class="leveling-chart-exp">{{ experience }}</dd>
+											<dd class="leveling-chart-exp">{{ experience | number_format(0, '.', ',') }}</dd>
 										</dl>
 									</li>
-									{% if i == 15 || i == 30 || i == 45 %}
+									{% if (i % ((max_level / 4) | round)) == 0 && i != max_level %}
 											</ul>
 										</div>
 										<div class="leveling-chart-column">
