@@ -29,8 +29,8 @@
 	<ul class="topiclist topiclist-header">
 		<li class="header">
 			<dl>
-				<dt class="leveling-chart-level">Level</dt>
-				<dd class="leveling-chart-exp">Experience</dd>
+				<dt class="stat-chart-level">Level</dt>
+				<dd class="stat-chart-exp">Experience</dd>
 			</dl>
 		</li>
 	</ul>
@@ -42,8 +42,8 @@
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
 			{% if levels %}
-				<div class="leveling-chart">
-					<div class="leveling-chart-column">
+				<div class="stat-chart">
+					<div class="stat-chart-column">
 						{{ leveling_header }}
 						<ul class="topiclist">
 							{% for key, level in levels %}
@@ -51,14 +51,14 @@
 									{% set experience = key * i * (i - 1) %}
 									<li class="row">
 										<dl>
-											<dt class="leveling-chart-level">{{ i }}</dt>
-											<dd class="leveling-chart-exp">{{ experience | number_format(0, '.', ',') }}</dd>
+											<dt class="stat-chart-level">{{ i }}</dt>
+											<dd class="stat-chart-exp">{{ experience | number_format(0, '.', ',') }}</dd>
 										</dl>
 									</li>
 									{% if (i % ((max_level / 4) | round)) == 0 && i != max_level %}
 											</ul>
 										</div>
-										<div class="leveling-chart-column">
+										<div class="stat-chart-column">
 											{{ leveling_header }}
 											<ul class="topiclist">
 									{% endif %}

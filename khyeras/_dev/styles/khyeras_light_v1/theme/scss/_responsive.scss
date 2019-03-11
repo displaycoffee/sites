@@ -236,7 +236,7 @@
 	.card-grid .card-block {
 		width: 50%;
 	}
-	.leveling-chart .leveling-chart-column .topiclist > li dl dt.leveling-chart-level {
+	.stat-chart .stat-chart-column .topiclist > li dl dt.stat-chart-level {
 		max-width: 70px;
 	}
 
@@ -459,7 +459,7 @@
 			max-width: 68%;
 		}
 	}
-	.leveling-chart .leveling-chart-column {
+	.stat-chart .stat-chart-column {
 		width: 50%;
 		&:nth-child(even) {
 			order: 2;
@@ -467,7 +467,7 @@
 				display: none;
 			}
 		}
-		.topiclist > li dl dt.leveling-chart-level {
+		.topiclist > li dl dt.stat-chart-level {
 			max-width: 100px;
 		}
 	}
@@ -1039,7 +1039,7 @@
 			}
 		}
 	}
-	.leveling-chart .leveling-chart-column .topiclist > li dl {
+	.stat-chart .stat-chart-column .topiclist > li dl {
 		display: flex;
 		dd {
 			display: block;
@@ -1606,19 +1606,19 @@
 	.section-page-map #tabs {
 		display: none;
 	}
-	.leveling-chart {
+	.stat-chart {
 		display: block;
-		.leveling-chart-column {
+		.stat-chart-column {
 			width: auto;
 			&:nth-child(3) .topiclist-header {
 				display: none;
 			}
-			.topiclist > li dl dt.leveling-chart-level {
+			.topiclist > li dl dt.stat-chart-level {
 				max-width: none;
 			}
 		}
 	}
-	
+
 	// cp.scss
 	.cp-main .gallery label {
 		width: 50%;
