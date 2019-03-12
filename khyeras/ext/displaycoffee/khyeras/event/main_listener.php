@@ -357,31 +357,31 @@ function get_life_modifier($race, $class, $level)
 	];
 
 	// Get race modifiers by calculating average
-	$race_modifiers = cal_life_modifier($race, $race_list);
+	$race_modifiers = calc_life_modifier($race, $race_list);
 
 	// HP/MP values for classes
 	$class_list = [
-		'Barbarian'   => ['HP' => 3, 'MP' => 0],
-		'Fighter'     => ['HP' => 3, 'MP' => 1],
-		'Paladin'     => ['HP' => 3, 'MP' => 2],
-		'Physical'    => ['HP' => 3, 'MP' => 1],
-		'Ranger' 	  => ['HP' => 2, 'MP' => 1],
-		'Monk' 		  => ['HP' => 2, 'MP' => 1],
-		'Rogue' 	  => ['HP' => 2, 'MP' => 1],
 		'Alchemist'   => ['HP' => 2, 'MP' => 2],
+		'Barbarian'   => ['HP' => 3, 'MP' => 0],
 		'Bard' 		  => ['HP' => 2, 'MP' => 2],
 		'Cleric'	  => ['HP' => 2, 'MP' => 3],
 		'Druid' 	  => ['HP' => 2, 'MP' => 3],
+		'Fighter'     => ['HP' => 3, 'MP' => 1],
+		'Magical'     => ['HP' => 1, 'MP' => 3],
+		'Monk' 		  => ['HP' => 2, 'MP' => 1],
+		'Paladin'     => ['HP' => 3, 'MP' => 2],
+		'Physical'    => ['HP' => 3, 'MP' => 1],
+		'Ranger' 	  => ['HP' => 2, 'MP' => 1],
 		'Restoration' => ['HP' => 2, 'MP' => 3],
+		'Rogue' 	  => ['HP' => 2, 'MP' => 1],
 		'Sorcerer'    => ['HP' => 1, 'MP' => 3],
 		'Summoner'    => ['HP' => 1, 'MP' => 3],
 		'Wizard'      => ['HP' => 1, 'MP' => 3],
-		'Magical'     => ['HP' => 1, 'MP' => 3],
 		'Empty'  	  => ['HP' => 0, 'MP' => 0]
 	];
 
 	// Get class modifiers by calculating average
-	$class_modifiers = cal_life_modifier($class, $class_list);
+	$class_modifiers = calc_life_modifier($class, $class_list);
 
 	// Add total hp/mp modifiers
 	$hp_modifer = $class_modifiers[0] + $race_modifiers[0];
@@ -406,7 +406,7 @@ function get_life_modifier($race, $class, $level)
 /**
   * Calculate modifiers for hp and mp
 */
-function cal_life_modifier($options, $list) {
+function calc_life_modifier($options, $list) {
 	$hp_mod = 0;
 	$mp_mod = 0;
 	$selected_options = explode(', ', $options);

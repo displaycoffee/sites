@@ -357,7 +357,7 @@ function get_life_modifier($race, $class, $level)
 	];
 
 	// Get race modifiers by calculating average
-	$race_modifiers = cal_life_modifier($race, $race_list);
+	$race_modifiers = calc_life_modifier($race, $race_list);
 
 	// HP/MP values for classes
 	$class_list = [
@@ -381,7 +381,7 @@ function get_life_modifier($race, $class, $level)
 	];
 
 	// Get class modifiers by calculating average
-	$class_modifiers = cal_life_modifier($class, $class_list);
+	$class_modifiers = calc_life_modifier($class, $class_list);
 
 	// Add total hp/mp modifiers
 	$hp_modifer = $class_modifiers[0] + $race_modifiers[0];
@@ -406,7 +406,7 @@ function get_life_modifier($race, $class, $level)
 /**
   * Calculate modifiers for hp and mp
 */
-function cal_life_modifier($options, $list) {
+function calc_life_modifier($options, $list) {
 	$hp_mod = 0;
 	$mp_mod = 0;
 	$selected_options = explode(', ', $options);

@@ -1,29 +1,23 @@
 {% macro breadcrumb(crumb) %}
 	{% set crumb_url = (crumb | replace({' ': '-'}) | lower) %}
-	{% if crumb == 'Tviyr' || crumb == 'Ninraih' || crumb == 'Irtuen Reaches' %}
-		{% set crumb_url = 'setting-' ~ crumb_url %}
-	{% endif %}
+	{% set crumb_label = (crumb | replace({'Lore ': '', 'Setting ': ''})) %}
 	<li class="crumb" {$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->>
 		<i class="icon fa-chevron-right fa-fw"></i>
 		<a href="{BOARD_URL}{{ crumb_url }}" itemprop="url">
-			<span itemprop="title">{{ crumb }}</span>
+			<span itemprop="title">{{ crumb_label }}</span>
 		</a>
 	</li>
 {% endmacro %}
 
-{% set about_crumbs = [ 'app/rules', 'app/managing-your-account', 'app/getting-started' ] %}
-{% set lore_crumbs = [ 'app/history', 'app/short-history', 'app/timeline', 'app/glossary', 'app/magic' ] %}
-{% set gameplay_crumbs = [ 'app/achievements', 'app/leveling', 'app/currency', 'app/stats' ] %}
-
 {% set first_crumb = '' %}
 
-{% if SCRIPT_NAME in about_crumbs %}
+{% if 'app/about-' in SCRIPT_NAME %}
 	{% set first_crumb = 'About' %}
-{% elseif SCRIPT_NAME in lore_crumbs || 'app/races' in SCRIPT_NAME || 'app/classes' in SCRIPT_NAME || 'app/religion' in SCRIPT_NAME %}
+{% elseif 'app/lore-' in SCRIPT_NAME %}
 	{% set first_crumb = 'Lore' %}
 {% elseif 'app/setting-' in SCRIPT_NAME %}
 	{% set first_crumb = 'Setting' %}
-{% elseif SCRIPT_NAME in gameplay_crumbs %}
+{% elseif 'app/gameplay-' in SCRIPT_NAME %}
 	{% set first_crumb = 'Gameplay' %}
 {% endif %}
 
@@ -33,12 +27,12 @@
 
 {% set second_crumb = '' %}
 
-{% if 'app/races-' in SCRIPT_NAME %}
-	{% set second_crumb = 'Races' %}
-{% elseif 'app/religion-' in SCRIPT_NAME %}
-	{% set second_crumb = 'Religion' %}
-{% elseif 'app/classes-' in SCRIPT_NAME %}
-	{% set second_crumb = 'Classes' %}
+{% if 'app/lore-races-' in SCRIPT_NAME %}
+	{% set second_crumb = 'Lore Races' %}
+{% elseif 'app/lore-religion-' in SCRIPT_NAME %}
+	{% set second_crumb = 'Lore Religion' %}
+{% elseif 'app/lore-classes-' in SCRIPT_NAME %}
+	{% set second_crumb = 'Lore Classes' %}
 {% endif %}
 
 {% if second_crumb %}
@@ -47,12 +41,12 @@
 
 {% set third_crumb = '' %}
 
-{% if 'app/setting-fellsgard' in SCRIPT_NAME || 'app/setting-verdant-row' in SCRIPT_NAME %}
-	{% set third_crumb = 'Tviyr' %}
-{% elseif 'app/setting-ajteire' in SCRIPT_NAME %}
-	{% set third_crumb = 'Ninraih' %}
-{% elseif 'app/setting-domrhask' in SCRIPT_NAME %}
-	{% set third_crumb = 'Irtuen Reaches' %}
+{% if 'app/setting-tviyr-' in SCRIPT_NAME %}
+	{% set third_crumb = 'Setting Tviyr' %}
+{% elseif 'app/setting-ninraih-' in SCRIPT_NAME %}
+	{% set third_crumb = 'Setting Ninraih' %}
+{% elseif 'app/setting-irtuen-reaches-' in SCRIPT_NAME %}
+	{% set third_crumb = 'Setting Irtuen Reaches' %}
 {% endif %}
 
 {% if third_crumb %}
