@@ -2,56 +2,678 @@
 
 {% set achievements = {
 	'Fellsgard': {
-		achievement01: {
+		achievement001: {
 			title: 'The Three Beacons',
-			description: 'Observe the lighthouses and reflect on the structures that may or may not inspire.',
-			requirements: 'Bacon.',
-			reward: 'More bacon and 10 experience.',
-			icon: 'rpg-open-book'
+			icon: 'rpg-open-book',
+			description: 'Everyone in Fellsgard is always chatting about those lighthouses and how awe-inspiring the buildings are. It could be nice to see a part of history.',
+			requirements: 'Observe the lighthouses and describe your feelings.',
+			reward: '10 experience'
 		},
-		achievement02: {
+		achievement002: {
 			title: 'An Ill Favored Wind',
-			description: 'Check out a windmill in the farmlands, notice a defect, and suggest a fix.',
-			requirements: 'Hot chocolate and whipped cream.',
-			reward: 'Kittens and 15 experience.',
-			icon: 'rpg-round-icon-green rpg-castle'
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'It appears daily maintenance on windmills has become a little slack and there\'s a defect present on the structure. Nothing major, but perhaps help is required.',
+			requirements: 'Use your expertise to help fix a windmill.',
+			reward: '15 experience, 10 copper'
 		},
-		achievement03: {
+		achievement003: {
 			title: 'Westward Bazaar',
-			description: 'Visit the markets to the west and buy a unique and astonishing object.',
-			requirements: '10 platinum and kiss an old man.',
-			reward: 'Tin foil hat and 2 experience.',
-			icon: 'rpg-round-icon-red rpg-crossed-swords'
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'While Fellsgard\'s west market doesn\'t have the greatest supply, occasionally a person might find a rare and astonishing trinket.',
+			requirements: '10 copper. Detail the purchase.',
+			reward: '20 experience'
 		},
-		achievement04: {
+		achievement004: {
 			title: 'Upward Opinions',
-			description: 'The northern district holds housing for wealthy citizens. Walk along the streets and describe how others react.',
-			requirements: 'Frequent buyer\'s card with eight out of 10 holes punched.',
-			reward: 'A gryphon with a gold chain necklace.',
-			icon: 'rpg-round-icon-orange rpg-two-shadows'
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Just once before death, most folk would like to perceive what it\'s like to be part of the rich, northern community. Maybe a stroll along the streets will fit the bill.',
+			requirements: 'Describe how the upper class reacts to your presence.',
+			reward: '15 experience, 5 copper'
+		},
+		achievement005: {
+			title: 'Everyday Living',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Right when everything seemed so plain and boring, something out of the ordinary is transpiring amongst the "normalcy" of Fellsgard\'s south sector.',
+			requirements: 'Examine an uncommon event or object.',
+			reward: '15 experience, 5 copper'
+		},
+		achievement006: {
+			title: 'Humble Evenings',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Out of all Fellsgard communities, perhaps it is the eastern, impoverished families that treasure their time more and make the most of their days.',
+			requirements: 'Rest with and participate in a single activity (game, chat, etc.) with a poor family.',
+			reward: '25 experience'
+		},
+		achievement007: {
+			title: 'Street Smarts',
+			icon: 'rpg-round-icon-red rpg-crossed-swords',
+			description: 'It would be interesting to cause a commotion in the crowded streets, or on the other hand, evade a tussle that is currently happening.',
+			requirements: 'Start or avoid a ruckus in the streets.',
+			reward: '30 experience'
+		},
+		achievement008: {
+			title: 'If It Ain\'t Broke',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Specific dirt roads outside Fellsgard have become damaged due to laden wagons that break along the way. Must be all the goods they\'re carrying.',
+			requirements: 'Fix or break a wagon wheel to reap the benefits.',
+			reward: '15 experience, 10 copper'
+		},
+		achievement009: {
+			title: 'Stowaway',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Avoid the high cost of airfare! The pilots are constantly raising prices, and thus, select citizens are taking action.',
+			requirements: 'Try sneaking onto an airship without paying.',
+			reward: '25 experience, 5 copper'
+		},
+		achievement010: {
+			title: 'Boxcar Blues',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Jumping into that open train car to save money was a good idea, but there\'s another passenger - a bardic hobo. Could it become an evening of poems, songs, and stories?',
+			requirements: 'Get into the boxcar and meet a long-winded traveler.',
+			reward: '35 experience'
+		},
+		achievement011: {
+			title: 'Unstable Stables',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Perhaps traditional traveling methods, such as mounts, are in order. But why are they so cheap right now...?',
+			requirements: '10 copper. The mount must be randomly chosen by an admin.',
+			reward: '40 experience'
+		},
+		achievement012: {
+			title: 'Fishy Goods',
+			icon: 'rpg-open-book',
+			description: 'House Lericyro inspects Fellsgard\'s wares for quality, but they could use assistance. There\'s a side job to check for poisoned, damaged, or defective merchandise.',
+			requirements: 'Complete the House Lericyro job.',
+			reward: '50 experience'
+		},
+		achievement013: {
+			title: 'Worthy Opinions',
+			icon: 'rpg-open-book',
+			description: 'Wouldn\'t it be nice to discover that your trusty sword or breastplate is worth quite a bit of cash? Well, House Arcaod can give you their trusted, professional opinion.',
+			requirements: 'Receive a weapon or armor appraisal from House Arcaod.',
+			reward: '50 experience'
+		},
+		achievement014: {
+			title: 'Herbal Helper',
+			icon: 'rpg-open-book',
+			description: 'All you wanted was a bandage, but it turns out the hospital needs help too. There\'s a missing and very necessary herb and the hospital states House Enlann knows where to find it.',
+			requirements: 'Take the hospital\'s order and then inquire at House Enlann.',
+			reward: '50 experience'
+		},
+		achievement015: {
+			title: 'I\'m An Adventurer!',
+			icon: 'rpg-open-book',
+			description: 'A bit of extra currency in the pockets could be useful these days. Good thing that House Sidrioh has bulletin boards with jobs. Can\'t be too difficult...',
+			requirements: 'Complete a House Sidrioh job of your choosing.',
+			reward: '35 experience, 25 copper'
+		},
+		achievement016: {
+			title: 'Don\'t Judge a Book',
+			icon: 'rpg-open-book',
+			description: 'Education is important and what better place to witness it than at a House Nyshasa academy. However, something otherworldly and hidden is definitely going on.',
+			requirements: 'Visit a House Nyshasa academy and encounter a secret magical device or incident.',
+			reward: '50 experience'
+		},
+		achievement017: {
+			title: 'People Person',
+			icon: 'rpg-round-icon-purple rpg-portal',
+			description: 'People have differing opinions on magic and frequently, those thoughts are hidden. But the guards have made it clear; they don\'t support the magic user roaming the city.',
+			requirements: 'Support or detain a magic user.',
+			reward: '30 experience'
+		},
+		achievement018: {
+			title: 'Today\'s Special',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Mac\'s is known to have excellent and well-prepared dishes, but about the special that was ordered... How can one describe the feelings?',
+			requirements: '15 copper. Have a reaction to the special which will be randomly chosen by an admin.',
+			reward: '40 experience'
+		},
+		achievement019: {
+			title: 'Audience Participation',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Audience participation - folk either love it or hate it. Make the best out of the situation since you are being called on.',
+			requirements: 'Perform in Mac\'s show for the evening.',
+			reward: '40 experience, 10 copper, 1 silver'
+		},
+		achievement020: {
+			title: 'Settle Down',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Fellsgard is a satisfactory place to settle down. There\'s plenty of houses and locations to scope out, so it\'s time to take notes.',
+			requirements: 'Record and describe your favored locations in Fellsgard.',
+			reward: '30 experience'
 		}
 	},
 	'Verdant Row': {
-		achievement01: {
+		achievement001: {
 			title: 'On the Way',
-			description: 'Stop for the night in Verdant Row on your way to/from Fellsgard or Ajteire.',
-			requirements: 'Two sugar cubes and a crayon.',
-			reward: '0 experience. The cake was a lie.',
-			icon: 'rpg-round-icon-orange rpg-two-shadows'
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Traveling can certainly make the body weary. A place to rest and put up one\'s feet sure sounds nice. Luckily, Verdant Row is close by and just the type of place.',
+			requirements: '5 copper. Stay in Verdant Row for the night.',
+			reward: '10 experience'
 		},
-		achievement02: {
+		achievement002: {
 			title: 'Close Encounters',
-			description: 'Unexpectedly pass through three or more different spirits while walking through the town and describe their appearances or (lack of) reactions.',
-			requirements: 'Fox Mulder.',
-			reward: '50 experience and the Ghost Busters.',
-			icon: 'rpg-round-icon-yellow rpg-holy-grail'
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Strolling about Verdant Row is a weird ordeal. Instead of bumping into people, walking through the undead is common. But thankfully, those spirits don\'t seem to mind.',
+			requirements: 'Pass through three spirits and describe their appearances.',
+			reward: '15 experience'
 		},
-		achievement03: {
-			title: 'The Latest News',
-			description: 'Overhear conversations or discuss with folk recent events that have been happening along Verdant Row\'s nearby roads.',
-			requirements: 'Yell, "I\'m the king of the world!"',
-			reward: 'Date with Kate Winslet, 3.5px experience, and 100 gold.',
-			icon: 'rpg-round-icon-purple rpg-portal'
+		achievement003: {
+			title: 'Extra, Extra',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'When in Verdant Row, it\'s a good idea to catch up on the latest news surrounding the area. Topics vary from cities to roads to best recipes. Attempt to join or eavesdrop on a conversation.',
+			requirements: 'Overhear or discuss recent matters with folk.',
+			reward: '20 experience, 10 copper'
+		},
+		achievement004: {
+			title: 'No Comment',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Communication is obviously an important part of a relationship, so why aren\'t these spirits trying to chat properly? Must be part of that whole "being dead" thing.',
+			requirements: 'Argue or converse with a spirit, an action that ultimately ends in failure.',
+			reward: '15 experience'
+		},
+		achievement005: {
+			title: 'A Familiar Face',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Perhaps the most eerie thing about Verdant Row is seeing a familiar face, because those faces are typically lifeless ones. This could be a good or bad thing.',
+			requirements: 'Meet a spirit that has a haunting visage from your past.',
+			reward: '15 experience, 10 copper'
+		},
+		achievement006: {
+			title: 'I\'m Inn',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Heartbroken Socks Inn was full and having to resort to another inn, the keepers forgot to mention that you would be sharing a room with some one. Hope this roommate doesn\'t snore.',
+			requirements: '5 copper. Book and stay in a room shared with a stranger.',
+			reward: '30 experience'
+		},
+		achievement007: {
+			title: 'An Old Fashioned Brawl',
+			icon: 'rpg-round-icon-red rpg-crossed-swords',
+			description: 'Visitors often try to put the lack of law in Verdant Row to the test. And of course, the source of any decent brawl usually starts with the town\'s bar.',
+			requirements: 'Participate in or cause a bar fight.',
+			reward: '20 experience, 10 copper'
+		},
+		achievement008: {
+			title: 'A Fleeting Moment',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Verdant Row isn\'t only for mischief. It can be for an emotional or passionate rendezvous. Though these moments are frequently short lived, they are worth remembering.',
+			requirements: '10 copper. Spend a romantic evening with a traveler only to discover their disappearance the next day.',
+			reward: '30 experience'
+		},
+		achievement009: {
+			title: 'Missed Chances',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'A missed flight is an airship ticket bought and wasted. With such limited scheduling, Verdant Row doesn\'t offer refunds for transport. Better make sure you\'re on time.',
+			requirements: 'Be late for a flight to Domrhask or Fellsgard and try to get a refund.',
+			reward: '25 experience, 5 copper'
+		},
+		achievement010: {
+			title: 'Choo Chew',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Taking the train means there\'s time to grab a bit to eat. It\'s rumored that the train from Verdant Row\'s station has decent grub, but first, what car is lunch being served in?',
+			requirements: '10 copper. Pass through at least three train cars until you can order lunch.',
+			reward: '35 experience'
+		},
+		achievement011: {
+			title: 'Unstable Stables Continued',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail',
+			description: 'Perfect, just perfect. At the stables in Verdant Row, they don\'t have any room for the mount you rented at Fellsgard. They\'re saying it needs to be taken back.',
+			requirements: 'Complete "Unstable Stables". Realize your mount needs to go to Fellsgard.',
+			reward: '40 experience'
+		},
+		achievement012: {
+			title: 'Judgement Day',
+			icon: 'rpg-round-icon-red rpg-crossed-swords',
+			description: 'There\'s a balance to everything in Khy\'eras, even crime. As it happens, you\'re witness to felony. Do you stop the culprit or join in to reap the rewards?',
+			requirements: 'Halt or assist in a misconduct that is taking place.',
+			reward: '35 experience, 25 copper'
+		},
+		achievement013: {
+			title: 'Parting the Veil',
+			icon: 'rpg-round-icon-purple rpg-portal',
+			description: 'Strange things can occur in this town, but this time, you were absolutely positive that you had nothing to do with those mystical, conjured beings! Nevertheless, the situation was oddly motivating.',
+			requirements: 'Have an otherworldly encounter and get inspired when choosing where to journey next.',
+			reward: '50 experience'
+		},
+		achievement014: {
+			title: 'Tricks of the Trade',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'The shop keep wasn\'t pushy about selling wares, but resisting the trinket that the spirit offered was not going to happen. There was no walking out of the shop empty handed.',
+			requirements: '15 copper. Purchase a unique item from a shop.',
+			reward: '50 experience'
+		},
+		achievement015: {
+			title: 'A History Lesson',
+			icon: 'rpg-open-book',
+			description: 'Both may seem like empty vessels, but there is a contrast between spirits and Ghosts. Verdant Row\'s haunted tavern is the place to gain knowledge on this section of history.',
+			requirements: 'Visit the tavern where the Ghost race originated. Learn what happened or if you already know, reflect on the event.',
+			reward: '50 experience'
+		},
+		achievement016: {
+			title: 'A Darker Side',
+			icon: 'rpg-round-icon-purple rpg-portal',
+			description: 'This might have been a wrong turn. Suddenly that shadowy alley led right into a shop focused on occult based magic. And curiously enough, the shop keep is a human, not a spirit.',
+			requirements: 'Find the hidden magic shop and talk with the owner.',
+			reward: '50 experience'
+		},
+		achievement017: {
+			title: 'By the Riverside',
+			icon: 'rpg-open-book',
+			description: 'Folk claim that the rivers neighboring Verdant Row are first-rate areas to camp at. Not only is staying in a tent free, but there\'s beautiful surrounding scenery and occasionally, one can see fledgling spirits surfacing from nature.',
+			requirements: 'Camp alongside the river and detail the scenery and/or new spirits that you see.',
+			reward: '30 experience'
+		},
+		achievement018: {
+			title: 'Today\'s Special',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'The stomach will need to be settled by drinking rather than food. Heartbroken Socks Inn only provides liquid nourishment, but they are famous for rare and timeworn beverages.',
+			requirements: '15 copper. Have a reaction to the special which will be randomly chosen by an admin.',
+			reward: '40 experience'
+		},
+		achievement019: {
+			title: 'Sing Along',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Music can soothe the soul, stir up memories, or bring together new friends. The piano player at Heartbroken Socks Inn is definitely having an effect on the patrons.',
+			requirements: 'Join in a sing-a-long or be moved by a song that is being performed.',
+			reward: '40 experience, 10 copper'
+		},
+		achievement020: {
+			title: 'Quick Stop, Pit Stop',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'This stop wasn\'t meant to be permanent. People do not reside in Verdant Row for long durations and no one is surprised to see you go anyway.',
+			requirements: 'Enter and leave Verdant Row in less than four hours.',
+			reward: '30 experience'
+		}
+	},
+	'Ajteire': {
+		achievement001: {
+			title: 'Lost, But Not Forgotten',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'That might have been a wrong turn. No, wait. That might have been 20 wrong turns. It would be nice to see Ajteire, but the jungles prevent travelers from finding their way to the city.',
+			requirements: 'Become lost and identify the way to Ajteire or call for aid.',
+			reward: '10 experience'
+		},
+		achievement002: {
+			title: 'A Creeping Shadow',
+			icon: 'rpg-round-icon-red rpg-crossed-swords',
+			description: 'Even with all the city\'s enchantments and protection efforts, the undead still manages to lurk about the perimeter of Ajteire. A particular enemy is drawing nearer. Now, how to dispatch of it?',
+			requirements: 'Encounter the undead and request assistance from the Fae or Kerasoka or attempt to get rid of it yourself.',
+			reward: '15 experience, 10 copper'
+		},
+		achievement003: {
+			title: 'This Little Light',
+			icon: 'rpg-open-book',
+			description: 'Many books written on Ajteire\'s history speak of the fireflies that protect it, but the whole notion of mystical bugs seems a little silly. Perhaps if a person sits amidst the tiny creatures for a while, they might learn.',
+			requirements: 'Rest at a firefly populated area and take in their magical presence. How do the fireflies behave?',
+			reward: '20 experience'
+		},
+		achievement004: {
+			title: 'A Lesson In Forestry',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail',
+			description: 'There\'s no sense in getting lost again. Plenty of Kerasoka are willing to give folk lessons in forestry and navigation of the surrounding jungles. One has only to ask.',
+			requirements: 'Complete "Lost, But Not Forgotten". Have a meeting with a Kersoka who teaches you about the area.',
+			reward: '15 experience, 5 copper'
+		},
+		achievement005: {
+			title: 'Back to the Basics',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'The citizens of Ajteire certainly work well together. Everyone has a talent which contributes to the well-being of the community. While visiting, take part, whether it is by cooking, gardening, hunting, making clothes, etc.',
+			requirements: 'Participate in a communal activity, giving back to the citizens for their hospitality.',
+			reward: '20 experience'
+		},
+		achievement006: {
+			title: 'A Necessary Exchange',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Ajteire\'s markets are quite small in comparison to Khy\'eras\' remaining cities. Nearly all wares are requested through trade or craft exchanges. While there are a shops to find necessities, the chances of finding a rare "gem" are slim indeed. Until today at least...',
+			requirements: 'Discover a needed object at a shop and trade a sentimental possession of yours for it.',
+			reward: '25 experience'
+		},
+		achievement007: {
+			title: 'Late Night Snacks',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Seeing Ajteire during the day didn\'t work out. Here you are, turning up later than expected, weary and hungry from all that travelling. Not many people are awake, but perhaps a watch chef can still be summoned for a quick bite to eat.',
+			requirements: 'Arrive at a belated hour, request a watch chef, and receive a meal or fall asleep waiting for a cook to arrive.',
+			reward: '30 experience'
+		},
+		achievement008: {
+			title: 'Building or Burning Bridges',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'For the most part, the aerial walkways connecting the treehouses have been well-kept and managed. Nevertheless, a few bridges appear risky to cross and could be fixed. Does one dare to cross the bridge or is a repair in order first?',
+			requirements: 'Save yourself from a collapsing bridge or assist in fixing a broken one.',
+			reward: '15 experience, 10 copper'
+		},
+		achievement009: {
+			title: 'Swing Low',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'Well, there\'s no beds at the inns, just hammocks. Sleeping on a netted swing might not be too dreadful. At least breakfast is included the following morning.',
+			requirements: '5 copper. Book a room, sleep in a hammock, and the next morning, detail your visit in the guest book.',
+			reward: '30 experience'
+		},
+		achievement010: {
+			title: 'Camping',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'It\'s a busy evening in the city and without advanced reservations, there\'s no rooms to book at any of the Ajteire\'s inns. Fortunately, the city residents don\'t mind if outsiders camp among the trees.',
+			requirements: 'Put up a tent and camp along the city trees.',
+			reward: '35 experience, 5 copper'
+		},
+		achievement011: {
+			title: 'The Crow\'s Nest',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Up in the treetops, the lookout towers provide spectacular views of Ajteire and permits folk to scout for incoming enemies. This is definitely a spot to climb up and check out.',
+			requirements: 'Observe the landscape from a lookout platform.',
+			reward: '40 experience'
+		},
+		achievement012: {
+			title: 'A Fine Vine',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'It is not uncommon to hear about the immense flora that grows in the jungles, but never did you imagine it could stop a train. To continue your journey, leave the train car and help the crew remove overgrown vegetation that is obstructing the tracks.',
+			requirements: 'Clear away a considerable mass of intertwined plant-life that is covering train tracks.',
+			reward: '50 experience, 10 copper'
+		},
+		achievement013: {
+			title: 'Well, That\'s New',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'The quaint and modest stables in the city have average mounts such as horses or elk, but there are unrecognizable creatures residing in the stalls. It\'s a wonder which steed the copper in a person\'s pocket might allow them to rent.',
+			requirements: '20 copper. Overpay to possibly lease an extraordinary mount which is randomly chosen by an admin.',
+			reward: '50 experience'
+		},
+		achievement014: {
+			title: 'Hearing Voices',
+			icon: 'rpg-open-book',
+			description: 'With all the trees in Ajteire, it is effortless for a person to be misplaced into the jungles. Stumbling and alone, struggling to uncover the way back to the city, you now think you\'re hearing whispers. But what if the sounds are not part of your imagination...?',
+			requirements: 'While lost, discover the trees that house the slumbering Voices of Fate. An admin must give a surprise message from the past, present, or future.',
+			reward: '55 experience'
+		},
+		achievement015: {
+			title: 'Hired Hands',
+			icon: 'rpg-round-icon-red rpg-crossed-swords',
+			description: 'For years, Ajteire has physically defended itself by not using an army, but by relying on a militia. This gathering is not dedicated to strict posts or duties, so it\'s accepting for outsiders to lend a hand where they think their combat skills might prove beneficial.',
+			requirements: 'Join the Ajteire militia for up to two days and guard the city.',
+			reward: '35 experience, 25 copper'
+		},
+		achievement016: {
+			title: 'Differing Opinions',
+			icon: 'rpg-round-icon-purple rpg-portal',
+			description: 'Entering Ajteire as a magic user, one might feel at ease and relaxed to be placed in an accepting society. However, as a non-magic user, a person might endure confusion, disgust, or fear. A disagreeable traveler might also be outnumbered in their viewpoints.',
+			requirements: 'Reflect on Ajteire\'s lack of magic bans.',
+			reward: '50 experience'
+		},
+		achievement017: {
+			title: 'Court\'s In Session',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'It is bizarre when there is a court being held in the city, meaning that some body must have done something rather awful. To witness such limited events are memorable, as the crimes committed generally recall sadness or heartbreak.',
+			requirements: 'Observe a court, be a member of the jury, or be the cause of a court.',
+			reward: '30 experience'
+		},
+		achievement018: {
+			title: 'Today\'s Special',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'As a tavern that serves light snacks and beverages, it is curious that there is an undescribed special on The Preamble\'s menu. How complex could the dish be? It should be interesting to try.',
+			requirements: '15 copper. Have a reaction to the special which will be randomly chosen by an admin.',
+			reward: '40 experience'
+		},
+		achievement019: {
+			title: 'Story Time',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'When in The Preamble, it is not unlikely to hear a tale or ballad from a bard. Listening to a minstrel, you hone in on the words and concentrate, not sure how to reply until the entertainment is concluded.',
+			requirements: 'Listen to a story or song in The Preamble and applaud or claim the narrative is a lie.',
+			reward: '40 experience, 10 copper'
+		},
+		achievement020: {
+			title: 'Fond Farewells',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'A lengthy stay in Ajteire wasn\'t part of the plans, but the city was so welcoming and rejuvenating, that an extended visit never seemed like it was actually transpiring. But, it\'s time to move forward and continue the journey.',
+			requirements: 'Leave Ajteire after residing in the town for longer than expected.',
+			reward: '30 experience'
+		}
+	},
+	'Domrhask': {
+		achievement001: {
+			title: 'Stone Cold',
+			icon: 'rpg-open-book',
+			description: 'Domrhask\'s history can be traced back to even the smallest remnants. The city was built on an enduring foundation of rock by golems called Irenohl. Thus, it is not unlikely that minuscule pebbles could be artifacts of the Irenohl.',
+			requirements: 'Uncover a rock that you believe may be a fragment of an Irenohl.',
+			reward: '10 experience'
+		},
+		achievement002: {
+			title: 'Frost Bitten',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'When beginning a trek to Domrhask, the weather never seems awful, but the closer the city comes into view, the more frigid a person gets. It might be smart to backtrack and purchase proper cold weather gear for the hike.',
+			requirements: '10 copper. After travelling towards Domrhask, turn around to the nearest city or village and buy warm, winter gear.',
+			reward: '20 experience'
+		},
+		achievement003: {
+			title: 'From a Distance',
+			icon: 'rpg-open-book',
+			description: 'Snow-laden winds can disorient the path towards Domrhask. Even when the city is practically a straight shot north, the weather causes delays and trouble. As soon as the eight towers come into view, the structures can be used as navigational points.',
+			requirements: 'Miles away, fixate on the towers of Domrhask and utilize the buildings to steer your way to the city.',
+			reward: '20 experience'
+		},
+		achievement004: {
+			title: 'Just Another Curse',
+			icon: 'rpg-round-icon-red rpg-crossed-swords',
+			description: 'With scarce vegetation in Irtuen Reaches, flora should be protected. As it so happens, not far outside of Domrhask, there is a blackened patch of soil poisoned by a skeleton and the plant-life circling it is dying. Do you dare to cleanse the area?',
+			requirements: 'Remove or destroy skeletal remains (skull, hand, etc.) negatively effecting vegetation.',
+			reward: '15 experience, 5 copper'
+		},
+		achievement005: {
+			title: 'A Simple Gift',
+			icon: 'rpg-open-book',
+			description: 'Attraction tours are hardly ever exciting and therefore, you expected the descent down into the Dwarven mines to be dull. It was Thraora, the "Tree of Blades", that made the duration of the tour fascinating. Never did you expect such a gift.',
+			requirements: 'Receive a modest offering (fallen leaf, drop of sap, small piece of chipped bark, etc.) from Thraora.',
+			reward: '15 experience, 15 copper'
+		},
+		achievement006: {
+			title: 'One of the Crowd',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'There\'s a quote around Domrhask: "Two\'s company, but anyone else not a Dwarf is a crowd." The unwelcomeness of this statement is further elevated depending on race, but if that race is Dwarven, get ready for an outstanding time in the city.',
+			requirements: 'Join a group of Dwarves in conversation and have the gathering react accordingly depending on your race.',
+			reward: '25 experience'
+		},
+		achievement007: {
+			title: 'Rate of Exchange',
+			icon: 'rpg-round-icon-orange rpg-two-shadows',
+			description: 'The rumors about shopping in Domrhask are sadly accurate. For Dwarves, unspoken discounts present themselves. But for the outsider, trying to purchase a high-quality ware can be equal to the cost of a soul or first-born child. Is there a complaint department around here?',
+			requirements: 'Argue about the unreasonable cost of items, then visit or write a letter to The Coin. Or, receive an discount on goods.',
+			reward: '30 experience'
+		},
+		achievement008: {
+			title: 'Lofty Living Spaces',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Climbing the inn\'s ladder to the loft was quite a ways up and you nearly turned around to request a room on a lower level. Once in the loft though, there\'s enough area to roll around, so surely you\'ll slumber through the night. Or will you?',
+			requirements: '5 copper. While sleeping, fall out of the loft or awake before falling.',
+			reward: '20 experience'
+		},
+		achievement009: {
+			title: 'I\'ve Been Looking For You',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail',
+			description: 'There\'s no way around it. Domrhask has markets with bountiful trinkets, objects, armor, and weapons. If there\'s something a person needs, the city has it. And unfortunately, that person is you. Let\'s see how much can be spent in a day.',
+			requirements: 'Complete "Rate of Exchange". 30 copper. Discover an item that you have been seeking and purchase it.',
+			reward: '50 experience'
+		},
+		achievement010: {
+			title: 'What Goes Up',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: '"Out of Order" is the last thing anybody wants to view on a sign when nearing the city elevators. Time is of the essence and when needing to go up, the stairs are still an exhausting, yet feasible option.',
+			requirements: 'Take the stairs to the top level of a tower and describe your stamina level during or when completing this.',
+			reward: '35 experience'
+		},
+		achievement011: {
+			title: 'A Fool\'s Errand',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'What was that noise? Is the airship shaking? Were the warnings about frequent crashes true!? Could it be engine failure or a vicious snow storm or the ship hitting the side of the mountain? No matter the cause, start praying that you make it out of this situation.',
+			requirements: 'Be present on a Domrhask-bound airship that almost crashes.',
+			reward: '40 experience'
+		},
+		achievement012: {
+			title: 'Safety In Numbers',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'There\'s numerous ways to get to Domrhask, but the leading method may be traveling as a group. Caravans can be joined and even better if the person joining is a skilled adventurer. Consequently, these gatherings regularly become targets for wild beasts in the region.',
+			requirements: 'Travel with a group and fend off foes that try to attack.',
+			reward: '50 experience, 15 copper'
+		},
+		achievement013: {
+			title: 'A New Blade',
+			icon: 'rpg-open-book',
+			description: 'The gauntlet has been set up and its time for the Dwarves to choose a new The Sword! Not only is this a momentous occasion to be part of, but the whole city is alive with festivities complete with drinks, food, and games.',
+			requirements: 'Attend the gauntlet that determines which Dwarf will become the next The Sword.',
+			reward: '50 experience, 10 copper'
+		},
+		achievement014: {
+			title: 'Ban Hammer',
+			icon: 'rpg-open-book',
+			description: 'It is no secret how Dwarven folk respond when presented with magic. But to see The Hammer in action, laying down judgements when mystical elements are about, can be quite intimidating.',
+			requirements: 'Be banished or watch as another is banished when The Hammer determines there was magic involvement about.',
+			reward: '50 experience'
+		},
+		achievement015: {
+			title: 'Unreasonable Upgrade',
+			icon: 'rpg-open-book',
+			description: 'It is convenient that The Shield has a roster and map of all armories in Domrhask. With so many stores, searching for an upgrade can be tedious. And even more tedious is locating a shop that has first-rate deals (and one that hopefully won\'t take all your money).',
+			requirements: '30 copper. Search the city (at least eight stores) for the best and most costly upgrade to your current weapon or armor.',
+			reward: '65 experience'
+		},
+		achievement016: {
+			title: 'New Age Remedies',
+			icon: 'rpg-round-icon-purple rpg-portal',
+			description: 'Being in Domrhask is an unfavorable time to catch a cold or fever. If a person is magic tolerant, relying on alternative healing methods are frustrating. The road to recovery, though, requires putting trust in the city hospitals and their practices.',
+			requirements: 'Catch an illness when in Domrhask and be cured by non-magical methods that do or do not work.',
+			reward: '50 experience'
+		},
+		achievement017: {
+			title: 'Keep It Secret, Keep It Safe',
+			icon: 'rpg-round-icon-purple rpg-portal',
+			description: 'In a city that restricts discussion and operation of supernatural energies, what do people do when a sticky situation requires magic? Maybe you are the one using it; maybe you aren\'t. The more important question here is: how long can you keep silent?',
+			requirements: 'In a situation where magic is necessary, attempt to use it or help another use it secretly.',
+			reward: '30 experience'
+		},
+		achievement018: {
+			title: 'Today\'s Special',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Ah, The Bearded Siren! A delightful tavern with patrons just as bearded and pleasant. The building is primarily occupied by Dwarves and while these folk are hard-pressed to talk to those outside their race, with a bit of coin, hearty grub can be ordered. At least the menu\'s special is on sale.',
+			requirements: '20 copper. Have a reaction to the special which will be randomly chosen by an admin.',
+			reward: '45 experience'
+		},
+		achievement019: {
+			title: 'High Risk Sports',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Visiting The Bearded Siren on any other evening would have been a better choice. Tonight, however, is a night of sporting events and randomly, you have been chosen to participate. The crowd is not accepting "no" for an answer.',
+			requirements: 'Engage in a competition inside The Bearded Siren (from wrestling to weapon challenges to boxing).',
+			reward: '40 experience, 20 copper, 1 silver'
+		},
+		achievement020: {
+			title: 'Good Riddance',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Domrhask is definitely either a "love it" or "hate it" place. The Dwarves express gratitude or no emotion at all when certain folk depart. Non-residents are usually happy enough to leave with their money and limbs still in tact.',
+			requirements: 'Leave Domrhask and reflect accordingly about the visit. If applicable, have Dwarves also respond to the departure.',
+			reward: '30 experience'
+		}
+	},
+	'Other': {
+		achievement001: {
+			title: 'Where the River Goes',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Roads and skies are not the only methods for journeying. The Ordinuad River runs north to south through central segments of the land. Though there are sections that contain rough rapids, in the right places, the current allows a person to lazily drift and relax.',
+			requirements: 'For a day or more, float down the Ordinuad River to a destination of your choosing.',
+			reward: '15 experience, 5 copper'
+		},
+		achievement002: {
+			title: 'Anything but Ordinuad',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Popular opinion dictates that the Ordinuad River has the most refreshing and rejuvenating water. Every now and then, an adventurer who has traversed the river will tell you otherwise. In some areas, the land is tainted and this has effected the water.',
+			requirements: 'Drink from the Ordinuad River and describe the taste depending on your location.',
+			reward: '15 experience, 5 copper'
+		},
+		achievement003: {
+			title: 'Siblings',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'In the northwest where mountains meet the Ordinuad River, the stream divides itself into two pieces known as "The Serpent Kin". To this day, folk are unsure if it was titled after snakes or siblings or both.',
+			requirements: 'Travel from one branch of The Serpent Kin to the other.',
+			reward: '20 experience, 5 copper'
+		},
+		achievement004: {
+			title: 'The Mountains Are Calling',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'The Slyscera Mountains boast imposing and ominous peaks throughout chains of rock and stone. It is a sure death wish to climb too high up into the mountains, but not all paths are elevated.',
+			requirements: 'Find a lower path and hike through the Slyscera Mountains.',
+			reward: '25 experience, 5 copper'
+		},
+		achievement005: {
+			title: 'That Escalated Quickly',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail',
+			description: 'It appears the passage you selected might have been the wrong one. Isn\'t that the way of life? The path has lifted to greater heights and the trek is becoming treacherous, unmanageable, and covered with snowfall.',
+			requirements: 'Complete "The Mountains are Calling". Leave the Slyscera Mountain path when it turns dangerous.',
+			reward: '30 experience'
+		},
+		achievement006: {
+			title: 'Remnants of Ruin',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'Slyscera not simply a mountain; its peaks are graveyards for artifacts and junk where man tried to dominate over nature and sorely lost. It is not unlikely that an adventurer will encounter objects from abandoned train tracks to broken weapons to tattered clothing to skeletons.',
+			requirements: 'Discover rubbish while hiking through the Slyscera Mountains. Is there anything worth keeping?',
+			reward: '25 experience, 15 copper'
+		},
+		achievement007: {
+			title: 'Willows and Wisps',
+			icon: 'rpg-round-icon-purple rpg-portal',
+			description: 'Not far outside Ajteire is Lament of the Willow, a grove littered with archaic and twisted willow trees, their branches hung with leaf decorated, drooping vines. Visitors claim the atmosphere is haunted as they hear undistinguishable, whispered songs and voices.',
+			requirements: 'Spend time at Lament of the Willow. Is it eerie? Do you hear strange sounds or feel watched?',
+			reward: '35 experience'
+		},
+		achievement008: {
+			title: 'Bath Time',
+			icon: 'rpg-round-icon-green rpg-castle',
+			description: 'The grandest lake in Khy\'eras cradled against the mountain is Farinyir\'s Basin. Interestingly enough, not a soul can recall Farinyir and why the lake was named for the person. That fact aside, the basin provides pockets of crystalline water and plenty of resources.',
+			requirements: 'Perform an activity (such as fishing, seeking treasure, swimming, bathing, etc.) at Farinyir\'s Basin.',
+			reward: '25 experience, 15 copper'
+		},
+		achievement009: {
+			title: 'Uncharted Territory',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Southwest of Ninraih lies an immense, nameless island that is residence to no cities or villages, but does attract wanders of all sorts. In the past, it was home to Victoria Erair, but is now split into territories owned by Ninraih and Tviyr.',
+			requirements: 'Travel to the southwest island, going from the Ninraih boundary to the Tviyr boundary or vice versa.',
+			reward: '35 experience'
+		},
+		achievement010: {
+			title: 'Little Getaways',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'Despite its sizable cities, rivers, and mountains, Khy\'eras has small islands that dot the perimeters of land or are situated out in the oceans. These portions of land are perfect for escaping and unwinding.',
+			requirements: 'Find your way to and camp out at three different Khy\'eras islands.',
+			reward: '35 experience'
+		},
+		achievement011: {
+			title: 'Ice Fishing',
+			icon: 'rpg-round-icon-brown rpg-direction-sign',
+			description: 'While not exactly a prison, getting positioned on the islands north of Irtuen Reaches is not a joy for anyone, except maybe an over zealot Dwarf showing off their fortitude. Since you happen to be there, make the best out of a cold situation or attempt to leave.',
+			requirements: 'Get stuck on or be sent to the snowy, northern Irtuen Reaches islands.',
+			reward: '35 experience'
+		},
+		achievement012: {
+			title: 'Map Maker',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail',
+			description: 'Wandering throughout Khy\'eras is becoming easier! Roads and landmarks are recognizable and even more so when these places are charted on a map.',
+			requirements: 'Complete eight achievements where you visited unique cities, locations, or buildings. Achievements must be presented in a list.',
+			reward: '40 experience'
+		},
+		achievement013: {
+			title: 'Gourmand',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail',
+			description: 'Though you wouldn\'t claim to have an outstanding palate, tasting regional dishes of Khy\'eras has given your taste buds wisdom. Consider yourself knowledgeable about what to stuff your face with and what to avoid.',
+			requirements: 'Complete all four "Today\'s Special" achievements.',
+			reward: '40 experience'
+		},
+		achievement014: {
+			title: 'Well Rested',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail',
+			description: 'In addition to having a mental list of places to chow down at, you\'re also familiar with exceptional places to sleep at. After all, it is imperative for a seasoned traveler such as yourself to be well rested prior to journeying or causing a ruckus.',
+			requirements: 'Complete four achievements requiring you to spend the night in Fellsgard, Verdant Row, Ajteire, and Domrhask.',
+			reward: '40 experience'
+		},
+		achievement015: {
+			title: 'I Get Around',
+			icon: 'rpg-round-icon-yellow rpg-holy-grail',
+			description: 'For a person to claim they are educated about Khy\'eras\' terrain and countries, they should have information regarding top travel choices and methods to get around. This could be useful news to pass onto fledgling adventurers... or not.',
+			requirements: 'Complete four achievements related to transportation, where you depart from or go to Fellsgard, Verdant Row, Ajteire, and Domrhask.',
+			reward: '40 experience'
 		}
 	}
 } %}

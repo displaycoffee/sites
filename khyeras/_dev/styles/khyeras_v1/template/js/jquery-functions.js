@@ -292,7 +292,7 @@ function initializeDiscordList() {
 				if ( current['avatar'] ) {
 					var imageUrl = '//cdn.discordapp.com/avatars/' + current['id'] + '/' + current['avatar'] + '.jpg';
 				} else {
-					var imageUrl = './styles/khyeras_v1/theme/images/no_avatar.gif'
+					var imageUrl = '//localhost/sites/khyeras/styles/khyeras_v1/theme/images/no_avatar.gif'
 				}
 
 				var memberImage = '<span class="discord-avatar image-wrap"><img src="' + imageUrl + '" class="user-avatar" /></span>';

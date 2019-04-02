@@ -748,7 +748,7 @@ dl.details {
 		dd {
 			margin-left: 125px;
 		}
-	}	
+	}
 	&.details-mar20 {
 		margin-bottom: 0;
 		dd, dt {
@@ -777,6 +777,10 @@ dl.details {
 	@include sizing($list-icon-lg-size, $list-icon-lg-size);
 	line-height: $list-icon-lg-size;
 	font-size: rem(28px);
+}
+
+.rpg-round-icon-brown {
+	background: $color-22;
 }
 
 .rpg-round-icon-green {
