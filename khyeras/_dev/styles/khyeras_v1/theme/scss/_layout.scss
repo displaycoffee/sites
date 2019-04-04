@@ -74,6 +74,16 @@
 	font-style: italic;
 }
 
+a.top {
+	.icon, &:hover .icon {
+		color: inherit;
+	}
+}
+
+.back2top {
+	margin: 0 0 20px 0;
+}
+
 /* Browser Upgrade / Browse Happy
 ============================================== */
 

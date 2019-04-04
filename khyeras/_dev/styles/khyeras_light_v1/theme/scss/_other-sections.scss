@@ -1,11 +1,10 @@
 /* Forum FAQ
 ============================================== */
 
-dl.faq dt, dl.faq + .top, #faqlinks dl.faq dd {
-	margin: 0 0 5px 0;
-}
-
 dl.faq {
+	dt {
+		margin: 0 0 10px 0;
+	}
 	dt[id*='f'] strong {
 		@include spectral-common;
 		font-weight: normal;
@@ -15,15 +14,9 @@ dl.faq {
 	}
 	& + .top {
 		display: inline-block;
-		@include position($type: relative, $top: -15px, $left: -2px);
-		.icon {
-			color: $color-00;
-		}
+		@include position($type: relative, $top: -10px, $left: -2px);
+		margin: 0 0 20px 0;
 	}
-}
-
-#faqlinks dl.faq dd:last-child {
-	margin-bottom: 0;
 }
 
 /* Search Page
