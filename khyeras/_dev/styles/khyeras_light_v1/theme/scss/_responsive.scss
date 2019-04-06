@@ -936,6 +936,14 @@
 			}
 		}
 	}
+	.quick-links.quick-links-filter {
+		padding-right: 0;
+		.card-filter {
+			position: static;
+			display: block;
+			margin: 10px 0 0 0;
+		}
+	}	
 	.excerpt, .excerpt-simple {
 		.excerpt-details {
 			.excerpt-title, .icon-wrapper {

@@ -249,9 +249,6 @@ dl.faq {
 	&.quick-links-bottom {
 		border-bottom: 1px dashed $color-01;
 		padding: 0 0 20px 0;
-		&.quick-links-filter [class*='filter'] {
-			top: 0;
-		}
 	}
 	&.quick-links-top {
 		border-top: 1px dashed $color-01;
@@ -260,8 +257,8 @@ dl.faq {
 	&.quick-links-filter {
 		position: relative;
 		padding-right: 200px;
-		[class*='filter'] {
-			@include position($type: absolute, $top: 20px, $right: 0);
+		.card-filter {
+			@include position($type: absolute, $top: auto, $right: 0);
 		}
 	}
 }
@@ -479,7 +476,7 @@ dl.faq {
 				margin: 0 5px 0 0;
 			}
 		}
-		&.card-completed {
+		&.card-changed {
 			.icon-round {
 				background: $color-10;
 			}
@@ -494,7 +491,7 @@ dl.faq {
 	}
 }
 
-.card-filter {
+.card-filter .card-filter-button {
 	cursor: pointer;
 }
 

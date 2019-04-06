@@ -46,7 +46,7 @@ jQuery( document ).ready( function( $ ) {
 	toggleContent( '.toggle-links a', '#page-welcome .site-links', 'toggle-show', '' );
 	toggleContent( '.toggle-featured a', '#featured-content', 'toggle-show', '' );
 	toggleContent( '.bbcode-hidden-toggle', '.bbcode-hidden-text', 'toggle-show', 'prev' );
-	toggleContent( '.card-filter', '.card-completed', 'toggle-hide', '' )
+	toggleContent( '.card-filter-button', '.card-changed', 'toggle-hide', '' )
 	toggleMemberDisplay();
 	toggleMapDisplay();
 
