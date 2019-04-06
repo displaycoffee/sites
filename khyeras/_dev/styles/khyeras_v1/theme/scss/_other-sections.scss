@@ -279,7 +279,7 @@ dl.faq {
 		&:last-child {
 			margin-bottom: 0;
 		}
-		.icon, .map-round-icon {
+		.icon, .icon-round-image {
 			margin: 0 10px 0 0;
 		}
 		p {
@@ -404,13 +404,13 @@ dl.faq {
 		p:last-child {
 			margin-bottom: 0;
 		}
-		.excerpt-title, .rpg-icon-wrapper {
+		.excerpt-title, .icon-wrapper {
 			@include inline-block(middle);
 		}
 		.excerpt-title {
 			max-width: 75%;
 		}
-		.rpg-icon-wrapper {
+		.icon-wrapper {
 			padding: 0 0 0 5px;
 			margin-bottom: 20px;
 		}
@@ -449,7 +449,7 @@ dl.faq {
 		@include flex();
 		padding: 0 10px;
 		margin: 0 0 20px 0;
-		.rpg-icon-wrapper {
+		.icon-wrapper {
 			float: left;
 			clear: right;
 			padding: 0 15px 20px 0;
@@ -466,7 +466,7 @@ dl.faq {
 			}
 		}
 		&.card-completed {
-			.rpg-round-icon {
+			.icon-round {
 				background: $color-10;
 			}
 			.card-description, dl.details {

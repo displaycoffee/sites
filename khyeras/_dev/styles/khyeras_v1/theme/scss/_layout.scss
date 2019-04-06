@@ -767,65 +767,6 @@ dl.details {
 	}
 }
 
-/* Icon Circles
-============================================== */
-
-.rpg-round-icon, .map-round-icon {
-	@include sizing($list-icon-size, $list-icon-size);
-	border-radius: 100%;
-	color: $light-03;
-}
-
-.rpg-round-icon {
-	line-height: $list-icon-size;
-	background: $color-01;
-	font-size: rem(18px);
-	text-align: center;
-}
-
-.rpg-round-icon-lg {
-	@include sizing($list-icon-lg-size, $list-icon-lg-size);
-	line-height: $list-icon-lg-size;
-	font-size: rem(28px);
-}
-
-.rpg-round-icon-brown {
-	background: $color-22;
-}
-
-.rpg-round-icon-green {
-	background: $color-05;
-}
-
-.rpg-round-icon-orange {
-	background: $color-12;
-}
-
-.rpg-round-icon-purple {
-	background: $color-15;
-}
-
-.rpg-round-icon-red {
-	background: $color-08;
-}
-
-.rpg-round-icon-yellow {
-	background: $color-14;
-}
-
-.map-round-icon {
-	display: inline-block;
-	overflow: hidden;
-}
-
-.rpg-icon-wrapper {
-	line-height: 0;
-	margin: 0 -5px;
-	.rpg-round-icon {
-		margin: 0 5px;
-	}
-}
-
 /* Round Images
 ============================================== */
 
