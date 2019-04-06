@@ -249,10 +249,20 @@ dl.faq {
 	&.quick-links-bottom {
 		border-bottom: 1px dashed $color-01;
 		padding: 0 0 20px 0;
+		&.quick-links-filter [class*='filter'] {
+			top: 0;
+		}
 	}
 	&.quick-links-top {
 		border-top: 1px dashed $color-01;
 		padding: 20px 0 0 0;
+	}
+	&.quick-links-filter {
+		position: relative;
+		padding-right: 200px;
+		[class*='filter'] {
+			@include position($type: absolute, $top: 20px, $right: 0);
+		}
 	}
 }
 
@@ -449,6 +459,7 @@ dl.faq {
 		@include flex();
 		padding: 0 10px;
 		margin: 0 0 20px 0;
+		@include toggle-content(show, true);
 		.icon-wrapper {
 			float: left;
 			clear: right;
@@ -473,7 +484,15 @@ dl.faq {
 				opacity: 0.50;
 			}
 		}
+		&.toggle-hide {
+			@include position($type: absolute, $top: -9999px, $left: -9999px);
+			@include toggle-content(hide, false);
+		}
 	}
+}
+
+.card-filter {
+	cursor: pointer;
 }
 
 /* Pages - Map

@@ -685,7 +685,7 @@
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
 
-			{% set completed_achievements = KHY_USER_ACHIEVEMENTS | split(',') %}
+			{% set completed_achievements = KHY_USER_ACHIEVEMENTS | replace({', ': ','}) | split(',') %}
 
 			{% if achievements %}
 				{% for key, achievement in achievements %}

@@ -3,7 +3,7 @@
  *
  * Khy'eras Custom Code. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2017, Adria, https://github.com/displaycoffee
+ * @copyright (c) 2019, Adria, https://github.com/displaycoffee
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
  */
@@ -186,7 +186,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  		));
 
 		// Add list of completed achievements only for achievement page
-		if ($this->user->page && $this->user->page['page'] == 'app.php/achievements') {
+		if ($this->user->page && $this->user->page['page_name'] == 'app.php/gameplay-achievements') {
 			$this->template->assign_vars(array(
 				'KHY_USER_ACHIEVEMENTS' => $pf_user['c_achievements']['value']
 	 		));

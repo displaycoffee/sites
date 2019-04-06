@@ -43,9 +43,10 @@ jQuery( document ).ready( function( $ ) {
 	formatDisplayActions();
 	hidePMPostBox();
 	addCPWrapper();
-	toggleContent( '.toggle-links a', '#page-welcome .site-links', '' );
-	toggleContent( '.toggle-featured a', '#featured-content', '' );
-	toggleContent( '.bbcode-hidden-toggle', '.bbcode-hidden-text', 'prev' );
+	toggleContent( '.toggle-links a', '#page-welcome .site-links', 'toggle-show', '' );
+	toggleContent( '.toggle-featured a', '#featured-content', 'toggle-show', '' );
+	toggleContent( '.bbcode-hidden-toggle', '.bbcode-hidden-text', 'toggle-show', 'prev' );
+	toggleContent( '.card-filter', '.card-completed', 'toggle-hide', '' )
 	toggleMemberDisplay();
 	toggleMapDisplay();
 
