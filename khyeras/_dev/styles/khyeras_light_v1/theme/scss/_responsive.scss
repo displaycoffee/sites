@@ -938,13 +938,13 @@
 	}
 	.excerpt, .excerpt-simple {
 		.excerpt-details {
-			.excerpt-title, .rpg-icon-wrapper {
+			.excerpt-title, .icon-wrapper {
 				display: block;
 			}
 			.excerpt-title {
 				max-width: none;
 			}
-			.rpg-icon-wrapper {
+			.icon-wrapper {
 				margin-bottom: 0;
 			}
 		}
@@ -982,7 +982,7 @@
 					}
 				}
 			}
-			.rpg-icon-wrapper {
+			.icon-wrapper {
 				float: right;
 				clear: left;
 				padding: 0 0 5px 10px;
@@ -993,7 +993,7 @@
 		}
 	}
 	.excerpt.excerpt-right, .excerpt-simple {
-		.excerpt-details .rpg-icon-wrapper {
+		.excerpt-details .icon-wrapper {
 			float: left;
 			clear: right;
 			padding: 0 15px 5px 0;
@@ -1791,14 +1791,14 @@
 			position: static;
 		}
 	}
-	.rpg-round-icon, .map-round-icon {
+	.icon-round, .icon-round-image {
 		@include sizing($responsive-icon-size, $responsive-icon-size);
 	}
-	.rpg-round-icon {
+	.icon-round {
 		line-height: $responsive-icon-size;
 		font-size: rem(16px);
 	}
-	.rpg-round-icon-lg {
+	.icon-round-lg {
 		@include sizing($responsive-icon-lg-size, $responsive-icon-lg-size);
 		line-height: $responsive-icon-lg-size;
 		font-size: rem(24px);

@@ -64,14 +64,14 @@
 			background: map-get($color-set-08, light-00);
 		}
 		&.unapproved, &.post-blue {
-			background: map-get($color-set-03, light-00);
+			background: $color-01;
 			.icon-red {
-				color: $color-03;
+				color: $color-05;
 			}
 		}
 	}
 	.rules {
-		background: map-get($color-set-03, light-00);
+		background: $color-01;
 		font-size: rem(13px);
 		&:before {
 			content: 'Rules: ';

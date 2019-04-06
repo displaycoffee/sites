@@ -78,7 +78,7 @@
 					background: map-get($color-set-08, light-00);
 				}
 				&.fa-question {
-					background: map-get($color-set-03, light-00);
+					background: $color-01;
 				}
 			}
 			dl {

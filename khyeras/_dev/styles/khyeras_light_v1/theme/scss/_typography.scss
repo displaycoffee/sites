@@ -154,7 +154,7 @@ h5, h6, .h5, .h6 {
 	font-size: rem(20px);
 }
 
-/* Icon Families, Colors, and Sizes
+/* Icon Families & Formatting
 ============================================== */
 
 .icon  {
@@ -162,27 +162,42 @@ h5, h6, .h5, .h6 {
 	font-size: rem($global-font-size);
 }
 
-.icon.rpg-icon, .icon.misc-icon {
+.rpg-icon, .misc-icon {
 	font-family: 'Khyeras Icons';
 }
 
-.icon.icon-xxl {
+.icon + span:not(.sr-only), .icon + .sr-only + span:not(.sr-only), span:not(.sr-only) + .icon {
+	margin: 0 0 0 5px;
+}
+
+.icon-wrapper {
+	line-height: 0;
+	margin: 0 -5px;
+	.icon-round {
+		margin: 0 5px;
+	}
+}
+
+/* Icon Sizes & Shapes
+============================================== */
+
+.icon-xxl {
 	font-size: rem(22px);
 }
 
-.icon.icon-xl {
+.icon-xl {
 	font-size: rem(18px);
 }
 
-.icon.icon-lg {
+.icon-lg {
 	font-size: rem(16px);
 }
 
-.icon.icon-md {
+.icon-md {
 	font-size: rem($global-font-size);
 }
 
-.icon.icon-sm {
+.icon-sm {
 	font-size: rem(12px);
 }
 
@@ -190,38 +205,117 @@ h5, h6, .h5, .h6 {
 	font-size: rem(10px);
 }
 
-.icon + span:not(.sr-only), .icon + .sr-only + span:not(.sr-only), span:not(.sr-only) + .icon {
-	margin: 0 0 0 5px;
+.icon-round, .icon-round-image {
+	@include sizing($list-icon-size, $list-icon-size);
+	border-radius: 100%;
+	overflow: hidden;
 }
 
-.icon.icon-blue, a:hover .icon.icon-blue {
-	color: $color-03;
+.icon-round {
+	line-height: $list-icon-size;
+	color: $light-03;
+	background: $color-01;
+	font-size: rem(18px);
+	text-align: center;
 }
 
-.icon.icon-green, a:hover .icon.icon-green {
+.icon-round-image {
+	display: inline-block;
+}
+
+.icon-round-lg {
+	@include sizing($list-icon-lg-size, $list-icon-lg-size);
+	line-height: $list-icon-lg-size;
+	font-size: rem(28px);
+}
+
+/* Icon Colors
+============================================== */
+
+.icon-black, a:hover .icon-black {
+	color: $color-00;
+}
+
+.icon-bg-black {
+	background: $color-00;
+}
+
+.icon-blue, a:hover .icon-blue {
 	color: $color-04;
 }
 
-.icon.icon-red, a:hover .icon.icon-red {
-	color: $color-08;
+.icon-bg-blue {
+	background: $color-04;
 }
 
-.icon.icon-orange, a:hover .icon.icon-orange {
-	color: $color-12;
-}
-
-.icon.icon-bluegray, a:hover .icon.icon-bluegray {
+.icon-bluegray, a:hover .icon-bluegray {
 	color: $color-13;
 }
 
-.icon.icon-gray, a:hover .icon.icon-gray {
+.icon-bg-bluegray {
+	background: $color-13;
+}
+
+.icon-brown, a:hover .icon-brown {
+	color: $color-22;
+}
+
+.icon-bg-brown {
+	background: $color-22;
+}
+
+.icon-gray, a:hover .icon-gray {
 	color: $color-10;
 }
 
-.icon.icon-lightgray, a:hover .icon.icon-lightgray {
+.icon-bg-gray {
+	background: $color-10;
+}
+
+.icon-green, a:hover .icon-green {
+	color: $color-03;
+}
+
+.icon-bg-green {
+	background: $color-03;
+}
+
+.icon-lightgray, a:hover .icon-lightgray {
 	color: $color-11;
 }
 
-.icon.icon-black, a:hover .icon.icon-black {
-	color: $color-00;
+.icon-bg-lightgray {
+	background: $color-11;
+}
+
+.icon-orange, a:hover .icon-orange {
+	color: $color-12;
+}
+
+.icon-bg-orange {
+	background: $color-12;
+}
+
+.icon-purple, a:hover .icon-purple {
+	color: $color-15;
+}
+
+.icon-bg-purple {
+	background: $color-15;
+}
+
+.icon-red, a:hover .icon-red {
+	color: $color-08;
+}
+
+.icon-bg-red {
+	background: $color-08;
+}
+
+.icon-yellow, a:hover .icon-yellow {
+	color: $color-14;
+}
+
+.icon-bg-yellow {
+	background: $color-14;
 }
