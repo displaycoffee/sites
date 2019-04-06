@@ -162,7 +162,7 @@ h5, h6, .h5, .h6 {
 	font-size: rem($global-font-size);
 }
 
-.icon.rpg-icon, .icon.misc-icon {
+.rpg-icon, .misc-icon {
 	font-family: 'Khyeras Icons';
 }
 
@@ -178,26 +178,26 @@ h5, h6, .h5, .h6 {
 	}
 }
 
-/* Icon Shapes & Sizes
+/* Icon Sizes & Shapes
 ============================================== */
 
-.icon.icon-xxl {
+.icon-xxl {
 	font-size: rem(22px);
 }
 
-.icon.icon-xl {
+.icon-xl {
 	font-size: rem(18px);
 }
 
-.icon.icon-lg {
+.icon-lg {
 	font-size: rem(16px);
 }
 
-.icon.icon-md {
+.icon-md {
 	font-size: rem($global-font-size);
 }
 
-.icon.icon-sm {
+.icon-sm {
 	font-size: rem(12px);
 }
 
@@ -232,7 +232,7 @@ h5, h6, .h5, .h6 {
 /* Icon Colors
 ============================================== */
 
-.icon.icon-black, a:hover .icon.icon-black {
+.icon-black, a:hover .icon-black {
 	color: $color-00;
 }
 
@@ -240,7 +240,7 @@ h5, h6, .h5, .h6 {
 	background: $color-00;
 }
 
-.icon.icon-blue, a:hover .icon.icon-blue {
+.icon-blue, a:hover .icon-blue {
 	color: $color-03;
 }
 
@@ -248,7 +248,7 @@ h5, h6, .h5, .h6 {
 	background: $color-03;
 }
 
-.icon.icon-bluegray, a:hover .icon.icon-bluegray {
+.icon-bluegray, a:hover .icon-bluegray {
 	color: $color-13;
 }
 
@@ -256,7 +256,7 @@ h5, h6, .h5, .h6 {
 	background: $color-13;
 }
 
-.icon.icon-brown, a:hover .icon.icon-brown {
+.icon-brown, a:hover .icon-brown {
 	color: $color-22;
 }
 
@@ -264,7 +264,7 @@ h5, h6, .h5, .h6 {
 	background: $color-22;
 }
 
-.icon.icon-gray, a:hover .icon.icon-gray {
+.icon-gray, a:hover .icon-gray {
 	color: $color-10;
 }
 
@@ -272,7 +272,7 @@ h5, h6, .h5, .h6 {
 	background: $color-10;
 }
 
-.icon.icon-green, a:hover .icon.icon-green {
+.icon-green, a:hover .icon-green {
 	color: $color-04;
 }
 
@@ -280,7 +280,7 @@ h5, h6, .h5, .h6 {
 	background: $color-05; // different from font color
 }
 
-.icon.icon-lightgray, a:hover .icon.icon-lightgray {
+.icon-lightgray, a:hover .icon-lightgray {
 	color: $color-11;
 }
 
@@ -288,7 +288,7 @@ h5, h6, .h5, .h6 {
 	background: $color-11;
 }
 
-.icon.icon-orange, a:hover .icon.icon-orange {
+.icon-orange, a:hover .icon-orange {
 	color: $color-12;
 }
 
@@ -296,7 +296,7 @@ h5, h6, .h5, .h6 {
 	background: $color-12;
 }
 
-.icon.icon-purple, a:hover .icon.icon-purple {
+.icon-purple, a:hover .icon-purple {
 	color: $color-15;
 }
 
@@ -304,7 +304,7 @@ h5, h6, .h5, .h6 {
 	background: $color-15;
 }
 
-.icon.icon-red, a:hover .icon.icon-red {
+.icon-red, a:hover .icon-red {
 	color: $color-08;
 }
 
@@ -312,10 +312,10 @@ h5, h6, .h5, .h6 {
 	background: $color-08;
 }
 
-.icon.icon-yellow, a:hover .icon.icon-yellow {
-	color: $color-12;
+.icon-yellow, a:hover .icon-yellow {
+	color: $color-14;
 }
 
 .icon-bg-yellow {
-	background: $color-14; // different from font color
+	background: $color-14;
 }
