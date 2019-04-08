@@ -268,6 +268,13 @@ dl.faq {
 	padding: 20px 0 0 0;
 }
 
+.pages-content {
+	&  > .page-content-section:first-child, & > .column3 + .column4 .page-content-section, & > .banner-aligned + .page-content-section {
+		border-top: 0;
+		padding-top: 0;
+	}
+}
+
 .content-image {
 	margin: 20px 0 0 0;
 	img {

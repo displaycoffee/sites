@@ -1,6 +1,13 @@
 {% include 'overall_header.html' %}
 
-<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
+{% set exclude_title = ['app/setting'] %}
+
+{% if 'app/setting-' not in SCRIPT_NAME %}
+	<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
+{% endif %}
+
+{% include 'custom/quick_links.html' %}
+
 <div class="panel">
 	<div class="inner">
 		<div class="content pages-content">
