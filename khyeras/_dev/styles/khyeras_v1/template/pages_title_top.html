@@ -12,6 +12,10 @@
 	<div class="inner">
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
+
+			{% if SCRIPT_NAME == 'app/gameplay-achievements' %}
+				{% include 'custom/achievements.html' %}
+			{% endif %}
 		</div>
 		{% EVENT phpbb_pages_after_page_content %}
 	</div>

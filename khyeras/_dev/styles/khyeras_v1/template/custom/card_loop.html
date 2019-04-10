@@ -1,0 +1,39 @@
+{% if cards %}
+	{% for key, card in cards %}
+		{% set section_id = (key | replace({' ': '-'}) | lower) %}
+		<section id="{{ section_id }}" class="page-content-section">
+			<h3>{{ key }}</h3>
+			<div class="card-grid">
+				{% for detail in card %}
+					{% set card_id = section_id  ~ '-' ~ (detail.title | replace({'"' : '', ',' : '', '\'' : '', ' ': '-'}) | lower) %}
+					{% set card_changed = false %}
+					{% if completed_cards && card_id in completed_cards %}
+						{% set card_changed = true %}
+					{% endif %}
+					<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed{% endif %}">
+						<h5 class="card-title">{{ detail.title }}</h5>
+						{% if card_changed && SCRIPT_NAME == 'app/gameplay-achievements' %}
+							<p class="card-completed-text"><i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>Achievement complete!</p>
+						{% endif %}
+						<div class="icon-wrapper">
+							<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
+						</div>
+						<p class="card-description">{{ detail.description }}</p>
+						{% if detail.requirements || detail.reward %}
+							<dl class="details details-small">
+								{% if detail.requirements %}
+									<dt>Requirements:</dt>
+									<dd>{{ detail.requirements }}</dd>
+								{% endif %}
+								{% if detail.reward %}
+									<dt>Rewards:</dt>
+									<dd>{{ detail.reward }}</dd>
+								{% endif %}
+							</dl>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+	{% endfor %}
+{% endif %}
