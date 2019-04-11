@@ -212,9 +212,6 @@
 			clear: left;
 		}
 	}
-	.chart-grid .chart-row .chart-data {
-		width: 20%;
-	}
 	.banner.banner-vertical {
 		padding-bottom: calc(100% - 4px);
 		img {
@@ -450,9 +447,6 @@
 		&:nth-child(3n+1) {
 			clear: left;
 		}
-	}
-	.chart-grid .chart-row .chart-data {
-		width: 25%;
 	}
 	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
@@ -934,14 +928,6 @@
 			&[src*='shapeshifter'] {
 				@include position($top: 0, $bottom: 0);
 			}
-		}
-	}
-	.quick-links.quick-links-filter {
-		padding-right: 0;
-		.card-filter {
-			position: static;
-			display: block;
-			margin: 10px 0 0 0;
 		}
 	}
 	.excerpt, .excerpt-simple {
@@ -1588,9 +1574,6 @@
 			clear: left;
 		}
 	}
-	.chart-grid .chart-row .chart-data {
-		width: 33.33%;
-	}
 	.banner {
 		.banner-content {
 			padding: 14px 20px 6px 20px;
@@ -1897,16 +1880,6 @@
 	.key.key-grid li {
 		width: auto;
 		float: none;
-	}
-	.chart-grid .chart-row .chart-data {
-		width: 50%;
-		.chart-label {
-			font-size: rem(14px);
-			@include ellipsis;
-		}
-		.icon {
-			font-size: rem(18px);
-		}
 	}
 	.banner.banner-vertical {
 		padding-bottom: calc(100% - -39px);

@@ -677,6 +677,8 @@
 	]
 } %}
 
-{% set completed_cards = KHY_USER_ACHIEVEMENTS | replace({', ': ','}) | split(',') %}
+{% if KHY_USER_ACHIEVEMENTS %}
+	{% set completed_cards = KHY_USER_ACHIEVEMENTS | replace({', ': ','}) | split(',') %}
+{% endif %}
 
 {% include 'custom/card_loop.html' %}

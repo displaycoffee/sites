@@ -241,26 +241,6 @@ dl.faq {
 }
 
 .quick-links {
-	&.quick-links-both {
-		border-bottom: 1px dashed $color-01;
-		border-top: 1px dashed $color-01;
-		padding: 20px 0;
-	}
-	&.quick-links-bottom {
-		border-bottom: 1px dashed $color-01;
-		padding: 0 0 20px 0;
-	}
-	&.quick-links-top {
-		border-top: 1px dashed $color-01;
-		padding: 20px 0 0 0;
-	}
-	&.quick-links-filter {
-		position: relative;
-		padding-right: 200px;
-		.card-filter {
-			@include position($type: absolute, $top: auto, $right: 0);
-		}
-	}
 }
 
 .page-content-section {
@@ -313,42 +293,6 @@ dl.faq {
 			}
 			&:nth-child(5n+1) {
 				clear: left;
-			}
-		}
-	}
-}
-
-.chart-grid {
-	margin: 0 0 20px 0;
-	.no-chart-data {
-		margin: 0;
-		font-style: italic;
-	}
-	.chart-row {
-		@include flex-flow(wrap);
-		margin: 0 -2px;
-		.chart-data {
-			text-align: center;
-			@include flex(grow);
-			width: 16.6666%;
-			padding: 0 2px 4px 2px;
-			.chart-data-wrap {
-				height: 100%;
-				padding: 10px 20px;
-			}
-			&.chart-check .chart-data-wrap {
-				background: $color-09;
-			}
-			&.chart-remove .chart-data-wrap {
-				background: $color-08;
-			}
-			.chart-label {
-				display: block;
-				margin: 0 0 2px 0;
-				font-size: rem(16px);
-			}
-			.icon {
-				font-size: rem(22px);
 			}
 		}
 	}
@@ -460,10 +404,17 @@ dl.faq {
 	margin: 0 -10px;
 	.card-block {
 		width: 33.33%;
-		@include flex();
+		@include flex;
 		padding: 0 10px;
 		margin: 0 0 20px 0;
 		@include toggle-content(show, true);
+		&.toggle-hide {
+			@include position($type: absolute, $top: -9999px, $left: -9999px);
+			@include toggle-content(hide, false);
+		}
+		&.card-full {
+			@include flex(base);
+		}
 		.icon-wrapper {
 			float: left;
 			clear: right;
@@ -480,23 +431,26 @@ dl.faq {
 				margin: 0 5px 0 0;
 			}
 		}
-		&.card-changed {
-			.icon-round {
-				background: $color-10;
-			}
-			.card-description, dl.details {
-				opacity: 0.50;
-			}
-		}
-		&.toggle-hide {
-			@include position($type: absolute, $top: -9999px, $left: -9999px);
-			@include toggle-content(hide, false);
-		}
+
 	}
 }
 
-.card-filter .card-filter-button {
-	cursor: pointer;
+.section-page-achievements .card-grid .card-block.card-changed {
+	.card-description, dl.details {
+		opacity: 0.50;
+	}
+}
+
+.section-page-halfbreed .card-grid .card-block .card-description {
+	min-height: 42px;
+}
+
+.card-filter {
+	margin: 0 0 20px 0;
+	text-align: center;
+	.card-filter-button {
+		cursor: pointer;
+	}
 }
 
 /* Pages - Map

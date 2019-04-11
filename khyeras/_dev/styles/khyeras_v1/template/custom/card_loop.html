@@ -1,16 +1,32 @@
 {% if cards %}
+	{% if completed_cards || SCRIPT_NAME == 'app/lore-races-half-breed' %}
+		<section class="page-content-section">
+			<div class="card-filter">
+				<a class="card-filter-button">
+					<i class="icon rpg-icon rpg-pokecog"></i>
+					{% if SCRIPT_NAME == 'app/gameplay-achievements' %}
+						<span>Show/hide completed achievements</span>
+					{% elseif SCRIPT_NAME == 'app/lore-races-half-breed' %}
+						<span>Show/hide incompatible races</span>
+					{% else %}
+						<span>Show/hide cards</span>
+					{% endif %}
+				</a>
+			</div>
+		</section>
+	{% endif %}
 	{% for key, card in cards %}
-		{% set section_id = (key | replace({' ': '-'}) | lower) %}
+		{% set section_id = (key | replace({'\'' : '', ' ': '-'}) | lower) %}
 		<section id="{{ section_id }}" class="page-content-section">
 			<h3>{{ key }}</h3>
 			<div class="card-grid">
 				{% for detail in card %}
-					{% set card_id = section_id  ~ '-' ~ (detail.title | replace({'"' : '', ',' : '', '\'' : '', ' ': '-'}) | lower) %}
+					{% set card_id = section_id  ~ '-' ~ (detail.title | replace({'"' : '', '\'' : '', ',' : '', ' ': '-'}) | lower) %}
 					{% set card_changed = false %}
-					{% if completed_cards && card_id in completed_cards %}
+					{% if completed_cards && card_id in completed_cards || 'fa-remove' in detail.icon %}
 						{% set card_changed = true %}
 					{% endif %}
-					<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed{% endif %}">
+					<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed{% endif %}{% if detail.title == 'Not Applicable'%} card-full{% endif %}">
 						<h5 class="card-title">{{ detail.title }}</h5>
 						{% if card_changed && SCRIPT_NAME == 'app/gameplay-achievements' %}
 							<p class="card-completed-text"><i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>Achievement complete!</p>

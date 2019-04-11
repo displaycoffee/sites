@@ -231,25 +231,19 @@
 							{{ _self.field_lists(name, value) }}
 						{% endfor %}
 					</dl>
-					<p class="other-features"><strong>Other Features{L_COLON}</strong></p>
 					<!-- IF S_PROFILE_C_FEATURES -->
+						<p class="other-features"><strong>Other Features{L_COLON}</strong></p>
 						<p>{{ PROFILE_C_FEATURES_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
-					<!-- ELSE -->
-						<p>There's nothing here yet...</p>
 					<!-- ENDIF -->
 				</div>
 				<div class="column2">
 					<h3>Personality</h3>
 					<!-- IF S_PROFILE_C_PERSONALITY -->
 						<p>{{ PROFILE_C_PERSONALITY_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
-					<!-- ELSE -->
-						<p>There's nothing here yet...</p>
 					<!-- ENDIF -->
 					<h3>Relationships and Companions</h3>
 					<!-- IF S_PROFILE_C_RELATIONSHIPS -->
 						<p>{{ PROFILE_C_RELATIONSHIPS_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
-					<!-- ELSE -->
-						<p>There's nothing here yet...</p>
 					<!-- ENDIF -->
 				</div>
 			</div>
@@ -259,8 +253,6 @@
 				<h3>Background</h3>
 				<!-- IF S_PROFILE_C_BACKGROUND -->
 					<p>{{ PROFILE_C_BACKGROUND_VALUE|replace({'<br /><br />': '</p><p>'}) }}</p>
-				<!-- ELSE -->
-					<p>There's nothing here yet...</p>
 				<!-- ENDIF -->
 			</div>
 		</div>

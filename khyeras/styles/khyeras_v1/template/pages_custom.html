@@ -8,10 +8,22 @@
 
 {% include 'custom/quick_links.html' %}
 
+{% if SCRIPT_NAME == 'app/setting-map' %}
+	{% include 'custom/map.html' %}
+{% endif %}
+
 <div class="panel">
 	<div class="inner">
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
+
+			{% if SCRIPT_NAME == 'app/lore-races-half-breed' %}
+				{% include 'custom/half_breed.html' %}
+			{% endif %}
+
+			{% if SCRIPT_NAME == 'app/gameplay-leveling' %}
+				{% include 'custom/leveling.html' %}
+			{% endif %}
 
 			{% if SCRIPT_NAME == 'app/gameplay-achievements' %}
 				{% include 'custom/achievements.html' %}

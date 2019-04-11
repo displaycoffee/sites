@@ -1,7 +1,3 @@
-{% include 'overall_header.html' %}
-
-<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
-
 <div id="tabs" class="tabs map-tabs sub-panels" role="tablist">
 	<ul>
 		<li class="tab">
@@ -21,14 +17,3 @@
 		</li>
 	</ul>
 </div>
-
-<div class="panel">
-	<div class="inner">
-		<div class="content pages-content">
-			{{ PAGE_CONTENT }}
-		</div>
-		{% EVENT phpbb_pages_after_page_content %}
-	</div>
-</div>
-
-{% include 'overall_footer.html' %}
