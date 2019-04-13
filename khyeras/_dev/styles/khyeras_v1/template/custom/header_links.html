@@ -1,50 +1,53 @@
-{% set headerlinks = {
-	'Announcements': {
-		link01: {
-			name: 'Freed from Bhelests nightmares and undead legions, the realm of Khy\'eras',
-			url:  '//www.google.com'
+{% set header_links = {
+	'Announcements' : [
+		{
+			name : 'Freed from Bhelests nightmares and undead legions, the realm of Khy\'eras',
+			url : '//www.google.com'
 		},
-		link02: {
-			name: 'Announcement #02',
-			url:  '//www.google.com'
+		{
+			name : 'Announcement #02',
+			url : '//www.google.com'
 		},
-		link03: {
-			name: 'Announcement #03',
-			url:  '//www.google.com'
+		{
+			name : 'Announcement #03',
+			url : '//www.google.com'
 		}
-	},
-	'Events': {
-		link04: {
-			name: 'Event #01',
-			url:  '//www.google.com'
+	],
+	'Events' : [
+		{
+			name : 'Event #01',
+			url : '//www.google.com'
 		},
-		link05: {
-			name: 'Event #02',
-			url:  '//www.google.com'
+		{
+			name : 'Event #02',
+			url : '//www.google.com'
 		},
-		link06: {
-			name: 'Event #03',
-			url:  '//www.google.com'
+		{
+			name : 'Event #03',
+			url : '//www.google.com'
 		}
-	}
+	]
 } %}
-{% if headerlinks %}
-	{% set textlimit = (headerlinks|length > 1) ? '25' : '55' %}
+
+{% if header_links %}
+	{% set textlimit = ((header_links | length) > 1) ? 25 : 55 %}
 	<div class="site-links">
 		<div class="flex-row flex-row-10">
-			{% for key, link in headerlinks %}
-				<div class="flex-column">
-					<h5>{{ key }}</h5>
-					<ul>
-						{% for detail in link %}
-							<li>
-								<a href="{{ detail.url }}">
-									{{ (detail.name|length > textlimit) ? (detail.name[:textlimit] ~ '...') : detail.name }}
-								</a>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
+			{% for key, link in header_links %}
+				{% if (link | length) > 0 %}
+					<div class="flex-column">
+						<h5>{{ key }}</h5>
+						<ul>
+							{% for detail in link %}
+								<li>
+									<a href="{{ detail.url }}">
+										{{ ((detail.name | length) > textlimit) ? (detail.name[:textlimit] ~ '...') : detail.name }}
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
 			{% endfor %}
 		</div>
 	</div>

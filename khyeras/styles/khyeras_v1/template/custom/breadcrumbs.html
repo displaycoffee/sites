@@ -1,0 +1,73 @@
+{% if (navlinks | length) > 0 %}
+	{% macro breadcrumb(crumb_url, crumb_label, navdata) %}
+		{% set a_attr = false %}
+		{% if crumb_label == 'Home' %}
+			{% if 'index.php' in crumb_url %}
+				{% set a_attr = ' accesskey="h" data-navbar-reference="index"' %}
+			{% else %}
+				{% set a_attr = ' data-navbar-reference="home"' %}
+			{%endif %}
+		{% elseif './' not in crumb_url %}
+			{% set crumb_url = './' ~ crumb_url | replace({'/sites/khyeras/' : ''}) %}
+		{% endif %}
+		{% spaceless %}
+			<li class="crumb{% if crumb_label == 'Home' %} home{% endif %}" itemtype="http://schema.org/ListItem" itemprop="itemListElement" itemscope{{ navdata }}>
+				<i class="icon {% if crumb_label == 'Home' %}rpg-icon rpg-castle{% else %}fa-chevron-right fa-fw{% endif %}"></i>
+				<a href="{{ crumb_url | replace({'app.php/' : ''}) }}" itemprop="url"{{ a_attr }}>
+					<span itemprop="title">{{ crumb_label }}</span>
+				</a>
+			</li>
+		{% endspaceless %}
+	{% endmacro %}
+
+	<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
+		<div class="wrapper">
+			<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+				<!-- EVENT overall_header_breadcrumbs_before -->
+				{% if U_SITE_HOME %}
+					{{ _self.breadcrumb(U_SITE_HOME, L_INDEX) }}
+				{% endif %}
+				<!-- EVENT overall_header_breadcrumb_prepend -->
+				{% if U_SITE_HOME == false %}
+					{{ _self.breadcrumb(U_INDEX, L_INDEX) }}
+				{% endif %}
+
+				{% if 'app/about-' in SCRIPT_NAME %}
+					{{ _self.breadcrumb('about', 'About') }}
+				{% elseif 'app/lore-' in SCRIPT_NAME %}
+					{{ _self.breadcrumb('lore', 'Lore') }}
+
+					{% if '-races-' in SCRIPT_NAME %}
+						{{ _self.breadcrumb('lore-races', 'Races') }}
+					{% elseif '-religion-' in SCRIPT_NAME %}
+						{{ _self.breadcrumb('lore-religion', 'Religion') }}
+					{% elseif '-classes-' in SCRIPT_NAME %}
+						{{ _self.breadcrumb('lore-classes', 'Classes') }}
+					{% endif %}
+				{% elseif 'app/setting-' in SCRIPT_NAME %}
+					{{ _self.breadcrumb('setting', 'Setting') }}
+
+					{% if '-tviyr-' in SCRIPT_NAME %}
+						{{ _self.breadcrumb('setting-tviyr', 'Tviyr') }}
+					{% elseif '-ninraih-' in SCRIPT_NAME %}
+						{{ _self.breadcrumb('setting-ninraih', 'Ninraih') }}
+					{% elseif '-irtuen-reaches-' in SCRIPT_NAME %}
+						{{ _self.breadcrumb('setting-irtuen-reaches', 'Irtuen Reaches') }}
+					{% endif %}
+				{% elseif 'app/gameplay-' in SCRIPT_NAME %}
+					{{ _self.breadcrumb('gameplay', 'Gameplay') }}
+				{% endif %}
+
+				{% for nav in navlinks %}
+					<!-- EVENT overall_header_navlink_prepend -->
+					{% set nav_data = nav.MICRODATA ? (' ' ~ nav.MICRODATA) : '' %}
+					{{ _self.breadcrumb(nav.U_VIEW_FORUM, nav.FORUM_NAME, nav_data) }}
+					<!-- EVENT overall_header_navlink_append -->
+				{% endfor %}
+
+				<!-- EVENT overall_header_breadcrumb_append -->
+				<!-- EVENT overall_header_breadcrumbs_after -->
+			</ul>
+		</div>
+	</nav>
+{% endif %}

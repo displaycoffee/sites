@@ -115,8 +115,6 @@
 		<p class="date-and-time"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF -->.<!-- IF S_USER_LOGGED_IN --> {CURRENT_TIME}.<!-- ENDIF --></p>
 	{% endset %}
 
-	{% set microdata = ' itemtype="http://schema.org/ListItem" itemprop="itemListElement" itemscope' %}
-
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
 			You are using an <strong>outdated</strong> browser. Please <a href="//browsehappy.com/" target="_blank"><strong>upgrade your browser</strong></a> to improve your experience.
@@ -155,49 +153,7 @@
 			<!-- INCLUDE custom/header_featured.html -->
 		<!-- ENDIF -->
 
-		{% if navlinks|length > 0 %}
-			<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
-				<div class="wrapper">
-					<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-						<!-- EVENT overall_header_breadcrumbs_before -->
-						<!-- IF U_SITE_HOME -->
-							<li class="crumb home" {{ microdata }}>
-								<a href="{U_SITE_HOME}" itemprop="url" data-navbar-reference="home">
-									<i class="icon rpg-icon rpg-castle" aria-hidden="true"></i>
-									<span itemprop="title">{L_SITE_HOME}</span>
-								</a>
-							</li>
-						<!-- ENDIF -->
-						<!-- EVENT overall_header_breadcrumb_prepend -->
-							<!-- IF not U_SITE_HOME -->
-								<li class="crumb home" {{ microdata }}>
-									<a href="{U_INDEX}" itemprop="url" accesskey="h" data-navbar-reference="index">
-										<i class="icon rpg-icon rpg-castle"></i>
-										<span itemprop="title">{L_INDEX}</span>
-									</a>
-								</li>
-							<!-- ENDIF -->
-							<!-- INCLUDE custom/extra_breadcrumbs.html -->
-						<!-- BEGIN navlinks -->
-							{% set breadcrumb_url = navlinks.U_VIEW_FORUM %}
-							{% if 'app' in SCRIPT_NAME %}
-								{% set breadcrumb_url = navlinks.U_VIEW_FORUM | replace({'app.php/': ''}) %}
-							{% endif %}
-							<!-- EVENT overall_header_navlink_prepend -->
-							<li class="crumb" {{ microdata }}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->>
-								<i class="icon fa-chevron-right fa-fw"></i>
-								<a href="{{ breadcrumb_url }}" itemprop="url">
-									<span itemprop="title">{navlinks.FORUM_NAME}</span>
-								</a>
-							</li>
-							<!-- EVENT overall_header_navlink_append -->
-						<!-- END navlinks -->
-						<!-- EVENT overall_header_breadcrumb_append -->
-						<!-- EVENT overall_header_breadcrumbs_after -->
-					</ul>
-				</div>
-			</nav>
-		{% endif %}
+		<!-- INCLUDE custom/breadcrumbs.html -->
 
 		<!-- EVENT overall_header_page_body_before -->
 

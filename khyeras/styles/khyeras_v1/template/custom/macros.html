@@ -1,4 +1,6 @@
-{% macro create_class(value) %}{{ value | replace({'"' : '', '\'' : '', ',' : '', ' ': '-'}) | lower }}{% endmacro %}
+{% macro create_class(value) %}{% spaceless %}
+	{{ value | replace({'"' : '', '\'' : '', ',' : '', '!' : '', ' ' : '-'}) | lower }}
+{% endspaceless %}{% endmacro %}
 
 {% macro card_loop(cards, completed_cards, script_name) %}
 	{% if cards %}

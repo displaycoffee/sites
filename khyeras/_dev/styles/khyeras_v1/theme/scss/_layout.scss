@@ -244,17 +244,12 @@ a.top {
 			}
 			.icon {
 				margin: 0 5px 0 0;
-				&.rpg-castle {
-					color: $color-00;
-					font-size: rem(18px);
-					margin: 0 10px 0 0;
-				}
-				&.rpg-castle + span {
-					margin-left: 0;
-				}
-			}
-			.fa-chevron-right {
 				font-size: rem(13px);
+			}
+			.rpg-castle {
+				font-size: rem(18px);
+				@include position($type: relative, $top: -2.5px);
+				margin: 0 12px 0 0;
 			}
 			&.wrapped-max a {
 				max-width: 120px;
@@ -271,9 +266,6 @@ a.top {
 			&.wrapped-tiny a {
 				max-width: 40px;
 			}
-		}
-		.crumb.home {
-			@include position($type: relative, $top: -1px);
 		}
 	}
 }

@@ -1,78 +1,81 @@
-{% set footerlinks = {
-	'Listed At': {
-		link01: {
-			name: 'Listing #02',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+{% set footer_links = {
+	'Listed At' : [
+		{
+			name : 'Listing #02',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link02: {
-			name: 'Listing #03',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Listing #03',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link03: {
-			name: 'RPG Rating',
-			url:  '//rpgrating.com',
-			image: '//rpgrating.com/ratings/333.png'
+		{
+			name : 'RPG Rating',
+			url :  '//rpgrating.com',
+			image : '//rpgrating.com/ratings/333.png'
 		}
-	},
-	'Affiliates': {
-		link04: {
-			name: 'Affiliate #01',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+	],
+	'Affiliates' : [
+		{
+			name : 'Affiliate #01',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link05: {
-			name: 'Affiliate #02',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Affiliate #02',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link06: {
-			name: 'Affiliate #03',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Affiliate #03',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link07: {
-			name: 'Affiliate #03',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Affiliate #03',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link08: {
-			name: 'Affiliate #03',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Affiliate #03',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link09: {
-			name: 'Affiliate #03',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Affiliate #03',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link10: {
-			name: 'Affiliate #03',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Affiliate #03',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link11: {
-			name: 'Affiliate #03',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Affiliate #03',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		},
-		link12: {
-			name: 'Affiliate #03',
-			url:  '//www.google.com',
-			image: '//via.placeholder.com/88x31'
+		{
+			name : 'Affiliate #03',
+			url :  '//www.google.com',
+			image : '//via.placeholder.com/88x31'
 		}
-	}
+	]
 } %}
-{% if footerlinks %}
-	{% for key, link in footerlinks %}
-		<h4>{{ key }}</h4>
-		<div class="button-wrapper">
-			{% for detail in link %}
-				<a class="button-link" href="{{ detail.url }}" target="_blank">
-					<img src="{{ detail.image }}" alt="{{ detail.name }}" title="{{ detail.name }}" />
-				</a>
-			{% endfor %}
-		</div>
+
+{% if footer_links %}
+	{% for key, link in footer_links %}
+		{% if (link | length) > 0 %}
+			<h4>{{ key }}</h4>
+			<div class="button-wrapper">
+				{% for detail in link %}
+					<a class="button-link" href="{{ detail.url }}" target="_blank">
+						<img src="{{ detail.image }}" alt="{{ detail.name }}" title="{{ detail.name }}" />
+					</a>
+				{% endfor %}
+			</div>
+		{% endif %}
 	{% endfor %}
 {% endif %}

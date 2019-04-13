@@ -1,51 +1,48 @@
-<section id="featured-content" class="featured-content">
-	<div class="wrapper">
-		<div class="featured-title">
-			<h4>
-				<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>Featured<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>
-			</h4>
-		</div>
-		<div class="flex-row flex-row-05">
-			<div class="flex-column featured-mvp">
-				<a href="//google.com">
-					<div class="featured-details">
-						<div class="image-wrap">
-							<img src="{T_THEME_PATH}/images/featured-mvp.jpg" alt="MVP" />
-						</div>
-						<p>MVP: Deanna DiCorvino</p>
-					</div>
-				</a>
+{% set featured_blocks = [
+	{
+		url : '//google.com',
+		type : 'mvp',
+		text : 'MVP: Deanna DiCorvino'
+	},
+	{
+		url : '//google.com',
+		type : 'story',
+		text : 'Story: Best Thread Ever'
+	},
+	{
+		url : '//google.com',
+		type : 'lore',
+		text : 'Lore: Dragons'
+	},
+	{
+		url : '//google.com',
+		type : 'event',
+		text : 'Event: It\'s An Event'
+	}
+] %}
+
+{% if featured_blocks && (featured_blocks | length) > 0 %}
+	<section id="featured-content" class="featured-content">
+		<div class="wrapper">
+			<div class="featured-title">
+				<h4>
+					<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>Featured<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>
+				</h4>
 			</div>
-			<div class="flex-column featured-story">
-				<a href="//google.com">
-					<div class="featured-details">
-						<div class="image-wrap">
-							<img src="{T_THEME_PATH}/images/featured-story.jpg" alt="Story" />
-						</div>
-						<p>Story: Best Thread Ever</p>
+			<div class="flex-row flex-row-05">
+				{% for feature in featured_blocks %}
+					<div class="flex-column featured-{{ feature.type }}">
+						<a href="{{ feature.url }}">
+							<div class="featured-details">
+								<div class="image-wrap">
+									<img src="{T_THEME_PATH}/images/featured-{{ feature.type }}.jpg" alt="{{ feature.text }}" />
+								</div>
+								<p>{{ feature.text }}</p>
+							</div>
+						</a>
 					</div>
-				</a>
-			</div>
-			<div class="flex-column featured-lore">
-				<a href="//google.com">
-					<div class="featured-details">
-						<div class="image-wrap">
-							<img src="{T_THEME_PATH}/images/featured-lore.jpg" alt="Lore" />
-						</div>
-						<p>Lore: Dragons</p>
-					</div>
-				</a>
-			</div>
-			<div class="flex-column featured-event">
-				<a href="//google.com">
-					<div class="featured-details">
-						<div class="image-wrap">
-							<img src="{T_THEME_PATH}/images/featured-event.jpg" alt="Event" />
-						</div>
-						<p>Event: It's An Event</p>
-					</div>
-				</a>
+				{% endfor %}
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+{% endif %}
