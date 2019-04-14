@@ -1,3 +1,4 @@
+{% import 'utilities/macros.html' as function %}
 <!DOCTYPE html>
 <html dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
 <head>
@@ -83,38 +84,6 @@
 
 <body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS} section-{{ bodyname }}{% if 'app/thankslist/givens' in SCRIPT_NAME %} section-thanks-search{% endif %}" data-class="section {{ bodyname }} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
 
-	{% set pm_count %}
-		{% if PRIVATE_MESSAGE_COUNT < 100 %}
-			<span class="badge">{{ PRIVATE_MESSAGE_COUNT }}</span>
-		{% else %}
-			<span class="badge badge-plus">+</span>
-		{% endif %}
-	{% endset %}
-
-	{% set notify_count %}
-		{% if NOTIFICATIONS_COUNT < 100 %}
-			<span class="badge">{{ NOTIFICATIONS_COUNT }}</span>
-		{% else %}
-			<span class="badge badge-plus">+</span>
-		{% endif %}
-	{% endset %}
-
-	{% set display_avatar %}
-		<div class="user-avatar">
-			<div class="image-wrap">
-				<!-- IF CURRENT_USER_AVATAR -->
-					{CURRENT_USER_AVATAR}
-				<!-- ELSE -->
-					<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
-				<!-- ENDIF -->
-			</div>
-		</div>
-	{% endset %}
-
-	{% set display_time %}
-		<p class="date-and-time"><!-- IF S_USER_LOGGED_IN -->{LAST_VISIT_DATE}<!-- ELSE -->{CURRENT_TIME}<!-- ENDIF -->.<!-- IF S_USER_LOGGED_IN --> {CURRENT_TIME}.<!-- ENDIF --></p>
-	{% endset %}
-
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
 			You are using an <strong>outdated</strong> browser. Please <a href="//browsehappy.com/" target="_blank"><strong>upgrade your browser</strong></a> to improve your experience.
@@ -140,20 +109,20 @@
 			<div class="headerbar" role="banner">
 				<!-- EVENT overall_header_headerbar_before -->
 				<div class="header-content">
-					<!-- INCLUDE custom/header_content.html -->
+					<!-- INCLUDE partials/header_content.html -->
 				</div>
 				<div class="header-overlay"></div>
 			</div>
 			<!-- EVENT overall_header_headerbar_after -->
 		</header>
 
-		<!-- INCLUDE custom/header_welcome.html -->
+		<!-- INCLUDE partials/header_welcome.html -->
 
 		<!-- IF SCRIPT_NAME == 'index' -->
-			<!-- INCLUDE custom/header_featured.html -->
+			<!-- INCLUDE partials/header_featured.html -->
 		<!-- ENDIF -->
 
-		<!-- INCLUDE custom/breadcrumbs.html -->
+		<!-- INCLUDE partials/breadcrumbs.html -->
 
 		<!-- EVENT overall_header_page_body_before -->
 

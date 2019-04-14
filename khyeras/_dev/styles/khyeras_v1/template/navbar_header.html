@@ -13,7 +13,7 @@
 					<div class="button-section">
 						<i class="icon rpg-icon rpg-scroll-unfurled" aria-hidden="true"></i>
 						<span class="mobile-menu-label">
-							{{ pm_count }}
+							{{ function.message_count(PRIVATE_MESSAGE_COUNT) }}
 						</span>
 					</div>
 				<!-- ENDIF -->
@@ -21,13 +21,13 @@
 					<div class="button-section">
 						<i class="icon rpg-icon rpg-trumpet-flag" aria-hidden="true"></i>
 						<span class="mobile-menu-label">
-							{{ notify_count }}
+							{{ function.message_count(NOTIFICATIONS_COUNT) }}
 						</span>
 					</div>
 				<!-- ENDIF -->
 			<!-- ENDIF -->
 		</div>
-		<!-- INCLUDE custom/header_menu_01.html -->
-		<!-- INCLUDE custom/header_menu_02.html -->
+		<!-- INCLUDE partials/nav_menu_01.html -->
+		<!-- INCLUDE partials/nav_menu_02.html -->
 	</div>
 </nav>

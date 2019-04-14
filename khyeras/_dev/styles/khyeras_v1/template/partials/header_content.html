@@ -75,14 +75,14 @@
 		text : 'Domrhask, Khy\'eras\' northernmost city situated in the snow-filled Irtuen Reaches, was established by the ancient Irenohl, a race of stone golems. As they built the city, Bhelest took notice of the previously hidden Domrhask and its ample amount of resources that could be used during the war effort. ',
 		author : 'About Domrhask'
 	}
-]%}
+] %}
 
 <div id="site-description" class="site-description">
 	<h1>
-		<a href="{% if U_SITE_HOME %}{U_SITE_HOME}{% else %}{U_INDEX}{% endif %}" title="{% if U_SITE_HOME %}{L_SITE_HOME}{% else %}{L_INDEX}{% endif %}">{SITENAME}</a>
+		<a href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" title="{% if U_SITE_HOME %}{{ lang('SITE_HOME') }}{% else %}{{ lang('INDEX') }}{% endif %}">{{ SITENAME }}</a>
 	</h1>
-	<h3>{SITE_DESCRIPTION}</h3>
-	<p class="skiplink"><a href="#start_here">{L_SKIP}</a></p>
+	<h3>{{ SITE_DESCRIPTION }}</h3>
+	<p class="skiplink"><a href="#start_here">{{ lang('SKIP') }}</a></p>
 </div>
 
 {% if quotes && (quotes | length) > 0 %}

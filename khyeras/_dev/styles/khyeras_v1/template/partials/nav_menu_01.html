@@ -1,0 +1,110 @@
+{% set nav_about = 'about' %}
+{% set nav_lore = 'lore' %}
+{% set nav_setting = 'setting' %}
+{% set nav_gameplay = 'gameplay' %}
+
+<ul class="menu nav-menu" role="menu">
+	{% if KHY_LINKS %}
+		{% if KHY_LINKS[nav_about] %}
+			<li class="dropdown-container">
+				{{ function.nav_main(BOARD_URL ~ nav_about, KHY_LINKS[nav_about].label) }}
+				<div class="dropdown">
+					<ul class="dropdown-contents" role="menu">
+						{{ function.nav_loop(KHY_LINKS, nav_about ~ '-', BOARD_URL) }}
+						{{ function.nav_li(U_FAQ, lang('FORUM') ~ ' ' ~ lang('FAQ')) }}
+
+						{% if not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
+							{% if U_TEAM %}
+								{{ function.nav_li(U_TEAM, lang('THE_TEAM')) }}
+							{% endif %}
+						{% endif %}
+						{% if U_CONTACT_US %}
+							{{ function.nav_li(U_CONTACT_US, lang('CONTACT_US')) }}
+						{% endif %}
+					</ul>
+				</div>
+			</li>
+		{% endif %}
+		{% if KHY_LINKS[nav_lore] %}
+			<li class="dropdown-container">
+				{{ function.nav_main(BOARD_URL ~ nav_lore, KHY_LINKS[nav_lore].label) }}
+				<div class="dropdown">
+					<ul class="dropdown-contents" role="menu">
+						{{ function.nav_loop(KHY_LINKS, nav_lore ~ '-', BOARD_URL) }}
+					</ul>
+				</div>
+			</li>
+		{% endif %}
+		{% if KHY_LINKS[nav_setting] %}
+			<li class="dropdown-container">
+				{{ function.nav_main(BOARD_URL ~ nav_setting, KHY_LINKS[nav_setting].label) }}
+				<div class="dropdown">
+					<ul class="dropdown-contents" role="menu">
+						{{ function.nav_loop(KHY_LINKS, nav_setting ~ '-', BOARD_URL) }}
+					</ul>
+				</div>
+			</li>
+		{% endif %}
+		{% if KHY_LINKS[nav_gameplay] %}
+			<li class="dropdown-container">
+				{{ function.nav_main(BOARD_URL ~ nav_gameplay, KHY_LINKS[nav_gameplay].label) }}
+				<div class="dropdown">
+					<ul class="dropdown-contents" role="menu">
+						{{ function.nav_loop(KHY_LINKS, nav_gameplay ~ '-', BOARD_URL) }}
+					</ul>
+				</div>
+			</li>
+		{% endif %}
+	{% endif %}
+	{% if not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
+		<li class="dropdown-container">
+			{{ function.nav_main(U_MEMBERLIST, lang('MEMBERLIST')) }}
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					{% EVENT navbar_header_quick_links_before %}
+					{% if S_DISPLAY_SEARCH %}
+						{% if S_USER_LOGGED_IN %}
+							{{ function.nav_li(U_SEARCH_NEW, lang('SEARCH_NEW')) }}
+						{% endif %}
+						{% if S_LOAD_UNREADS %}
+							{{ function.nav_li(U_SEARCH_UNREAD, lang('SEARCH_UNREAD')) }}
+						{% endif %}
+							{{ function.nav_li(U_SEARCH_UNANSWERED, lang('SEARCH_UNANSWERED')) }}
+							{{ function.nav_li(U_SEARCH_ACTIVE_TOPICS, lang('SEARCH_ACTIVE_TOPICS')) }}
+					{% endif %}
+					{% if U_WATCH_FORUM_LINK %}
+						{{ function.nav_li(U_WATCH_FORUM_LINK, lang('WATCH_FORUM_TITLE')) }}
+					{% endif %}
+					{% EVENT navbar_header_quick_links_after %}
+				</ul>
+			</div>
+		</li>
+	{% endif %}
+	{% EVENT overall_header_searchbox_before %}
+	{% if S_DISPLAY_SEARCH %}
+		<li class="dropdown-container">
+			{{ function.nav_main(U_SEARCH, lang('SEARCH')) }}
+			<div id="search-box" class="search-box search-header dropdown" role="search">
+				<ul class="dropdown-contents">
+					<li>
+						<form action="{{ U_SEARCH }}" method="get" id="search">
+							<fieldset>
+								<input name="keywords" id="keywords" type="search" maxlength="128" title="{{ lang('SEARCH_KEYWORDS') }}" class="inputbox search tiny" size="20" value="{{ SEARCH_WORDS }}" placeholder="{{ lang('SEARCH_MINI') }}" />
+								<button class="button button-search" type="submit" title="{{ lang('SEARCH') }}">
+									<i class="icon fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">{{ lang('SEARCH') }}</span>
+								</button>
+								<a href="{{ U_SEARCH }}" title="{{ lang('SEARCH_ADV') }}" class="button button-search-end">
+									<i class="icon fa-cog fa-fw" aria-hidden="true"></i><span class="sr-only">{{ lang('SEARCH_ADV') }}</span>
+								</a>
+								{{ S_SEARCH_HIDDEN_FIELDS }}
+							</fieldset>
+						</form>
+					</li>
+				</ul>
+			</div>
+		</li>
+	{% endif %}
+	{% EVENT overall_header_searchbox_after %}
+	{% EVENT overall_header_navigation_prepend %}
+	{% EVENT overall_header_navigation_append %}
+</ul>

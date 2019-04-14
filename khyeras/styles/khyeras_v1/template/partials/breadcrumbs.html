@@ -1,4 +1,4 @@
-{% if (navlinks | length) > 0 %}
+{% if navlinks && (navlinks | length) > 0 %}
 	{% macro breadcrumb(crumb_url, crumb_label, navdata) %}
 		{% if crumb_label == 'Home' %}
 			{% if 'index.php' in crumb_url %}
@@ -22,13 +22,13 @@
 	<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
 		<div class="wrapper">
 			<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-				<!-- EVENT overall_header_breadcrumbs_before -->
+				{% EVENT overall_header_breadcrumbs_before %}
 				{% if U_SITE_HOME %}
-					{{ _self.breadcrumb(U_SITE_HOME, L_INDEX) }}
+					{{ _self.breadcrumb(U_SITE_HOME, lang('SITE_HOME')) }}
 				{% endif %}
-				<!-- EVENT overall_header_breadcrumb_prepend -->
+				{% EVENT overall_header_breadcrumb_prepend %}
 				{% if not U_SITE_HOME %}
-					{{ _self.breadcrumb(U_INDEX, L_INDEX) }}
+					{{ _self.breadcrumb(U_INDEX, lang('INDEX')) }}
 				{% endif %}
 
 				{% set parent_link = KHY_LINKS[KHY_SCRIPT_NAME].parent %}
@@ -43,15 +43,15 @@
 				{% endif %}
 
 				{% for nav in navlinks %}
-					<!-- EVENT overall_header_navlink_prepend -->
+					{% EVENT overall_header_navlink_prepend %}
 					{% set nav_data = nav.MICRODATA ? (' ' ~ nav.MICRODATA) : '' %}
 					{% set nav_url = nav.U_VIEW_FORUM | replace({'/sites/khyeras/' : rel}) %}
 					{{ _self.breadcrumb(nav_url, nav.FORUM_NAME, nav_data) }}
-					<!-- EVENT overall_header_navlink_append -->
+					{% EVENT overall_header_navlink_append %}
 				{% endfor %}
 
-				<!-- EVENT overall_header_breadcrumb_append -->
-				<!-- EVENT overall_header_breadcrumbs_after -->
+				{% EVENT overall_header_breadcrumb_append %}
+				{% EVENT overall_header_breadcrumbs_after %}
 			</ul>
 		</div>
 	</nav>

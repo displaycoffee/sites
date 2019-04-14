@@ -1,0 +1,75 @@
+<section id="page-welcome" class="page-welcome">
+	<div class="wrapper">
+		<div class="panel">
+			<div class="inner">
+				<div class="flex-row flex-row-10">
+					<div class="user-profile flex-column">
+						{{ function.display_avatar(CURRENT_USER_AVATAR, T_THEME_PATH) }}
+						{% if S_REGISTERED_USER %}
+							{% EVENT navbar_header_user_profile_prepend %}
+							{% EVENT navbar_header_username_prepend %}
+							<h5 class="welcome-header">Welcome, <a href="{{ U_USER_PROFILE }}" title="{{ lang('READ_PROFILE') }}">{{ CURRENT_USERNAME_SIMPLE }}</a>.</h5>
+							{% EVENT navbar_header_username_append %}
+						{% else %}
+							<h5 class="welcome-header">Welcome, <a href="{{ U_REGISTER }}" class="guest-name" title="{{ lang('REGISTER') }}">{{  lang('GUEST') }}</a>.</h5>
+						{% endif %}
+						{% if KHY_USER_GROUP_NAME == 'Characters' %}
+							<p class="level">
+								Level {{ KHY_USER_LEVEL }}
+							</p>
+							<p class="race-and-class">
+								{{ KHY_USER_RACE | replace({',': ' and'}) }}
+								{% if KHY_USER_CLASS %}
+									 / {{ KHY_USER_CLASS | replace({',': ' and'}) }}
+								{% endif %}
+							</p>
+						{% elseif S_REGISTERED_USER %}
+							<p>
+								Don't forget to check out the latest <a href="{{ BOARD_URL }}viewforum.php?f=9">announcements</a> and <a href="{{ BOARD_URL }}viewforum.php?f=26">events</a>. Or, perhaps you're looking to add a new character? If so, don't forget to <a href="{{ BOARD_URL }}ucp.php?i=-flerex-linkedaccounts-ucp-main_module&mode=management">link the account</a>.
+							</p>
+						{% else %}
+							<p>
+								Looks like you're not registered. Check out our boards, <a href="{{ BOARD_URL }}about">read more on Khy'eras</a>, or <a href="{{ U_REGISTER }}">sign up today</a>.
+							</p>
+						{% endif %}
+					</div>
+					<div class="user-information flex-column">
+						<p class="date-and-time">
+							{% if S_USER_LOGGED_IN %}{{ LAST_VISIT_DATE }}. {% endif %}{{ CURRENT_TIME }}.
+						</p>
+						<div class="toggle-buttons">
+							<div class="flex-row flex-row-10">
+								<div class="toggle toggle-links flex-column">
+									<a class="button">
+										<i class="icon rpg-icon rpg-hunting-horn" aria-hidden="true"></i><span>News</span>
+									</a>
+								</div>
+								{% if SCRIPT_NAME == 'index' %}
+									<div class="toggle toggle-featured flex-column">
+										<a class="button">
+											<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i><span>Featured</span>
+										</a>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+						{% include 'partials/header_callouts.html' %}
+						{% if S_REGISTERED_USER %}
+							{% EVENT navbar_header_user_profile_append %}
+						{% else %}
+							{% EVENT navbar_header_logged_out_content %}
+						{% endif %}
+					</div>
+					<div class="site-details flex-column">
+						<p class="introduction">
+							Freed from Bhelest's nightmares and undead legions, the realm of Khy'eras - called "The Neverend" - unveiled vast reaches perfect for exploration. Create a character, craft unlimited adventures, and unlock the land's secrets. <a class="read-more" href="{{ BOARD_URL }}lore-history">Read more...</a>
+						</p>
+						<p>
+							The current year is <span class="year">448</span> and the season is fall. <a href="{{ BOARD_URL }}lore-timeline" class="read-more">Check here for Khy'eras' timeline.</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

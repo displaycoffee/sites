@@ -1,4 +1,4 @@
-{% import 'custom/macros.html' as function %}
+{% import 'utilities/macros.html' as function %}
 
 {% include 'overall_header.html' %}
 
@@ -8,10 +8,10 @@
 	<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
 {% endif %}
 
-{% include 'custom/quick_links.html' %}
+{% include 'partials/quick_links.html' %}
 
 {% if SCRIPT_NAME == 'app/setting-map' %}
-	{% include 'custom/map.html' %}
+	{% include 'partials/pages_map.html' %}
 {% endif %}
 
 <div class="panel">
@@ -20,15 +20,15 @@
 			{{ PAGE_CONTENT }}
 
 			{% if SCRIPT_NAME == 'app/lore-races-half-breed' %}
-				{% include 'custom/half_breed.html' %}
+				{% include 'partials/pages_half_breed.html' %}
 			{% endif %}
 
 			{% if SCRIPT_NAME == 'app/gameplay-leveling' %}
-				{% include 'custom/leveling.html' %}
+				{% include 'partials/pages_leveling.html' %}
 			{% endif %}
 
 			{% if SCRIPT_NAME == 'app/gameplay-achievements' %}
-				{% include 'custom/achievements.html' %}
+				{% include 'partials/pages_achievements.html' %}
 			{% endif %}
 		</div>
 		{% EVENT phpbb_pages_after_page_content %}

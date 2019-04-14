@@ -1,0 +1,65 @@
+<ul class="menu user-menu" role="menu">
+	{% if S_REGISTERED_USER %}
+		{% if S_DISPLAY_PM %}
+			<li>
+				<div class="menu-label">
+					<a href="{{ U_PRIVATEMSGS }}" title="{{ lang('PRIVATE_MESSAGES') }}">
+						<span>{{ lang('PRIVATE_MESSAGES') }}</span>
+						{{ function.message_count(PRIVATE_MESSAGE_COUNT) }}
+					</a>
+				</div>
+			</li>
+		{% endif %}
+		{% if S_NOTIFICATIONS_DISPLAY %}
+			<li class="dropdown-container notification-container">
+				<div class="menu-label">
+					<a id="notification_list_button" class="menu-trigger" title="{{ lang('NOTIFICATIONS') }}">
+						<span>{{ lang('NOTIFICATIONS') }}</span>
+						{{ function.message_count(NOTIFICATIONS_COUNT) }}
+					</a>
+					<i class="icon icon-lg fa-chevron-down menu-trigger mobile-menu-trigger"></i>
+				</div>
+				{% include 'notification_dropdown.html' %}
+			</li>
+		{% endif %}
+		<li class="dropdown-container logged-in-info">
+			<div class="menu-label">
+				<a class="menu-trigger" title="Display Profile, Setting, and Logout Links" role="menuitem">
+					<span class="user-name">{{ CURRENT_USERNAME_SIMPLE }}</span>
+					{{ function.display_avatar(CURRENT_USER_AVATAR, T_THEME_PATH) }}
+				</a>
+				<i class="icon icon-lg fa-chevron-down menu-trigger mobile-menu-trigger"></i>
+			</div>
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					{% EVENT navbar_header_profile_list_before %}
+					{% if U_USER_PROFILE %}
+						{{ function.nav_li(U_USER_PROFILE, lang('READ_PROFILE')) }}
+					{% endif %}
+					{{ function.nav_li(U_SEARCH_SELF, lang('SEARCH_SELF')) }}
+					{{ function.nav_li(U_PROFILE, (lang('PROFILE') | replace({'Control Panel' : 'CP'}))) }}
+					{% if U_ACP %}
+						{{ function.nav_li(U_ACP, (lang('ACP') | replace({'Control Panel' : 'CP'}))) }}
+					{% endif %}
+					{% if U_MCP %}
+						{{ function.nav_li(U_MCP, (lang('MCP') | replace({'Control Panel' : 'CP'}))) }}
+					{% endif %}
+					{% if U_RESTORE_PERMISSIONS %}
+						{{ function.nav_li(U_RESTORE_PERMISSIONS, lang('RESTORE_PERMISSIONS')) }}
+					{% endif %}
+					{{ function.nav_li(U_LOGIN_LOGOUT, lang('LOGIN_LOGOUT'), 'accesskey="x"') }}
+					{% EVENT navbar_header_profile_list_after %}
+				</ul>
+			</div>
+		</li>
+	{% else %}
+		<li class="guest-info">
+			<div class="menu-label">
+				<span class="user-name">
+					{{ lang('GUEST') }}, why don't you <a href="{{ U_LOGIN_LOGOUT }}" title="{{ lang('LOGIN_LOGOUT') }}">{{ lang('LOGIN_LOGOUT') }}</a>{% if S_REGISTER_ENABLED && not (S_SHOW_COPPA || S_REGISTRATION) %} or <a href="{{ U_REGISTER }}" title="{{ lang('REGISTER') }}">{{ lang('REGISTER') }}</a>{% endif %}?
+				</span>
+				{{ function.display_avatar(CURRENT_USER_AVATAR, T_THEME_PATH) }}
+			</div>
+		</li>
+	{% endif %}
+</ul>

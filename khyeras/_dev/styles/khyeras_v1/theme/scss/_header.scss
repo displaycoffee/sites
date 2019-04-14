@@ -227,19 +227,22 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 			color: $color-03;
 		}
 	}
-	.dropdown-container .dropdown-contents .linked-account-title {
-		margin: 7px 0 0 0;
-		padding: 10px 0 3px 0;
-		border-top: 1px dashed $color-01;
-	}
-	.linked-account a {
-		position: relative;
-		padding: 0 0 0 30px;
-		display: inline-block;
-		.image-wrap {
-			@include position($type: absolute, $top: 0, $left: 0);
-			@include sizing(20px, 20px);
-			border-width: 1px;
+	.dropdown-container .dropdown-contents {
+		.linked-account-title {
+			margin: 7px 0 0 0;
+			padding: 10px 0 3px 0;
+			border-top: 1px dashed $color-01;
+		}
+		.linked-account {
+			position: relative;
+			&, &:last-child {
+				padding-left: 30px;
+			}
+			.image-wrap {
+				@include position($type: absolute, $top: 0, $left: 0);
+				@include sizing(20px, 20px);
+				border-width: 1px;
+			}
 		}
 	}
 }
