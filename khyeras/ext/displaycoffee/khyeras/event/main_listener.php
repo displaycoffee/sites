@@ -481,8 +481,24 @@ function calc_currency($total_copper) {
   * Create link map
 */
 function link_mapping() {
-	// Parent link arrays
-	
+	// Parent about links
+	$about = 'about';
+
+	// Parent lore links
+	$lore = 'lore';
+	$lore_races = 'lore-races';
+	$lore_religion = 'lore-religion';
+	$lore_classes = 'lore-classes';
+
+	// Parent setting links
+	$setting = 'setting';
+	$setting_tviyr = 'setting-tviyr';
+	$setting_ninraih = 'setting-ninraih';
+	$setting_irtuen_reaches = 'setting-irtuen-reaches';
+
+	// Parent gameplay links
+	$gameplay = 'gameplay';
+
 	// Quick link arrays
 	$race_links = ['General', 'Physical Features', 'Traits', 'History'];
 	$class_links = ['General', 'Description'];
@@ -490,274 +506,270 @@ function link_mapping() {
 	$setting_sublinks = ['General', 'History', 'Culture', 'Housing', 'Transportation', 'Leadership', 'Views on Magic'];
 
 	$link_map = [
-		'about' => [
-			'label' => 'About',
-			'level' => 0
+		$about => [
+			'label'  => 'About'
 		],
 		'about-rules' => [
-			'label' => 'Rules',
-			'level' => 1,
-			'quick' => array('General', 'On Writing', 'Mature Content')
+			'label'  => 'Rules',
+			'parent' => $about,
+			'quick'  => ['General', 'On Writing', 'Mature Content']
 		],
 		'about-managing-your-account' => [
-			'label' => 'Managing Your Account',
-			'level' => 1,
-			'quick' => array('General', 'Writer versus Character', 'Account Linking', 'Signatures and Avatars')
+			'label'  => 'Managing Your Account',
+			'parent' => $about,
+			'quick'  => ['General', 'Writer versus Character', 'Account Linking', 'Signatures and Avatars']
 		],
 		'about-getting-started' => [
-			'label' => 'Getting Started',
-			'level' => 1,
-			'quick' => array('The "Not So Fun" Stuff', 'Creating a Character', 'Starting the Journey')
+			'label'  => 'Getting Started',
+			'parent' => $about,
+			'quick'  => ['The "Not So Fun" Stuff', 'Creating a Character', 'Starting the Journey']
 		],
-		'lore' => [
-			'label' => 'Lore',
-			'level' => 0
+		$lore => [
+			'label'  => 'Lore'
 		],
 		'lore-history' => [
-			'label' => 'History',
-			'level' => 1
+			'label'  => 'History',
+			'parent' => $lore,
 		],
 		'lore-short-history' => [
-			'label' => 'History',
-			'level' => 1
+			'label'  => 'History',
+			'parent' => $lore,
 		],
 		'lore-timeline' => [
-			'label' => 'Timeline',
-			'level' => 1
+			'label'  => 'Timeline',
+			'parent' => $lore,
 		],
 		'lore-glossary' => [
-			'label' => 'Glossary',
-			'level' => 1,
-			'quick' => range('A', 'Z')
+			'label'  => 'Glossary',
+			'parent' => $lore,
+			'quick'  => array_map(function($x) { return sprintf('letter-%s', $x); }, range('a', 'z') )
 		],
-		'lore-races' => [
-			'label' => 'Races',
-			'level' => 1,
-			'quick' => array('Beast', 'Changeling', 'Elf', 'Mortal', 'Mystic', 'Terra', 'Undead')
+		$lore_races => [
+			'label'  => 'Races',
+			'parent' => $lore,
+			'quick'  => ['Beast', 'Changeling', 'Elf', 'Mortal', 'Mystic', 'Terra', 'Undead']
 		],
 		'lore-races-dragon' => [
-			'label' => 'Dragon',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Dragon',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-kerasoka' => [
-			'label' => 'Kerasoka',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Kerasoka',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-human' => [
-			'label' => 'Human',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Human',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-dwarf' => [
-			'label' => 'Dwarf',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Dwarf',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-shapeshifter' => [
-			'label' => 'Shapeshifter',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Shapeshifter',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-korcai' => [
-			'label' => 'Korcai',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Korcai',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-ghost' => [
-			'label' => 'Ghost',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Ghost',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-elemental' => [
-			'label' => 'Elemental',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Elemental',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-lumeacia' => [
-			'label' => 'Lumeacia',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Lumeacia',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-uedrahc' => [
-			'label' => 'Ue\'drahc',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Ue\'drahc',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-fae' => [
-			'label' => 'Fae',
-			'level' => 2,
-			'quick' => $race_links
+			'label'  => 'Fae',
+			'parent' => [$lore, $lore_races],
+			'quick'  => $race_links
 		],
 		'lore-races-half-breed' => [
-			'label' => 'Half-Breed',
-			'level' => 1,
-			'quick' => array('Playing a Half-Breed', 'Dragon', 'Dwarf', 'Elemental', 'Fae', 'Ghost', 'Human', 'Kerasoka', 'Korcai', 'Lumeacia', 'Shapeshifter', 'Ue\'drahc')
+			'label'  => 'Half-Breed',
+			'parent' => [$lore, $lore_races],
+			'quick'  => ['Playing a Half-Breed', 'Dragon', 'Dwarf', 'Elemental', 'Fae', 'Ghost', 'Human', 'Kerasoka', 'Korcai', 'Lumeacia', 'Shapeshifter', 'Ue\'drahc']
 		],
-		'lore-religion' => [
-			'label' => 'Religion',
-			'level' => 1,
+		$lore_religion => [
+			'label'  => 'Religion',
+			'parent' => $lore,
 		],
 		'lore-religion-archaicism' => [
-			'label' => 'Archaicism',
-			'level' => 2,
-			'quick' => array('Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir')
+			'label'  => 'Archaicism',
+			'parent' => [$lore, $lore_religion],
+			'quick'  => ['Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir']
 		],
 		'lore-religion-idolism' => [
-			'label' => 'Idolism',
-			'level' => 2,
-			'quick' => array('Ahm\'kela', 'Bhelest', 'Cecilia', 'Esyrax', 'Faryv', 'Faunir', 'Iodrah', 'Kaxitaki', 'Kelorha', 'Lahiel', 'Misanyt', 'Nilbein', 'Veditova')
+			'label'  => 'Idolism',
+			'parent' => [$lore, $lore_religion],
+			'quick'  => ['Ahm\'kela', 'Bhelest', 'Cecilia', 'Esyrax', 'Faryv', 'Faunir', 'Iodrah', 'Kaxitaki', 'Kelorha', 'Lahiel', 'Misanyt', 'Nilbein', 'Veditova']
 		],
 		'lore-religion-other' => [
-			'label' => 'Other Religions',
-			'level' => 2,
-			'quick' => array('Agnosticism', 'Atheism')
+			'label'  => 'Other Religions',
+			'parent' => [$lore, $lore_religion],
+			'quick'  => ['Agnosticism', 'Atheism']
 		],
-		'lore-classes' => [
-			'label' => 'Classes',
-			'level' => 1,
-			'quick' => array('Combat', 'Magic', 'Supportive', 'Other Classes')
+		$lore_classes => [
+			'label'  => 'Classes',
+			'parent' => $lore,
+			'quick'  => ['Combat', 'Magic', 'Supportive', 'Other Classes']
 		],
 		'lore-classes-draconic' => [
-			'label' => 'Draconic',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Draconic',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-druid' => [
-			'label' => 'Druid',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Druid',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-summoner' => [
-			'label' => 'Summoner',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Summoner',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-sorcerer' => [
-			'label' => 'Sorcerer',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Sorcerer',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-wizard' => [
-			'label' => 'Wizard',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Wizard',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-cleric' => [
-			'label' => 'Cleric',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Cleric',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-alchemist' => [
-			'label' => 'Alchemist',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Alchemist',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-paladin' => [
-			'label' => 'Paladin',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Paladin',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-monk' => [
-			'label' => 'Monk',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Monk',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-rogue' => [
-			'label' => 'Rogue',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Rogue',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-ranger' => [
-			'label' => 'Ranger',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Ranger',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-fighter' => [
-			'label' => 'Fighter',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Fighter',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-bard' => [
-			'label' => 'Bard',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Bard',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-classes-barbarian' => [
-			'label' => 'Barbarian',
-			'level' => 2,
-			'quick' => $class_links
+			'label'  => 'Barbarian',
+			'parent' => [$lore, $lore_classes],
+			'quick'  => $class_links
 		],
 		'lore-magic' => [
-			'label' => 'Magic',
-			'level' => 1,
-			'quick' => array('Invocation', 'Manipulation', 'Polarity', 'Primal', 'Other Magic')
+			'label'  => 'Magic',
+			'parent' => $lore,
+			'quick'  => ['Invocation', 'Manipulation', 'Polarity', 'Primal', 'Other Magic']
 		],
-		'setting' => [
-			'label' => 'Setting',
-			'level' => 0
+		$setting => [
+			'label'  => 'Setting',
 		],
-		'setting-tviyr' => [
-			'label' => 'Tviyr',
-			'level' => 1,
-			'quick' => $setting_links
+		$setting_tviyr => [
+			'label'  => 'Tviyr',
+			'parent' => $setting,
+			'quick'  => $setting_links
 		],
 		'setting-tviyr-verdant-row' => [
-			'label' => 'Verdant Row',
-			'level' => 2,
-			'quick' => $setting_sublinks
+			'label'  => 'Verdant Row',
+			'parent' => [$setting, $setting_tviyr],
+			'quick'  => $setting_sublinks
 		],
 		'setting-tviyr-fellsgard' => [
-			'label' => 'Fellsgard',
-			'level' => 2,
-			'quick' => $setting_sublinks
+			'label'  => 'Fellsgard',
+			'parent' => [$setting, $setting_tviyr],
+			'quick'  => $setting_sublinks
 		],
-		'setting-ninraih' => [
-			'label' => 'Ninraih',
-			'level' => 1,
-			'quick' => $setting_links
+		$setting_ninraih => [
+			'label'  => 'Ninraih',
+			'parent' => $setting,
+			'quick'  => $setting_links
 		],
 		'setting-ninraih-ajteire' => [
-			'label' => 'Ajteire',
-			'level' => 2,
-			'quick' => $setting_sublinks
+			'label'  => 'Ajteire',
+			'parent' => [$setting, $setting_ninraih],
+			'quick'  => $setting_sublinks
 		],
-		'setting-irtuen-reaches' => [
-			'label' => 'Irtuen Reaches',
-			'level' => 1,
-			'quick' => $setting_links
+		$setting_irtuen_reaches => [
+			'label'  => 'Irtuen Reaches',
+			'parent' => $setting,
+			'quick'  => $setting_links
 		],
 		'setting-irtuen-reaches-domrhask' => [
-			'label' => 'Domrhask',
-			'level' => 2,
-			'quick' => $setting_sublinks
+			'label'  => 'Domrhask',
+			'parent' => [$setting, $setting_irtuen_reaches],
+			'quick'  => $setting_sublinks
 		],
 		'setting-map' => [
-			'label' => 'Map',
-			'level' => 1
+			'label'  => 'Map',
+			'parent' => $setting,
 		],
-		'gameplay' => [
-			'label' => 'Gameplay',
-			'level' => 0
+		$gameplay => [
+			'label'  => 'Gameplay',
 		],
 		'gameplay-leveling' => [
-			'label' => 'Leveling',
-			'level' => 1
+			'label'  => 'Leveling',
+			'parent' => $gameplay,
 		],
 		'gameplay-achievements' => [
-			'label' => 'Achievements',
-			'level' => 1,
-			'quick' => array('Guidelines', 'Fellsgard', 'Verdant Row', 'Ajteire', 'Domrhask', 'Other')
+			'label'  => 'Achievements',
+			'parent' => $gameplay,
+			'quick'  => ['Guidelines', 'Fellsgard', 'Verdant Row', 'Ajteire', 'Domrhask', 'Other']
 		],
 		'gameplay-stats' => [
-			'label' => 'Stats',
-			'level' => 1,
-			'quick' => array('Hit Points (or HP)', 'Magic Points (or MP)')
+			'label'  => 'Stats',
+			'parent' => $gameplay,
+			'quick'  => ['Hit Points (or HP)', 'Magic Points (or MP)']
 		],
 		'gameplay-currency' => [
-			'label' => 'Currency',
-			'level' => 1
+			'label'  => 'Currency',
+			'parent' => $gameplay,
 		]
 	];
 
