@@ -1,3 +1,45 @@
+{% macro create_nav(links) %}
+	{% for key, link in links %}
+		<li>
+			<a href="{BOARD_URL}{{ link }}" title="{{ link }}" role="menuitem"><span>{{ key }}</span></a>
+		</li>
+	{% endfor %}
+{% endmacro %}
+
+{% set nav_links = {
+	'About' : {
+		'Rules' : 'about-rules',
+		'Managing Your Account' : 'about-managing-your-account',
+		'Getting Started' : 'about-getting-started'
+	},
+	'Lore' : {
+		'History' : 'lore-history',
+		'Timeline' : 'lore-timeline',
+		'Glossary' : 'lore-glossary',
+		'Races' : 'lore-races',
+		'Half-Breed' : 'lore-races-half-breed',
+		'Religion' : 'lore-religion',
+		'Classes' : 'lore-classes',
+		'Magic' : 'lore-magic'
+	},
+	'Setting' : {
+		'Tviyr' : 'setting-tviyr',
+		'Ninraih' : 'setting-ninraih',
+		'Irtuen Reaches' : 'setting-irtuen-reaches',
+		'Map' : 'setting-map'
+	},
+	'Gameplay' : {
+		'Leveling' : 'gameplay-leveling',
+		'Achievements' : 'gameplay-achievements',
+		'Stats' : 'gameplay-stats',
+		'Currency' : 'gameplay-currency'
+	}
+} %}
+
+{{ NEW_NAV['About']['Managing Your Account'] }}
+
+{{ KHY_TEST_POTATO }}
+
 <ul class="menu nav-menu" role="menu">
 	<li class="dropdown-container">
 		<div class="menu-label">
@@ -6,15 +48,9 @@
 		</div>
 		<div class="dropdown">
 			<ul class="dropdown-contents" role="menu">
-				<li>
-					<a href="{BOARD_URL}about-rules" title="Rules" role="menuitem"><span>Rules</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}about-managing-your-account" title="Managing Your Account" role="menuitem"><span>Managing Your Account</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}about-getting-started" title="Getting Started" role="menuitem"><span>Getting Started</span></a>
-				</li>
+				{% if nav_links['About'] %}
+					{{ _self.create_nav(nav_links['About']) }}
+				{% endif %}
 				<li>
 					<a href="{U_FAQ}" title="{L_FORUM} {L_FAQ}" role="menuitem"><span>{L_FORUM} {L_FAQ}</span></a>
 				</li>
@@ -33,84 +69,45 @@
 			</ul>
 		</div>
 	</li>
-	<li class="dropdown-container">
-		<div class="menu-label">
-			<a href="{BOARD_URL}lore" title="Lore" role="menuitem"><span>Lore</span></a>
-			<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
-		</div>
-		<div class="dropdown">
-			<ul class="dropdown-contents" role="menu">
-				<li>
-					<a href="{BOARD_URL}lore-history" title="History" role="menuitem"><span>History</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}lore-timeline" title="Timeline" role="menuitem"><span>Timeline</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}lore-glossary" title="Glossary" role="menuitem"><span>Glossary</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}lore-races" title="Races" role="menuitem"><span>Races</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}lore-races-half-breed" title="Half-Breed" role="menuitem"><span>Half-Breed</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}lore-religion" title="Religion" role="menuitem"><span>Religion</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}lore-classes" title="Classes" role="menuitem"><span>Classes</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}lore-magic" title="Magic" role="menuitem"><span>Magic</span></a>
-				</li>
-			</ul>
-		</div>
-	</li>
-	<li class="dropdown-container">
-		<div class="menu-label">
-			<a href="{BOARD_URL}setting" title="Setting" role="menuitem"><span>Setting</span></a>
-			<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
-		</div>
-		<div class="dropdown">
-			<ul class="dropdown-contents" role="menu">
-				<li>
-					<a href="{BOARD_URL}setting-tviyr" title="Tviyr" role="menuitem"><span>Tviyr</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}setting-ninraih" title="Ninraih" role="menuitem"><span>Ninraih</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}setting-irtuen-reaches" title="Irtuen Reaches" role="menuitem"><span>Irtuen Reaches</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}setting-map" title="Map" role="menuitem"><span>Map</span></a>
-				</li>
-			</ul>
-		</div>
-	</li>
-	<li class="dropdown-container">
-		<div class="menu-label">
-			<a href="{BOARD_URL}gameplay" title="Gameplay" role="menuitem"><span>Gameplay</span></a>
-			<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
-		</div>
-		<div class="dropdown">
-			<ul class="dropdown-contents" role="menu">
-				<li>
-					<a href="{BOARD_URL}gameplay-leveling" title="Leveling" role="menuitem"><span>Leveling</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}gameplay-achievements" title="Achievements" role="menuitem"><span>Achievements</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}gameplay-stats" title="Stats" role="menuitem"><span>Stats</span></a>
-				</li>
-				<li>
-					<a href="{BOARD_URL}gameplay-currency" title="Currency" role="menuitem"><span>Currency</span></a>
-				</li>
-			</ul>
-		</div>
-	</li>
+	{% if nav_links['Lore'] %}
+		<li class="dropdown-container">
+			<div class="menu-label">
+				<a href="{BOARD_URL}lore" title="Lore" role="menuitem"><span>Lore</span></a>
+				<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+			</div>
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					{{ _self.create_nav(nav_links['Lore']) }}
+				</ul>
+			</div>
+		</li>
+	{% endif %}
+	{% if nav_links['Setting'] %}
+		<li class="dropdown-container">
+			<div class="menu-label">
+				<a href="{BOARD_URL}setting" title="Setting" role="menuitem"><span>Setting</span></a>
+				<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+			</div>
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					{{ _self.create_nav(nav_links['Setting']) }}
+				</ul>
+			</div>
+		</li>
+	{% endif %}
+	{% if nav_links['Gameplay'] %}
+		<li class="dropdown-container">
+			<div class="menu-label">
+				<a href="{BOARD_URL}gameplay" title="Gameplay" role="menuitem"><span>Gameplay</span></a>
+				<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+			</div>
+			<div class="dropdown">
+				<ul class="dropdown-contents" role="menu">
+					{{ _self.create_nav(nav_links['Gameplay']) }}
+				</ul>
+			</div>
+		</li>
+	{% endif %}
 	<li class="dropdown-container">
 		<div class="menu-label">
 			{% set community_header %}

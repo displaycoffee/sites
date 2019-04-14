@@ -23,7 +23,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	static public function getSubscribedEvents()
  	{
  		return array(
- 			'core.page_header' 	  			=> 'user_info',
+ 			'core.page_header' 	  			=> 'theme_globals',
 			'core.user_add_after' 		    => 'add_account_group',
 			'core.memberlist_view_profile'  => 'memberlist_character_info',
 			'core.viewtopic_post_row_after' => 'viewtopic_character_info'
@@ -59,9 +59,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	}
 
  	/**
- 	 * Get data from profile fields
+ 	 * Set global data for theme use
  	*/
- 	public function user_info()
+ 	public function theme_globals($event)
  	{
 		global $phpbb_container;
 
@@ -173,10 +173,44 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// --- END --- Profile Field Information
 
+		// --- START --- Page Display Details
+
+		// Get page parameters
+		$php_ext = substr(strrchr(__FILE__, '.'), 1);
+		$page_script_name = str_replace('.' . $php_ext, '', $this->user->page['page_name']);
+
+		// If on a certain type of page, set the page_type
+		$page_type = $page_script_name;
+		if (strpos($page_type, 'thankslist/givens') !== false) {
+			$page_type = 'search';
+		} elseif (strpos($page_type, 'app/') !== false) {
+			$page_type = 'page';
+		}
+
+		// Piece together page details for class
+		$page_patterns = array('/[^a-zA-Z ]/', '/ +/', '/-+/');
+		$page_replaces = array('', '-', '-');
+		$page_handle = $page_type . '-' . strtolower(preg_replace($page_patterns, $page_replaces, $event['page_title']));
+
+		// Truncate class if its too long
+		$class_limit = 50;
+		if (strlen($page_handle) > $class_limit) {
+			$page_handle = substr($page_handle, 0, $class_limit);
+			$page_handle = trim($page_handle, '-');
+		}
+
+		// Set up page name variable like SCRIPT_NAME
+		$page_script_name = str_replace('app/', '', $page_script_name);
+
+		// --- END --- Page Display Details
+
 		// --- START --- Variable Assignment
 
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
+			'KHY_SCRIPT_NAME'  		=> $page_script_name,
+			'KHY_BODY_CLASS'   		=> 'section-' . $page_handle,
+			'KHY_LINKS'		   		=> link_mapping(),
 			'KHY_USER_GROUP_ID'     => $group_id,
 			'KHY_USER_GROUP_NAME'   => $group_row['group_name'],
 			'KHY_USER_ACCOUNT_TYPE' => $pf_lang[$acc_name],
@@ -186,7 +220,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  		));
 
 		// Add list of completed achievements only for achievement page
-		if ($this->user->page && $this->user->page['page_name'] == 'app.php/gameplay-achievements') {
+		if ($page_script_name == 'gameplay-achievements') {
 			$this->template->assign_vars(array(
 				'KHY_USER_ACHIEVEMENTS' => $pf_user['c_achievements']['value']
 	 		));
@@ -441,4 +475,291 @@ function calc_currency($total_copper) {
 	];
 
 	return $currency;
+}
+
+/**
+  * Create link map
+*/
+function link_mapping() {
+	// Parent link arrays
+	
+	// Quick link arrays
+	$race_links = ['General', 'Physical Features', 'Traits', 'History'];
+	$class_links = ['General', 'Description'];
+	$setting_links = ['General', 'Description', 'Places of Interest'];
+	$setting_sublinks = ['General', 'History', 'Culture', 'Housing', 'Transportation', 'Leadership', 'Views on Magic'];
+
+	$link_map = [
+		'about' => [
+			'label' => 'About',
+			'level' => 0
+		],
+		'about-rules' => [
+			'label' => 'Rules',
+			'level' => 1,
+			'quick' => array('General', 'On Writing', 'Mature Content')
+		],
+		'about-managing-your-account' => [
+			'label' => 'Managing Your Account',
+			'level' => 1,
+			'quick' => array('General', 'Writer versus Character', 'Account Linking', 'Signatures and Avatars')
+		],
+		'about-getting-started' => [
+			'label' => 'Getting Started',
+			'level' => 1,
+			'quick' => array('The "Not So Fun" Stuff', 'Creating a Character', 'Starting the Journey')
+		],
+		'lore' => [
+			'label' => 'Lore',
+			'level' => 0
+		],
+		'lore-history' => [
+			'label' => 'History',
+			'level' => 1
+		],
+		'lore-short-history' => [
+			'label' => 'History',
+			'level' => 1
+		],
+		'lore-timeline' => [
+			'label' => 'Timeline',
+			'level' => 1
+		],
+		'lore-glossary' => [
+			'label' => 'Glossary',
+			'level' => 1,
+			'quick' => range('A', 'Z')
+		],
+		'lore-races' => [
+			'label' => 'Races',
+			'level' => 1,
+			'quick' => array('Beast', 'Changeling', 'Elf', 'Mortal', 'Mystic', 'Terra', 'Undead')
+		],
+		'lore-races-dragon' => [
+			'label' => 'Dragon',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-kerasoka' => [
+			'label' => 'Kerasoka',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-human' => [
+			'label' => 'Human',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-dwarf' => [
+			'label' => 'Dwarf',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-shapeshifter' => [
+			'label' => 'Shapeshifter',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-korcai' => [
+			'label' => 'Korcai',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-ghost' => [
+			'label' => 'Ghost',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-elemental' => [
+			'label' => 'Elemental',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-lumeacia' => [
+			'label' => 'Lumeacia',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-uedrahc' => [
+			'label' => 'Ue\'drahc',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-fae' => [
+			'label' => 'Fae',
+			'level' => 2,
+			'quick' => $race_links
+		],
+		'lore-races-half-breed' => [
+			'label' => 'Half-Breed',
+			'level' => 1,
+			'quick' => array('Playing a Half-Breed', 'Dragon', 'Dwarf', 'Elemental', 'Fae', 'Ghost', 'Human', 'Kerasoka', 'Korcai', 'Lumeacia', 'Shapeshifter', 'Ue\'drahc')
+		],
+		'lore-religion' => [
+			'label' => 'Religion',
+			'level' => 1,
+		],
+		'lore-religion-archaicism' => [
+			'label' => 'Archaicism',
+			'level' => 2,
+			'quick' => array('Dainyil', 'Ixaziel', 'Ny\'tha', 'Pheriss', 'Ristgir')
+		],
+		'lore-religion-idolism' => [
+			'label' => 'Idolism',
+			'level' => 2,
+			'quick' => array('Ahm\'kela', 'Bhelest', 'Cecilia', 'Esyrax', 'Faryv', 'Faunir', 'Iodrah', 'Kaxitaki', 'Kelorha', 'Lahiel', 'Misanyt', 'Nilbein', 'Veditova')
+		],
+		'lore-religion-other' => [
+			'label' => 'Other Religions',
+			'level' => 2,
+			'quick' => array('Agnosticism', 'Atheism')
+		],
+		'lore-classes' => [
+			'label' => 'Classes',
+			'level' => 1,
+			'quick' => array('Combat', 'Magic', 'Supportive', 'Other Classes')
+		],
+		'lore-classes-draconic' => [
+			'label' => 'Draconic',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-druid' => [
+			'label' => 'Druid',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-summoner' => [
+			'label' => 'Summoner',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-sorcerer' => [
+			'label' => 'Sorcerer',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-wizard' => [
+			'label' => 'Wizard',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-cleric' => [
+			'label' => 'Cleric',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-alchemist' => [
+			'label' => 'Alchemist',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-paladin' => [
+			'label' => 'Paladin',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-monk' => [
+			'label' => 'Monk',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-rogue' => [
+			'label' => 'Rogue',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-ranger' => [
+			'label' => 'Ranger',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-fighter' => [
+			'label' => 'Fighter',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-bard' => [
+			'label' => 'Bard',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-classes-barbarian' => [
+			'label' => 'Barbarian',
+			'level' => 2,
+			'quick' => $class_links
+		],
+		'lore-magic' => [
+			'label' => 'Magic',
+			'level' => 1,
+			'quick' => array('Invocation', 'Manipulation', 'Polarity', 'Primal', 'Other Magic')
+		],
+		'setting' => [
+			'label' => 'Setting',
+			'level' => 0
+		],
+		'setting-tviyr' => [
+			'label' => 'Tviyr',
+			'level' => 1,
+			'quick' => $setting_links
+		],
+		'setting-tviyr-verdant-row' => [
+			'label' => 'Verdant Row',
+			'level' => 2,
+			'quick' => $setting_sublinks
+		],
+		'setting-tviyr-fellsgard' => [
+			'label' => 'Fellsgard',
+			'level' => 2,
+			'quick' => $setting_sublinks
+		],
+		'setting-ninraih' => [
+			'label' => 'Ninraih',
+			'level' => 1,
+			'quick' => $setting_links
+		],
+		'setting-ninraih-ajteire' => [
+			'label' => 'Ajteire',
+			'level' => 2,
+			'quick' => $setting_sublinks
+		],
+		'setting-irtuen-reaches' => [
+			'label' => 'Irtuen Reaches',
+			'level' => 1,
+			'quick' => $setting_links
+		],
+		'setting-irtuen-reaches-domrhask' => [
+			'label' => 'Domrhask',
+			'level' => 2,
+			'quick' => $setting_sublinks
+		],
+		'setting-map' => [
+			'label' => 'Map',
+			'level' => 1
+		],
+		'gameplay' => [
+			'label' => 'Gameplay',
+			'level' => 0
+		],
+		'gameplay-leveling' => [
+			'label' => 'Leveling',
+			'level' => 1
+		],
+		'gameplay-achievements' => [
+			'label' => 'Achievements',
+			'level' => 1,
+			'quick' => array('Guidelines', 'Fellsgard', 'Verdant Row', 'Ajteire', 'Domrhask', 'Other')
+		],
+		'gameplay-stats' => [
+			'label' => 'Stats',
+			'level' => 1,
+			'quick' => array('Hit Points (or HP)', 'Magic Points (or MP)')
+		],
+		'gameplay-currency' => [
+			'label' => 'Currency',
+			'level' => 1
+		]
+	];
+
+	return $link_map;
 }
