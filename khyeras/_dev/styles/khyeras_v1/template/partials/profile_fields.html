@@ -1,10 +1,10 @@
 {% macro field_groups(fields, check) %}
 	{% for pf in fields %}
-		{% if check == 'character' && 'pf_c_' in pf.FIELD_ID || check == 'misc' && 'pf_c_' not in pf.FIELD_ID %}
+		{% if (check == 'character' && 'pf_c_' in pf.FIELD_ID) || (check == 'misc' && 'pf_c_' not in pf.FIELD_ID) %}
 			<dl>
 				<dt>
 					<label{% if pf.FIELD_ID %} for="{{ pf.FIELD_ID }}"{% endif %}>
-						{{ pf.LANG_NAME }}{L_COLON}{% if pf.S_REQUIRED %} *{% endif %}
+						{{ pf.LANG_NAME }}{{ lang('COLON') }}{% if pf.S_REQUIRED %} *{% endif %}
 					</label>
 					{% if pf.LANG_EXPLAIN %}
 						<br /><span>{{ pf.LANG_EXPLAIN }}</span>
@@ -17,7 +17,7 @@
 				{% if pf.LANG_NAME == 'Account Type' %}
 					<dd>
 						<p class="error account-type">
-							<i class="icon fa-exclamation fa-fw icon-red" aria-hidden="true"></i><strong>Note:</strong> Changing the "Account Type" dropdown during registration will erase information that has been entered into "Character" fields.
+							<i class="icon fa-exclamation fa-fw icon-red" aria-hidden="true"></i><strong>Note{{ lang('COLON') }}</strong> Changing the "Account Type" dropdown during registration will erase information that has been entered into "Character" fields.
 						</p>
 					</dd>
 				{% endif %}
@@ -28,19 +28,17 @@
 
 {% if PAGE_TITLE == 'Register' %}
 	{% set field_class = 'fields2 ' %}
-{% else %}
-	{% set field_class = '' %}
 {% endif %}
 
-<!-- IF .profile_fields -->
+{% if profile_fields %}
 	<fieldset class="{{ field_class }}misc-fields">
 		<h3>Miscellaneous Fields</h3>
-		<p><strong>{L_ITEMS_REQUIRED}</strong></p>
+		<p><strong>{{ lang('ITEMS_REQUIRED') }}</strong></p>
 		{{ _self.field_groups(profile_fields, 'misc') }}
 	</fieldset>
 	<fieldset class="{{ field_class }}character-fields">
 		<h3>Character Fields</h3>
-		<p><strong>{L_ITEMS_REQUIRED}</strong></p>
+		<p><strong>{{ lang('ITEMS_REQUIRED') }}</strong></p>
 		{{ _self.field_groups(profile_fields, 'character') }}
 	</fieldset>
-<!-- ENDIF -->
+{% endif %}

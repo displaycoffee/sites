@@ -681,4 +681,4 @@
 	{% set completed_cards = KHY_USER_ACHIEVEMENTS | replace({', ' : ','}) | split(',') %}
 {% endif %}
 
-{{ function.card_loop(cards, completed_cards, SCRIPT_NAME) }}
+{{ function.card_loop(cards, completed_cards, KHY_SCRIPT_NAME) }}

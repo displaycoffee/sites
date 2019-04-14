@@ -542,7 +542,7 @@ function link_mapping() {
 		'lore-glossary' => [
 			'label'  => 'Glossary',
 			'parent' => $lore,
-			'quick'  => array_map(function($x) { return sprintf('letter-%s', $x); }, range('a', 'z') )
+			'quick'  => range('A', 'Z')
 		],
 		$lore_races => [
 			'label'  => 'Races',

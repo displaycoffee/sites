@@ -41,11 +41,11 @@
 			<ul class="topiclist">
 				{% for key, level in levels %}
 					{% for i in level if i <= max_level %}
-						{% set experience = key * i * (i - 1) %}
+						{% set experience = (key * i * (i - 1)) | number_format(0, '.', ',') %}
 						<li class="row">
 							<dl>
 								<dt class="stat-chart-level">{{ i }}</dt>
-								<dd class="stat-chart-exp">{{ experience | number_format(0, '.', ',') }}</dd>
+								<dd class="stat-chart-exp">{{ experience }}</dd>
 							</dl>
 						</li>
 						{% if (i % ((max_level / 4) | round)) == 0 && i != max_level %}
