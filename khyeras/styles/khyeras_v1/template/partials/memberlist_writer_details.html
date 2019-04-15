@@ -1,0 +1,23 @@
+{% if S_PROFILE_C_WRITER_NAME %}
+	{% set writer_value %}
+		For more information, see <a href="{{ BOARD_URL }}{{ PROFILE_C_WRITER_NAME_CONTACT }}">{{ PROFILE_C_WRITER_NAME_VALUE }}</a>.
+	{% endset %}
+{% endif %}
+
+{% set writer_fields = {
+	'Age' 							: (S_PROFILE_C_WRITER_NAME ? '' : AGE),
+	(PROFILE_GENDER_NAME) 			: (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_GENDER_VALUE),
+	(PROFILE_PRONUNCIATION_NAME)    : (PROFILE_ACCOUNT_TYPE_VALUE == 'Writer' ? PROFILE_PRONUNCIATION_VALUE : ''),
+	(PROFILE_PHPBB_LOCATION_NAME)   : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_LOCATION_VALUE),
+	(PROFILE_PHPBB_INTERESTS_NAME)  : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_INTERESTS_VALUE),
+	(PROFILE_PHPBB_OCCUPATION_NAME) : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_OCCUPATION_VALUE),
+	(PROFILE_C_WRITER_NAME_NAME)    : writer_value,
+	(PROFILE_AVATAR_CREDIT_NAME)    : PROFILE_AVATAR_CREDIT_VALUE,
+	(PROFILE_SIG_CREDIT_NAME)       : PROFILE_SIG_CREDIT_VALUE
+} %}
+
+{% if writer_fields %}
+	{% for name, value in writer_fields %}
+		{{ function.field_lists(name, value) }}
+	{% endfor %}
+{% endif %}

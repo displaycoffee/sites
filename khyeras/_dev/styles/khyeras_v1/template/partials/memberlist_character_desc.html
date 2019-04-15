@@ -1,0 +1,57 @@
+<div class="{{ character_class }}" role="tabpanel">
+	<div class="panel bg2">
+		<div class="inner">
+			<div class="column1">
+				<h3>Physical Features</h3>
+				{% set feature_count = (PROFILE_C_COMPLEXION_VALUE ~ PROFILE_C_HAIR_NAME ~ PROFILE_C_EYES_NAME ~ PROFILE_C_HEIGHT_NAME ~ PROFILE_C_WEIGHT_NAME) | length %}
+
+				{% if feature_count && feature_count > 0 %}
+					{% set feature_fields = {
+						(PROFILE_C_COMPLEXION_NAME) : PROFILE_C_COMPLEXION_VALUE,
+						(PROFILE_C_HAIR_NAME)       : PROFILE_C_HAIR_VALUE,
+						(PROFILE_C_EYES_NAME)   	: PROFILE_C_EYES_VALUE,
+						(PROFILE_C_HEIGHT_NAME)  	: PROFILE_C_HEIGHT_VALUE,
+						(PROFILE_C_WEIGHT_NAME) 	: PROFILE_C_WEIGHT_VALUE
+					} %}
+
+					<dl class="details">
+						{% for name, value in feature_fields %}
+							{{ function.field_lists(name, value) }}
+						{% endfor %}
+					</dl>
+				{% else %}
+					{{ nothing_here }}
+				{% endif %}
+
+				{% if S_PROFILE_C_FEATURES %}
+					<p class="other-features"><strong>Other Features{L_COLON}</strong></p>
+					<p>{{ PROFILE_C_FEATURES_VALUE | replace({'<br /><br />': '</p><p>'}) }}</p>
+				{% endif %}
+			</div>
+			<div class="column2">
+				<h3>Personality</h3>
+				{% if S_PROFILE_C_PERSONALITY %}
+					<p>{{ PROFILE_C_PERSONALITY_VALUE | replace({'<br /><br />': '</p><p>'}) }}</p>
+				{% else %}
+					{{ nothing_here }}
+				{% endif %}
+				<h3>Relationships and Companions</h3>
+				{% if S_PROFILE_C_RELATIONSHIPS %}
+					<p>{{ PROFILE_C_RELATIONSHIPS_VALUE | replace({'<br /><br />': '</p><p>'}) }}</p>
+				{% else %}
+					{{ nothing_here }}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="panel bg2">
+		<div class="inner">
+			<h3>Background</h3>
+			{% if S_PROFILE_C_BACKGROUND %}
+				<p>{{ PROFILE_C_BACKGROUND_VALUE | replace({'<br /><br />': '</p><p>'}) }}</p>
+			{% else %}
+				{{ nothing_here }}
+			{% endif %}
+		</div>
+	</div>
+</div>

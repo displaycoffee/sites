@@ -1,0 +1,74 @@
+<dl class="left-box details profile-details {{ character_class }}">
+	<dd class="character-card details-full">
+		<div class="level">
+			<div class="level-wrap">
+				<span class="level-name">Level</span>
+				<span class="level-value">{{ KHY_MEMBER_LEVEL }}</span>
+			</div>
+		</div>
+		{% if S_PROFILE_C_HP || S_PROFILE_C_MP %}
+			{% set remaining_hp = KHY_MEMBER_TOTAL_HP - PROFILE_C_HP_VALUE %}
+			{% set remaining_mp = KHY_MEMBER_TOTAL_MP - PROFILE_C_MP_VALUE %}
+			<div class="stats">
+				{% if S_PROFILE_C_HP %}
+					<div class="stat-bar stat-bar-small hp-bar">
+						<div class="stat-bar-inner" style="width: {{ ((remaining_hp / KHY_MEMBER_TOTAL_HP) * 100) | number_format(2) }}%"></div>
+						<div class="stat-bar-label">
+							{{ remaining_hp }} / {{ KHY_MEMBER_TOTAL_HP }} {{ PROFILE_C_HP_NAME }}
+						</div>
+					</div>
+				{% endif %}
+				{% if S_PROFILE_C_MP %}
+					<div class="stat-bar stat-bar-small mp-bar">
+						<div class="stat-bar-inner" style="width: {{ ((remaining_mp / KHY_MEMBER_TOTAL_MP) * 100) | number_format(2) }}%"></div>
+						<div class="stat-bar-label">
+							{{ remaining_mp }} / {{ KHY_MEMBER_TOTAL_MP }} {{ PROFILE_C_MP_NAME }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		{% endif %}
+	</dd>
+
+	{% macro currency_html(currency, letter) %}
+		{% if currency %}
+			{{ currency }}<span class="currency-{{ letter }}">{{ letter }}</span>
+			{{ letter != 'c' ? ' / ' : '' }}
+		{% endif %}
+	{% endmacro %}
+
+	{% set currency_value %}
+		<div class="character-currency">
+			<i class="icon icon-xl rpg-icon rpg-two-coins" aria-hidden="true"></i>
+			{% if PROFILE_C_COPPER_VALUE %}
+				{{ _self.currency_html(KHY_MEMBER_PLATINUM, 'p') }}
+				{{ _self.currency_html(KHY_MEMBER_GOLD, 'g') }}
+				{{ _self.currency_html(KHY_MEMBER_SILVER, 's') }}
+				{{ _self.currency_html(KHY_MEMBER_COPPER, 'c') }}
+			{% else %}
+				{{ _self.currency_html('&#48;', 'c') }}
+			{% endif %}
+		</div>
+	{% endset %}
+
+	{% set religion_value = (PROFILE_C_RELIGION_TYPE_VALUE) ~ (S_PROFILE_C_RELIGION_OPTS ? (' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE) : '') %}
+
+	{% set character_fields = {
+		'Experience'  				 : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
+		'Currency'  				 : currency_value,
+		(PROFILE_C_RACE_OPTS_NAME)   : PROFILE_C_RACE_OPTS_VALUE | replace({', ': ' and '}),
+		(PROFILE_C_CLASS_OPTS_NAME)  : PROFILE_C_CLASS_OPTS_VALUE | replace({', ': ' and '}),
+		(PROFILE_C_AGE_NAME)         : PROFILE_C_AGE_VALUE,
+		(PROFILE_C_GENDER_NAME)      : PROFILE_C_GENDER_VALUE,
+		(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE,
+		(PROFILE_C_ORIGIN_NAME)      : PROFILE_C_ORIGIN_VALUE,
+		(PROFILE_C_RESIDENCE_NAME)   : PROFILE_C_RESIDENCE_VALUE,
+		'Religion' 					 : religion_value,
+	} %}
+
+	{% if character_fields %}
+		{% for name, value in character_fields %}
+			{{ function.field_lists(name, value) }}
+		{% endfor %}
+	{% endif %}
+</dl>
