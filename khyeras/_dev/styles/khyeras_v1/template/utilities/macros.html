@@ -72,14 +72,7 @@
 	</div>
 {% endmacro %}
 
-{% macro field_lists(name, value) %}
-	{% if value %}
-		<dt>{{ name }}{{ lang('COLON') }}</dt>
-		<dd>{{ value }}</dd>
-	{% endif %}
-{% endmacro %}
-
-{% macro message_count(count) %}
+{% macro display_counts(count) %}
 	{% if count > 0 %}
 		{% if count < 100 %}
 			<span class="badge">{{ count }}</span>

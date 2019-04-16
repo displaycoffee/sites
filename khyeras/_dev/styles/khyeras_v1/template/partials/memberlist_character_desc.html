@@ -16,7 +16,10 @@
 
 					<dl class="details">
 						{% for name, value in feature_fields %}
-							{{ function.field_lists(name, value) }}
+							{% if value %}
+								<dt>{{ name }}{{ lang('COLON') }}</dt>
+								<dd>{{ value }}</dd>
+							{% endif %}
 						{% endfor %}
 					</dl>
 				{% else %}

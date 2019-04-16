@@ -4,7 +4,7 @@
 
 {% set exclude_title = ['app/setting'] %}
 
-{% if 'app/setting-' not in SCRIPT_NAME %}
+{% if 'setting-' not in KHY_SCRIPT_NAME %}
 	<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
 {% endif %}
 
@@ -12,7 +12,7 @@
 {% if quick_link %}
 	<p class="quick-links">
 		<strong>Quick Links:</strong>
-		{% set prefix = (KHY_SCRIPT_NAME == 'lore-glossary') ? 'letter-' : false %}		
+		{% set prefix = (KHY_SCRIPT_NAME == 'lore-glossary') ? 'letter-' : '' %}
 		{% for link in quick_link %}
 			{% set section_id = function.create_class(link) %}
 			<a href="#{{ prefix }}{{ section_id }}">{{ link }}</a>
@@ -21,7 +21,7 @@
 	</p>
 {% endif %}
 
-{% if SCRIPT_NAME == 'app/setting-map' %}
+{% if KHY_SCRIPT_NAME == 'setting-map' %}
 	{% include 'partials/pages_map.html' %}
 {% endif %}
 
@@ -30,15 +30,15 @@
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
 
-			{% if SCRIPT_NAME == 'app/lore-races-half-breed' %}
+			{% if KHY_SCRIPT_NAME == 'lore-races-half-breed' %}
 				{% include 'partials/pages_half_breed.html' %}
 			{% endif %}
 
-			{% if SCRIPT_NAME == 'app/gameplay-leveling' %}
+			{% if KHY_SCRIPT_NAME == 'gameplay-leveling' %}
 				{% include 'partials/pages_leveling.html' %}
 			{% endif %}
 
-			{% if SCRIPT_NAME == 'app/gameplay-achievements' %}
+			{% if KHY_SCRIPT_NAME == 'gameplay-achievements' %}
 				{% include 'partials/pages_achievements.html' %}
 			{% endif %}
 		</div>

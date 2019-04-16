@@ -1,0 +1,62 @@
+<dd class="profile-character-wrapper">
+	{% for post in postrow.khy %}
+		<div class="character-card">
+			<div class="level level-small">
+				<div class="level-wrap">
+					<span class="level-name">Level</span>
+					<span class="level-value">{{ post.PROFILE_LEVEL }}</span>
+				</div>
+			</div>
+			{% if postrow.S_PROFILE_C_HP || postrow.S_PROFILE_C_MP %}
+				{% set remaining_hp = post.PROFILE_TOTAL_HP - postrow.PROFILE_C_HP_VALUE %}
+				{% set remaining_mp = post.PROFILE_TOTAL_MP - postrow.PROFILE_C_MP_VALUE %}
+				<div class="stats stats-small">
+					{% if postrow.S_PROFILE_C_HP %}
+						<div class="stat-bar stat-bar-small hp-bar">
+							<div class="stat-bar-inner" style="width: {{ ((remaining_hp / post.PROFILE_TOTAL_HP) * 100) | number_format(2) }}%"></div>
+							<div class="stat-bar-label">
+								{{ remaining_hp }} / {{ post.PROFILE_TOTAL_HP }} {{ postrow.PROFILE_C_HP_NAME }}
+							</div>
+						</div>
+					{% endif %}
+					{% if postrow.S_PROFILE_C_MP %}
+						<div class="stat-bar stat-bar-small mp-bar">
+							<div class="stat-bar-inner" style="width: {{ ((remaining_mp / post.PROFILE_TOTAL_MP) * 100) | number_format(2) }}%"></div>
+							<div class="stat-bar-label">
+								{{ remaining_mp }} / {{ post.PROFILE_TOTAL_MP }} {{ postrow.PROFILE_C_MP_NAME }}
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+
+		{% macro currency_html(currency, letter) %}
+			{% if currency %}
+				{{ currency }}<span class="currency-{{ letter }}">{{ letter }}</span>
+				{{ letter != 'c' ? ' / ' : '' }}
+			{% endif %}
+		{% endmacro %}
+
+		<div class="character-currency">
+			<i class="icon icon-xl rpg-icon rpg-two-coins" aria-hidden="true"></i>
+			{% if postrow.PROFILE_C_COPPER_VALUE %}
+				{{ _self.currency_html(post.PROFILE_PLATINUM, 'p') }}
+				{{ _self.currency_html(post.PROFILE_GOLD, 'g') }}
+				{{ _self.currency_html(post.PROFILE_SILVER, 's') }}
+				{{ _self.currency_html(post.PROFILE_COPPER, 'c') }}
+			{% else %}
+				{{ _self.currency_html('&#48;', 'c') }}
+			{% endif %}
+		</div>
+	{% endfor %}
+
+	{% if postrow.S_PROFILE_C_RACE_OPTS || postrow.PROFILE_C_CLASS_OPTS_VALUE %}
+		<div class="race-and-class">
+			{{ postrow.PROFILE_C_RACE_OPTS_VALUE | replace({', ': ' and '}) }}
+			{% if postrow.S_PROFILE_C_CLASS_OPTS %}
+				 / {{ postrow.PROFILE_C_CLASS_OPTS_VALUE | replace({', ': ' and '}) }}
+			{% endif %}
+		</div>
+	{% endif %}
+</dd>

@@ -68,7 +68,10 @@
 
 	{% if character_fields %}
 		{% for name, value in character_fields %}
-			{{ function.field_lists(name, value) }}
+			{% if value %}
+				<dt>{{ name }}{{ lang('COLON') }}</dt>
+				<dd>{{ value }}</dd>
+			{% endif %}
 		{% endfor %}
 	{% endif %}
 </dl>

@@ -1,0 +1,8 @@
+{% set forum_ids = [11, 12, 13, 14, 15, 16, 17, 18, 30] %}
+{% if FORUM_ID in forum_ids %}
+	{% for post in postrow.khy %}
+		<div class="word-count">
+			<strong>Word count:</strong> {post.WORD_COUNT}
+		</div>
+	{% endfor %}
+{% endif %}
