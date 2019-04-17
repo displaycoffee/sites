@@ -14,7 +14,7 @@
 		<strong>Quick Links:</strong>
 		{% set prefix = (KHY_SCRIPT_NAME == 'lore-glossary') ? 'letter-' : '' %}
 		{% for link in quick_link %}
-			{% set section_id = function.create_class(link) %}
+			{% set section_id = function.create_handle(link) %}
 			<a href="#{{ prefix }}{{ section_id }}">{{ link }}</a>
 			{{ !loop.last ? '<span class="quick-links-separator">|</span>' : '' }}
 		{% endfor %}

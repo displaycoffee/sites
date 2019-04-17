@@ -1,4 +1,69 @@
-{% macro card_loop(cards, completed_cards, script_name) %}
+{% macro create_handle(value) %}{% spaceless %}
+	{{ value | replace({'"' : '', '\'' : '', '(' : '', ')' : '', ',' : '', '!' : '', ' ' : '-'}) | lower }}
+{% endspaceless %}{% endmacro %}
+
+{% macro create_nav_main(url, label) %}
+	<div class="menu-label">
+		<a href="{{ url }}" title="{{ label }}" role="menuitem"><span>{{ label }}</span></a>
+		<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+	</div>
+{% endmacro %}
+
+{% macro create_nav_li(url, label, attr) %}
+	<li>
+		<a href="{{ url }}" title="{{ label }}" role="menuitem"{% if attr %} {{ attr }}{% endif %}><span>{{ label }}</span></a>
+	</li>
+{% endmacro %}
+
+{% macro display_avatar(avatar, theme_path) %}
+	<div class="user-avatar">
+		<div class="image-wrap">
+			{% if avatar %}
+				{{ avatar }}
+			{% else %}
+				<img src="{{ theme_path }}/images/no_avatar.gif" alt="Default Avatar" />
+			{% endif %}
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro display_counts(count) %}
+	{% if count > 0 %}
+		{% if count < 100 %}
+			<span class="badge">{{ count }}</span>
+		{% else %}
+			<span class="badge badge-plus">+</span>
+		{% endif %}
+	{% endif %}
+{% endmacro %}
+
+{% macro display_currency(copper, silver, gold, platinum) %}
+	{% set separator = ' / ' %}
+	<div class="character-currency">
+		<i class="icon icon-xl rpg-icon rpg-two-coins" aria-hidden="true"></i>
+		{% if copper %}
+			{% if platinum %}
+				{{ platinum }}<span class="currency-p"></span>
+				{{ separator }}
+			{% endif %}
+			{% if gold %}
+				{{ gold }}<span class="currency-g">g</span>
+				{{ separator }}
+			{% endif %}
+			{% if silver %}
+				{{ silver }}<span class="currency-s">s</span>
+				{{ separator }}
+			{% endif %}
+			{% if copper %}
+				{{ copper }}<span class="currency-c">c</span>
+			{% endif %}
+		{% else %}
+			0<span class="currency-c">c</span>
+		{% endif %}
+	</div>
+{% endmacro %}
+
+{% macro loop_cards(cards, completed_cards, script_name) %}
 	{% if cards %}
 		{% if completed_cards %}
 			<section class="page-content-section">
@@ -17,12 +82,12 @@
 			</section>
 		{% endif %}
 		{% for key, card in cards %}
-			{% set section_id = _self.create_class(key) %}
+			{% set section_id = _self.create_handle(key) %}
 			<section id="{{ section_id }}" class="page-content-section">
 				<h3>{{ key }}</h3>
 				<div class="card-grid">
 					{% for detail in card %}
-						{% set card_id = section_id  ~ '-' ~ _self.create_class(detail.title) %}
+						{% set card_id = section_id  ~ '-' ~ _self.create_handle(detail.title) %}
 						{% set card_changed = false %}
 						{% if (completed_cards && card_id in completed_cards) || ('fa-remove' in detail.icon) %}
 							{% set card_changed = true %}
@@ -56,46 +121,7 @@
 	{% endif %}
 {% endmacro %}
 
-{% macro create_class(value) %}{% spaceless %}
-	{{ value | replace({'"' : '', '\'' : '', '(' : '', ')' : '', ',' : '', '!' : '', ' ' : '-'}) | lower }}
-{% endspaceless %}{% endmacro %}
-
-{% macro display_avatar(avatar, theme_path) %}
-	<div class="user-avatar">
-		<div class="image-wrap">
-			{% if avatar %}
-				{{ avatar }}
-			{% else %}
-				<img src="{{ theme_path }}/images/no_avatar.gif" alt="Default Avatar" />
-			{% endif %}
-		</div>
-	</div>
-{% endmacro %}
-
-{% macro display_counts(count) %}
-	{% if count > 0 %}
-		{% if count < 100 %}
-			<span class="badge">{{ count }}</span>
-		{% else %}
-			<span class="badge badge-plus">+</span>
-		{% endif %}
-	{% endif %}
-{% endmacro %}
-
-{% macro nav_main(url, label) %}
-	<div class="menu-label">
-		<a href="{{ url }}" title="{{ label }}" role="menuitem"><span>{{ label }}</span></a>
-		<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
-	</div>
-{% endmacro %}
-
-{% macro nav_li(url, label, attr) %}
-	<li>
-		<a href="{{ url }}" title="{{ label }}" role="menuitem"{% if attr %} {{ attr }}{% endif %}><span>{{ label }}</span></a>
-	</li>
-{% endmacro %}
-
-{% macro nav_loop(links, check, main_url) %}
+{% macro loop_nav_items(links, check, main_url) %}
 	{% for key, link in links %}
 		{% set is_sublinks = (link.parent is iterable) ? false : true %}
 
@@ -106,7 +132,7 @@
 		{% endif %}
 
 		{% if check in key && is_sublinks %}
-			{{ _self.nav_li(main_url ~ key, link.label) }}
+			{{ _self.create_nav_li(main_url ~ key, link.label) }}
 		{% endif %}
 	{% endfor %}
 {% endmacro %}

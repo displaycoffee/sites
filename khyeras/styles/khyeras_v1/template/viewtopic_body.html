@@ -1,3 +1,5 @@
+{% import 'utilities/macros.html' as function %}
+
 <!-- INCLUDE overall_header.html -->
 
 <!-- EVENT viewtopic_topic_title_before -->
@@ -170,7 +172,7 @@
 			<!-- EVENT viewtopic_body_postrow_rank_after -->
 
 			<!-- IF postrow.PROFILE_ACCOUNT_TYPE_VALUE eq 'Character' -->
-				<!-- INCLUDE partials/viewtopic_character_profile.html -->
+				<!-- INCLUDE partials/viewtopic_character_details.html -->
 			<!-- ENDIF -->
 
 			<!-- IF postrow.POSTER_POSTS != '' --><dd class="profile-posts"><strong>{L_POSTS}{L_COLON}</strong> <!-- IF postrow.U_SEARCH !== '' --><a href="{postrow.U_SEARCH}"><!-- ENDIF -->{postrow.POSTER_POSTS}<!-- IF postrow.U_SEARCH !== '' --></a><!-- ENDIF --></dd><!-- ENDIF -->

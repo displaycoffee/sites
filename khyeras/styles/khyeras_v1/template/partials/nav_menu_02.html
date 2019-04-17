@@ -34,20 +34,20 @@
 				<ul class="dropdown-contents" role="menu">
 					{% EVENT navbar_header_profile_list_before %}
 					{% if U_USER_PROFILE %}
-						{{ function.nav_li(U_USER_PROFILE, lang('READ_PROFILE')) }}
+						{{ function.create_nav_li(U_USER_PROFILE, lang('READ_PROFILE')) }}
 					{% endif %}
-					{{ function.nav_li(U_SEARCH_SELF, lang('SEARCH_SELF')) }}
-					{{ function.nav_li(U_PROFILE, (lang('PROFILE') | replace({'Control Panel' : 'CP'}))) }}
+					{{ function.create_nav_li(U_SEARCH_SELF, lang('SEARCH_SELF')) }}
+					{{ function.create_nav_li(U_PROFILE, (lang('PROFILE') | replace({'Control Panel' : 'CP'}))) }}
 					{% if U_ACP %}
-						{{ function.nav_li(U_ACP, (lang('ACP') | replace({'Control Panel' : 'CP'}))) }}
+						{{ function.create_nav_li(U_ACP, (lang('ACP') | replace({'Control Panel' : 'CP'}))) }}
 					{% endif %}
 					{% if U_MCP %}
-						{{ function.nav_li(U_MCP, (lang('MCP') | replace({'Control Panel' : 'CP'}))) }}
+						{{ function.create_nav_li(U_MCP, (lang('MCP') | replace({'Control Panel' : 'CP'}))) }}
 					{% endif %}
 					{% if U_RESTORE_PERMISSIONS %}
-						{{ function.nav_li(U_RESTORE_PERMISSIONS, lang('RESTORE_PERMISSIONS')) }}
+						{{ function.create_nav_li(U_RESTORE_PERMISSIONS, lang('RESTORE_PERMISSIONS')) }}
 					{% endif %}
-					{{ function.nav_li(U_LOGIN_LOGOUT, lang('LOGIN_LOGOUT'), 'accesskey="x"') }}
+					{{ function.create_nav_li(U_LOGIN_LOGOUT, lang('LOGIN_LOGOUT'), 'accesskey="x"') }}
 					{% EVENT navbar_header_profile_list_after %}
 				</ul>
 			</div>

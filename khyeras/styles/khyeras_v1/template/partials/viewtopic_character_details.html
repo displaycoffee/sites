@@ -31,24 +31,7 @@
 			{% endif %}
 		</div>
 
-		{% macro currency_html(currency, letter) %}
-			{% if currency %}
-				{{ currency }}<span class="currency-{{ letter }}">{{ letter }}</span>
-				{{ letter != 'c' ? ' / ' : '' }}
-			{% endif %}
-		{% endmacro %}
-
-		<div class="character-currency">
-			<i class="icon icon-xl rpg-icon rpg-two-coins" aria-hidden="true"></i>
-			{% if postrow.PROFILE_C_COPPER_VALUE %}
-				{{ _self.currency_html(post.PROFILE_PLATINUM, 'p') }}
-				{{ _self.currency_html(post.PROFILE_GOLD, 'g') }}
-				{{ _self.currency_html(post.PROFILE_SILVER, 's') }}
-				{{ _self.currency_html(post.PROFILE_COPPER, 'c') }}
-			{% else %}
-				{{ _self.currency_html('&#48;', 'c') }}
-			{% endif %}
-		</div>
+		{{ function.display_currency(post.PROFILE_COPPER, post.PROFILE_SILVER, post.PROFILE_GOLD, post.PROFILE_PLATINUM) }}
 	{% endfor %}
 
 	{% if postrow.S_PROFILE_C_RACE_OPTS || postrow.PROFILE_C_CLASS_OPTS_VALUE %}

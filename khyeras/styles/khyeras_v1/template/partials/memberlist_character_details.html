@@ -30,25 +30,8 @@
 		{% endif %}
 	</dd>
 
-	{% macro currency_html(currency, letter) %}
-		{% if currency %}
-			{{ currency }}<span class="currency-{{ letter }}">{{ letter }}</span>
-			{{ letter != 'c' ? ' / ' : '' }}
-		{% endif %}
-	{% endmacro %}
-
 	{% set currency_value %}
-		<div class="character-currency">
-			<i class="icon icon-xl rpg-icon rpg-two-coins" aria-hidden="true"></i>
-			{% if PROFILE_C_COPPER_VALUE %}
-				{{ _self.currency_html(KHY_MEMBER_PLATINUM, 'p') }}
-				{{ _self.currency_html(KHY_MEMBER_GOLD, 'g') }}
-				{{ _self.currency_html(KHY_MEMBER_SILVER, 's') }}
-				{{ _self.currency_html(KHY_MEMBER_COPPER, 'c') }}
-			{% else %}
-				{{ _self.currency_html('&#48;', 'c') }}
-			{% endif %}
-		</div>
+		{{ function.display_currency(KHY_MEMBER_COPPER, KHY_MEMBER_SILVER, KHY_MEMBER_GOLD, KHY_MEMBER_PLATINUM) }}
 	{% endset %}
 
 	{% set religion_value = (PROFILE_C_RELIGION_TYPE_VALUE) ~ (S_PROFILE_C_RELIGION_OPTS ? (' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE) : '') %}
