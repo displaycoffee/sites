@@ -72,17 +72,7 @@
 	<!-- EVENT overall_header_stylesheets_after -->
 </head>
 
-{% set bodyname = SCRIPT_NAME|lower %}
-{% if 'app/' in SCRIPT_NAME %}
-	{% if 'thankslist/givens' in SCRIPT_NAME %}
-		{% set bodyname = 'search' %}
-	{% else %}
-		{% set bodyname = 'page' %}
-	{% endif %}
-{% endif %}
-
-<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} {BODY_CLASS} section-{{ bodyname }}{% if 'app/thankslist/givens' in SCRIPT_NAME %} section-thanks-search{% endif %}" data-class="section {{ bodyname }} <!-- IF S_IN_MCP and L_TITLE neq TITLE -->{L_TITLE|lower}<!-- ELSE -->{PAGE_TITLE|lower}<!-- ENDIF-->">
-
+<body id="phpbb" class="nojs notouch {S_CONTENT_DIRECTION} section-{{ KHY_HANDLE_SHORT }} section-{{ KHY_HANDLE }}{% if BODY_CLASS %}{{ BODY_CLASS }}{% endif %}">
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">
 			You are using an <strong>outdated</strong> browser. Please <a href="//browsehappy.com/" target="_blank"><strong>upgrade your browser</strong></a> to improve your experience.

@@ -179,20 +179,22 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$php_ext = substr(strrchr(__FILE__, '.'), 1);
 		$page_script_name = str_replace('.' . $php_ext, '', $this->user->page['page_name']);
 
-		// If on a certain type of page, set the page_type
+		// If on a certain type of page, set the page_type and page title
 		$page_type = $page_script_name;
+		$page_title = strtolower($event['page_title']);
 		if (strpos($page_type, 'thankslist/givens') !== false) {
 			$page_type = 'search';
+			$page_title = 'thanks';
 		} elseif (strpos($page_type, 'app/') !== false) {
 			$page_type = 'page';
 		}
 
-		// Piece together page details for class
+		// Piece together page details for handle
 		$page_patterns = array('/[^a-zA-Z ]/', '/ +/', '/-+/');
 		$page_replaces = array('', '-', '-');
-		$page_handle = $page_type . '-' . strtolower(preg_replace($page_patterns, $page_replaces, $event['page_title']));
+		$page_handle = $page_type . '-' . preg_replace($page_patterns, $page_replaces, $page_title);
 
-		// Truncate class if its too long
+		// Truncate handle if its too long
 		$class_limit = 50;
 		if (strlen($page_handle) > $class_limit) {
 			$page_handle = substr($page_handle, 0, $class_limit);
@@ -209,7 +211,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
 			'KHY_SCRIPT_NAME'  		=> $page_script_name,
-			'KHY_BODY_CLASS'   		=> 'section-' . $page_handle,
+			'KHY_HANDLE_SHORT'		=> $page_type,
+			'KHY_HANDLE'   			=> $page_handle,
 			'KHY_LINKS'		   		=> link_mapping(),
 			'KHY_USER_GROUP_ID'     => $group_id,
 			'KHY_USER_GROUP_NAME'   => $group_row['group_name'],

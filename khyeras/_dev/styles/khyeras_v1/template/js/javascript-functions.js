@@ -1,14 +1,3 @@
-// Add class to body tag
-function addBodyClass() {
-	if ( body.getAttribute( 'data-class' ) ) {
-		var bodyClass = body.getAttribute( 'data-class' ).replace( /[^a-zA-Z ]/g,'' ).trim().replace( / /g,'-' ).replace( /-+/g,'-' );
-	}
-
-	if ( bodyClass ) {
-		body.className += ( checkForClasses( body ) + bodyClass );
-	}
-}
-
 // If forum has image, add responsive image and a class to parent
 function addForumImageClass() {
 	var forumImage = document.querySelectorAll( '.list-inner .forum-image' );

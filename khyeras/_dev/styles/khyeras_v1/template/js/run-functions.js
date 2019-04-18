@@ -1,7 +1,6 @@
 /* JavaScript Functionality
 ========================================================================== */
 
-addBodyClass();
 addForumImageClass();
 addFieldsetClasses();
 addNoPaginationClass();
@@ -11,7 +10,6 @@ noContentListing();
 addSearchIgnoredClass();
 checkForNewPM();
 checkForEmpty( '.section-mcp-post-details .pagination ul' );
-checkForEmpty( '.section-mcp-post-details .postbody .content pre' );
 bannerCodeGenerator('.link-banners img', '#link-banner-code code');
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
