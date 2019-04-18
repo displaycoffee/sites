@@ -179,6 +179,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$php_ext = substr(strrchr(__FILE__, '.'), 1);
 		$page_script_name = str_replace('.' . $php_ext, '', $this->user->page['page_name']);
 
+		//var_dump($this->user->lang['MCP_NOTES_USER']); MCP_QUEUE_DELETED_TOPICS
+		//$request = $phpbb_container->get('request');
+		//var_dump($this->db);
+		//print_r($this->user->lang);
+		//var_dump($event['page_title']);
+
 		// If on a certain type of page, set the page_type and page title
 		$page_type = $page_script_name;
 		$page_title = strtolower($event['page_title']);
@@ -190,8 +196,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		}
 
 		// Piece together page details for handle
-		$page_patterns = array('/[^a-zA-Z ]/', '/ +/', '/-+/');
-		$page_replaces = array('', '-', '-');
+		$page_patterns = array('/&amp;/', '/[^a-zA-Z ]/', '/ +/', '/-+/');
+		$page_replaces = array('and', '', '-', '-');
 		$page_handle = $page_type . '-' . preg_replace($page_patterns, $page_replaces, $page_title);
 
 		// Truncate handle if its too long
