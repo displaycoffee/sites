@@ -179,11 +179,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$php_ext = substr(strrchr(__FILE__, '.'), 1);
 		$page_script_name = str_replace('.' . $php_ext, '', $this->user->page['page_name']);
 
-		//var_dump($this->user->lang['MCP_NOTES_USER']); MCP_QUEUE_DELETED_TOPICS
-		//$request = $phpbb_container->get('request');
-		//var_dump($this->db);
-		//print_r($this->user->lang);
-		//var_dump($event['page_title']);
+		//var_dump($this->template->retrieve_var('L_TITLE'));
+
+		// $this->user->get_profile_fields($user_id);
+		// $user_fields = $this->user->profile_fields;
+		//
+		// var_dump($user_fields);
 
 		// If on a certain type of page, set the page_type and page title
 		$page_type = $page_script_name;
