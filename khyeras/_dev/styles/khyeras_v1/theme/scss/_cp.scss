@@ -316,7 +316,6 @@
 }
 
 .section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
-
 	background: map-get($dark-set, dark-01);
 	border-bottom-style: solid;
 	border-top: 1px solid $color-01;
@@ -584,7 +583,7 @@
 /* UCP - Private Messages - Rules, folders, and settings
 ============================================== */
 
-.section-ucp-rules-folders-settings .cp-main {
+.section-ucp-rules-folders-and-settings .cp-main {
 	.def-rules {
 		display: inline-block;
 		margin-left: 15px;
@@ -816,7 +815,7 @@
 ============================================== */
 
 .section-mcp-reported-messages, .section-mcp-reported-pms {
-	.cp-main .post_details + hr + div {
+	.cp-main .post_details ~ hr + div {
 		margin: 0 0 20px 0;
 	}
 }

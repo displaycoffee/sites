@@ -1161,7 +1161,7 @@
 			}
 		}
 	}
-	.section-ucp-rules-folders-settings .cp-main fieldset dl dt input[value='Previous'] {
+	.section-ucp-rules-folders-and-settings .cp-main fieldset dl dt input[value='Previous'] {
 		float: left;
 		@include position($type: relative, $top: $ffs);
 		margin-right: -($ffs + 1);
@@ -1945,7 +1945,7 @@
 			width: 100%;
 		}
 	}
-	.section-ucp-rules-folders-settings .cp-main {
+	.section-ucp-rules-folders-and-settings .cp-main {
 		.def-rules li {
 			position: relative;
 			padding: 0 0 30px 0;

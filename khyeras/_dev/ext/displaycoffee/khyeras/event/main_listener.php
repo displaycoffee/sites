@@ -30,32 +30,32 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  		);
  	}
 
- 	/* @var \phpbb\controller\helper */
- 	protected $helper;
+	/** @var \phpbb\template\template */
+	protected $template;
 
- 	/* @var \phpbb\template\template */
- 	protected $template;
-
- 	/* @var \phpbb\user */
- 	protected $user;
+	/** @var \phpbb\user */
+	protected $user;
 
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
+	/** @var string phpEx */
+	protected $php_ext;
+
  	/**
  	 * Constructor
  	 *
- 	 * @param \phpbb\controller\helper	$helper		Controller helper object
- 	 * @param \phpbb\template\template	$template	Template object
- 	 * @param \phpbb\user               $user       User object
- 	 * @param string                    $php_ext    phpEx
+ 	 * @param \phpbb\template\template				$template			Template object
+ 	 * @param \phpbb\user              				$user       		User object
+	 * @param \phpbb\db\driver\driver_interface		$db         		DBAL object
+	 * @param string                        		$php_ext			phpEx
  	*/
- 	public function __construct(\phpbb\controller\helper $helper, \phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db)
+ 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, $php_ext)
  	{
- 		$this->helper   = $helper;
  		$this->template = $template;
- 		$this->user     = $user;
-		$this->db       = $db;
+ 		$this->user		= $user;
+		$this->db		= $db;
+		$this->php_ext  = $php_ext;
  	}
 
  	/**
@@ -93,6 +93,11 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// --- END --- Group Information
 
 		// --- START --- Profile Field Information
+
+		// $this->user->get_profile_fields($user_id);
+		// $user_fields = $this->user->profile_fields;
+		//
+		// var_dump($user_fields);
 
 		// Get profile data from profilefields manager
 		$pf = $phpbb_container->get('profilefields.manager')->grab_profile_fields_data($user_id);
@@ -175,25 +180,22 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// --- START --- Page Display Details
 
-		// Get page parameters
-		$php_ext = substr(strrchr(__FILE__, '.'), 1);
-		$page_script_name = str_replace('.' . $php_ext, '', $this->user->page['page_name']);
-
-		//var_dump($this->template->retrieve_var('L_TITLE'));
-
-		// $this->user->get_profile_fields($user_id);
-		// $user_fields = $this->user->profile_fields;
-		//
-		// var_dump($user_fields);
-
-		// If on a certain type of page, set the page_type and page title
+		// Set page_script_name and initial page_type
+		$page_script_name = str_replace('.' . $this->php_ext, '', $this->user->page['page_name']);
 		$page_type = $page_script_name;
+
+		// Get page titles
 		$page_title = strtolower($event['page_title']);
+		$page_l_title = strtolower($this->template->retrieve_var('L_TITLE'));
+
+		// If on a certain type of page, set the page_type or page_title
 		if (strpos($page_type, 'thankslist/givens') !== false) {
 			$page_type = 'search';
 			$page_title = 'thanks';
 		} elseif (strpos($page_type, 'app/') !== false) {
 			$page_type = 'page';
+		} elseif ($page_type == 'mcp' && $page_l_title && ($page_title != $page_l_title)) {
+			$page_title = $page_l_title;
 		}
 
 		// Piece together page details for handle
@@ -204,12 +206,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// Truncate handle if its too long
 		$class_limit = 50;
 		if (strlen($page_handle) > $class_limit) {
-			$page_handle = substr($page_handle, 0, $class_limit);
-			$page_handle = trim($page_handle, '-');
+			$page_handle = trim(substr($page_handle, 0, $class_limit), '-');
 		}
-
-		// Set up page name variable like SCRIPT_NAME
-		$page_script_name = str_replace('app/', '', $page_script_name);
 
 		// --- END --- Page Display Details
 
@@ -217,7 +215,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
-			'KHY_SCRIPT_NAME'  		=> $page_script_name,
+			'KHY_SCRIPT_NAME'		=> str_replace('app/', '', $page_script_name),
 			'KHY_HANDLE_SHORT'		=> $page_type,
 			'KHY_HANDLE'   			=> $page_handle,
 			'KHY_LINKS'		   		=> link_mapping(),
@@ -230,7 +228,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  		));
 
 		// Add list of completed achievements only for achievement page
-		if ($page_script_name == 'gameplay-achievements') {
+		if ($page_script_name == 'app/gameplay-achievements') {
 			$this->template->assign_vars(array(
 				'KHY_USER_ACHIEVEMENTS' => $pf_user['c_achievements']['value']
 	 		));
