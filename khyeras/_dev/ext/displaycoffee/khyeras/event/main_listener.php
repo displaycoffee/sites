@@ -39,6 +39,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
+	/**
+	* Profile fields language helper
+	* @var \phpbb\profilefields\lang_helper
+	*/
+	protected $lang_helper;
+
 	/** @var string phpEx */
 	protected $php_ext;
 
@@ -48,13 +54,15 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	 * @param \phpbb\template\template				$template			Template object
  	 * @param \phpbb\user              				$user       		User object
 	 * @param \phpbb\db\driver\driver_interface		$db         		DBAL object
+	 * @param	\phpbb\profilefields\lang_helper		$lang_helper	Profile fields language helper
 	 * @param string                        		$php_ext			phpEx
  	*/
- 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, $php_ext)
+ 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\lang_helper $lang_helper, $php_ext)
  	{
  		$this->template = $template;
  		$this->user		= $user;
 		$this->db		= $db;
+		$this->lang_helper = $lang_helper;
 		$this->php_ext  = $php_ext;
  	}
 
@@ -97,10 +105,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// $this->user->get_profile_fields($user_id);
 		// $user_fields = $this->user->profile_fields;
 		//
-		// var_dump($user_fields);
+		// var_dump('hello1 ' . $user_fields['pf_c_race_opts']);
+		// $this->lang_helper->load_option_lang(1);
+		// var_dump('hello2 ' . $this->lang_helper->get(20, 1, $user_fields['pf_c_race_opts']));
+		// field id, lang id, field value
+		//15 1 2 profilefields.type.dropdown Character
 
 		// Get profile data from profilefields manager
 		$pf = $phpbb_container->get('profilefields.manager')->grab_profile_fields_data($user_id);
+
+		//var_dump($pf);
 
 		// Set profile field names
 		$pf_user = $pf[$user_id];
