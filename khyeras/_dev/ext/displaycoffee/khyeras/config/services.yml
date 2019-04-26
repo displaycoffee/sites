@@ -5,6 +5,7 @@ services:
             - '@template'
             - '@user'
             - '@dbal.conn'
+            - '@profilefields.manager'
             - '@profilefields.lang_helper'
             - '%core.php_ext%'
         tags:

@@ -39,10 +39,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
-	/**
-	* Profile fields language helper
-	* @var \phpbb\profilefields\lang_helper
-	*/
+	/** @var \phpbb\profilefields\manager */
+	protected $manager;
+
+	/** @var \phpbb\profilefields\lang_helper */
 	protected $lang_helper;
 
 	/** @var string phpEx */
@@ -54,16 +54,18 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	 * @param \phpbb\template\template				$template			Template object
  	 * @param \phpbb\user              				$user       		User object
 	 * @param \phpbb\db\driver\driver_interface		$db         		DBAL object
-	 * @param	\phpbb\profilefields\lang_helper		$lang_helper	Profile fields language helper
+	 * @param \phpbb\profilefields\manager			$manager			Profile fields manager
+	 * @param \phpbb\profilefields\lang_helper		$lang_helper		Profile fields language helper
 	 * @param string                        		$php_ext			phpEx
  	*/
- 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\lang_helper $lang_helper, $php_ext)
+ 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, $php_ext)
  	{
- 		$this->template = $template;
- 		$this->user		= $user;
-		$this->db		= $db;
+ 		$this->template    = $template;
+ 		$this->user		   = $user;
+		$this->db		   = $db;
+		$this->manager 	   = $manager;
 		$this->lang_helper = $lang_helper;
-		$this->php_ext  = $php_ext;
+		$this->php_ext	   = $php_ext;
  	}
 
  	/**
@@ -71,11 +73,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	*/
  	public function theme_globals($event)
  	{
-		global $phpbb_container;
-
-		// Get the user id and group id
+		// Get the user id, group id, and lang_id
 		$user_id = $this->user->data['user_id'];
 		$group_id = $this->user->data['group_id'];
+		$lang_id = $this->user->lang_id ? $this->user->lang_id : 1;
 
 		// --- START --- Group Information
 
@@ -102,92 +103,46 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// --- START --- Profile Field Information
 
-		// $this->user->get_profile_fields($user_id);
-		// $user_fields = $this->user->profile_fields;
-		//
-		// var_dump('hello1 ' . $user_fields['pf_c_race_opts']);
-		// $this->lang_helper->load_option_lang(1);
-		// var_dump('hello2 ' . $this->lang_helper->get(20, 1, $user_fields['pf_c_race_opts']));
-		// field id, lang id, field value
-		//15 1 2 profilefields.type.dropdown Character
+		// Get user profile field information
+		$pf = $this->manager->grab_profile_fields_data($user_id)[$user_id];
 
-		// Get profile data from profilefields manager
-		$pf = $phpbb_container->get('profilefields.manager')->grab_profile_fields_data($user_id);
+		// Load profile field language
+		$this->lang_helper->load_option_lang($lang_id);
 
-		//var_dump($pf);
+		// account_type - field information
+		$acc = $pf['account_type'];
+		$account_type = $this->lang_helper->get($acc['data']['field_id'], $lang_id, $acc['value']);
 
-		// Set profile field names
-		$pf_user = $pf[$user_id];
-		$acc_name = 'account_type';
-		$race_opts = 'c_race_opts';
-		$class_opts = 'c_class_opts';
+		// Only do the below actions on character accounts
+		if ($group_row['group_name'] == 'Characters') {
 
-		// Array to store language variables
-		$pf_lang = array();
+			// race_opts - field information
+			$race = $pf['c_race_opts'];
+			$race_values = explode(';', $race['value']);
 
-		// Associative array for grabbing multiple lang variables
-		// We only really need to do this for dropdowns and multi checkboxes
-		$pf_array = array(
-			$acc_name => array(
-				'field_id' 	=> $pf_user[$acc_name]['data']['field_id'],
-				'option_id' => ($pf_user[$acc_name]['value']) - 1
-			),
-			$race_opts => array(
-				'field_id' 	=> $pf_user[$race_opts]['data']['field_id'],
-				'option_id' => explode(';', $pf_user[$race_opts]['value'])
-			),
-			$class_opts => array(
-				'field_id' 	=> $pf_user[$class_opts]['data']['field_id'],
-				'option_id' => explode(';', $pf_user[$class_opts]['value'])
-			)
-		);
+			// race_opts - empty string to add comma separated options
+			$race_options = false;
 
-		// Loop through $pf_array and add info for each lang variable to $pf_lang
-		foreach ($pf_array as $key => $value)
-		{
-			// Check if the option_id value is an array
-			if (gettype($value['option_id']) == 'array')
+			// race_opts - loop through each race option
+			for ($i = 0; $i < count($race_values); $i++)
 			{
-				// Set empty string to add comma separated options
-				$options = '';
-
-				// Loop through each option
-				for ($i = 0; $i < count($value['option_id']); $i++)
-				{
-					// Get the option value
-					$option = ($value['option_id'][$i]) - 1;
-
-					// Create the SQL statement for option data
-					$pf_sql = 'SELECT lang_value
-						FROM ' . PROFILE_FIELDS_LANG_TABLE . '
-						WHERE field_id="' . $value['field_id'] . '" AND option_id="' .  $option . '"';
-
-					// Run the query
-					$pf_result = $this->db->sql_query($pf_sql);
-
-					// Add selected data to options string
-					$options = $options . $this->db->sql_fetchrow($pf_result)['lang_value'] . ', ';
-				}
-
-				// Finally add to $pf_lang array
-				$pf_lang[$key] = rtrim($options, ', ');
-			}
-			else
-			{
-				// Create the SQL statement for lang data
-				$pf_sql = 'SELECT lang_value
-					FROM ' . PROFILE_FIELDS_LANG_TABLE . '
-					WHERE ' . $this->db->sql_build_array('SELECT', $value);
-
-				// Run the query
-				$pf_result = $this->db->sql_query($pf_sql);
-
-				// Add selected data to $pf_lang
-				$pf_lang[$key] = $this->db->sql_fetchrow($pf_result)['lang_value'];
+				$current = $this->lang_helper->get($race['data']['field_id'], $lang_id, $race_values[$i]);
+				$race_options = $race_options . $current . ', ';
 			}
 
-			// Be sure to free the result after a SELECT query
-			$this->db->sql_freeresult($pf_result);
+			// class_opts - field information
+			$class = $pf['c_class_opts'];
+			$class_values = explode(';', $class['value']);
+
+			// class_opts - empty string to add comma separated options
+			$class_options = false;
+
+			// class_opts - loop through each class option
+			for ($j = 0; $j < count($class_values); $j++)
+			{
+				$current = $this->lang_helper->get($class['data']['field_id'], $lang_id, $class_values[$j]);
+				$class_options = $class_options . $current . ', ';
+			}
 		}
 
 		// --- END --- Profile Field Information
@@ -235,16 +190,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			'KHY_LINKS'		   		=> link_mapping(),
 			'KHY_USER_GROUP_ID'     => $group_id,
 			'KHY_USER_GROUP_NAME'   => $group_row['group_name'],
-			'KHY_USER_ACCOUNT_TYPE' => $pf_lang[$acc_name],
-			'KHY_USER_RACE'   	    => $pf_lang[$race_opts],
-			'KHY_USER_CLASS'   	    => $pf_lang[$class_opts],
-			'KHY_USER_LEVEL'   	    => get_level($pf_user['c_experience']['value'])
+			'KHY_USER_ACCOUNT_TYPE' => $account_type,
+			'KHY_USER_RACE'   	    => rtrim($race_options, ', '),
+			'KHY_USER_CLASS'   	    => rtrim($class_options, ', '),
+			'KHY_USER_LEVEL'   	    => get_level($pf['c_experience']['value'])
  		));
 
 		// Add list of completed achievements only for achievement page
 		if ($page_script_name == 'app/gameplay-achievements') {
 			$this->template->assign_vars(array(
-				'KHY_USER_ACHIEVEMENTS' => $pf_user['c_achievements']['value']
+				'KHY_USER_ACHIEVEMENTS' => $pf['c_achievements']['value']
 	 		));
 		}
 
