@@ -237,15 +237,15 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	*/
 	public function viewtopic_character_info($event)
 	{
-		$pr = $event['post_row'];
+		$pf = $event['post_row'];
 		$character_details = array();
 
 		// Only assign these variable if character account
-		if ($pr['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
-			$race = $pr['PROFILE_C_RACE_OPTS_VALUE'];
-			$class = $pr['PROFILE_C_CLASS_OPTS_VALUE'];
-			$level = get_level($pr['PROFILE_C_EXPERIENCE_VALUE']);
-			$currency = calc_currency($pr['PROFILE_C_COPPER_VALUE']);
+		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
+			$race = $pf['PROFILE_C_RACE_OPTS_VALUE'];
+			$class = $pf['PROFILE_C_CLASS_OPTS_VALUE'];
+			$level = get_level($pf['PROFILE_C_EXPERIENCE_VALUE']);
+			$currency = calc_currency($pf['PROFILE_C_COPPER_VALUE']);
 
 			$character_details = array(
 				'PROFILE_LEVEL'	   => $level,
@@ -259,7 +259,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		}
 
 		// Clean description by removing html and bbcode for word count
-		$desc = preg_replace('/(\[.*?\])/', '', strip_tags($pr['MESSAGE'], ''));
+		$desc = preg_replace('/(\[.*?\])/', '', strip_tags($pf['MESSAGE'], ''));
 		$desc_count = array(
 			'WORD_COUNT' => str_word_count($desc)
 		);
@@ -278,12 +278,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$acc_type = $event['cp_data']['pf_account_type'];
 
 		// Check the account type field
-		// Writer > 2 / group_id > 8 / rank > 4
-		// Character > 3 / group_id > 9 / rank > 5
 		if ($acc_type == 2) {
+			// Writer > 2 / group_id > 8 / rank > 4
 			$group_number = '8';
 			$rank_number = '4';
 		} else if ($acc_type == 3) {
+			// Character > 3 / group_id > 9 / rank > 5
 			$group_number = '9';
 			$rank_number = '5';
 		}
@@ -299,7 +299,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 			// Insert a new row into the db for new group
 			$user_group_sql = 'INSERT INTO ' . USER_GROUP_TABLE . ' ' . $this->db->sql_build_array('INSERT', $user_group_arr);
-			$this->db->sql_query($user_group_sql);
+
+			// Run the query
+			$user_group_result = $this->db->sql_query($user_group_sql);
+
+			// Be sure to free the result after a SELECT query
+			$this->db->sql_freeresult($user_group_result);
 
 			// User data
 			$user_array = array(
@@ -311,7 +316,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			$user_sql = 'UPDATE ' . USERS_TABLE . '
 				SET ' . $this->db->sql_build_array('UPDATE', $user_array) . '
 				WHERE user_id = ' . (int) $user_id;
-			$this->db->sql_query($user_sql);
+
+			// Run the query
+			$user_result = $this->db->sql_query($user_sql);
+
+			// Be sure to free the result after a SELECT query
+			$this->db->sql_freeresult($user_result);
 		}
 	}
 }
