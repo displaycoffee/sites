@@ -391,7 +391,7 @@ function initializeMobileMenu( options ) {
 			// Check if mobile ones is false, meaning we haven't activated the mobile menu yet
 			if ( !mobileOnce ) {
 				// Close menu when button is clicked on
-				jQuery( '.mobile-menu-header .fa-times' ).off().on( 'click', function() {
+				jQuery( '.mobile-menu-header .fa-close' ).off().on( 'click', function() {
 					toggleMobileMenu();
 				});
 

@@ -202,11 +202,58 @@ $rpg-tied-scroll: \e922;
 	content: unicode($rpg-tied-scroll);
 }
 
-/* RPG Icon Overrides
+/* Miscellaneous Icons - Uses RPG font
 ============================================== */
 
-.fa-bell, .fa-clock-o, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel,
-.fa-home, .fa-inbox, .fa-lock, .fa-pencil, .fa-sliders, .fa-pencil-square-o, .fa-power-off, .fa-reply, .fa-shield, .fa-trash, .fa-wrench {
+$misc-close: \e935;
+$misc-close-circle: \e93a;
+$misc-minus: \e936;
+$misc-plus: \e937;
+$misc-check: \e938;
+$misc-check-circle: \e939;
+$misc-discord: \e92d;
+$misc-icq: \e92b;
+$misc-jabber: \e92c;
+$misc-aim: \e92e;
+
+/* Miscellaneous Icon Classes
+============================================== */
+
+.misc-close:before {
+	content: unicode($misc-close);
+}
+.misc-close-circle:before {
+	content: unicode($misc-close-circle);
+}
+.misc-minus:before {
+	content: unicode($misc-minus);
+}
+.misc-plus:before {
+	content: unicode($misc-plus);
+}
+.misc-check:before {
+	content: unicode($misc-check);
+}
+.misc-check-circle:before {
+	content: unicode($misc-check-circle);
+}
+.misc-discord:before {
+	content: unicode($misc-discord);
+}
+.misc-icq:before {
+	content: unicode($misc-icq);
+}
+.misc-jabber:before {
+	content: unicode($misc-jabber);
+}
+.misc-aim:before {
+	content: unicode($misc-aim);
+}
+
+/* RPG & Miscellaneous Icon Overrides
+============================================== */
+
+.fa-bell, .fa-check, .fa-check-circle, .fa-clock-o, .fa-close, .fa-cog, .fa-cogs, .fa-file, .fa-file-o, .fa-gavel, .fa-home, .fa-inbox, .fa-lock, .fa-minus, .fa-pencil, .fa-sliders, .fa-pencil-square-o, .fa-plus, .fa-power-off, .fa-remove, .fa-reply, .fa-shield, .fa-times, .fa-times-circle, .fa-trash, .fa-wrench {
 	font-family: 'Khyeras Icons';
 }
 
@@ -214,8 +261,20 @@ $rpg-tied-scroll: \e922;
 	content: unicode($rpg-trumpet-flag);
 }
 
+.fa-check:before {
+	content: unicode($misc-check);
+}
+
+.fa-check-circle:before {
+	content: unicode($misc-check-circle);
+}
+
 .fa-clock-o:before {
 	content: unicode($rpg-hourglass);
+}
+
+.fa-close:before, .fa-remove:before, .fa-times:before {
+	content: unicode($misc-close);
 }
 
 .fa-cog:before, .fa-cogs:before {
@@ -242,8 +301,16 @@ $rpg-tied-scroll: \e922;
 	content: unicode($rpg-padlock);
 }
 
+.fa-minus:before {
+	content: unicode($misc-minus);
+}
+
 .fa-pencil:before, .fa-pencil-square-o:before, .fa-reply:before {
 	content: unicode($rpg-quill);
+}
+
+.fa-plus:before {
+	content: unicode($misc-plus);
 }
 
 .fa-power-off:before {
@@ -258,34 +325,14 @@ $rpg-tied-scroll: \e922;
 	content: unicode($rpg-key);
 }
 
+.fa-times-circle:before {
+	content: unicode($misc-close-circle);
+}
+
 .fa-trash:before {
 	content: unicode($rpg-burning-embers);
 }
 
 .fa-wrench:before {
 	content: unicode($rpg-stone-crafting);
-}
-
-/* Miscellaneous Icons - Uses RPG font
-============================================== */
-
-$misc-discord: \e92d;
-$misc-icq: \e92b;
-$misc-jabber: \e92c;
-$misc-aim: \e92e;
-
-/* Miscellaneous Icon Classes
-============================================== */
-
-.misc-discord:before {
-	content: unicode($misc-discord);
-}
-.misc-icq:before {
-	content: unicode($misc-icq);
-}
-.misc-jabber:before {
-	content: unicode($misc-jabber);
-}
-.misc-aim:before {
-	content: unicode($misc-aim);
 }

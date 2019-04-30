@@ -509,15 +509,15 @@ a.top {
 			font-size: rem($global-font-size);
 			display: block;
 			&:before {
-				@include icon-font;
+				@include icon-font($family: 'game');
 				color: $color-00;
 				margin: 0 5px 0 0;
 			}
 			&[onclick*='false']:before {
-				content: unicode($icon-x);
+				content: unicode($misc-close);
 			}
 			&[onclick*='true']:before {
-				content: unicode($icon-check);
+				content: unicode($misc-check);
 			}
 		}
 	}

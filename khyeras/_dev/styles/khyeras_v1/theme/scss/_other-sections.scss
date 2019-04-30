@@ -191,9 +191,9 @@ dl.faq {
 			@include position($type: absolute, $top: 35px, $right: 30px);
 			font-size: 0;
 			&:after {
-				content: unicode($icon-x);
-				@include icon-font;
-				font-size: rem(20px);
+				@include icon-font($family: 'game');
+				content: unicode($misc-close);
+				font-size: rem(24px);
 				color: $color-00;
 			}
 		}
@@ -650,11 +650,11 @@ div[id*='list_thanks'] {
 		}
 	}
 	h2 + p .arrow-left:before {
-		content: unicode($icon-chevron-left);
+		content: unicode($icon-angle-left);
 		margin: 0 10px 0 0;
 	}
 	.post ul.searchresults li a:before {
-		content: unicode($icon-chevron-right);
+		content: unicode($icon-angle-right);
 		margin: 0 0 0 10px;
 	}
 }

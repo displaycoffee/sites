@@ -9,7 +9,7 @@
 		{% endif %}
 		{% spaceless %}
 			<li class="crumb{% if crumb_label == 'Home' %} home{% endif %}" itemtype="http://schema.org/ListItem" itemprop="itemListElement" itemscope{{ navdata }}>
-				<i class="icon {% if crumb_label == 'Home' %}rpg-icon rpg-castle{% else %}fa-chevron-right fa-fw{% endif %}"></i>
+				<i class="icon {% if crumb_label == 'Home' %}rpg-icon rpg-castle{% else %}fa-angle-right fa-fw{% endif %}"></i>
 				<a href="{{ crumb_url }}" itemprop="url"{{ a_attr }}>
 					<span itemprop="title">{{ crumb_label }}</span>
 				</a>

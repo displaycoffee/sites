@@ -5,7 +5,7 @@
 {% macro create_nav_main(url, label) %}
 	<div class="menu-label">
 		<a href="{{ url }}" title="{{ label }}" role="menuitem"><span>{{ label }}</span></a>
-		<i class="icon icon-lg fa-chevron-down menu-trigger"></i>
+		<i class="icon icon-lg fa-angle-down menu-trigger"></i>
 	</div>
 {% endmacro %}
 
@@ -89,7 +89,7 @@
 					{% for detail in card %}
 						{% set card_id = section_id  ~ '-' ~ _self.create_handle(detail.title) %}
 						{% set card_changed = false %}
-						{% if (completed_cards && card_id in completed_cards) || ('fa-remove' in detail.icon) %}
+						{% if (completed_cards && card_id in completed_cards) || ('fa-close' in detail.icon) %}
 							{% set card_changed = true %}
 						{% endif %}
 						<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed{% endif %}{% if detail.title == 'Not Applicable'%} card-full{% endif %}">

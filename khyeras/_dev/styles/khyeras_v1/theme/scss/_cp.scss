@@ -263,9 +263,8 @@
 			strong {
 				font-weight: normal;
 				a:before {
-					@include icon-font($fs: false);
-					font-size: rem(12px);
-					content: unicode($icon-chevron-left);
+					@include icon-font;
+					content: unicode($icon-angle-left);
 					margin-right: 10px;
 					color: $color-00;
 				}
@@ -328,15 +327,8 @@
 /* Send Password / Activation Email
 ============================================== */
 
-.section-ucp-send-password, .section-ucp-send-activation-email {
-	fieldset dl {
-		dt.empty-space + dd {
-			margin-left: 0;
-		}
-		dd.has-multiple-fields.has-space {
-			justify-content: center;
-		}
-	}
+[class*='section-ucp-send-'] fieldset dl dd.has-multiple-fields.has-space {
+	justify-content: center;
 }
 
 /* Registration & UCP - Profile
@@ -747,18 +739,6 @@
 	}
 }
 
-/* MCP - Approve Topic & Post
-============================================== */
-
-[class*='section-mcp-approve-topic'], [class*='section-mcp-approve-post'] {
-	fieldset dl dt.empty-space {
-		display: none;
-		& ~ dd {
-			margin-left: 0;
-		}
-	}
-}
-
 /* MCP - Moderation Queue & Post Details
 ============================================== */
 
@@ -901,9 +881,6 @@
 		width: auto;
 		padding: 0;
 		background: none;
-		dd {
-			margin-left: 0;
-		}
 	}
 }
 

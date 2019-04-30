@@ -198,7 +198,8 @@
 					font-size: rem(20px);
 				}
 				&.file-uploaded:before {
-					content: unicode($icon-check-circle);
+					font-family: 'Khyeras Icons';
+					content: unicode($misc-check-circle);
 					color: $color-04;
 				}
 				&.file-error:before {

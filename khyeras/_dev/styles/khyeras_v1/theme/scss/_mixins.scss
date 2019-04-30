@@ -247,16 +247,14 @@
 			padding: 0 20px 0 0;
 			&:after {
 				@include icon-font;
-				@include position($type: absolute, $right: 0);
+				@include position($type: absolute, $top: 0, $right: 0);
 			}
 		}
 		&[href*='sd=d']:after {
-			content: unicode($icon-sort-desc);
-			top: -4px;
+			content: unicode($icon-angle-down);
 		}
 		&[href*='sd=a']:after {
-			content: unicode($icon-sort-asc);
-			top: 3px;
+			content: unicode($icon-angle-up);
 		}
 	}
 }
