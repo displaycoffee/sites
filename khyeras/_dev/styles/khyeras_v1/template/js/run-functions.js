@@ -51,6 +51,7 @@ jQuery( document ).ready( function( $ ) {
 	// Check if the theme is in overall_header then add sticky or scroll functionality
 	if ( !$( 'body' ).hasClass( 'simple-phpbb' ) ) {
 		addOnScroll( '#page-header .navbar', '.header-overlay', 'sticky' );
+		addOnScroll( '.quick-links', '.site-description', 'quick-links-visible' );
 		scrollOnPage( '.scroll-to-top', 100, 0 );
 		scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
 	}

@@ -225,6 +225,13 @@
 	}
 }
 
+// Responsive min-width media query
+@mixin respond-min($breakpoint) {
+	@media only screen and (min-width: $breakpoint) {
+		@content;
+	}
+}
+
 // Sizing for elements
 @mixin sizing($width, $height) {
 	width: $width;

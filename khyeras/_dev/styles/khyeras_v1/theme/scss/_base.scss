@@ -180,26 +180,6 @@ a.anchor {
 /* Utilities
 ============================================== */
 
-.sr-only {
-	position: absolute;
-	@include sizing(1px, 1px);
-	margin: -1px;
-	padding: 0;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
-
-.sr-only-focusable {
-	&:active, &:focus {
-		position: static;
-		@include sizing(auto, auto);;
-		margin: 0;
-		overflow: visible;
-		clip: auto;
-	}
-}
-
 .clearfix, .inner {
 	@include clearfix('&');
 }

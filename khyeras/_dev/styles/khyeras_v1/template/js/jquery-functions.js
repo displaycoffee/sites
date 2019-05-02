@@ -237,7 +237,7 @@ function scrollOnPage( selector, distance, position ) {
 
 	if ( scrollSelector && scrollSelector.length ) {
 		// Check to see if the window is top if not then display button
-		addOnScroll( selector, '.site-description', 'scroll-to-visible' );
+		addOnScroll( '.scroll-to-links', '.site-description', 'scroll-to-visible' );
 
 		// Click event to scroll to top
 		scrollSelector.on( 'click', function() {

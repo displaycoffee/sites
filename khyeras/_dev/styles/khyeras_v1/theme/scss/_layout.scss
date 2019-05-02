@@ -270,6 +270,44 @@ a.top {
 	}
 }
 
+/* Breadcrumbs
+============================================== */
+
+@include respond-min(em(769)) {
+	.quick-links {
+		@include position($type: fixed, $right: 20px, $bottom: 100px, $z: -1);
+		@include toggle-content(hide);
+		min-width: 175px;
+		padding: 20px;
+		background: $color-02;
+		border: 1px solid $color-01;
+		text-align: right;
+		strong, a {
+			display: block;
+		}
+		strong {
+			margin: 0 0 10px 0;
+		}
+		a {
+			margin: 0 0 3px 0;
+			color: $color-00;
+			&:hover {
+				color: $color-03;
+			}
+			&:last-child {
+				margin: 0;
+			}
+		}
+		.quick-links-separator {
+			display: none;
+		}
+		&.quick-links-visible {
+			z-index: 999;
+			@include toggle-content(show, $transition: true);
+		}
+	}
+}
+
 /* Main Boxes (Inner)
 ============================================== */
 

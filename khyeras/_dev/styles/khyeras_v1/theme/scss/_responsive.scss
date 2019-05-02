@@ -51,11 +51,24 @@
 	}
 
 	// header.scss
-	.user-menu .logged-in-info .user-name {
-		max-width: 115px;
+	.navbar {
+		.menu {
+			margin: 0 -5px;
+			& > li {
+				padding: 0 5px;
+			}
+		}
+		.user-menu {
+			margin: 1px -5px 0 auto;
+		}
 	}
-	.navbar.sticky .user-menu .logged-in-info .user-name {
-		max-width: 0;
+	.user-menu .logged-in-info, .navbar.sticky .user-menu .logged-in-info {
+		.user-name {
+			max-width: 0;
+		}
+		.user-avatar {
+			margin-left: 0;
+		}
 	}
 	.featured-content .flex-row .flex-column {
 		width: 25%;
@@ -292,6 +305,10 @@
 			position: relative;
 		}
 		.menu {
+			margin: 0 -10px;
+			& > li {
+				padding: 0 10px;
+			}
 			.dropdown {
 				margin: 0 -1px !important;
 			}
@@ -332,8 +349,13 @@
 			}
 		}
 	}
-	.user-menu .logged-in-info .user-name, .navbar.sticky .user-menu .logged-in-info .user-name {
-		max-width: none;
+	.user-menu .logged-in-info, .navbar.sticky .user-menu .logged-in-info {
+		.user-name {
+			max-width: none;
+		}
+		.user-avatar {
+			margin-left: 10px;
+		}
 	}
 	.user-menu .logged-in-info .user-name {
 		overflow: visible;
@@ -1679,14 +1701,19 @@
 	#page-footer .footer-inner {
 		padding-bottom: 70px;
 	}
-	.scroll-to-top, .scroll-to-bottom {
-		margin: auto;
-	}
-	.scroll-to-top {
-		@include position($bottom: 20px, $left: 50px, $right: 0);
-	}
-	.scroll-to-bottom {
-		@include position($left: 0, $right: 50px);
+	.scroll-to-links {
+		text-align: center;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		max-width: 90px;
+		@include clearfix('&');
+		.scroll-to-top, .scroll-to-bottom {
+			float: left;
+		}
+		.scroll-to-top {
+			margin: 0 10px 0 0;
+		}
 	}
 }
 
