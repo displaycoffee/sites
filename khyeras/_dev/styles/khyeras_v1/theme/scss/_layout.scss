@@ -306,6 +306,14 @@ a.top {
 			@include toggle-content(show, $transition: true);
 		}
 	}
+
+	.section-page-glossary .quick-links {
+		width: 175px;
+		a {
+			display: inline-block;
+			width: 22.5%;
+		}
+	}
 }
 
 /* Main Boxes (Inner)

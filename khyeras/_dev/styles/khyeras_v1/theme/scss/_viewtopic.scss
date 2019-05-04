@@ -102,9 +102,6 @@
 		padding: 0 150px 0 0;
 	}
 	h3 img[src*='images/icons'] {
-		max-width: 20px;
-		max-height: 20px;
-		display: inline-block;
 		margin: 0 5px 0 0;
 		@include position($type: relative, $top: 2px);
 	}

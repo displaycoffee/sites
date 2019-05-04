@@ -243,10 +243,7 @@ fieldset:not(.polls) {
 				& > label[for*='icon'] {
 					line-height: 32px;
 					img {
-						max-width: 20px;
-						max-height: 20px;
 						@include position($type: relative, $top: 4px);
-						display: inline-block;
 						margin: 0 $ffs;
 					}
 				}

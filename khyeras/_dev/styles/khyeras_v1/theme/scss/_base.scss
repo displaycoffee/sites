@@ -207,16 +207,19 @@ a.anchor {
 	@include position($type: absolute, $top: -20px);
 }
 
-/* Smilies and Emojis
+/* Smilies, Emojis & Topic Icons
 ============================================== */
 
-.emoji, .smilies {
-	@include inline-block(text-bottom);
-	max-width: 20px;
-	max-height: 20px;
+.emoji, .smilies, img[src*='images/icons'] {
+	display: inline-block;
 }
 
-.emoji {
-	min-height: 16px;
-	min-width: 16px;
+.emoji, .smilies {
+	vertical-align: text-bottom;
+	max-height: 23px;
+}
+
+img[src*='images/icons'] {
+	max-width: 20px;
+	max-height: 20px;	
 }

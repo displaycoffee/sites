@@ -1,6 +1,7 @@
 /* RPG Icon Variables
 ============================================== */
 
+$rpg-fire: \e93b;
 $rpg-burning-embers: \e934;
 $rpg-cash: \e932;
 $rpg-two-coins: \e933;
@@ -54,6 +55,9 @@ $rpg-tied-scroll: \e922;
 /* RPG Icon Classes
 ============================================== */
 
+.rpg-fire:before {
+	content: unicode($rpg-fire);
+}
 .rpg-burning-embers:before {
 	content: unicode($rpg-burning-embers);
 }
@@ -330,7 +334,7 @@ $misc-aim: \e92e;
 }
 
 .fa-trash:before {
-	content: unicode($rpg-burning-embers);
+	content: unicode($rpg-fire);
 }
 
 .fa-wrench:before {
