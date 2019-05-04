@@ -1,63 +1,44 @@
 {% set max_level = 60 %}
+{% set level_mods = range(25, 50, 0.5) %}
 
-{% set levels = {
-	'25.0': range(01, 05),
-	'25.5': range(06, 10),
-	'26.0': range(11, 15),
-	'26.5': range(16, 20),
-	'27.0': range(21, 25),
-	'27.5': range(26, 30),
-	'28.0': range(31, 35),
-	'28.5': range(36, 40),
-	'29.0': range(41, 45),
-	'29.5': range(46, 50),
-	'30.0': range(51, 55),
-	'30.5': range(56, 60),
-	'31.0': range(61, 65),
-	'31.5': range(66, 70),
-	'32.0': range(71, 75),
-	'32.5': range(76, 80),
-	'33.0': range(81, 85),
-	'33.5': range(86, 90),
-	'34.0': range(91, 95),
-	'34.5': range(96, 100)
+{% set card_objects = [] %}
+
+{% for i in range(1, max_level) %}
+	{% set modifier_index = ((i / 5) | round(0, 'ceil') - 1) %}
+
+	{% if KHY_USER_LEVEL && i <= KHY_USER_LEVEL %}
+		{% set icon = 'icon-bg-green fa-heart' %}
+	{% else %}
+		{% set icon = 'icon-bg-red fa-close' %}
+	{% endif %}
+
+	{% set experience = (level_mods[modifier_index] * i * (i - 1)) | number_format(0, '.', ',') %}
+
+	{% if i % 10 == 0 %}
+		{% set bonus = 'HP and MP increase.' %}
+	{% else %}
+		{% set bonus = 'No bonus.' %}
+	{% endif %}
+
+	{% set cards_add = [{
+		title : 'Level ' ~ ((i < 10) ? '0' : '') ~ i,
+		icon : icon,
+		experience : experience,
+		bonus : bonus
+	}] %}
+
+	{% set card_objects = card_objects | merge(cards_add) %}
+{% endfor %}
+
+{% set new_cards = {
+	'Levels' : card_objects
 } %}
 
-{% set leveling_header %}
-	<ul class="topiclist topiclist-header">
-		<li class="header">
-			<dl>
-				<dt class="stat-chart-level">Level</dt>
-				<dd class="stat-chart-exp">Experience</dd>
-			</dl>
-		</li>
-	</ul>
-{% endset %}
-
-{% if levels %}
-	<div class="stat-chart">
-		<div class="stat-chart-column">
-			{{ leveling_header }}
-			<ul class="topiclist">
-				{% for key, level in levels %}
-					{% for i in level if i <= max_level %}
-						{% set experience = (key * i * (i - 1)) | number_format(0, '.', ',') %}
-						<li class="row">
-							<dl>
-								<dt class="stat-chart-level">{{ i }}</dt>
-								<dd class="stat-chart-exp">{{ experience }}</dd>
-							</dl>
-						</li>
-						{% if (i % ((max_level / 4) | round)) == 0 && i != max_level %}
-								</ul>
-							</div>
-							<div class="stat-chart-column">
-								{{ leveling_header }}
-								<ul class="topiclist">
-						{% endif %}
-					{% endfor %}
-				{% endfor %}
-			</ul>
-		</div>
-	</div>
+{% set completed_cards = [] %}
+{% if KHY_USER_LEVEL %}
+	{% for i in range(1, KHY_USER_LEVEL) %}
+		{% set completed_cards = completed_cards | merge(['levels-level-' ~ ((i lt 10) ? '0' : '') ~ i]) %}
+	{% endfor %}
 {% endif %}
+
+{{ function.loop_cards(new_cards, completed_cards, KHY_SCRIPT_NAME) }}

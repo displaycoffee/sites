@@ -417,9 +417,6 @@ dl.faq {
 			clear: right;
 			padding: 0 15px 20px 0;
 		}
-		dl.details {
-			clear: both;
-		}
 		.card-completed-text {
 			margin: -10px 0 20px 0;
 			color: $color-04;
@@ -428,13 +425,14 @@ dl.faq {
 				margin: 0 5px 0 0;
 			}
 		}
-
 	}
 }
 
-.section-page-achievements .card-grid .card-block.card-changed {
-	.card-description, dl.details {
-		opacity: 0.50;
+.section-page-achievements, .section-page-leveling {
+	.card-grid .card-block.card-changed {
+		.card-description, dl.details {
+			opacity: 0.50;
+		}
 	}
 }
 

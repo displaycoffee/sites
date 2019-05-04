@@ -65,15 +65,26 @@
 
 {% macro loop_cards(cards, completed_cards, script_name) %}
 	{% if cards %}
+		{% set code = 'zzz' %}
+		{% if script_name == 'gameplay-achievements' %}
+			{% set code = 'ach' %}
+		{% elseif script_name == 'gameplay-leveling' %}
+			{% set code = 'lvl' %}
+		{% elseif script_name == 'lore-races-half-breed' %}
+			{% set code = 'hlf' %}
+		{% endif %}
+
 		{% if completed_cards %}
 			<section class="page-content-section">
 				<div class="card-filter">
 					<a class="card-filter-button">
 						<i class="icon rpg-icon rpg-pokecog"></i>
 						{% set toggle_label = 'cards' %}
-						{% if script_name == 'gameplay-achievements' %}
+						{% if code == 'ach' %}
 							{% set toggle_label = 'completed achievements' %}
-						{% elseif script_name == 'lore-races-half-breed' %}
+						{% elseif code == 'lvl' %}
+							{% set toggle_label = 'completed levels' %}
+						{% elseif code == 'hlf' %}
 							{% set toggle_label = 'incompatible races' %}
 						{% endif %}
 						<span>Show/hide {{ toggle_label }}</span>
@@ -84,24 +95,26 @@
 		{% for key, card in cards %}
 			{% set section_id = _self.create_handle(key) %}
 			<section id="{{ section_id }}" class="page-content-section">
-				<h3>{{ key }}</h3>
+				{% if code != 'lvl' %}
+					<h3>{{ key }}</h3>
+				{% endif %}
 				<div class="card-grid">
 					{% for detail in card %}
 						{% set card_id = section_id  ~ '-' ~ _self.create_handle(detail.title) %}
 						{% set card_changed = false %}
-						{% if (completed_cards && card_id in completed_cards) || ('fa-close' in detail.icon) %}
+						{% if (completed_cards && card_id in completed_cards) || ('card-trigger' in detail.icon) %}
 							{% set card_changed = true %}
 						{% endif %}
 						<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed{% endif %}{% if detail.title == 'Not Applicable'%} card-full{% endif %}">
 							<h5 class="card-title">{{ detail.title }}</h5>
-							{% if card_changed && script_name == 'gameplay-achievements' %}
-								<p class="card-completed-text"><i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>Achievement complete!</p>
+							{% if card_changed && (code == 'ach' || code == 'lvl') %}
+								<p class="card-completed-text"><i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>{{ code == 'ach' ? 'Achievement' : 'Level' }} complete!</p>
 							{% endif %}
 							<div class="icon-wrapper">
 								<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
 							</div>
 							<p class="card-description">{{ detail.description }}</p>
-							{% if detail.requirements || detail.reward %}
+							{% if detail.requirements || detail.reward || detail.experience || detail.bonus %}
 								<dl class="details details-small">
 									{% if detail.requirements %}
 										<dt>Requirements:</dt>
@@ -110,6 +123,14 @@
 									{% if detail.reward %}
 										<dt>Rewards:</dt>
 										<dd>{{ detail.reward }}</dd>
+									{% endif %}
+									{% if detail.experience %}
+										<dt>Experience:</dt>
+										<dd>{{ detail.experience }}</dd>
+									{% endif %}
+									{% if detail.bonus %}
+										<dt>Bonus:</dt>
+										<dd>{{ detail.bonus }}</dd>
 									{% endif %}
 								</dl>
 							{% endif %}
