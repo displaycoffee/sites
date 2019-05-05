@@ -1,5 +1,5 @@
 {% if switchable_account %}
-	{% if S_AJAX %}
+	{% if S_LINKEDACCOUNTS_AJAX %}
 		{% INCLUDEJS '@flerex_linkedaccounts/ajax.js' %}
 	{% endif %}
 	<li class="linked-account-title">
@@ -7,8 +7,8 @@
 	</li>
 	{% for account in switchable_account %}
 		<li class="linked-account">
-			{% if U_CAN_LINK_ACCOUNT %}
-				<a href="{{ account.SWITCH_LINK }}" role="menuitem"{% if S_AJAX %} data-ajax="flerex.linked_accounts.switch" data-refresh="true"{% endif %}>
+			{% if U_CAN_SWITCH_ACCOUNT %}
+				<a href="{{ account.SWITCH_LINK }}" role="menuitem"{% if S_LINKEDACCOUNTS_AJAX %} data-ajax="flerex.linked_accounts.switch" data-refresh="true"{% endif %}>
 					<div class="image-wrap">
 						{% if account.AVATAR %}
 							{{ account.AVATAR }}

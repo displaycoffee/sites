@@ -1,5 +1,5 @@
 {% if navlinks && (navlinks | length) > 0 %}
-	{% macro breadcrumb(crumb_url, crumb_label, navdata) %}
+	{% macro breadcrumb(crumb_url, crumb_label, position, navdata) %}
 		{% if crumb_label == 'Home' %}
 			{% if 'index.php' in crumb_url %}
 				{% set a_attr = ' accesskey="h" data-navbar-reference="index"' %}
@@ -8,11 +8,12 @@
 			{%endif %}
 		{% endif %}
 		{% spaceless %}
-			<li class="crumb{% if crumb_label == 'Home' %} home{% endif %}" itemtype="http://schema.org/ListItem" itemprop="itemListElement" itemscope{{ navdata }}>
+			<li class="crumb{% if crumb_label == 'Home' %} home{% endif %}" itemtype="http://schema.org/ListItem" itemprop="item" itemscope{{ navdata }}>
 				<i class="icon {% if crumb_label == 'Home' %}rpg-icon rpg-castle{% else %}fa-angle-right fa-fw{% endif %}"></i>
-				<a href="{{ crumb_url }}" itemprop="url"{{ a_attr }}>
-					<span itemprop="title">{{ crumb_label }}</span>
+				<a href="{{ crumb_url }}" itemtype="https://schema.org/Thing" itemprop="item" {{ a_attr }}>
+					<span itemprop="name">{{ crumb_label }}</span>
 				</a>
+				<meta itemprop="position" content="{{ position }}" />
 			</li>
 		{% endspaceless %}
 	{% endmacro %}
@@ -22,23 +23,26 @@
 	<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
 		<div class="wrapper">
 			<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+				{% set navlink_position = 1 %}
 				{% EVENT overall_header_breadcrumbs_before %}
 				{% if U_SITE_HOME %}
-					{{ _self.breadcrumb(U_SITE_HOME, lang('SITE_HOME')) }}
+					{{ _self.breadcrumb(U_SITE_HOME, lang('SITE_HOME'), navlink_position) }}
 				{% endif %}
 				{% EVENT overall_header_breadcrumb_prepend %}
 				{% if not U_SITE_HOME %}
-					{{ _self.breadcrumb(U_INDEX, lang('INDEX')) }}
+					{{ _self.breadcrumb(U_INDEX, lang('INDEX'), navlink_position) }}
 				{% endif %}
 
 				{% set parent_link = KHY_LINKS[KHY_SCRIPT_NAME].parent %}
 				{% if parent_link %}
 					{% if parent_link is iterable %}
 						{% for link in parent_link %}
-							{{ _self.breadcrumb(rel ~ link, KHY_LINKS[link].label) }}
+							{% set navlink_position = navlink_position + 1 %}
+							{{ _self.breadcrumb(rel ~ link, KHY_LINKS[link].label, navlink_position) }}
 						{% endfor %}
 					{% else %}
-						{{ _self.breadcrumb(rel ~ parent_link, KHY_LINKS[parent_link].label) }}
+						{% set navlink_position = navlink_position + 1 %}
+						{{ _self.breadcrumb(rel ~ parent_link, KHY_LINKS[parent_link].label, navlink_position) }}
 					{% endif %}
 				{% endif %}
 
@@ -46,7 +50,8 @@
 					{% EVENT overall_header_navlink_prepend %}
 					{% set nav_data = nav.MICRODATA ? (' ' ~ nav.MICRODATA) : '' %}
 					{% set nav_url = nav.U_VIEW_FORUM | replace({'/sites/khyeras/' : rel}) %}
-					{{ _self.breadcrumb(nav_url, nav.FORUM_NAME, nav_data) }}
+					{% set navlink_position = navlink_position + 1 %}
+					{{ _self.breadcrumb(nav_url, nav.FORUM_NAME, navlink_position, nav_data) }}
 					{% EVENT overall_header_navlink_append %}
 				{% endfor %}
 

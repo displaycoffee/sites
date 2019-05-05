@@ -411,6 +411,9 @@
 		@include sizing(16px, 16px);
 		border-radius: 3px;
 	}
+	&.pm_message_reported_colour .imageset {
+		background: $color-08;
+	}
 	&.pm_marked_colour .imageset {
 		background: $color-04;
 	}
@@ -421,7 +424,7 @@
 		background: $color-12;
 	}
 	&.pm_foe_colour .imageset {
-		background: $color-08;
+		background: $color-15;
 	}
 }
 
@@ -549,6 +552,11 @@
 				right: -10px;
 			}
 		}
+		&.pm_message_reported_colour dl {
+			&:before, &:after {
+				background: $color-08;
+			}
+		}
 		&.pm_marked_colour dl {
 			&:before, &:after {
 				background: $color-04;
@@ -566,7 +574,7 @@
 		}
 		&.pm_foe_colour dl {
 			&:before, &:after {
-				background: $color-08;
+				background: $color-15;
 			}
 		}
 	}
