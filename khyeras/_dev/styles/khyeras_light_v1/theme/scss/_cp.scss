@@ -263,9 +263,8 @@
 			strong {
 				font-weight: normal;
 				a:before {
-					@include icon-font($fs: false);
-					font-size: rem(12px);
-					content: unicode($icon-chevron-left);
+					@include icon-font;
+					content: unicode($icon-angle-left);
 					margin-right: 10px;
 					color: $color-00;
 				}
@@ -316,7 +315,6 @@
 }
 
 .section-ucp-edit-notification-options .cp-main table.table1 tbody tr.big-column {
-
 	background: map-get($dark-set, dark-01);
 	border-bottom-style: solid;
 	border-top: 1px solid $color-01;
@@ -329,15 +327,8 @@
 /* Send Password / Activation Email
 ============================================== */
 
-.section-ucp-send-password, .section-ucp-send-activation-email {
-	fieldset dl {
-		dt.empty-space + dd {
-			margin-left: 0;
-		}
-		dd.has-multiple-fields.has-space {
-			justify-content: center;
-		}
-	}
+[class*='section-ucp-send-'] fieldset dl dd.has-multiple-fields.has-space {
+	justify-content: center;
 }
 
 /* Registration & UCP - Profile
@@ -421,10 +412,10 @@
 		border-radius: 3px;
 	}
 	&.pm_marked_colour .imageset {
-		background: $color-03;
+		background: $color-04;
 	}
 	&.pm_replied_colour .imageset {
-		background: $color-04;
+		background: $color-03;
 	}
 	&.pm_friend_colour .imageset {
 		background: $color-12;
@@ -584,7 +575,7 @@
 /* UCP - Private Messages - Rules, folders, and settings
 ============================================== */
 
-.section-ucp-rules-folders-settings .cp-main {
+.section-ucp-rules-folders-and-settings .cp-main {
 	.def-rules {
 		display: inline-block;
 		margin-left: 15px;
@@ -748,18 +739,6 @@
 	}
 }
 
-/* MCP - Approve Topic & Post
-============================================== */
-
-[class*='section-mcp-approve-topic'], [class*='section-mcp-approve-post'] {
-	fieldset dl dt.empty-space {
-		display: none;
-		& ~ dd {
-			margin-left: 0;
-		}
-	}
-}
-
 /* MCP - Moderation Queue & Post Details
 ============================================== */
 
@@ -816,7 +795,7 @@
 ============================================== */
 
 .section-mcp-reported-messages, .section-mcp-reported-pms {
-	.cp-main .post_details + hr + div {
+	.cp-main .post_details ~ hr + div {
 		margin: 0 0 20px 0;
 	}
 }
@@ -902,9 +881,6 @@
 		width: auto;
 		padding: 0;
 		background: none;
-		dd {
-			margin-left: 0;
-		}
 	}
 }
 

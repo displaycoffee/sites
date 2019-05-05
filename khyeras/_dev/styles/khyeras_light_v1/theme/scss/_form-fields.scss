@@ -46,10 +46,10 @@ fieldset {
 
 select {
 	padding-right: 30px;
-	background-image: url($images + 'chevron-down.png');
+	background-image: url($images + 'angle-down.svg');
 	background-repeat: no-repeat;
-	background-position: right 10px center;
-	background-size: auto 10px;
+	background-position: right 16px center;
+	background-size: auto 16px;
 	option {
 		color: $color-06;
 	}
@@ -243,10 +243,7 @@ fieldset:not(.polls) {
 				& > label[for*='icon'] {
 					line-height: 32px;
 					img {
-						max-width: 20px;
-						max-height: 20px;
 						@include position($type: relative, $top: 4px);
-						display: inline-block;
 						margin: 0 $ffs;
 					}
 				}
@@ -276,16 +273,17 @@ fieldset:not(.polls) {
 .cp-main #avatar_option_avatar_driver_gravatar fieldset,
 .section-ucp-manage-groups .cp-main fieldset,
 .section-mcp-view-topic .cp-main #display-panel {
-	 dl dd.has-multiple-fields.has-space {
+	dl dd.has-multiple-fields.has-space {
 		@include reset-font-size('& > *');
 	}
 }
 
-.section-mcp-warnings .cp-main #warning ~,
-.section-ucp-send-password fieldset,
-.section-ucp-send-activation-email fieldset {
+.section-mcp-warnings .cp-main #warning ~, [class*='section-ucp-send-'] fieldset, [class*='section-mcp-approve-'] fieldset, [class*='section-mcp-restore-'] fieldset {
 	dl dt.empty-space {
 		display: none;
+		& + dd {
+			margin-left: 0;
+		}
 	}
 }
 

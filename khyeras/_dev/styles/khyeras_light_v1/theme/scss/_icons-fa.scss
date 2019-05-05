@@ -2,18 +2,17 @@
 ============================================== */
 
 $icon-align-center: \f037;
-$icon-check: \f00c;
-$icon-check-circle: \f058;
-$icon-chevron-down: \f078;
-$icon-chevron-left: \f053;
-$icon-chevron-right: \f054;
-$icon-chevron-up: \f077;
+$icon-align-justify: \f039;
+$icon-align-left: \f036;
+$icon-align-right: \f038;
+$icon-angle-down: \f107;
+$icon-angle-left: \f104;
+$icon-angle-right: \f105;
+$icon-angle-up: \f106;
 $icon-clone: \f24d;
 $icon-cogs: \f085;
 $icon-comment: \f075;
-$icon-discord: \f392;
 $icon-envelope: \f0e0;
-$icon-exclamation: \f12a;
 $icon-exclamation-circle: \f06a;
 $icon-exclamation-triangle: \f071;
 $icon-eye: \f06e;
@@ -22,9 +21,7 @@ $icon-file-o: \f016;
 $icon-gplus: \f0d5;
 $icon-heart: \f004;
 $icon-inbox: \f01c;
-$icon-minus: \f068;
-$icon-plus: \f067;
-$icon-twitter: \f099;
+$icon-images: \f1c5;
 $icon-search: \f002;
 $icon-search-minus: \f010;
 $icon-search-plus: \f00e;
@@ -35,34 +32,30 @@ $icon-spinner: \f110;
 $icon-star: \f005;
 $icon-strikethrough: \f0cc;
 $icon-thumb: \f164;
+$icon-twitter: \f099;
 $icon-user: \f007;
 $icon-windows: \f17a;
 $icon-world: \f0ac;
-$icon-x: \f00d;
 $icon-yahoo: \f19e;
 $icon-youtube: \f16a;
 
 /* Font Awesome Icon Overrides
 ============================================== */
 
-.fa-angle-down, .fa-angle-left, .fa-angle-right, .fa-angle-up {
-	font-size: rem(12px);
+.fa-chevron-down:before, .caret .fa-sort-down:before {
+	content: unicode($icon-angle-down);
 }
 
-.fa-angle-down:before, .caret .fa-sort-down:before {
-	content: unicode($icon-chevron-down);
+.fa-chevron-left:before {
+	content: unicode($icon-angle-left);
 }
 
-.fa-angle-left:before {
-	content: unicode($icon-chevron-left);
+.fa-chevron-right:before {
+	content: unicode($icon-angle-right);
 }
 
-.fa-angle-right:before {
-	content: unicode($icon-chevron-right);
-}
-
-.fa-angle-up:before, .dropdown-visible .caret .fa-sort-down:before {
-	content: unicode($icon-chevron-up);
+.fa-chevron-up:before, .dropdown-visible .caret .fa-sort-down:before {
+	content: unicode($icon-angle-up);
 }
 
 .icon.thanks-icon:before {

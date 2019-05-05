@@ -21,9 +21,11 @@
 				display: block;
 				font-size: rem(22px);
 				font-variant: small-caps;
-				margin: 10px 0 0 0;
 			}
 		}
+		.avatar-container > .avatar {
+			margin: 0 0 10px 0;
+		}		
 	}
 	dd {
 		margin: 0 0 3px 0;

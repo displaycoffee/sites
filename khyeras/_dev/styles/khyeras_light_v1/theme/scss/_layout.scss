@@ -244,14 +244,12 @@ a.top {
 			}
 			.icon {
 				margin: 0 5px 0 0;
-				&.rpg-castle {
-					color: $color-00;
-					font-size: rem(18px);
-					margin: 0 10px 0 0;
-				}
-				&.rpg-castle + span {
-					margin-left: 0;
-				}
+				font-size: rem(13px);
+			}
+			.rpg-castle {
+				font-size: rem(18px);
+				@include position($type: relative, $top: -2.5px);
+				margin: 0 12px 0 0;
 			}
 			.fa-chevron-right {
 				font-size: rem(13px);
@@ -274,6 +272,52 @@ a.top {
 		}
 		.crumb.home {
 			@include position($type: relative, $top: -1px);
+		}
+	}
+}
+
+/* Quick Links
+============================================== */
+
+@include respond-min(em(769)) {
+	.quick-links {
+		@include position($type: fixed, $right: 20px, $bottom: 100px, $z: -1);
+		@include toggle-content(hide);
+		min-width: 175px;
+		padding: 20px;
+		background: $color-02;
+		border: 1px solid $color-01;
+		text-align: right;
+		strong, a {
+			display: block;
+		}
+		strong {
+			margin: 0 0 10px 0;
+		}
+		a {
+			margin: 0 0 3px 0;
+			color: $color-00;
+			&:hover {
+				color: $color-03;
+			}
+			&:last-child {
+				margin: 0;
+			}
+		}
+		.quick-links-separator {
+			display: none;
+		}
+		&.quick-links-visible {
+			z-index: 999;
+			@include toggle-content(show, $transition: true);
+		}
+	}
+
+	.section-page-glossary .quick-links {
+		width: 175px;
+		a {
+			display: inline-block;
+			width: 22.5%;
 		}
 	}
 }
@@ -517,15 +561,15 @@ a.top {
 			font-size: rem($global-font-size);
 			display: block;
 			&:before {
-				@include icon-font;
+				@include icon-font($family: 'game');
 				color: $color-00;
 				margin: 0 5px 0 0;
 			}
 			&[onclick*='false']:before {
-				content: unicode($icon-x);
+				content: unicode($misc-close);
 			}
 			&[onclick*='true']:before {
-				content: unicode($icon-check);
+				content: unicode($misc-check);
 			}
 		}
 	}

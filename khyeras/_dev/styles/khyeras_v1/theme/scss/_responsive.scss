@@ -246,9 +246,6 @@
 	.card-grid .card-block {
 		width: 50%;
 	}
-	.stat-chart .stat-chart-column .topiclist > li dl dt.stat-chart-level {
-		max-width: 70px;
-	}
 
 	// cp.scss
 	.cp-wrapper {
@@ -473,18 +470,6 @@
 	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
 			max-width: 68%;
-		}
-	}
-	.stat-chart .stat-chart-column {
-		width: 50%;
-		&:nth-child(even) {
-			order: 2;
-			.topiclist-header {
-				display: none;
-			}
-		}
-		.topiclist > li dl dt.stat-chart-level {
-			max-width: 100px;
 		}
 	}
 
@@ -1055,12 +1040,6 @@
 			}
 		}
 	}
-	.stat-chart .stat-chart-column .topiclist > li dl {
-		display: flex;
-		dd {
-			display: block;
-		}
-	}
 
 	// cp.scss
 	.cp-main {
@@ -1610,18 +1589,6 @@
 	}
 	.section-page-map #tabs {
 		display: none;
-	}
-	.stat-chart {
-		display: block;
-		.stat-chart-column {
-			width: auto;
-			&:nth-child(3) .topiclist-header {
-				display: none;
-			}
-			.topiclist > li dl dt.stat-chart-level {
-				max-width: none;
-			}
-		}
 	}
 
 	// cp.scss

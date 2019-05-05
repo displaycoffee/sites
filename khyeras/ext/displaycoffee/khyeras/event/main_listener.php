@@ -190,11 +190,17 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 			'KHY_LINKS'		   		=> link_mapping(),
 			'KHY_USER_GROUP_ID'     => $group_id,
 			'KHY_USER_GROUP_NAME'   => $group_row['group_name'],
-			'KHY_USER_ACCOUNT_TYPE' => $account_type,
-			'KHY_USER_RACE'   	    => rtrim($race_options, ', '),
-			'KHY_USER_CLASS'   	    => rtrim($class_options, ', '),
-			'KHY_USER_LEVEL'   	    => get_level($pf['c_experience']['value'])
+			'KHY_USER_ACCOUNT_TYPE' => $account_type
  		));
+
+		// Only add these variables for characters
+		if ($account_type == 'Character') {
+			$this->template->assign_vars(array(
+				'KHY_USER_RACE'  => rtrim($race_options, ', '),
+				'KHY_USER_CLASS' => rtrim($class_options, ', '),
+				'KHY_USER_LEVEL' => get_level($pf['c_experience']['value'])
+	 		));
+		}
 
 		// Add list of completed achievements only for achievement page
 		if ($page_script_name == 'app/gameplay-achievements') {
@@ -257,7 +263,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 				'PROFILE_PLATINUM' => $currency['Platinum']
 			);
 		}
-
+		
 		// Clean description by removing html and bbcode for word count
 		$desc = preg_replace('/(\[.*?\])/', '', strip_tags($pf['MESSAGE'], ''));
 		$desc_count = array(

@@ -112,10 +112,10 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		@include flex-flow(row wrap);
 		align-items: center;
 	}
-	a, .icon.fa-chevron-down {
+	a, .icon.fa-angle-down {
 		color: map-get($color-set-00, light-00);
 	}
-	a, .icon.fa-chevron-down {
+	a, .icon.fa-angle-down {
 		&:hover {
 			color: $color-03;
 		}
@@ -135,11 +135,12 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 			@include inline-block(middle);
 		}
 		.menu-label {
-			.fa-chevron-down {
+			.fa-angle-down {
 				@include transition($transform);
 				transform: rotate(0deg);
-				@include sizing(20px, 20px);
+				@include sizing(16px, 16px);
 				margin: 0 0 0 10px;
+				@include position($type: relative, $top: 1px);
 			}
 			.mobile-menu-trigger {
 				display: none;
@@ -155,7 +156,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 				font-size: rem($global-font-size);
 			}
 		}
-		.dropdown-visible .menu-label .fa-chevron-down {
+		.dropdown-visible .menu-label .fa-angle-down {
 			transform: rotate(180deg);
 		}
 	}
@@ -227,19 +228,22 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 			color: $color-03;
 		}
 	}
-	.dropdown-container .dropdown-contents .linked-account-title {
-		margin: 7px 0 0 0;
-		padding: 10px 0 3px 0;
-		border-top: 1px dashed $color-01;
-	}
-	.linked-account a {
-		position: relative;
-		padding: 0 0 0 30px;
-		display: inline-block;
-		.image-wrap {
-			@include position($type: absolute, $top: 0, $left: 0);
-			@include sizing(20px, 20px);
-			border-width: 1px;
+	.dropdown-container .dropdown-contents {
+		.linked-account-title {
+			margin: 7px 0 0 0;
+			padding: 10px 0 3px 0;
+			border-top: 1px dashed $color-01;
+		}
+		.linked-account {
+			position: relative;
+			&, &:last-child {
+				padding-left: 30px;
+			}
+			.image-wrap {
+				@include position($type: absolute, $top: 0, $left: 0);
+				@include sizing(20px, 20px);
+				border-width: 1px;
+			}
 		}
 	}
 }
@@ -525,7 +529,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		border-top: 1px solid $color-01;
 		border-bottom: 1px solid map-get($color-set-01, dark-00);
 	}
-	.mobile-menu-header .fa-times, .menu .menu-label .fa-chevron-down {
+	.mobile-menu-header .fa-close, .menu .menu-label .fa-angle-down {
 		@include sizing(44px, 44px);
 		line-height: 44px;
 		font-size: rem(20px);
@@ -545,10 +549,10 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		border-bottom: 1px solid $color-01;
 	}
 	.menu {
-		.menu-label .fa-chevron-down {
+		.menu-label .fa-angle-down {
 			@include transition($transform);
 			&:before {
-				content: unicode($icon-chevron-right);
+				content: unicode($icon-angle-right);
 			}
 		}
 		.dropdown {
@@ -574,7 +578,7 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 		.dropdown-visible {
 			.menu-label {
 				font-weight: bold;
-				.fa-chevron-down {
+				.fa-angle-down {
 					transform: rotate(-180deg);
 				}
 			}
@@ -601,8 +605,12 @@ $transform: color 0.3s ease-in-out, transform 0.8s ease-in-out;
 				max-width: 234px;
 			}
 		}
-		.linked-account a .image-wrap {
-			top: 2px;
+		.dropdown-contents .linked-account {
+			padding-left: 40px;
+			a .image-wrap {
+				top: 12px;
+				left: 10px;
+			}
 		}
 	}
 	#notification_list {

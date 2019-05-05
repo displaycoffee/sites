@@ -23,7 +23,7 @@
 	{% set cards_add = [{
 		title : 'Level ' ~ ((i < 10) ? '0' : '') ~ i,
 		icon : icon,
-		experience : experience,
+		experience : experience ? experience : '&#48;',
 		bonus : bonus
 	}] %}
 
@@ -37,7 +37,7 @@
 {% set completed_cards = [] %}
 {% if KHY_USER_LEVEL %}
 	{% for i in range(1, KHY_USER_LEVEL) %}
-		{% set completed_cards = completed_cards | merge(['levels-level-' ~ ((i lt 10) ? '0' : '') ~ i]) %}
+		{% set completed_cards = completed_cards | merge(['levels-level-' ~ ((i < 10) ? '0' : '') ~ i]) %}
 	{% endfor %}
 {% endif %}
 

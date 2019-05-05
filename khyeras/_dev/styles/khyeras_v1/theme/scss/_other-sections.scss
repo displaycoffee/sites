@@ -558,27 +558,6 @@ dl.faq {
 	}
 }
 
-/* Pages - Stat Charts
-============================================== */
-
-.stat-chart {
-	overflow: hidden;
-	@include flex-flow(row wrap);
-	margin: 0 0 20px 0;
-	.stat-chart-column {
-		@include flex;
-		width: 25%;
-		.topiclist > li {
-			border-left: 1px dashed $color-01;
-			position: relative;
-			left: -1px;
-			dl dt.stat-chart-level {
-				max-width: 100px;
-			}
-		}
-	}
-}
-
 /* Thanks List
 ============================================== */
 

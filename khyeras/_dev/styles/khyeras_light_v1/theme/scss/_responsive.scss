@@ -51,11 +51,24 @@
 	}
 
 	// header.scss
-	.user-menu .logged-in-info .user-name {
-		max-width: 115px;
+	.navbar {
+		.menu {
+			margin: 0 -5px;
+			& > li {
+				padding: 0 5px;
+			}
+		}
+		.user-menu {
+			margin: 1px -5px 0 auto;
+		}
 	}
-	.navbar.sticky .user-menu .logged-in-info .user-name {
-		max-width: 0;
+	.user-menu .logged-in-info, .navbar.sticky .user-menu .logged-in-info {
+		.user-name {
+			max-width: 0;
+		}
+		.user-avatar {
+			margin-left: 0;
+		}
 	}
 	.featured-content .flex-row .flex-column {
 		width: 25%;
@@ -212,9 +225,6 @@
 			clear: left;
 		}
 	}
-	.chart-grid .chart-row .chart-data {
-		width: 20%;
-	}
 	.banner.banner-vertical {
 		padding-bottom: calc(100% - 4px);
 		img {
@@ -235,9 +245,6 @@
 	}
 	.card-grid .card-block {
 		width: 50%;
-	}
-	.stat-chart .stat-chart-column .topiclist > li dl dt.stat-chart-level {
-		max-width: 70px;
 	}
 
 	// cp.scss
@@ -295,6 +302,10 @@
 			position: relative;
 		}
 		.menu {
+			margin: 0 -10px;
+			& > li {
+				padding: 0 10px;
+			}
 			.dropdown {
 				margin: 0 -1px !important;
 			}
@@ -335,8 +346,13 @@
 			}
 		}
 	}
-	.user-menu .logged-in-info .user-name, .navbar.sticky .user-menu .logged-in-info .user-name {
-		max-width: none;
+	.user-menu .logged-in-info, .navbar.sticky .user-menu .logged-in-info {
+		.user-name {
+			max-width: none;
+		}
+		.user-avatar {
+			margin-left: 10px;
+		}
 	}
 	.user-menu .logged-in-info .user-name {
 		overflow: visible;
@@ -451,24 +467,9 @@
 			clear: left;
 		}
 	}
-	.chart-grid .chart-row .chart-data {
-		width: 25%;
-	}
 	.excerpt, .excerpt-simple {
 		.excerpt-details .excerpt-title {
 			max-width: 68%;
-		}
-	}
-	.stat-chart .stat-chart-column {
-		width: 50%;
-		&:nth-child(even) {
-			order: 2;
-			.topiclist-header {
-				display: none;
-			}
-		}
-		.topiclist > li dl dt.stat-chart-level {
-			max-width: 100px;
 		}
 	}
 
@@ -936,14 +937,6 @@
 			}
 		}
 	}
-	.quick-links.quick-links-filter {
-		padding-right: 0;
-		.card-filter {
-			position: static;
-			display: block;
-			margin: 10px 0 0 0;
-		}
-	}	
 	.excerpt, .excerpt-simple {
 		.excerpt-details {
 			.excerpt-title, .icon-wrapper {
@@ -1045,12 +1038,6 @@
 			.timeline-header + .timeline-column, & .timeline-column:first-child {
 				direction: ltr;
 			}
-		}
-	}
-	.stat-chart .stat-chart-column .topiclist > li dl {
-		display: flex;
-		dd {
-			display: block;
 		}
 	}
 
@@ -1175,7 +1162,7 @@
 			}
 		}
 	}
-	.section-ucp-rules-folders-settings .cp-main fieldset dl dt input[value='Previous'] {
+	.section-ucp-rules-folders-and-settings .cp-main fieldset dl dt input[value='Previous'] {
 		float: left;
 		@include position($type: relative, $top: $ffs);
 		margin-right: -($ffs + 1);
@@ -1369,14 +1356,6 @@
 	.atwho-container .atwho-view {
 		left: 70px !important;
 		right: 70px !important;
-	}
-	#nav-breadcrumbs ul li.home a {
-		.icon {
-			margin-right: 0;
-		}
-		span {
-			display: none;
-		}
 	}
 	.action-bar, .display-actions .display-actions-wrapper {
 		display: block;
@@ -1588,9 +1567,6 @@
 			clear: left;
 		}
 	}
-	.chart-grid .chart-row .chart-data {
-		width: 33.33%;
-	}
 	.banner {
 		.banner-content {
 			padding: 14px 20px 6px 20px;
@@ -1613,18 +1589,6 @@
 	}
 	.section-page-map #tabs {
 		display: none;
-	}
-	.stat-chart {
-		display: block;
-		.stat-chart-column {
-			width: auto;
-			&:nth-child(3) .topiclist-header {
-				display: none;
-			}
-			.topiclist > li dl dt.stat-chart-level {
-				max-width: none;
-			}
-		}
 	}
 
 	// cp.scss
@@ -1704,14 +1668,19 @@
 	#page-footer .footer-inner {
 		padding-bottom: 70px;
 	}
-	.scroll-to-top, .scroll-to-bottom {
-		margin: auto;
-	}
-	.scroll-to-top {
-		@include position($bottom: 20px, $left: 50px, $right: 0);
-	}
-	.scroll-to-bottom {
-		@include position($left: 0, $right: 50px);
+	.scroll-to-links {
+		text-align: center;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		max-width: 90px;
+		@include clearfix('&');
+		.scroll-to-top, .scroll-to-bottom {
+			float: left;
+		}
+		.scroll-to-top {
+			margin: 0 10px 0 0;
+		}
 	}
 }
 
@@ -1898,16 +1867,6 @@
 		width: auto;
 		float: none;
 	}
-	.chart-grid .chart-row .chart-data {
-		width: 50%;
-		.chart-label {
-			font-size: rem(14px);
-			@include ellipsis;
-		}
-		.icon {
-			font-size: rem(18px);
-		}
-	}
 	.banner.banner-vertical {
 		padding-bottom: calc(100% - -39px);
 	}
@@ -1980,7 +1939,7 @@
 			width: 100%;
 		}
 	}
-	.section-ucp-rules-folders-settings .cp-main {
+	.section-ucp-rules-folders-and-settings .cp-main {
 		.def-rules li {
 			position: relative;
 			padding: 0 0 30px 0;

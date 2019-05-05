@@ -16,30 +16,85 @@
 		height: 75px;
 	}
 	#format-buttons {
-		margin: 0 0 $ffs-minus 0;
+		margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
+		@include flex-flow(row wrap);
 		.button, select {
 			vertical-align: top;
-			margin: 0 0 $ffs 0;
+			margin: 0 $ffs-half $ffs $ffs-half;
+			order: 20;
 		}
-		.bbcode-s, .bbcode-center, .bbcode-hidden, .bbcode-mention, .bbcode-user {
+		.bbcode-hidden, .bbcode-mention, .bbcode-text-align, .bbcode-s, .bbcode-user, .bbcode-img-align, .bbcode-first-letter, .bbcode-first-line {
 			font-size: 0;
+			&:before {
+				line-height: 13px;
+			}
+		}
+		.bbcode-hidden,.bbcode-mention, .bbcode-text-align, .bbcode-s, .bbcode-user, .bbcode-img-align {
 			&:before {
 				content: '';
 				@include icon-font($lh: false);
-				line-height: 13px;
 			}
+		}
+		.bbcode-b, .bbcode-i, .bbcode-u, .bbcode-s {
+			order: 0;
 		}
 		.bbcode-s:before {
 			content: unicode($icon-strikethrough);
 		}
-		.bbcode-center:before {
-			content: unicode($icon-align-center);
+		.bbcode-h3, .bbcode-h4, .bbcode-h5, .bbcode-h6 {
+			order: 1;
+		}
+		.bbcode-color, .bbcode-size {
+			order: 2;
+		}
+		.bbcode-text-align {
+			order: 3;
+			&:before {
+				content: unicode($icon-align-center);
+			}
+		}
+		.bbcode-first-letter, .bbcode-first-line {
+			order: 4;
+			&:before, &:after {
+				font-size: rem(13px);
+				text-transform: none;
+			}
+			&:before {
+				font-weight: bold;
+				font-style: italic;
+			}
+		}
+		.bbcode-first-letter {
+			&:before {
+				content: 'A';
+				padding: 0 1px 0 0;
+			}
+			&:after {
+				content: 'bc def';
+				font-size: rem(10px);
+			}
+		}
+		.bbcode-first-line:before {
+			content: 'Abc def';
+			font-variant: small-caps;
+		}
+		.bbcode-list, .bbcode-list-, .bbcode-asterisk, .bbcode-hidden {
+			order: 5;
 		}
 		.bbcode-hidden:before {
 			content: unicode($icon-eye);
 		}
+		.bbcode-quote, .bbcode-mention {
+			order: 6;
+		}
 		.bbcode-mention:before {
 			content: unicode($icon-comment);
+		}
+		.bbcode-img, .bbcode-img-align {
+			order: 7;
+		}
+		.bbcode-img-align:before {
+			content: unicode($icon-images);
 		}
 		.bbcode-user:before {
 			content: unicode($icon-user);
@@ -143,7 +198,8 @@
 					font-size: rem(20px);
 				}
 				&.file-uploaded:before {
-					content: unicode($icon-check-circle);
+					font-family: 'Khyeras Icons';
+					content: unicode($misc-check-circle);
 					color: $color-04;
 				}
 				&.file-error:before {

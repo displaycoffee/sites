@@ -139,28 +139,25 @@
 /* Scroll to top/bottom
 ============================================== */
 
-.scroll-to-top, .scroll-to-bottom {
-	display: block;
-	@include position($type: fixed, $right: 20px, $z: -1);
+.scroll-to-links {
+	@include position($type: fixed, $right: 20px, $bottom: 20px, $z: -1);
 	@include toggle-content(hide);
-	@include sizing(40px, 40px);
-	border-radius: 3px;
-	background: $color-05;
-	padding: 10px;
-	text-align: center;
-	&, &:hover {
-		color: $light-03;
+	.scroll-to-top, .scroll-to-bottom {
+		display: block;
+		@include sizing(40px, 40px);
+		border-radius: 3px;
+		background: $color-05;
+		padding: 10px;
+		text-align: center;
+		&, &:hover {
+			color: $light-03;
+		}
+	}
+	.scroll-to-top {
+		margin: 0 0 10px 0;
 	}
 	&.scroll-to-visible {
 		z-index: 999;
 		@include toggle-content(show, $transition: true);
 	}
-}
-
-.scroll-to-top {
-	bottom: 70px;
-}
-
-.scroll-to-bottom {
-	bottom: 20px;
 }
