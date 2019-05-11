@@ -1,0 +1,9 @@
+{{ function.create_nav_li(U_FAQ, lang('FORUM') ~ ' ' ~ lang('FAQ')) }}
+{% if not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
+	{% if U_TEAM %}
+		{{ function.create_nav_li(U_TEAM, lang('THE_TEAM')) }}
+	{% endif %}
+{% endif %}
+{% if U_CONTACT_US %}
+	{{ function.create_nav_li(U_CONTACT_US, lang('CONTACT_US')) }}
+{% endif %}

@@ -22,7 +22,7 @@
 {% endif %}
 
 {% if KHY_SCRIPT_NAME == 'setting-map' %}
-	{% include 'partials/pages_map.html' %}
+	{% include 'partials/content_map.html' %}
 {% endif %}
 
 <div class="panel">
@@ -31,15 +31,19 @@
 			{{ PAGE_CONTENT }}
 
 			{% if KHY_SCRIPT_NAME == 'lore-races-half-breed' %}
-				{% include 'partials/pages_half_breed.html' %}
+				{% include 'partials/content_half_breed.html' %}
 			{% endif %}
 
 			{% if KHY_SCRIPT_NAME == 'gameplay-leveling' %}
-				{% include 'partials/pages_leveling.html' %}
+				{% include 'partials/content_leveling.html' %}
 			{% endif %}
 
 			{% if KHY_SCRIPT_NAME == 'gameplay-achievements' %}
-				{% include 'partials/pages_achievements.html' %}
+				{% include 'partials/content_achievements.html' %}
+			{% endif %}
+
+			{% if KHY_SCRIPT_NAME == 'sitemap' %}
+				{% include 'partials/content_sitemap.html' %}
 			{% endif %}
 		</div>
 		{% EVENT phpbb_pages_after_page_content %}

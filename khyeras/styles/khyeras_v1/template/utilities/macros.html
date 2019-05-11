@@ -9,9 +9,9 @@
 	</div>
 {% endmacro %}
 
-{% macro create_nav_li(url, label, attr) %}
-	<li>
-		<a href="{{ url }}" title="{{ label }}" role="menuitem"{% if attr %} {{ attr }}{% endif %}><span>{{ label }}</span></a>
+{% macro create_nav_li(url, label, class) %}
+	<li{% if class %} class="{{ class }}"{% endif %}>
+		<a href="{{ url }}" title="{{ label }}" role="menuitem"{% if label == 'Logout' %}  accesskey="x"{% endif %}><span>{{ label }}</span></a>
 	</li>
 {% endmacro %}
 
@@ -140,20 +140,4 @@
 			</section>
 		{% endfor %}
 	{% endif %}
-{% endmacro %}
-
-{% macro loop_nav_items(links, check, main_url) %}
-	{% for key, link in links %}
-		{% set is_sublinks = (link.parent is iterable) ? false : true %}
-
-		{% if key == 'lore-races-half-breed' %}
-			{% set is_sublinks = true %}
-		{% elseif key == 'lore-short-history' %}
-			{% set is_sublinks = false %}
-		{% endif %}
-
-		{% if check in key && is_sublinks %}
-			{{ _self.create_nav_li(main_url ~ key, link.label) }}
-		{% endif %}
-	{% endfor %}
 {% endmacro %}

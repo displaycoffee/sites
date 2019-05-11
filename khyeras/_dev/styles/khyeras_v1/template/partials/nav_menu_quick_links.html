@@ -1,0 +1,15 @@
+{% EVENT navbar_header_quick_links_before %}
+{% if S_DISPLAY_SEARCH %}
+	{% if S_USER_LOGGED_IN %}
+		{{ function.create_nav_li(U_SEARCH_NEW, lang('SEARCH_NEW')) }}
+	{% endif %}
+	{% if S_LOAD_UNREADS %}
+		{{ function.create_nav_li(U_SEARCH_UNREAD, lang('SEARCH_UNREAD')) }}
+	{% endif %}
+		{{ function.create_nav_li(U_SEARCH_UNANSWERED, lang('SEARCH_UNANSWERED')) }}
+		{{ function.create_nav_li(U_SEARCH_ACTIVE_TOPICS, lang('SEARCH_ACTIVE_TOPICS')) }}
+{% endif %}
+{% if U_WATCH_FORUM_LINK %}
+	{{ function.create_nav_li(U_WATCH_FORUM_LINK, lang('WATCH_FORUM_TITLE')) }}
+{% endif %}
+{% EVENT navbar_header_quick_links_after %}
