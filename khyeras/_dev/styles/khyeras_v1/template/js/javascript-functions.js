@@ -44,32 +44,6 @@ function addFieldsetClasses() {
 	}
 }
 
-// Add elements for styling checkboxes and radios
-function styleFieldElements( selector, typeClass ) {
-	var fieldSelector = document.querySelectorAll( selector );
-
-	if ( fieldSelector && fieldSelector.length ) {
-		for ( var i = 0; i < fieldSelector.length; i++ ) {
-			var field = fieldSelector[i];
-
-			// Create the field wrapper div
-			var fieldWrapper = document.createElement( 'span' );
-			fieldWrapper.setAttribute( 'class', 'field-wrapper field-wrapper-' + typeClass );
-
-			// Create the inner span
-			var fieldBox = document.createElement( 'span' );
-			fieldBox.setAttribute( 'class', 'field-box' );
-
-			// Insert wrapper before the field
-			field.parentNode.insertBefore( fieldWrapper, field.nextSibling );
-
-			// Append elements to wrapper
-			fieldWrapper.appendChild(field);
-			fieldWrapper.appendChild(fieldBox);
-		}
-	}
-}
-
 // Add no-pagination class to body to hide pagination
 function addNoPaginationClass() {
 	var pagination = document.querySelector( '.action-bar .pagination' );
@@ -211,8 +185,11 @@ function bannerCodeGenerator( bannerImages, bannerCode ) {
 			// Element that has been clicked
 			var selector = e.target || e.srcElement;
 
+			// Create new image src attribute
+			var newSrc =  '//' + window.location.hostname + '/' + selector.getAttribute( 'src' ).replace( './', '' );
+
 			// Replace current image src and alt with new element alt and src
-			codeBlock.innerHTML = codeHTML.replace( image, selector.getAttribute( 'src' ) ).replace( alt, selector.getAttribute( 'alt' ) );
+			codeBlock.innerHTML = codeHTML.replace( image, newSrc ).replace( alt, selector.getAttribute( 'alt' ) );
 		}
 	}
 }

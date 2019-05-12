@@ -595,6 +595,14 @@
 			}
 		}
 	}
+	.sitemap {
+		.sitemap-section, #sitemap-lore {
+			float: none;
+		}
+		.sitemap-section {
+			width: auto;
+		}
+	}
 
 	// viewlisting.scss
 	.topiclist {

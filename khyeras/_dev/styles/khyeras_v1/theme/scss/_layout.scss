@@ -316,6 +316,33 @@ a.top {
 	}
 }
 
+/* Sitemap
+============================================== */
+
+.sitemap {
+	@include clearfix('&');
+	margin: 0 -10px;
+	.sitemap-section {
+		float: left;
+		width: 33.33%;
+		padding: 0 10px;
+		.sitemap-menu {
+			li .icon.fa-thumbs-o-up {
+				font-size: 0;
+				& + span {
+					margin: 0;
+				}
+			}
+			.sub-link {
+				margin-left: 30px;
+			}
+		}
+	}
+	#sitemap-lore {
+		float: right;
+	}
+}
+
 /* Main Boxes (Inner)
 ============================================== */
 
