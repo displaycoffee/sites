@@ -179,38 +179,32 @@
 			color: $color-12;
 		}
 	}
+	[class*='forum_read'] {
+		@include forum-icon($rpg-open-book);
+	}
+	[class*='forum_unread'] {
+		@include forum-icon($rpg-secret-book);
+	}
+	[class*='topic_read'] {
+		@include forum-icon($rpg-scroll-unfurled);
+	}
+	[class*='topic_unread'] {
+		@include forum-icon($rpg-tied-scroll);
+	}
+	[class*='global'] {
+		@include forum-icon($rpg-compass);
+	}
+	[class*='announce'] {
+		@include forum-icon($rpg-trumpet-flag);
+	}
+	[class*='sticky'] {
+		@include forum-icon($rpg-stabbed-note);
+	}
 	.forum_link, .topic_moved {
 		@include forum-icon($rpg-direction-sign);
 	}
-	.forum_read_locked, .forum_unread_locked, .topic_read_locked, .topic_read_locked_mine, .topic_unread_locked, .topic_unread_locked_mine {
+	[class*='locked'] {
 		@include forum-icon($rpg-padlock);
-	}
-	.forum_read, .forum_read_subforum {
-		@include forum-icon($rpg-open-book);
-	}
-	.forum_unread, .forum_unread_subforum {
-		@include forum-icon($rpg-secret-book);
-	}
-	.topic_read, .topic_read_mine, .topic_read_hot, .topic_read_hot_mine, .pm_read {
-		@include forum-icon($rpg-scroll-unfurled);
-	}
-	.topic_unread, .topic_unread_mine, .topic_unread_hot, .topic_unread_hot_mine, .pm_unread {
-		@include forum-icon($rpg-tied-scroll);
-	}
-	.global_read, .global_read_mine, .global_read_locked,
-	.global_read_locked_mine, .global_unread, .global_unread_mine,
-	.global_unread_locked, .global_unread_locked_mine {
-		@include forum-icon($rpg-compass);
-	}
-	.announce_read, .announce_read_mine, .announce_read_locked,
-	.announce_read_locked_mine, .announce_unread, .announce_unread_mine,
-	.announce_unread_locked, .announce_unread_locked_mine {
-		@include forum-icon($rpg-trumpet-flag);
-	}
-	.sticky_read, .sticky_read_mine, .sticky_read_locked,
-	.sticky_read_locked_mine, .sticky_unread, .sticky_unread_mine,
-	.sticky_unread_locked, .sticky_unread_locked_mine {
-		@include forum-icon($rpg-stabbed-note);
 	}
 }
 
