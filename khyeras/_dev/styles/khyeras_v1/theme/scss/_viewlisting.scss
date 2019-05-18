@@ -185,10 +185,10 @@
 	[class*='forum_unread'] {
 		@include forum-icon($rpg-secret-book);
 	}
-	[class*='topic_read'] {
+	[class*='topic_read'], [class*='pm_read'] {
 		@include forum-icon($rpg-scroll-unfurled);
 	}
-	[class*='topic_unread'] {
+	[class*='topic_unread'], [class*='pm_unread'] {
 		@include forum-icon($rpg-tied-scroll);
 	}
 	[class*='global'] {
