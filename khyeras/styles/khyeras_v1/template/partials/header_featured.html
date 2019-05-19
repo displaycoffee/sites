@@ -1,23 +1,23 @@
 {% set featured_blocks = [
 	{
-		url : '//google.com',
-		type : 'mvp',
-		text : 'MVP: Deanna DiCorvino'
+		url : './about-rules',
+		type : 'rules',
+		text : 'About: Rules'
 	},
 	{
-		url : '//google.com',
-		type : 'story',
-		text : 'Story: Best Thread Ever'
+		url : './lore-history',
+		type : 'history',
+		text : 'Lore: History'
 	},
 	{
-		url : '//google.com',
-		type : 'lore',
-		text : 'Lore: Dragons'
+		url : './lore-races',
+		type : 'races',
+		text : 'Lore: Races'
 	},
 	{
-		url : '//google.com',
-		type : 'event',
-		text : 'Event: It\'s An Event'
+		url : './setting-map',
+		type : 'map',
+		text : 'Setting: Map'
 	}
 ] %}
 
@@ -35,7 +35,7 @@
 						<a href="{{ feature.url }}">
 							<div class="featured-details">
 								<div class="image-wrap">
-									<img src="{T_THEME_PATH}/images/featured-{{ feature.type }}.jpg" alt="{{ feature.text }}" />
+									<img src="./images/content/misc/feature-{{ feature.type }}.jpg" alt="{{ feature.text }}" />
 								</div>
 								<p>{{ feature.text }}</p>
 							</div>
