@@ -3,7 +3,8 @@
 		<div class="level">
 			<div class="level-wrap">
 				<span class="level-name">Level</span>
-				<span class="level-value">{{ KHY_MEMBER_LEVEL }}</span>
+				{% set zero = KHY_MEMBER_LEVEL < 10 ? '0' : ''  %}
+				<span class="level-value">{{ zero }}{{ KHY_MEMBER_LEVEL }}</span>
 			</div>
 		</div>
 		{% if S_PROFILE_C_HP || S_PROFILE_C_MP %}

@@ -15,7 +15,8 @@
 						{% endif %}
 						{% if KHY_USER_GROUP_NAME == 'Characters' %}
 							<p class="level">
-								Level {{ KHY_USER_LEVEL }}
+								{% set zero = KHY_MEMBER_LEVEL < 10 ? '0' : ''  %}						
+								Level {{ zero }}{{ KHY_USER_LEVEL }}
 							</p>
 							<p class="race-and-class">
 								{{ KHY_USER_RACE | replace({',': ' and'}) }}

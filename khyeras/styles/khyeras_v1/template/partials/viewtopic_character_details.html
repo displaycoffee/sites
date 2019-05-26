@@ -4,7 +4,8 @@
 			<div class="level level-small">
 				<div class="level-wrap">
 					<span class="level-name">Level</span>
-					<span class="level-value">{{ post.PROFILE_LEVEL }}</span>
+					{% set zero = post.PROFILE_LEVEL < 10 ? '0' : ''  %}
+					<span class="level-value">{{ zero }}{{ post.PROFILE_LEVEL }}</span>
 				</div>
 			</div>
 			{% if postrow.S_PROFILE_C_HP || postrow.S_PROFILE_C_MP %}
