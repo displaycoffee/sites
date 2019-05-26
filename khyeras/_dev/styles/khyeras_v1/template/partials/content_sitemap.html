@@ -2,7 +2,7 @@
 	{% if KHY_LINKS %}
 		{% for key, link in KHY_LINKS if !link.parent %}
 			<section id="sitemap-{{ key }}" class="sitemap-section">
-				<h3><a href="./{{ key }}">{{ link.label }}</a></h3>
+				<h3><a href="{{ ROOT_PATH }}{{ key }}">{{ link.label }}</a></h3>
 				<ul class="sitemap-menu" role="menu">
 					{% for map_key, map_link in KHY_LINKS if (key ~ '-') in map_key && map_link.parent %}
 						{% set is_sublink = (map_link.parent is iterable) ? false : true %}
@@ -15,7 +15,7 @@
 
 						{% set map_label = (map_key == 'lore-short-history') ? 'Short History' : map_link.label %}
 
-						{{ function.create_nav_li('./' ~ map_key, map_label, (is_sublink ? '' : 'sub-link')) }}
+						{{ function.create_nav_li(ROOT_PATH ~ map_key, map_label, (is_sublink ? '' : 'sub-link')) }}
 					{% endfor %}
 					{% if key == 'about' %}
 						{% include 'partials/nav_menu_about.html' %}
@@ -27,7 +27,7 @@
 
 	{% if not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
 		<section id="sitemap-members" class="sitemap-section">
-			<h3><a href="./{{ U_MEMBERLIST }}">{{ lang('MEMBERLIST') }}</a></h3>
+			<h3><a href="{{ U_MEMBERLIST }}">{{ lang('MEMBERLIST') }}</a></h3>
 			<ul class="sitemap-menu" role="menu">
 				{% include 'partials/nav_menu_quick_links.html' %}
 			</ul>
@@ -36,7 +36,7 @@
 
 	{% if S_DISPLAY_SEARCH %}
 		<section id="sitemap-search" class="sitemap-section">
-			<h3><a href="./{{ U_SEARCH }}">{{ lang('SEARCH') }}</a></h3>
+			<h3><a href="{{ U_SEARCH }}">{{ lang('SEARCH') }}</a></h3>
 		</section>
 	{% endif %}
 </div>

@@ -18,7 +18,7 @@
 		{% endspaceless %}
 	{% endmacro %}
 
-	{% set rel = './' %}
+	{% set rel = ROOT_PATH %}
 
 	<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
 		<div class="wrapper">
@@ -49,9 +49,8 @@
 				{% for nav in navlinks %}
 					{% EVENT overall_header_navlink_prepend %}
 					{% set nav_data = nav.MICRODATA ? (' ' ~ nav.MICRODATA) : '' %}
-					{% set nav_url = nav.U_VIEW_FORUM | replace({'/sites/khyeras/' : rel}) %}
 					{% set navlink_position = navlink_position + 1 %}
-					{{ _self.breadcrumb(nav_url, nav.FORUM_NAME, navlink_position, nav_data) }}
+					{{ _self.breadcrumb(nav.U_VIEW_FORUM, nav.FORUM_NAME, navlink_position, nav_data) }}
 					{% EVENT overall_header_navlink_append %}
 				{% endfor %}
 

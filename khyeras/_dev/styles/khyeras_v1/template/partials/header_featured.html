@@ -1,21 +1,21 @@
 {% set featured_blocks = [
 	{
-		url : './about-rules',
+		url : 'about-rules',
 		type : 'rules',
 		text : 'About: Rules'
 	},
 	{
-		url : './lore-history',
+		url : 'lore-history',
 		type : 'history',
 		text : 'Lore: History'
 	},
 	{
-		url : './lore-races',
+		url : 'lore-races',
 		type : 'races',
 		text : 'Lore: Races'
 	},
 	{
-		url : './setting-map',
+		url : 'setting-map',
 		type : 'map',
 		text : 'Setting: Map'
 	}
@@ -32,10 +32,10 @@
 			<div class="flex-row flex-row-05">
 				{% for feature in featured_blocks %}
 					<div class="flex-column featured-{{ feature.type }}">
-						<a href="{{ feature.url }}">
+						<a href="{{ ROOT_PATH }}{{ feature.url }}">
 							<div class="featured-details">
 								<div class="image-wrap">
-									<img src="./images/content/misc/feature-{{ feature.type }}.jpg" alt="{{ feature.text }}" />
+									<img src="{{ ROOT_PATH }}images/content/misc/feature-{{ feature.type }}.jpg" alt="{{ feature.text }}" />
 								</div>
 								<p>{{ feature.text }}</p>
 							</div>

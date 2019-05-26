@@ -2,11 +2,11 @@
 	{% if KHY_LINKS %}
 		{% for key, link in KHY_LINKS if !link.parent %}
 			<li class="dropdown-container">
-				{{ function.create_nav_main('./' ~ key, link.label) }}
+				{{ function.create_nav_main(ROOT_PATH ~ key, link.label) }}
 				<div class="dropdown">
 					<ul class="dropdown-contents" role="menu">
 						{% for map_key, map_link in KHY_LINKS if (key ~ '-') in map_key && map_link.parent && map_link.parent is not iterable && map_key != 'lore-short-history' %}
-							{{ function.create_nav_li('./' ~ map_key, map_link.label) }}
+							{{ function.create_nav_li(ROOT_PATH ~ map_key, map_link.label) }}
 						{% endfor %}
 						{% if key == 'about' %}
 							{% include 'partials/nav_menu_about.html' %}

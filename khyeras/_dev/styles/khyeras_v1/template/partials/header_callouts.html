@@ -3,12 +3,12 @@
 		{
 			name : 'Officially Open!',
 			date : 'May 19, 2019',
-			url : './viewtopic.php?f=9&t=47&p=90#p90'
+			url : 'viewtopic.php?f=9&t=47&p=90#p90'
 		},
 		{
 			name : 'Roadmap',
 			date : 'May 18, 2019',
-			url : './viewtopic.php?f=9&t=46'
+			url : 'viewtopic.php?f=9&t=46'
 		}
 	]
 } %}
@@ -24,7 +24,7 @@
 						<ul>
 							{% for detail in link %}
 								<li>
-									<a href="{{ detail.url }}">
+									<a href="{{ ROOT_PATH }}{{ detail.url }}">
 										{{ ((detail.name | length) > textlimit) ? (detail.name[:textlimit] ~ '...') : detail.name }}
 									</a> posted {{ detail.date }}
 								</li>
