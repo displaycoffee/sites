@@ -5,7 +5,7 @@
 				{{ function.create_nav_main(ROOT_PATH ~ key, link.label) }}
 				<div class="dropdown">
 					<ul class="dropdown-contents" role="menu">
-						{% for map_key, map_link in KHY_LINKS if (key ~ '-') in map_key && map_link.parent && map_link.parent is not iterable && map_key != 'lore-short-history' %}
+						{% for map_key, map_link in KHY_LINKS if (key ~ '-') in map_key && map_link.parent && (map_link.parent is not iterable || map_key == 'lore-races-half-breed') && map_key != 'lore-short-history' %}
 							{{ function.create_nav_li(ROOT_PATH ~ map_key, map_link.label) }}
 						{% endfor %}
 						{% if key == 'about' %}
