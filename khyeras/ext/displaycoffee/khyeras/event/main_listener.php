@@ -263,7 +263,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 				'PROFILE_PLATINUM' => $currency['Platinum']
 			);
 		}
-		
+
 		// Clean description by removing html and bbcode for word count
 		$desc = preg_replace('/(\[.*?\])/', '', strip_tags($pf['MESSAGE'], ''));
 		$desc_count = array(
@@ -598,9 +598,9 @@ function link_mapping() {
 			'quick'  => $race_links
 		],
 		'lore-races-half-breed' => [
-			'label'  => 'Half-Breed',
+			'label'  => 'Half-breed',
 			'parent' => [$lore, $lore_races],
-			'quick'  => ['Playing a Half-Breed', 'Dragon', 'Dwarf', 'Elemental', 'Fae', 'Ghost', 'Human', 'Kerasoka', 'Korcai', 'Lumeacia', 'Shapeshifter', 'Ue\'drahc']
+			'quick'  => ['Playing a Half-breed', 'Dragon', 'Dwarf', 'Elemental', 'Fae', 'Ghost', 'Human', 'Kerasoka', 'Korcai', 'Lumeacia', 'Shapeshifter', 'Ue\'drahc']
 		],
 		$lore_religion => [
 			'label'  => 'Religion',

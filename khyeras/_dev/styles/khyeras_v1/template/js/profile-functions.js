@@ -9,8 +9,8 @@ function updateProfileFields() {
 
 		// Reusable language variables
 		var defaultText = '-- Please Select --';
-		var fb 			= 'Full Blooded';
-		var hb 			= 'Half-Breed';
+		var fb 			= 'Full blooded';
+		var hb 			= 'Half-breed';
 		var single		= 'Single';
 		var dual		= 'Dual';
 		var archaicism	= 'Archaicism';
@@ -133,12 +133,12 @@ function updateProfileFields() {
 			checkedBox = raceParent.find( 'input[type="checkbox"]:checked' );
 			raceCount = getCheckedCount( '#pf_c_race_opts_1' );
 
-			// Check if Full Blooded or Half-Breed is selected
+			// Check if Full blooded or Half-breed is selected
 			if ( selRaceType == fb || selRaceType == hb ) {
 				raceOpts.each( function() {
 					current = jQuery( this );
 
-					// If Half-Breed and one box is selected, update remaining
+					// If Half-breed and one box is selected, update remaining
 					if ( selRaceType == hb && raceCount == 1 ) {
 						selRaceOpt = getCheckText( checkedBox );
 
@@ -152,7 +152,7 @@ function updateProfileFields() {
 						disableAllClass();
 					} else if ( ( selRaceType == fb && raceCount == 1 ) || ( selRaceType == hb && raceCount == 2 ) ) {
 						// If max count is met, disable remaining checkboxes
-						// Half-Breed - MAX: 2, Full Blooded - MAX: 1
+						// Half-breed - MAX: 2, Full blooded - MAX: 1
 						if ( !current.is(':checked') ) {
 							toggleCheckBox( current, false );
 						}
@@ -227,7 +227,7 @@ function updateProfileFields() {
 
 					// Define allowed classes based on race type and checked boxes
 					if ( classList ) {
-						// Half-Breed dwarves can be magic users (as long as they are not Kerasoka)
+						// Half-breed dwarves can be magic users (as long as they are not Kerasoka)
 						if ( rtype == hb && optText == 'Dwarf' && !kerasokaSelector.is(':checked') ) {
 							classArray = dragonClasses;
 						} else {
@@ -466,7 +466,7 @@ var magicClasses = [ 'Cleric', 'Druid', 'Sorcerer', 'Summoner', 'Wizard' ];
 // Common array for excluding all races
 var all = [ 'All' ];
 
-// Common array for excluding non-Half-Breed
+// Common array for excluding non-Half-breed
 var nonHalf = [ 'Dragon', 'Ghost', 'Korcai' ];
 
 // Excluded character rules / combinations
