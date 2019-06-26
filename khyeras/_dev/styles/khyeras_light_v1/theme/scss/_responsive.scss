@@ -603,7 +603,7 @@
 			width: auto;
 		}
 	}
-	
+
 	// viewlisting.scss
 	.topiclist {
 		& > li {
@@ -1023,9 +1023,9 @@
 		}
 	}
 	.timeline .timeline-row {
-		.timeline-header h3 {
+		.timeline-header {
 			&:before, &:after {
-				width: 50%;
+				width: 75%;
 			}
 		}
 		.timeline-column, &:nth-child(even) .timeline-column {
@@ -1878,7 +1878,7 @@
 	.banner.banner-vertical {
 		padding-bottom: calc(100% - -39px);
 	}
-	.timeline .timeline-row .timeline-header h3 {
+	.timeline .timeline-row .timeline-header {
 		&:before, &:after {
 			width: auto;
 		}

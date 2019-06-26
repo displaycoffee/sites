@@ -25,10 +25,18 @@
 	{% include 'partials/content_map.html' %}
 {% endif %}
 
-<div class="panel">
+<div class="panel"{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %} id="khyeras-faq"{% endif %}>
 	<div class="inner">
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
+
+			{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %}
+				{% include 'partials/content_faq.html' %}
+			{% endif %}
+
+			{% if KHY_SCRIPT_NAME == 'lore-timeline' %}
+				{% include 'partials/content_timeline.html' %}
+			{% endif %}
 
 			{% if KHY_SCRIPT_NAME == 'lore-races-half-breed' %}
 				{% include 'partials/content_half_breed.html' %}

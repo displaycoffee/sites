@@ -498,7 +498,7 @@ dl.faq {
 	.timeline-row {
 		z-index: 2;
 		align-items: center;
-		&, .timeline-header h3 {
+		&, .timeline-header {
 			margin-bottom: $main-margin;
 		}
 		.timeline-header + .timeline-column, & .timeline-column:first-child {
@@ -509,20 +509,24 @@ dl.faq {
 			flex: 1 1 100%;
 			min-width: 1px;
 			text-align: center;
+			&:before, &:after {
+				content: '';
+				display: block;
+				width: 33.33%;
+			}
+			&:before {
+				border-top: 2px solid $color-01;
+				margin: 0 auto 10px auto;
+			}
+			&:after {
+				border-bottom: 2px solid $color-01;
+				margin: 5px auto 0 auto;
+			}
 			h3 {
-				&:before, &:after {
-					content: '';
-					display: block;
-					width: 25%;
-				}
-				&:before {
-					border-top: 2px solid $color-01;
-					margin: 0 auto 10px auto;
-				}
-				&:after {
-					border-bottom: 2px solid $color-01;
-					margin: 5px auto 0 auto;
-				}
+				margin: 0 0 5px 0;
+			}
+			h4 {
+				margin: 0;
 			}
 		}
 		.timeline-column {
