@@ -518,7 +518,7 @@ function link_mapping() {
 			'quick'  => ['The "Not So Fun" Stuff', 'Creating a Character', 'Starting the Journey']
 		],
 		'about-khyeras-faq' => [
-			'label'  => 'Khye\'as FAQ',
+			'label'  => 'Khy\'eras FAQ',
 			'parent' => $about
 		],
 		$lore => [
