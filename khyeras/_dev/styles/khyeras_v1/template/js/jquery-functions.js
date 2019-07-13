@@ -263,8 +263,8 @@ function initializeDiscordList() {
 	discordWidget.done( function( data ) {
 		// List of members, admins, and moderators
 		var members = data['members'];
-		var admins = [ 'displaycoffee' ];
-		var moderators = [];
+		var admins = [ 'displaycoffee', 'memoria' ];
+		var moderators = [ 'algaligerpt' ];
 
 		if ( members && members.length > 0 ) {
 			var totalMembers = members.length;
@@ -295,8 +295,15 @@ function initializeDiscordList() {
 					var imageUrl = '//khyeras.org/styles/khyeras_v1/theme/images/no_avatar.gif'
 				}
 
+				// Set display name
+				if ( current['nick'] ) {
+					var discordName = current['nick'];
+				} else {
+					var discordName = current['username'];
+				}
+
 				var memberImage = '<span class="discord-avatar image-wrap"><img src="' + imageUrl + '" class="user-avatar" /></span>';
-				var memberName = '<span class="discord-username">' + current['username'] + '</span>'
+				var memberName = '<span class="discord-username">' + discordName + '</span>'
 				var memberHTML = '<li class="' + discordClass + ' discord-status-' + current['status'] + '">' + memberImage + memberName + '</li>';
 
 				discordList.append( memberHTML );
