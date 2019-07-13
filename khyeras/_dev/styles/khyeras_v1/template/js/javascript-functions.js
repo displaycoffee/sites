@@ -231,11 +231,9 @@ function checkImageDimensions( selector ) {
 			if ( parentHeight > imageHeight ) {
 				sImage.className += ( checkForClasses( sImage ) + 'image-fit-height' );
 			} else {
-				if ( imageWidth != imageHeight ) {
-					sImage.className += ( checkForClasses( sImage ) + 'image-fit-width' );
-					if ( centerThreshold >= 90 ) {
-						sImage.className += ( checkForClasses( sImage ) + 'image-centered' );
-					}
+				sImage.className += ( checkForClasses( sImage ) + 'image-fit-width' );
+				if ( centerThreshold >= 90 ) {
+					sImage.className += ( checkForClasses( sImage ) + 'image-centered' );
 				}
 			}
 		}

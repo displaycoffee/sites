@@ -19,6 +19,17 @@ dl.faq {
 	}
 }
 
+#faqlinks, #khyeras-faq {
+	.faq dd {
+		position: relative;
+		padding-left: 15px;
+		&:before {
+			content: '\002022';
+			@include position($type: absolute, $left: 0, $top: 0);
+		}
+	}
+}
+
 /* Search Page
 ============================================== */
 

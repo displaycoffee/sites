@@ -15,6 +15,12 @@
 	{META}
 	<title><!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF --><!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF --><!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->{PAGE_TITLE}<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF --></title>
 
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ ROOT_PATH }}images/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="{{ ROOT_PATH }}images/favicons/favicon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ ROOT_PATH }}images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ ROOT_PATH }}images/favicons/favicon-16x16.png">
+	<link rel="manifest" href="{{ ROOT_PATH }}images/favicons/site.webmanifest">
+
 	<!-- IF S_ENABLE_FEEDS -->
 		<!-- IF S_ENABLE_FEEDS_OVERALL --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {SITENAME}" href="{{ path('phpbb_feed_index') }}"><!-- ENDIF -->
 		<!-- IF S_ENABLE_FEEDS_NEWS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_NEWS}" href="{{ path('phpbb_feed_news') }}"><!-- ENDIF -->
