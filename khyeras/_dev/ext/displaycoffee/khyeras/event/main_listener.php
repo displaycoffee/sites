@@ -493,7 +493,7 @@ function link_mapping() {
 	$gameplay = 'gameplay';
 
 	// Quick link arrays
-	$race_links = ['General', 'Physical Features', 'Traits', 'History'];
+	$race_links = ['General', 'Physical Features', 'Traits', 'History', 'Playing As'];
 	$class_links = ['General', 'Description'];
 	$setting_links = ['General', 'Description', 'Places of Interest'];
 	$setting_sublinks = ['General', 'History', 'Culture', 'Housing', 'Transportation', 'Leadership', 'Views on Magic'];
