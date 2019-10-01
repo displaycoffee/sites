@@ -1408,9 +1408,6 @@
 		}
 		.pagination > ul {
 			position: static;
-			& > li.page-jump .dropdown {
-				max-width: none;
-			}
 		}
 	}
 	.sort-tools .dropdown .display-options label {

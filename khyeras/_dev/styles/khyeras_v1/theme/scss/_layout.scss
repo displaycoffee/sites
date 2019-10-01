@@ -410,27 +410,19 @@ a.top {
 		&.page-jump {
 			position: static;
 			.dropdown {
-				max-width: 300px;
 				margin: 0 0 0 auto !important;
-				.dropdown-contents {
+				.dropdown-contents .page-jump-form {
 					position: relative;
-					padding: 0 55px;
-					li:first-child, .page-jump-form .button2 {
-						@include position($type: absolute, $top: 0);
-						width: 50px;
+					padding: 0 45px 0 0;
+					.inputbox {
+						margin: 0;
+						width: 100%;
 					}
-					li:first-child {
-						left: 0;
-					}
-					.page-jump-form {
-						.inputbox {
-							margin: 0;
-							width: 100%;
-						}
-						.button2 {
-							right: 0;
-							padding: 10px 0;
-						}
+					.button2 {
+						padding: 0;
+						line-height: 40px;
+						width: 40px;
+						@include position($type: absolute, $top: 0, $right: 0);
 					}
 				}
 			}

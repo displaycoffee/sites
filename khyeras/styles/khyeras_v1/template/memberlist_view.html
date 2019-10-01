@@ -132,11 +132,27 @@
 	{% if writer_class %}
 		<div class="{{ writer_class }}" role="tabpanel">
 	{% endif %}
-		<!-- IF S_PROFILE_WRITING_PREFS and not S_PROFILE_C_WRITER_NAME -->
+		<!-- IF (S_PROFILE_WRITING_PREFS or S_PROFILE_CHARACTER_LIST) and not S_PROFILE_C_WRITER_NAME -->
 			<div class="panel bg2">
 				<div class="inner">
-					<h3>{PROFILE_WRITING_PREFS_NAME}</h3>
-					<p>{PROFILE_WRITING_PREFS_VALUE}</p>
+					<!-- IF S_PROFILE_WRITING_PREFS and S_PROFILE_CHARACTER_LIST -->
+						<div class="column1">
+					<!-- ENDIF -->
+						<!-- IF S_PROFILE_WRITING_PREFS -->
+							<h3>{PROFILE_WRITING_PREFS_NAME}</h3>
+							<p>{PROFILE_WRITING_PREFS_VALUE}</p>
+						<!-- ENDIF -->
+					<!-- IF S_PROFILE_WRITING_PREFS and S_PROFILE_CHARACTER_LIST -->
+						</div>
+						<div class="column2">
+					<!-- ENDIF -->
+						<!-- IF S_PROFILE_CHARACTER_LIST -->
+							<h3>{PROFILE_CHARACTER_LIST_NAME}</h3>
+							<p>{PROFILE_CHARACTER_LIST_VALUE}</p>
+						<!-- ENDIF -->
+					<!-- IF S_PROFILE_WRITING_PREFS and S_PROFILE_CHARACTER_LIST -->
+						</div>
+					<!-- ENDIF -->
 				</div>
 			</div>
 		<!-- ENDIF -->

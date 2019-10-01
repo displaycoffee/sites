@@ -256,15 +256,15 @@ function initializeDiscordList() {
 
 	var discordWidget = jQuery.ajax({
 		type: 'GET',
-		url: 'https://discordapp.com/api/guilds/482924002411806732/widget.json',
+		url: '//discordapp.com/api/guilds/482924002411806732/widget.json',
 		dataType: 'json'
 	});
 
 	discordWidget.done( function( data ) {
 		// List of members, admins, and moderators
 		var members = data['members'];
-		var admins = [ 'displaycoffee', 'memoria' ];
-		var moderators = [ 'algaligerpt' ];
+		var admins = [ 'displaycoffee#7875' ];
+		var moderators = [ 'Algaligerpt#8922' ];
 
 		if ( members && members.length > 0 ) {
 			var totalMembers = members.length;
@@ -280,9 +280,10 @@ function initializeDiscordList() {
 				var current = members[i];
 
 				// Set special user class
-				if ( admins.indexOf( current['username'] ) > -1 ) {
+				var discordID = current['username'] + '#' + current['discriminator'];
+				if ( admins.indexOf( discordID ) > -1 ) {
 					var discordClass = 'discord-admin';
-				} else if ( moderators.indexOf( current['username'] ) > -1 ) {
+				} else if ( moderators.indexOf( discordID ) > -1 ) {
 					var discordClass = 'discord-moderator';
 				} else {
 					var discordClass = 'discord-user';

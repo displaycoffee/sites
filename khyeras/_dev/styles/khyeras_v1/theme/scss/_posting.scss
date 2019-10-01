@@ -158,6 +158,10 @@
 /* Attach Panel
 ============================================== */
 
+.attach-row-tpl {
+	display: none;
+}
+
 #attach-panel {
 	#attach-panel-multi {
 		margin: 0 0 20px 0;
