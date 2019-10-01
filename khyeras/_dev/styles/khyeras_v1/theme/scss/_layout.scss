@@ -109,13 +109,13 @@ a.top {
 /* Dropdown & Mention Container
 ============================================== */
 
-.dropdown-container .dropdown, .atwho-container .atwho-view {
+.dropdown-container .dropdown, body .tribute-container {
 	background: $color-02;
 	border: 1px solid $color-01;
 	padding: 20px;
 }
 
-.dropdown-container .dropdown .dropdown-contents, .atwho-container .atwho-view .atwho-view-ul {
+.dropdown-container .dropdown .dropdown-contents, body .tribute-container ul {
 	font-size: rem(13px);
 	& > li {
 		padding: 0 0 3px 0;
@@ -125,7 +125,7 @@ a.top {
 	}
 }
 
-.dropdown-container .dropdown .dropdown-contents a, .atwho-container .atwho-view .atwho-view-ul li {
+.dropdown-container .dropdown .dropdown-contents a, body .tribute-container ul li {
 	color: $color-00;
 	&:hover {
 		color: $color-03;
@@ -190,17 +190,19 @@ a.top {
 	}
 }
 
-.atwho-container .atwho-view {
+body .tribute-container {
 	border-radius: 0;
 	box-shadow: none;
 	color: $color-00;
-	.atwho-view-ul > li {
+	ul, ul > li.highlight {
+		background: none;
+	}
+	ul > li {
 		border-bottom: 0;
 		strong {
 			color: inherit;
 		}
-		&.cur {
-			background: none;
+		&.highlight {
 			color: $color-04;
 		}
 	}
