@@ -101,7 +101,7 @@ a, a span[class*='username'] {
 }
 
 a[class*='username']:hover, a:hover span[class*='username'] {
-	color: $color-03 !important;
+	color: $color-04 !important;
 }
 
 /* Headers
@@ -318,4 +318,58 @@ h5, h6, .h5, .h6 {
 
 .icon-bg-yellow {
 	background: $color-14;
+}
+
+/* Character Speech Colors
+============================================== */
+
+.bbcode-character-speech {
+	&[data-name='Artemis'] {
+		color: #9aa7b3;
+	}
+	&[data-name='Harroc'] {
+		color: #40bf00;
+	}
+	&[data-name='Leiven'] {
+		color: #4080ff;
+	}
+	&[data-name='Vanessa LaNore'] {
+		color: #8040ff;
+	}
+	&[data-name='Sir Archibald'] {
+		color: #8080ff;
+	}
+	&[data-name='Marcy Faen'] {
+		color: #bf40bf;
+	}
+	&[data-name='Tommy'] {
+		color: #ffff80;
+	}
+	&[data-name='The Cook'] {
+		color: #ff4040;
+	}
+	&[data-name='Charlotte'] {
+		color: #a65300;
+	}
+	&[data-name='Deborah'] {
+		color: #ec489a;
+	}
+	&[data-name='Robert Jenn'] {
+		color: #ffdead;
+	}
+	&[data-name='Terrance Khadar'] {
+		color: #ff00ff;
+	}
+	&[data-name='Dash ODell'] {
+		color: #008040;
+	}
+	&[data-name='Miss Turley'] {
+		color: #bfffff;
+	}
+	&[data-name='Ksenia'] {
+		color: #c699f3;
+	}
+	&[data-name='Inessa Marcant'] {
+		color: #daf7f3;
+	}
 }

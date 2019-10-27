@@ -23,13 +23,13 @@
 			margin: 0 $ffs-half $ffs $ffs-half;
 			order: 20;
 		}
-		.bbcode-hidden, .bbcode-mention, .bbcode-text-align, .bbcode-s, .bbcode-user, .bbcode-img-align, .bbcode-first-letter, .bbcode-first-line {
+		.bbcode-hidden, .bbcode-mention, .bbcode-speech, .bbcode-text-align, .bbcode-s, .bbcode-user, .bbcode-img-align, .bbcode-first-letter, .bbcode-first-line {
 			font-size: 0;
 			&:before {
 				line-height: 13px;
 			}
 		}
-		.bbcode-hidden,.bbcode-mention, .bbcode-text-align, .bbcode-s, .bbcode-user, .bbcode-img-align {
+		.bbcode-hidden, .bbcode-mention, .bbcode-speech, .bbcode-text-align, .bbcode-s, .bbcode-user, .bbcode-img-align {
 			&:before {
 				content: '';
 				@include icon-font($lh: false);
@@ -44,8 +44,17 @@
 		.bbcode-h3, .bbcode-h4, .bbcode-h5, .bbcode-h6 {
 			order: 1;
 		}
-		.bbcode-color, .bbcode-size {
+		.bbcode-color, .bbcode-speech {
 			order: 2;
+		}
+		.bbcode-speech:before {
+			content: unicode($icon-comment);
+		}
+		.bbcode-size, .bbcode-text-align {
+			order: 3;
+			&:before {
+				content: unicode($icon-align-center);
+			}
 		}
 		.bbcode-text-align {
 			order: 3;
@@ -88,7 +97,7 @@
 			order: 6;
 		}
 		.bbcode-mention:before {
-			content: unicode($icon-comment);
+			content: unicode($icon-bell);
 		}
 		.bbcode-img, .bbcode-img-align {
 			order: 7;

@@ -218,22 +218,28 @@ function addImageWrapper( selector ) {
 // Check image dimensions and add classes to constrain images in a square space
 function checkImageDimensions( selector ) {
 	var imageSelector = document.querySelectorAll( selector );
-
+	
 	if ( imageSelector && imageSelector.length ) {
 		for ( var i = 0; i < imageSelector.length; i++ ) {
 			var sImage = imageSelector[i];
-			var imageWidth = sImage.clientWidth;
-			var imageHeight = sImage.clientHeight;
-			var parentWidth = sImage.parentNode.clientWidth;
-			var parentHeight = sImage.parentNode.clientHeight;
-			var centerThreshold = Math.round( ( imageWidth / parentWidth ) * 100 ); // Determine when images should be centered
 
-			if ( parentHeight > imageHeight ) {
-				sImage.className += ( checkForClasses( sImage ) + 'image-fit-height' );
-			} else {
-				sImage.className += ( checkForClasses( sImage ) + 'image-fit-width' );
-				if ( centerThreshold >= 90 ) {
-					sImage.className += ( checkForClasses( sImage ) + 'image-centered' );
+			// Check if the image has fully loaded before applying classes
+			var imageCheck = new Image();
+			imageCheck.src = sImage.src;
+			imageCheck.onload = function() {
+				var imageWidth = sImage.clientWidth;
+				var imageHeight = sImage.clientHeight;
+				var parentWidth = sImage.parentNode.clientWidth;
+				var parentHeight = sImage.parentNode.clientHeight;
+				var centerThreshold = Math.round( ( imageWidth / parentWidth ) * 100 ); // Determine when images should be centered
+
+				if ( parentHeight > imageHeight ) {
+					sImage.className += ( checkForClasses( sImage ) + 'image-fit-height' );
+				} else {
+					sImage.className += ( checkForClasses( sImage ) + 'image-fit-width' );
+					if ( centerThreshold >= 90 ) {
+						sImage.className += ( checkForClasses( sImage ) + 'image-centered' );
+					}
 				}
 			}
 		}
