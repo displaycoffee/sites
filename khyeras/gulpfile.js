@@ -63,8 +63,9 @@ if (phpBBFolder == 'styles') {
 		devSass + '/stylesheet.scss'
 	];
 
-	var discordSources = [
-		devSass + '/discord.scss'
+	var expandedSources = [
+		devSass + '/discord.scss',
+		devSass + '/speech.scss',
 	];
 
 	gulp.task('sass', function() {
@@ -74,7 +75,7 @@ if (phpBBFolder == 'styles') {
 	            browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
 	        }))
 			.pipe(gulp.dest(distCSS));
-		gulp.src(discordSources)
+		gulp.src(expandedSources)
 			.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
 			.pipe(autoprefixer({
 	            browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']

@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/*! Character Speech Colors
+    --------------------------------------------------------------
+	Style name: Khy'eras (version 1.0)
+    --------------------------------------------------------------
+*/
+.bbcode-character-speech[data-name='Artemis Black'] {
+  color: #9aa7b3;
+}
+
+.bbcode-character-speech[data-name='Aurae'] {
+  color: #ff8080;
+}
+
+.bbcode-character-speech[data-name='Charlotte'] {
+  color: #a65300;
+}
+
+.bbcode-character-speech[data-name='Dáire'] {
+  color: #00bf80;
+}
+
+.bbcode-character-speech[data-name='Dash ODell'] {
+  color: #008040;
+}
+
+.bbcode-character-speech[data-name='Deborah'] {
+  color: #ec489a;
+}
+
+.bbcode-character-speech[data-name='Elára Vëa'] {
+  color: #bf4000;
+}
+
+.bbcode-character-speech[data-name='Galynhun-Khan Tinnudir'] {
+  color: #778899;
+}
+
+.bbcode-character-speech[data-name='Harroc Crownegrove'] {
+  color: #40bf00;
+}
+
+.bbcode-character-speech[data-name='Inessa Marcant'] {
+  color: #daf7f3;
+}
+
+.bbcode-character-speech[data-name='Inya'] {
+  color: #bfbfbf;
+}
+
+.bbcode-character-speech[data-name='Katarya Frost'] {
+  color: #4080ff;
+}
+
+.bbcode-character-speech[data-name='Ksenia'] {
+  color: #c699f3;
+}
+
+.bbcode-character-speech[data-name='Lanae Ofnowhere'] {
+  color: #687e5a;
+}
+
+.bbcode-character-speech[data-name='Leiven Loramrai'] {
+  color: #4080ff;
+}
+
+.bbcode-character-speech[data-name='Loxiel'] {
+  color: #40ff80;
+}
+
+.bbcode-character-speech[data-name='Mara Whitewood'] {
+  color: #eedd82;
+}
+
+.bbcode-character-speech[data-name='Marcy Faen'] {
+  color: #bf40bf;
+}
+
+.bbcode-character-speech[data-name='Raen Silver'] {
+  color: #80bfbf;
+}
+
+.bbcode-character-speech[data-name='Robert Jenn'] {
+  color: #ffdead;
+}
+
+.bbcode-character-speech[data-name='Sir Archibald'] {
+  color: #8080ff;
+}
+
+.bbcode-character-speech[data-name='Terrance Khadar'] {
+  color: #ff00ff;
+}
+
+.bbcode-character-speech[data-name='The Cook'] {
+  color: #ff4040;
+}
+
+.bbcode-character-speech[data-name='Tommy'] {
+  color: #ffff80;
+}
+
+.bbcode-character-speech[data-name='Vanessa LaNore'] {
+  color: #8040ff;
+}
