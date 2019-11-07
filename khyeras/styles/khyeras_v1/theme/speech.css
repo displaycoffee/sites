@@ -68,6 +68,10 @@
   color: #40ff80;
 }
 
+.bbcode-character-speech[data-name='Malcolm Rhodes'] {
+  color: #80bfbf;
+}
+
 .bbcode-character-speech[data-name='Mara Whitewood'] {
   color: #eedd82;
 }
@@ -84,12 +88,20 @@
   color: #ffdead;
 }
 
+.bbcode-character-speech[data-name='Rory Lunatus'] {
+  color: #e77cef;
+}
+
 .bbcode-character-speech[data-name='Sir Archibald'] {
   color: #8080ff;
 }
 
+.bbcode-character-speech[data-name='Sterling'] {
+  color: #e8e2c5;
+}
+
 .bbcode-character-speech[data-name='Terrance Khadar'] {
-  color: #ff00ff;
+  color: #ff8c00;
 }
 
 .bbcode-character-speech[data-name='The Cook'] {
