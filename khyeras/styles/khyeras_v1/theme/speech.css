@@ -4,12 +4,20 @@
 	Style name: Khy'eras (version 1.0)
     --------------------------------------------------------------
 */
+.bbcode-character-speech[data-name='Amalia Hahn'] {
+  color: #bf0040;
+}
+
 .bbcode-character-speech[data-name='Artemis Black'] {
   color: #9aa7b3;
 }
 
 .bbcode-character-speech[data-name='Aurae'] {
   color: #ff8080;
+}
+
+.bbcode-character-speech[data-name='Borin Skyhammer'] {
+  color: #cf7d1f;
 }
 
 .bbcode-character-speech[data-name='Charlotte'] {
@@ -36,6 +44,10 @@
   color: #778899;
 }
 
+.bbcode-character-speech[data-name='Gavin Tate'] {
+  color: #a94c1d;
+}
+
 .bbcode-character-speech[data-name='Harroc Crownegrove'] {
   color: #40bf00;
 }
@@ -46,6 +58,14 @@
 
 .bbcode-character-speech[data-name='Inya'] {
   color: #bfbfbf;
+}
+
+.bbcode-character-speech[data-name='Jacobus Sandova'] {
+  color: #bfff00;
+}
+
+.bbcode-character-speech[data-name='Johnathan Lemound'] {
+  color: #80bfff;
 }
 
 .bbcode-character-speech[data-name='Katarya Frost'] {
@@ -66,6 +86,10 @@
 
 .bbcode-character-speech[data-name='Loxiel'] {
   color: #40ff80;
+}
+
+.bbcode-character-speech[data-name='Lynwood Mcneil'] {
+  color: #408040;
 }
 
 .bbcode-character-speech[data-name='Malcolm Rhodes'] {
