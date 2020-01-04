@@ -262,56 +262,61 @@ function initializeDiscordList() {
 
 	discordWidget.done( function( data ) {
 		// List of members, admins, and moderators
-		var members = data['members'];
-		var admins = [ 'displaycoffee#7875' ];
-		var moderators = [ 'Algaligerpt#8922' ];
+		var members = data['members'] || false;
+		var admins = [ 'memoria' ];
+		var moderators = [ 'algaliarept' ];
 
 		if ( members && members.length > 0 ) {
-			var totalMembers = members.length;
-			var membersLimit = 11;
+			// Assign rank and group to members using filter
+			members = members.filter( function( value ) {
+				// Default rank and group
+				value['rank'] = 3;
+				value['group'] = 'user';
 
-			for ( var i = 0; i < totalMembers; i++ ) {
-				// Break if limit has been reached
-				if ( i == membersLimit ) {
-					break;
+				// Check other users
+				var username = value['username'].toLowerCase();
+				if ( moderators.indexOf( username ) > -1 ) {
+					value['rank'] = 2;
+					value['group'] = 'moderator';
+				} else if ( admins.indexOf( username ) > -1 ) {
+					value['rank'] = 1;
+					value['group'] = 'admin';
 				}
+				return value;
+			});
 
+			// Sort member data by rank
+			members.sort( function( a, b ) {
+				return a.rank - b.rank;
+			});
+
+			// Variables for looping through members
+			var totalMembers = members.length;
+			var membersLimit = 12;
+			var membersLength = ( totalMembers > membersLimit ) ? membersLimit : totalMembers;
+
+			for ( var i = 0; i < membersLength; i++ ) {
 				// Current member data
 				var current = members[i];
 
-				// Set special user class
-				var discordID = current['username'] + '#' + current['discriminator'];
-				if ( admins.indexOf( discordID ) > -1 ) {
-					var discordClass = 'discord-admin';
-				} else if ( moderators.indexOf( discordID ) > -1 ) {
-					var discordClass = 'discord-moderator';
-				} else {
-					var discordClass = 'discord-user';
-				}
-
 				// Set image url
-				if ( current['avatar'] ) {
-					var imageUrl = '//cdn.discordapp.com/avatars/' + current['id'] + '/' + current['avatar'] + '.jpg';
-				} else {
-					var imageUrl = '//khyeras.org/styles/khyeras_v1/theme/images/no_avatar.gif'
+				var imageUrl = '//khyeras.org/styles/khyeras_v1/theme/images/no_avatar.gif'
+				if ( current['avatar_url'] ) {
+					imageUrl = current['avatar_url'].replace(/^http(s?):/i, '');
 				}
 
-				// Set display name
-				if ( current['nick'] ) {
-					var discordName = current['nick'];
-				} else {
-					var discordName = current['username'];
-				}
+				// Create member HTML
+				var memberAlt = 'Discord Avatar - ' + current['username'];
+				var memberImage = '<span class="discord-avatar image-wrap"><img src="' + imageUrl + '" class="user-avatar" alt="' + memberAlt + '" title="' + memberAlt + '" /></span>';
+				var memberName = '<span class="discord-username">' + current['username'] + '</span>'
+				var memberHTML = '<li class="discord-' + current['group'] + ' discord-status-' + current['status'] + '">' + memberImage + memberName + '</li>';
 
-				var memberImage = '<span class="discord-avatar image-wrap"><img src="' + imageUrl + '" class="user-avatar" /></span>';
-				var memberName = '<span class="discord-username">' + discordName + '</span>'
-				var memberHTML = '<li class="' + discordClass + ' discord-status-' + current['status'] + '">' + memberImage + memberName + '</li>';
-
+				// Append HTML to discord list
 				discordList.append( memberHTML );
 			}
 
 			// If there are more than the user limit, add invite link
-			if ( members.length > membersLimit ) {
+			if ( totalMembers > membersLimit ) {
 				discordList.append( '<li class="discord-more-users"><a href="//discord.gg/MXtzbmw" target="_blank">...more users online</a></li>' );
 			}
 		} else {
