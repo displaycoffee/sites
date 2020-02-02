@@ -23,13 +23,13 @@
 			margin: 0 $ffs-half $ffs $ffs-half;
 			order: 20;
 		}
-		.bbcode-hidden, .bbcode-mention, .bbcode-speech, .bbcode-text-align, .bbcode-s, .bbcode-user, .bbcode-img-align, .bbcode-first-letter, .bbcode-first-line {
+		.bbcode-hidden, .bbcode-mention, .bbcode-speech, .bbcode-text-align, .bbcode-s, .bbcode-header, .bbcode-user, .bbcode-img-align, .bbcode-first-letter, .bbcode-first-line {
 			font-size: 0;
 			&:before {
 				line-height: 13px;
 			}
 		}
-		.bbcode-hidden, .bbcode-mention, .bbcode-speech, .bbcode-text-align, .bbcode-s, .bbcode-user, .bbcode-img-align {
+		.bbcode-hidden, .bbcode-mention, .bbcode-speech, .bbcode-text-align, .bbcode-s, .bbcode-header, .bbcode-user, .bbcode-img-align {
 			&:before {
 				content: '';
 				@include icon-font($lh: false);
@@ -41,8 +41,11 @@
 		.bbcode-s:before {
 			content: unicode($icon-strikethrough);
 		}
-		.bbcode-h3, .bbcode-h4, .bbcode-h5, .bbcode-h6 {
+		.bbcode-header {
 			order: 1;
+			&:before {
+				content: unicode($icon-header);
+			}
 		}
 		.bbcode-color, .bbcode-speech {
 			order: 2;
