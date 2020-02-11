@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * Khy'eras Custom Code. An extension for the phpBB Forum Software package.
@@ -9,6 +10,11 @@
  */
 
 namespace displaycoffee\khyeras\event;
+
+if (!defined('IN_PHPBB'))
+{
+   exit;
+}
 
 /**
  * @ignore
@@ -45,6 +51,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	/** @var \phpbb\profilefields\lang_helper */
 	protected $lang_helper;
 
+	/** @var \displaycoffee\khyeras\controller\thing */
+	protected $thing;
+
+	/** @var \displaycoffee\khyeras\core\thing2 */
+	protected $thing2;
+
 	/** @var string phpEx */
 	protected $php_ext;
 
@@ -56,16 +68,20 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	 * @param \phpbb\db\driver\driver_interface		$db         		DBAL object
 	 * @param \phpbb\profilefields\manager			$manager			Profile fields manager
 	 * @param \phpbb\profilefields\lang_helper		$lang_helper		Profile fields language helper
+	 * @param \displaycoffee\khyeras\controller\thing		$thing		Testing a thing
+	 * @param \displaycoffee\khyeras\core\thing2		$thing2		Testing a thing2
 	 * @param string                        		$php_ext			phpEx
  	*/
- 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \phpbb\pages\operators\page $pages, $php_ext)
+ 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \phpbb\pages\operators\page $pages, \displaycoffee\khyeras\controller\thing $thing, \displaycoffee\khyeras\core\thing2 $thing2, $php_ext)
  	{
  		$this->template    = $template;
  		$this->user		   = $user;
 		$this->db		   = $db;
 		$this->manager 	   = $manager;
 		$this->lang_helper = $lang_helper;
-		$this->pages = $pages;
+		$this->pages       = $pages;
+		$this->thing       = $thing;
+		$this->thing2       = $thing2;
 		$this->php_ext	   = $php_ext;
  	}
 
@@ -74,10 +90,13 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	*/
  	public function theme_globals($event)
  	{
-		$test = $this->pages->get_pages();
-		foreach ($test as $t) {
-			var_dump($t->get_title() . $t->get_route() . $t->get_order() . $t->get_description());
-		};
+		// $test = $this->pages->get_pages();
+		// foreach ($test as $t) {
+		// 	var_dump($t->get_title() . $t->get_route() . $t->get_order() . $t->get_description());
+		// };
+		var_dump('hello from main_listener!');
+		var_dump($this->thing->theme_globals2());
+		var_dump($this->thing2->theme_globals2());
 
 		// Get the user id, group id, and lang_id
 		$user_id = $this->user->data['user_id'];

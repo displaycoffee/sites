@@ -8,6 +8,30 @@ services:
             - '@profilefields.manager'
             - '@profilefields.lang_helper'
             - '@phpbb.pages.operator'
+            - '@displaycoffee.khyeras.thing'
+            - '@displaycoffee.khyeras.thing2'
             - '%core.php_ext%'
         tags:
             - { name: event.listener }
+
+    displaycoffee.khyeras.thing:
+        class: displaycoffee\khyeras\controller\thing
+        arguments:
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@profilefields.manager'
+            - '@profilefields.lang_helper'
+            - '@phpbb.pages.operator'
+            - '%core.php_ext%'
+
+    displaycoffee.khyeras.thing2:
+        class: displaycoffee\khyeras\core\thing2
+        arguments:
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@profilefields.manager'
+            - '@profilefields.lang_helper'
+            - '@phpbb.pages.operator'
+            - '%core.php_ext%'
