@@ -10,6 +10,7 @@ services:
             - '@phpbb.pages.operator'
             - '@displaycoffee.khyeras.thing'
             - '@displaycoffee.khyeras.thing2'
+            - '@displaycoffee.khyeras.nav_links'
             - '%core.php_ext%'
         tags:
             - { name: event.listener }
@@ -35,3 +36,15 @@ services:
             - '@profilefields.lang_helper'
             - '@phpbb.pages.operator'
             - '%core.php_ext%'
+
+    displaycoffee.khyeras.nav_links:
+        class: displaycoffee\khyeras\core\nav_links
+        arguments:
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@profilefields.manager'
+            - '@profilefields.lang_helper'
+            - '@phpbb.pages.operator'
+            - '%core.php_ext%'
+            - '%core.table_prefix%'

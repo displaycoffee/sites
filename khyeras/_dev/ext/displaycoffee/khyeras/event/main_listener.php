@@ -13,7 +13,7 @@ namespace displaycoffee\khyeras\event;
 
 if (!defined('IN_PHPBB'))
 {
-   exit;
+	exit;
 }
 
 /**
@@ -57,6 +57,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	/** @var \displaycoffee\khyeras\core\thing2 */
 	protected $thing2;
 
+	/** @var \displaycoffee\khyeras\core\nav_links */
+	protected $nav_links;
+
 	/** @var string phpEx */
 	protected $php_ext;
 
@@ -70,9 +73,10 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	 * @param \phpbb\profilefields\lang_helper		$lang_helper		Profile fields language helper
 	 * @param \displaycoffee\khyeras\controller\thing		$thing		Testing a thing
 	 * @param \displaycoffee\khyeras\core\thing2		$thing2		Testing a thing2
+	 * @param \displaycoffee\khyeras\core\nav_links		$nav_links		Testing a nav_links
 	 * @param string                        		$php_ext			phpEx
  	*/
- 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \phpbb\pages\operators\page $pages, \displaycoffee\khyeras\controller\thing $thing, \displaycoffee\khyeras\core\thing2 $thing2, $php_ext)
+ 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \phpbb\pages\operators\page $pages, \displaycoffee\khyeras\controller\thing $thing, \displaycoffee\khyeras\core\thing2 $thing2, \displaycoffee\khyeras\core\nav_links $nav_links, $php_ext)
  	{
  		$this->template    = $template;
  		$this->user		   = $user;
@@ -82,6 +86,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$this->pages       = $pages;
 		$this->thing       = $thing;
 		$this->thing2       = $thing2;
+		$this->nav_links       = $nav_links;
 		$this->php_ext	   = $php_ext;
  	}
 
@@ -94,9 +99,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		// foreach ($test as $t) {
 		// 	var_dump($t->get_title() . $t->get_route() . $t->get_order() . $t->get_description());
 		// };
-		var_dump('hello from main_listener!');
-		var_dump($this->thing->theme_globals2());
-		var_dump($this->thing2->theme_globals2());
+		var_dump($this->nav_links->theme_globals2());
 
 		// Get the user id, group id, and lang_id
 		$user_id = $this->user->data['user_id'];
