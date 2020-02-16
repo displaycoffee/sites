@@ -51,6 +51,9 @@ if (!defined('IN_PHPBB'))
 	/** @var \phpbb\profilefields\lang_helper */
 	protected $lang_helper;
 
+	/** @var \displaycoffee\khyeras\utilities\utilities */
+	protected $utilities;
+
 	/** @var string phpEx */
 	protected $php_ext;
 
@@ -65,9 +68,10 @@ if (!defined('IN_PHPBB'))
 	 * @param \phpbb\db\driver\driver_interface		$db         		DBAL object
 	 * @param \phpbb\profilefields\manager			$manager			Profile fields manager
 	 * @param \phpbb\profilefields\lang_helper		$lang_helper		Profile fields language helper
+	 * @param \displaycoffee\khyeras\utilities\utilities		$utilities		Profile fields language helper
 	 * @param string                        		$php_ext			phpEx
  	*/
- 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \phpbb\pages\operators\page $pages, $php_ext, $table_prefix)
+ 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \phpbb\pages\operators\page $pages, \displaycoffee\khyeras\utilities\utilities $utilities, $php_ext, $table_prefix)
  	{
  		$this->template    = $template;
  		$this->user		   = $user;
@@ -75,6 +79,7 @@ if (!defined('IN_PHPBB'))
 		$this->manager 	   = $manager;
 		$this->lang_helper = $lang_helper;
 		$this->pages       = $pages;
+		$this->utilities       = $utilities;
 		$this->php_ext	   = $php_ext;
 		$this->table_prefix = $table_prefix;
  	}
@@ -84,6 +89,13 @@ if (!defined('IN_PHPBB'))
  	*/
  	public function theme_globals2()
  	{
+		// Set handleize function to pass into other functions
+		$handleize = function($value) {
+			return $this->utilities->handleize($value);
+		};
+
+
+
 		// Create pages table prefix
 		$page_table = $this->table_prefix . 'pages';
 
@@ -111,7 +123,7 @@ if (!defined('IN_PHPBB'))
 				'label'  => $row['page_title'],
 				'url'    => $row['page_route'],
 				'level'  => $page_level,
-				'crumbs' => create_crumbs($row['page_title'], $row['page_route'], $page_level),
+				'crumbs' => create_crumbs($row['page_title'], $row['page_route'], $page_level, $handleize),
 				//'quick'  => create_quick_link($row['page_title'], $row['page_route'])
 			];
 
@@ -125,7 +137,7 @@ if (!defined('IN_PHPBB'))
  	}
 }
 
-function create_crumbs($title, $route, $level)
+function create_crumbs($title, $route, $level, $handleize)
 {
 	// Delimiters for links and array
 	$delimiter = '-';
@@ -134,26 +146,26 @@ function create_crumbs($title, $route, $level)
 	// Split page route by hyphen
 	$parents = explode($delimiter, $route);
 
-	// Initialize first and second link strings
-	$first = false;
-	$second = false;
 
-	// Set first and second link strings
-	if ($parents[0]) {
-		$first = $parents[0];
-		if ($parents[1]) {
-			$second = $first . $delimiter . $parents[1];
-		}
-	}
 
-	// Create first and second link mappings
-	$first_links = [
-		'about'    => 'About',
-		'lore'     => 'Lore',
-		'setting'  => 'Setting',
-		'gameplay' => 'Gameplay'
-	];
-	$second_links = [
+	// // Initialize first and second link strings
+	// $first = false;
+	// $second = false;
+	//
+	// // Set first and second link strings
+	// if ($parents[0]) {
+	// 	$first = $parents[0];
+	// 	if ($parents[1]) {
+	// 		$second = $first . $delimiter . $parents[1];
+	// 	}
+	// }
+
+	// Create link mapping
+	$link_map = [
+		'about'                  => 'About',
+		'lore'                   => 'Lore',
+		'setting'                => 'Setting',
+		'gameplay'               => 'Gameplay',
 		'lore-races'             => 'Races',
 		'lore-religion'          => 'Religion',
 		'lore-classes'           => 'Classes',
@@ -162,25 +174,56 @@ function create_crumbs($title, $route, $level)
 		'setting-irtuen-reaches' => 'Irtuen Reaches'
 	];
 
-	// Array to store crumbs
-	$crumbs = array();
+	// Run through split routes and build a hierarchy
+	$route_array = explode($delimiter, $route);
+	$route_levels = array();
 
-	if ($level == 2) {
-		//array_push($crumbs, $first . $delimiter2 . $first_links[$first]);
-	} else if ($level == 3) {
-		// if ($second == 'setting-irtuen') {
-		// 	$second = 'setting-irtuen-reaches';
-		// }
-		//
-		// array_push(
-		// 	$crumbs,
-		// 	$first . $delimiter2 . $first_links[$first],
-		// 	$second . $delimiter2 . $second_links[$second]
-		// );
-	} else {
-		$crumbs = false;
+	for ($i = 0; $i < count($route_array); $i++) {
+		// Build previous route by subtracting from the index
+		$previous_route = '';
+		if ($route_levels[$i - 1]) {
+			$previous_route = $route_levels[$i - 1] . $delimiter;
+		}
+
+		// Constructed route includes previous plus current route
+		$built_route = $previous_route . $route_array[$i];
+
+		// If the route is in the mapping, push it
+		if ($link_map[$built_route]) {
+			array_push($route_levels, $built_route);
+		}
 	}
 
+
+
+	// $first = false;
+	//
+	// // Pull out the last level
+	// $last_delimiter = $delimiter . $handleize($title);
+	// $last = explode($last_delimiter, $route)[0];
+	//
+	// // Pull out the first level
+	// $first_delimiter = $delimiter . $handleize($link_map[$last]);
+	// $first = explode($first_delimiter, $last)[0];
+
+
+	// $first_delimiter = $delimiter . $handleize($title);
+	// $first = explode($first_delimiter, $route)[0];
+	//
+	// $second_delimiter = $delimiter . $handleize($link_map[$first]);
+	// $second = explode($second_delimiter, $first)[0];
+
+
+	// Array to store crumbs
+	$crumbs = $route_levels;
+
+	// if ($level == 2) {
+	// 	//array_push($crumbs, $first . $delimiter2 . $first_links[$first]);
+	// } else {
+	// 	$crumbs = false;
+	// }
+
+	//return $crumbs;
 	return $crumbs;
 }
 

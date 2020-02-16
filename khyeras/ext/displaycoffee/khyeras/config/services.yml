@@ -1,4 +1,7 @@
 services:
+    displaycoffee.khyeras.utilities:
+        class: displaycoffee\khyeras\utilities\utilities
+
     displaycoffee.khyeras.listener:
         class: displaycoffee\khyeras\event\main_listener
         arguments:
@@ -46,5 +49,6 @@ services:
             - '@profilefields.manager'
             - '@profilefields.lang_helper'
             - '@phpbb.pages.operator'
+            - '@displaycoffee.khyeras.utilities'
             - '%core.php_ext%'
             - '%core.table_prefix%'
