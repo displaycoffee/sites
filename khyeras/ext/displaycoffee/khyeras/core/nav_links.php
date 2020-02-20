@@ -2,7 +2,7 @@
 
 /**
  *
- * Khy'eras Custom Code. An extension for the phpBB Forum Software package.
+ * Khy'eras places Code. An extension for the phpBB Forum Software package.
  *
  * @copyright (c) 2019, Adria, https://github.com/displaycoffee
  * @license GNU General Public License, version 2 (GPL-2.0)
@@ -22,7 +22,7 @@ if (!defined('IN_PHPBB'))
 // use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Khy'eras Custom Code Event listener.
+ * Khy'eras places Code Event listener.
  */
  class nav_links
  {
@@ -117,13 +117,13 @@ if (!defined('IN_PHPBB'))
 		while ($row = $this->db->sql_fetchrow($page_result))
 		{
 			// Create page level based on page order
-			$page_level = explode('.', ($row['page_order'] / 10))[1];
+			$page_level = intval(explode('.', ($row['page_order'] / 10))[1]);
 
 			$page_data = [
 				'label'  => $row['page_title'],
 				'url'    => $row['page_route'],
 				'level'  => $page_level,
-				'crumbs' => create_crumbs($row['page_title'], $row['page_route'], $page_level, $handleize),
+				'crumbs' => create_crumbs($row['page_route'], $page_level, $row['page_description']),
 				//'quick'  => create_quick_link($row['page_title'], $row['page_route'])
 			];
 
@@ -137,93 +137,38 @@ if (!defined('IN_PHPBB'))
  	}
 }
 
-function create_crumbs($title, $route, $level, $handleize)
-{
-	// Delimiters for links and array
-	$delimiter = '-';
-	$delimiter2 = ':';
+function create_crumbs($route, $level, $desc) {
+	// Only add crumbs if over level 1 and not equal to 9
+	if ($level > 1 && $level != 9) {
+		// Set initial crumbs array
+		$crumbs = array();
 
-	// Split page route by hyphen
-	$parents = explode($delimiter, $route);
+		// Create breadcrumb mapping
+		$crumb_map = [
+			'About'          => 'about',
+			'Lore'           => 'lore',
+			'Setting'        => 'setting',
+			'Gameplay'       => 'gameplay',
+			'Races'          => 'lore-races',
+			'Religion'       => 'lore-religion',
+			'Classes'        => 'lore-classes',
+			'Tviyr'          => 'setting-tviyr',
+			'Ninraih'        => 'setting-ninraih',
+			'Irtuen Reaches' => 'setting-irtuen-reaches'
+		];
 
-
-
-	// // Initialize first and second link strings
-	// $first = false;
-	// $second = false;
-	//
-	// // Set first and second link strings
-	// if ($parents[0]) {
-	// 	$first = $parents[0];
-	// 	if ($parents[1]) {
-	// 		$second = $first . $delimiter . $parents[1];
-	// 	}
-	// }
-
-	// Create link mapping
-	$link_map = [
-		'about'                  => 'About',
-		'lore'                   => 'Lore',
-		'setting'                => 'Setting',
-		'gameplay'               => 'Gameplay',
-		'lore-races'             => 'Races',
-		'lore-religion'          => 'Religion',
-		'lore-classes'           => 'Classes',
-		'setting-tviyr'          => 'Tviyr',
-		'setting-ninraih'        => 'Ninraih',
-		'setting-irtuen-reaches' => 'Irtuen Reaches'
-	];
-
-	// Run through split routes and build a hierarchy
-	$route_array = explode($delimiter, $route);
-	$route_levels = array();
-
-	for ($i = 0; $i < count($route_array); $i++) {
-		// Build previous route by subtracting from the index
-		$previous_route = '';
-		if ($route_levels[$i - 1]) {
-			$previous_route = $route_levels[$i - 1] . $delimiter;
+		// Loop through crumb_map to assign breadcrumbs
+		foreach ($crumb_map as $key => $value) {
+			// Check routes found in crumb_map
+			// Or, check if a page has a description, add any crumb_map value found in description
+			if (strpos($route, ($value . '-')) !== false || ($desc && strpos($desc, $key) !== false)) {
+				array_push($crumbs, $key . ':' . $value);
+			}
 		}
-
-		// Constructed route includes previous plus current route
-		$built_route = $previous_route . $route_array[$i];
-
-		// If the route is in the mapping, push it
-		if ($link_map[$built_route]) {
-			array_push($route_levels, $built_route);
-		}
+	} else {
+		$crumbs = false;
 	}
 
-
-
-	// $first = false;
-	//
-	// // Pull out the last level
-	// $last_delimiter = $delimiter . $handleize($title);
-	// $last = explode($last_delimiter, $route)[0];
-	//
-	// // Pull out the first level
-	// $first_delimiter = $delimiter . $handleize($link_map[$last]);
-	// $first = explode($first_delimiter, $last)[0];
-
-
-	// $first_delimiter = $delimiter . $handleize($title);
-	// $first = explode($first_delimiter, $route)[0];
-	//
-	// $second_delimiter = $delimiter . $handleize($link_map[$first]);
-	// $second = explode($second_delimiter, $first)[0];
-
-
-	// Array to store crumbs
-	$crumbs = $route_levels;
-
-	// if ($level == 2) {
-	// 	//array_push($crumbs, $first . $delimiter2 . $first_links[$first]);
-	// } else {
-	// 	$crumbs = false;
-	// }
-
-	//return $crumbs;
 	return $crumbs;
 }
 
