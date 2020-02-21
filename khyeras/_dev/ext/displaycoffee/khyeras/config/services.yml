@@ -11,44 +11,13 @@ services:
             - '@profilefields.manager'
             - '@profilefields.lang_helper'
             - '@phpbb.pages.operator'
-            - '@displaycoffee.khyeras.thing'
-            - '@displaycoffee.khyeras.thing2'
-            - '@displaycoffee.khyeras.nav_links'
+            - '@displaycoffee.khyeras.page_info'
             - '%core.php_ext%'
         tags:
             - { name: event.listener }
 
-    displaycoffee.khyeras.thing:
-        class: displaycoffee\khyeras\controller\thing
+    displaycoffee.khyeras.page_info:
+        class: displaycoffee\khyeras\core\page_info
         arguments:
-            - '@template'
-            - '@user'
             - '@dbal.conn'
-            - '@profilefields.manager'
-            - '@profilefields.lang_helper'
-            - '@phpbb.pages.operator'
-            - '%core.php_ext%'
-
-    displaycoffee.khyeras.thing2:
-        class: displaycoffee\khyeras\core\thing2
-        arguments:
-            - '@template'
-            - '@user'
-            - '@dbal.conn'
-            - '@profilefields.manager'
-            - '@profilefields.lang_helper'
-            - '@phpbb.pages.operator'
-            - '%core.php_ext%'
-
-    displaycoffee.khyeras.nav_links:
-        class: displaycoffee\khyeras\core\nav_links
-        arguments:
-            - '@template'
-            - '@user'
-            - '@dbal.conn'
-            - '@profilefields.manager'
-            - '@profilefields.lang_helper'
-            - '@phpbb.pages.operator'
-            - '@displaycoffee.khyeras.utilities'
-            - '%core.php_ext%'
             - '%core.table_prefix%'
