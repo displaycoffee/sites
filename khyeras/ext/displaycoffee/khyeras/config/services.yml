@@ -5,17 +5,11 @@ services:
     displaycoffee.khyeras.listener:
         class: displaycoffee\khyeras\event\main_listener
         arguments:
-            - '@template'
-            - '@user'
-            - '@dbal.conn'
-            - '@profilefields.manager'
-            - '@profilefields.lang_helper'
-            - '@phpbb.pages.operator'
             - '@displaycoffee.khyeras.page_info'
-            - '@displaycoffee.khyeras.add_to_group'
+            - '@displaycoffee.khyeras.global_member_info'
             - '@displaycoffee.khyeras.member_character_info'
             - '@displaycoffee.khyeras.topic_character_info'
-            - '%core.php_ext%'
+            - '@displaycoffee.khyeras.add_to_group'
         tags:
             - { name: event.listener }
 
@@ -28,6 +22,17 @@ services:
             - '@displaycoffee.khyeras.utilities'
             - '%core.table_prefix%'
             - '%core.php_ext%'
+
+    displaycoffee.khyeras.global_member_info:
+        class: displaycoffee\khyeras\core\global_member_info
+        arguments:
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@profilefields.manager'
+            - '@profilefields.lang_helper'
+            - '@displaycoffee.khyeras.utilities'
+            - '%core.table_prefix%'
 
     displaycoffee.khyeras.add_to_group:
         class: displaycoffee\khyeras\core\add_to_group
