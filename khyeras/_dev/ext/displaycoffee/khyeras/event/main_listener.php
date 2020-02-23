@@ -1,101 +1,87 @@
 <?php
-
 /**
- *
- * Khy'eras Custom Code. An extension for the phpBB Forum Software package.
- *
- * @copyright (c) 2019, Adria, https://github.com/displaycoffee
- * @license GNU General Public License, version 2 (GPL-2.0)
- *
- */
+*
+* Khy'eras places Code. An extension for the phpBB Forum Software package.
+*
+* @copyright (c) 2020, Adria, https://github.com/displaycoffee
+* @license GNU General Public License, version 2 (GPL-2.0)
+*
+*/
 
 namespace displaycoffee\khyeras\event;
 
-if (!defined('IN_PHPBB'))
-{
+if (!defined('IN_PHPBB')) {
 	exit;
 }
 
-/**
- * @ignore
- */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * Khy'eras Custom Code Event listener.
- */
- class main_listener implements EventSubscriberInterface
- {
- 	static public function getSubscribedEvents()
- 	{
- 		return array(
- 			'core.page_header' 	  			=> 'theme_globals',
-			'core.user_add_after' 		    => 'add_account_group',
-			'core.memberlist_view_profile'  => 'memberlist_character_info',
-			'core.viewtopic_post_row_after' => 'viewtopic_character_info'
- 		);
- 	}
-
-	/** @var \displaycoffee\khyeras\core\page_info */
-	protected $page_info;
-
-	/** @var \displaycoffee\khyeras\core\global_member_info */
-	protected $global_member_info;
-
-	/** @var \displaycoffee\khyeras\core\member_character_info */
-	protected $member_character_info;
-
-	/** @var \displaycoffee\khyeras\core\topic_character_info */
-	protected $topic_character_info;
-
-	/** @var \displaycoffee\khyeras\core\add_to_group */
-	protected $add_to_group;
-
- 	/**
- 	 * Constructor
- 	 *
-	 * @param \displaycoffee\khyeras\core\page_info		$page_info		Testing a page_info
-	 * @param \displaycoffee\khyeras\core\global_member_info		$global_member_info		Testing a global_member_info
-	 * @param \displaycoffee\khyeras\core\member_character_info		$member_character_info		Testing a add_to_group
-	 * @param \displaycoffee\khyeras\core\topic_character_info		$topic_character_info		Testing a add_to_group
-	 * @param \displaycoffee\khyeras\core\add_to_group		$add_to_group		Testing a add_to_group
- 	*/
- 	public function __construct(\displaycoffee\khyeras\core\page_info $page_info, \displaycoffee\khyeras\core\global_member_info $global_member_info, \displaycoffee\khyeras\core\member_character_info $member_character_info, \displaycoffee\khyeras\core\topic_character_info $topic_character_info, \displaycoffee\khyeras\core\add_to_group $add_to_group)
- 	{
-		$this->page_info       = $page_info;
-		$this->global_member_info       = $global_member_info;
-		$this->member_character_info       = $member_character_info;
-		$this->topic_character_info       = $topic_character_info;
-		$this->add_to_group       = $add_to_group;
- 	}
-
- 	/**
- 	 * Set global data for theme use
- 	*/
- 	public function theme_globals($event) {
-		$this->page_info->khy_set_page_details($event);
-
-		$this->global_member_info->khy_set_member_details();
- 	}
-
-	/**
-	* Determine member stats for memberlist_view page
-	*/
-	public function memberlist_character_info($event) {
-		$this->member_character_info->khy_member_character_info($event);
+class main_listener implements EventSubscriberInterface {
+	static public function getSubscribedEvents() {
+		return array(
+			'core.user_add_after'           => 'add_account_to_group',
+			'core.memberlist_view_profile'  => 'set_character_info_to_profile',
+			'core.viewtopic_post_row_after' => 'set_character_info_to_viewtopic',
+			'core.page_header'              => 'set_theme_globals'
+		);
 	}
 
+	/** @var \displaycoffee\khyeras\core\account_to_group */
+	protected $account_to_group;
+
+	/** @var \displaycoffee\khyeras\core\character_info_profile */
+	protected $character_info_profile;
+
+	/** @var \displaycoffee\khyeras\core\character_info_viewtopic */
+	protected $character_info_viewtopic;
+
+	/** @var \displaycoffee\khyeras\core\global_info */
+	protected $global_info;
+
 	/**
-	* Determine member stats for viewtopic_body page
+	* Constructor
+	*
+	* @param \displaycoffee\khyeras\core\account_to_group         $account_to_group         Add account to group
+	* @param \displaycoffee\khyeras\core\character_info_profile   $character_info_profile   Add character info to profile
+	* @param \displaycoffee\khyeras\core\character_info_viewtopic $character_info_viewtopic Add character info to viewtopic
+	* @param \displaycoffee\khyeras\core\global_info              $global_info              Add global variables
 	*/
-	public function viewtopic_character_info($event) {
-		$this->topic_character_info->khy_topic_character_info($event);
-	}
+ 	public function __construct(\displaycoffee\khyeras\core\account_to_group $account_to_group, \displaycoffee\khyeras\core\character_info_profile $character_info_profile, \displaycoffee\khyeras\core\character_info_viewtopic $character_info_viewtopic, \displaycoffee\khyeras\core\global_info $global_info) {
+		$this->account_to_group         = $account_to_group;
+		$this->character_info_profile   = $character_info_profile;
+		$this->character_info_viewtopic = $character_info_viewtopic;
+		$this->global_info              = $global_info;
+ 	}
 
 	/**
 	* Add user to correct group and rank after registration
 	*/
-	public function add_account_group($event) {
-		$this->add_to_group->khy_add_to_group($event);
+	public function add_account_to_group($event) {
+		$this->account_to_group->khy_add_account_to_group($event);
+	}
+
+	/**
+	* Set character stats for memberlist profile
+	*/
+	public function set_character_info_to_profile($event) {
+		$this->character_info_profile->khy_set_character_info_to_profile($event);
+	}
+
+	/**
+	* Set character stats for viewtopic
+	*/
+	public function set_character_info_to_viewtopic($event) {
+		$this->character_info_viewtopic->khy_set_character_info_to_viewtopic($event);
+	}
+
+	/**
+	* Set global variables for theme
+	*/
+	public function set_theme_globals($event) {
+		// Set global member variables
+		$this->global_info->khy_set_member_info($event);
+
+		// Set global page variables
+		$this->global_info->khy_set_page_info($event);
 	}
 }

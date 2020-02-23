@@ -1,11 +1,11 @@
 <?php
-
 /**
 *
 * Khy'eras places Code. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2020, Adria, https://github.com/displaycoffee
 * @license GNU General Public License, version 2 (GPL-2.0)
+*
 */
 
 namespace displaycoffee\khyeras\core;
@@ -14,11 +14,7 @@ if (!defined('IN_PHPBB')) {
 	exit;
 }
 
-/**
-* Class for updating user groups and ranks after registration
-*/
-
-class add_to_group {
+class account_to_group {
 	/** @var \phpbb\cache\driver\driver_interface */
 	protected $db;
 
@@ -31,13 +27,15 @@ class add_to_group {
 	* @param \phpbb\db\driver\driver_interface $db            DBAL object
 	* @param string                            $table_prefix  Table Prefix
 	*/
-
 	public function __construct(\phpbb\db\driver\driver_interface $db, $table_prefix) {
-		$this->db		    = $db;
+		$this->db           = $db;
 		$this->table_prefix = $table_prefix;
 	}
 
-	public function khy_add_to_group($event) {
+	/**
+	* Add user to correct group and rank after registration
+	*/
+	public function khy_add_account_to_group($event) {
 		// Get the user id and account type
 		$user_id = $event['user_id'];
 		$acc_type = $event['cp_data']['pf_account_type'];

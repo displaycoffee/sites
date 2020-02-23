@@ -1,11 +1,11 @@
 <?php
-
 /**
 *
 * Khy'eras places Code. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2020, Adria, https://github.com/displaycoffee
 * @license GNU General Public License, version 2 (GPL-2.0)
+*
 */
 
 namespace displaycoffee\khyeras\core;
@@ -14,11 +14,7 @@ if (!defined('IN_PHPBB')) {
 	exit;
 }
 
-/**
-* Class for adding character info to viewtopic pages
-*/
-
-class topic_character_info {
+class character_info_viewtopic {
 	/** @var \phpbb\template\template */
 	protected $template;
 
@@ -31,13 +27,15 @@ class topic_character_info {
 	* @param \phpbb\template\template                   $template  Template object
 	* @param \displaycoffee\khyeras\utilities\utilities $utilities Utilities helper functions
 	*/
-
 	public function __construct(\phpbb\template\template $template, \displaycoffee\khyeras\utilities\utilities $utilities) {
 		$this->template  = $template;
 		$this->utilities = $utilities;
 	}
 
-	public function khy_topic_character_info($event) {
+	/**
+	* Set character stats for viewtopic
+	*/
+	public function khy_set_character_info_to_viewtopic($event) {
 		$pf = $event['post_row'];
 		$character_details = array();
 

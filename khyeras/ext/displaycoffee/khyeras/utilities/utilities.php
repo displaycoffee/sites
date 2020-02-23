@@ -1,8 +1,7 @@
 <?php
-
 /**
 *
-* Khy'eras Custom Code. An extension for the phpBB Forum Software package.
+* Khy'eras places Code. An extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2020, Adria, https://github.com/displaycoffee
 * @license GNU General Public License, version 2 (GPL-2.0)
@@ -14,10 +13,6 @@ namespace displaycoffee\khyeras\utilities;
 if (!defined('IN_PHPBB')) {
 	exit;
 }
-
-/**
-* Utilities/helper functions
-*/
 
 class utilities {
 	/**
@@ -38,7 +33,7 @@ class utilities {
 	}
 
 	/**
-	* Determine what user level is
+	* Determine character level
 	*/
 	public function get_level($exp)	{
 		$per_increment = 5;
@@ -62,7 +57,7 @@ class utilities {
 	}
 
 	/**
-	* Determine what total user hp/mp is
+	* Determine character HP/MP
 	*/
 	public function get_life_modifier($race, $class, $level) {
 		// Set base modifiers
@@ -133,7 +128,7 @@ class utilities {
 	}
 
 	/**
-	* Calculate currency total
+	* Calculate character currency
 	*/
 	public function calc_currency($total_copper) {
 		$currency_ratio = 100;
@@ -157,7 +152,7 @@ class utilities {
 }
 
 /**
-* Calculate modifiers for hp and mp
+* Calculate modifiers for HP/MP
 */
 function calc_life_modifier($options, $list) {
 	$hp_mod = 0;

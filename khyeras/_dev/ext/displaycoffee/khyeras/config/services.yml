@@ -5,26 +5,15 @@ services:
     displaycoffee.khyeras.listener:
         class: displaycoffee\khyeras\event\main_listener
         arguments:
-            - '@displaycoffee.khyeras.page_info'
-            - '@displaycoffee.khyeras.global_member_info'
-            - '@displaycoffee.khyeras.member_character_info'
-            - '@displaycoffee.khyeras.topic_character_info'
-            - '@displaycoffee.khyeras.add_to_group'
+            - '@displaycoffee.khyeras.account_to_group'
+            - '@displaycoffee.khyeras.character_info_profile'
+            - '@displaycoffee.khyeras.character_info_viewtopic'
+            - '@displaycoffee.khyeras.global_info'
         tags:
             - { name: event.listener }
 
-    displaycoffee.khyeras.page_info:
-        class: displaycoffee\khyeras\core\page_info
-        arguments:
-            - '@template'
-            - '@user'
-            - '@dbal.conn'
-            - '@displaycoffee.khyeras.utilities'
-            - '%core.table_prefix%'
-            - '%core.php_ext%'
-
-    displaycoffee.khyeras.global_member_info:
-        class: displaycoffee\khyeras\core\global_member_info
+    displaycoffee.khyeras.global_info:
+        class: displaycoffee\khyeras\core\global_info
         arguments:
             - '@template'
             - '@user'
@@ -33,21 +22,22 @@ services:
             - '@profilefields.lang_helper'
             - '@displaycoffee.khyeras.utilities'
             - '%core.table_prefix%'
+            - '%core.php_ext%'
 
-    displaycoffee.khyeras.add_to_group:
-        class: displaycoffee\khyeras\core\add_to_group
+    displaycoffee.khyeras.account_to_group:
+        class: displaycoffee\khyeras\core\account_to_group
         arguments:
             - '@dbal.conn'
             - '%core.table_prefix%'
 
-    displaycoffee.khyeras.member_character_info:
-        class: displaycoffee\khyeras\core\member_character_info
+    displaycoffee.khyeras.character_info_profile:
+        class: displaycoffee\khyeras\core\character_info_profile
         arguments:
             - '@template'
             - '@displaycoffee.khyeras.utilities'
 
-    displaycoffee.khyeras.topic_character_info:
-        class: displaycoffee\khyeras\core\topic_character_info
+    displaycoffee.khyeras.character_info_viewtopic:
+        class: displaycoffee\khyeras\core\character_info_viewtopic
         arguments:
             - '@template'
             - '@displaycoffee.khyeras.utilities'
