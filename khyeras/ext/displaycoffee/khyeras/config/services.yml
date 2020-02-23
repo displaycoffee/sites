@@ -12,6 +12,9 @@ services:
             - '@profilefields.lang_helper'
             - '@phpbb.pages.operator'
             - '@displaycoffee.khyeras.page_info'
+            - '@displaycoffee.khyeras.add_to_group'
+            - '@displaycoffee.khyeras.member_character_info'
+            - '@displaycoffee.khyeras.topic_character_info'
             - '%core.php_ext%'
         tags:
             - { name: event.listener }
@@ -19,5 +22,27 @@ services:
     displaycoffee.khyeras.page_info:
         class: displaycoffee\khyeras\core\page_info
         arguments:
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@displaycoffee.khyeras.utilities'
+            - '%core.table_prefix%'
+            - '%core.php_ext%'
+
+    displaycoffee.khyeras.add_to_group:
+        class: displaycoffee\khyeras\core\add_to_group
+        arguments:
             - '@dbal.conn'
             - '%core.table_prefix%'
+
+    displaycoffee.khyeras.member_character_info:
+        class: displaycoffee\khyeras\core\member_character_info
+        arguments:
+            - '@template'
+            - '@displaycoffee.khyeras.utilities'
+
+    displaycoffee.khyeras.topic_character_info:
+        class: displaycoffee\khyeras\core\topic_character_info
+        arguments:
+            - '@template'
+            - '@displaycoffee.khyeras.utilities'

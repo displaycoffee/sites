@@ -54,6 +54,15 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	/** @var \displaycoffee\khyeras\core\page_info */
 	protected $page_info;
 
+	/** @var \displaycoffee\khyeras\core\add_to_group */
+	protected $add_to_group;
+
+	/** @var \displaycoffee\khyeras\core\member_character_info */
+	protected $member_character_info;
+
+	/** @var \displaycoffee\khyeras\core\topic_character_info */
+	protected $topic_character_info;
+
 	/** @var string phpEx */
 	protected $php_ext;
 
@@ -66,9 +75,12 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 	 * @param \phpbb\profilefields\manager			$manager			Profile fields manager
 	 * @param \phpbb\profilefields\lang_helper		$lang_helper		Profile fields language helper
 	 * @param \displaycoffee\khyeras\core\page_info		$page_info		Testing a page_info
+	 * @param \displaycoffee\khyeras\core\add_to_group		$add_to_group		Testing a add_to_group
+	 * @param \displaycoffee\khyeras\core\member_character_info		$member_character_info		Testing a add_to_group
+	 * @param \displaycoffee\khyeras\core\topic_character_info		$topic_character_info		Testing a add_to_group
 	 * @param string                        		$php_ext			phpEx
  	*/
- 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \phpbb\pages\operators\page $pages, \displaycoffee\khyeras\core\page_info $page_info, $php_ext)
+ 	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \phpbb\pages\operators\page $pages, \displaycoffee\khyeras\core\page_info $page_info, \displaycoffee\khyeras\core\add_to_group $add_to_group, \displaycoffee\khyeras\core\member_character_info $member_character_info, \displaycoffee\khyeras\core\topic_character_info $topic_character_info, $php_ext)
  	{
  		$this->template    = $template;
  		$this->user		   = $user;
@@ -77,6 +89,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 		$this->lang_helper = $lang_helper;
 		$this->pages       = $pages;
 		$this->page_info       = $page_info;
+		$this->add_to_group       = $add_to_group;
+		$this->member_character_info       = $member_character_info;
+		$this->topic_character_info       = $topic_character_info;
 		$this->php_ext	   = $php_ext;
  	}
 
@@ -85,8 +100,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  	*/
  	public function theme_globals($event)
  	{
-		// This is how to get page_info from core/page_info
-		//var_dump($this->page_info->get_khy_pages());
+
 
 		// Get the user id, group id, and lang_id
 		$user_id = $this->user->data['user_id'];
@@ -164,323 +178,52 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 		// --- START --- Page Display Details
 
-		// Set page_script_name and initial page_type
-		$page_script_name = str_replace('.' . $this->php_ext, '', $this->user->page['page_name']);
-		$page_type = $page_script_name;
 
-		// Get page titles
-		$page_title = strtolower($event['page_title']);
-		$page_l_title = strtolower($this->template->retrieve_var('L_TITLE'));
-
-		// If on a certain type of page, set the page_type or page_title
-		if (strpos($page_type, 'thankslist/givens') !== false) {
-			$page_type = 'search';
-			$page_title = 'thanks';
-		} elseif (strpos($page_type, 'app/') !== false) {
-			$page_type = 'page';
-		} elseif ($page_type == 'mcp' && $page_l_title && ($page_title != $page_l_title)) {
-			$page_title = $page_l_title;
-		}
-
-		// Piece together page details for handle
-		$page_patterns = array('/&amp;/', '/[^a-zA-Z ]/', '/ +/', '/-+/');
-		$page_replaces = array('and', '', '-', '-');
-		$page_handle = $page_type . '-' . preg_replace($page_patterns, $page_replaces, $page_title);
-
-		// Truncate handle if its too long
-		$class_limit = 50;
-		if (strlen($page_handle) > $class_limit) {
-			$page_handle = trim(substr($page_handle, 0, $class_limit), '-');
-		}
 
 		// --- END --- Page Display Details
 
 		// --- START --- Variable Assignment
 
-		// Assign global template variables for re-use
- 		$this->template->assign_vars(array(
-			'KHY_SCRIPT_NAME'		=> str_replace('app/', '', $page_script_name),
-			'KHY_HANDLE_SHORT'		=> $page_type,
-			'KHY_HANDLE'   			=> $page_handle,
-			'KHY_LINKS'		   		=> '!!TO_DO!!',
-			'KHY_USER_GROUP_ID'     => $group_id,
-			'KHY_USER_GROUP_NAME'   => $group_row['group_name'],
-			'KHY_USER_ACCOUNT_TYPE' => $account_type
- 		));
+		$this->page_info->khy_set_page_details($event);
 
-		// Only add these variables for characters
-		if ($account_type == 'Character') {
-			$this->template->assign_vars(array(
-				'KHY_USER_RACE'  => rtrim($race_options, ', '),
-				'KHY_USER_CLASS' => rtrim($class_options, ', '),
-				'KHY_USER_LEVEL' => get_level($pf['c_experience']['value'])
-	 		));
-		}
 
-		// Add list of completed achievements only for achievement page
-		if ($page_script_name == 'app/gameplay-achievements') {
-			$this->template->assign_vars(array(
-				'KHY_USER_ACHIEVEMENTS' => $pf['c_achievements']['value']
-	 		));
-		}
+		// // Assign global template variables for re-use
+ 		// $this->template->assign_vars(array(
+		// 	// 'KHY_USER_GROUP_ID'     => $group_id,
+		// 	// 'KHY_USER_GROUP_NAME'   => $group_row['group_name'],
+		// 	// 'KHY_USER_ACCOUNT_TYPE' => $account_type
+ 		// ));
+		//
+		// // Only add these variables for characters
+		// if ($account_type == 'Character') {
+		// 	$this->template->assign_vars(array(
+		// 		// 'KHY_USER_RACE'  => rtrim($race_options, ', '),
+		// 		// 'KHY_USER_CLASS' => rtrim($class_options, ', '),
+		// 		//'KHY_USER_LEVEL' => get_level($pf['c_experience']['value'])
+	 	// 	));
+		// }
 
 		// --- END --- Variable Assignment
  	}
 
 	/**
-	 * Determine member stats for memberlist_view page
+	* Determine member stats for memberlist_view page
 	*/
-	public function memberlist_character_info($event)
-	{
-		$pf = $event['profile_fields']['row'];
-
-		// Only assign these variable if character account
-		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
-			$race = $pf['PROFILE_C_RACE_OPTS_VALUE'];
-			$class = $pf['PROFILE_C_CLASS_OPTS_VALUE'];
-			$level = get_level($pf['PROFILE_C_EXPERIENCE_VALUE']);
-			$currency = calc_currency($pf['PROFILE_C_COPPER_VALUE']);
-
-			$this->template->assign_vars(array(
-				'KHY_MEMBER_LEVEL'    => $level,
-				'KHY_MEMBER_TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
-				'KHY_MEMBER_TOTAL_MP' => get_life_modifier($race, $class, $level)[1],
-				'KHY_MEMBER_COPPER'   => $currency['Copper'],
-				'KHY_MEMBER_SILVER'   => $currency['Silver'],
-				'KHY_MEMBER_GOLD'     => $currency['Gold'],
-				'KHY_MEMBER_PLATINUM' => $currency['Platinum']
-	 		));
-		}
+	public function memberlist_character_info($event) {
+		$this->member_character_info->khy_member_character_info($event);
 	}
 
 	/**
-	 * Determine member stats for viewtopic_body page
+	* Determine member stats for viewtopic_body page
 	*/
-	public function viewtopic_character_info($event)
-	{
-		$pf = $event['post_row'];
-		$character_details = array();
-
-		// Only assign these variable if character account
-		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
-			$race = $pf['PROFILE_C_RACE_OPTS_VALUE'];
-			$class = $pf['PROFILE_C_CLASS_OPTS_VALUE'];
-			$level = get_level($pf['PROFILE_C_EXPERIENCE_VALUE']);
-			$currency = calc_currency($pf['PROFILE_C_COPPER_VALUE']);
-
-			$character_details = array(
-				'PROFILE_LEVEL'	   => $level,
-				'PROFILE_TOTAL_HP' => get_life_modifier($race, $class, $level)[0],
-				'PROFILE_TOTAL_MP' => get_life_modifier($race, $class, $level)[1],
-				'PROFILE_COPPER'   => $currency['Copper'],
-				'PROFILE_SILVER'   => $currency['Silver'],
-				'PROFILE_GOLD' 	   => $currency['Gold'],
-				'PROFILE_PLATINUM' => $currency['Platinum']
-			);
-		}
-
-		// Clean description by removing html and bbcode for word count
-		$desc = preg_replace('/(\[.*?\])/', '', strip_tags($pf['MESSAGE'], ''));
-		$desc_count = array(
-			'WORD_COUNT' => str_word_count($desc)
-		);
-
-		// Assign viewtopic variables
-		$this->template->assign_block_vars('postrow.khy', array_merge($character_details, $desc_count));
+	public function viewtopic_character_info($event) {
+		$this->topic_character_info->khy_topic_character_info($event);
 	}
 
 	/**
-	 * Add user to account type group after activation
+	* Add user to correct group and rank after registration
 	*/
-	public function add_account_group($event)
-	{
-		// Get the user id and account type
-		$user_id = $event['user_id'];
-		$acc_type = $event['cp_data']['pf_account_type'];
-
-		// Check the account type field
-		if ($acc_type == 2) {
-			// Writer > 2 / group_id > 8 / rank > 4
-			$group_number = '8';
-			$rank_number = '4';
-		} else if ($acc_type == 3) {
-			// Character > 3 / group_id > 9 / rank > 5
-			$group_number = '9';
-			$rank_number = '5';
-		}
-
-		if ($acc_type == 2 || $acc_type == 3) {
-			// User group cp_data
-			$user_group_arr = array(
-				'group_id'     => $group_number,
-				'user_id' 	   => $user_id,
-				'group_leader' => 0,
-				'user_pending' => 0,
-			);
-
-			// Insert a new row into the db for new group
-			$user_group_sql = 'INSERT INTO ' . USER_GROUP_TABLE . ' ' . $this->db->sql_build_array('INSERT', $user_group_arr);
-
-			// Run the query
-			$user_group_result = $this->db->sql_query($user_group_sql);
-
-			// Be sure to free the result after a SELECT query
-			$this->db->sql_freeresult($user_group_result);
-
-			// User data
-			$user_array = array(
-				'group_id'  => $group_number,
-				'user_rank' => $rank_number
-			);
-
-			// Update users table with default group id
-			$user_sql = 'UPDATE ' . USERS_TABLE . '
-				SET ' . $this->db->sql_build_array('UPDATE', $user_array) . '
-				WHERE user_id = ' . (int) $user_id;
-
-			// Run the query
-			$user_result = $this->db->sql_query($user_sql);
-
-			// Be sure to free the result after a SELECT query
-			$this->db->sql_freeresult($user_result);
-		}
+	public function add_account_group($event) {
+		$this->add_to_group->khy_add_to_group($event);
 	}
-}
-
-/**
-  * Determine what user level is
-*/
-function get_level($exp)
-{
-	$per_increment = 5;
-	$multiplier_increment = 0.5;
-	$base_increment = 25;
-	$max_level = 60;
-	$max_exp = 107970;
-
-	if ($exp < $max_exp) {
-		for ($level = 1; $level <= $max_level; $level++)
-		{
-			$multiplier = $base_increment + floor(($level - 1) / $per_increment) * $multiplier_increment;
-			$current_experience = $multiplier * $level * ($level - 1);
-			if ($current_experience > $exp)
-			{
-				return $level - 1;
-			}
-		}
-	} else {
-		return 60;
-	}
-}
-
-/**
-  * Determine what total user hp/mp is
-*/
-function get_life_modifier($race, $class, $level)
-{
-	// Set base modifiers
-	$base_hp = 20;
-	$base_mp = 15;
-
-	// HP/MP values for races
-	$race_list = [
-		'Dragon' 	   => ['HP' => 3, 'MP' => 2],
-		'Dwarf' 	   => ['HP' => 3, 'MP' => 0],
-		'Elemental'    => ['HP' => 1, 'MP' => 3],
-		'Fae' 	       => ['HP' => 1, 'MP' => 3],
-		'Ghost'        => ['HP' => 2, 'MP' => 2],
-		'Human' 	   => ['HP' => 2, 'MP' => 2],
-		'Kerasoka' 	   => ['HP' => 2, 'MP' => 0],
-		'Korcai' 	   => ['HP' => 2, 'MP' => 1],
-		'Lumeacia'     => ['HP' => 1, 'MP' => 3],
-		'Shapeshifter' => ['HP' => 2, 'MP' => 2],
-		'Ue\'drahc'    => ['HP' => 3, 'MP' => 2],
-		'Empty'        => ['HP' => 0, 'MP' => 0]
-	];
-
-	// Get race modifiers by calculating average
-	$race_modifiers = calc_life_modifier($race, $race_list);
-
-	// HP/MP values for classes
-	$class_list = [
-		'Alchemist'   => ['HP' => 2, 'MP' => 2],
-		'Barbarian'   => ['HP' => 3, 'MP' => 0],
-		'Bard' 		  => ['HP' => 2, 'MP' => 2],
-		'Cleric'	  => ['HP' => 2, 'MP' => 3],
-		'Druid' 	  => ['HP' => 2, 'MP' => 3],
-		'Fighter'     => ['HP' => 3, 'MP' => 1],
-		'Magical'     => ['HP' => 1, 'MP' => 3],
-		'Monk' 		  => ['HP' => 2, 'MP' => 1],
-		'Paladin'     => ['HP' => 3, 'MP' => 2],
-		'Physical'    => ['HP' => 3, 'MP' => 1],
-		'Ranger' 	  => ['HP' => 2, 'MP' => 1],
-		'Restoration' => ['HP' => 2, 'MP' => 3],
-		'Rogue' 	  => ['HP' => 2, 'MP' => 1],
-		'Sorcerer'    => ['HP' => 1, 'MP' => 3],
-		'Summoner'    => ['HP' => 1, 'MP' => 3],
-		'Wizard'      => ['HP' => 1, 'MP' => 3],
-		'Empty'  	  => ['HP' => 0, 'MP' => 0]
-	];
-
-	// Get class modifiers by calculating average
-	$class_modifiers = calc_life_modifier($class, $class_list);
-
-	// Add total hp/mp modifiers
-	$hp_modifer = $class_modifiers[0] + $race_modifiers[0];
-	$mp_modifer = $class_modifiers[1] + $race_modifiers[1];
-
-	// Get bonus modifier
-	$bonus_hp_modifier = 0;
-	$bonus_mp_modifier = 0;
-
-	if ($level % 10 == 0) {
-		$bonus_hp_modifier = ($level / 10) * $hp_modifer;
-		$bonus_mp_modifier = ($level / 10) * $mp_modifer;
-	}
-
-	// Get total hp/mp
-	$total_hp = (($base_hp + $class_modifiers[0] + $race_modifiers[0]) * round(($level / 2))) + $bonus_hp_modifier;
-	$total_mp = (($base_mp + $class_modifiers[1] + $race_modifiers[1]) * round(($level / 2))) + $bonus_mp_modifier;
-
-	return [$total_hp, $total_mp];
-}
-
-/**
-  * Calculate modifiers for hp and mp
-*/
-function calc_life_modifier($options, $list) {
-	$hp_mod = 0;
-	$mp_mod = 0;
-	$selected_options = explode(', ', $options);
-
-	foreach ($selected_options as $selected)
-	{
-		$hp_mod += $list[$selected]['HP'];
-		$mp_mod += $list[$selected]['MP'];
-	}
-
-	return [round($hp_mod / count($selected_options)), round($mp_mod / count($selected_options))];
-}
-
-/**
-  * Calculate currency total
-*/
-function calc_currency($total_copper) {
-	$currency_ratio = 100;
-
-	$copper = $total_copper % $currency_ratio;
-	$total_silver = $total_copper / $currency_ratio;
-	$silver = $total_silver % $currency_ratio;
-	$total_gold = $total_silver / $currency_ratio;
-	$gold = $total_gold % $currency_ratio;
-	$platinum = floor($total_gold / $currency_ratio);
-
-	$currency = [
-		'Copper'   => $copper,
-		'Silver'   => $silver,
-		'Gold' 	   => $gold,
-		'Platinum' => $platinum
-	];
-
-	return $currency;
 }
