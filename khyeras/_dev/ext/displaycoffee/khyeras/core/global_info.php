@@ -221,23 +221,17 @@ class global_info {
 				'url'      => $row['page_route'],
 				'is_nav'   => ($page_order <= 2) ? true : false,
 				'level'    => $page_order,
-				'parent'   => $page_crumbs[$page_order - 2],
+				'parent'   => $page_crumbs ? $page_crumbs[count($page_crumbs) - 1] : false,
 				'crumbs'   => $page_crumbs
 			];
 
 			$page_links[$row['page_route']] = $page_data;
-
-			// if ($page_data['parent'] && !is_array($page_data['parent'])) {
-			// 	$test = explode(':', $page_data['parent'])[1];
-			//
-			// 	$page_links[$test]['test'] = 'yup';
-			// }
 		}
 
 		// Be sure to free the result after a SELECT query
 		$this->db->sql_freeresult($page_result);
 
-		//var_dump($page_links);
+		var_dump(create_navlinks($page_links));
 
 		// --- END --- Page Link Building
 
@@ -301,4 +295,61 @@ function create_breadcrumbs($desc) {
 	}
 
 	return $crumbs;
+}
+
+/**
+* Create breadcrumbs function
+*/
+function create_navlinks($links) {
+	$new_links = [];
+
+	// Get all top level nodes into $new_links
+	// Add remaining nodes to $children
+	foreach ($links as $key => $value) {
+		if (!$value['parent']) {
+
+			$new_links[$key] = $value;
+
+
+		} else {
+
+			// if ($new_links[$value['parent']]) {
+			//
+			// 	$new_links[$value['parent']]['children'][$key] = $value;
+			//
+			// } else {
+
+				$crumbs_count = count($value['crumbs']);
+
+				for ($i = 0; $i < $crumbs_count; $i++) {
+
+					$current_crumb = $value['crumbs'][$i];
+					$previous_crumb = $value['crumbs'][$i - 1];
+
+					if ($previous_crumb) {
+
+						if (is_array($current_crumb)) {
+
+							for ($j = 0; $j < count($current_crumb); $j++) {
+
+								$new_links[$previous_crumb]['children'][$current_crumb[$j]]['children'][$key] = $value;
+
+							}
+
+						} else {
+
+
+
+
+							$new_links[$previous_crumb]['children'][$current_crumb]['children'][$key] = $value;
+
+						}
+
+					}
+
+				}
+		}
+	}
+
+	return $new_links;
 }
