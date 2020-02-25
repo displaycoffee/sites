@@ -203,7 +203,7 @@ class global_info {
 		// Create the SQL statement for page data
 		$page_sql = 'SELECT *
 			FROM ' . $pages_table . '
-			ORDER BY page_order ASC, page_id ASC';
+			ORDER BY page_order ASC, page_title ASC';
 
 		// Run the query
 		$page_result = $this->db->sql_query($page_sql);
@@ -213,16 +213,16 @@ class global_info {
 			// Get last number in page order
 			$page_order = intval(substr($row['page_order'], -1));
 
-			// Get page breadcrumb data
-			$page_crumbs = create_breadcrumbs($row['page_description']);
+			// Get page description
+			$page_desc = $row['page_description'] ? $row['page_description'] : false;
 
 			$page_data = [
 				'label'    => $row['page_title'],
 				'url'      => $row['page_route'],
 				'is_nav'   => ($page_order <= 2) ? true : false,
 				'level'    => $page_order,
-				'parent'   => $page_crumbs ? $page_crumbs[count($page_crumbs) - 1] : false,
-				'crumbs'   => $page_crumbs
+				'crumbs'   => create_breadcrumbs($page_desc),
+				'desc'     => $page_desc
 			];
 
 			$page_links[$row['page_route']] = $page_data;
@@ -230,8 +230,6 @@ class global_info {
 
 		// Be sure to free the result after a SELECT query
 		$this->db->sql_freeresult($page_result);
-
-		var_dump(create_navlinks($page_links));
 
 		// --- END --- Page Link Building
 
@@ -242,8 +240,10 @@ class global_info {
 			'KHY_SCRIPT_NAME'       => str_replace('app/', '', $page_script_name),
 			'KHY_HANDLE_SHORT'      => $page_type,
 			'KHY_HANDLE'            => $page_handle,
-			//'KHY_LINKS'             => $page_links
+			'KHY_LINKS'             => $page_links,
+			'KHY_NAV_LINKS'         => create_navlinks($page_links)
  		));
+
 
 		// Add list of completed achievements only for achievement page
 		if ($page_script_name == 'app/gameplay-achievements') {
@@ -260,41 +260,44 @@ class global_info {
 * Create breadcrumbs function
 */
 function create_breadcrumbs($desc) {
-	if ($desc != 'false') {
-		// Set initial crumbs array
-		$crumbs = array();
+	if ($desc) {
+		// Set initial breadcrumbs array
+		$breadcrumbs = array();
 
 		// Split the description for the first time
-		$parent_array = explode(' > ', $desc);
-		$parent_length = count($parent_array);
+		$parent = explode(' | ', $desc);
 
-		// Loop through the parent crumbs
-		for ($i = 0; $i < $parent_length; $i++) {
-			$current =  $parent_array[$i];
+		// Loop through the parent breadcrumbs
+		for ($i = 0; $i < count($parent); $i++) {
+			$current =  $parent[$i];
 
-			// If the current parent contains a | character, split again
-			if (strpos($current, ' | ') !== false) {
-				$child_crumbs = array();
-				$child_array = explode(' | ', $current);
-				$child_length = count($child_array);
+			// If the current parent contains a > character, split again
+			if (strpos($current, ' > ') !== false) {
+				$children = explode(' > ', $current);
 
-				// Loop through child crumbs and add into a child array
-				for ($j = 0; $j < $child_length; $j++) {
-					array_push($child_crumbs, $child_array[$j]);
+				// Loop through child breadcrumbs and add into breadcrumbs
+				for ($j = 0; $j < count($children); $j++) {
+					$current_child = $children[$j];
+
+					// If the element is in the array, push a slash
+					// Means the category is in multiple categories
+					if (in_array($current_child, $breadcrumbs)) {
+						array_push($breadcrumbs, '/');
+					} else {
+						// Otherwise, just add new breadcrumbs
+						array_push($breadcrumbs, $children[$j]);
+					}
 				}
-
-				// Then push child array to crumbs
-				array_push($crumbs, $child_crumbs);
 			} else {
-				// Push parent value to crumbs
-				array_push($crumbs, $current);
+				// If there is no additional seperator, push parent value to breadcrumbs
+				array_push($breadcrumbs, $current);
 			}
 		}
 	} else {
-		$crumbs = false;
+		$breadcrumbs = false;
 	}
 
-	return $crumbs;
+	return $breadcrumbs;
 }
 
 /**
@@ -303,51 +306,36 @@ function create_breadcrumbs($desc) {
 function create_navlinks($links) {
 	$new_links = [];
 
-	// Get all top level nodes into $new_links
-	// Add remaining nodes to $children
 	foreach ($links as $key => $value) {
-		if (!$value['parent']) {
-
+		// If there is no desc, then the key should be a main level node
+		if (!$value['desc']) {
 			$new_links[$key] = $value;
-
-
 		} else {
+			// Split the description for the first time
+			$parent = explode(' | ',  $value['desc']);
 
-			// if ($new_links[$value['parent']]) {
-			//
-			// 	$new_links[$value['parent']]['children'][$key] = $value;
-			//
-			// } else {
+			// Loop through the parent links
+			for ($i = 0; $i < count($parent); $i++) {
+				$current =  $parent[$i];
 
-				$crumbs_count = count($value['crumbs']);
+				// If the current parent contains a > character, split again
+				if (strpos($current, ' > ') !== false) {
+					$children = explode(' > ', $current);
+					$children_length = count($children);
 
-				for ($i = 0; $i < $crumbs_count; $i++) {
-
-					$current_crumb = $value['crumbs'][$i];
-					$previous_crumb = $value['crumbs'][$i - 1];
-
-					if ($previous_crumb) {
-
-						if (is_array($current_crumb)) {
-
-							for ($j = 0; $j < count($current_crumb); $j++) {
-
-								$new_links[$previous_crumb]['children'][$current_crumb[$j]]['children'][$key] = $value;
-
-							}
-
-						} else {
-
-
-
-
-							$new_links[$previous_crumb]['children'][$current_crumb]['children'][$key] = $value;
-
-						}
-
+					// Create a path based on count and push by array index values
+					if ($children_length == 1) {
+						$new_links[$children[0]]['children'][$key] = $value;
+					} else if ($children_length == 2) {
+						$new_links[$children[0]]['children'][$children[1]]['children'][$key] = $value;
+					} else if ($children_length == 3) {
+						$new_links[$children[0]]['children'][$children[1]]['children'][$children[2]]['children'][$key] = $value;
 					}
-
+				} else {
+					// If there is no additional seperator, add key value to main node
+					$new_links[$current]['children'][$key] = $value;
 				}
+			}
 		}
 	}
 
