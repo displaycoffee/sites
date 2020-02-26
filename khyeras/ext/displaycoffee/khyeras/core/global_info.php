@@ -111,31 +111,9 @@ class global_info {
 
 		// Only do the below actions on character accounts
 		if ($group_row['group_name'] == 'Characters') {
-			// race_opts - field information
-			$race = $pf['c_race_opts'];
-			$race_values = explode(';', $race['value']);
-
-			// race_opts - empty string to add comma separated options
-			$race_options = false;
-
-			// race_opts - loop through each race option
-			for ($i = 0; $i < count($race_values); $i++) {
-				$current = $this->lang_helper->get($race['data']['field_id'], $lang_id, $race_values[$i]);
-				$race_options = $race_options . $current . ', ';
-			}
-
-			// class_opts - field information
-			$class = $pf['c_class_opts'];
-			$class_values = explode(';', $class['value']);
-
-			// class_opts - empty string to add comma separated options
-			$class_options = false;
-
-			// class_opts - loop through each class option
-			for ($j = 0; $j < count($class_values); $j++) {
-				$current = $this->lang_helper->get($class['data']['field_id'], $lang_id, $class_values[$j]);
-				$class_options = $class_options . $current . ', ';
-			}
+			// Get user race and class
+			$user_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
+			$user_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
 		}
 
 		// --- END --- Profile Field Information
@@ -145,8 +123,8 @@ class global_info {
 		$character_array = array();
 		if ($account_type == 'Character') {
 			$character_array = array(
-				'KHY_USER_RACE'  => rtrim($race_options, ', '),
-				'KHY_USER_CLASS' => rtrim($class_options, ', '),
+				'KHY_USER_RACE'  => $user_race,
+				'KHY_USER_CLASS' => $user_class,
 				'KHY_USER_LEVEL' => $this->utilities->get_level($pf['c_experience']['value'])
 	 		);
 		}
@@ -240,10 +218,9 @@ class global_info {
 			'KHY_SCRIPT_NAME'       => str_replace('app/', '', $page_script_name),
 			'KHY_HANDLE_SHORT'      => $page_type,
 			'KHY_HANDLE'            => $page_handle,
-			'KHY_LINKS'             => $page_links,
-			'KHY_NAV_LINKS'         => create_navlinks($page_links)
+			//'KHY_LINKS'             => $page_links,
+			//'KHY_NAV_LINKS'         => create_navlinks($page_links)
  		));
-
 
 		// Add list of completed achievements only for achievement page
 		if ($page_script_name == 'app/gameplay-achievements') {
@@ -253,6 +230,62 @@ class global_info {
 		}
 
 		// --- END --- Variable Assignment
+	}
+
+	/**
+	* Get details of characters
+	*/
+	public function khy_get_character_details($event) {
+		// Get the lang_id
+		$lang_id = $this->user->lang_id ? $this->user->lang_id : 1;
+
+		// Create users table prefix
+		$users_table = $this->table_prefix . 'users';
+
+		// Empty object to store characters
+		$characters = [];
+
+		// Create the SQL statement for character data
+		$character_sql = 'SELECT *
+			FROM ' . $users_table . '
+			WHERE group_id=9 ORDER BY user_id ASC';
+
+		// Run the query
+		$character_result = $this->db->sql_query($character_sql);
+
+		// Loops through the chracter rows and add to characters
+		while ($row = $this->db->sql_fetchrow($character_result)) {
+			$character_data = [
+				'id'          => $row['user_id'],
+				'name'        => $row['username'],
+				'last_active' => $this->user->format_date($row['user_lastvisit']),
+				'avatar'      => $row['user_avatar'] ? $row['user_avatar'] : false
+			];
+
+			$characters[$row['user_id']] = $character_data;
+		}
+
+		// Be sure to free the result after a SELECT query
+		$this->db->sql_freeresult($character_result);
+
+		// Load profile field language
+		$this->lang_helper->load_option_lang($lang_id);
+
+		// Loop through characters array
+		foreach ($characters as $key => $value) {
+			// Get chracter profile field information
+			$pf = $this->manager->grab_profile_fields_data($value['id'])[$value['id']];
+
+			// Get user race and class
+			$character_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
+			$character_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
+
+			// Add details to characters array
+			$characters[$value['id']]['race'] = $character_race;
+			$characters[$value['id']]['class'] = $character_class;
+		}
+
+		var_dump($characters);
 	}
 }
 
@@ -340,4 +373,23 @@ function create_navlinks($links) {
 	}
 
 	return $new_links;
+}
+
+/**
+* Translate multi-select fields like race and class options
+*/
+function translate_multi_fields($field, $language, $lang_id) {
+	// Split field by semi-colon
+	$value_array = explode(';', $field['value']);
+
+	// Empty string to add comma separated options
+	$value_options = false;
+
+	// Loop through each option and concat string
+	for ($i = 0; $i < count($value_array); $i++) {
+		$current = $language->get($field['data']['field_id'], $lang_id, $value_array[$i]);
+		$value_options = $value_options . $current . ', ';
+	}
+
+	return rtrim($value_options, ', ');
 }

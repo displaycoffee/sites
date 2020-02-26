@@ -83,5 +83,8 @@ class main_listener implements EventSubscriberInterface {
 
 		// Set global page variables
 		$this->global_info->khy_set_page_info($event);
+
+		// Get details of characters
+		$this->global_info->khy_get_character_details($event);
 	}
 }
