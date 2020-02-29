@@ -236,56 +236,157 @@ class global_info {
 	* Get details of characters
 	*/
 	public function khy_get_character_details($event) {
-		// Get the lang_id
-		$lang_id = $this->user->lang_id ? $this->user->lang_id : 1;
+		// Set page_script_name and initial page_type
+		$page_script_name = str_replace('.' . $this->php_ext, '', $this->user->page['page_name']);
+		$page_type = $page_script_name;
 
-		// Create users table prefix
-		$users_table = $this->table_prefix . 'users';
+		// Don't run any of the below code unless on the correct pages
+		if ($page_script_name == 'app/members-character-census' || $page_script_name == 'app/members-character-listing') {
+			// Get the lang_id
+			$lang_id = $this->user->lang_id ? $this->user->lang_id : 1;
 
-		// Empty object to store characters
-		$characters = [];
+			// Create users table prefix
+			$users_table = $this->table_prefix . 'users';
 
-		// Create the SQL statement for character data
-		$character_sql = 'SELECT *
-			FROM ' . $users_table . '
-			WHERE group_id=9 ORDER BY user_id ASC';
+			// Empty object to store characters
+			$characters = [];
 
-		// Run the query
-		$character_result = $this->db->sql_query($character_sql);
+			// Empty object to store counts for stats
+			$races_count = [];
+			$races_count_expanded = [];
+			$classes_count = [];
+			$classes_count_expanded = [];
+			$residences_count = [];
 
-		// Loops through the chracter rows and add to characters
-		while ($row = $this->db->sql_fetchrow($character_result)) {
-			$character_data = [
-				'id'          => $row['user_id'],
-				'name'        => $row['username'],
-				'last_active' => $this->user->format_date($row['user_lastvisit']),
-				'avatar'      => $row['user_avatar'] ? $row['user_avatar'] : false
-			];
+			// Create the SQL statement for character data
+			$character_sql = 'SELECT *
+				FROM ' . $users_table . '
+				WHERE group_id=9 ORDER BY user_id ASC';
 
-			$characters[$row['user_id']] = $character_data;
+			// Run the query
+			$character_result = $this->db->sql_query($character_sql);
+
+			// Loops through the chracter rows and add to characters
+			while ($row = $this->db->sql_fetchrow($character_result)) {
+				$character_data = [
+					'id'          => $row['user_id'],
+					'name'        => $row['username'],
+					'last_active' => $this->user->format_date($row['user_lastpost_time']),
+					'avatar'      => $row['user_avatar'] ? $row['user_avatar'] : false
+				];
+
+				$characters[$row['user_id']] = $character_data;
+			}
+
+			// Be sure to free the result after a SELECT query
+			$this->db->sql_freeresult($character_result);
+
+			// Load profile field language
+			$this->lang_helper->load_option_lang($lang_id);
+
+			// Loop through characters array
+			foreach ($characters as $key => $value) {
+				// Get chracter profile field information
+				$pf = $this->manager->grab_profile_fields_data($value['id'])[$value['id']];
+
+				// Set level and currenty for later Variables
+				$character_level = $this->utilities->get_level($pf['c_experience']['value']);
+				$character_currency = $this->utilities->calc_currency($pf['c_copper']['value']);
+
+				// Get user race, class, and residence
+				$character_race_type = translate_multi_fields($pf['c_race_type'], $this->lang_helper, $lang_id);
+				$character_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
+				$character_class_type = translate_multi_fields($pf['c_class_type'], $this->lang_helper, $lang_id);
+				$character_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
+				$character_residence = $pf['c_residence']['value'] ? $pf['c_residence']['value'] : false;
+
+				// Add details to character data
+				$character_data = [
+					'race'      => $character_race,
+					'class'     => $character_class,
+					'residence' => $character_residence,
+					'level'     => $character_level,
+					'hp'        => $this->utilities->get_life_modifier($character_race, $character_class, $character_level)[0],
+					'mp'        => $this->utilities->get_life_modifier($character_race, $character_class, $character_level)[1],
+					'copper'    => $character_currency['Copper'],
+					'silver'    => $character_currency['Silver'],
+					'gold'      => $character_currency['Gold'],
+					'platinum'  => $character_currency['Platinum']
+				];
+
+				// Add details to characters array
+				$characters[$value['id']] = array_merge($characters[$value['id']], $character_data);
+
+				// Break up race to add to count
+				$race_array = explode(', ', $character_race);
+
+				for ($i = 0; $i < count($race_array); $i++) {
+					$current_race = $race_array[$i];
+
+					// Add counts for all races with Half-breeds not seperated
+					$race_key = ($character_race_type == 'Half-breed') ? 'Half-breed' : $current_race;
+					$races_count[$race_key] = get_stat_count($races_count[$race_key]);
+
+					// Add counts for races with Half-breeds seperated
+					$races_count_expanded[$current_race] = get_stat_count($races_count_expanded[$current_race]);
+				}
+
+				// Break up class to add to count
+				$class_array = explode(', ', $character_class);
+
+				for ($j = 0; $j < count($class_array); $j++) {
+					$current_class = $class_array[$j];
+
+					// Fix label for Draconic classes
+					if ($current_class == 'Physical' || $current_class == 'Magical' || $current_class == 'Restoration') {
+						$current_class = 'Draconic - ' . $current_class;
+					}
+
+					// Add counts for all classes with Dual not seperated
+					$class_key = ($character_class_type == 'Dual') ? 'Dual' : $current_class;
+					$classes_count[$class_key] = get_stat_count($classes_count[$class_key]);
+
+					// Add counts for classes with Dual seperated
+					$classes_count_expanded[$current_class] = get_stat_count($classes_count_expanded[$current_class]);
+				}
+
+				// Add residence count
+				if ($character_residence) {
+					// Set array of places we want to show in the count
+					$allowed_residences = array('Tviyr', 'Ninraih', 'Irtuen Reaches', 'Fellsgard', 'Verdant Row', 'Ajteire', 'Domrhask');
+
+					// If the residence is not in $allowed_residences, add as "Elsewhere"
+					$residence_key = in_array($character_residence, $allowed_residences) ? $character_residence : 'Elsewhere';
+
+					// Add counts for residences
+					$residences_count[$residence_key] = get_stat_count($residences_count[$residence_key]);
+				}
+			}
+
+			// Adjust race and class count for Half-breed and Dual
+			if ($races_count['Half-breed']) {
+				$races_count['Half-breed'] = $races_count['Half-breed'] / 2;
+			}
+			if ($classes_count['Dual']) {
+				$classes_count['Dual'] = $classes_count['Dual'] / 2;
+			}
+
+			// --- START --- Variable Assignment
+
+			// Assign global template variables for re-use
+			$this->template->assign_vars(array(
+				'KHY_CHARACTERS'             => $characters,
+				'KHY_RACES_COUNT'            => $races_count,
+				'KHY_RACES_COUNT_EXPANDED'   => $races_count_expanded,
+				'KHY_CLASSES_COUNT'          => $classes_count,
+				'KHY_CLASSES_COUNT_EXPANDED' => $classes_count_expanded,
+				'KHY_RESIDENCES_COUNT'       => $residences_count
+	 		));
+
+			var_dump($characters);
+
+			// --- END --- Variable Assignment
 		}
-
-		// Be sure to free the result after a SELECT query
-		$this->db->sql_freeresult($character_result);
-
-		// Load profile field language
-		$this->lang_helper->load_option_lang($lang_id);
-
-		// Loop through characters array
-		foreach ($characters as $key => $value) {
-			// Get chracter profile field information
-			$pf = $this->manager->grab_profile_fields_data($value['id'])[$value['id']];
-
-			// Get user race and class
-			$character_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
-			$character_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
-
-			// Add details to characters array
-			$characters[$value['id']]['race'] = $character_race;
-			$characters[$value['id']]['class'] = $character_class;
-		}
-
-		var_dump($characters);
 	}
 }
 
@@ -392,4 +493,16 @@ function translate_multi_fields($field, $language, $lang_id) {
 	}
 
 	return rtrim($value_options, ', ');
+}
+
+
+/**
+* Get stat count for things like number of races or classes
+*/
+function get_stat_count($object) {
+	if ($object) {
+		return $object + 1;
+	} else {
+		return 1;
+	}
 }
