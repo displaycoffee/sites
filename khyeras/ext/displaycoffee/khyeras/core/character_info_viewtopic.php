@@ -36,24 +36,28 @@ class character_info_viewtopic {
 	* Set character stats for viewtopic
 	*/
 	public function khy_set_character_info_to_viewtopic($event) {
+		// Set up variable shortcuts
+		$template = $this->template;
+		$utilities = $this->utilities;
+		$prefix = 'PROFILE_C_';
+
+		// Call common utilities
+		$common = $utilities->common();
+
+		// Get profile fields information
 		$pf = $event['post_row'];
+
+		// Set empty character details array
 		$character_details = array();
 
 		// Only assign these variable if character account
-		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
-			$race = $pf['PROFILE_C_RACE_OPTS_VALUE'];
-			$class = $pf['PROFILE_C_CLASS_OPTS_VALUE'];
-			$level = $this->utilities->get_level($pf['PROFILE_C_EXPERIENCE_VALUE']);
-			$currency = $this->utilities->calc_currency($pf['PROFILE_C_COPPER_VALUE']);
+		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == $common['acc_type_3']['name_s']) {
+			$level = $utilities->get_level($pf[$prefix . 'EXPERIENCE_VALUE']);
 
 			$character_details = array(
 				'PROFILE_LEVEL'	   => $level,
-				'PROFILE_TOTAL_HP' => $this->utilities->get_life_modifier($race, $class, $level)[0],
-				'PROFILE_TOTAL_MP' => $this->utilities->get_life_modifier($race, $class, $level)[1],
-				'PROFILE_COPPER'   => $currency['Copper'],
-				'PROFILE_SILVER'   => $currency['Silver'],
-				'PROFILE_GOLD' 	   => $currency['Gold'],
-				'PROFILE_PLATINUM' => $currency['Platinum']
+				'PROFILE_STATS'    => $utilities->get_life_modifier($pf[$prefix . 'RACE_OPTS_VALUE'], $pf[$prefix . 'CLASS_OPTS_VALUE'], $level),
+				'PROFILE_CURRENCY' => $utilities->calc_currency($pf[$prefix . 'COPPER_VALUE'])
 			);
 		}
 
@@ -64,6 +68,6 @@ class character_info_viewtopic {
 		);
 
 		// Assign viewtopic variables
-		$this->template->assign_block_vars('postrow.khy', array_merge($character_details, $desc_count));
+		$template->assign_block_vars('postrow.khy', array_merge($character_details, $desc_count));
 	}
 }

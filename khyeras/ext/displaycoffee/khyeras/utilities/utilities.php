@@ -15,6 +15,65 @@ if (!defined('IN_PHPBB')) {
 }
 
 class utilities {
+	/** @var string groups_table */
+	protected $groups_table;
+
+	/** @var string pages_table */
+	protected $pages_table;
+
+	/** @var string users_table */
+	protected $users_table;
+
+	/** @var string user_group_table */
+	protected $user_group_table;
+
+	/**
+	* Constructor
+	*
+	* @param string $groups_table      Table Prefix
+	* @param string $pages_table       Table Prefix
+	* @param string $users_table       Table Prefix
+	* @param string $user_group_table  Table Prefix
+	*/
+	public function __construct($groups_table, $pages_table, $users_table, $user_group_table) {
+		$this->groups_table     = $groups_table;
+		$this->pages_table      = $pages_table;
+		$this->users_table      = $users_table;
+		$this->user_group_table = $user_group_table;
+	}
+
+	/**
+	* Common extension variables
+	*/
+	public function common() {
+		$common = [
+			'tables' => [
+				'groups'      => $this->groups_table,
+				'pages'       => $this->pages_table,
+				'users'       => $this->users_table,
+				'user_groups' => $this->user_group_table
+			],
+			'acc_type_2' => [
+				'type'   => 2,
+				'name_s' => 'Writer',
+				'name_p' => 'Writers',
+				'group'  => 8,
+				'rank'   => 4,
+				'hex'    => 'f19051'
+			],
+			'acc_type_3' => [
+				'type'   => 3,
+				'name_s' => 'Character',
+				'name_p' => 'Characters',
+				'group'  => 9,
+				'rank'   => 5,
+				'hex'    => '73abd0'
+			]
+		];
+
+		return $common;
+	}
+
 	/**
 	* Turn strings into hyphen separated handles
 	*/
@@ -124,7 +183,13 @@ class utilities {
 		$total_hp = (($base_hp + $class_modifiers[0] + $race_modifiers[0]) * round(($level / 2))) + $bonus_hp_modifier;
 		$total_mp = (($base_mp + $class_modifiers[1] + $race_modifiers[1]) * round(($level / 2))) + $bonus_mp_modifier;
 
-		return [$total_hp, $total_mp];
+		// Set stats to return
+		$stats = [
+			'hp' => $total_hp,
+			'mp' => $total_mp
+		];
+
+		return $stats;
 	}
 
 	/**
@@ -133,6 +198,7 @@ class utilities {
 	public function calc_currency($total_copper) {
 		$currency_ratio = 100;
 
+		// Currency calculations
 		$copper = $total_copper % $currency_ratio;
 		$total_silver = $total_copper / $currency_ratio;
 		$silver = $total_silver % $currency_ratio;
@@ -140,11 +206,12 @@ class utilities {
 		$gold = $total_gold % $currency_ratio;
 		$platinum = floor($total_gold / $currency_ratio);
 
+		// Set currency to return
 		$currency = [
-			'Copper'   => $copper,
-			'Silver'   => $silver,
-			'Gold' 	   => $gold,
-			'Platinum' => $platinum
+			'copper'   => $copper,
+			'silver'   => $silver,
+			'gold' 	   => $gold,
+			'platinum' => $platinum
 		];
 
 		return $currency;

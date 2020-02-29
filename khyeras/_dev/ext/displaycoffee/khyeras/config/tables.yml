@@ -1,0 +1,5 @@
+parameters:
+    displaycoffee.khyeras.tables.groups: '%core.table_prefix%groups'
+    displaycoffee.khyeras.tables.pages: '%core.table_prefix%pages'
+    displaycoffee.khyeras.tables.users: '%core.table_prefix%users'
+    displaycoffee.khyeras.tables.user_group: '%core.table_prefix%user_group'

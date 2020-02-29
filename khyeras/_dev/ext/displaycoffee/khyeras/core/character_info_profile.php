@@ -36,23 +36,25 @@ class character_info_profile {
 	* Set character stats for memberlist profile
 	*/
 	public function khy_set_character_info_to_profile($event) {
+		// Set up variable shortcuts
+		$template = $this->template;
+		$utilities = $this->utilities;
+		$prefix = 'PROFILE_C_';
+
+		// Call common utilities
+		$common = $utilities->common();
+
+		// Get profile fields information
 		$pf = $event['profile_fields']['row'];
 
 		// Only assign these variable if character account
-		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == 'Character') {
-			$race = $pf['PROFILE_C_RACE_OPTS_VALUE'];
-			$class = $pf['PROFILE_C_CLASS_OPTS_VALUE'];
-			$level = $this->utilities->get_level($pf['PROFILE_C_EXPERIENCE_VALUE']);
-			$currency = $this->utilities->calc_currency($pf['PROFILE_C_COPPER_VALUE']);
+		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == $common['acc_type_3']['name_s']) {
+			$level = $utilities->get_level($pf[$prefix . 'EXPERIENCE_VALUE']);
 
-			$this->template->assign_vars(array(
+			$template->assign_vars(array(
 				'KHY_MEMBER_LEVEL'    => $level,
-				'KHY_MEMBER_TOTAL_HP' => $this->utilities->get_life_modifier($race, $class, $level)[0],
-				'KHY_MEMBER_TOTAL_MP' => $this->utilities->get_life_modifier($race, $class, $level)[1],
-				'KHY_MEMBER_COPPER'   => $currency['Copper'],
-				'KHY_MEMBER_SILVER'   => $currency['Silver'],
-				'KHY_MEMBER_GOLD'     => $currency['Gold'],
-				'KHY_MEMBER_PLATINUM' => $currency['Platinum']
+				'KHY_MEMBER_STATS'    => $utilities->get_life_modifier($pf[$prefix . 'RACE_OPTS_VALUE'], $pf[$prefix . 'CLASS_OPTS_VALUE'], $level),
+				'KHY_MEMBER_CURRENCY' => $utilities->calc_currency($pf[$prefix . 'COPPER_VALUE'])
 	 		));
 		}
 	}

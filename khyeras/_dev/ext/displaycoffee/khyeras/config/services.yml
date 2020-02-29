@@ -1,6 +1,14 @@
+imports:
+    - { resource: tables.yml }
+
 services:
     displaycoffee.khyeras.utilities:
         class: displaycoffee\khyeras\utilities\utilities
+        arguments:
+            - '%displaycoffee.khyeras.tables.groups%'
+            - '%displaycoffee.khyeras.tables.pages%'
+            - '%displaycoffee.khyeras.tables.users%'
+            - '%displaycoffee.khyeras.tables.user_group%'
 
     displaycoffee.khyeras.listener:
         class: displaycoffee\khyeras\event\main_listener
@@ -28,7 +36,7 @@ services:
         class: displaycoffee\khyeras\core\account_to_group
         arguments:
             - '@dbal.conn'
-            - '%core.table_prefix%'
+            - '@displaycoffee.khyeras.utilities'
 
     displaycoffee.khyeras.character_info_profile:
         class: displaycoffee\khyeras\core\character_info_profile

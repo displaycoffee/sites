@@ -71,6 +71,8 @@ class global_info {
 		$group_id = $this->user->data['group_id'];
 		$lang_id = $this->user->lang_id ? $this->user->lang_id : 1;
 
+		var_dump($this->utilities->common());
+
 		// --- START --- Group Information
 
 		// Set table group prefix
