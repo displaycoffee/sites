@@ -15,6 +15,18 @@ if (!defined('IN_PHPBB')) {
 }
 
 class utilities {
+	/** @var \phpbb\user */
+	protected $user;
+
+	/** @var \phpbb\cache\driver\driver_interface */
+	protected $db;
+
+	/** @var \phpbb\group\helper */
+	protected $group_helper;
+
+	/** @var string phpEx */
+	protected $php_ext;
+
 	/** @var string groups_table */
 	protected $groups_table;
 
@@ -30,12 +42,20 @@ class utilities {
 	/**
 	* Constructor
 	*
-	* @param string $groups_table      Table Prefix
-	* @param string $pages_table       Table Prefix
-	* @param string $users_table       Table Prefix
-	* @param string $user_group_table  Table Prefix
+	* @param \phpbb\user                       $user             User object
+	* @param \phpbb\db\driver\driver_interface $db               DBAL object
+	* @param \phpbb\group\helper               $group_helper     Group helper object
+	* @param string                            $php_ext          phpEx
+	* @param string                            $groups_table     Table Prefix
+	* @param string                            $pages_table      Table Prefix
+	* @param string                            $users_table      Table Prefix
+	* @param string                            $user_group_table Table Prefix
 	*/
-	public function __construct($groups_table, $pages_table, $users_table, $user_group_table) {
+	public function __construct(\phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\group\helper $group_helper, $php_ext, $groups_table, $pages_table, $users_table, $user_group_table) {
+		$this->user             = $user;
+		$this->db               = $db;
+		$this->group_helper     = $group_helper;
+		$this->php_ext          = $php_ext;
 		$this->groups_table     = $groups_table;
 		$this->pages_table      = $pages_table;
 		$this->users_table      = $users_table;
@@ -46,30 +66,64 @@ class utilities {
 	* Common extension variables
 	*/
 	public function common() {
+		// Set up variable shortcuts
+		$db = $this->db;
+		$group_helper = $this->group_helper;
+		$php_ext = $this->php_ext;
+		$user = $this->user;
+
+		// Set up common object
 		$common = [
-			'tables' => [
+			'user_id'     => $user->data['user_id'],
+			'script_name' => str_replace('.' . $php_ext, '', $user->page['page_name']),
+			'tables'      => [
 				'groups'      => $this->groups_table,
 				'pages'       => $this->pages_table,
 				'users'       => $this->users_table,
 				'user_groups' => $this->user_group_table
-			],
-			'acc_type_2' => [
-				'type'   => 2,
-				'name_s' => 'Writer',
-				'name_p' => 'Writers',
-				'group'  => 8,
-				'rank'   => 4,
-				'hex'    => 'f19051'
-			],
-			'acc_type_3' => [
-				'type'   => 3,
-				'name_s' => 'Character',
-				'name_p' => 'Characters',
-				'group'  => 9,
-				'rank'   => 5,
-				'hex'    => '73abd0'
 			]
 		];
+
+		// Create the SQL statement for group data
+		$group_sql = 'SELECT *
+			FROM ' . $this->groups_table;
+
+		// Run the query
+		$group_result = $db->sql_query($group_sql);
+
+		// Loops through the group rows and add to common
+		while ($row = $db->sql_fetchrow($group_result)) {
+			// Set group account type id
+			$group_acc = false;
+			if ($row['group_id'] == '8') {
+				$group_acc = '2';
+			} else if ($row['group_id'] == '9') {
+				$group_acc = '3';
+			}
+
+			// Set singular and plural group names
+			$group_name_p = $group_helper->get_name($row['group_name']);
+			$group_name_s = $group_helper->get_rank($row)['title'] ? $group_helper->get_rank($row)['title'] : $group_name_p;
+
+			// Add to group_data
+			$group_data = [
+				'id'     => $row['group_id'],
+				'type'   => $group_acc,
+				'name_s' => $group_name_s,
+				'name_p' => $group_name_p,
+				'rank'   => $row['group_rank'],
+				'hex'    => $row['group_colour']
+			];
+
+			// Add group_data to common
+			$common['groups']['group_' . $row['group_id']] = $group_data;
+		}
+
+		// $group_row should hold the selected data
+		$group_row = $db->sql_fetchrow($group_result);
+
+		// Be sure to free the result after a SELECT query
+		$db->sql_freeresult($group_result);
 
 		return $common;
 	}

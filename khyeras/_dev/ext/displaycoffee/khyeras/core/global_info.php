@@ -66,17 +66,23 @@ class global_info {
 	* Set global member variables
 	*/
 	public function khy_set_member_info($event) {
-		// Get the user id, group id, and lang_id
-		$user_id = $this->user->data['user_id'];
-		$group_id = $this->user->data['group_id'];
-		$lang_id = $this->user->lang_id ? $this->user->lang_id : 1;
+		// Set up variable shortcuts
+		$db = $this->db;
+		$lang_helper = $this->lang_helper;
+		$manager = $this->manager;
+		$template = $this->template;
+		$user = $this->user;
+		$utilities = $this->utilities;
 
-		var_dump($this->utilities->common());
+		// Call common utilities
+		$common = $utilities->common();
+
+		// Get the user id, group id, and lang_id
+		$user_id = $user->data['user_id'];
+		$group_id = $user->data['group_id'];
+		$lang_id = $user->lang_id ? $user->lang_id : 1;
 
 		// --- START --- Group Information
-
-		// Set table group prefix
-		$group_table = $this->table_prefix . 'groups';
 
 		// Get the row of data with selected group_id
 		$group_array = array(
@@ -85,37 +91,37 @@ class global_info {
 
 		// Create the SQL statement for group data
 		$group_sql = 'SELECT group_name
-			FROM ' . $group_table . '
-			WHERE ' . $this->db->sql_build_array('SELECT', $group_array);
+			FROM ' . $common['tables']['groups'] . '
+			WHERE ' . $db->sql_build_array('SELECT', $group_array);
 
 		// Run the query
-		$group_result = $this->db->sql_query($group_sql);
+		$group_result = $db->sql_query($group_sql);
 
 		// $group_row should hold the selected data
-		$group_row = $this->db->sql_fetchrow($group_result);
+		$group_row = $db->sql_fetchrow($group_result);
 
 		// Be sure to free the result after a SELECT query
-		$this->db->sql_freeresult($group_result);
+		$db->sql_freeresult($group_result);
 
 		// --- END --- Group Information
 
 		// --- START --- Profile Field Information
 
 		// Get user profile field information
-		$pf = $this->manager->grab_profile_fields_data($user_id)[$user_id];
+		$pf = $manager->grab_profile_fields_data($user_id)[$user_id];
 
 		// Load profile field language
-		$this->lang_helper->load_option_lang($lang_id);
+		$lang_helper->load_option_lang($lang_id);
 
-		// account_type - field information
+		// Account_type - field information
 		$acc = $pf['account_type'];
-		$account_type = $this->lang_helper->get($acc['data']['field_id'], $lang_id, $acc['value']);
+		$account_type = $lang_helper->get($acc['data']['field_id'], $lang_id, $acc['value']);
 
 		// Only do the below actions on character accounts
-		if ($group_row['group_name'] == 'Characters') {
+		if ($group_row['group_name'] == $common['acc_type_3']['name_p']) {
 			// Get user race and class
-			$user_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
-			$user_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
+			$user_race = translate_multi_fields($pf['c_race_opts'], $lang_helper, $lang_id);
+			$user_class = translate_multi_fields($pf['c_class_opts'], $lang_helper, $lang_id);
 		}
 
 		// --- END --- Profile Field Information
@@ -123,22 +129,22 @@ class global_info {
 		// --- START --- Variable Assignment
 
 		$character_array = array();
-		if ($account_type == 'Character') {
+		if ($account_type == $common['acc_type_3']['name_s']) {
 			$character_array = array(
 				'KHY_USER_RACE'  => $user_race,
 				'KHY_USER_CLASS' => $user_class,
-				'KHY_USER_LEVEL' => $this->utilities->get_level($pf['c_experience']['value'])
-	 		);
+				'KHY_USER_LEVEL' => $utilities->get_level($pf['c_experience']['value'])
+			);
 		}
 
 		$account_array = array(
 			'KHY_USER_GROUP_ID'     => $group_id,
 			'KHY_USER_GROUP_NAME'   => $group_row['group_name'],
 			'KHY_USER_ACCOUNT_TYPE' => $account_type
- 		);
+		);
 
 		// Assign global template variables for re-use
- 		$this->template->assign_vars(array_merge($character_array, $account_array));
+		$template->assign_vars(array_merge($character_array, $account_array));
 
 		// --- END --- Variable Assignment
 	}
@@ -384,8 +390,6 @@ class global_info {
 				'KHY_CLASSES_COUNT_EXPANDED' => $classes_count_expanded,
 				'KHY_RESIDENCES_COUNT'       => $residences_count
 	 		));
-
-			var_dump($characters);
 
 			// --- END --- Variable Assignment
 		}

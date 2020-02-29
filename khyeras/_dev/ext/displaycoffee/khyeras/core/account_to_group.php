@@ -45,12 +45,23 @@ class account_to_group {
 
 		// Get the user id and account type
 		$user_id = $event['user_id'];
-		$acc_type = 'acc_type_' . $event['cp_data']['pf_account_type'];
+		$acc_type = $event['cp_data']['pf_account_type'];
 
-		if ($common[$acc_type]) {
+		// Set group id base on account type
+		$group_id = false;
+		if ($acc_type == 2) {
+			$group_id = 'group_8';
+		} else if ($acc_type == 3) {
+			$group_id = 'group_9';
+		}
+
+		if ($common['groups'][$group_id]) {
+			// Set group data
+			$user_group_data = $common['groups'][$group_id];
+
 			// User group cp_data
 			$user_group_arr = array(
-				'group_id'     => $common[$acc_type]['group'],
+				'group_id'     => $user_group_data['id'],
 				'user_id' 	   => $user_id,
 				'group_leader' => 0,
 				'user_pending' => 0
@@ -67,9 +78,9 @@ class account_to_group {
 
 			// User data
 			$user_array = array(
-				'group_id'    => $common[$acc_type]['group'],
-				'user_rank'   => $common[$acc_type]['rank'],
-				'user_colour' => $common[$acc_type]['hex']
+				'group_id'    => $user_group_data['id'],
+				'user_rank'   => $user_group_data['rank'],
+				'user_colour' => $user_group_data['hex']
 			);
 
 			// Update users table with default group id

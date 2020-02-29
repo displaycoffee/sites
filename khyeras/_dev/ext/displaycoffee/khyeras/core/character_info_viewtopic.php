@@ -39,7 +39,7 @@ class character_info_viewtopic {
 		// Set up variable shortcuts
 		$template = $this->template;
 		$utilities = $this->utilities;
-		$prefix = 'PROFILE_C_';
+		$prefix = 'PROFILE_';
 
 		// Call common utilities
 		$common = $utilities->common();
@@ -51,13 +51,13 @@ class character_info_viewtopic {
 		$character_details = array();
 
 		// Only assign these variable if character account
-		if ($pf['PROFILE_ACCOUNT_TYPE_VALUE'] == $common['acc_type_3']['name_s']) {
-			$level = $utilities->get_level($pf[$prefix . 'EXPERIENCE_VALUE']);
+		if ($pf[$prefix . 'ACCOUNT_TYPE_VALUE'] == $common['groups']['group_9']['name_s']) {
+			$level = $utilities->get_level($pf[$prefix . 'C_EXPERIENCE_VALUE']);
 
 			$character_details = array(
 				'PROFILE_LEVEL'	   => $level,
-				'PROFILE_STATS'    => $utilities->get_life_modifier($pf[$prefix . 'RACE_OPTS_VALUE'], $pf[$prefix . 'CLASS_OPTS_VALUE'], $level),
-				'PROFILE_CURRENCY' => $utilities->calc_currency($pf[$prefix . 'COPPER_VALUE'])
+				'PROFILE_STATS'    => $utilities->get_life_modifier($pf[$prefix . 'C_RACE_OPTS_VALUE'], $pf[$prefix . 'C_CLASS_OPTS_VALUE'], $level),
+				'PROFILE_CURRENCY' => $utilities->calc_currency($pf[$prefix . 'C_COPPER_VALUE'])
 			);
 		}
 

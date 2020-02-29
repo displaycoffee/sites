@@ -5,6 +5,10 @@ services:
     displaycoffee.khyeras.utilities:
         class: displaycoffee\khyeras\utilities\utilities
         arguments:
+            - '@user'
+            - '@dbal.conn'
+            - '@group_helper'
+            - '%core.php_ext%'
             - '%displaycoffee.khyeras.tables.groups%'
             - '%displaycoffee.khyeras.tables.pages%'
             - '%displaycoffee.khyeras.tables.users%'
