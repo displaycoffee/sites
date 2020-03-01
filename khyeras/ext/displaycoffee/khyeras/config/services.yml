@@ -28,13 +28,10 @@ services:
         class: displaycoffee\khyeras\core\global_info
         arguments:
             - '@template'
-            - '@user'
             - '@dbal.conn'
             - '@profilefields.manager'
             - '@profilefields.lang_helper'
             - '@displaycoffee.khyeras.utilities'
-            - '%core.table_prefix%'
-            - '%core.php_ext%'
 
     displaycoffee.khyeras.account_to_group:
         class: displaycoffee\khyeras\core\account_to_group

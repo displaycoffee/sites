@@ -36,12 +36,8 @@ class account_to_group {
 	* Add user to correct group and rank after registration
 	*/
 	public function khy_add_account_to_group($event) {
-		// Set up variable shortcuts
-		$db = $this->db;
-		$utilities = $this->utilities;
-
 		// Call common utilities
-		$common = $utilities->common();
+		$common = $this->utilities->common();
 
 		// Get the user id and account type
 		$user_id = $event['user_id'];
@@ -68,13 +64,13 @@ class account_to_group {
 			);
 
 			// Insert a new row into the db for new group
-			$user_group_sql = 'INSERT INTO ' . $common['tables']['user_groups'] . ' ' . $db->sql_build_array('INSERT', $user_group_arr);
+			$user_group_sql = 'INSERT INTO ' . $common['tables']['user_groups'] . ' ' . $this->db->sql_build_array('INSERT', $user_group_arr);
 
 			// Run the query
-			$user_group_result = $db->sql_query($user_group_sql);
+			$user_group_result = $this->db->sql_query($user_group_sql);
 
 			// Be sure to free the result after a SELECT query
-			$db->sql_freeresult($user_group_result);
+			$this->db->sql_freeresult($user_group_result);
 
 			// User data
 			$user_array = array(
@@ -85,14 +81,14 @@ class account_to_group {
 
 			// Update users table with default group id
 			$user_sql = 'UPDATE ' . $common['tables']['users'] . '
-				SET ' . $db->sql_build_array('UPDATE', $user_array) . '
+				SET ' . $this->db->sql_build_array('UPDATE', $user_array) . '
 				WHERE user_id = ' . (int) $user_id;
 
 			// Run the query
-			$user_result = $db->sql_query($user_sql);
+			$user_result = $this->db->sql_query($user_sql);
 
 			// Be sure to free the result after a SELECT query
-			$db->sql_freeresult($user_result);
+			$this->db->sql_freeresult($user_result);
 		}
 	}
 }

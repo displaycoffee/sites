@@ -63,19 +63,42 @@ class utilities {
 	}
 
 	/**
+	* Calculate character currency
+	*/
+	public function calc_currency($total_copper) {
+		$currency_ratio = 100;
+
+		// Currency calculations
+		$copper = $total_copper % $currency_ratio;
+		$total_silver = $total_copper / $currency_ratio;
+		$silver = $total_silver % $currency_ratio;
+		$total_gold = $total_silver / $currency_ratio;
+		$gold = $total_gold % $currency_ratio;
+		$platinum = floor($total_gold / $currency_ratio);
+
+		// Set currency to return
+		$currency = [
+			'copper'   => $copper,
+			'silver'   => $silver,
+			'gold' 	   => $gold,
+			'platinum' => $platinum
+		];
+
+		return $currency;
+	}
+
+	/**
 	* Common extension variables
 	*/
 	public function common() {
-		// Set up variable shortcuts
-		$db = $this->db;
-		$group_helper = $this->group_helper;
-		$php_ext = $this->php_ext;
-		$user = $this->user;
-
 		// Set up common object
 		$common = [
-			'user_id'     => $user->data['user_id'],
-			'script_name' => str_replace('.' . $php_ext, '', $user->page['page_name']),
+			'user'        => [
+				'id'   	=> $this->user->data['user_id'],
+				'group' => $this->user->data['group_id'],
+				'lang'  => $this->user->lang_id ? $this->user->lang_id : 1
+			],
+			'script_name' => str_replace('.' . $this->php_ext, '', $this->user->page['page_name']),
 			'tables'      => [
 				'groups'      => $this->groups_table,
 				'pages'       => $this->pages_table,
@@ -89,10 +112,10 @@ class utilities {
 			FROM ' . $this->groups_table;
 
 		// Run the query
-		$group_result = $db->sql_query($group_sql);
+		$group_result = $this->db->sql_query($group_sql);
 
 		// Loops through the group rows and add to common
-		while ($row = $db->sql_fetchrow($group_result)) {
+		while ($row = $this->db->sql_fetchrow($group_result)) {
 			// Set group account type id
 			$group_acc = false;
 			if ($row['group_id'] == '8') {
@@ -102,8 +125,8 @@ class utilities {
 			}
 
 			// Set singular and plural group names
-			$group_name_p = $group_helper->get_name($row['group_name']);
-			$group_name_s = $group_helper->get_rank($row)['title'] ? $group_helper->get_rank($row)['title'] : $group_name_p;
+			$group_name_p = $this->group_helper->get_name($row['group_name']);
+			$group_name_s = $this->group_helper->get_rank($row)['title'] ? $this->group_helper->get_rank($row)['title'] : $group_name_p;
 
 			// Add to group_data
 			$group_data = [
@@ -120,29 +143,12 @@ class utilities {
 		}
 
 		// $group_row should hold the selected data
-		$group_row = $db->sql_fetchrow($group_result);
+		$group_row = $this->db->sql_fetchrow($group_result);
 
 		// Be sure to free the result after a SELECT query
-		$db->sql_freeresult($group_result);
+		$this->db->sql_freeresult($group_result);
 
 		return $common;
-	}
-
-	/**
-	* Turn strings into hyphen separated handles
-	*/
-	public function handleize($value) {
-		$pattern = array('/&amp;/', '/[^a-zA-Z ]/', '/ +/', '/-+/');
-		$replacement = array('and', '', '-', '-');
-		$handle = strtolower(preg_replace($pattern, $replacement, $value));
-
-		// Truncate handle if its too long
-		$class_limit = 50;
-		if (strlen($handle) > $class_limit) {
-			$handle = trim(substr($handle, 0, $class_limit), '-');
-		}
-
-		return $handle;
 	}
 
 	/**
@@ -247,28 +253,61 @@ class utilities {
 	}
 
 	/**
-	* Calculate character currency
+	* Get stat count for things like number of races or classes
 	*/
-	public function calc_currency($total_copper) {
-		$currency_ratio = 100;
+	public function get_stat_count($object) {
+		if ($object) {
+			return $object + 1;
+		} else {
+			return 1;
+		}
+	}
 
-		// Currency calculations
-		$copper = $total_copper % $currency_ratio;
-		$total_silver = $total_copper / $currency_ratio;
-		$silver = $total_silver % $currency_ratio;
-		$total_gold = $total_silver / $currency_ratio;
-		$gold = $total_gold % $currency_ratio;
-		$platinum = floor($total_gold / $currency_ratio);
+	/**
+	* Turn strings into hyphen separated handles
+	*/
+	public function handleize($value) {
+		$pattern = array('/&amp;/', '/[^a-zA-Z ]/', '/ +/', '/-+/');
+		$replacement = array('and', '', '-', '-');
+		$handle = strtolower(preg_replace($pattern, $replacement, $value));
 
-		// Set currency to return
-		$currency = [
-			'copper'   => $copper,
-			'silver'   => $silver,
-			'gold' 	   => $gold,
-			'platinum' => $platinum
-		];
+		// Truncate handle if its too long
+		$class_limit = 50;
+		if (strlen($handle) > $class_limit) {
+			$handle = trim(substr($handle, 0, $class_limit), '-');
+		}
 
-		return $currency;
+		return $handle;
+	}
+
+	/**
+	* Check if string is in text
+	*/
+	public function in_string($string, $search) {
+		if (strpos($string, $search) !== false) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	* Translate multi-select fields like race and class options
+	*/
+	public function translate_multi_fields($field, $language, $lang_id) {
+		// Split field by semi-colon
+		$value_array = explode(';', $field['value']);
+
+		// Empty string to add comma separated options
+		$value_options = false;
+
+		// Loop through each option and concat string
+		for ($i = 0; $i < count($value_array); $i++) {
+			$current = $language->get($field['data']['field_id'], $lang_id, $value_array[$i]);
+			$value_options = $value_options . $current . ', ';
+		}
+
+		return rtrim($value_options, ', ');
 	}
 }
 

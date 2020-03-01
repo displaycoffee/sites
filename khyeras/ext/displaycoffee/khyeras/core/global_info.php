@@ -18,9 +18,6 @@ class global_info {
 	/** @var \phpbb\template\template */
 	protected $template;
 
-	/** @var \phpbb\user */
-	protected $user;
-
 	/** @var \phpbb\cache\driver\driver_interface */
 	protected $db;
 
@@ -33,130 +30,84 @@ class global_info {
 	/** @var \displaycoffee\khyeras\utilities\utilities */
 	protected $utilities;
 
-	/** @var string table_prefix */
-	protected $table_prefix;
-
-	/** @var string phpEx */
-	protected $php_ext;
-
 	/**
 	* Constructor
 	*
 	* @param \phpbb\template\template                   $template     Template object
-	* @param \phpbb\user                                $user         User object
 	* @param \phpbb\db\driver\driver_interface          $db           DBAL object
 	* @param \phpbb\profilefields\manager               $manager      Profile fields manager
 	* @param \phpbb\profilefields\lang_helper           $lang_helper  Profile fields language helper
 	* @param \displaycoffee\khyeras\utilities\utilities $utilities Utilities helper functions
-	* @param string                                     $table_prefix Table Prefix
-	* @param string                                     $php_ext      phpEx
 	*/
-	public function __construct(\phpbb\template\template $template, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \displaycoffee\khyeras\utilities\utilities $utilities, $table_prefix, $php_ext) {
+	public function __construct(\phpbb\template\template $template, \phpbb\db\driver\driver_interface $db, \phpbb\profilefields\manager $manager, \phpbb\profilefields\lang_helper $lang_helper, \displaycoffee\khyeras\utilities\utilities $utilities) {
 		$this->template     = $template;
- 		$this->user         = $user;
 		$this->db           = $db;
 		$this->manager      = $manager;
 		$this->lang_helper  = $lang_helper;
 		$this->utilities    = $utilities;
-		$this->table_prefix = $table_prefix;
-		$this->php_ext      = $php_ext;
 	}
 
 	/**
 	* Set global member variables
 	*/
 	public function khy_set_member_info($event) {
-		// Set up variable shortcuts
-		$db = $this->db;
-		$lang_helper = $this->lang_helper;
-		$manager = $this->manager;
-		$template = $this->template;
-		$user = $this->user;
-		$utilities = $this->utilities;
-
 		// Call common utilities
-		$common = $utilities->common();
+		$common = $this->utilities->common();
 
-		// Get the user id, group id, and lang_id
-		$user_id = $user->data['user_id'];
-		$group_id = $user->data['group_id'];
-		$lang_id = $user->lang_id ? $user->lang_id : 1;
-
-		// --- START --- Group Information
-
-		// Get the row of data with selected group_id
-		$group_array = array(
-			'group_id' => $group_id
-		);
-
-		// Create the SQL statement for group data
-		$group_sql = 'SELECT group_name
-			FROM ' . $common['tables']['groups'] . '
-			WHERE ' . $db->sql_build_array('SELECT', $group_array);
-
-		// Run the query
-		$group_result = $db->sql_query($group_sql);
-
-		// $group_row should hold the selected data
-		$group_row = $db->sql_fetchrow($group_result);
-
-		// Be sure to free the result after a SELECT query
-		$db->sql_freeresult($group_result);
-
-		// --- END --- Group Information
-
-		// --- START --- Profile Field Information
+		// Get the user id, group id, group data, and lang_id
+		$user_id = $common['user']['id'];
+		$group_id = $common['user']['group'];
+		$group_data = $common['groups']['group_' . $group_id];
+		$lang_id = $common['user']['lang'];
 
 		// Get user profile field information
-		$pf = $manager->grab_profile_fields_data($user_id)[$user_id];
+		$pf = $this->manager->grab_profile_fields_data($user_id)[$user_id];
 
 		// Load profile field language
-		$lang_helper->load_option_lang($lang_id);
+		$this->lang_helper->load_option_lang($lang_id);
 
 		// Account_type - field information
-		$acc = $pf['account_type'];
-		$account_type = $lang_helper->get($acc['data']['field_id'], $lang_id, $acc['value']);
+		$account_type = $pf['account_type'];
+		$account_type_value = $this->lang_helper->get($account_type['data']['field_id'], $lang_id, $account_type['value']);
 
-		// Only do the below actions on character accounts
-		if ($group_row['group_name'] == $common['acc_type_3']['name_p']) {
-			// Get user race and class
-			$user_race = translate_multi_fields($pf['c_race_opts'], $lang_helper, $lang_id);
-			$user_class = translate_multi_fields($pf['c_class_opts'], $lang_helper, $lang_id);
-		}
+		// Account information for template variables
+		$account_array = array(
+			'KHY_USER_GROUP_ID'     => $group_id,
+			'KHY_USER_GROUP_NAME'   => $group_data['name_p'],
+			'KHY_USER_ACCOUNT_TYPE' => $account_type_value
+		);
 
-		// --- END --- Profile Field Information
-
-		// --- START --- Variable Assignment
-
+		// Only assign the below variables on character accounts
 		$character_array = array();
-		if ($account_type == $common['acc_type_3']['name_s']) {
+		if ($account_type_value == $group_data['name_s']) {
 			$character_array = array(
-				'KHY_USER_RACE'  => $user_race,
-				'KHY_USER_CLASS' => $user_class,
-				'KHY_USER_LEVEL' => $utilities->get_level($pf['c_experience']['value'])
+				'KHY_USER_RACE'  => $this->utilities->translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id),
+				'KHY_USER_CLASS' => $this->utilities->translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id),
+				'KHY_USER_LEVEL' => $this->utilities->get_level($pf['c_experience']['value'])
 			);
 		}
 
-		$account_array = array(
-			'KHY_USER_GROUP_ID'     => $group_id,
-			'KHY_USER_GROUP_NAME'   => $group_row['group_name'],
-			'KHY_USER_ACCOUNT_TYPE' => $account_type
-		);
+		// Add list of completed achievements only for achievement page
+		$achievements_array = array();
+		if ($common['script_name'] == 'app/gameplay-achievements') {
+			$achievements_array = array(
+				'KHY_USER_ACHIEVEMENTS' => $pf['c_achievements']['value']
+			);
+		}
 
 		// Assign global template variables for re-use
-		$template->assign_vars(array_merge($character_array, $account_array));
-
-		// --- END --- Variable Assignment
+		$this->template->assign_vars(array_merge($account_array, $character_array, $achievements_array));
 	}
 
 	/**
 	* Set global page variables
 	*/
 	public function khy_set_page_info($event) {
-		// --- START --- Page Display Details
+		// Call common utilities
+		$common = $this->utilities->common();
 
 		// Set page_script_name and initial page_type
-		$page_script_name = str_replace('.' . $this->php_ext, '', $this->user->page['page_name']);
+		$page_script_name = $common['script_name'];
 		$page_type = $page_script_name;
 
 		// Get page titles
@@ -164,31 +115,21 @@ class global_info {
 		$page_l_title = strtolower($this->template->retrieve_var('L_TITLE'));
 
 		// If on a certain type of page, reset the page_type or page_title
-		if (strpos($page_type, 'thankslist/givens') !== false) {
+		if ($this->utilities->in_string($page_type, 'thankslist/givens')) {
 			$page_type = 'search';
 			$page_title = 'thanks';
-		} elseif (strpos($page_type, 'app/') !== false) {
+		} elseif ($this->utilities->in_string($page_type, 'app/')) {
 			$page_type = 'page';
 		} elseif ($page_type == 'mcp' && $page_l_title && ($page_title != $page_l_title)) {
 			$page_title = $page_l_title;
 		}
-
-		// Piece together page details for handle
-		$page_handle = $page_type . '-' . $this->utilities->handleize($page_title);
-
-		// --- END --- Page Display Details
-
-		// --- START --- Page Link Building
-
-		// Create pages table prefix
-		$pages_table = $this->table_prefix . 'pages';
 
 		// Empty object to store page links
 		$page_links = [];
 
 		// Create the SQL statement for page data
 		$page_sql = 'SELECT *
-			FROM ' . $pages_table . '
+			FROM ' . $common['tables']['pages'] . '
 			ORDER BY page_order ASC, page_title ASC';
 
 		// Run the query
@@ -203,12 +144,12 @@ class global_info {
 			$page_desc = $row['page_description'] ? $row['page_description'] : false;
 
 			$page_data = [
-				'label'    => $row['page_title'],
-				'url'      => $row['page_route'],
-				'is_nav'   => ($page_order <= 2) ? true : false,
-				'level'    => $page_order,
-				'crumbs'   => create_breadcrumbs($page_desc),
-				'desc'     => $page_desc
+				'name'   => $row['page_title'],
+				'url'    => $row['page_route'],
+				'is_nav' => ($page_order <= 2) ? true : false,
+				'level'  => $page_order,
+				'crumbs' => create_breadcrumbs($page_desc, $this->utilities),
+				'desc'   => $page_desc
 			];
 
 			$page_links[$row['page_route']] = $page_data;
@@ -217,44 +158,27 @@ class global_info {
 		// Be sure to free the result after a SELECT query
 		$this->db->sql_freeresult($page_result);
 
-		// --- END --- Page Link Building
-
-		// --- START --- Variable Assignment
-
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(
-			'KHY_SCRIPT_NAME'       => str_replace('app/', '', $page_script_name),
-			'KHY_HANDLE_SHORT'      => $page_type,
-			'KHY_HANDLE'            => $page_handle,
-			//'KHY_LINKS'             => $page_links,
-			//'KHY_NAV_LINKS'         => create_navlinks($page_links)
+			'KHY_SCRIPT_NAME'  => str_replace('app/', '', $page_script_name),
+			'KHY_HANDLE_SHORT' => $page_type,
+			'KHY_HANDLE'       => $page_type . '-' . $this->utilities->handleize($page_title),
+			// 'KHY_LINKS'        => $page_links,
+			// 'KHY_NAV_LINKS'    => create_navlinks($page_links, $this->utilities)
  		));
-
-		// Add list of completed achievements only for achievement page
-		if ($page_script_name == 'app/gameplay-achievements') {
-			$this->template->assign_vars(array(
-				'KHY_USER_ACHIEVEMENTS' => $pf['c_achievements']['value']
-	 		));
-		}
-
-		// --- END --- Variable Assignment
 	}
 
 	/**
 	* Get details of characters
 	*/
 	public function khy_get_character_details($event) {
-		// Set page_script_name and initial page_type
-		$page_script_name = str_replace('.' . $this->php_ext, '', $this->user->page['page_name']);
-		$page_type = $page_script_name;
+		// Call common utilities
+		$common = $this->utilities->common();
 
 		// Don't run any of the below code unless on the correct pages
-		if ($page_script_name == 'app/members-character-census' || $page_script_name == 'app/members-character-listing') {
-			// Get the lang_id
-			$lang_id = $this->user->lang_id ? $this->user->lang_id : 1;
-
-			// Create users table prefix
-			$users_table = $this->table_prefix . 'users';
+		if ($common['script_name'] == 'app/members-character-census' || $common['script_name'] == 'app/members-character-listing') {
+			// Get the user lang_id
+			$lang_id = $common['user']['lang'];
 
 			// Empty object to store characters
 			$characters = [];
@@ -264,11 +188,12 @@ class global_info {
 			$races_count_expanded = [];
 			$classes_count = [];
 			$classes_count_expanded = [];
+			$genders_count = [];
 			$residences_count = [];
 
 			// Create the SQL statement for character data
 			$character_sql = 'SELECT *
-				FROM ' . $users_table . '
+				FROM ' . $common['tables']['users'] . '
 				WHERE group_id=9 ORDER BY user_id ASC';
 
 			// Run the query
@@ -279,7 +204,7 @@ class global_info {
 				$character_data = [
 					'id'          => $row['user_id'],
 					'name'        => $row['username'],
-					'last_active' => $this->user->format_date($row['user_lastpost_time']),
+					'last_active' => $row['user_lastpost_time'],
 					'avatar'      => $row['user_avatar'] ? $row['user_avatar'] : false
 				];
 
@@ -299,27 +224,24 @@ class global_info {
 
 				// Set level and currenty for later Variables
 				$character_level = $this->utilities->get_level($pf['c_experience']['value']);
-				$character_currency = $this->utilities->calc_currency($pf['c_copper']['value']);
 
 				// Get user race, class, and residence
-				$character_race_type = translate_multi_fields($pf['c_race_type'], $this->lang_helper, $lang_id);
-				$character_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
-				$character_class_type = translate_multi_fields($pf['c_class_type'], $this->lang_helper, $lang_id);
-				$character_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
+				$character_race_type = $this->utilities->translate_multi_fields($pf['c_race_type'], $this->lang_helper, $lang_id);
+				$character_race = $this->utilities->translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
+				$character_class_type = $this->utilities->translate_multi_fields($pf['c_class_type'], $this->lang_helper, $lang_id);
+				$character_class = $this->utilities->translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
+				$character_gender = $pf['c_gender']['value'] ? $pf['c_gender']['value'] : false;
 				$character_residence = $pf['c_residence']['value'] ? $pf['c_residence']['value'] : false;
 
 				// Add details to character data
 				$character_data = [
 					'race'      => $character_race,
 					'class'     => $character_class,
+					'gender'    => $character_gender,
 					'residence' => $character_residence,
 					'level'     => $character_level,
-					'hp'        => $this->utilities->get_life_modifier($character_race, $character_class, $character_level)[0],
-					'mp'        => $this->utilities->get_life_modifier($character_race, $character_class, $character_level)[1],
-					'copper'    => $character_currency['Copper'],
-					'silver'    => $character_currency['Silver'],
-					'gold'      => $character_currency['Gold'],
-					'platinum'  => $character_currency['Platinum']
+					'stats'     => $this->utilities->get_life_modifier($character_race, $character_class, $character_level),
+					'currency'  => $this->utilities->calc_currency($pf['c_copper']['value'])
 				];
 
 				// Add details to characters array
@@ -333,10 +255,10 @@ class global_info {
 
 					// Add counts for all races with Half-breeds not seperated
 					$race_key = ($character_race_type == 'Half-breed') ? 'Half-breed' : $current_race;
-					$races_count[$race_key] = get_stat_count($races_count[$race_key]);
+					$races_count[$race_key] = $this->utilities->get_stat_count($races_count[$race_key]);
 
 					// Add counts for races with Half-breeds seperated
-					$races_count_expanded[$current_race] = get_stat_count($races_count_expanded[$current_race]);
+					$races_count_expanded[$current_race] = $this->utilities->get_stat_count($races_count_expanded[$current_race]);
 				}
 
 				// Break up class to add to count
@@ -345,17 +267,45 @@ class global_info {
 				for ($j = 0; $j < count($class_array); $j++) {
 					$current_class = $class_array[$j];
 
-					// Fix label for Draconic classes
+					// Fix name for Draconic classes
 					if ($current_class == 'Physical' || $current_class == 'Magical' || $current_class == 'Restoration') {
 						$current_class = 'Draconic - ' . $current_class;
 					}
 
 					// Add counts for all classes with Dual not seperated
 					$class_key = ($character_class_type == 'Dual') ? 'Dual' : $current_class;
-					$classes_count[$class_key] = get_stat_count($classes_count[$class_key]);
+					$classes_count[$class_key] = $this->utilities->get_stat_count($classes_count[$class_key]);
 
 					// Add counts for classes with Dual seperated
-					$classes_count_expanded[$current_class] = get_stat_count($classes_count_expanded[$current_class]);
+					$classes_count_expanded[$current_class] = $this->utilities->get_stat_count($classes_count_expanded[$current_class]);
+				}
+
+				// Add gender count
+				if ($character_gender) {
+					// Set gender arrays
+					$genders = [
+						'Male'        => array('male', 'man', 'him', 'he', 'his', 'boy'),
+						'Female'      => array('female', 'woman', 'her', 'she', 'hers', 'girl'),
+						'Genderfluid' => array('genderfluid', 'gender fluid', 'gender-fluid'),
+						'Non-binary'  => array('non-binary', 'nonbinary')
+					];
+
+					// Set initial gender key and lowercase text
+					//$gender_key = 'Undisclosed';
+					$gender_lower = strtolower($character_gender);
+
+
+					var_dump($gender_lower);
+
+					// if ($this->utilities->in_string($page_type, 'app/')) {
+					//
+					// }
+
+					// // If the residence is not in $allowed_residences, add as "Elsewhere"
+					// $gender_key = in_array($character_gender, $allowed_residences) ? $character_gender : 'Elsewhere';
+					//
+					// // Add counts for residences
+					// $residences_count[$gender_key] = $this->utilities->get_stat_count($residences_count[$gender_key]);
 				}
 
 				// Add residence count
@@ -367,7 +317,7 @@ class global_info {
 					$residence_key = in_array($character_residence, $allowed_residences) ? $character_residence : 'Elsewhere';
 
 					// Add counts for residences
-					$residences_count[$residence_key] = get_stat_count($residences_count[$residence_key]);
+					$residences_count[$residence_key] = $this->utilities->get_stat_count($residences_count[$residence_key]);
 				}
 			}
 
@@ -379,8 +329,6 @@ class global_info {
 				$classes_count['Dual'] = $classes_count['Dual'] / 2;
 			}
 
-			// --- START --- Variable Assignment
-
 			// Assign global template variables for re-use
 			$this->template->assign_vars(array(
 				'KHY_CHARACTERS'             => $characters,
@@ -391,7 +339,8 @@ class global_info {
 				'KHY_RESIDENCES_COUNT'       => $residences_count
 	 		));
 
-			// --- END --- Variable Assignment
+			var_dump($genders_count);
+			var_dump($characters);
 		}
 	}
 }
@@ -399,7 +348,7 @@ class global_info {
 /**
 * Create breadcrumbs function
 */
-function create_breadcrumbs($desc) {
+function create_breadcrumbs($desc, $utilities) {
 	if ($desc) {
 		// Set initial breadcrumbs array
 		$breadcrumbs = array();
@@ -412,7 +361,7 @@ function create_breadcrumbs($desc) {
 			$current =  $parent[$i];
 
 			// If the current parent contains a > character, split again
-			if (strpos($current, ' > ') !== false) {
+			if ($utilities->in_string($current, ' > ')) {
 				$children = explode(' > ', $current);
 
 				// Loop through child breadcrumbs and add into breadcrumbs
@@ -443,7 +392,7 @@ function create_breadcrumbs($desc) {
 /**
 * Create breadcrumbs function
 */
-function create_navlinks($links) {
+function create_navlinks($links, $utilities) {
 	$new_links = [];
 
 	foreach ($links as $key => $value) {
@@ -459,7 +408,7 @@ function create_navlinks($links) {
 				$current =  $parent[$i];
 
 				// If the current parent contains a > character, split again
-				if (strpos($current, ' > ') !== false) {
+				if ($utilities->in_string($current, ' > ')) {
 					$children = explode(' > ', $current);
 					$children_length = count($children);
 
@@ -480,35 +429,4 @@ function create_navlinks($links) {
 	}
 
 	return $new_links;
-}
-
-/**
-* Translate multi-select fields like race and class options
-*/
-function translate_multi_fields($field, $language, $lang_id) {
-	// Split field by semi-colon
-	$value_array = explode(';', $field['value']);
-
-	// Empty string to add comma separated options
-	$value_options = false;
-
-	// Loop through each option and concat string
-	for ($i = 0; $i < count($value_array); $i++) {
-		$current = $language->get($field['data']['field_id'], $lang_id, $value_array[$i]);
-		$value_options = $value_options . $current . ', ';
-	}
-
-	return rtrim($value_options, ', ');
-}
-
-
-/**
-* Get stat count for things like number of races or classes
-*/
-function get_stat_count($object) {
-	if ($object) {
-		return $object + 1;
-	} else {
-		return 1;
-	}
 }
