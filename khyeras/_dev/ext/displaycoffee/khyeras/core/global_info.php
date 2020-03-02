@@ -141,7 +141,7 @@ class global_info {
 			$page_order = intval(substr($row['page_order'], -1));
 
 			// Get page description
-			$page_desc = $row['page_description'] ? $row['page_description'] : false;
+			$page_desc = $this->utilities->exists($row['page_description'], false);
 
 			$page_data = [
 				'name'   => $row['page_title'],
@@ -201,11 +201,46 @@ class global_info {
 
 			// Loops through the chracter rows and add to characters
 			while ($row = $this->db->sql_fetchrow($character_result)) {
+				// Set user last post time
+				$last_post_time = intval($row['user_lastpost_time']);
+
+				// Set default time text as never
+				$days_since_value = 'Never';
+				$last_post_value = 'Never';
+
+				if ($last_post_time) {
+					// Formate dates as ISO8601
+					$iso_time = 'Y-m-d\TH:i:s';
+
+					// Formate seconds into ISO readable times
+					$formatted_last_post_time = new \DateTime(date($iso_time, $last_post_time));
+					$formatted_current_time = new \DateTime(date($iso_time, $common['user']['time']));
+
+					// Get time difference object
+					$time_diff = $formatted_last_post_time->diff($formatted_current_time);
+
+					// Set days since value
+					$days_since_value = $time_diff->days;
+
+					// If days are over 1, format year, days, and months using utilities function
+					// Otherwise, set to "Less than 1 day ago"
+					if ($days_since_value) {
+						$time_years = $this->utilities->get_time_label($time_diff->y, 'year');
+						$time_months = $this->utilities->get_time_label($time_diff->m, 'month');
+						$time_days = $this->utilities->get_time_label($time_diff->d, 'day');
+						$last_post_value = $time_years . $time_months . $time_days . 'ago';
+					} else {
+						$last_post_value = 'Less than 1 day ago';
+					}
+				}
+
+				// Set initial character details
 				$character_data = [
-					'id'          => $row['user_id'],
-					'name'        => $row['username'],
-					'last_active' => $row['user_lastpost_time'],
-					'avatar'      => $row['user_avatar'] ? $row['user_avatar'] : false
+					'id'         => $row['user_id'],
+					'name'       => $row['username'],
+					'days_since' => $days_since_value,
+					'last_post'  => $last_post_value,
+					'avatar'     => $this->utilities->exists($row['user_avatar'], false)
 				];
 
 				$characters[$row['user_id']] = $character_data;
@@ -230,8 +265,8 @@ class global_info {
 				$character_race = $this->utilities->translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
 				$character_class_type = $this->utilities->translate_multi_fields($pf['c_class_type'], $this->lang_helper, $lang_id);
 				$character_class = $this->utilities->translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
-				$character_gender = $pf['c_gender']['value'] ? $pf['c_gender']['value'] : false;
-				$character_residence = $pf['c_residence']['value'] ? $pf['c_residence']['value'] : false;
+				$character_gender = $this->utilities->exists($pf['c_gender']['value'], 'Undisclosed');
+				$character_residence = $this->utilities->exists($pf['c_residence']['value'], 'Elsewhere');
 
 				// Add details to character data
 				$character_data = [
@@ -283,29 +318,45 @@ class global_info {
 				// Add gender count
 				if ($character_gender) {
 					// Set gender arrays
-					$genders = [
-						'Male'        => array('male', 'man', 'him', 'he', 'his', 'boy'),
-						'Female'      => array('female', 'woman', 'her', 'she', 'hers', 'girl'),
-						'Genderfluid' => array('genderfluid', 'gender fluid', 'gender-fluid'),
-						'Non-binary'  => array('non-binary', 'nonbinary')
-					];
+					$trans = array('transgender', 'transsexual');
+					$nonbinary = array('nonbinary', 'genderqueer', 'bigender', 'genderfluid', 'gender fluid', 'agender', 'demigender');
+					$female = array('female', 'woman', 'her', 'she', 'hers', 'girl');
+					$male = array('male', 'man', 'him', 'he', 'his', 'boy');
+					$none = array('no gender', 'none');
 
-					// Set initial gender key and lowercase text
-					//$gender_key = 'Undisclosed';
-					$gender_lower = strtolower($character_gender);
+					// Set up default gender_key
+					$gender_key = 'Undisclosed';
 
+					// Create a gender handle for splitting up into an array
+					$pattern = array('/-+/', '/[^a-zA-Z]/', '/ +/');
+					$replacement = array('', ' ', ' ');
+					$gender_handle = strtolower(preg_replace($pattern, $replacement, $character_gender));
 
-					var_dump($gender_lower);
+					// Break up gender to add to count
+					$gender_array = explode(' ', $gender_handle);
 
-					// if ($this->utilities->in_string($page_type, 'app/')) {
-					//
-					// }
+					for ($k = 0; $k < count($gender_array); $k++) {
+						$current_gender = $gender_array[$k];
 
-					// // If the residence is not in $allowed_residences, add as "Elsewhere"
-					// $gender_key = in_array($character_gender, $allowed_residences) ? $character_gender : 'Elsewhere';
-					//
-					// // Add counts for residences
-					// $residences_count[$gender_key] = $this->utilities->get_stat_count($residences_count[$gender_key]);
+						// Determine gender key
+						if (in_array($current_gender, $trans)) {
+							$gender_key = 'Transgender';
+						} else if (in_array($current_gender, $nonbinary)) {
+							$gender_key = 'Non-binary';
+						} else if (in_array($current_gender, $female)) {
+							$gender_key = 'Female';
+						} else if (in_array($current_gender, $male)) {
+							$gender_key = 'Male';
+						} else if (in_array($current_gender, $none)) {
+							$gender_key = 'None';
+						}
+
+						// If match was found, break
+						break;
+					}
+
+					// Add counts for gender
+					$genders_count[$gender_key] = $this->utilities->get_stat_count($genders_count[$gender_key]);
 				}
 
 				// Add residence count
@@ -338,9 +389,6 @@ class global_info {
 				'KHY_CLASSES_COUNT_EXPANDED' => $classes_count_expanded,
 				'KHY_RESIDENCES_COUNT'       => $residences_count
 	 		));
-
-			var_dump($genders_count);
-			var_dump($characters);
 		}
 	}
 }

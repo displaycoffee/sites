@@ -88,6 +88,13 @@ class utilities {
 	}
 
 	/**
+	* Check if value exists (uses utilities_exists)
+	*/
+	public function exists($value, $fallback) {
+		return utilities_exists($value, $fallback);
+	}
+
+	/**
 	* Common extension variables
 	*/
 	public function common() {
@@ -96,7 +103,8 @@ class utilities {
 			'user'        => [
 				'id'   	=> $this->user->data['user_id'],
 				'group' => $this->user->data['group_id'],
-				'lang'  => $this->user->lang_id ? $this->user->lang_id : 1
+				'lang'  => utilities_exists($this->user->lang_id, 1),
+				'time'  => $this->user->time_now
 			],
 			'script_name' => str_replace('.' . $this->php_ext, '', $this->user->page['page_name']),
 			'tables'      => [
@@ -126,7 +134,7 @@ class utilities {
 
 			// Set singular and plural group names
 			$group_name_p = $this->group_helper->get_name($row['group_name']);
-			$group_name_s = $this->group_helper->get_rank($row)['title'] ? $this->group_helper->get_rank($row)['title'] : $group_name_p;
+			$group_name_s = utilities_exists($this->group_helper->get_rank($row)['title'], $group_name_p);
 
 			// Add to group_data
 			$group_data = [
@@ -253,6 +261,18 @@ class utilities {
 	}
 
 	/**
+	* Get time label (mostly used in core/global_info)
+	*/
+	public function get_time_label($number, $value) {
+		$time_label = '';
+		if ($number) {
+			$time_label = $number . ' ' . $value . ($number != 1 ? 's' : '') . ' ';
+		}
+
+		return $time_label;
+	}
+
+	/**
 	* Get stat count for things like number of races or classes
 	*/
 	public function get_stat_count($object) {
@@ -284,11 +304,7 @@ class utilities {
 	* Check if string is in text
 	*/
 	public function in_string($string, $search) {
-		if (strpos($string, $search) !== false) {
-			return true;
-		} else {
-			return false;
-		}
+		return strpos($string, $search) !== false ? true : false;
 	}
 
 	/**
@@ -325,4 +341,11 @@ function calc_life_modifier($options, $list) {
 	}
 
 	return [round($hp_mod / count($selected_options)), round($mp_mod / count($selected_options))];
+}
+
+/**
+* Check if value exists
+*/
+function utilities_exists($value, $fallback) {
+	return $value ? $value : $fallback;
 }
