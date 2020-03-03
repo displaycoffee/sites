@@ -81,8 +81,8 @@ class global_info {
 		$character_array = array();
 		if ($account_type_value == $group_data['name_s']) {
 			$character_array = array(
-				'KHY_USER_RACE'  => $this->utilities->translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id),
-				'KHY_USER_CLASS' => $this->utilities->translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id),
+				'KHY_USER_RACE'  => translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id),
+				'KHY_USER_CLASS' => translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id),
 				'KHY_USER_LEVEL' => $this->utilities->get_level($pf['c_experience']['value'])
 			);
 		}
@@ -184,12 +184,18 @@ class global_info {
 			$characters = [];
 
 			// Empty object to store counts for stats
-			$races_count = [];
-			$races_count_expanded = [];
-			$classes_count = [];
-			$classes_count_expanded = [];
-			$genders_count = [];
-			$residences_count = [];
+			$character_census = [
+				'race'      => [],
+				'class'     => [],
+				'gender'    => [],
+				'residence' => []
+			];
+
+			// Name of keys that will appear in census object
+			$limit = 'limit';
+			$limit_expanded = 'limit_expanded';
+			$all = 'all';
+			$all_expanded = 'all_expanded';
 
 			// Create the SQL statement for character data
 			$character_sql = 'SELECT *
@@ -205,7 +211,7 @@ class global_info {
 				$last_post_time = intval($row['user_lastpost_time']);
 
 				// Set default time text as never
-				$days_since_value = 'Never';
+				$days_since_value = -1;
 				$last_post_value = 'Never';
 
 				if ($last_post_time) {
@@ -225,9 +231,9 @@ class global_info {
 					// If days are over 1, format year, days, and months using utilities function
 					// Otherwise, set to "Less than 1 day ago"
 					if ($days_since_value) {
-						$time_years = $this->utilities->get_time_label($time_diff->y, 'year');
-						$time_months = $this->utilities->get_time_label($time_diff->m, 'month');
-						$time_days = $this->utilities->get_time_label($time_diff->d, 'day');
+						$time_years = get_time_label($time_diff->y, 'year');
+						$time_months = get_time_label($time_diff->m, 'month');
+						$time_days = get_time_label($time_diff->d, 'day');
 						$last_post_value = $time_years . $time_months . $time_days . 'ago';
 					} else {
 						$last_post_value = 'Less than 1 day ago';
@@ -261,10 +267,8 @@ class global_info {
 				$character_level = $this->utilities->get_level($pf['c_experience']['value']);
 
 				// Get user race, class, and residence
-				$character_race_type = $this->utilities->translate_multi_fields($pf['c_race_type'], $this->lang_helper, $lang_id);
-				$character_race = $this->utilities->translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
-				$character_class_type = $this->utilities->translate_multi_fields($pf['c_class_type'], $this->lang_helper, $lang_id);
-				$character_class = $this->utilities->translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
+				$character_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
+				$character_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
 				$character_gender = $this->utilities->exists($pf['c_gender']['value'], 'Undisclosed');
 				$character_residence = $this->utilities->exists($pf['c_residence']['value'], 'Elsewhere');
 
@@ -284,22 +288,29 @@ class global_info {
 
 				// Break up race to add to count
 				$race_array = explode(', ', $character_race);
+				$race_count = count($race_array);
 
-				for ($i = 0; $i < count($race_array); $i++) {
+				for ($i = 0; $i < $race_count; $i++) {
 					$current_race = $race_array[$i];
 
-					// Add counts for all races with Half-breeds not seperated
-					$race_key = ($character_race_type == 'Half-breed') ? 'Half-breed' : $current_race;
-					$races_count[$race_key] = $this->utilities->get_stat_count($races_count[$race_key]);
+					// Add counts for census with and without Half-breed separated
+					$race_key = ($race_count > 1) ? 'Half-breed' : $current_race;
+					$race_modifier = ($race_count > 1) ? (1 / 2) : 1;
+					$character_census['race'][$all][$race_key] += $race_modifier;
+					$character_census['race'][$all_expanded][$current_race] += 1;
 
-					// Add counts for races with Half-breeds seperated
-					$races_count_expanded[$current_race] = $this->utilities->get_stat_count($races_count_expanded[$current_race]);
+					// Add limited counts for census with and without Half-breed separated
+					if (check_limit($value['days_since'])) {
+						$character_census['race'][$limit][$race_key] += 1;
+						$character_census['race'][$limit_expanded][$current_race] += 1;
+					}
 				}
 
 				// Break up class to add to count
 				$class_array = explode(', ', $character_class);
+				$class_count = count($class_array);
 
-				for ($j = 0; $j < count($class_array); $j++) {
+				for ($j = 0; $j < $class_count; $j++) {
 					$current_class = $class_array[$j];
 
 					// Fix name for Draconic classes
@@ -307,56 +318,57 @@ class global_info {
 						$current_class = 'Draconic - ' . $current_class;
 					}
 
-					// Add counts for all classes with Dual not seperated
-					$class_key = ($character_class_type == 'Dual') ? 'Dual' : $current_class;
-					$classes_count[$class_key] = $this->utilities->get_stat_count($classes_count[$class_key]);
+					// Add counts for census with and without Dual separated
+					$class_key = ($class_count > 1) ? 'Dual' : $current_class;
+					$class_modifier = ($class_count > 1) ? (1 / 2) : 1;
+					$character_census['class'][$all][$class_key] += $class_modifier;
+					$character_census['class'][$all_expanded][$current_class] += 1;
 
-					// Add counts for classes with Dual seperated
-					$classes_count_expanded[$current_class] = $this->utilities->get_stat_count($classes_count_expanded[$current_class]);
+					// Add limited counts for census with and without Dual separated
+					if (check_limit($value['days_since'])) {
+						$character_census['class'][$limit][$class_key] += 1;
+						$character_census['class'][$limit_expanded][$current_class] += 1;
+					}
 				}
 
 				// Add gender count
 				if ($character_gender) {
-					// Set gender arrays
-					$trans = array('transgender', 'transsexual');
-					$nonbinary = array('nonbinary', 'genderqueer', 'bigender', 'genderfluid', 'gender fluid', 'agender', 'demigender');
-					$female = array('female', 'woman', 'her', 'she', 'hers', 'girl');
-					$male = array('male', 'man', 'him', 'he', 'his', 'boy');
-					$none = array('no gender', 'none');
+					// Set object / array of genders we want to show in the count
+					$allowed_genders = [
+						'Transgender' => array('transgender', 'transsexual'),
+						'Non-binary'  => array('nonbinary', 'genderqueer', 'bigender', 'genderfluid', 'gender fluid', 'agender', 'demigender'),
+						'Female'      => array('female', 'woman', 'her', 'she', 'hers', 'girl'),
+						'Male'        => array('male', 'man', 'him', 'he', 'his', 'boy'),
+						'None'        => array('no gender', 'none'),
+					];
 
 					// Set up default gender_key
 					$gender_key = 'Undisclosed';
 
-					// Create a gender handle for splitting up into an array
+					// Create a gender handle and split into an array
 					$pattern = array('/-+/', '/[^a-zA-Z]/', '/ +/');
 					$replacement = array('', ' ', ' ');
 					$gender_handle = strtolower(preg_replace($pattern, $replacement, $character_gender));
-
-					// Break up gender to add to count
 					$gender_array = explode(' ', $gender_handle);
 
-					for ($k = 0; $k < count($gender_array); $k++) {
-						$current_gender = $gender_array[$k];
-
-						// Determine gender key
-						if (in_array($current_gender, $trans)) {
-							$gender_key = 'Transgender';
-						} else if (in_array($current_gender, $nonbinary)) {
-							$gender_key = 'Non-binary';
-						} else if (in_array($current_gender, $female)) {
-							$gender_key = 'Female';
-						} else if (in_array($current_gender, $male)) {
-							$gender_key = 'Male';
-						} else if (in_array($current_gender, $none)) {
-							$gender_key = 'None';
+					// Loop through the allowed genders
+					foreach ($allowed_genders as $key2 => $value2) {
+						// Now check the user's gender and update the gender key
+						for ($k = 0; $k < count($gender_array); $k++) {
+							if (in_array($gender_array[$k], $value2)) {
+								$gender_key = $key2;
+								break;
+							}
 						}
-
-						// If match was found, break
-						break;
 					}
 
 					// Add counts for gender
-					$genders_count[$gender_key] = $this->utilities->get_stat_count($genders_count[$gender_key]);
+					$character_census['gender'][$all][$gender_key] += 1;
+
+					// Add limited counts for gender
+					if (check_limit($value['days_since'])) {
+						$character_census['gender'][$limit][$gender_key] += 1;
+					}
 				}
 
 				// Add residence count
@@ -368,29 +380,30 @@ class global_info {
 					$residence_key = in_array($character_residence, $allowed_residences) ? $character_residence : 'Elsewhere';
 
 					// Add counts for residences
-					$residences_count[$residence_key] = $this->utilities->get_stat_count($residences_count[$residence_key]);
-				}
-			}
+					$character_census['residence'][$all][$residence_key] += 1;
 
-			// Adjust race and class count for Half-breed and Dual
-			if ($races_count['Half-breed']) {
-				$races_count['Half-breed'] = $races_count['Half-breed'] / 2;
-			}
-			if ($classes_count['Dual']) {
-				$classes_count['Dual'] = $classes_count['Dual'] / 2;
+					// Add limited counts for residences
+					if (check_limit($value['days_since'])) {
+						$character_census['residence'][$limit][$residence_key] += 1;
+					}
+				}
 			}
 
 			// Assign global template variables for re-use
 			$this->template->assign_vars(array(
-				'KHY_CHARACTERS'             => $characters,
-				'KHY_RACES_COUNT'            => $races_count,
-				'KHY_RACES_COUNT_EXPANDED'   => $races_count_expanded,
-				'KHY_CLASSES_COUNT'          => $classes_count,
-				'KHY_CLASSES_COUNT_EXPANDED' => $classes_count_expanded,
-				'KHY_RESIDENCES_COUNT'       => $residences_count
+				'KHY_CHARACTERS' => $characters,
+				'KHY_CENSUS'     => $character_census
 	 		));
 		}
 	}
+}
+
+/**
+* Check limit for census counts
+*/
+
+function check_limit($value) {
+	return ($value > -1 && $value <= 180) ? true : false;
 }
 
 /**
@@ -477,4 +490,37 @@ function create_navlinks($links, $utilities) {
 	}
 
 	return $new_links;
+}
+
+/**
+* Get time label (mostly used in core/global_info)
+*/
+function get_time_label($number, $value) {
+	$time_label = '';
+	if ($number) {
+		$time_label = $number . ' ' . $value . ($number != 1 ? 's' : '') . ' ';
+	}
+
+	return $time_label;
+}
+
+
+
+/**
+* Translate multi-select fields like race and class options
+*/
+function translate_multi_fields($field, $language, $lang_id) {
+	// Split field by semi-colon
+	$value_array = explode(';', $field['value']);
+
+	// Empty string to add comma separated options
+	$value_options = false;
+
+	// Loop through each option and concat string
+	for ($i = 0; $i < count($value_array); $i++) {
+		$current = $language->get($field['data']['field_id'], $lang_id, $value_array[$i]);
+		$value_options = $value_options . $current . ', ';
+	}
+
+	return rtrim($value_options, ', ');
 }
