@@ -13,17 +13,12 @@ checkForEmpty( '.section-mcp-post-details .pagination ul' );
 bannerCodeGenerator('.link-banners img', '#link-banner-code code');
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
-checkImageDimensions( '.page-welcome .image-wrap img' );
-checkImageDimensions( '.postprofile .avatar img' );
+addImageBackground( '.page-welcome .image-wrap img', false );
+addImageBackground( '.postprofile .avatar img', false );
+addImageBackground( '.dropdown-container .user-avatar img', false );
+addImageBackground( '.forum-image img', '1000x500' );
+addImageBackground( '.excerpt .excerpt-image img', '1000x500' );
 detectiPhone();
-
-var forumImage = '.forum-image img';
-checkImageDimensions( forumImage );
-addImageBackground( forumImage, '1000x500' );
-
-var excerptImage = '.excerpt .excerpt-image img';
-checkImageDimensions( excerptImage );
-addImageBackground( excerptImage, '1000x500' );
 
 // Run all jquery functions on document ready
 jQuery( document ).ready( function( $ ) {

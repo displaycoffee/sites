@@ -837,27 +837,13 @@ dl.details {
 /* Positioned Images
 ============================================== */
 
-.image-fit-width, .image-fit-height {
-	max-width: 100%;
-	max-height: 100%;
-	@include sizing(auto !important, auto !important);
-	border: 0;
-	margin: auto;
-	@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0);
-}
-
-.image-fit-width {
-	width: 100% !important;
-	max-height: none;
-}
-
-.image-fit-width:not(.image-centered) {
-	bottom: auto;
-}
-
-.image-fit-height {
-	height: 100% !important;
-	max-width: none;
-	left: -100%;
-	right: -100%;
+.image-fit {
+	background-repeat: no-repeat;
+	background-size: cover;
+	&.image-fit-default img {
+		@include sr-only;
+	}
+	&.image-fit-responsive {
+		background-position: -9999px -9999px;
+	}
 }

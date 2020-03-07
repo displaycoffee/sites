@@ -389,11 +389,6 @@ dl.faq {
 	.excerpt-image {
 		flex: 0 0 200px;
 		margin: 0 20px 0 0;
-		.image-wrap {
-			background-repeat: no-repeat;
-			background-position: -9999px -9999px;
-			background-size: cover;
-		}
 	}
 	.excerpt-details {
 		@include flex(base);

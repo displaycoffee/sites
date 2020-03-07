@@ -215,37 +215,6 @@ function addImageWrapper( selector ) {
 	}
 }
 
-// Check image dimensions and add classes to constrain images in a square space
-function checkImageDimensions( selector ) {
-	var imageSelector = document.querySelectorAll( selector );
-
-	if ( imageSelector && imageSelector.length ) {
-		for ( var i = 0; i < imageSelector.length; i++ ) {
-			var sImage = imageSelector[i];
-
-			// Check if the image has fully loaded before applying classes
-			var imageCheck = new Image();
-			imageCheck.src = sImage.src;
-			imageCheck.onload = function() {
-				var imageWidth = sImage.clientWidth;
-				var imageHeight = sImage.clientHeight;
-				var parentWidth = sImage.parentNode.clientWidth;
-				var parentHeight = sImage.parentNode.clientHeight;
-				var centerThreshold = Math.round( ( imageWidth / parentWidth ) * 100 ); // Determine when images should be centered
-
-				if ( parentHeight > imageHeight ) {
-					sImage.className += ( checkForClasses( sImage ) + 'image-fit-height' );
-				} else {
-					sImage.className += ( checkForClasses( sImage ) + 'image-fit-width' );
-					if ( centerThreshold >= 90 ) {
-						sImage.className += ( checkForClasses( sImage ) + 'image-centered' );
-					}
-				}
-			}
-		}
-	}
-}
-
 // Add background image for responsive banners
 function addImageBackground( selector, respondDimensions ) {
 	var imageSelector = document.querySelectorAll( selector );
@@ -254,19 +223,28 @@ function addImageBackground( selector, respondDimensions ) {
 		for ( var i = 0; i < imageSelector.length; i++ ) {
 			var sImage = imageSelector[i];
 			var sImageSrc = sImage.getAttribute( 'src' );
-			var sImageDimensions = sImageSrc.match( /(\d+x\d+)/g );
-			var sImageExt = sImageSrc.match( /.(jpg|jpeg|gif|png)/g );
+			var sImageClass = 'image-fit image-fit-default';
+			var sImageParent = sImage.parentNode;
 
-			// Create responsive background image src
-			var responsiveImage = sImageSrc;
-			if ( sImageDimensions ) {
-				responsiveImage = sImageSrc.replace( sImageDimensions, respondDimensions );
-			} else if ( sImageExt ) {
-				responsiveImage = sImageSrc.replace( sImageExt, '-' + respondDimensions + sImageExt );
+			// Check if there are dimensions to change with background image
+			if (respondDimensions) {
+				var sImageDimensions = sImageSrc.match( /(\d+x\d+)/g );
+				var sImageExt = sImageSrc.match( /.(jpg|jpeg|gif|png)/g );
+
+				// Add image dimensions and check extension for background image
+				if ( sImageDimensions ) {
+					sImageSrc = sImageSrc.replace( sImageDimensions, respondDimensions );
+				} else if ( sImageExt ) {
+					sImageSrc = sImageSrc.replace( sImageExt, '-' + respondDimensions + sImageExt );
+				}
+
+				// Update image class
+				sImageClass = sImageClass.replace( 'image-fit-default', 'image-fit-responsive' );
 			}
 
-			// Set background image attribute
-			sImage.parentNode.setAttribute( 'style', 'background-image: url(' + responsiveImage + ');' );
+			// Set background image attribute and class
+			sImageParent.style.backgroundImage = 'url(' + sImageSrc + ')';
+			sImageParent.className += ( checkForClasses( sImageParent ) + sImageClass );
 		}
 	}
 }

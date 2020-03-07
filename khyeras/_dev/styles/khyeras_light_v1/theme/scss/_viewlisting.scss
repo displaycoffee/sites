@@ -231,9 +231,6 @@
 	dt .forum-image {
 		@include sizing(130px, 130px);
 		@include position($type: absolute, $top: 0, $left: 10px);
-		background-repeat: no-repeat;
-		background-position: -9999px -9999px;
-		background-size: cover;
 	}
 }
 

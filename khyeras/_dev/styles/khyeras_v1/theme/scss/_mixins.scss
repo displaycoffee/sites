@@ -298,9 +298,19 @@
 	}
 }
 
+// Screen reader only code (styles borrowed from font awesomer)
+@mixin sr-only {
+	position: absolute;
+	@include sizing(1px !important, 1px !important);
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+}
+
 // Unicode mixin
 // Mostly for making sure icons output correctly
 // https://github.com/sass/sass/issues/1395#issuecomment-65548751
 @function unicode($str){
-    @return unquote("\'") + $str + unquote("\'");
+	@return unquote("\'") + $str + unquote("\'");
 }
