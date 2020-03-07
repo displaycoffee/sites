@@ -63,18 +63,24 @@
 	</div>
 <!-- ENDIF -->
 
-<!-- EVENT index_body_birthday_block_before -->
+{% EVENT index_body_birthday_block_before %}
 
-<!-- IF S_DISPLAY_BIRTHDAY_LIST -->
-	<div class="stat-block birthday-list">
-		<h3>{L_BIRTHDAYS}</h3>
-		<p>
-			<!-- EVENT index_body_block_birthday_prepend -->
-			<!-- IF .birthdays -->{L_CONGRATULATIONS}{L_COLON} <strong><!-- BEGIN birthdays -->{birthdays.USERNAME}<!-- IF birthdays.AGE !== '' --> ({birthdays.AGE})<!-- ENDIF --><!-- IF not birthdays.S_LAST_ROW -->, <!-- ENDIF --><!-- END birthdays --></strong><!-- ELSE -->{L_NO_BIRTHDAYS}<!-- ENDIF -->
-			<!-- EVENT index_body_block_birthday_append -->
-		</p>
-	</div>
-<!-- ENDIF -->
+{% if S_DISPLAY_BIRTHDAY_LIST and birthdays %}
+	{% set new_birthdays = birthdays | filter(birthday => '#73abd0' not in birthday.USERNAME) %}
+	{% if new_birthdays %}
+		<div class="stat-block birthday-list">
+			<h3>{{ lang('BIRTHDAYS') }}</h3>
+			<p>
+				{% EVENT index_body_block_birthday_prepend %}
+				{{ lang('CONGRATULATIONS') }}{{ lang('COLON') }}
+				{% for birthday in new_birthdays %}
+					{birthday.USERNAME}{% if birthday.AGE != '' %} ({birthday.AGE}){% endif %}{% if !loop.last %}, {% endif %}
+				{% endfor %}
+				{% EVENT index_body_block_birthday_append %}
+			</p>
+		</div>
+	{% endif %}
+{% endif %}
 
 <!-- IF NEWEST_USER -->
 	<div class="stat-block statistics">

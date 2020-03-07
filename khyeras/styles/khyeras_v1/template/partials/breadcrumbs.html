@@ -1,14 +1,23 @@
 {% if navlinks && (navlinks | length) > 0 %}
 	{% macro breadcrumb(crumb_url, crumb_label, position, previous, crumb_data) %}
 		{% set is_home = (crumb_label == 'Home') ? true : false %}
+		{% set crumb_icon = 'fa-angle-right' %}
+		{% set crumb_att = '' %}
+
 		{% if is_home %}
 			{% set crumb_attr = ('index.php' in crumb_url) ? ' accesskey="h" data-navbar-reference="index"' : ' data-navbar-reference="home"' %}
+			{% set crumb_icon = 'rpg-icon rpg-castle' %}
+		{% elseif previous == '/' %}
+			{% set crumb_icon = 'icon-slash' %}
 		{% endif %}
+
 		{% spaceless %}
 			{% if crumb_label != 'n/a' %}
+				<li class="crumb crumb-seperator{% if is_home %} home{% endif %}">
+					<i class="icon {{ crumb_icon }}"></i>
+				</li>
 				<li class="crumb{% if is_home %} home{% endif %}" itemtype="http://schema.org/ListItem" itemprop="item" itemscope{{ crumb_data }}>
-					<i class="icon {% if is_home %}rpg-icon rpg-castle{% elseif previous == '/'  %}icon-slash fa-fw{% else %}fa-angle-right fa-fw{% endif %}"></i>
-					<a href="{{ crumb_url }}" itemtype="https://schema.org/Thing" itemprop="item"{{ crumb_attr }}>
+					<a href="{{ crumb_url }}" itemtype="https://schema.org/Thing" itemprop="item"{{ crumb_attr }} title="{{ crumb_label }}">
 						<span itemprop="name">{{ crumb_label }}</span>
 					</a>
 					<meta itemprop="position" content="{{ position }}" />
@@ -19,16 +28,20 @@
 
 	<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">
 		<div class="wrapper">
-			<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+			<ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList" data-skip-responsive>
 				{% set crumb_position = 1 %}
 				{% EVENT overall_header_breadcrumbs_before %}
+
 				{% if U_SITE_HOME %}
 					{{ _self.breadcrumb(U_SITE_HOME, lang('SITE_HOME'), crumb_position, false, false) }}
 				{% endif %}
+
 				{% EVENT overall_header_breadcrumb_prepend %}
+
 				{% if not U_SITE_HOME %}
 					{{ _self.breadcrumb(U_INDEX, lang('INDEX'), crumb_position, false, false) }}
 				{% endif %}
+
 				{% if KHY_LINKS[KHY_SCRIPT_NAME].crumbs %}
 					{% for link in KHY_LINKS[KHY_SCRIPT_NAME].crumbs %}
 						{% set crumb_previous = KHY_LINKS[KHY_SCRIPT_NAME].crumbs[loop.index - 2] %}
@@ -42,6 +55,7 @@
 						{% endif %}
 					{% endfor %}
 				{% endif %}
+
 				{% for nav in navlinks %}
 					{% EVENT overall_header_navlink_prepend %}
 					{% set crumb_data = nav.MICRODATA ? (' ' ~ nav.MICRODATA) : '' %}
@@ -49,6 +63,7 @@
 					{{ _self.breadcrumb(nav.U_VIEW_FORUM, nav.FORUM_NAME, crumb_position, false, crumb_data) }}
 					{% EVENT overall_header_navlink_append %}
 				{% endfor %}
+
 				{% EVENT overall_header_breadcrumb_append %}
 				{% EVENT overall_header_breadcrumbs_after %}
 			</ul>

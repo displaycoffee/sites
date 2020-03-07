@@ -108,7 +108,7 @@ function noContentListing() {
 		'No suitable matches were found.'
 	];
 
-	var listing = document.querySelectorAll( '.action-bar + .panel .inner' );
+	var listing = document.querySelectorAll( '.action-bar + .panel' );
 
 	if ( listing && listing.length ) {
 		for ( var i = 0; i < listing.length; i++ ) {
@@ -218,7 +218,7 @@ function addImageWrapper( selector ) {
 // Check image dimensions and add classes to constrain images in a square space
 function checkImageDimensions( selector ) {
 	var imageSelector = document.querySelectorAll( selector );
-	
+
 	if ( imageSelector && imageSelector.length ) {
 		for ( var i = 0; i < imageSelector.length; i++ ) {
 			var sImage = imageSelector[i];
