@@ -247,14 +247,15 @@ body .tribute-container {
 			.icon {
 				margin: 0 5px 0 0;
 				font-size: rem(13px);
+				@include position($type: relative, $top: -1.5px);
+			}
+			.icon-slash:before {
+				content: '\00002f';
 			}
 			.rpg-castle {
 				font-size: rem(18px);
-				@include position($type: relative, $top: -2.5px);
+				top: -2.5px;
 				margin: 0 12px 0 0;
-			}
-			.fa-chevron-right {
-				font-size: rem(13px);
 			}
 			&.wrapped-max a {
 				max-width: 120px;
@@ -271,9 +272,6 @@ body .tribute-container {
 			&.wrapped-tiny a {
 				max-width: 40px;
 			}
-		}
-		.crumb.home {
-			@include position($type: relative, $top: -1px);
 		}
 	}
 }
