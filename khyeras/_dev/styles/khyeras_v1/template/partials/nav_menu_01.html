@@ -1,35 +1,33 @@
 <ul class="menu nav-menu" role="menu">
-	{% if KHY_LINKS %}
-		{% for key, link in KHY_LINKS if !link.parent %}
-			<li class="dropdown-container">
-				{{ function.create_nav_main(ROOT_PATH ~ key, link.label) }}
-				<div class="dropdown">
-					<ul class="dropdown-contents" role="menu">
-						{% for map_key, map_link in KHY_LINKS if (key ~ '-') in map_key && map_link.parent && (map_link.parent is not iterable || map_key == 'lore-races-half-breed') && map_key != 'lore-short-history' %}
-							{{ function.create_nav_li(ROOT_PATH ~ map_key, map_link.label) }}
-						{% endfor %}
-						{% if key == 'about' %}
-							{% include 'partials/nav_menu_about.html' %}
-						{% endif %}
-					</ul>
-				</div>
+	{% if KHY_NAV_LINKS %}
+		{% for key, link in KHY_NAV_LINKS if link.is_nav %}
+			<li {% if link.children %}class="dropdown-container"{% endif %}>
+				{% if key != 'members' %}
+					{{ function.create_nav_main(ROOT_PATH ~ link.url, link.name, link.children) }}
+				{% elseif not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
+					{{ function.create_nav_main(U_MEMBERLIST, lang('MEMBERLIST'), link.children) }}
+				{% endif %}
+				{% if link.children %}
+					<div class="dropdown">
+						<ul class="dropdown-contents" role="menu">
+							{% for key2, link2 in link.children %}
+								{{ function.create_nav_li(ROOT_PATH ~ link2.url, link2.name) }}
+							{% endfor %}
+							{% if key == 'about' %}
+								{% include 'partials/nav_menu_about.html' %}
+							{% elseif key == 'members' && not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
+								{% include 'partials/nav_menu_quick_links.html' %}
+							{% endif %}
+						</ul>
+					</div>
+				{% endif %}
 			</li>
 		{% endfor %}
-	{% endif %}
-	{% if not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
-		<li class="dropdown-container">
-			{{ function.create_nav_main(U_MEMBERLIST, lang('MEMBERLIST')) }}
-			<div class="dropdown">
-				<ul class="dropdown-contents" role="menu">
-					{% include 'partials/nav_menu_quick_links.html' %}
-				</ul>
-			</div>
-		</li>
 	{% endif %}
 	{% EVENT overall_header_searchbox_before %}
 	{% if S_DISPLAY_SEARCH %}
 		<li class="dropdown-container">
-			{{ function.create_nav_main(U_SEARCH, lang('SEARCH')) }}
+			{{ function.create_nav_main(U_SEARCH, lang('SEARCH'), true) }}
 			<div id="search-box" class="search-box search-header dropdown" role="search">
 				<ul class="dropdown-contents">
 					<li>

@@ -2,10 +2,12 @@
 	{{ value | replace({'"' : '', '\'' : '', '(' : '', ')' : '', ',' : '', '!' : '', ' ' : '-'}) | lower }}
 {% endspaceless %}{% endmacro %}
 
-{% macro create_nav_main(url, label) %}
+{% macro create_nav_main(url, label, children) %}
 	<div class="menu-label">
 		<a href="{{ url }}" title="{{ label }}" role="menuitem"><span>{{ label }}</span></a>
-		<i class="icon icon-lg fa-angle-down menu-trigger"></i>
+		{% if children %}
+			<i class="icon icon-lg fa-angle-down menu-trigger"></i>
+		{% endif %}
 	</div>
 {% endmacro %}
 

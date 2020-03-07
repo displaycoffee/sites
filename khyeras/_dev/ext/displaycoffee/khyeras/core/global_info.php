@@ -149,7 +149,7 @@ class global_info {
 				'is_nav' => ($page_order <= 2) ? true : false,
 				'level'  => $page_order,
 				'crumbs' => create_breadcrumbs($page_desc, $this->utilities),
-				'desc'   => $page_desc
+				'desc'   => $page_desc,
 			];
 
 			$page_links[$row['page_route']] = $page_data;
@@ -163,8 +163,8 @@ class global_info {
 			'KHY_SCRIPT_NAME'  => str_replace('app/', '', $page_script_name),
 			'KHY_HANDLE_SHORT' => $page_type,
 			'KHY_HANDLE'       => $page_type . '-' . $this->utilities->handleize($page_title),
-			// 'KHY_LINKS'        => $page_links,
-			// 'KHY_NAV_LINKS'    => create_navlinks($page_links, $this->utilities)
+			'KHY_LINKS'        => $page_links,
+			'KHY_NAV_LINKS'    => create_navlinks($page_links, $this->utilities)
  		));
 	}
 
@@ -451,7 +451,7 @@ function create_breadcrumbs($desc, $utilities) {
 }
 
 /**
-* Create breadcrumbs function
+* Create navlinks function
 */
 function create_navlinks($links, $utilities) {
 	$new_links = [];
@@ -481,8 +481,7 @@ function create_navlinks($links, $utilities) {
 					} else if ($children_length == 3) {
 						$new_links[$children[0]]['children'][$children[1]]['children'][$children[2]]['children'][$key] = $value;
 					}
-				} else {
-					// If there is no additional seperator, add key value to main node
+				} else {// If there is no additional seperator, add key value to main node
 					$new_links[$current]['children'][$key] = $value;
 				}
 			}
@@ -503,8 +502,6 @@ function get_time_label($number, $value) {
 
 	return $time_label;
 }
-
-
 
 /**
 * Translate multi-select fields like race and class options
