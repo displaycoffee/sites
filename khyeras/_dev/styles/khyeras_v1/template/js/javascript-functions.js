@@ -1,18 +1,3 @@
-// If forum has image, add responsive image and a class to parent
-function addForumImageClass() {
-	var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
-
-	if ( forumImage && forumImage.length ) {
-		for ( var i = 0; i < forumImage.length; i++ ) {
-			var fImage = forumImage[i];
-
-			// Add class to parent row
-			var parentRow = fImage.parentNode.parentNode.parentNode;
-			parentRow.className += ( checkForClasses( parentRow ) + 'has-forum-image' );
-		}
-	}
-}
-
 // Add classes to fieldset dl dd depending on conditions
 function addFieldsetClasses() {
 	var ddSelector = 'fieldset:not(.polls) dl:not(.pmlist) dd';
@@ -44,152 +29,17 @@ function addFieldsetClasses() {
 	}
 }
 
-// Add no-pagination class to body to hide pagination
-function addNoPaginationClass() {
-	var pagination = document.querySelector( '.action-bar .pagination' );
+// If forum has image, add responsive image and a class to parent
+function addForumImageClass() {
+	var forumImage = document.querySelectorAll( '.list-inner .forum-image' );
 
-	if ( pagination ) {
-		var paginationText = pagination.innerText.toLowerCase();
-		var paginationPhrase = 'page 1 of 1';
+	if ( forumImage && forumImage.length ) {
+		for ( var i = 0; i < forumImage.length; i++ ) {
+			var fImage = forumImage[i];
 
-		if ( paginationText.indexOf( paginationPhrase ) !== -1 ) {
-			var regex = new RegExp( paginationPhrase, 'gi' );
-			var totalNumber = paginationText.replace( regex, '' ).match( /\d+/g );
-
-			if ( totalNumber && totalNumber <= 0 ) {
-				body.className += ( checkForClasses( body ) + 'no-pagination' );
-			}
-		}
-	}
-}
-
-// On user profile, check for thanks list content
-function addThanksClass() {
-	var extraDetailsTitle = document.querySelectorAll( '#viewprofile .extra-details h3' );
-
-	if ( extraDetailsTitle && extraDetailsTitle.length ) {
-		for ( var i = 0; i < extraDetailsTitle.length; i++ ) {
-			var title = extraDetailsTitle[i];
-
-			if ( title.innerHTML.indexOf( 'Thanks list' ) !== -1 ) {
-				// Add class to parent row
-				var parentRow = title.parentNode.parentNode;
-				parentRow.className += ( checkForClasses( parentRow ) + 'member-thanks-list' );
-			}
-		}
-	}
-}
-
-// Format rank and username display on member lists
-function moveRankText() {
-	var rankImgs = document.querySelectorAll( 'table.table1 .rank-img' );
-
-	if ( rankImgs && rankImgs.length ) {
-		for ( var i = 0; i < rankImgs.length; i++ ) {
-			var rank = rankImgs[i];
-
-			rank.parentNode.appendChild(rank);
-
-			// Also add "name" class to td elements
-			if (rank.parentNode.nodeName == 'TD' || rank.parentNode.nodeName == 'td') {
-				rank.parentNode.className += ( checkForClasses( rank.parentNode ) + 'name' );
-			}
-		}
-	}
-}
-
-// Add a class to elements where there are no topics / forums
-function noContentListing() {
-	var noContentText = [
-		'This board has no forums.',
-		'You do not have the required permissions to view or read topics within this forum.',
-		'There are no topics or posts in this forum.',
-		'This category has no forums.',
-		'No suitable matches were found.'
-	];
-
-	var listing = document.querySelectorAll( '.action-bar + .panel' );
-
-	if ( listing && listing.length ) {
-		for ( var i = 0; i < listing.length; i++ ) {
-			var list = listing[i];
-
-			if ( noContentText.indexOf( list.innerText.trim() ) !== -1 ) {
-				list.className += ( checkForClasses( list ) + 'no-content' );
-			}
-		}
-	}
-}
-
-// Add class to topics on search results that are ignored
-function addSearchIgnoredClass() {
-	var postBody = document.querySelectorAll( '.search.post .postbody' );
-
-	if ( postBody && postBody.length ) {
-		for ( var i = 0; i < postBody.length; i++ ) {
-			var topic = postBody[i];
-
-			if ( topic.innerHTML.indexOf( 'ignore list' ) !== -1 ) {
-				topic.className += ( checkForClasses( topic ) + 'ignore' );
-			}
-		}
-	}
-}
-
-// Check if there is a new PM (mostly for icon purposes)
-function checkForNewPM() {
-	var menuItem = document.querySelectorAll( '.cp-menu ul li a[href*="folder"]' );
-
-	if ( menuItem && menuItem.length ) {
-		for ( var i = 0; i < menuItem.length; i++ ) {
-			var item = menuItem[i];
-
-			if ( item.innerHTML.indexOf( 'strong' ) !== -1 ) {
-				item.className += ( checkForClasses( item ) + 'new-pm' );
-			}
-		}
-	}
-}
-
-// Check for empty content elements on the page
-function checkForEmpty( selector ) {
-	var emptySelector = document.querySelectorAll( selector );
-
-	if ( emptySelector && emptySelector.length ) {
-		for ( var i = 0; i < emptySelector.length; i++ ) {
-			emptySelector[i].parentNode.style.display = 'none';
-		}
-	}
-}
-
-// Generate banner code
-function bannerCodeGenerator( bannerImages, bannerCode ) {
-	var codeBlock = document.querySelector( bannerCode );
-
-	if ( codeBlock ) {
-		// Re-usable variables
-		var codeHTML = codeBlock.innerHTML;
-		var currentImage = codeHTML.match(/src=\"(.*?)\"/)[1];
-		var currentAlt = codeHTML.match(/alt=\"(.*?)\"/)[1];
-
-		// Loop through all banner images and attach onclick event
-		var bannerArray = document.querySelectorAll( bannerImages );
-		for ( var i = 0; i < bannerArray.length; i++ ) {
-			bannerArray[i].onclick = function( e ) {
-				changeBannerCode( e, currentImage, currentAlt );
-			};
-		}
-
-		// Function to change banner code
-		function changeBannerCode( e, image, alt ) {
-			// Element that has been clicked
-			var selector = e.target || e.srcElement;
-
-			// Create new image src attribute
-			var newSrc =  '//' + window.location.hostname + '/' + selector.getAttribute( 'src' ).replace( './', '' );
-
-			// Replace current image src and alt with new element alt and src
-			codeBlock.innerHTML = codeHTML.replace( image, newSrc ).replace( alt, selector.getAttribute( 'alt' ) );
+			// Add class to parent row
+			var parentRow = findParent( fImage, 'row-item' );
+			parentRow.className += ( checkForClasses( parentRow ) + 'has-forum-image' );
 		}
 	}
 }
@@ -249,9 +99,211 @@ function addImageBackground( selector, respondDimensions ) {
 	}
 }
 
+// Add no-pagination class to body to hide pagination
+function addNoPaginationClass() {
+	var pagination = document.querySelector( '.action-bar .pagination' );
+
+	if ( pagination ) {
+		var paginationText = pagination.innerText.toLowerCase();
+		var paginationPhrase = 'page 1 of 1';
+
+		if ( paginationText.indexOf( paginationPhrase ) !== -1 ) {
+			var regex = new RegExp( paginationPhrase, 'gi' );
+			var totalNumber = paginationText.replace( regex, '' ).match( /\d+/g );
+
+			if ( totalNumber && totalNumber <= 0 ) {
+				body.className += ( checkForClasses( body ) + 'no-pagination' );
+			}
+		}
+	}
+}
+
+// Add class to topics on search results that are ignored
+function addSearchIgnoredClass() {
+	var postBody = document.querySelectorAll( '.search.post .postbody' );
+
+	if ( postBody && postBody.length ) {
+		for ( var i = 0; i < postBody.length; i++ ) {
+			var topic = postBody[i];
+
+			if ( topic.innerHTML.indexOf( 'ignore list' ) !== -1 ) {
+				topic.className += ( checkForClasses( topic ) + 'ignore' );
+			}
+		}
+	}
+}
+
+// On user profile, check for thanks list content
+function addThanksClass() {
+	var extraDetailsTitle = document.querySelectorAll( '#viewprofile .extra-details h3' );
+
+	if ( extraDetailsTitle && extraDetailsTitle.length ) {
+		for ( var i = 0; i < extraDetailsTitle.length; i++ ) {
+			var title = extraDetailsTitle[i];
+
+			if ( title.innerHTML.indexOf( 'Thanks list' ) !== -1 ) {
+				// Add class to parent row
+				var parentRow = findParent( title, 'panel' );
+				parentRow.className += ( checkForClasses( parentRow ) + 'member-thanks-list' );
+			}
+		}
+	}
+}
+
+// Generate banner code
+function bannerCodeGenerator( bannerImages, bannerCode ) {
+	var codeBlock = document.querySelector( bannerCode );
+
+	if ( codeBlock ) {
+		// Re-usable variables
+		var codeHTML = codeBlock.innerHTML;
+		var currentImage = codeHTML.match(/src=\"(.*?)\"/)[1];
+		var currentAlt = codeHTML.match(/alt=\"(.*?)\"/)[1];
+
+		// Loop through all banner images and attach onclick event
+		var bannerArray = document.querySelectorAll( bannerImages );
+		for ( var i = 0; i < bannerArray.length; i++ ) {
+			bannerArray[i].onclick = function( e ) {
+				changeBannerCode( e, currentImage, currentAlt );
+			};
+		}
+
+		// Function to change banner code
+		function changeBannerCode( e, image, alt ) {
+			// Element that has been clicked
+			var selector = e.target || e.srcElement;
+
+			// Create new image src attribute
+			var newSrc =  '//' + window.location.hostname + '/' + selector.getAttribute( 'src' ).replace( './', '' );
+
+			// Replace current image src and alt with new element alt and src
+			codeBlock.innerHTML = codeHTML.replace( image, newSrc ).replace( alt, selector.getAttribute( 'alt' ) );
+		}
+	}
+}
+
+// Check if there is a new PM (mostly for icon purposes)
+function checkForNewPM() {
+	var menuItem = document.querySelectorAll( '.cp-menu ul li a[href*="folder"]' );
+
+	if ( menuItem && menuItem.length ) {
+		for ( var i = 0; i < menuItem.length; i++ ) {
+			var item = menuItem[i];
+
+			if ( item.innerHTML.indexOf( 'strong' ) !== -1 ) {
+				item.className += ( checkForClasses( item ) + 'new-pm' );
+			}
+		}
+	}
+}
+
+// Check for empty content elements on the page
+function checkForEmpty( selector ) {
+	var emptySelector = document.querySelectorAll( selector );
+
+	if ( emptySelector && emptySelector.length ) {
+		for ( var i = 0; i < emptySelector.length; i++ ) {
+			emptySelector[i].parentNode.style.display = 'none';
+		}
+	}
+}
+
+// Collapse elements on page
+function collapseElements( button, selector, parentClass ) {
+	var buttons = document.querySelectorAll( button );
+
+	if ( buttons && buttons.length ) {
+		for ( var i = 0; i < buttons.length; i++ ) {
+			var button = buttons[i];
+			var buttonState = true;
+
+			// Add toggle button to element
+			var buttonIcon = document.createElement( 'button' );
+			buttonIcon.className = 'content-toggle-button icon icon-lg';
+			button.insertBefore( buttonIcon, button.firstChild );
+
+			// Toggle intial state of collapsible elements
+			toggleContent( buttonState, buttonIcon );
+
+			// Add collapsible toggle event to buttons
+			buttonIcon.onclick = function( e ) {
+				// Reset button state
+				buttonState = buttonState ? false : true;
+
+				// Then toggle things
+				toggleContent( buttonState, ( e.target || e.srcElement ) );
+			};
+		}
+
+		function toggleContent( buttonState, buttonTarget ) {
+			var buttonParent = findParent( buttonTarget, parentClass );
+			var buttonChild = buttonParent.querySelector( selector );
+			var buttonClasses = {
+				'col'   : 'content-collapsed',
+				'exp'   : 'content-expanded',
+				'minus' : 'fa-minus',
+				'plus'  : 'fa-plus'
+			};
+
+			if ( buttonState ) {
+				buttonTarget.classList.remove( buttonClasses.minus );
+				buttonTarget.classList.add( buttonClasses.plus );
+				buttonChild.classList.remove( buttonClasses.col );
+				buttonChild.classList.add( buttonClasses.exp );
+			} else {
+				buttonTarget.classList.remove( buttonClasses.plus );
+				buttonTarget.classList.add( buttonClasses.minus );
+				buttonChild.classList.remove( buttonClasses.exp );
+				buttonChild.classList.add( buttonClasses.col );
+			}
+		}
+	}
+}
+
 // Detect if on iPhone device
 function detectiPhone() {
 	if ( navigator.userAgent.match( /iPhone|iPad|iPod/i ) ) {
 		body.className += ( checkForClasses( body ) + 'ios' );
+	}
+}
+
+// Format rank and username display on member lists
+function moveRankText() {
+	var rankImgs = document.querySelectorAll( 'table.table1 .rank-img' );
+
+	if ( rankImgs && rankImgs.length ) {
+		for ( var i = 0; i < rankImgs.length; i++ ) {
+			var rank = rankImgs[i];
+
+			rank.parentNode.appendChild(rank);
+
+			// Also add "name" class to td elements
+			if (rank.parentNode.nodeName == 'TD' || rank.parentNode.nodeName == 'td') {
+				rank.parentNode.className += ( checkForClasses( rank.parentNode ) + 'name' );
+			}
+		}
+	}
+}
+
+// Add a class to elements where there are no topics / forums
+function noContentListing() {
+	var noContentText = [
+		'This board has no forums.',
+		'You do not have the required permissions to view or read topics within this forum.',
+		'There are no topics or posts in this forum.',
+		'This category has no forums.',
+		'No suitable matches were found.'
+	];
+
+	var listing = document.querySelectorAll( '.action-bar + .panel' );
+
+	if ( listing && listing.length ) {
+		for ( var i = 0; i < listing.length; i++ ) {
+			var list = listing[i];
+
+			if ( noContentText.indexOf( list.innerText.trim() ) !== -1 ) {
+				list.className += ( checkForClasses( list ) + 'no-content' );
+			}
+		}
 	}
 }

@@ -12,6 +12,41 @@ function checkForClasses( selector ) {
 	}
 }
 
+// Replace HTML characters
+function cleanHTML( selector ) {
+	return selector.replace( /(<([^>]+)>)/ig, '' );
+}
+
+// Debounce function from underscore.js and https://davidwalsh.name/javascript-debounce-function
+function debounce( func, wait, immediate ) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if ( !immediate ) {
+				func.apply( context, args );
+			}
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout( timeout );
+		timeout = setTimeout( later, wait );
+		if ( callNow ) {
+			func.apply( context, args );
+		}
+	};
+};
+
+// Find parent element
+function findParent( selector, parentClass ) {
+	while ( selector ) {
+		if ( selector.classList && selector.classList.contains( parentClass ) ) {
+			return selector;
+		}
+		selector = selector.parentNode;
+	} return null;
+};
+
 // Check for mobile
 function isMobile( baseFontSize, respond ) {
 	var windowWidth = ( window.innerWidth / baseFontSize );
@@ -37,28 +72,3 @@ function mergeArray( array1, array2 ) {
 	}
 	return a;
 }
-
-// Replace HTML characters
-function cleanHTML( selector ) {
-	return selector.replace( /(<([^>]+)>)/ig, '' );
-}
-
-// Debounce function from underscore.js and https://davidwalsh.name/javascript-debounce-function
-function debounce( func, wait, immediate ) {
-	var timeout;
-	return function() {
-		var context = this, args = arguments;
-		var later = function() {
-			timeout = null;
-			if ( !immediate ) {
-				func.apply( context, args );
-			}
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout( timeout );
-		timeout = setTimeout( later, wait );
-		if ( callNow ) {
-			func.apply( context, args );
-		}
-	};
-};
