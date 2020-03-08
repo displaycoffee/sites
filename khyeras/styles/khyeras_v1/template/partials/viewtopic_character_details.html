@@ -9,22 +9,22 @@
 				</div>
 			</div>
 			{% if postrow.S_PROFILE_C_HP || postrow.S_PROFILE_C_MP %}
-				{% set remaining_hp = post.PROFILE_TOTAL_HP - postrow.PROFILE_C_HP_VALUE %}
-				{% set remaining_mp = post.PROFILE_TOTAL_MP - postrow.PROFILE_C_MP_VALUE %}
+				{% set remaining_hp = post.PROFILE_STATS['hp'] - postrow.PROFILE_C_HP_VALUE %}
+				{% set remaining_mp = post.PROFILE_STATS['mp'] - postrow.PROFILE_C_MP_VALUE %}
 				<div class="stats stats-small">
 					{% if postrow.S_PROFILE_C_HP %}
 						<div class="stat-bar stat-bar-small hp-bar">
-							<div class="stat-bar-inner" style="width: {{ ((remaining_hp / post.PROFILE_TOTAL_HP) * 100) | number_format(2) }}%"></div>
+							<div class="stat-bar-inner" style="width: {{ ((remaining_hp / post.PROFILE_STATS['hp']) * 100) | number_format(2) }}%"></div>
 							<div class="stat-bar-label">
-								{{ remaining_hp }} / {{ post.PROFILE_TOTAL_HP }} {{ postrow.PROFILE_C_HP_NAME }}
+								{{ remaining_hp }} / {{ post.PROFILE_STATS['hp'] }} {{ postrow.PROFILE_C_HP_NAME }}
 							</div>
 						</div>
 					{% endif %}
 					{% if postrow.S_PROFILE_C_MP %}
 						<div class="stat-bar stat-bar-small mp-bar">
-							<div class="stat-bar-inner" style="width: {{ ((remaining_mp / post.PROFILE_TOTAL_MP) * 100) | number_format(2) }}%"></div>
+							<div class="stat-bar-inner" style="width: {{ ((remaining_mp / post.PROFILE_STATS['mp']) * 100) | number_format(2) }}%"></div>
 							<div class="stat-bar-label">
-								{{ remaining_mp }} / {{ post.PROFILE_TOTAL_MP }} {{ postrow.PROFILE_C_MP_NAME }}
+								{{ remaining_mp }} / {{ post.PROFILE_STATS['mp'] }} {{ postrow.PROFILE_C_MP_NAME }}
 							</div>
 						</div>
 					{% endif %}
@@ -32,7 +32,7 @@
 			{% endif %}
 		</div>
 
-		{{ function.display_currency(post.PROFILE_COPPER, post.PROFILE_SILVER, post.PROFILE_GOLD, post.PROFILE_PLATINUM) }}
+		{{ function.display_currency(post.PROFILE_CURRENCY) }}
 	{% endfor %}
 
 	{% if postrow.S_PROFILE_C_RACE_OPTS || postrow.PROFILE_C_CLASS_OPTS_VALUE %}

@@ -78,10 +78,10 @@ class utilities {
 
 		// Set currency to return
 		$currency = [
-			'copper'   => $copper,
-			'silver'   => $silver,
+			'platinum' => $platinum,
 			'gold' 	   => $gold,
-			'platinum' => $platinum
+			'silver'   => $silver,
+			'copper'   => $copper
 		];
 
 		return $currency;

@@ -15,14 +15,12 @@
 						{% endif %}
 						{% if KHY_USER_GROUP_NAME == 'Characters' %}
 							<p class="level">
-								{% set zero = KHY_MEMBER_LEVEL < 10 ? '0' : ''  %}
+								{% set zero = KHY_USER_LEVEL < 10 ? '0' : ''  %}
 								Level {{ zero }}{{ KHY_USER_LEVEL }}
 							</p>
 							<p class="race-and-class">
 								{{ KHY_USER_RACE | replace({',': ' and'}) }}
-								{% if KHY_USER_CLASS %}
-									 / {{ KHY_USER_CLASS | replace({',': ' and'}) }}
-								{% endif %}
+								/ {{ KHY_USER_CLASS | replace({',': ' and'}) }}
 							</p>
 						{% elseif S_REGISTERED_USER %}
 							<p>

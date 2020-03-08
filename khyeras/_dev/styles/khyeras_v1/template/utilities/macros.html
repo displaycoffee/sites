@@ -39,29 +39,15 @@
 	{% endif %}
 {% endmacro %}
 
-{% macro display_currency(copper, silver, gold, platinum) %}
+{% macro display_currency(currency) %}
 	{% set separator = ' / ' %}
 	<div class="character-currency">
 		<i class="icon icon-xl rpg-icon rpg-two-coins" aria-hidden="true"></i>
-		{% if copper %}
-			{% if platinum %}
-				{{ platinum }}<span class="currency-p"></span>
-				{{ separator }}
-			{% endif %}
-			{% if gold %}
-				{{ gold }}<span class="currency-g">g</span>
-				{{ separator }}
-			{% endif %}
-			{% if silver %}
-				{{ silver }}<span class="currency-s">s</span>
-				{{ separator }}
-			{% endif %}
-			{% if copper %}
-				{{ copper }}<span class="currency-c">c</span>
-			{% endif %}
-		{% else %}
-			0<span class="currency-c">c</span>
-		{% endif %}
+		{% for key, value in currency%}
+			{% set coin_value = key | first | lower %}
+			{{ value }}<span class="currency-{{ coin_value }}">{{ coin_value }}</span>
+			{% if !loop.last %}{{ separator }}{% endif %}
+		{% endfor %}
 	</div>
 {% endmacro %}
 

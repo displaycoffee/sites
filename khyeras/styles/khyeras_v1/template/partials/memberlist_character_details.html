@@ -8,22 +8,22 @@
 			</div>
 		</div>
 		{% if S_PROFILE_C_HP || S_PROFILE_C_MP %}
-			{% set remaining_hp = KHY_MEMBER_TOTAL_HP - PROFILE_C_HP_VALUE %}
-			{% set remaining_mp = KHY_MEMBER_TOTAL_MP - PROFILE_C_MP_VALUE %}
+			{% set remaining_hp = KHY_MEMBER_STATS['hp'] - PROFILE_C_HP_VALUE %}
+			{% set remaining_mp = KHY_MEMBER_STATS['mp'] - PROFILE_C_MP_VALUE %}
 			<div class="stats">
 				{% if S_PROFILE_C_HP %}
 					<div class="stat-bar stat-bar-small hp-bar">
-						<div class="stat-bar-inner" style="width: {{ ((remaining_hp / KHY_MEMBER_TOTAL_HP) * 100) | number_format(2) }}%"></div>
+						<div class="stat-bar-inner" style="width: {{ ((remaining_hp / KHY_MEMBER_STATS['hp']) * 100) | number_format(2) }}%"></div>
 						<div class="stat-bar-label">
-							{{ remaining_hp }} / {{ KHY_MEMBER_TOTAL_HP }} {{ PROFILE_C_HP_NAME }}
+							{{ remaining_hp }} / {{ KHY_MEMBER_STATS['hp'] }} {{ PROFILE_C_HP_NAME }}
 						</div>
 					</div>
 				{% endif %}
 				{% if S_PROFILE_C_MP %}
 					<div class="stat-bar stat-bar-small mp-bar">
-						<div class="stat-bar-inner" style="width: {{ ((remaining_mp / KHY_MEMBER_TOTAL_MP) * 100) | number_format(2) }}%"></div>
+						<div class="stat-bar-inner" style="width: {{ ((remaining_mp / KHY_MEMBER_STATS['mp']) * 100) | number_format(2) }}%"></div>
 						<div class="stat-bar-label">
-							{{ remaining_mp }} / {{ KHY_MEMBER_TOTAL_MP }} {{ PROFILE_C_MP_NAME }}
+							{{ remaining_mp }} / {{ KHY_MEMBER_STATS['mp'] }} {{ PROFILE_C_MP_NAME }}
 						</div>
 					</div>
 				{% endif %}
@@ -31,15 +31,11 @@
 		{% endif %}
 	</dd>
 
-	{% set currency_value %}
-		{{ function.display_currency(KHY_MEMBER_COPPER, KHY_MEMBER_SILVER, KHY_MEMBER_GOLD, KHY_MEMBER_PLATINUM) }}
-	{% endset %}
-
 	{% set religion_value = (PROFILE_C_RELIGION_TYPE_VALUE) ~ (S_PROFILE_C_RELIGION_OPTS ? (' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE) : '') %}
 
 	{% set character_fields = {
 		'Experience'  				 : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
-		'Currency'  				 : currency_value,
+		'Currency'  				 : function.display_currency(KHY_MEMBER_CURRENCY),
 		(PROFILE_C_RACE_OPTS_NAME)   : PROFILE_C_RACE_OPTS_VALUE | replace({', ': ' and '}),
 		(PROFILE_C_CLASS_OPTS_NAME)  : PROFILE_C_CLASS_OPTS_VALUE | replace({', ': ' and '}),
 		(PROFILE_C_AGE_NAME)         : PROFILE_C_AGE_VALUE,
