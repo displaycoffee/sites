@@ -208,58 +208,6 @@ function checkForEmpty( selector ) {
 	}
 }
 
-// Collapse elements on page
-function collapseElements( button, selector, parentClass ) {
-	var buttons = document.querySelectorAll( button );
-
-	if ( buttons && buttons.length ) {
-		for ( var i = 0; i < buttons.length; i++ ) {
-			var button = buttons[i];
-			var buttonState = true;
-
-			// Add toggle button to element
-			var buttonIcon = document.createElement( 'button' );
-			buttonIcon.className = 'content-toggle-button icon icon-lg';
-			button.insertBefore( buttonIcon, button.firstChild );
-
-			// Toggle intial state of collapsible elements
-			toggleContent( buttonState, buttonIcon );
-
-			// Add collapsible toggle event to buttons
-			buttonIcon.onclick = function( e ) {
-				// Reset button state
-				buttonState = buttonState ? false : true;
-
-				// Then toggle things
-				toggleContent( buttonState, ( e.target || e.srcElement ) );
-			};
-		}
-
-		function toggleContent( buttonState, buttonTarget ) {
-			var buttonParent = findParent( buttonTarget, parentClass );
-			var buttonChild = buttonParent.querySelector( selector );
-			var buttonClasses = {
-				'col'   : 'content-collapsed',
-				'exp'   : 'content-expanded',
-				'minus' : 'fa-minus',
-				'plus'  : 'fa-plus'
-			};
-
-			if ( buttonState ) {
-				buttonTarget.classList.remove( buttonClasses.minus );
-				buttonTarget.classList.add( buttonClasses.plus );
-				buttonChild.classList.remove( buttonClasses.col );
-				buttonChild.classList.add( buttonClasses.exp );
-			} else {
-				buttonTarget.classList.remove( buttonClasses.plus );
-				buttonTarget.classList.add( buttonClasses.minus );
-				buttonChild.classList.remove( buttonClasses.exp );
-				buttonChild.classList.add( buttonClasses.col );
-			}
-		}
-	}
-}
-
 // Detect if on iPhone device
 function detectiPhone() {
 	if ( navigator.userAgent.match( /iPhone|iPad|iPod/i ) ) {
@@ -304,6 +252,103 @@ function noContentListing() {
 			if ( noContentText.indexOf( list.innerText.trim() ) !== -1 ) {
 				list.className += ( checkForClasses( list ) + 'no-content' );
 			}
+		}
+	}
+}
+
+// Toggle elements on page
+function toggleElements( button, selector, parentClass, prefix ) {
+	var buttons = document.querySelectorAll( button );
+
+	// Get local storage item if it's available
+	if ( typeof( Storage ) !== 'undefined' && localStorage.getItem( 'khy-collapsed' ) ) {
+		var collapsedElements = JSON.parse( localStorage.getItem( 'khy-collapsed' ) );
+	} else {
+		var collapsedElements = {};
+	}
+
+	if ( buttons && buttons.length ) {
+		// Set main collapsed key to collapsedElements object if not already present
+		var collapsedKey = prefix + parentClass;
+		if ( !collapsedElements.hasOwnProperty( collapsedKey ) ) {
+			collapsedElements[collapsedKey] = {};
+		}
+
+		for ( var i = 0; i < buttons.length; i++ ) {
+			var button = buttons[i];
+			var buttonKey = prefix + i;
+
+			// If there is a key, set button value to itself, otherwise set to default true
+			if ( collapsedElements[collapsedKey].hasOwnProperty( buttonKey ) ) {
+				collapsedElements[collapsedKey][buttonKey] = collapsedElements[collapsedKey][buttonKey];
+			} else {
+				collapsedElements[collapsedKey][buttonKey] = true;
+			}
+
+			// Add toggle button to element
+			var buttonIcon = document.createElement( 'button' );
+			buttonIcon.className = 'content-toggle-button icon icon-lg';
+			button.insertBefore( buttonIcon, button.firstChild );
+
+			// Toggle intial state of collapsible elements
+			toggleContent( collapsedElements[collapsedKey][buttonKey], buttonIcon );
+
+			// Add collapsible toggle event to buttons
+			buttonIcon.onclick = function( e ) {
+				var buttonIndex = i;
+
+				// Wrap everything in another function to save index related to current button
+				return function( e ) {
+					buttonKey = prefix + buttonIndex;
+
+					// Reset button state in collapsedElements
+					collapsedElements[collapsedKey][buttonKey] = collapsedElements[collapsedKey][buttonKey] ? false : true;
+
+					// Send updated collapsed elements to storage
+					setStorage( collapsedElements );
+
+					// Then toggle things
+					toggleContent( collapsedElements[collapsedKey][buttonKey], ( e.target || e.srcElement ) );
+				}
+			}();
+		}
+
+		// Add khy-collapsed to storage after loop has finished
+		setStorage( collapsedElements );
+
+		// Function to reset storage
+		function setStorage( data ) {
+			if ( typeof( Storage ) !== 'undefined' ) {
+				return window.localStorage.setItem( 'khy-collapsed', JSON.stringify( data ) );
+			} else {
+				return null;
+			}
+		}
+
+		// Functionality to add / remove classes on collapsible elements
+		function toggleContent( buttonKey, buttonTarget ) {
+			var buttonParent = findParent( buttonTarget, parentClass );
+			var buttonChild = buttonParent.querySelector( selector );
+			var buttonClasses = {
+				'col'   : 'content-collapsed',
+				'exp'   : 'content-expanded',
+				'minus' : 'fa-minus',
+				'plus'  : 'fa-plus'
+			};
+
+			if ( buttonKey ) {
+				toggleButtonClasses( buttonTarget, buttonClasses.minus, buttonClasses.plus );
+				toggleButtonClasses( buttonChild, buttonClasses.col, buttonClasses.exp );
+			} else {
+				toggleButtonClasses( buttonTarget, buttonClasses.plus, buttonClasses.minus );
+				toggleButtonClasses( buttonChild, buttonClasses.exp, buttonClasses.col );
+			}
+		}
+
+		// Toggle button classes
+		function toggleButtonClasses( element, remove, add ) {
+			element.classList.remove( remove );
+			element.classList.add( add );
 		}
 	}
 }

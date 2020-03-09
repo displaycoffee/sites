@@ -20,7 +20,7 @@ addImageBackground( '.forum-image img', '1000x500' );
 addImageBackground( '.excerpt .excerpt-image img', '1000x500' );
 detectiPhone();
 
-collapseElements( '.header .row-item .list-inner', '.topiclist.forums', 'inner' );
+toggleElements( '.header .row-item .list-inner', '.topiclist.forums', 'inner', 'forum-' );
 
 // Run all jquery functions on document ready
 jQuery( document ).ready( function( $ ) {
