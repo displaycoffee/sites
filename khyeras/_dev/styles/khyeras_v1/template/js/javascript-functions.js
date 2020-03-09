@@ -257,11 +257,11 @@ function noContentListing() {
 }
 
 // Toggle elements on page
-function toggleElements( button, selector, parentClass, prefix ) {
+function toggleElements( button, selector, parentClass, prefix, save ) {
 	var buttons = document.querySelectorAll( button );
 
 	// Get local storage item if it's available
-	if ( typeof( Storage ) !== 'undefined' && localStorage.getItem( 'khy-collapsed' ) ) {
+	if ( typeof( Storage ) !== 'undefined' && localStorage.getItem( 'khy-collapsed' ) && save ) {
 		var collapsedElements = JSON.parse( localStorage.getItem( 'khy-collapsed' ) );
 	} else {
 		var collapsedElements = {};
@@ -276,7 +276,7 @@ function toggleElements( button, selector, parentClass, prefix ) {
 
 		for ( var i = 0; i < buttons.length; i++ ) {
 			var button = buttons[i];
-			var buttonKey = prefix + i;
+			var buttonKey = prefix + getButtonKey( button.innerText );
 
 			// If there is a key, set button value to itself, otherwise set to default true
 			if ( collapsedElements[collapsedKey].hasOwnProperty( buttonKey ) ) {
@@ -295,11 +295,11 @@ function toggleElements( button, selector, parentClass, prefix ) {
 
 			// Add collapsible toggle event to buttons
 			buttonIcon.onclick = function( e ) {
-				var buttonIndex = i;
+				var buttonText = button.innerText;
 
-				// Wrap everything in another function to save index related to current button
 				return function( e ) {
-					buttonKey = prefix + buttonIndex;
+					// Reset button key text
+					buttonKey = prefix + getButtonKey( buttonText );
 
 					// Reset button state in collapsedElements
 					collapsedElements[collapsedKey][buttonKey] = collapsedElements[collapsedKey][buttonKey] ? false : true;
@@ -316,13 +316,10 @@ function toggleElements( button, selector, parentClass, prefix ) {
 		// Add khy-collapsed to storage after loop has finished
 		setStorage( collapsedElements );
 
-		// Function to reset storage
-		function setStorage( data ) {
-			if ( typeof( Storage ) !== 'undefined' ) {
-				return window.localStorage.setItem( 'khy-collapsed', JSON.stringify( data ) );
-			} else {
-				return null;
-			}
+		// Generate button keys for object keys
+		function getButtonKey( string ) {
+			var key = ( string == 'Forum' && pageTitle ) ? pageTitle : string;
+			return key.toLowerCase().replace( /\'/, '' ).replace( /[^a-z0-9]+/g, '-' ).replace( /-+/, '-' );
 		}
 
 		// Functionality to add / remove classes on collapsible elements
@@ -347,8 +344,12 @@ function toggleElements( button, selector, parentClass, prefix ) {
 
 		// Toggle button classes
 		function toggleButtonClasses( element, remove, add ) {
-			element.classList.remove( remove );
-			element.classList.add( add );
+			element.classList.remove( remove ); element.classList.add( add );
+		}
+
+		// Function to reset storage
+		function setStorage( data ) {
+			return ( typeof( Storage ) !== 'undefined' && save ) ? window.localStorage.setItem( 'khy-collapsed', JSON.stringify( data ) ) : null;
 		}
 	}
 }

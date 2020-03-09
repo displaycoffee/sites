@@ -20,7 +20,7 @@ addImageBackground( '.forum-image img', '1000x500' );
 addImageBackground( '.excerpt .excerpt-image img', '1000x500' );
 detectiPhone();
 
-toggleElements( '.header .row-item .list-inner', '.topiclist.forums', 'inner', 'forum-' );
+toggleElements( '.forabg .header .list-inner', '.topiclist.forums', 'inner', 'forum-', true );
 
 // Run all jquery functions on document ready
 jQuery( document ).ready( function( $ ) {
@@ -41,7 +41,7 @@ jQuery( document ).ready( function( $ ) {
 	toggleContent( '.toggle-links a', '#page-welcome .site-links', 'toggle-show', '' );
 	toggleContent( '.toggle-featured a', '#featured-content', 'toggle-show', '' );
 	toggleContent( '.bbcode-hidden-toggle', '.bbcode-hidden-text', 'toggle-show', 'prev' );
-	toggleContent( '.card-filter-button', '.card-changed', 'toggle-hide', '' )
+	toggleContent( '.card-filter-button', '.card-changed', 'toggle-hide', '' );
 	toggleMemberDisplay();
 	toggleMapDisplay();
 
