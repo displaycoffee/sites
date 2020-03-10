@@ -257,99 +257,97 @@ function noContentListing() {
 }
 
 // Toggle elements on page
-function toggleElements( button, selector, parentClass, prefix, save ) {
-	var buttons = document.querySelectorAll( button );
+function toggleElements( button, content, parentClass, save ) {
+	var toggleButtons = document.querySelectorAll( button );
+	var toggleCookie = 'khy-toggles';
 
 	// Get local storage item if it's available
-	if ( typeof( Storage ) !== 'undefined' && localStorage.getItem( 'khy-collapsed' ) && save ) {
-		var collapsedElements = JSON.parse( localStorage.getItem( 'khy-collapsed' ) );
+	if ( typeof( Storage ) !== 'undefined' && localStorage.getItem( toggleCookie ) && save ) {
+		var toggleObject = JSON.parse( localStorage.getItem( toggleCookie ) );
 	} else {
-		var collapsedElements = {};
+		var toggleObject = {};
 	}
 
-	if ( buttons && buttons.length ) {
-		// Set main collapsed key to collapsedElements object if not already present
-		var collapsedKey = prefix + parentClass;
-		if ( !collapsedElements.hasOwnProperty( collapsedKey ) ) {
-			collapsedElements[collapsedKey] = {};
+	if ( toggleButtons && toggleButtons.length ) {
+		// Set main toggleKey to toggleObject if not already present
+		var toggleKey = toggleButtons[0].getAttribute( 'data-toggle-type' );
+		if ( !toggleObject.hasOwnProperty( toggleKey ) ) {
+			toggleObject[toggleKey] = {};
 		}
 
-		for ( var i = 0; i < buttons.length; i++ ) {
-			var button = buttons[i];
-			var buttonKey = prefix + getButtonKey( button.innerText );
+		for ( var i = 0; i < toggleButtons.length; i++ ) {
+			var button = toggleButtons[i];
+			var buttonKey = getButtonKey( button.getAttribute( 'data-toggle-name' ), button.getAttribute( 'data-toggle-id' ) );
 
 			// If there is a key, set button value to itself, otherwise set to default true
-			if ( collapsedElements[collapsedKey].hasOwnProperty( buttonKey ) ) {
-				collapsedElements[collapsedKey][buttonKey] = collapsedElements[collapsedKey][buttonKey];
+			if ( toggleObject[toggleKey].hasOwnProperty( buttonKey ) ) {
+				toggleObject[toggleKey][buttonKey] = toggleObject[toggleKey][buttonKey];
 			} else {
-				collapsedElements[collapsedKey][buttonKey] = true;
+				toggleObject[toggleKey][buttonKey] = button.getAttribute( 'data-toggle-state' );
 			}
 
-			// Add toggle button to element
-			var buttonIcon = document.createElement( 'button' );
-			buttonIcon.className = 'content-toggle-button icon icon-lg';
-			button.insertBefore( buttonIcon, button.firstChild );
+			// Add class to parent
+			findParent( button, parentClass ).classList.add( 'has-toggle-content' );
 
 			// Toggle intial state of collapsible elements
-			toggleContent( collapsedElements[collapsedKey][buttonKey], buttonIcon );
+			toggleContent( toggleObject[toggleKey][buttonKey], button );
 
 			// Add collapsible toggle event to buttons
-			buttonIcon.onclick = function( e ) {
-				var buttonText = button.innerText;
-
+			button.onclick = function() {
 				return function( e ) {
+					var buttonInner = e.target || e.srcElement;
+
 					// Reset button key text
-					buttonKey = prefix + getButtonKey( buttonText );
+					buttonKey = getButtonKey( buttonInner.getAttribute( 'data-toggle-name' ), buttonInner.getAttribute( 'data-toggle-id' ) );
 
-					// Reset button state in collapsedElements
-					collapsedElements[collapsedKey][buttonKey] = collapsedElements[collapsedKey][buttonKey] ? false : true;
+					// Reset button state in toggleObject
+					toggleObject[toggleKey][buttonKey] = toggleObject[toggleKey][buttonKey] ? false : true;
 
-					// Send updated collapsed elements to storage
-					setStorage( collapsedElements );
+					// Send updated toggleObject to storage
+					setStorage( toggleObject );
 
 					// Then toggle things
-					toggleContent( collapsedElements[collapsedKey][buttonKey], ( e.target || e.srcElement ) );
+					toggleContent( toggleObject[toggleKey][buttonKey], buttonInner );
 				}
 			}();
 		}
 
-		// Add khy-collapsed to storage after loop has finished
-		setStorage( collapsedElements );
+		// Add toggleCookie to storage after loop has finished
+		setStorage( toggleObject );
 
 		// Generate button keys for object keys
-		function getButtonKey( string ) {
-			var key = ( string == 'Forum' && pageTitle ) ? pageTitle : string;
-			return key.toLowerCase().replace( /\'/, '' ).replace( /[^a-z0-9]+/g, '-' ).replace( /-+/, '-' );
+		function getButtonKey( string, id ) {
+			string = string + ' - ' + id;
+			return string.toLowerCase().replace( /\'/, '' ).replace( /[^a-z0-9]+/g, '-' ).replace( /-+/, '-' );
 		}
 
 		// Functionality to add / remove classes on collapsible elements
 		function toggleContent( buttonKey, buttonTarget ) {
-			var buttonParent = findParent( buttonTarget, parentClass );
-			var buttonChild = buttonParent.querySelector( selector );
+			var buttonChild = findParent( buttonTarget, parentClass ).querySelector( content );
 			var buttonClasses = {
-				'col'   : 'content-collapsed',
-				'exp'   : 'content-expanded',
-				'minus' : 'fa-minus',
-				'plus'  : 'fa-plus'
+				'con-col' : 'toggle-content-collapsed',
+				'con-exp' : 'toggle-content-expanded',
+				'btn-col' : 'toggle-button-collapsed',
+				'btn-exp' : 'toggle-button-expanded'
 			};
 
 			if ( buttonKey ) {
-				toggleButtonClasses( buttonTarget, buttonClasses.minus, buttonClasses.plus );
-				toggleButtonClasses( buttonChild, buttonClasses.col, buttonClasses.exp );
+				toggleClasses( buttonTarget, buttonClasses['btn-col'], buttonClasses['btn-exp'] );
+				toggleClasses( buttonChild, buttonClasses['con-col'], buttonClasses['con-exp'] );
 			} else {
-				toggleButtonClasses( buttonTarget, buttonClasses.plus, buttonClasses.minus );
-				toggleButtonClasses( buttonChild, buttonClasses.exp, buttonClasses.col );
+				toggleClasses( buttonTarget, buttonClasses['btn-exp'], buttonClasses['btn-col'] );
+				toggleClasses( buttonChild, buttonClasses['con-exp'], buttonClasses['con-col'] );
 			}
 		}
 
 		// Toggle button classes
-		function toggleButtonClasses( element, remove, add ) {
-			element.classList.remove( remove ); element.classList.add( add );
+		function toggleClasses( selector, remove, add ) {
+			selector.classList.remove( remove ); selector.classList.add( add );
 		}
 
 		// Function to reset storage
 		function setStorage( data ) {
-			return ( typeof( Storage ) !== 'undefined' && save ) ? window.localStorage.setItem( 'khy-collapsed', JSON.stringify( data ) ) : null;
+			return ( typeof( Storage ) !== 'undefined' && save ) ? window.localStorage.setItem( toggleCookie, JSON.stringify( data ) ) : null;
 		}
 	}
 }

@@ -630,7 +630,7 @@ div[id*='list_thanks'] {
 	h2 + p .arrow-left, .post ul.searchresults li a {
 		&:before {
 			color: $color-00;
-			@include icon-font($fs: 12px);
+			@include icon-font($fs: rem(12px));
 		}
 	}
 	h2 + p .arrow-left:before {

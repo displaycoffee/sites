@@ -847,3 +847,14 @@ dl.details {
 		background-position: -9999px -9999px;
 	}
 }
+
+/* Toggle Elements
+============================================== */
+
+.toggle-content-expanded {
+	@include toggle-content(show, $transition: true);
+}
+.toggle-content-collapsed {
+	@include toggle-content(hide);
+	@include sr-only;
+}

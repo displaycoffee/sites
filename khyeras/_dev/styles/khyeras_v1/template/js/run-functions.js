@@ -20,7 +20,7 @@ addImageBackground( '.forum-image img', '1000x500' );
 addImageBackground( '.excerpt .excerpt-image img', '1000x500' );
 detectiPhone();
 
-toggleElements( '.forabg .header .list-inner', '.topiclist.forums', 'inner', 'forum-', true );
+toggleElements( '.forabg .toggle-button', '.topiclist.forums', 'inner', true );
 
 // Run all jquery functions on document ready
 jQuery( document ).ready( function( $ ) {
