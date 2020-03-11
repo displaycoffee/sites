@@ -851,10 +851,39 @@ dl.details {
 /* Toggle Elements
 ============================================== */
 
+.toggle-button {
+	.fa-angle-up {
+		@include sizing(22px, 22px);
+		@include transition(transform 0.5s ease-in-out);
+		transform: rotate(0deg);
+	}
+	&.toggle-button-collapsed .fa-angle-up {
+		transform: rotate(180deg);
+	}
+}
+
 .toggle-content-expanded {
 	@include toggle-content(show, $transition: true);
 }
 .toggle-content-collapsed {
 	@include toggle-content(hide);
 	@include sr-only;
+}
+
+// Reset toggle button styles
+.toggle-button-reset {
+	padding: 0;
+	border: 0;
+	outline: none;
+	background: none;
+}
+
+// Forum header positioning
+.topiclist > li.header.has-toggle-button {
+	position: relative;
+	padding-left: 52px;
+	.toggle-button {
+		@include position($type: absolute, $left: 20px, $bottom: 0, $top: -1px);
+		margin: auto;
+	}
 }

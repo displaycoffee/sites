@@ -234,31 +234,6 @@
 	}
 }
 
-.has-toggle-content .topiclist > li {
-	&.header {
-		position: relative;
-		padding-left: 50px;
-		.toggle-button {
-			@include sizing(20px, 20px);
-			@include icon-font($fs: rem(20px), $lh: 20px);
-			@include position($type: absolute, $left: 20px, $bottom: 0, $top: -4px);
-			margin: auto;
-			padding: 0;
-			border: 0;
-			outline: none;
-			background: none;
-			@include transition(transform 0.5s ease-in-out);
-			transform: rotate(0deg);
-			&:before {
-				content: unicode($icon-angle-down);
-			}
-		}
-		.toggle-button-collapsed {
-			transform: rotate(180deg);
-		}
-	}
-}
-
 /* Table Listings
 ============================================== */
 

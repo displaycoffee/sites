@@ -277,28 +277,35 @@ function toggleElements( button, content, parentClass, save ) {
 
 		for ( var i = 0; i < toggleButtons.length; i++ ) {
 			var button = toggleButtons[i];
-			var buttonKey = getButtonKey( button.getAttribute( 'data-toggle-name' ), button.getAttribute( 'data-toggle-id' ) );
+
+			// If button id is equal to 9999, we need to set a random id using index
+			var buttonId = button.getAttribute( 'data-toggle-id' );
+			if ( buttonId == '9999' ) {
+				buttonId = ( i + 1 ) * 2;
+				button.setAttribute( 'data-toggle-id', buttonId );
+			}
+
+			var buttonKey = getButtonKey( button.getAttribute( 'data-toggle-name' ), buttonId );
 
 			// If there is a key, set button value to itself, otherwise set to default true
 			if ( toggleObject[toggleKey].hasOwnProperty( buttonKey ) ) {
 				toggleObject[toggleKey][buttonKey] = toggleObject[toggleKey][buttonKey];
 			} else {
-				toggleObject[toggleKey][buttonKey] = button.getAttribute( 'data-toggle-state' );
+				var buttonDataState = ( button.getAttribute( 'data-toggle-state' ) ) == 'true' ? true : false;
+				toggleObject[toggleKey][buttonKey] = buttonDataState;
 			}
 
 			// Add class to parent
-			findParent( button, parentClass ).classList.add( 'has-toggle-content' );
+			button.parentNode.classList.add( 'has-toggle-button' );
 
 			// Toggle intial state of collapsible elements
-			toggleContent( toggleObject[toggleKey][buttonKey], button );
+			toggleContent( toggleObject[toggleKey][buttonKey], button, button.getAttribute( 'data-toggle-mobile' ) );
 
 			// Add collapsible toggle event to buttons
 			button.onclick = function() {
 				return function( e ) {
-					var buttonInner = e.target || e.srcElement;
-
 					// Reset button key text
-					buttonKey = getButtonKey( buttonInner.getAttribute( 'data-toggle-name' ), buttonInner.getAttribute( 'data-toggle-id' ) );
+					buttonKey = getButtonKey( this.getAttribute( 'data-toggle-name' ), this.getAttribute( 'data-toggle-id' ) );
 
 					// Reset button state in toggleObject
 					toggleObject[toggleKey][buttonKey] = toggleObject[toggleKey][buttonKey] ? false : true;
@@ -307,7 +314,7 @@ function toggleElements( button, content, parentClass, save ) {
 					setStorage( toggleObject );
 
 					// Then toggle things
-					toggleContent( toggleObject[toggleKey][buttonKey], buttonInner );
+					toggleContent( toggleObject[toggleKey][buttonKey], this, this.getAttribute( 'data-toggle-mobile' ) );
 				}
 			}();
 		}
@@ -322,11 +329,12 @@ function toggleElements( button, content, parentClass, save ) {
 		}
 
 		// Functionality to add / remove classes on collapsible elements
-		function toggleContent( buttonKey, buttonTarget ) {
+		function toggleContent( buttonKey, buttonTarget, mobile ) {
+			var buttonMobile = ( mobile == 'true' ) ? '-mobile' : '';
 			var buttonChild = findParent( buttonTarget, parentClass ).querySelector( content );
 			var buttonClasses = {
-				'con-col' : 'toggle-content-collapsed',
-				'con-exp' : 'toggle-content-expanded',
+				'con-col' : 'toggle-content-collapsed' + buttonMobile,
+				'con-exp' : 'toggle-content-expanded' + buttonMobile,
 				'btn-col' : 'toggle-button-collapsed',
 				'btn-exp' : 'toggle-button-expanded'
 			};

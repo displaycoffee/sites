@@ -1,3 +1,5 @@
 {% set forum_id = forumrow.S_IS_CAT ? forumrow.FORUM_ID : FORUM_ID %}
 {% set forum_name = forumrow.S_IS_CAT ? forumrow.FORUM_NAME : FORUM_NAME %}
-<button class="toggle-button" data-toggle-type="forum" data-toggle-id="{{ forum_id }}" data-toggle-name="{{ forum_name }}" data-toggle-state="true"></button>
+<button class="toggle-button toggle-button-reset" data-toggle-type="forum" data-toggle-id="{{ forum_id }}" data-toggle-name="{{ forum_name }}" data-toggle-state="true" data-toggle-mobile="false">
+	<i class="icon icon-xxl fa-angle-up"></i>
+</button>

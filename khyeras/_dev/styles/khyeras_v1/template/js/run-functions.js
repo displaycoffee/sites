@@ -3,24 +3,27 @@
 
 addForumImageClass();
 addFieldsetClasses();
-addNoPaginationClass();
-addThanksClass();
-moveRankText();
-noContentListing();
-addSearchIgnoredClass();
-checkForNewPM();
-checkForEmpty( '.section-mcp-post-details .pagination ul' );
-bannerCodeGenerator('.link-banners img', '#link-banner-code code');
-addImageWrapper( '.notification_list .list-inner > img' );
-addImageWrapper( '.notification_list .notification-block > img' );
 addImageBackground( '.page-welcome .image-wrap img', false );
 addImageBackground( '.postprofile .avatar img', false );
 addImageBackground( '.dropdown-container .user-avatar img', false );
 addImageBackground( '.forum-image img', '1000x500' );
 addImageBackground( '.excerpt .excerpt-image img', '1000x500' );
+addImageWrapper( '.notification_list .list-inner > img' );
+addImageWrapper( '.notification_list .notification-block > img' );
+addNoPaginationClass();
+addSearchIgnoredClass();
+addThanksClass();
+bannerCodeGenerator('.link-banners img', '#link-banner-code code');
+checkForEmpty( '.section-mcp-post-details .pagination ul' );
+checkForNewPM();
 detectiPhone();
+moveRankText();
+noContentListing();
 
+toggleElements( '.bbcode-hidden-container .toggle-button', '.bbcode-hidden-text', 'bbcode-hidden-container', false );
 toggleElements( '.forabg .toggle-button', '.topiclist.forums', 'inner', true );
+toggleElements( '.toggle-links .toggle-button', '.site-links', 'user-information', false );
+toggleElements( '.toggle-featured .toggle-button', '.featured-content', 'wrap', false );
 
 // Run all jquery functions on document ready
 jQuery( document ).ready( function( $ ) {
@@ -38,9 +41,6 @@ jQuery( document ).ready( function( $ ) {
 	formatDisplayActions();
 	hidePMPostBox();
 	addCPWrapper();
-	toggleContent( '.toggle-links a', '#page-welcome .site-links', 'toggle-show', '' );
-	toggleContent( '.toggle-featured a', '#featured-content', 'toggle-show', '' );
-	toggleContent( '.bbcode-hidden-toggle', '.bbcode-hidden-text', 'toggle-show', 'prev' );
 	toggleContent( '.card-filter-button', '.card-changed', 'toggle-hide', '' );
 	toggleMemberDisplay();
 	toggleMapDisplay();

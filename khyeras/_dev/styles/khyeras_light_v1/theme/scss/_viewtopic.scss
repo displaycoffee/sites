@@ -188,25 +188,39 @@
 			clear: right;
 			margin: 0 0 20px 20px;
 		}
-		.bbcode-hidden-text {
-			@include position($type: absolute, $top: -9999px, $left: -9999px);
-			@include toggle-content(hide);
-			&.toggle-show {
-				position: static;
-				@include toggle-content(show, $transition: true);
-				& + .bbcode-hidden-toggle {
-					padding: 0 0 0 5px;
+		.bbcode-hidden-container {
+			.bbcode-hidden-link, .toggle-button {
+				margin: 0 5px;
+				font-style: italic;
+			}
+			.bbcode-hidden-link {
+				display: inline-block;
+				.fa-exclamation {
+					margin: 0 5px 0 0;
 				}
 			}
-		}
-		.bbcode-hidden-toggle {
-			font-style: italic;
-			cursor: pointer;
-			.icon {
-				font-size: rem(10px);
-				position: relative;
-				top: -1.5px;
-				padding: 0 2px 0 0;
+			.toggle-button {
+				color: $color-04;
+				@include transition(color 0.3s ease-in-out);
+				font-size: 0;
+				&:before, &:after {
+					font-size: rem(14px);
+					content: '[\0000a0';
+				}
+				&:hover {
+					color: $color-03;
+				}
+				&.toggle-button-expanded {
+					.misc-plus:before {
+						content: unicode($misc-minus);
+					}
+					&:after {
+						content: '\0000a0Hide content\0000a0\0000a0]';
+					}
+				}
+				&.toggle-button-collapsed:after {
+					content: '\0000a0Show content\0000a0\0000a0]';
+				}
 			}
 		}
 	}
