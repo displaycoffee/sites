@@ -3,15 +3,6 @@ var body = document.querySelector( 'body' );
 var baseFontSize = 16;
 var bottomDistance =  document.body.scrollHeight + window.innerHeight;
 
-// If className has classes, add a space before adding new classes
-function checkForClasses( selector ) {
-	if ( selector.className ) {
-		return ' ';
-	} else {
-		return '';
-	}
-}
-
 // Replace HTML characters
 function cleanHTML( selector ) {
 	return selector.replace( /(<([^>]+)>)/ig, '' );

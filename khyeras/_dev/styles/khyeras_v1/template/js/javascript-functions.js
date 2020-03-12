@@ -10,12 +10,12 @@ function addFieldsetClasses() {
 
 			// Check if there are multiple children in the dd
 			if ( dd.children.length > 1 ) {
-				dd.className += ( checkForClasses( dd ) + 'has-multiple-fields' );
+				dd.classList.add( 'has-multiple-fields' );
 			}
 
 			// Check if element has an nbsp space
 			if ( dd.innerHTML.indexOf( '&nbsp;' ) !== -1 ) {
-				dd.className += ( checkForClasses( dd ) + 'has-space' );
+				dd.classList.add( 'has-space' );
 			}
 		}
 	}
@@ -24,7 +24,8 @@ function addFieldsetClasses() {
 	if ( fieldsetRadio && fieldsetRadio.length ) {
 		for ( var i = 0; i < fieldsetRadio.length; i++ ) {
 			var radio = fieldsetRadio[i];
-			radio.parentNode.className += ( checkForClasses( radio.parentNode ) + 'has-radio-button' );
+
+			radio.parentNode.classList.add( 'has-radio-button' );
 		}
 	}
 }
@@ -39,7 +40,7 @@ function addForumImageClass() {
 
 			// Add class to parent row
 			var parentRow = findParent( fImage, 'row-item' );
-			parentRow.className += ( checkForClasses( parentRow ) + 'has-forum-image' );
+			parentRow.classList.add( 'has-forum-image' );
 		}
 	}
 }
@@ -73,7 +74,7 @@ function addImageBackground( selector, respondDimensions ) {
 		for ( var i = 0; i < imageSelector.length; i++ ) {
 			var sImage = imageSelector[i];
 			var sImageSrc = sImage.getAttribute( 'src' );
-			var sImageClass = 'image-fit image-fit-default';
+			var sImageClass = 'image-fit-default';
 			var sImageParent = sImage.parentNode;
 
 			// Check if there are dimensions to change with background image
@@ -89,12 +90,13 @@ function addImageBackground( selector, respondDimensions ) {
 				}
 
 				// Update image class
-				sImageClass = sImageClass.replace( 'image-fit-default', 'image-fit-responsive' );
+				sImageClass = 'image-fit-responsive';
 			}
 
 			// Set background image attribute and class
 			sImageParent.style.backgroundImage = 'url(' + sImageSrc + ')';
-			sImageParent.className += ( checkForClasses( sImageParent ) + sImageClass );
+			sImageParent.classList.add( 'image-fit' );
+			sImageParent.classList.add( sImageClass );
 		}
 	}
 }
@@ -112,7 +114,7 @@ function addNoPaginationClass() {
 			var totalNumber = paginationText.replace( regex, '' ).match( /\d+/g );
 
 			if ( totalNumber && totalNumber <= 0 ) {
-				body.className += ( checkForClasses( body ) + 'no-pagination' );
+				body.classList.add( 'no-pagination' );
 			}
 		}
 	}
@@ -127,7 +129,7 @@ function addSearchIgnoredClass() {
 			var topic = postBody[i];
 
 			if ( topic.innerHTML.indexOf( 'ignore list' ) !== -1 ) {
-				topic.className += ( checkForClasses( topic ) + 'ignore' );
+				topic.classList.add( 'ignore' );
 			}
 		}
 	}
@@ -144,7 +146,7 @@ function addThanksClass() {
 			if ( title.innerHTML.indexOf( 'Thanks list' ) !== -1 ) {
 				// Add class to parent row
 				var parentRow = findParent( title, 'panel' );
-				parentRow.className += ( checkForClasses( parentRow ) + 'member-thanks-list' );
+				parentRow.classList.add( 'member-thanks-list' );
 			}
 		}
 	}
@@ -191,7 +193,7 @@ function checkForNewPM() {
 			var item = menuItem[i];
 
 			if ( item.innerHTML.indexOf( 'strong' ) !== -1 ) {
-				item.className += ( checkForClasses( item ) + 'new-pm' );
+				item.classList.add( 'new-pm' );
 			}
 		}
 	}
@@ -211,7 +213,7 @@ function checkForEmpty( selector ) {
 // Detect if on iPhone device
 function detectiPhone() {
 	if ( navigator.userAgent.match( /iPhone|iPad|iPod/i ) ) {
-		body.className += ( checkForClasses( body ) + 'ios' );
+		body.classList.add( 'ios' );
 	}
 }
 
@@ -227,7 +229,7 @@ function moveRankText() {
 
 			// Also add "name" class to td elements
 			if (rank.parentNode.nodeName == 'TD' || rank.parentNode.nodeName == 'td') {
-				rank.parentNode.className += ( checkForClasses( rank.parentNode ) + 'name' );
+				rank.parentNode.classList.add( 'name' );
 			}
 		}
 	}
@@ -250,7 +252,7 @@ function noContentListing() {
 			var list = listing[i];
 
 			if ( noContentText.indexOf( list.innerText.trim() ) !== -1 ) {
-				list.className += ( checkForClasses( list ) + 'no-content' );
+				list.classList.add( 'no-content' );
 			}
 		}
 	}
