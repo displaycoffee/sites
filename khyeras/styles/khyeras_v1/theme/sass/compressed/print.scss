@@ -8,9 +8,9 @@
 */
 
 // Helpers
-@import 'variables';
-@import 'colors';
-@import 'mixins';
+@import '../imports/variables';
+@import '../imports/colors';
+@import '../imports/mixins';
 
 * {
 	margin: 0;

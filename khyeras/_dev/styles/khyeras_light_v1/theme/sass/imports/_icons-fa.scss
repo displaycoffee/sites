@@ -1,0 +1,65 @@
+/* Font Awesome Icon Variables
+============================================== */
+
+$icon-align-center: \f037;
+$icon-align-justify: \f039;
+$icon-align-left: \f036;
+$icon-align-right: \f038;
+$icon-angle-down: \f107;
+$icon-angle-left: \f104;
+$icon-angle-right: \f105;
+$icon-angle-up: \f106;
+$icon-bell: \f0f3;
+$icon-clone: \f24d;
+$icon-cogs: \f085;
+$icon-comment: \f075;
+$icon-envelope: \f0e0;
+$icon-exclamation-circle: \f06a;
+$icon-exclamation-triangle: \f071;
+$icon-eye: \f06e;
+$icon-facebook: \f09a;
+$icon-file-o: \f016;
+$icon-gplus: \f0d5;
+$icon-header: \f1dc;
+$icon-heart: \f004;
+$icon-inbox: \f01c;
+$icon-images: \f1c5;
+$icon-search: \f002;
+$icon-search-minus: \f010;
+$icon-search-plus: \f00e;
+$icon-skype: \f17e;
+$icon-sort-asc: \f0de;
+$icon-sort-desc: \f0dd;
+$icon-spinner: \f110;
+$icon-star: \f005;
+$icon-strikethrough: \f0cc;
+$icon-thumb: \f164;
+$icon-twitter: \f099;
+$icon-user: \f007;
+$icon-windows: \f17a;
+$icon-world: \f0ac;
+$icon-yahoo: \f19e;
+$icon-youtube: \f16a;
+
+/* Font Awesome Icon Overrides
+============================================== */
+
+.fa-chevron-down:before, .caret .fa-sort-down:before {
+	content: unicode($icon-angle-down);
+}
+
+.fa-chevron-left:before {
+	content: unicode($icon-angle-left);
+}
+
+.fa-chevron-right:before {
+	content: unicode($icon-angle-right);
+}
+
+.fa-chevron-up:before, .dropdown-visible .caret .fa-sort-down:before {
+	content: unicode($icon-angle-up);
+}
+
+.icon.thanks-icon:before {
+	content: unicode($icon-thumb);
+}

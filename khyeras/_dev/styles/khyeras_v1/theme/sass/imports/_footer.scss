@@ -1,0 +1,163 @@
+/* Footer
+============================================== */
+
+#page-footer {
+	background: url($images + 'footer-background.png') center -30px repeat-x;
+	margin: 70px 0 0 0;
+	padding: 150px 0 0 0;
+	.footer-inner {
+		background: $color-01;
+		color: $light-02;
+		padding: 0 0 30px 0;
+		margin: 20px 0 0 0;
+		.footer-text {
+			font-size: rem(13px);
+		}
+		.flex-row .flex-column {
+			&.has-copyright {
+				order: -1;
+			}
+			&.has-discord {
+				flex: 0 0 60%;
+			}
+			.button-wrapper {
+				margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
+				@include clearfix('&');
+				.button-link {
+					float: left;
+					margin: 0 $ffs-half $ffs $ffs-half;
+				}
+			}
+		}
+		.contact-icons a {
+			color: $light-03;
+			&:hover {
+				color: $color-03;
+			}
+			.contact-icon:before {
+				font-size: rem(25px);
+			}
+		}
+		.discord-channel-status {
+			.discord-channel-list {
+				list-style: none;
+				margin: 0 -5px 10px -5px;
+				li {
+					vertical-align: top;
+					margin: 0 5px 10px 5px;
+					&, span, a {
+						display: inline-block;
+					}
+					.image-wrap, .discord-username {
+						vertical-align: middle;
+					}
+					.image-wrap {
+						@include sizing(30px, 30px);
+						border-radius: 100%;
+						border: 2px solid $color-02;
+						margin: 0 5px 0 0;
+					}
+					.discord-username {
+						color: $color-17;
+					}
+				}
+				.discord-status-idle {
+					font-style: italic;
+				}
+				.discord-admin .discord-username {
+					color: #ed6565;
+				}
+				.discord-moderator .discord-username {
+					color: #b490d2;
+				}
+				.discord-more-users a {
+					margin: 5px 0 0 0;
+				}
+			}
+		}
+	}
+}
+
+/* Darken wrapper / mobile overlay
+============================================== */
+
+.darkenwrapper, #mobile-overlay {
+	display: none;
+}
+
+.darkenwrapper .darken, #mobile-overlay {
+	@include position($type: fixed, $top: 0, $bottom: 0, $left: 0, $right: 0, $z: 1000);
+	background: map-get($dark-set, dark-06);
+	margin: auto;
+}
+
+.mobile-open #mobile-overlay {
+	display: block;
+}
+
+
+/* phpBB Alert
+============================================== */
+
+.phpbb_alert {
+	display: none;
+	@include position($type: fixed, $top: 150px, $right: 30px, $left: 30px, $z: 10001);
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	background: $color-02;
+	.alert_close {
+		@include position($type: absolute, $top: -10px, $right: -10px, $z: 2);
+		@include sizing(24px, 24px);
+		background: $color-02;
+		border-radius: 100%;
+		text-align: center;
+		color: $light-03;
+		.icon {
+			line-height: 24px;
+		}
+	}
+	.submit-buttons {
+		margin: 0;
+	}
+	label[for='delete_reason'] {
+		margin: 20px 0 0 0;
+		span {
+			font-style: italic;
+		}
+	}
+}
+
+/* Bottom hidden
+============================================== */
+
+.bottom-hidden {
+	height: 0;
+	overflow: hidden;
+}
+
+/* Scroll to top/bottom
+============================================== */
+
+.scroll-to-links {
+	@include position($type: fixed, $right: 20px, $bottom: 20px, $z: -1);
+	@include toggle-content(hide);
+	.scroll-to-top, .scroll-to-bottom {
+		display: block;
+		@include sizing(40px, 40px);
+		border-radius: 3px;
+		background: $color-05;
+		padding: 10px;
+		text-align: center;
+		&, &:hover {
+			color: $light-03;
+		}
+	}
+	.scroll-to-top {
+		margin: 0 0 10px 0;
+	}
+	&.scroll-to-visible {
+		z-index: 999;
+		@include toggle-content(show, $transition: true);
+	}
+}
