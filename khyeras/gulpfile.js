@@ -11,7 +11,6 @@ var browserSync = require('browser-sync').create(),
 /* Global Variables
 ------------------------------------------------- */
 
-var proxyURL = 'http://ocalhost/sites/khyeras';
 var styles = 'styles/';
 var ext = 'ext/';
 var dev = '_dev/';
@@ -55,7 +54,7 @@ for (key in projects) {
 
 gulp.task('bs', function() {
 	browserSync.init({
-		proxy : proxyURL,
+		proxy : 'http://localhost/sites/khyeras',
 		open  : false
 	})
 });

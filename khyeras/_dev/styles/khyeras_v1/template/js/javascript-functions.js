@@ -45,27 +45,6 @@ function addForumImageClass() {
 	}
 }
 
-// Add an image wrapper around notification images
-function addImageWrapper( selector ) {
-	var imageSelector = document.querySelectorAll( selector );
-
-	if ( imageSelector && imageSelector.length ) {
-		for ( var i = 0; i < imageSelector.length; i++ ) {
-			var sImage = imageSelector[i];
-
-			// Create the new image wrapper div
-			var imageWrapper = document.createElement( 'div' );
-			imageWrapper.setAttribute( 'class', 'image-wrap' );
-
-			// Insert wrapper before the image
-			sImage.parentNode.insertBefore( imageWrapper, sImage );
-
-			// Append image to the image wrapper
-			imageWrapper.appendChild( sImage );
-		}
-	}
-}
-
 // Add background image for responsive banners
 function addImageBackground( selector, respondDimensions ) {
 	var imageSelector = document.querySelectorAll( selector );
@@ -101,6 +80,27 @@ function addImageBackground( selector, respondDimensions ) {
 	}
 }
 
+// Add an image wrapper around notification images
+function addImageWrapper( selector ) {
+	var imageSelector = document.querySelectorAll( selector );
+
+	if ( imageSelector && imageSelector.length ) {
+		for ( var i = 0; i < imageSelector.length; i++ ) {
+			var sImage = imageSelector[i];
+
+			// Create the new image wrapper div
+			var imageWrapper = document.createElement( 'div' );
+			imageWrapper.setAttribute( 'class', 'image-wrap' );
+
+			// Insert wrapper before the image
+			sImage.parentNode.insertBefore( imageWrapper, sImage );
+
+			// Append image to the image wrapper
+			imageWrapper.appendChild( sImage );
+		}
+	}
+}
+
 // Add no-pagination class to body to hide pagination
 function addNoPaginationClass() {
 	var pagination = document.querySelector( '.action-bar .pagination' );
@@ -115,6 +115,43 @@ function addNoPaginationClass() {
 
 			if ( totalNumber && totalNumber <= 0 ) {
 				body.classList.add( 'no-pagination' );
+			}
+		}
+	}
+}
+
+// Add Quick Links to pages
+function addQuickLinks() {
+	var links = document.querySelectorAll( '[data-quick-name]' );
+
+	if ( links && links.length ) {
+		var panel = document.querySelector( '.page-body > .wrapper > .panel' );
+
+		// Create the quick links element
+		var quickLinks = document.createElement( 'p' );
+		quickLinks.setAttribute( 'class', 'quick-links' );
+		var quickLinksHeading = document.createElement( 'strong' );
+		quickLinksHeading.textContent = 'Quick Links: ';
+		quickLinks.appendChild( quickLinksHeading );
+
+		// Add quick links before first panel
+		panel.parentNode.insertBefore( quickLinks, panel );
+
+		for ( var i = 0; i < links.length; i++ ) {
+			var link = links[i];
+
+			// Create individual linkElement element
+			var linkElement = document.createElement( 'a' );
+			linkElement.setAttribute( 'href', '#' + link.getAttribute( 'id' ) );
+			linkElement.textContent = link.getAttribute( 'data-quick-name' );
+			quickLinks.appendChild( linkElement );
+
+			// Append separator but not if last
+			if ( i != ( links.length - 1 ) ) {
+				var linkSeparator = document.createElement( 'span' );
+				linkSeparator.setAttribute( 'class', 'quick-links-separator' );
+				linkSeparator.textContent = ' | ';
+				quickLinks.appendChild( linkSeparator );
 			}
 		}
 	}
@@ -184,6 +221,17 @@ function bannerCodeGenerator( bannerImages, bannerCode ) {
 	}
 }
 
+// Check for empty content elements on the page
+function checkForEmpty( selector ) {
+	var emptySelector = document.querySelectorAll( selector );
+
+	if ( emptySelector && emptySelector.length ) {
+		for ( var i = 0; i < emptySelector.length; i++ ) {
+			emptySelector[i].parentNode.style.display = 'none';
+		}
+	}
+}
+
 // Check if there is a new PM (mostly for icon purposes)
 function checkForNewPM() {
 	var menuItem = document.querySelectorAll( '.cp-menu ul li a[href*="folder"]' );
@@ -195,17 +243,6 @@ function checkForNewPM() {
 			if ( item.innerHTML.indexOf( 'strong' ) !== -1 ) {
 				item.classList.add( 'new-pm' );
 			}
-		}
-	}
-}
-
-// Check for empty content elements on the page
-function checkForEmpty( selector ) {
-	var emptySelector = document.querySelectorAll( selector );
-
-	if ( emptySelector && emptySelector.length ) {
-		for ( var i = 0; i < emptySelector.length; i++ ) {
-			emptySelector[i].parentNode.style.display = 'none';
 		}
 	}
 }

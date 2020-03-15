@@ -1,8 +1,8 @@
 /* JavaScript Functionality
 ========================================================================== */
 
-addForumImageClass();
 addFieldsetClasses();
+addForumImageClass();
 addImageBackground( '.page-welcome .image-wrap img', false );
 addImageBackground( '.postprofile .avatar img', false );
 addImageBackground( '.dropdown-container .user-avatar img', false );
@@ -11,6 +11,7 @@ addImageBackground( '.excerpt .excerpt-image img', '1000x500' );
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
 addNoPaginationClass();
+addQuickLinks();
 addSearchIgnoredClass();
 addThanksClass();
 bannerCodeGenerator('.link-banners img', '#link-banner-code code');
@@ -19,7 +20,6 @@ checkForNewPM();
 detectiPhone();
 moveRankText();
 noContentListing();
-
 toggleElements( '.bbcode-hidden-container .toggle-button', '.bbcode-hidden-text', 'bbcode-hidden-container', false );
 toggleElements( '.forabg .toggle-button', '.topiclist.forums', 'inner', true );
 toggleElements( '.toggle-links .toggle-button', '.site-links', 'user-information', false );

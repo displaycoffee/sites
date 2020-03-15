@@ -82,7 +82,7 @@
 		{% endif %}
 		{% for key, card in cards %}
 			{% set section_id = _self.create_handle(key) %}
-			<section id="{{ section_id }}" class="page-content-section">
+			<section id="{{ section_id }}" class="page-content-section"{% if code != 'lvl' %} data-quick-name="{{ key }}"{% endif %}>
 				{% if code != 'lvl' %}
 					<h3>{{ key }}</h3>
 				{% endif %}
