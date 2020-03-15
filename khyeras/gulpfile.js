@@ -1,5 +1,5 @@
 /* Required Sources
-   ---------------------------------------------- */
+------------------------------------------------- */
 
 var browserSync = require('browser-sync').create(),
 	gulp = require('gulp'),
@@ -9,35 +9,35 @@ var browserSync = require('browser-sync').create(),
 	uglify = require('gulp-uglify');
 
 /* Global Variables
-   ---------------------------------------------- */
+------------------------------------------------- */
 
 var phpBBFolder = 'styles';
 //var phpBBFolder = 'ext';
 var proxyURL = 'http://localhost/sites/khyeras';
 
 /* Styles Configuration
-   ---------------------------------------------- */
+------------------------------------------------- */
 
 if (phpBBFolder == 'styles') {
+	var themeName = 'khyeras_v1';
+	//var themeName = 'khyeras_light_v1';
 
 	/* Development Variables
-	   ---------------------------------------------- */
+	------------------------------------------------- */
 
-	var dev = '_dev/styles/khyeras_v1';
-	//var dev = '_dev/styles/khyeras_light_v1';
+	var dev = '_dev/styles/' + themeName;
 	var devJS = dev + '/template/js';
 	var devSass = dev + '/theme/scss';
 
 	/* Distribution Variables
-	   ---------------------------------------------- */
+	------------------------------------------------- */
 
-	var dist = 'styles/khyeras_v1/';
-	//var dist = 'styles/khyeras_light_v1/';
+	var dist = 'styles/' + themeName;
 	var distJS = dist + '/template';
 	var distCSS = dist + '/theme';
 
 	/* JavaScript
-	   ---------------------------------------------- */
+	------------------------------------------------- */
 	var jsSources = [
 		devJS + '/global-functions.js',
 		devJS + '/javascript-functions.js',
@@ -54,7 +54,7 @@ if (phpBBFolder == 'styles') {
 	});
 
 	/* SASS
-	   ---------------------------------------------- */
+	------------------------------------------------- */
 
 	var sassSources = [
 		devSass + '/bidi.scss',
@@ -72,19 +72,19 @@ if (phpBBFolder == 'styles') {
 		gulp.src(sassSources)
 			.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 			.pipe(autoprefixer({
-	            browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
-	        }))
+				browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
+			}))
 			.pipe(gulp.dest(distCSS));
 		gulp.src(expandedSources)
 			.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
 			.pipe(autoprefixer({
-	            browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
-	        }))
+				browsers: ['last 2 versions', 'Explorer >= 10', 'Android >= 4.1', 'Safari >= 7', 'iOS >= 7']
+			}))
 			.pipe(gulp.dest(distCSS));
 	});
 
 	/* CSS
-	   ---------------------------------------------- */
+	------------------------------------------------- */
 
 	var cssSources = [distCSS + '/**.css'];
 
@@ -94,7 +94,7 @@ if (phpBBFolder == 'styles') {
 	});
 
 	/* Static Files
-	   ---------------------------------------------- */
+	------------------------------------------------- */
 
 	var staticSources = [
 		dev + '/**/*.cfg',
@@ -112,13 +112,13 @@ if (phpBBFolder == 'styles') {
 	});
 
 	/* Watch All The Things
-	   ---------------------------------------------- */
+	------------------------------------------------- */
 
 	gulp.task('watch', function() {
-	    browserSync.init({
-	        proxy: proxyURL,
-	        open: false
-	    })
+		browserSync.init({
+			proxy : proxyURL,
+			open  : false
+		})
 		gulp.watch(jsSources, ['js']);
 		gulp.watch(devSass + '/*.scss', ['sass']);
 		gulp.watch(cssSources, ['css']);
@@ -126,51 +126,51 @@ if (phpBBFolder == 'styles') {
 	});
 
 	/* Default Gulp Task
-	   ---------------------------------------------- */
+	------------------------------------------------- */
 
 	gulp.task('default', ['js', 'sass', 'css', 'static', 'watch']);
 }
 
 /* Ext Configuration
-   ---------------------------------------------- */
+------------------------------------------------- */
 
 if (phpBBFolder == 'ext') {
 
-   	/* Development Variables
-   	   ---------------------------------------------- */
+	/* Development Variables
+	------------------------------------------------- */
 
-   	var dev = '_dev/ext';
+	var dev = '_dev/ext';
 
-   	/* Distribution Variables
-   	   ---------------------------------------------- */
+	/* Distribution Variables
+	------------------------------------------------- */
 
-   	var dist = 'ext';
+	var dist = 'ext';
 
-   	/* Static Files
-   	   ---------------------------------------------- */
+	/* Static Files
+	------------------------------------------------- */
 
-   	var staticSources = [
-   		dev + '/**/*.*'
-   	];
+	var staticSources = [
+		dev + '/**/*.*'
+	];
 
-   	gulp.task('static', function() {
-   		gulp.src(staticSources)
-   			.pipe(gulp.dest(dist));
-   	});
+	gulp.task('static', function() {
+		gulp.src(staticSources)
+			.pipe(gulp.dest(dist));
+	});
 
-   	/* Watch All The Things
-   	   ---------------------------------------------- */
+	/* Watch All The Things
+	------------------------------------------------- */
 
-   	gulp.task('watch', function() {
-   	    browserSync.init({
-   	        proxy: proxyURL,
-   	        open: false
-   	    })
-   		gulp.watch(staticSources, ['static']);
-   	});
+	gulp.task('watch', function() {
+		browserSync.init({
+			proxy : proxyURL,
+			open  : false
+		})
+		gulp.watch(staticSources, ['static']);
+	});
 
-   	/* Default Gulp Task
-   	   ---------------------------------------------- */
+	/* Default Gulp Task
+	------------------------------------------------- */
 
-   	gulp.task('default', ['static', 'watch']);
+	gulp.task('default', ['static', 'watch']);
 }
