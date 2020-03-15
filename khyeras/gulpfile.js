@@ -149,7 +149,6 @@ function createTask(key) {
 				devStatic + '/**/*.html',
 				devStatic + '/**/*.txt',
 				devStatic + '/**/images/*.*',
-				devStatic + '/**/images/**/*.*',
 				devStatic + '/**/fonts/*.*'
 			];
 		}

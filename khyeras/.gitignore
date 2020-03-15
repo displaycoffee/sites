@@ -53,3 +53,5 @@ ext/javiexin/advancedpf/styles/*
 styles/*
 !styles/khyeras_v1/
 !styles/khyeras_light_v1/
+!styles/khyeras_v1/**/
+!styles/khyeras_light_v1/**/
