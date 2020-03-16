@@ -594,10 +594,17 @@ dl.faq {
 		&.card-full {
 			@include flex(base);
 		}
-		.icon-wrapper {
+		.icon-wrapper, .user-avatar {
 			float: left;
 			clear: right;
 			padding: 0 15px 20px 0;
+		}
+		.user-avatar {
+			width: 100px;
+			.image-wrap {
+				border-width: 2px;
+				padding-bottom: calc(100% - 4px);
+			}
 		}
 		.card-completed-text {
 			margin: -10px 0 20px 0;
@@ -620,6 +627,13 @@ dl.faq {
 
 .section-page-halfbreed .card-grid .card-block .card-description {
 	min-height: 42px;
+}
+
+.section-page-character-listing .card-grid .card-block .card-description {
+	min-height: 105px;
+	.character-currency {
+		margin: 5px 0 0 0;
+	}
 }
 
 .card-filter {

@@ -17,10 +17,6 @@
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
 
-			{% if KHY_SCRIPT_NAME == 'members-character-census' %}
-				{% include 'partials/content_census.html' %}
-			{% endif %}
-
 			{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %}
 				{% include 'partials/content_faq.html' %}
 			{% endif %}
@@ -39,6 +35,14 @@
 
 			{% if KHY_SCRIPT_NAME == 'gameplay-achievements' %}
 				{% include 'partials/content_achievements.html' %}
+			{% endif %}
+
+			{% if KHY_SCRIPT_NAME == 'members-character-census' %}
+				{% include 'partials/content_census.html' %}
+			{% endif %}
+
+			{% if KHY_SCRIPT_NAME == 'members-character-listing' %}
+				{% include 'partials/content_character_listing.html' %}
 			{% endif %}
 
 			{% if KHY_SCRIPT_NAME == 'sitemap' %}

@@ -246,7 +246,7 @@ class global_info {
 					'name'       => $row['username'],
 					'days_since' => $days_since_value,
 					'last_post'  => $last_post_value,
-					'avatar'     => $this->utilities->exists($row['user_avatar'], false)
+					'avatar'     => $this->utilities->exists(get_user_avatar($row['user_avatar'], $row['user_avatar_type'], $row['user_avatar_width'], $row['user_avatar_height']), false)
 				];
 
 				$characters[$row['user_id']] = $character_data;
@@ -266,11 +266,17 @@ class global_info {
 				// Set level and currenty for later Variables
 				$character_level = $this->utilities->get_level($pf['c_experience']['value']);
 
-				// Get user race, class, and residence
+				// Get user race, class, gender, and residence
 				$character_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
 				$character_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
 				$character_gender = $this->utilities->exists($pf['c_gender']['value'], 'Undisclosed');
 				$character_residence = $this->utilities->exists($pf['c_residence']['value'], 'Elsewhere');
+
+				// Get hp and mp loss
+				$chracter_remaining = [
+					'hp' => ($pf['c_hp']['value'] * 1),
+					'mp' => ($pf['c_mp']['value'] * 1)
+				];
 
 				// Add details to character data
 				$character_data = [
@@ -280,6 +286,7 @@ class global_info {
 					'residence' => $character_residence,
 					'level'     => $character_level,
 					'stats'     => $this->utilities->get_life_modifier($character_race, $character_class, $character_level),
+					'remaining' => $chracter_remaining,
 					'currency'  => $this->utilities->calc_currency($pf['c_copper']['value'])
 				];
 

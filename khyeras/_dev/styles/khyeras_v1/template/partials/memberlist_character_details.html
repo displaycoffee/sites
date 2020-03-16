@@ -1,34 +1,7 @@
 <dl class="left-box details profile-details {{ character_class }}">
 	<dd class="character-card details-full">
-		<div class="level">
-			<div class="level-wrap">
-				<span class="level-name">Level</span>
-				{% set zero = KHY_MEMBER_LEVEL < 10 ? '0' : ''  %}
-				<span class="level-value">{{ zero }}{{ KHY_MEMBER_LEVEL }}</span>
-			</div>
-		</div>
-		{% if S_PROFILE_C_HP || S_PROFILE_C_MP %}
-			{% set remaining_hp = KHY_MEMBER_STATS['hp'] - PROFILE_C_HP_VALUE %}
-			{% set remaining_mp = KHY_MEMBER_STATS['mp'] - PROFILE_C_MP_VALUE %}
-			<div class="stats">
-				{% if S_PROFILE_C_HP %}
-					<div class="stat-bar stat-bar-small hp-bar">
-						<div class="stat-bar-inner" style="width: {{ ((remaining_hp / KHY_MEMBER_STATS['hp']) * 100) | number_format(2) }}%"></div>
-						<div class="stat-bar-label">
-							{{ remaining_hp }} / {{ KHY_MEMBER_STATS['hp'] }} {{ PROFILE_C_HP_NAME }}
-						</div>
-					</div>
-				{% endif %}
-				{% if S_PROFILE_C_MP %}
-					<div class="stat-bar stat-bar-small mp-bar">
-						<div class="stat-bar-inner" style="width: {{ ((remaining_mp / KHY_MEMBER_STATS['mp']) * 100) | number_format(2) }}%"></div>
-						<div class="stat-bar-label">
-							{{ remaining_mp }} / {{ KHY_MEMBER_STATS['mp'] }} {{ PROFILE_C_MP_NAME }}
-						</div>
-					</div>
-				{% endif %}
-			</div>
-		{% endif %}
+		{{ function.display_level(KHY_MEMBER_LEVEL, 'false') }}
+		{{ function.display_stats(KHY_MEMBER_STATS['hp'], KHY_MEMBER_STATS['mp'], PROFILE_C_HP_VALUE, PROFILE_C_MP_VALUE, 'false') }}
 	</dd>
 
 	{% set religion_value = (PROFILE_C_RELIGION_TYPE_VALUE) ~ (S_PROFILE_C_RELIGION_OPTS ? (' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE) : '') %}
