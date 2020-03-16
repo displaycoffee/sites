@@ -1,0 +1,94 @@
+{% set limit = 'Last 60 days' %}
+{% set all = 'All time' %}
+
+<section id="race" class="page-content-section" data-quick-name="By Race">
+	<h3>By Race</h3>
+	<div class="pie-chart-grid flex-row flex-row-10">
+		{% set race_limit_total = 0 %}
+		{% for key, value in KHY_CENSUS['race']['limit'] %}
+			{% set race_limit_total = race_limit_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(limit  ~ ', with Half-breed', 'race-limit', KHY_CENSUS['race']['limit'], race_limit_total) }}
+
+		{% set race_limit_expanded_total = 0 %}
+		{% for key, value in KHY_CENSUS['race']['limit_expanded'] %}
+			{% set race_limit_expanded_total = race_limit_expanded_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(limit  ~ ', Half-breed expanded', 'race-limit-expanded', KHY_CENSUS['race']['limit_expanded'], race_limit_expanded_total) }}
+
+		{% set race_all_total = 0 %}
+		{% for key, value in KHY_CENSUS['race']['all'] %}
+			{% set race_all_total = race_all_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(all  ~ ', with Half-breed', 'race-all', KHY_CENSUS['race']['all'], race_all_total) }}
+
+		{% set race_all_expanded_total = 0 %}
+		{% for key, value in KHY_CENSUS['race']['all_expanded'] %}
+			{% set race_all_expanded_total = race_all_expanded_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(all  ~ ', Half-breed expanded', 'race-all-expanded', KHY_CENSUS['race']['all_expanded'], race_all_expanded_total) }}
+	</div>
+</section>
+
+<section id="class" class="page-content-section" data-quick-name="By Class">
+	<h3>By Class</h3>
+	<div class="pie-chart-grid flex-row flex-row-10">
+		{% set class_limit_total = 0 %}
+		{% for key, value in KHY_CENSUS['class']['limit'] %}
+			{% set class_limit_total = class_limit_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(limit  ~ ', with Dual class', 'class-limit', KHY_CENSUS['class']['limit'], class_limit_total) }}
+
+		{% set class_limit_expanded_total = 0 %}
+		{% for key, value in KHY_CENSUS['class']['limit_expanded'] %}
+			{% set class_limit_expanded_total = class_limit_expanded_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(limit  ~ ', Dual class expanded', 'class-limit-expanded', KHY_CENSUS['class']['limit_expanded'], class_limit_expanded_total) }}
+
+		{% set class_all_total = 0 %}
+		{% for key, value in KHY_CENSUS['class']['all'] %}
+			{% set class_all_total = class_all_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(all  ~ ', with Dual class', 'class-all', KHY_CENSUS['class']['all'], class_all_total) }}
+
+		{% set class_all_expanded_total = 0 %}
+		{% for key, value in KHY_CENSUS['class']['all_expanded'] %}
+			{% set class_all_expanded_total = class_all_expanded_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(all  ~ ', Dual class expanded', 'class-all-expanded', KHY_CENSUS['class']['all_expanded'], class_all_expanded_total) }}
+	</div>
+</section>
+
+<section id="gender" class="page-content-section" data-quick-name="By Gender">
+	<h3>By Gender</h3>
+	<div class="pie-chart-grid flex-row flex-row-10">
+		{% set gender_limit_total = 0 %}
+		{% for key, value in KHY_CENSUS['gender']['limit'] %}
+			{% set gender_limit_total = gender_limit_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(limit, 'gender-limit', KHY_CENSUS['gender']['limit'], gender_limit_total) }}
+
+		{% set gender_all_total = 0 %}
+		{% for key, value in KHY_CENSUS['gender']['all'] %}
+			{% set gender_all_total = gender_all_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(all, 'gender-all', KHY_CENSUS['gender']['all'], gender_all_total) }}
+	</div>
+</section>
+
+<section id="residence" class="page-content-section" data-quick-name="By Residence">
+	<h3>By Residence</h3>
+	<div class="pie-chart-grid flex-row flex-row-10">
+		{% set residence_limit_total = 0 %}
+		{% for key, value in KHY_CENSUS['residence']['limit'] %}
+			{% set residence_limit_total = residence_limit_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(limit, 'residence-limit', KHY_CENSUS['residence']['limit'], residence_limit_total) }}
+
+		{% set residence_all_total = 0 %}
+		{% for key, value in KHY_CENSUS['residence']['all'] %}
+			{% set residence_all_total = residence_all_total + value %}
+		{% endfor %}
+		{{ function.create_pie_chart(all, 'residence-all', KHY_CENSUS['residence']['all'], residence_all_total) }}
+	</div>
+</section>

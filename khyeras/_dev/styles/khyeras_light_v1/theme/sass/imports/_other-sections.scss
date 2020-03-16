@@ -115,6 +115,133 @@ dl.faq {
 	}
 }
 
+/* Character Census
+============================================== */
+
+.pie-chart {
+	margin: 0 0 20px 0;
+	text-align: center;
+	&.flex-column {
+		@include flex;
+		width: 50%;
+	}
+	.pie-chart-circle {
+		position: relative;
+		max-width: 300px;
+		max-height: 300px;
+		margin: 0 auto 20px auto;
+		svg, &:after {
+			border-radius: 50%;
+		}
+		svg {
+			@include sizing(100%, 100%);
+			overflow: hidden;
+			transform: rotate(-90deg);
+			background: $color-01;
+			.pie-chart-slice {
+				fill: transparent;
+				stroke-width: 32;
+			}
+			.pie-chart-slice-0 {
+				stroke: $color-01;
+			}
+			.pie-chart-slice-1 {
+				stroke: $color-05;
+			}
+			.pie-chart-slice-2 {
+				stroke: $color-08;
+			}
+			.pie-chart-slice-3 {
+				stroke: $color-09;
+			}
+			.pie-chart-slice-4 {
+				stroke: $color-12;
+			}
+			.pie-chart-slice-5 {
+				stroke: $color-13;
+			}
+			.pie-chart-slice-6 {
+				stroke: $color-14;
+			}
+			.pie-chart-slice-7 {
+				stroke: $color-15;
+			}
+			.pie-chart-slice-8 {
+				stroke: $color-22;
+			}
+			.pie-chart-slice-9 {
+				stroke: $color-03;
+			}
+			.pie-chart-slice-10 {
+				stroke: $color-04;
+			}
+		}
+		&:after {
+			content: '';
+			@include sizing(36%, 36%);
+			display: block;
+			background: $color-02;
+			@include position($type: absolute, $top: 0, $left: 0, $bottom: 0, $right: 0);
+			margin: auto;
+		}
+	}
+	.pie-chart-title {
+		margin: 0 0 10px 0;
+	}
+	.pie-chart-key {
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0 -5px;
+			li {
+				@include inline-block(middle);
+				margin: 0 5px 10px 5px;
+				padding: 0 0 0 30px;
+				position: relative;
+				.pie-chart-key-color {
+					@include position($type: absolute, $top: -2.5px, $left: 0);
+					display: block;
+					@include sizing(20px, 20px);
+					border-radius: 50%;
+				}
+				.pie-chart-key-color-0 {
+					background: $color-01;
+				}
+				.pie-chart-key-color-1 {
+					background: $color-05;
+				}
+				.pie-chart-key-color-2 {
+					background: $color-08;
+				}
+				.pie-chart-key-color-3 {
+					background: $color-09;
+				}
+				.pie-chart-key-color-4 {
+					background: $color-12;
+				}
+				.pie-chart-key-color-5 {
+					background: $color-13;
+				}
+				.pie-chart-key-color-6 {
+					background: $color-14;
+				}
+				.pie-chart-key-color-7 {
+					background: $color-15;
+				}
+				.pie-chart-key-color-8 {
+					background: $color-22;
+				}
+				.pie-chart-key-color-9 {
+					background: $color-03;
+				}
+				.pie-chart-key-color-10 {
+					background: $color-04;
+				}
+			}
+		}
+	}
+}
+
 /* View Profile
 ============================================== */
 

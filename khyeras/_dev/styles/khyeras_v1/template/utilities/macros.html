@@ -51,6 +51,35 @@
 	</div>
 {% endmacro %}
 
+{% macro create_pie_chart(title, type, data, total) %}
+	{% if data %}
+		{% set previous_value = 0 %}
+		<div class="pie-chart pie-chart-{{ type }} flex-column">
+			<div class="pie-chart-circle">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" preserveAspectRatio="xMinYMid">
+					{% for key, value in data %}
+						{% if loop.index0 != 0 %}
+							{% set previous_value = previous_value + percentage %}
+						{% endif %}
+						{% set percentage = ((100 / total) * value) | round(1, 'ceil') %}
+						<circle class="pie-chart-slice pie-chart-slice-{{ loop.index0 }}" r="16" cx="16" cy="16" stroke-dashoffset="-{{ previous_value }}" stroke-dasharray="{{ percentage }} 100" data-circle-name="{{ key }}" />
+					{% endfor %}
+				</svg>
+			</div>
+			<h5 class="pie-chart-title">{{ title }}</h5>
+			<div class="pie-chart-key">
+				<ul>
+					{% for key, value in data %}
+						<li>
+							<span class="pie-chart-key-color pie-chart-key-color-{{ loop.index0 }}"></span><strong>{{ key }}:</strong> {{ value }}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	{% endif %}
+{% endmacro %}
+
 {% macro loop_cards(cards, completed_cards, script_name) %}
 	{% if cards %}
 		{% set code = 'zzz' %}
