@@ -34,7 +34,7 @@
 	// other-sections.scss
 	.pie-chart.flex-column {
 		width: 50%;
-	}	
+	}
 
 	// cp.scss
 	.cp-menu {
@@ -1867,6 +1867,21 @@
 		}
 		select[name='ch'] {
 			margin-bottom: $ffs;
+		}
+	}
+	.pie-chart {
+		display: block;
+		.pie-chart-circle, .pie-chart-title {
+			margin: 0 0 10px 0;
+		}
+		.pie-chart-circle {
+			width: auto;
+		}
+		.pie-chart-key {
+			margin: 0;
+			ul li {
+				@include inline-block(top);
+			}
 		}
 	}
 	.key.key-grid li {
