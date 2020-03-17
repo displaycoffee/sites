@@ -130,8 +130,10 @@ function toggleContent( button, selector, toggleClass, type ) {
 			// Add or remove toggle classes
 			if ( content.hasClass( toggleClass ) ) {
 				content.removeClass( toggleClass );
+				current.removeClass( 'toggle-button-hide' ).addClass( 'toggle-button-show' );
 			} else {
 				content.addClass( toggleClass );
+				current.removeClass( 'toggle-button-show' ).addClass( 'toggle-button-hide' );
 			}
 		});
 	}

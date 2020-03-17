@@ -596,8 +596,7 @@ dl.faq {
 		}
 		.icon-wrapper, .user-avatar {
 			float: left;
-			clear: right;
-			padding: 0 15px 20px 0;
+			margin: 0 10px 10px 0;
 		}
 		.user-avatar {
 			width: 100px;
@@ -614,6 +613,16 @@ dl.faq {
 				margin: 0 5px 0 0;
 			}
 		}
+		.card-description {
+			margin: 0 0 10px 0;
+			.character-currency {
+				margin: 5px 0 0 0;
+			}
+		}
+		.details {
+			clear: both;
+			margin-bottom: -5px;
+		}
 	}
 }
 
@@ -629,18 +638,16 @@ dl.faq {
 	min-height: 42px;
 }
 
-.section-page-character-listing .card-grid .card-block .card-description {
-	min-height: 105px;
-	.character-currency {
-		margin: 5px 0 0 0;
-	}
-}
-
 .card-filter {
 	margin: 0 0 20px 0;
 	text-align: center;
 	.card-filter-button {
-		cursor: pointer;
+		&.toggle-button-show span:before {
+			content: 'Hide ';
+		}
+		&.toggle-button-hide span:before {
+			content: 'Show ';
+		}
 	}
 }
 

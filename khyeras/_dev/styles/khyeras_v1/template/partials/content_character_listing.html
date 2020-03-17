@@ -1,37 +1,57 @@
-<div class="card-grid">
-	{% for key, character in KHY_CHARACTERS %}
-		{% set character_id = 'character-' ~ function.create_handle(character['name']) ~ character['key'] %}
-		{% set character_changed = (character['last_post'] == 'Never' || character['days_since'] > 180) ? true : false %}
-		<div id="{{ character_id }}" class="card-block{% if character_changed %} card-changed{% endif %}">
-			<h5 class="card-title">{{ character['name'] }}</h5>
-			{{ function.display_avatar(character['avatar'], T_THEME_PATH) }}
-			<div class="card-description">
-				<div class="character-card">
-					{{ function.display_level(character['level'], 'true') }}
-					{{ function.display_stats(character['stats']['hp'], character['stats']['mp'], character['remaining']['hp'], character['remaining']['mp'], 'true') }}
+<section class="page-content-section">
+	<div class="card-filter">
+		<button class="card-filter-button toggle-button-show button-link" type="button">
+			<i class="icon rpg-icon rpg-pokecog"></i>
+			<span>inactive characters</span>
+		</button>
+	</div>
+</section>
+<section class="page-content-section">
+	<div class="card-grid">
+		{% for key, character in KHY_CHARACTERS %}
+			{% set character_id = 'character-' ~ function.create_handle(character['name']) ~ character['key'] %}
+			{% set character_changed = (character['last_post'] == 'Never' || character['days_since'] > 180) ? true : false %}
+			<div id="{{ character_id }}" class="card-block{% if character_changed %} card-changed{% endif %}">
+				<h5 class="card-title">
+					<a href="{{ ROOT_PATH }}{{ character['profile'] }}">{{ character['name'] }}</a>
+				</h5>
+				{{ function.display_avatar(character['avatar'], T_THEME_PATH) }}
+				<div class="card-description">
+					<div class="character-card">
+						{{ function.display_level(character['level'], 'true') }}
+						{{ function.display_stats(character['stats']['hp'], character['stats']['mp'], character['remaining']['hp'], character['remaining']['mp'], 'true') }}
+					</div>
+					{{ function.display_currency(character['currency']) }}
 				</div>
-				{{ function.display_currency(character['currency']) }}
+				{% if character['race'] || character['class'] || character['gender'] || character['residence'] || character['writer_url'] || character['profile'] %}
+					<dl class="details details-small">
+						{% if character['race'] %}
+							<dt>Race:</dt>
+							<dd>{{ character['race'] | replace({', ': ' and '}) }}</dd>
+						{% endif %}
+						{% if character['class'] %}
+							<dt>Class:</dt>
+							<dd>{{ character['class'] | replace({', ': ' and '}) }}</dd>
+						{% endif %}
+						{% if character['gender'] %}
+							<dt>Gender:</dt>
+							<dd>{{ character['gender'] }}</dd>
+						{% endif %}
+						{% if character['residence'] %}
+							<dt>Residence:</dt>
+							<dd>{{ character['residence'] }}</dd>
+						{% endif %}
+						{% if character['writer_url'] %}
+							<dt>Writer Name:</dt>
+							<dd><a href="{{ ROOT_PATH }}{{ character['writer_url'] }}">{{ character['writer_name'] }}</a></dd>
+						{% endif %}
+						{% if character['profile'] %}
+							<dt>Profile:</dt>
+							<dd><a href="{{ ROOT_PATH }}{{ character['profile'] }}">View additional details</a></dd>
+						{% endif %}
+					</dl>
+				{% endif %}
 			</div>
-			{% if character['race'] || character['class'] || character['gender'] || character['residence'] %}
-				<dl class="details details-small">
-					{% if character['race'] %}
-						<dt>Race:</dt>
-						<dd>{{ character['race'] | replace({', ': ' and '}) }}</dd>
-					{% endif %}
-					{% if character['class'] %}
-						<dt>Class:</dt>
-						<dd>{{ character['class'] | replace({', ': ' and '}) }}</dd>
-					{% endif %}
-					{% if character['gender'] %}
-						<dt>Gender:</dt>
-						<dd>{{ character['gender'] }}</dd>
-					{% endif %}
-					{% if character['residence'] %}
-						<dt>Residence:</dt>
-						<dd>{{ character['residence'] }}</dd>
-					{% endif %}
-				</dl>
-			{% endif %}
-		</div>
-	{% endfor %}
-</div>
+		{% endfor %}
+	</div>
+</section>

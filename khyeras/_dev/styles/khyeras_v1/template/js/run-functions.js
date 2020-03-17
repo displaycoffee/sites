@@ -8,6 +8,7 @@ addImageBackground( '.postprofile .avatar img', false );
 addImageBackground( '.dropdown-container .user-avatar img', false );
 addImageBackground( '.forum-image img', '1000x500' );
 addImageBackground( '.excerpt .excerpt-image img', '1000x500' );
+addImageBackground( '.section-page-character-listing .user-avatar img', false );
 addImageWrapper( '.notification_list .list-inner > img' );
 addImageWrapper( '.notification_list .notification-block > img' );
 addNoPaginationClass();

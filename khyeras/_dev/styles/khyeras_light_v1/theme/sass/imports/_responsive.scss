@@ -2063,6 +2063,20 @@
 		margin-top: 0;
 	}
 
+	// other-sections.scss
+	.card-grid .card-block .user-avatar {
+		float: none;
+		width: auto;
+		margin: 0 auto 20px auto;
+		.image-wrap {
+			border-width: 5px;
+			padding-bottom: calc(100% - 10px);
+		}
+	}
+	.section-page-character-listing .card-grid .card-block .card-title {
+		text-align: center;
+	}	
+
 	// header.scss
 	.navbar {
 		.wrapper {

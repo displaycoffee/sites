@@ -29,9 +29,9 @@
 	{% for key, link in footer_links %}
 		<h4>{{ key }}</h4>
 		{% if (link | length) > 0 %}
-			<div class="button-wrapper">
+			<div class="listed-at-wrapper">
 				{% for detail in link %}
-					<a class="button-link" href="{{ detail.url }}" target="_blank">
+					<a class="listed-at-link" href="{{ detail.url }}" target="_blank">
 						<img src="{{ detail.image }}" alt="{{ detail.name }}" title="{{ detail.name }}" />
 					</a>
 				{% endfor %}

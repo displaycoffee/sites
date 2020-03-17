@@ -20,10 +20,10 @@
 			&.has-discord {
 				flex: 0 0 60%;
 			}
-			.button-wrapper {
+			.listed-at-wrapper {
 				margin: 0 (-$ffs-half) $ffs-minus (-$ffs-half);
 				@include clearfix('&');
-				.button-link {
+				.listed-at-link {
 					float: left;
 					margin: 0 $ffs-half $ffs $ffs-half;
 				}

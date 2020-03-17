@@ -870,14 +870,6 @@ dl.details {
 	@include sr-only;
 }
 
-// Reset toggle button styles
-.toggle-button-reset {
-	padding: 0;
-	border: 0;
-	outline: none;
-	background: none;
-}
-
 // Forum header positioning
 .topiclist > li.header.has-toggle-button {
 	position: relative;
@@ -885,5 +877,9 @@ dl.details {
 	.toggle-button {
 		@include position($type: absolute, $left: 20px, $bottom: 0, $top: -1px);
 		margin: auto;
+		color: $color-00;
+		&:hover {
+			color: $color-03;
+		}
 	}
 }

@@ -244,6 +244,7 @@ class global_info {
 				$character_data = [
 					'id'         => $row['user_id'],
 					'name'       => $row['username'],
+					'profile'    => 'memberlist.php?mode=viewprofile&un=' . $row['username_clean'],
 					'days_since' => $days_since_value,
 					'last_post'  => $last_post_value,
 					'avatar'     => $this->utilities->exists(get_user_avatar($row['user_avatar'], $row['user_avatar_type'], $row['user_avatar_width'], $row['user_avatar_height']), false)
@@ -266,7 +267,8 @@ class global_info {
 				// Set level and currenty for later Variables
 				$character_level = $this->utilities->get_level($pf['c_experience']['value']);
 
-				// Get user race, class, gender, and residence
+				// Get user writer name, race, class, gender, and residence
+				$character_writer = $this->utilities->exists($pf['c_writer_name']['value'], false);
 				$character_race = translate_multi_fields($pf['c_race_opts'], $this->lang_helper, $lang_id);
 				$character_class = translate_multi_fields($pf['c_class_opts'], $this->lang_helper, $lang_id);
 				$character_gender = $this->utilities->exists($pf['c_gender']['value'], 'Undisclosed');
@@ -280,14 +282,16 @@ class global_info {
 
 				// Add details to character data
 				$character_data = [
-					'race'      => $character_race,
-					'class'     => $character_class,
-					'gender'    => $character_gender,
-					'residence' => $character_residence,
-					'level'     => $character_level,
-					'stats'     => $this->utilities->get_life_modifier($character_race, $character_class, $character_level),
-					'remaining' => $chracter_remaining,
-					'currency'  => $this->utilities->calc_currency($pf['c_copper']['value'])
+					'writer_url'  => $character_writer ? ('memberlist.php?mode=viewprofile&un=' . $character_writer) : false,
+					'writer_name' => $character_writer ? $character_writer : false,
+					'race'        => $character_race,
+					'class'       => $character_class,
+					'gender'      => $character_gender,
+					'residence'   => $character_residence,
+					'level'       => $character_level,
+					'stats'       => $this->utilities->get_life_modifier($character_race, $character_class, $character_level),
+					'remaining'   => $chracter_remaining,
+					'currency'    => $this->utilities->calc_currency($pf['c_copper']['value'])
 				];
 
 				// Add details to characters array

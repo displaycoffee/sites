@@ -463,8 +463,10 @@ $transform: color 0.3s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .mobile-menu-button {
-	cursor: pointer;
 	margin: 0 -10px;
+	&, &:hover {
+		color: $color-00;
+	}
 	.button-section, .rpg-icon, .mobile-menu-label {
 		vertical-align: middle;
 	}

@@ -185,6 +185,18 @@ fieldset.submit-buttons {
 	}
 }
 
+.button-link {
+	padding: 0;
+	border: 0;
+	outline: none;
+	background: none;
+	color: $color-04;
+	@include transition(color 0.3s ease-in-out);
+	&:hover {
+		color: $color-03;
+	}
+}
+
 /* Fieldset - DL
 ============================================== */
 

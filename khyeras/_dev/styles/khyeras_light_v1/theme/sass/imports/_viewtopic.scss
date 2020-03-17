@@ -200,15 +200,10 @@
 				}
 			}
 			.toggle-button {
-				color: $color-04;
-				@include transition(color 0.3s ease-in-out);
 				font-size: 0;
 				&:before, &:after {
 					font-size: rem(14px);
 					content: '[\0000a0';
-				}
-				&:hover {
-					color: $color-03;
 				}
 				&.toggle-button-expanded {
 					.misc-plus:before {
