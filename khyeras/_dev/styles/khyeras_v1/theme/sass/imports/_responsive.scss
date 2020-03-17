@@ -716,9 +716,8 @@
 							border-bottom: 1px dashed $color-01;
 							z-index: 2;
 							color: $color-00;
-							@include spectral-common;
+							@include spectral-common($lh: 'false');
 							font-size: rem(20px);
-							font-weight: normal;
 							@include ellipsis;
 							&:hover {
 								color: $color-03;
@@ -812,20 +811,19 @@
 
 	// viewtopic.scss
 	.post {
-		 .inner {
-			 display: block;
-		 }
-		 .postprofile {
-			 margin: 0 0 20px 0;
-			 padding: 0 0 20px 0;
-			 .profile-character-wrapper {
-				 border-top: 0;
-				 border-bottom: 0;
-				 padding: 0;
-				 margin-top: 20px;
-				 margin-bottom: 0;
-			 }
-		 }
+		.inner {
+			display: block;
+		}
+		.postprofile {
+			margin: 0 0 20px 0;
+			padding: 0 0 20px 0;
+			.profile-character-wrapper {
+				border-top: 0;
+				border-bottom: 0;
+				padding: 0;
+				margin-bottom: 0;
+			}
+		}
 	}
 	.postbody {
 		& > div > h3, & > h3 {
@@ -902,8 +900,8 @@
 			&.has-avatar {
 				.avatar-container {
 					float: left;
-					width: 130px;
-					margin-right: 20px;
+					width: 140px;
+					margin-right: 10px;
 				}
 				& ~ dd {
 					margin-left: 150px;
@@ -1525,7 +1523,7 @@
 	// profile.scss
 	.postprofile dt.has-avatar {
 		.avatar-container {
-			width: 80px;
+			width: 90px;
 			& > .avatar {
 				border-width: 2px;
 				padding-bottom: calc(100% - 4px);
@@ -1539,7 +1537,7 @@
 		max-width: none;
 	}
 	.online .postprofile dt.has-avatar .avatar-container {
-		margin-top: 35px;
+		margin-top: 30px;
 	}
 
 	// other-sections.scss
@@ -2048,13 +2046,13 @@
 			a[class*='username'] {
 				padding-right: 0;
 			}
-			a, span {
-				&[class*='username'] {
-					margin-top: 10px;
-				}
+			.avatar-container > .avatar {
+				margin-bottom: 20px;
 			}
 			&.has-avatar .avatar-container {
 				float: none;
+				width: auto;
+				max-width: 150px;
 				margin: 0 auto;
 			}
 		}
@@ -2067,11 +2065,8 @@
 	.card-grid .card-block .user-avatar {
 		float: none;
 		width: auto;
+		max-width: 150px;
 		margin: 0 auto 20px auto;
-		.image-wrap {
-			border-width: 5px;
-			padding-bottom: calc(100% - 10px);
-		}
 	}
 	.section-page-character-listing .card-grid .card-block .card-title {
 		text-align: center;

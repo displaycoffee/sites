@@ -4,9 +4,6 @@
 
 .postprofile {
 	border-right: 1px dashed $color-01;
-	dt a[class*='username'], dt span[class*='username'], .profile-rank {
-		font-family: $font-02;
-	}
 	dt, .profile-rank, .profile-permissions {
 		text-align: center;
 	}
@@ -19,18 +16,19 @@
 		a, span {
 			&[class*='username'] {
 				display: block;
+				@include spectral-common;
 				font-size: rem(22px);
-				font-variant: small-caps;
 			}
 		}
 		.avatar-container > .avatar {
 			margin: 0 0 10px 0;
-		}		
+		}
 	}
 	dd {
 		margin: 0 0 3px 0;
 	}
 	.profile-rank {
+		font-family: $font-02;
 		font-style: italic;
 		margin: 10px 0;
 		div ~ div {
@@ -46,16 +44,10 @@
 ============================================== */
 
 .level {
-	@include spectral-common;
 	.level-wrap {
 		display: inline-block;
-		span {
-			display: block;
-			line-height: 1;
-		}
 		.level-name {
 			font-size: rem(18px);
-			margin: 0 0 5px 0;
 		}
 		.level-value {
 			font-size: rem(50px);
@@ -92,10 +84,8 @@
 		.stat-bar-label {
 			color: $light-03;
 			@include position($type: absolute, $bottom: -8.5px, $left: 0, $right: 0);
-			line-height: 1;
 			text-align: center;
 			text-shadow: 1px 1px 0 map-get($dark-set, dark-05), 1px 1px 0 map-get($dark-set, dark-05);
-			@include spectral-common;
 		}
 		& + .stat-bar {
 			margin-top: 15px;

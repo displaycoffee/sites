@@ -215,8 +215,10 @@ input[type='checkbox'].filled-in:checked + label:before {
 }
 
 .navbar-fixed nav .nav-wrapper > .container:before {
+  line-height: 1.1;
   font-family: "Spectral", garamond, times new roman, serif;
   font-variant: small-caps;
+  font-weight: normal;
   font-size: 1.25rem;
   content: 'Chat With Us';
   position: absolute;
@@ -264,8 +266,10 @@ input[type='checkbox'].filled-in:checked + label:before {
 }
 
 .side-nav .userView .name, .side-nav .subheader {
+  line-height: 1.1;
   font-family: "Spectral", garamond, times new roman, serif;
   font-variant: small-caps;
+  font-weight: normal;
 }
 
 .side-nav .subheader.channel-category, .side-nav .subheader.role-title, .side-nav #channeltopic {
@@ -560,8 +564,10 @@ footer {
 }
 
 .modal h4 {
+  line-height: 1.1;
   font-family: "Spectral", garamond, times new roman, serif;
   font-variant: small-caps;
+  font-weight: normal;
   margin: 0 0 10px 0;
 }
 

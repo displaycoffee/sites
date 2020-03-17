@@ -54,12 +54,6 @@ dt, dd {
 dl.definition-list {
 	dt {
 		margin: 0 0 5px 0;
-		strong {
-			font-size: rem(20px);
-			color: $color-03;
-			@include spectral-common;
-			font-weight: normal;
-		}
 	}
 	dd {
 		margin: 0 0 20px 30px;

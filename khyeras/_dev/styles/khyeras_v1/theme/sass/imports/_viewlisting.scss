@@ -60,6 +60,7 @@
 				dt a {
 					@include spectral-common;
 					font-size: rem(22px);
+					@include position($type: relative, $top: 2.5px);
 				}
 			}
 		}

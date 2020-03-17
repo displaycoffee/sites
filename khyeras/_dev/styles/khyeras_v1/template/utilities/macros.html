@@ -54,9 +54,9 @@
 {% macro display_level(level, small) %}
 	<div class="level{% if small == 'true' %} level-small{% endif %}">
 		<div class="level-wrap">
-			<span class="level-name">Level</span>
+			<div class="level-name khy-text">Level</div>
 			{% set zero = level < 10 ? '0' : ''  %}
-			<span class="level-value">{{ zero }}{{ level }}</span>
+			<div class="level-value khy-text">{{ zero }}{{ level }}</div>
 		</div>
 	</div>
 {% endmacro %}
@@ -69,7 +69,7 @@
 			{% if hp %}
 				<div class="stat-bar stat-bar-small hp-bar">
 					<div class="stat-bar-inner" style="width: {{ ((remaining_hp / hp) * 100) | number_format(2) }}%"></div>
-					<div class="stat-bar-label">
+					<div class="stat-bar-label khy-text">
 						{{ remaining_hp }} / {{ hp }} HP
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 			{% if mp %}
 				<div class="stat-bar stat-bar-small mp-bar">
 					<div class="stat-bar-inner" style="width: {{ ((remaining_mp / mp) * 100) | number_format(2) }}%"></div>
-					<div class="stat-bar-label">
+					<div class="stat-bar-label khy-text">
 						{{ remaining_mp }} / {{ mp }} MP
 					</div>
 				</div>

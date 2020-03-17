@@ -42,7 +42,6 @@
 				text-shadow: 2px 2px 0 map-get($dark-set, dark-08);
 			}
 			h3 {
-				font-family: $font-02;
 				font-size: rem(28px);
 				text-shadow: 2px 1px 0 map-get($dark-set, dark-08), 2px 1px 5px map-get($dark-set, dark-10);
 				letter-spacing: 2px;
@@ -50,8 +49,8 @@
 		}
 		.site-quotes {
 			font-family: $font-02;
-			text-shadow: 1px 1px 0 map-get($dark-set, dark-08), 1px 1px 5px map-get($dark-set, dark-10);
 			font-size: rem($global-font-size);
+			text-shadow: 1px 1px 0 map-get($dark-set, dark-08), 1px 1px 5px map-get($dark-set, dark-10);
 			p {
 				margin: 0 0 10px 0;
 				&:last-child {
@@ -320,9 +319,6 @@ $transform: color 0.3s ease-in-out, transform 0.5s ease-in-out;
 			@include spectral-common;
 			font-size: rem(20px);
 		}
-		.introduction:first-line {
-			line-height: 1.3;
-		}
 	}
 	.user-profile {
 		text-align: center;
@@ -527,10 +523,6 @@ $transform: color 0.3s ease-in-out, transform 0.5s ease-in-out;
 	}
 	.mobile-menu-header {
 		border-bottom: 1px solid map-get($color-set-01, dark-00);
-		.mobile-header {
-			font-size: rem(24px);
-			@include spectral-common;
-		}
 	}
 	.mobile-menu-content {
 		border-bottom: 1px solid $color-01;

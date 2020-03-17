@@ -107,10 +107,8 @@ a[class*='username']:hover, a:hover span[class*='username'] {
 /* Headers
 ============================================== */
 
-h1, h2, h3, h4, h5, h6, .header-title {
+h1, h2, h3, h4, h5, h6, .khy-text {
 	@include spectral-common;
-	font-weight: normal;
-	line-height: 1.1;
 	a {
 		color: $color-00;
 		&:hover {

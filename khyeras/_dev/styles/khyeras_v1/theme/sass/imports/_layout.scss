@@ -853,7 +853,6 @@ dl.details {
 
 .toggle-button {
 	.fa-angle-up {
-		@include sizing(22px, 22px);
 		@include transition(transform 0.5s ease-in-out);
 		transform: rotate(0deg);
 	}
@@ -875,9 +874,13 @@ dl.details {
 	position: relative;
 	padding-left: 52px;
 	.toggle-button {
-		@include position($type: absolute, $left: 20px, $bottom: 0, $top: -1px);
+		@include position($type: absolute, $left: 20px, $top: 10px);
 		margin: auto;
 		color: $color-00;
+		line-height: 0;
+		.icon {
+			@include sizing(22px, 22px);
+		}
 		&:hover {
 			color: $color-03;
 		}

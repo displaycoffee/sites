@@ -267,9 +267,13 @@
 }
 
 // Common spectral font styles
-@mixin spectral-common {
+@mixin spectral-common($lh: '') {
+	@if ($lh != 'false') {
+		line-height: 1.1;
+	}
 	font-family: $font-02;
 	font-variant: small-caps;
+	font-weight: normal;
 }
 
 // Transition

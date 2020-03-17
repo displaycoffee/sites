@@ -7,8 +7,6 @@ dl.faq {
 	}
 	dt[id*='f'] strong {
 		@include spectral-common;
-		font-weight: normal;
-		line-height: 1.1;
 		font-size: rem(20px);
 		color: $color-03;
 	}
