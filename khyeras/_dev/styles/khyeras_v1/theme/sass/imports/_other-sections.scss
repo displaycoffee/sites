@@ -592,6 +592,11 @@ dl.faq {
 		&.card-full {
 			@include flex(base);
 		}
+		&.card-opacity {
+			.card-description .card-description-wrapper, dl.details {
+				opacity: 0.50;
+			}
+		}
 		.icon-wrapper, .user-avatar {
 			float: left;
 			margin: 0 10px 10px 0;
@@ -604,7 +609,7 @@ dl.faq {
 			}
 		}
 		.card-completed-text {
-			margin: -10px 0 20px 0;
+			padding: 0 10px 0 0;
 			color: $color-04;
 			font-style: italic;
 			.icon {
@@ -617,23 +622,13 @@ dl.faq {
 				margin: 5px 0 0 0;
 			}
 		}
-		.details {
+		.card-clear {
 			clear: both;
+		}
+		.details {
 			margin-bottom: -5px;
 		}
 	}
-}
-
-.section-page-achievements, .section-page-leveling {
-	.card-grid .card-block.card-changed {
-		.card-description, dl.details {
-			opacity: 0.50;
-		}
-	}
-}
-
-.section-page-halfbreed .card-grid .card-block .card-description {
-	min-height: 42px;
 }
 
 .card-filter {

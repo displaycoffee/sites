@@ -318,4 +318,34 @@
 	]
 } %}
 
-{{ function.loop_cards(cards, true, KHY_SCRIPT_NAME) }}
+<section class="page-content-section">
+	<div class="card-filter">
+		<button class="card-filter-button toggle-button-show button-link" type="button">
+			<i class="icon rpg-icon rpg-pokecog"></i>
+			<span>incompatible races</span>
+		</button>
+	</div>
+</section>
+
+{% for key, card in cards %}
+	{% set section_id = function.create_handle(key) %}
+	<section id="{{ section_id }}" class="page-content-section" data-quick-name="{{ key }}">
+		<h3>{{ key }}</h3>
+		<div class="card-grid">
+			{% for detail in card %}
+				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
+				{% set card_changed = ('card-trigger' in detail.icon) ? true : false %}
+				<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed{% endif %}{% if detail.title == 'Not Applicable'%} card-full{% endif %}">
+					<h5 class="card-title">{{ detail.title }}</h5>
+					<div class="icon-wrapper">
+						<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
+					</div>
+					<div class="card-description">
+						<span class="card-description-wrapper">{{ detail.description }}</span>
+					</div>
+					<div class="card-clear"></div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endfor %}

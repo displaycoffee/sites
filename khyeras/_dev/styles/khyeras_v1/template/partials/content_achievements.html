@@ -681,4 +681,53 @@
 	{% set completed_cards = KHY_USER_ACHIEVEMENTS | replace({', ' : ','}) | split(',') %}
 {% endif %}
 
-{{ function.loop_cards(cards, completed_cards, KHY_SCRIPT_NAME) }}
+{% if completed_cards %}
+	<section class="page-content-section">
+		<div class="card-filter">
+			<button class="card-filter-button toggle-button-show button-link" type="button">
+				<i class="icon rpg-icon rpg-pokecog"></i>
+				<span>completed achievements</span>
+			</button>
+		</div>
+	</section>
+{% endif %}
+
+{% for key, card in cards %}
+	{% set section_id = function.create_handle(key) %}
+	<section id="{{ section_id }}" class="page-content-section" data-quick-name="{{ key }}">
+		<h3>{{ key }}</h3>
+		<div class="card-grid">
+			{% for detail in card %}
+				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
+				{% set card_changed = (completed_cards && card_id in completed_cards) ? true : false %}
+				<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed card-opacity{% endif %}">
+					<h5 class="card-title">{{ detail.title }}</h5>
+					<div class="icon-wrapper">
+						<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
+					</div>
+					<div class="card-description">
+						{% if card_changed %}
+							<span class="card-completed-text">
+								<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>Achievement complete!
+							</span>
+						{% endif %}
+						<span class="card-description-wrapper">{{ detail.description }}</span>
+					</div>
+					<div class="card-clear"></div>
+					{% if detail.requirements || detail.reward %}
+						<dl class="details details-small">
+							{% if detail.requirements %}
+								<dt>Requirements:</dt>
+								<dd>{{ detail.requirements }}</dd>
+							{% endif %}
+							{% if detail.reward %}
+								<dt>Rewards:</dt>
+								<dd>{{ detail.reward }}</dd>
+							{% endif %}
+						</dl>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endfor %}
