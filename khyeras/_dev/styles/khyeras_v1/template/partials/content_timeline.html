@@ -197,7 +197,7 @@
 } %}
 
 {% if timeline %}
-	<div class="timeline">
+	<div class="timeline timeline-alternating">
 		{% for key, time in timeline if (time | length) > 0 %}
 			{% for detail in time %}
 				<div class="timeline-row flex-row flex-row-30">
@@ -207,14 +207,14 @@
 							<h4>{{ time[0].title }} &bullet; {{ time[loop.length - 1].title }}</h4>
 						</div>
 					{% endif %}
-					<div class="timeline-column flex-column">
+					<div class="timeline-column timeline-detail-header flex-column">
 						<div class="timeline-sub-title">
 							<h5>{{ detail.title }}</h5>
 							<i class="icon icon-round icon-round-lg {{ detail.icon }}" aria-hidden="true"></i>
 						</div>
-						<span class="bracket">}</span>
+						<div class="bracket">}</div>
 					</div>
-					<div class="timeline-column flex-column">{{ detail.description }}</div>
+					<div class="timeline-column timeline-detail-description flex-column">{{ detail.description }}</div>
 				</div>
 			{% endfor %}
 		{% endfor %}
