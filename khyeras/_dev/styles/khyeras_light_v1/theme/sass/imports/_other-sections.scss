@@ -1,23 +1,38 @@
-/* Forum FAQ
+/* FAQ Blocks
 ============================================== */
 
 dl.faq {
 	dt {
-		margin: 0 0 10px 0;
+		margin: 0 0 20px 0;
 	}
 	dt[id*='f'] strong {
 		@include spectral-common;
 		font-size: rem(20px);
 		color: $color-03;
+		display: block;
 	}
 	& + .top {
 		display: inline-block;
-		@include position($type: relative, $top: -10px, $left: -2px);
+		@include position($type: relative, $left: -2px);
 		margin: 0 0 20px 0;
+	}
+	dd {
+		.codebox {
+			margin: 20px 0;
+		}
+		.postbody.code-output .content {
+			margin: 0;
+			ul, ol {
+				margin: 0 0 0 20px;
+			}
+			blockquote {
+				margin: 0 auto;
+			}
+		}
 	}
 }
 
-#faqlinks, #khyeras-faq {
+#faqlinks, #khyeras-faq, #bbcode-faq {
 	.faq dd {
 		position: relative;
 		padding-left: 15px;

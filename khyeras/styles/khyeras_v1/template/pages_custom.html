@@ -12,13 +12,17 @@
 	{% include 'partials/content_map.html' %}
 {% endif %}
 
-<div class="panel"{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %} id="khyeras-faq"{% endif %}>
+<div class="panel"{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %} id="khyeras-faq"{% elseif KHY_SCRIPT_NAME == 'about-bbcode-faq' %} id="bbcode-faq"{% endif %}>
 	<div class="inner">
 		<div class="content pages-content">
 			{{ PAGE_CONTENT }}
 
 			{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %}
 				{% include 'partials/content_faq.html' %}
+			{% endif %}
+
+			{% if KHY_SCRIPT_NAME == 'about-bbcode-faq' %}
+				{% include 'partials/content_bbcode_faq.html' %}
 			{% endif %}
 
 			{% if KHY_SCRIPT_NAME == 'lore-timeline' %}

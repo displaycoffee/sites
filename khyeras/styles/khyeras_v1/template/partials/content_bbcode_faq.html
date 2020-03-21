@@ -1,0 +1,154 @@
+{% set faq = {
+	'General' : [
+		{
+			q : 'What is BBCode?',
+			a : 'BBCode is a special implementation of HTML. Whether you can actually use BBCode in your posts on the forum is determined by the administrator. In addition, you can disable BBCode on a per post basis by going to <a href="./ucp.php?i=ucp_prefs&mode=post">User Control Panel &gt; Board Preferences &gt; Edit Posting Defaults</a> &gt; and toggling "Enable BBCode by default". BBCode itself is similar in style to HTML; tags are enclosed in square brackets [ and ] rather than &lt; and &gt; and this offers greater control and uniformity to what and how something is displayed. You may find adding BBCode to your posts is made much easier with buttons that are placed directly above the message box on the posting area.'
+		},
+		{
+			q : 'Can I combine tags?',
+			a : 'Yes, of course!<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[size=150][color=red][b]LOOK AT ME![/b][/color][/size]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span style="font-size: 150%; line-height: 116%"><span style="color: red"><strong class="text-strong">LOOK AT ME!</strong></span></span></div></div></div>We don\'t recommend you output lots of text that looks like this though! Remember it is up to you, the poster, to ensure tags are closed correctly. For example, the following is incorrect:<div class="codebox"><p>Code:</p><pre><code>[b][u]This is wrong[/b][/u]</code></pre></div>'
+		},
+		{
+			q : 'Can I add my own tags?',
+			a : 'If you are an administrator on this board and have the proper permissions, you can add further BBCodes through the Custom BBCodes section. For all remaining member groups, <a href="./viewforum.php?f=10">submit a request</a> to have something added.'
+		}
+	],
+	'Text Formatting' : [
+		{
+			q : 'Bold',
+			a : 'Creates bold text.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[b]Hello[/b]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><strong class="text-strong">Hello</strong></div></div></div>'
+		},
+		{
+			q : 'Italic',
+			a : 'Creates italicized text.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>This is [i]great[/i]!</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content">This is <em class="text-italics">great</em>!</div></div></div>'
+		},
+		{
+			q : 'Underline',
+			a : 'Creates underlined text.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[u]Good Morning[/u]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span style="text-decoration: underline">Good Morning</span></div></div></div>'
+		},
+		{
+			q : 'Strike-through',
+			a : 'Decorates text with a line-through.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>I made a [s]missteak[/s] mistake.</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content">I made a <span class="bbcode-strike-through">missteak</span> mistake.</div></div></div>'
+		},
+		{
+			q : 'Headers',
+			a : 'Transforms text to use Khy\'eras header styles. Font size, color, and format is altered. Renders numerical values from 1 to 6.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[header=3]Header 3[/header]<br /><br />[header=5]Header 5[/header]
+</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span class="khy-text h3">Header 3</span><br /><br /><span class="khy-text h5">Header 5</span></div></div></div>'
+		},
+		{
+			q : 'Text color',
+			a : 'To change text color, you can specify either a <a href="//en.wikipedia.org/wiki/Web_colors" target="_blank">recognized color name</a> (red, blue, yellow, etc.) or a hexadecimal alternative (#ffffff, #000000, etc.).<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>This word is [color=red]red[/color], but this word is [color=#008000]green[/color].</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content">This word is <span style="color: red">red</span>, but this word is <span style="color: #008000">green</span>.</div></div></div>'
+		},
+		{
+			q : 'Speech color',
+			a : 'Instead of using [color] with a name or hex code, character speech may be paired with a value listed in <a href="./styles/khyeras_v1/theme/speech.css">this stylesheet</a>. To have your character\'s speech color created, <a href="./viewtopic.php?f=28&amp;t=193">submit a request</a>. This BBCode is useful because administrators can update a character\'s speech color across all posts which is not as manageable with [color].<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[speech=Artemis Black]"Sir Francis de Eradrald the XII the Moose is my best friend,"[/speech] Artemis said.</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span class="bbcode-character-speech" data-name="Artemis Black">"Sir Francis de Eradrald the XII the Moose is my best friend,"</span> Artemis said.</div></div></div>'
+		},
+		{
+			q : 'Text size',
+			a : 'This tag is dependent on the site theme the user has set, but the recommended format is a numerical value representing the text size in percent, starting at 20 (very small) through to 200 (very large).<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[size=30]What is this? Font for ants?[/size]<br /><br />[size=200]This text is way too big.[/size]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span style="font-size: 30%; line-height: 116%">What is this? Font for ants?</span><br /><br /><span style="font-size: 200%; line-height: 116%">This text is way too big.</span></div></div></div>'
+		},
+		{
+			q : 'Text alignment',
+			a : 'The alignment of text can be altered by using [text-align] and specifying an appropriate value.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[text-align=left]This text is left aligned.[/text-align]<br /><br />[text-align=center]This text is centered.[/text-align]<br /><br />[text-align=right]This text is right aligned.[/text-align]<br /><br />[text-align=justify]Longer paragraphs will attempt to align with the left and right edges of the content area. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[/text-align]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span class="bbcode-text bbcode-text-left">This text is left aligned.</span><br /><br /><span class="bbcode-text bbcode-text-center">This text is centered.</span><br /><br /><span class="bbcode-text bbcode-text-right">This text is right aligned.</span><br /><br /><span class="bbcode-text bbcode-text-justify">Longer paragraphs will attempt to align with the left and right edges of the content area. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div></div></div>'
+		},
+		{
+			q : 'First letter',
+			a : 'Stylize the first letter of a paragraph.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[first-letter]Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.[/first-letter]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span class="bbcode-text bbcode-text-first-letter">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div></div></div>'
+		},
+		{
+			q : 'First line',
+			a : 'Stylize the first line of a paragraph.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[first-line]Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[/first-line]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span class="bbcode-text bbcode-text-first-line">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div></div></div>'
+		}
+	],
+	'Creating Links' : [
+		{
+			q : 'Linking to another site',
+			a : 'phpBB BBCode supports a number of ways for creating URIs (Uniform Resource Indicators) better known as URLs. These links open in the same window or a new window depending on the users browser preferences. The first of these uses the [url] tag.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[url]http://khyeras.org[/url]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><a href="//khyeras.org" class="postlink">http://khyeras.org</a></div></div></div>The second method allows you to customize the link text. Whatever you type after the equal (=) sign will cause the contents of that tag to act as a URL.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[url=http://khyeras.org]I love Khy\'eras![/url]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><a href="//khyeras.org" class="postlink">I love Khy\'eras!</a></div></div></div>'
+		},
+		{
+			q : 'Email',
+			a : 'To link to an email address, the code and patterns are similar to the url BBCode.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[email]team@khyeras.org[/email]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><a href="mailto:team@khyeras.org">team@khyeras.org</a></div></div></div><div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[email=team@khyeras.org]Email the team[/email]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><a href="mailto:team@khyeras.org">Email the team</a></div></div></div>Alternatively, simply writing team@khyeras.org in a post will automatically create a mail to link.'
+		},
+		{
+			q : 'Username link',
+			a : 'To create a link to a member\'s profile, use the following code with a value of the username. The text inside the tag can be anything.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[user=Memoria]Memoria is the admin[/user]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><a href="./memberlist.php?mode=viewprofile&amp;un=Memoria">Memoria is the admin</a></div></div></div>'
+		}
+	],
+	'Generating Lists' : [
+		{
+			q : 'Creating an unordered list',
+			a : 'BBCode supports two types of lists: unordered and ordered. They are essentially the same as their HTML equivalents. An unordered list outputs each item in your list sequentially one after the other and indents each with a bullet character. To create an unordered list use [list] and define each individual item within the list using [*].<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[list][*]Red<br />[*]Blue<br />[*]Yellow[/list]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><ul><li>Red</li><li>Blue</li><li>Yellow</li></ul></div></div></div>You may specify the list\'s bullet style using [list=disc], [list=circle], or [list=square].'
+		},
+		{
+			q : 'Creating an ordered list',
+			a : 'The second type of list - an ordered list - gives you control over what is output before each item. To create an ordered list, use [list=1] for numerical lists or [list=a] for alphabetical lists. As with the unordered list, items are specified using [*].<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[list=1][*]Item 1<br />[*]Item 2<br />[*]Item 3[/list]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><ol style="list-style-type: decimal"><li>Item 1</li><li>Item 2</li><li>Item 3</li></ol></div></div></div><div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[list=A][*]Item 1<br />[*]Item 2<br />[*]Item 3[/list]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><ol style="list-style-type: upper-alpha"><li>Item 1</li><li>Item 2</li><li>Item 3</li></ol></div></div></div><div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[list=a][*]Item 1<br />[*]Item 2<br />[*]Item 3[/list]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><ol style="list-style-type: lower-alpha"><li>Item 1</li><li>Item 2</li><li>Item 3</li></ol></div></div></div><div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[list=I][*]Item 1<br />[*]Item 2<br />[*]Item 3[/list]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><ol style="list-style-type: upper-roman"><li>Item 1</li><li>Item 2</li><li>Item 3</li></ol></div></div></div><div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[list=i][*]Item 1<br />[*]Item 2<br />[*]Item 3[/list]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><ol style="list-style-type: lower-roman"><li>Item 1</li><li>Item 2</li><li>Item 3</li></ol></div></div></div>'
+		}
+	],
+	'Images' : [
+		{
+			q : 'Adding an image to a post',
+			a : 'phpBB BBCode incorporates a tag for including images in your posts. Three very important things to remember when using this tag are: many users do not appreciate lots of images being shown in posts, the image you display must already be available on the internet (it cannot exist only on your computer unless you run a webserver!), and finally, visibily it should not contain nudity or sexual content. <a href="./about-rules#general">(See rule #6 on posting images.)</a> To display an image you must surround the URL pointing to the image with [img] tag.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[img]https://placekitten.com/g/300/300[/img]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><img src="//placekitten.com/g/300/300" class="postimage" alt="Image" /></div></div></div>'
+		},
+		{
+			q : 'Image alignment',
+			a : 'Images can further be aligned by using the [img-align] tag and specifying an appropriate value.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[img-align=left]https://placekitten.com/g/150/150[/img-align]<br /><br />[img-align=right]https://placekitten.com/g/200/200[/img-align]<br /><br />[img-align=center]https://placekitten.com/g/250/250[/img-align]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><img src="//placekitten.com/g/150/150" class="postimage bbcode-image bbcode-image-left" alt="Image" /><br /><br /><img src="//placekitten.com/g/200/200" class="postimage bbcode-image bbcode-image-right" alt="Image" /><br /><br /><img src="//placekitten.com/g/250/250" class="postimage bbcode-image bbcode-image-center" alt="Image" /></div></div></div>'
+		}
+	],
+	'Other Blocks' : [
+		{
+			q : 'Quoting text',
+			a : 'There are two ways you can quote text: with a reference or without. When you utilize the Quote function to reply to a post on the board, notice that the post text is added to the message window enclosed in a [quote=""] block. This method allows you to quote with a reference to a person.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[quote=Memoria]With those details laid out, this RPG is essentially a collaborative writing experience formed in the fictional world of Khy\'eras.[/quote]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><blockquote><div><cite>Memoria wrote:</cite>With those details laid out, this RPG is essentially a collaborative writing experience formed in the fictional world of Khy\'eras.</div></blockquote></div></div></div>The second method does not add a reference to a person\'s name. allowing you to blindly quote text.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[quote]However, if this discussion about roleplaying and story development has made you wary about enrolling, leave your troubles at the door. Khy\'eras welcomes folk of varying writing skill levels, those new to the fantasy genre, or those just trying out forum RPGs.[/quote]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><blockquote class="uncited"><div>However, if this discussion about roleplaying and story development has made you wary about enrolling, leave your troubles at the door. Khy\'eras welcomes folk of varying writing skill levels, those new to the fantasy genre, or those just trying out forum RPGs.</div></blockquote></div></div></div>'
+		},
+		{
+			q : 'Code blocks',
+			a : 'If you want to output a piece of code or anything that requires a fixed width with "Courier New" type font, you should enclose the text in [code] tag.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[code]&lt;a href="//khyeras.org"&gt;Khy\'eras&lt;/a&gt;[/code]</code></pre></div><div class="codebox"><p>Output: </p><pre><code>&lt;a href="//khyeras.org"&gt;Khy\'eras&lt;/a&gt;</code></pre></div>'
+		},
+		{
+			q : 'Hidden content',
+			a : 'Content that is mature in nature should be wrapped in the [hidden] tag. This can also be utilized as a spoiler tag or when you want users to toggle content open or closed. Any text inside this block will be hidden from non-registered forum users.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[hidden]Ohhh, naughty text.[/hidden]</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span class="bbcode-hidden-container bbcode-hidden-loggedin has-toggle-button"><span class="bbcode-hidden-text toggle-content-collapsed">Ohhh, naughty text.</span><button class="toggle-button button-link toggle-button-collapsed" type="button" data-toggle-type="post" data-toggle-id="2" data-toggle-name="Hidden BBCode" data-toggle-state="false" data-toggle-mobile="false"><i class="icon icon-md rpg-icon misc-plus"></i> Toggle content
+			</button></span></div></div></div>'
+		},
+		{
+			q : 'Mention',
+			a : 'To notify someone that a post requires their attention we have the [mention] tag. The user will get a notification, so please do not abuse this feature by spamming members.<div class="codebox"><p>Code: <a href="#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>[mention]Memoria[/mention] Can you approve this?</code></pre></div><div class="codebox"><p>Output:</p><div class="postbody code-output"><div class="content"><span class="mention">@Memoria</span> Can you approve this?</div></div></div>'
+		}
+	]
+} %}
+
+{% if faq %}
+				<div class="column1">
+					{% for key, info in faq if (info | length) > 0 %}
+						{% if key == 'Creating Links' %}
+							</div>
+							<div class="column2">
+						{% endif %}
+						<dl class="faq">
+							<dt><strong>{{ key }}</strong></dt>
+							{% for detail in info %}
+								<dd><a href="#faq-{{ function.create_handle(key ~ loop.index) }}">{{ detail.q }}</a></dd>
+							{% endfor %}
+						</dl>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% for key, info in faq if (info | length) > 0 %}
+		<div class="panel">
+			<div class="inner">
+				<div class="content pages-content">
+					<h2 class="faq-title">{{ key }}</h2>
+					{% for detail in info %}
+						<dl class="faq">
+							<dt id="faq-{{ function.create_handle(key ~ loop.index) }}"><strong>{{ detail.q }}</strong></dt>
+							<dd>{{ detail.a }}</dd>
+						</dl>
+						<a href="#bbcode-faq" class="top">
+							<i class="icon fa-chevron-circle-up fa-fw icon-gray" aria-hidden="true"></i><span>Top</span>
+						</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+{% endif %}

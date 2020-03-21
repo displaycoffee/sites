@@ -74,9 +74,6 @@ code {
 pre, code {
 	display: block;
 	font-family: 'Courier New', monospace;
-	background: $color-02;
-	color: $color-00;
-	padding: 20px;
 	white-space: pre-wrap;
 }
 
@@ -84,6 +81,12 @@ pre code, code pre {
 	padding: 0;
 	margin: 0;
 	border: 0;
+}
+
+pre, code, .code-output {
+	background: $color-02;
+	color: $color-00;
+	padding: 20px;
 }
 
 .codebox {
