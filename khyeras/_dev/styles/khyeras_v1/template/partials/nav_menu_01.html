@@ -10,7 +10,7 @@
 				{% if link.children %}
 					<div class="dropdown">
 						<ul class="dropdown-contents" role="menu">
-							{% for key2, link2 in link.children %}
+							{% for key2, link2 in link.children if link2.is_nav %}
 								{{ function.create_nav_li(ROOT_PATH ~ link2.url, link2.name) }}
 							{% endfor %}
 							{% if key == 'about' %}

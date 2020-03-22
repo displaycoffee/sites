@@ -131,7 +131,7 @@ function addQuickLinks() {
 		var quickLinks = document.createElement( 'p' );
 		quickLinks.setAttribute( 'class', 'quick-links' );
 		var quickLinksHeading = document.createElement( 'strong' );
-		quickLinksHeading.textContent = 'Quick Links: ';
+		quickLinksHeading.textContent = 'Quick Links:';
 		quickLinks.appendChild( quickLinksHeading );
 
 		// Add quick links before first panel
@@ -150,7 +150,7 @@ function addQuickLinks() {
 			if ( i != ( links.length - 1 ) ) {
 				var linkSeparator = document.createElement( 'span' );
 				linkSeparator.setAttribute( 'class', 'quick-links-separator' );
-				linkSeparator.textContent = ' | ';
+				linkSeparator.textContent = '|';
 				quickLinks.appendChild( linkSeparator );
 			}
 		}

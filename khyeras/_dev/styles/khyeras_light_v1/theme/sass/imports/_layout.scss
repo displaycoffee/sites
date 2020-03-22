@@ -260,6 +260,18 @@ body .tribute-container {
 /* Quick Links
 ============================================== */
 
+.quick-links {
+	a, strong, span {
+		@include inline-block(baseline);
+	}
+	strong {
+		padding: 0 5px 0 0;
+	}
+	span {
+		padding: 0 5px;
+	}
+}
+
 @include respond-min(em(769)) {
 	.quick-links {
 		@include position($type: fixed, $right: 20px, $bottom: 100px, $z: -1);
@@ -274,6 +286,7 @@ body .tribute-container {
 		}
 		strong {
 			margin: 0 0 10px 0;
+			padding: 0;
 		}
 		a {
 			margin: 0 0 3px 0;
@@ -293,12 +306,11 @@ body .tribute-container {
 			@include toggle-content(show, $transition: true);
 		}
 	}
-
 	.section-page-glossary .quick-links {
 		width: 175px;
 		a {
 			display: inline-block;
-			width: 22.5%;
+			width: 25%;
 		}
 	}
 }

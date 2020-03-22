@@ -433,7 +433,10 @@ function create_breadcrumbs($desc, $utilities) {
 			$current =  $parent[$i];
 
 			// If the current parent contains a > character, split again
-			if ($utilities->in_string($current, ' > ')) {
+			if ($utilities->in_string($current, ' > ') || $utilities->in_string($current, ' &gt; ')) {
+				if ($utilities->in_string($current, ' &gt; ')) {
+					$current = str_replace(' &gt; ', ' > ', $current);
+				}
 				$children = explode(' > ', $current);
 
 				// Loop through child breadcrumbs and add into breadcrumbs
@@ -480,7 +483,10 @@ function create_navlinks($links, $utilities) {
 				$current =  $parent[$i];
 
 				// If the current parent contains a > character, split again
-				if ($utilities->in_string($current, ' > ')) {
+				if ($utilities->in_string($current, ' > ') || $utilities->in_string($current, ' &gt; ')) {
+					if ($utilities->in_string($current, ' &gt; ')) {
+						$current = str_replace(' &gt; ', ' > ', $current);
+					}
 					$children = explode(' > ', $current);
 					$children_length = count($children);
 
