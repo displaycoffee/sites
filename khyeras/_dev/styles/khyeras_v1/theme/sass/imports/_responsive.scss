@@ -463,6 +463,11 @@
 	}
 
 	// other-sections.scss
+	.content-image {
+		&.content-image-left, &.content-image-right {
+			max-width: 300px;
+		}
+	}
 	.key.key-grid li {
 		width: 33.33%;
 		&:nth-child(4n+1) {
@@ -608,11 +613,8 @@
 			width: auto;
 		}
 	}
-	.image-fit.image-fit-responsive {
-		background-position: center bottom;
-		img {
-			@include sr-only;
-		}
+	.image-fit.image-fit-responsive img {
+		@include sr-only;
 	}
 	.toggle-content-expanded-mobile {
 		@include toggle-content(show, $transition: true);
@@ -981,14 +983,6 @@
 				border-radius: 0;
 				border-width: 2px;
 				padding-bottom: 0;
-			}
-			.image-fit {
-				&[style*='/classes/'] {
-					background-position: center top;
-				}
-				&[style*='sorcerer'], &[style*='summoner'], &[style*='bard'] {
-					background-position: center -75px;
-				}
 			}
 		}
 		.excerpt-details {
@@ -1447,6 +1441,11 @@
 			}
 		}
 	}
+	.image-fit {
+		&[style*='sorcerer'], &[style*='summoner'], &[style*='bard'] {
+			background-position: center center;
+		}
+	}
 
 	// viewtopics.scss
 	.postbody {
@@ -1570,6 +1569,12 @@
 			font-weight: bold;
 		}
 	}
+	.content-image {
+		&.content-image-left, &.content-image-right {
+			float: none;
+			margin: 20px 0;
+		}
+	}
 	.key.key-grid li {
 		width: 50%;
 		&:nth-child(3n+1) {
@@ -1592,11 +1597,6 @@
 					display: block;
 				}
 			}
-		}
-	}
-	.excerpt .excerpt-image .image-fit {
-		&[style*='sorcerer'], &[style*='summoner'], &[style*='bard'] {
-			background-position: center top;
 		}
 	}
 	.section-page-map #tabs {
@@ -1880,6 +1880,13 @@
 			margin-bottom: $ffs;
 		}
 	}
+	.key.key-grid li {
+		width: auto;
+		float: none;
+	}
+	.banner.banner-vertical {
+		padding-bottom: calc(100% - -39px);
+	}
 	.pie-chart {
 		display: block;
 		.pie-chart-circle, .pie-chart-title {
@@ -1894,13 +1901,6 @@
 				@include inline-block(top);
 			}
 		}
-	}
-	.key.key-grid li {
-		width: auto;
-		float: none;
-	}
-	.banner.banner-vertical {
-		padding-bottom: calc(100% - -39px);
 	}
 
 	// cp.scss
@@ -2086,11 +2086,14 @@
 			display: block;
 			padding: 0;
 		}
-		.site-logo-text, .mobile-menu-button {
-			padding: 0 20px;
-		}
 		.site-logo-text {
+			padding: 0 20px;
 			font-size: rem(26px);
+		}
+		.mobile-menu-button {
+			width: 100%;
+			padding: 0 10px;
+			margin: 0;
 		}
 		&.sticky {
 			.site-logo-text {
@@ -2104,4 +2107,5 @@
 			}
 		}
 	}
+
 }

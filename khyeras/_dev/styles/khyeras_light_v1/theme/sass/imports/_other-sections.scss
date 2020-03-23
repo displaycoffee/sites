@@ -128,182 +128,6 @@ dl.faq {
 	}
 }
 
-/* Character Census
-============================================== */
-
-.pie-chart {
-	margin: 0 0 20px 0;
-	@include flex-flow(row wrap);
-	align-items: center;
-	&.flex-column {
-		@include flex;
-		width: 50%;
-	}
-	.pie-chart-circle .pie-chart-circle-wrapper svg, .pie-chart-circle .pie-chart-circle-wrapper:after, .pie-chart-key ul li .pie-chart-key-color {
-		border-radius: 50%;
-	}
-	.pie-chart-circle .pie-chart-circle-wrapper, .pie-chart-key ul li {
-		position: relative;
-	}
-	.pie-chart-circle .pie-chart-circle-wrapper svg, .pie-chart-circle .pie-chart-circle-wrapper:after, .pie-chart-key ul li .pie-chart-key-color {
-		display: block;
-		position: absolute;
-	}
-	.pie-chart-circle {
-		@include flex;
-		width: 50%;
-		.pie-chart-circle-wrapper {
-			@include sizing(100%, 0);
-			padding-bottom: 100%;
-			line-height: 0;
-			svg, &:after {
-				@include position($top: 0, $left: 0, $bottom: 0, $right: 0);
-				margin: auto;
-			}
-			svg {
-				transform: rotate(-90deg);
-				background: $color-01;
-				border: 5px solid $color-02;
-				.pie-chart-slice {
-					fill: transparent;
-					stroke-width: 32;
-				}
-				.pie-chart-slice-0 {
-					stroke: $color-01;
-				}
-				.pie-chart-slice-1 {
-					stroke: $color-05;
-				}
-				.pie-chart-slice-2 {
-					stroke: $color-08;
-				}
-				.pie-chart-slice-3 {
-					stroke: $color-09;
-				}
-				.pie-chart-slice-4 {
-					stroke: $color-12;
-				}
-				.pie-chart-slice-5 {
-					stroke: $color-13;
-				}
-				.pie-chart-slice-6 {
-					stroke: $color-14;
-				}
-				.pie-chart-slice-7 {
-					stroke: $color-15;
-				}
-				.pie-chart-slice-8 {
-					stroke: $color-22;
-				}
-				.pie-chart-slice-9 {
-					stroke: $color-04;
-				}
-				.pie-chart-slice-10 {
-					stroke: $color-03;
-				}
-				.pie-chart-slice-11 {
-					stroke: $color-07;
-				}
-				.pie-chart-slice-12 {
-					stroke: $color-10;
-				}
-				.pie-chart-slice-13 {
-					stroke: $color-18;
-				}
-				.pie-chart-slice-14 {
-					stroke: $color-21;
-				}
-				.pie-chart-slice-15 {
-					stroke: map-get($color-set-08, light-00);
-				}
-				.pie-chart-slice-16 {
-					stroke: $color-00;
-				}
-			}
-			&:after {
-				content: '';
-				@include sizing(30%, 30%);
-				background: $color-02;
-			}
-		}
-	}
-	.pie-chart-title {
-		@include flex(full);
-		order: -1;
-		min-width: 1px;
-		align-self: flex-start;
-	}
-	.pie-chart-key {
-		@include flex(base);
-		margin: 0 0 0 20px;
-		ul {
-			list-style: none;
-			margin: 0 -5px -5px -5px;
-			padding: 0;
-			li {
-				padding: 0 0 0 26px;
-				margin: 0 5px 5px 5px;
-				.pie-chart-key-color {
-					@include position($top: 1px, $left: 0);
-					@include sizing(16px, 16px);
-					box-shadow: 0 0 0 2px $color-02;
-				}
-				.pie-chart-key-color-0 {
-					background: $color-01;
-				}
-				.pie-chart-key-color-1 {
-					background: $color-05;
-				}
-				.pie-chart-key-color-2 {
-					background: $color-08;
-				}
-				.pie-chart-key-color-3 {
-					background: $color-09;
-				}
-				.pie-chart-key-color-4 {
-					background: $color-12;
-				}
-				.pie-chart-key-color-5 {
-					background: $color-13;
-				}
-				.pie-chart-key-color-6 {
-					background: $color-14;
-				}
-				.pie-chart-key-color-7 {
-					background: $color-15;
-				}
-				.pie-chart-key-color-8 {
-					background: $color-22;
-				}
-				.pie-chart-key-color-9 {
-					background: $color-04;
-				}
-				.pie-chart-key-color-10 {
-					background: $color-03;
-				}
-				.pie-chart-key-color-11 {
-					background: $color-07;
-				}
-				.pie-chart-key-color-12 {
-					background: $color-10;
-				}
-				.pie-chart-key-color-13 {
-					background: $color-18;
-				}
-				.pie-chart-key-color-14 {
-					background: $color-21;
-				}
-				.pie-chart-key-color-15 {
-					background: map-get($color-set-08, light-00);
-				}
-				.pie-chart-key-color-16 {
-					background: $color-00;
-				}
-			}
-		}
-	}
-}
-
 /* View Profile
 ============================================== */
 
@@ -453,7 +277,19 @@ dl.faq {
 }
 
 .content-image {
-	margin: 20px 0 0 0;
+	margin: 20px 0;
+	&.content-image-left {
+		float: left;
+		margin: 0 20px 10px 0;
+	}
+	&.content-image-right {
+		float: right;
+		margin: 0 0 10px 20px;
+	}
+	strong {
+		display: block;
+		margin: 0 0 5px 0;
+	}	
 	img {
 		padding: 5px;
 		border: 1px solid $color-01;
@@ -659,6 +495,182 @@ dl.faq {
 	}
 }
 
+/* Pages - Pie Chart
+============================================== */
+
+.pie-chart {
+	margin: 0 0 20px 0;
+	@include flex-flow(row wrap);
+	align-items: center;
+	&.flex-column {
+		@include flex;
+		width: 50%;
+	}
+	.pie-chart-circle .pie-chart-circle-wrapper svg, .pie-chart-circle .pie-chart-circle-wrapper:after, .pie-chart-key ul li .pie-chart-key-color {
+		border-radius: 50%;
+	}
+	.pie-chart-circle .pie-chart-circle-wrapper, .pie-chart-key ul li {
+		position: relative;
+	}
+	.pie-chart-circle .pie-chart-circle-wrapper svg, .pie-chart-circle .pie-chart-circle-wrapper:after, .pie-chart-key ul li .pie-chart-key-color {
+		display: block;
+		position: absolute;
+	}
+	.pie-chart-circle {
+		@include flex;
+		width: 50%;
+		.pie-chart-circle-wrapper {
+			@include sizing(100%, 0);
+			padding-bottom: 100%;
+			line-height: 0;
+			svg, &:after {
+				@include position($top: 0, $left: 0, $bottom: 0, $right: 0);
+				margin: auto;
+			}
+			svg {
+				transform: rotate(-90deg);
+				background: $color-01;
+				border: 5px solid $color-02;
+				.pie-chart-slice {
+					fill: transparent;
+					stroke-width: 32;
+				}
+				.pie-chart-slice-0 {
+					stroke: $color-01;
+				}
+				.pie-chart-slice-1 {
+					stroke: $color-05;
+				}
+				.pie-chart-slice-2 {
+					stroke: $color-08;
+				}
+				.pie-chart-slice-3 {
+					stroke: $color-09;
+				}
+				.pie-chart-slice-4 {
+					stroke: $color-12;
+				}
+				.pie-chart-slice-5 {
+					stroke: $color-13;
+				}
+				.pie-chart-slice-6 {
+					stroke: $color-14;
+				}
+				.pie-chart-slice-7 {
+					stroke: $color-15;
+				}
+				.pie-chart-slice-8 {
+					stroke: $color-22;
+				}
+				.pie-chart-slice-9 {
+					stroke: $color-04;
+				}
+				.pie-chart-slice-10 {
+					stroke: $color-03;
+				}
+				.pie-chart-slice-11 {
+					stroke: $color-07;
+				}
+				.pie-chart-slice-12 {
+					stroke: $color-10;
+				}
+				.pie-chart-slice-13 {
+					stroke: $color-18;
+				}
+				.pie-chart-slice-14 {
+					stroke: $color-21;
+				}
+				.pie-chart-slice-15 {
+					stroke: map-get($color-set-08, light-00);
+				}
+				.pie-chart-slice-16 {
+					stroke: $color-00;
+				}
+			}
+			&:after {
+				content: '';
+				@include sizing(30%, 30%);
+				background: $color-02;
+			}
+		}
+	}
+	.pie-chart-title {
+		@include flex(full);
+		order: -1;
+		min-width: 1px;
+		align-self: flex-start;
+	}
+	.pie-chart-key {
+		@include flex(base);
+		margin: 0 0 0 20px;
+		ul {
+			list-style: none;
+			margin: 0 -5px -5px -5px;
+			padding: 0;
+			li {
+				padding: 0 0 0 26px;
+				margin: 0 5px 5px 5px;
+				.pie-chart-key-color {
+					@include position($top: 1px, $left: 0);
+					@include sizing(16px, 16px);
+					box-shadow: 0 0 0 2px $color-02;
+				}
+				.pie-chart-key-color-0 {
+					background: $color-01;
+				}
+				.pie-chart-key-color-1 {
+					background: $color-05;
+				}
+				.pie-chart-key-color-2 {
+					background: $color-08;
+				}
+				.pie-chart-key-color-3 {
+					background: $color-09;
+				}
+				.pie-chart-key-color-4 {
+					background: $color-12;
+				}
+				.pie-chart-key-color-5 {
+					background: $color-13;
+				}
+				.pie-chart-key-color-6 {
+					background: $color-14;
+				}
+				.pie-chart-key-color-7 {
+					background: $color-15;
+				}
+				.pie-chart-key-color-8 {
+					background: $color-22;
+				}
+				.pie-chart-key-color-9 {
+					background: $color-04;
+				}
+				.pie-chart-key-color-10 {
+					background: $color-03;
+				}
+				.pie-chart-key-color-11 {
+					background: $color-07;
+				}
+				.pie-chart-key-color-12 {
+					background: $color-10;
+				}
+				.pie-chart-key-color-13 {
+					background: $color-18;
+				}
+				.pie-chart-key-color-14 {
+					background: $color-21;
+				}
+				.pie-chart-key-color-15 {
+					background: map-get($color-set-08, light-00);
+				}
+				.pie-chart-key-color-16 {
+					background: $color-00;
+				}
+			}
+		}
+	}
+}
+
 /* Pages - Map
 ============================================== */
 
@@ -687,6 +699,14 @@ dl.faq {
 			z-index: 60;
 		}
 	}
+}
+
+/* Pages - Setting Layout Headers
+============================================== */
+
+.section-page #layout h5 em {
+	font-size: rem(16px);
+	font-variant: none;
 }
 
 /* Pages - Timeline

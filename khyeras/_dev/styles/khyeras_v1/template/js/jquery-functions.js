@@ -152,8 +152,8 @@ function toggleMemberDisplay() {
 			var current = jQuery( this );
 
 			// Find any active tab, remove activetab class, then add it to clicked element
-			tabs.parent().removeClass( 'activetab' );
-			current.parent().addClass( 'activetab' );
+			tabs.parent().removeClass( khy.attr.activeTab );
+			current.parent().addClass( khy.attr.activeTab );
 
 			// Get tab name
 			var activeTab = current.attr( 'data-tabname' );
@@ -163,9 +163,9 @@ function toggleMemberDisplay() {
 				var current = jQuery( this );
 
 				if ( current.hasClass( activeTab ) ) {
-					current.addClass( 'show-panel' ).removeClass( 'hide-panel' );
+					current.addClass( khy.attr.showPanel ).removeClass( khy.attr.hidePanel );
 				} else {
-					current.addClass( 'hide-panel' ).removeClass( 'show-panel' );
+					current.addClass( khy.attr.hidePanel ).removeClass( khy.attr.showPanel );
 				}
 			});
 		});
@@ -175,6 +175,8 @@ function toggleMemberDisplay() {
 // Toggle display of map elements
 function toggleMapDisplay() {
 	var mapTabs = jQuery( '.map-tabs' );
+	var mapPerimeters = false;
+	var mapLayouts = false;
 
 	if ( mapTabs && mapTabs.length ) {
 		// Get all tabs on map
@@ -184,24 +186,37 @@ function toggleMapDisplay() {
 		tabs.on( 'click', function() {
 			var current = jQuery( this );
 
-			// Add and remove activetab class for changing tab color / size
-			if ( current.parent().hasClass( 'activetab' ) ) {
-				current.parent().removeClass( 'activetab' );
-			} else {
-				current.parent().addClass( 'activetab' );
-			}
-
 			// Get tab name
 			var activeTab = current.attr( 'data-tabname' );
+
+			// Add and remove activetab class for changing tab color / size
+			if ( current.parent().hasClass( khy.attr.activeTab ) ) {
+				current.parent().removeClass( khy.attr.activeTab );
+			} else {
+
+				if ( activeTab == khy.attr.perimeters ) {
+					jQuery( '.map-tabs .tab a[data-tabname="' + khy.attr.layouts + '"]' ).parent().removeClass( khy.attr.activeTab );
+				} else if ( activeTab == khy.attr.layouts ) {
+					jQuery( '.map-tabs .tab a[data-tabname="' + khy.attr.perimeters + '"]' ).parent().removeClass( khy.attr.activeTab );
+				}
+
+				current.parent().addClass( khy.attr.activeTab );
+			}
 
 			// Get map selector
 			var mapPanel = jQuery( '.map .' + activeTab );
 
 			// Show and hide map elements with class toggle
-			if ( mapPanel.hasClass( 'hide-panel' ) ) {
-				mapPanel.addClass( 'show-panel' ).removeClass( 'hide-panel' );
+			if ( mapPanel.hasClass( khy.attr.hidePanel ) ) {
+				if ( activeTab == khy.attr.perimeters ) {
+					jQuery( '.map .' + khy.attr.layouts ).removeClass( khy.attr.showPanel ).addClass( khy.attr.hidePanel );
+				} else if ( activeTab == khy.attr.layouts ) {
+					jQuery( '.map .' + khy.attr.perimeters ).removeClass( khy.attr.showPanel ).addClass( khy.attr.hidePanel );
+				}
+
+				mapPanel.addClass( khy.attr.showPanel ).removeClass( khy.attr.hidePanel );
 			} else {
-				mapPanel.addClass( 'hide-panel' ).removeClass( 'show-panel' );
+				mapPanel.addClass( khy.attr.hidePanel ).removeClass( khy.attr.showPanel );
 			}
 		});
 	}
@@ -399,7 +414,7 @@ function initializeMobileMenu( options ) {
 	// Resize actions for mobile menu
 	function mobileResizeAction() {
 		// Check if we are on mobile
-		var onMobile = isMobile( baseFontSize, ( width / baseFontSize ) );
+		var onMobile = isMobile( width / khy.variables.fontSize );
 
 		// Check all sorts of window and document widths to make sure resizing is consistent across browsers
 		if ( onMobile ) {

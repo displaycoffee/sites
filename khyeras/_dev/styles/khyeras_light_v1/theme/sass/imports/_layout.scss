@@ -852,10 +852,23 @@ dl.details {
 .image-fit {
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: center center;
 	&.image-fit-default img {
 		@include sr-only;
 	}
-	&.image-fit-responsive {
+	&[style*='/setting/'] {
+		background-position: center bottom;
+	}
+	&[style*='/classes/'], &[style*='/races/'] {
+		background-position: center top;
+	}
+	&[style*='sorcerer'], &[style*='summoner'], &[style*='bard'] {
+		background-position: center -75px;
+	}
+}
+
+@include respond-min(em(769)) {
+	.image-fit.image-fit-responsive {
 		background-position: -9999px -9999px;
 	}
 }

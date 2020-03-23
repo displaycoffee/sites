@@ -51,7 +51,7 @@ jQuery( document ).ready( function( $ ) {
 		addOnScroll( '#page-header .navbar', '.header-overlay', 'sticky' );
 		addOnScroll( '.quick-links', '.site-description', 'quick-links-visible' );
 		scrollOnPage( '.scroll-to-top', 100, 0 );
-		scrollOnPage( '.scroll-to-bottom', 100, bottomDistance );
+		scrollOnPage( '.scroll-to-bottom', 100, khy.variables.bottom );
 	}
 
 	// Start the discord list build

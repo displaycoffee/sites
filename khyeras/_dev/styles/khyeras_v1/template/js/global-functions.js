@@ -1,7 +1,25 @@
-// Common variables
-var body = document.querySelector( 'body' );
-var baseFontSize = 16;
-var bottomDistance =  document.body.scrollHeight + window.innerHeight;
+// Khy'eras global configurables
+var khy = {
+	'attr'      : {
+		'activeTab'    : 'activetab',
+		'hidePanel'    : 'hide-panel',
+		'showPanel'    : 'show-panel',
+		'layouts'      : 'map-layouts-panel',
+		'perimeters'   : 'map-perimeters-panel',
+		'toggleId'     : 'data-toggle-id',
+		'toggleMobile' : 'data-toggle-mobile',
+		'toggleName'   : 'data-toggle-name',
+		'toggleState'  : 'data-toggle-state',
+		'toggleType'   : 'data-toggle-type'
+	},
+	'selectors' : {
+		'body' : document.querySelector( 'body' )
+	},
+	'variables' : {
+		'bottom'     : document.body.scrollHeight + window.innerHeight,
+		'fontSize'   : 16
+	}
+}
 
 // Replace HTML characters
 function cleanHTML( selector ) {
@@ -39,10 +57,10 @@ function findParent( selector, parentClass ) {
 };
 
 // Check for mobile
-function isMobile( baseFontSize, respond ) {
-	var windowWidth = ( window.innerWidth / baseFontSize );
-	var docWidth = ( document.documentElement.clientWidth / baseFontSize );
-	var bodyWidth = ( document.body.clientWidth / baseFontSize );
+function isMobile( respond ) {
+	var windowWidth = ( window.innerWidth / khy.variables.fontSize );
+	var docWidth = ( document.documentElement.clientWidth / khy.variables.fontSize );
+	var bodyWidth = ( document.body.clientWidth / khy.variables.fontSize );
 
 	if ( ( windowWidth || docWidth || bodyWidth ) <= respond ) {
 		return true;

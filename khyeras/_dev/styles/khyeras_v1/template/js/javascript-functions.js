@@ -114,7 +114,7 @@ function addNoPaginationClass() {
 			var totalNumber = paginationText.replace( regex, '' ).match( /\d+/g );
 
 			if ( totalNumber && totalNumber <= 0 ) {
-				body.classList.add( 'no-pagination' );
+				khy.selectors.body.classList.add( 'no-pagination' );
 			}
 		}
 	}
@@ -250,7 +250,7 @@ function checkForNewPM() {
 // Detect if on iPhone device
 function detectiPhone() {
 	if ( navigator.userAgent.match( /iPhone|iPad|iPod/i ) ) {
-		body.classList.add( 'ios' );
+		khy.selectors.body.classList.add( 'ios' );
 	}
 }
 
@@ -309,7 +309,7 @@ function toggleElements( button, content, parentClass, save ) {
 
 	if ( toggleButtons && toggleButtons.length ) {
 		// Set main toggleKey to toggleObject if not already present
-		var toggleKey = toggleButtons[0].getAttribute( 'data-toggle-type' );
+		var toggleKey = toggleButtons[0].getAttribute( khy.attr.toggleType );
 		if ( !toggleObject.hasOwnProperty( toggleKey ) ) {
 			toggleObject[toggleKey] = {};
 		}
@@ -318,19 +318,19 @@ function toggleElements( button, content, parentClass, save ) {
 			var button = toggleButtons[i];
 
 			// If button id is equal to 9999, we need to set a random id using index
-			var buttonId = button.getAttribute( 'data-toggle-id' );
+			var buttonId = button.getAttribute( khy.attr.toggleId );
 			if ( buttonId == '9999' ) {
 				buttonId = ( i + 1 ) * 2;
-				button.setAttribute( 'data-toggle-id', buttonId );
+				button.setAttribute( khy.attr.toggleId, buttonId );
 			}
 
-			var buttonKey = getButtonKey( button.getAttribute( 'data-toggle-name' ), buttonId );
+			var buttonKey = getButtonKey( button.getAttribute( khy.attr.toggleName ), buttonId );
 
 			// If there is a key, set button value to itself, otherwise set to default true
 			if ( toggleObject[toggleKey].hasOwnProperty( buttonKey ) ) {
 				toggleObject[toggleKey][buttonKey] = toggleObject[toggleKey][buttonKey];
 			} else {
-				var buttonDataState = ( button.getAttribute( 'data-toggle-state' ) ) == 'true' ? true : false;
+				var buttonDataState = ( button.getAttribute( khy.attr.toggleState ) ) == 'true' ? true : false;
 				toggleObject[toggleKey][buttonKey] = buttonDataState;
 			}
 
@@ -338,13 +338,13 @@ function toggleElements( button, content, parentClass, save ) {
 			button.parentNode.classList.add( 'has-toggle-button' );
 
 			// Toggle intial state of collapsible elements
-			toggleContent( toggleObject[toggleKey][buttonKey], button, button.getAttribute( 'data-toggle-mobile' ) );
+			toggleContent( toggleObject[toggleKey][buttonKey], button, button.getAttribute( khy.attr.toggleMobile ) );
 
 			// Add collapsible toggle event to buttons
 			button.onclick = function() {
 				return function( e ) {
 					// Reset button key text
-					buttonKey = getButtonKey( this.getAttribute( 'data-toggle-name' ), this.getAttribute( 'data-toggle-id' ) );
+					buttonKey = getButtonKey( this.getAttribute( khy.attr.toggleName ), this.getAttribute( khy.attr.toggleId ) );
 
 					// Reset button state in toggleObject
 					toggleObject[toggleKey][buttonKey] = toggleObject[toggleKey][buttonKey] ? false : true;
@@ -353,7 +353,7 @@ function toggleElements( button, content, parentClass, save ) {
 					setStorage( toggleObject );
 
 					// Then toggle things
-					toggleContent( toggleObject[toggleKey][buttonKey], this, this.getAttribute( 'data-toggle-mobile' ) );
+					toggleContent( toggleObject[toggleKey][buttonKey], this, this.getAttribute( khy.attr.toggleMobile ) );
 				}
 			}();
 		}
