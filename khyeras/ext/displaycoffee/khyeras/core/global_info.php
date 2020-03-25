@@ -150,6 +150,7 @@ class global_info {
 				'level'  => $page_order,
 				'crumbs' => create_breadcrumbs($page_desc, $this->utilities),
 				'desc'   => $page_desc,
+				'self'   => false
 			];
 
 			$page_links[$row['page_route']] = $page_data;
@@ -157,6 +158,26 @@ class global_info {
 
 		// Be sure to free the result after a SELECT query
 		$this->db->sql_freeresult($page_result);
+
+		// Add extra links to about section
+		$page_links['help/bbcode'] = [
+			'name'   => 'BBCode FAQ',
+			'url'    => 'help/bbcode',
+			'is_nav' => true,
+			'level'  => 2,
+			'crumbs' => create_breadcrumbs('about', $this->utilities),
+			'desc'   => 'about',
+			'self'   => true
+		];
+		$page_links['help/faq'] = [
+			'name'   => 'Forum FAQ',
+			'url'    => 'help/faq',
+			'is_nav' => true,
+			'level'  => 2,
+			'crumbs' => create_breadcrumbs('about', $this->utilities),
+			'desc'   => 'about',
+			'self'   => true
+		];
 
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(

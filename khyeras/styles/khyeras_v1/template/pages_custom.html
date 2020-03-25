@@ -12,49 +12,45 @@
 	{% include 'partials/content_map.html' %}
 {% endif %}
 
-<div class="panel"{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %} id="khyeras-faq"{% elseif KHY_SCRIPT_NAME == 'about-bbcode-faq' %} id="bbcode-faq"{% endif %}>
-	<div class="inner">
-		<div class="content pages-content">
-			{{ PAGE_CONTENT }}
+{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %}
+	{% include 'partials/content_faq_khyeras.html' %}
+{% else %}
+	<div{{ page_id }} class="panel"{{ quick_name }}>
+		<div class="inner">
+			<div class="content pages-content">
+				{{ PAGE_CONTENT }}
 
-			{% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %}
-				{% include 'partials/content_faq.html' %}
-			{% endif %}
+				{% if KHY_SCRIPT_NAME == 'lore-timeline' %}
+					{% include 'partials/content_timeline.html' %}
+				{% endif %}
 
-			{% if KHY_SCRIPT_NAME == 'about-bbcode-faq' %}
-				{% include 'partials/content_bbcode_faq.html' %}
-			{% endif %}
+				{% if KHY_SCRIPT_NAME == 'lore-races-half-breed' %}
+					{% include 'partials/content_half_breed.html' %}
+				{% endif %}
 
-			{% if KHY_SCRIPT_NAME == 'lore-timeline' %}
-				{% include 'partials/content_timeline.html' %}
-			{% endif %}
+				{% if KHY_SCRIPT_NAME == 'gameplay-leveling' %}
+					{% include 'partials/content_leveling.html' %}
+				{% endif %}
 
-			{% if KHY_SCRIPT_NAME == 'lore-races-half-breed' %}
-				{% include 'partials/content_half_breed.html' %}
-			{% endif %}
+				{% if KHY_SCRIPT_NAME == 'gameplay-achievements' %}
+					{% include 'partials/content_achievements.html' %}
+				{% endif %}
 
-			{% if KHY_SCRIPT_NAME == 'gameplay-leveling' %}
-				{% include 'partials/content_leveling.html' %}
-			{% endif %}
+				{% if KHY_SCRIPT_NAME == 'members-character-census' %}
+					{% include 'partials/content_census.html' %}
+				{% endif %}
 
-			{% if KHY_SCRIPT_NAME == 'gameplay-achievements' %}
-				{% include 'partials/content_achievements.html' %}
-			{% endif %}
+				{% if KHY_SCRIPT_NAME == 'members-character-listing' %}
+					{% include 'partials/content_character_listing.html' %}
+				{% endif %}
 
-			{% if KHY_SCRIPT_NAME == 'members-character-census' %}
-				{% include 'partials/content_census.html' %}
-			{% endif %}
-
-			{% if KHY_SCRIPT_NAME == 'members-character-listing' %}
-				{% include 'partials/content_character_listing.html' %}
-			{% endif %}
-
-			{% if KHY_SCRIPT_NAME == 'sitemap' %}
-				{% include 'partials/content_sitemap.html' %}
-			{% endif %}
+				{% if KHY_SCRIPT_NAME == 'sitemap' %}
+					{% include 'partials/content_sitemap.html' %}
+				{% endif %}
+			</div>
+			{% EVENT phpbb_pages_after_page_content %}
 		</div>
-		{% EVENT phpbb_pages_after_page_content %}
 	</div>
-</div>
+{% endif %}
 
 {% include 'overall_footer.html' %}

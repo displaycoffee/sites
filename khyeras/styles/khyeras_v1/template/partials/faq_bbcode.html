@@ -116,25 +116,26 @@
 } %}
 
 {% if faq %}
-				<div class="column1">
-					{% for key, info in faq if (info | length) > 0 %}
-						{% if key == 'Creating Links' %}
-							</div>
-							<div class="column2">
-						{% endif %}
-						<dl class="faq">
-							<dt><strong>{{ key }}</strong></dt>
-							{% for detail in info %}
-								<dd><a href="#faq-{{ function.create_handle(key ~ loop.index) }}">{{ detail.q }}</a></dd>
-							{% endfor %}
-						</dl>
-					{% endfor %}
-				</div>
+	<div class="panel bg1">
+		<div class="inner">
+			<div class="column1">
+				{% for key, info in faq if (info | length) > 0 %}
+					{% if key == 'Creating Links' %}
+						</div>
+						<div class="column2">
+					{% endif %}
+					<dl class="faq">
+						<dt><strong>{{ key }}</strong></dt>
+						{% for detail in info %}
+							<dd><a href="#faq-{{ function.create_handle(key ~ loop.index) }}">{{ detail.q }}</a></dd>
+						{% endfor %}
+					</dl>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
 	{% for key, info in faq if (info | length) > 0 %}
-		<div class="panel">
+		<div id="{{ function.create_handle(key) }}" class="panel" data-quick-name="{{ key }}">
 			<div class="inner">
 				<div class="content pages-content">
 					<h2 class="faq-title">{{ key }}</h2>

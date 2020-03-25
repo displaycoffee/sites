@@ -1,4 +1,9 @@
-{% if navlinks && (navlinks | length) > 0 %}
+{% set breadcrumbs_length = 0 %}
+{% if navlinks || KHY_LINKS[KHY_SCRIPT_NAME].crumbs %}
+	{% set breadcrumbs_length = (navlinks | length) + (KHY_LINKS[KHY_SCRIPT_NAME].crumbs | length) %}
+{% endif %}
+
+{% if breadcrumbs_length > 0 %}
 	{% macro breadcrumb(crumb_url, crumb_label, position, previous, crumb_data) %}
 		{% set is_home = (crumb_label == 'Home') ? true : false %}
 		{% set crumb_icon = 'fa-angle-right' %}
@@ -54,6 +59,11 @@
 							{% endif %}
 						{% endif %}
 					{% endfor %}
+				{% endif %}
+
+				{% if KHY_LINKS[KHY_SCRIPT_NAME].self %}
+					{% set crumb_position = crumb_position + 1 %}
+					{{ _self.breadcrumb(ROOT_PATH ~ KHY_LINKS[KHY_SCRIPT_NAME].url, KHY_LINKS[KHY_SCRIPT_NAME].name, crumb_position, false, false) }}
 				{% endif %}
 
 				{% for nav in navlinks %}
