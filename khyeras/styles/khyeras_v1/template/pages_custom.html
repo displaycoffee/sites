@@ -1,20 +1,20 @@
-{% import 'utilities/macros.html' as function %}
-
-{% include 'overall_header.html' %}
-
-{% set exclude_title = ['app/setting'] %}
-
-{% if 'setting-' not in KHY_SCRIPT_NAME %}
-	<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
-{% endif %}
-
-{% if KHY_SCRIPT_NAME == 'setting-map' %}
-	{% include 'partials/content_map.html' %}
-{% endif %}
-
 {% if KHY_SCRIPT_NAME == 'about-khyeras-faq' %}
-	{% include 'partials/content_faq_khyeras.html' %}
+	{% include 'faq_body.html' %}
 {% else %}
+	{% import 'utilities/macros.html' as function %}
+
+	{% include 'overall_header.html' %}
+
+	{% set exclude_title = ['app/setting'] %}
+
+	{% if 'setting-' not in KHY_SCRIPT_NAME %}
+		<h2 class="pages-title">{{ PAGE_TITLE }}</h2>
+	{% endif %}
+
+	{% if KHY_SCRIPT_NAME == 'setting-map' %}
+		{% include 'partials/content_map.html' %}
+	{% endif %}
+
 	<div{{ page_id }} class="panel"{{ quick_name }}>
 		<div class="inner">
 			<div class="content pages-content">
@@ -51,6 +51,6 @@
 			{% EVENT phpbb_pages_after_page_content %}
 		</div>
 	</div>
-{% endif %}
 
-{% include 'overall_footer.html' %}
+	{% include 'overall_footer.html' %}
+{% endif %}

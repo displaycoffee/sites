@@ -199,24 +199,28 @@
 {% if timeline %}
 	<div class="timeline timeline-alternating">
 		{% for key, time in timeline if (time | length) > 0 %}
-			{% for detail in time %}
+			<section id="{{ function.create_handle(key) }}" class="timeline-section" data-quick-name="{{ key }}">
 				<div class="timeline-row flex-row flex-row-30">
-					{% if loop.first %}
-						<div class="timeline-header">
-							<h3>{{ key }}</h3>
-							<h4>{{ time[0].title }} &bullet; {{ time[loop.length - 1].title }}</h4>
-						</div>
-					{% endif %}
-					<div class="timeline-column timeline-detail-header flex-column">
-						<div class="timeline-sub-title">
-							<h5>{{ detail.title }}</h5>
-							<i class="icon icon-round icon-round-lg {{ detail.icon }}" aria-hidden="true"></i>
-						</div>
-						<div class="bracket">}</div>
+					<div class="timeline-header">
+						<h3>{{ key }}</h3>
+						<h4>{{ time[0].title }} &bullet; {{ time[(time | length) - 1].title }}</h4>
 					</div>
-					<div class="timeline-column timeline-detail-description flex-column">{{ detail.description }}</div>
 				</div>
-			{% endfor %}
+				{% for detail in time %}
+					<div class="timeline-row flex-row flex-row-30">
+						<div class="timeline-column timeline-detail-header flex-column">
+							<div class="timeline-sub-title">
+								<h5>{{ detail.title }}</h5>
+								<i class="icon icon-round icon-round-lg {{ detail.icon }}" aria-hidden="true"></i>
+							</div>
+							<div class="bracket">}</div>
+						</div>
+						<div class="timeline-column timeline-detail-description flex-column">
+							{{ detail.description }}
+						</div>
+					</div>
+				{% endfor %}
+			</section>
 		{% endfor %}
 	</div>
 {% endif %}

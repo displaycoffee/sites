@@ -126,6 +126,7 @@ function addQuickLinks() {
 
 	if ( links && links.length ) {
 		var panel = document.querySelector( '.page-body > .wrapper > .panel' );
+		var tabs = document.querySelector( '.page-body > .wrapper > .tabs' );
 
 		// Create the quick links element
 		var quickLinks = document.createElement( 'p' );
@@ -134,8 +135,12 @@ function addQuickLinks() {
 		quickLinksHeading.textContent = 'Quick Links:';
 		quickLinks.appendChild( quickLinksHeading );
 
-		// Add quick links before first panel
-		panel.parentNode.insertBefore( quickLinks, panel );
+		// If there are tabs, inset before tabs instead of before panel
+		if ( tabs ) {
+			tabs.parentNode.insertBefore( quickLinks, tabs );
+		} else {
+			panel.parentNode.insertBefore( quickLinks, panel );
+		}
 
 		for ( var i = 0; i < links.length; i++ ) {
 			var link = links[i];

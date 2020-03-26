@@ -289,7 +289,7 @@ dl.faq {
 	strong {
 		display: block;
 		margin: 0 0 5px 0;
-	}	
+	}
 	img {
 		padding: 5px;
 		border: 1px solid $color-01;
@@ -787,8 +787,8 @@ dl.faq {
 	}
 }
 
-.timeline.timeline-alternating .timeline-row {
-	&:nth-child(even) {
+.timeline.timeline-alternating .timeline-section .timeline-row {
+	&:nth-child(odd) {
 		flex-direction: row-reverse;
 		.timeline-detail-header {
 			direction: rtl;

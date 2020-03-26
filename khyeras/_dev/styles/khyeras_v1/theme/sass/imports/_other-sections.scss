@@ -787,8 +787,8 @@ dl.faq {
 	}
 }
 
-.timeline.timeline-alternating .timeline-row {
-	&:nth-child(even) {
+.timeline.timeline-alternating .timeline-section .timeline-row {
+	&:nth-child(odd) {
 		flex-direction: row-reverse;
 		.timeline-detail-header {
 			direction: rtl;
