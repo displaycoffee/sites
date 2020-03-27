@@ -113,6 +113,8 @@ function addCPWrapper() {
 // Show/hide selected content
 function toggleContent( button, selector, toggleClass, type ) {
 	var button = jQuery( button );
+	var buttonShow = 'toggle-button-show';
+	var buttonHide = 'toggle-button-hide';
 
 	if ( button && button.length ) {
 		// Add button click event
@@ -128,12 +130,12 @@ function toggleContent( button, selector, toggleClass, type ) {
 			}
 
 			// Add or remove toggle classes
-			if ( content.hasClass( toggleClass ) ) {
+			if ( current.hasClass( buttonHide ) ) {
 				content.removeClass( toggleClass );
-				current.removeClass( 'toggle-button-hide' ).addClass( 'toggle-button-show' );
+				current.removeClass( buttonHide ).addClass( buttonShow );
 			} else {
 				content.addClass( toggleClass );
-				current.removeClass( 'toggle-button-show' ).addClass( 'toggle-button-hide' );
+				current.removeClass( buttonShow ).addClass( buttonHide );
 			}
 		});
 	}
