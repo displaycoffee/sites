@@ -777,7 +777,11 @@
 {% for key, card in cards %}
 	{% set section_id = function.create_handle(key) %}
 	<section id="{{ section_id }}" class="page-content-section" data-quick-name="{{ key }}">
-		<h3>{{ key }}</h3>
+		<h3>
+			<button class="toggle-button button-link" type="button" data-toggle-type="achievement" data-toggle-id="{{ loop.index0 }}" data-toggle-name="{{ key }}" data-toggle-state="true" data-toggle-mobile="false">
+				<i class="icon icon-xxl fa-angle-up"></i>
+			</button> {{ key }}
+		</h3>
 		<div class="card-grid">
 			{% for detail in card %}
 				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}

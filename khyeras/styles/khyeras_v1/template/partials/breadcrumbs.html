@@ -52,11 +52,7 @@
 						{% set crumb_previous = KHY_LINKS[KHY_SCRIPT_NAME].crumbs[loop.index - 2] %}
 						{% if link != '/' %}
 							{% set crumb_position = crumb_position + 1 %}
-							{% if link != 'members' %}
-								{{ _self.breadcrumb(ROOT_PATH ~ KHY_LINKS[link].url, KHY_LINKS[link].name, crumb_position, crumb_previous, false) }}
-							{% elseif link == 'members' && not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
-								{{ _self.breadcrumb(U_MEMBERLIST, lang('MEMBERLIST'), crumb_position, false, false) }}
-							{% endif %}
+							{{ _self.breadcrumb(ROOT_PATH ~ KHY_LINKS[link].url, KHY_LINKS[link].name, crumb_position, crumb_previous, false) }}
 						{% endif %}
 					{% endfor %}
 				{% endif %}

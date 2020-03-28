@@ -48,10 +48,14 @@
 								<dt>Residence:</dt>
 								<dd>{{ detail.residence }}</dd>
 							{% endif %}
-							{% if detail.writer_url %}
-								<dt>Writer Name:</dt>
-								<dd><a href="{{ ROOT_PATH }}{{ detail.writer_url }}">{{ detail.writer_name }}</a></dd>
-							{% endif %}
+							<dt>Writer Name:</dt>
+							<dd>
+								{% if detail.writer_url %}
+									<a href="{{ ROOT_PATH }}{{ detail.writer_url }}">{{ detail.writer_name }}</a>
+								{% else %}
+									Writer account not linked yet
+								{% endif %}
+							</dd>
 							{% if detail.profile %}
 								<dt>Profile:</dt>
 								<dd><a href="{{ ROOT_PATH }}{{ detail.profile }}">View additional details</a></dd>

@@ -2,11 +2,7 @@
 	{% if KHY_NAV_LINKS %}
 		{% for key, link in KHY_NAV_LINKS if link.is_nav %}
 			<li {% if link.children %}class="dropdown-container"{% endif %}>
-				{% if key != 'members' %}
-					{{ function.create_nav_main(ROOT_PATH ~ link.url, link.name, link.children) }}
-				{% elseif not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
-					{{ function.create_nav_main(U_MEMBERLIST, lang('MEMBERLIST'), link.children) }}
-				{% endif %}
+				{{ function.create_nav_main(ROOT_PATH ~ link.url, link.name, link.children) }}
 				{% if link.children %}
 					<div class="dropdown">
 						<ul class="dropdown-contents" role="menu">

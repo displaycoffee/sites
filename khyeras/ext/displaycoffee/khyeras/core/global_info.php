@@ -178,6 +178,15 @@ class global_info {
 			'desc'   => 'about',
 			'self'   => true
 		];
+		$page_links['members'] = [
+			'name'   => 'Members',
+			'url'    => 'memberlist.php',
+			'is_nav' => true,
+			'level'  => 1,
+			'crumbs' => false,
+			'desc'   => false,
+			'self'   => false
+		];
 
 		// Assign global template variables for re-use
  		$this->template->assign_vars(array(

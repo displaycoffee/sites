@@ -2,13 +2,7 @@
 	{% if KHY_NAV_LINKS %}
 		{% for key, link in KHY_NAV_LINKS %}
 			<section id="sitemap-{{ key }}" class="sitemap-section">
-				<h3>
-					{% if key != 'members' %}
-						<a href="{{ ROOT_PATH }}{{ link.url }}">{{ link.name }}</a>
-					{% elseif not S_IS_BOT && (S_DISPLAY_MEMBERLIST || U_TEAM) %}
-						<a href="{{ U_MEMBERLIST }}">{{ lang('MEMBERLIST') }}</a>
-					{% endif %}
-				</h3>
+				<h3><a href="{{ ROOT_PATH }}{{ link.url }}">{{ link.name }}</a></h3>
 				{% if link.children %}
 					<ul class="sitemap-menu" role="menu">
 						{% for key2, link2 in link.children %}
