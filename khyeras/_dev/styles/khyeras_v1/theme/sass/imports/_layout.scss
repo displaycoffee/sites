@@ -876,38 +876,44 @@ dl.details {
 /* Toggle Elements
 ============================================== */
 
-.toggle-button {
-	.fa-angle-up {
-		@include transition(transform 0.5s ease-in-out);
-		transform: rotate(0deg);
-	}
-	&.toggle-button-collapsed .fa-angle-up {
-		transform: rotate(180deg);
-	}
-}
-
 .toggle-content-expanded {
 	@include toggle-content(show, $transition: true);
 }
+
 .toggle-content-collapsed {
 	@include toggle-content(hide);
 	@include sr-only;
 }
 
-// Forum header positioning
-.topiclist > li.header.has-toggle-button {
+// Positioned toggle button
+.topiclist > li.header.has-toggle-button, .section-page-achievements .page-content-section .has-toggle-button {
+	$toggle-button-size: 20px;
 	position: relative;
-	padding-left: 52px;
+	padding-left: 30px;
 	.toggle-button {
-		@include position($type: absolute, $left: 20px, $top: 10px);
+		@include position($type: absolute, $top: -4px, $bottom: 0, $left: 0);
 		margin: auto;
-		color: $color-00;
-		line-height: 0;
-		.icon {
-			@include sizing(22px, 22px);
+		@include sizing($toggle-button-size, $toggle-button-size);
+		line-height: $toggle-button-size;
+		&:before {
+			content: unicode($icon-angle-up);
+			@include icon-font($fs: $toggle-button-size, $lh: $toggle-button-size);
+			color: $color-00;
 		}
-		&:hover {
+		&:hover:before {
 			color: $color-03;
 		}
+	}
+	.toggle-button-collapsed {
+		&:before {
+			content: unicode($icon-angle-down);
+		}
+	}
+}
+
+.topiclist > li.header.has-toggle-button {
+	padding-left: 50px;
+	.toggle-button {
+		left: 20px;
 	}
 }

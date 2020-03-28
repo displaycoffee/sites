@@ -164,6 +164,11 @@ a.anchor {
 	display: none;
 }
 
+// Override font-awesome sr-only styles
+.sr-only {
+	@include sr-only;
+}
+
 /* Remove List Style
 ============================================== */
 

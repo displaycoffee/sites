@@ -121,8 +121,6 @@ $transform: color 0.3s ease-in-out, transform 0.5s ease-in-out;
 		}
 		.menu-label {
 			.fa-angle-down {
-				@include transition($transform);
-				transform: rotate(0deg);
 				@include sizing(16px, 16px);
 				margin: 0 0 0 10px;
 				@include position($type: relative, $top: 1px);
@@ -141,8 +139,8 @@ $transform: color 0.3s ease-in-out, transform 0.5s ease-in-out;
 				font-size: rem($global-font-size);
 			}
 		}
-		.dropdown-visible .menu-label .fa-angle-down {
-			transform: rotate(180deg);
+		.dropdown-visible .menu-label .fa-angle-down:before {
+			content: unicode($icon-angle-up);
 		}
 	}
 	.user-menu {

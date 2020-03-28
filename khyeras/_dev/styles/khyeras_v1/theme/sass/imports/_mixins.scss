@@ -307,9 +307,11 @@
 	position: absolute;
 	@include sizing(1px !important, 1px !important);
 	padding: 0;
-	margin: -1px;
+	margin: -1px !important;
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
 }
 
 // Unicode mixin
