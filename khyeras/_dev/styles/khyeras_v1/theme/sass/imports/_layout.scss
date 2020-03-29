@@ -886,28 +886,31 @@ dl.details {
 }
 
 // Positioned toggle button
-.topiclist > li.header.has-toggle-button, .section-page-achievements .page-content-section .has-toggle-button {
+.topiclist > li.header.has-toggle-button, .toggleable-section .has-toggle-button {
 	$toggle-button-size: 20px;
-	position: relative;
 	padding-left: 30px;
+	&, .toggle-button .icon {
+		position: relative;
+	}
+	.toggle-button, .toggle-button .icon {
+		line-height: $toggle-button-size;
+	}
 	.toggle-button {
-		@include position($type: absolute, $top: -4px, $bottom: 0, $left: 0);
+		@include position($type: absolute, $top: 0, $bottom: 0, $left: 0);
 		margin: auto;
 		@include sizing($toggle-button-size, $toggle-button-size);
-		line-height: $toggle-button-size;
-		&:before {
-			content: unicode($icon-angle-up);
-			@include icon-font($fs: $toggle-button-size, $lh: $toggle-button-size);
+		.icon {
+			top: -1.5px;
+			font-size: rem($toggle-button-size);
 			color: $color-00;
+			@include transition(color 0.3s ease-in-out);
 		}
-		&:hover:before {
+		&:hover .icon {
 			color: $color-03;
 		}
 	}
-	.toggle-button-collapsed {
-		&:before {
-			content: unicode($icon-angle-down);
-		}
+	.toggle-button-collapsed .icon:before {
+		content: unicode($icon-angle-down);
 	}
 }
 
@@ -916,4 +919,8 @@ dl.details {
 	.toggle-button {
 		left: 20px;
 	}
+}
+
+.toggleable-section .has-toggle-button .toggle-button .icon {
+	top: -3.5px;
 }

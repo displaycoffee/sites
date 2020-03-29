@@ -1,4 +1,5 @@
 {% set max_level = 60 %}
+{% set multiplier = max_level / 5 %}
 {% set level_mods = range(25, 50, 0.5) %}
 
 {% set card = [] %}
@@ -52,44 +53,45 @@
 	</section>
 {% endif %}
 
-<section class="page-content-section">
-	<div class="card-grid">
-		{% for detail in card %}
-			{% set card_id = '' %}
-			{% set card_quick = '' %}
-			{% if detail.level % 10 == 1 %}
-				{% set card_name = 'Levels ' ~ detail.level ~ ' to ' ~ (detail.level + 10 - 1) %}
-				{% set card_id = ' id="' ~ function.create_handle(card_name) ~ '"' %}
-				{% set card_quick = ' data-quick-name="' ~ card_name ~ '"' %}
+{% for detail in card %}
+	{% if detail.level % multiplier == 1 %}
+		{% set card_name = 'Levels ' ~ detail.level ~ ' to ' ~ (detail.level - 1 + multiplier) %}
+		<section id="{{ function.create_handle(card_name) }}" class="page-content-section toggleable-section" data-quick-name="{{ card_name }}">
+			<h3>
+				<button class="toggle-button button-link" type="button" data-toggle-type="level" data-toggle-id="{{ detail.level }}" data-toggle-name="{{ card_name }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ card_name }}
+			</h3>
+			<div class="card-grid">
+	{% endif %}
+	{% set card_changed = (completed_cards && (function.create_handle(detail.title)) in completed_cards) ? true : false %}
+	<div class="card-block{% if card_changed %} card-changed card-opacity{% endif %}">
+		<h5 class="card-title">{{ detail.title }}</h5>
+		<div class="icon-wrapper">
+			<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
+		</div>
+		<div class="card-description">
+			{% if card_changed %}
+				<span class="card-completed-text">
+					<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i> Level complete!
+				</span>
 			{% endif %}
-			{% set card_changed = (completed_cards && (function.create_handle(detail.title)) in completed_cards) ? true : false %}
-			<div{{ card_id }} class="card-block{% if card_changed %} card-changed card-opacity{% endif %}"{{ card_quick }}>
-				<h5 class="card-title">{{ detail.title }}</h5>
-				<div class="icon-wrapper">
-					<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
-				</div>
-				<div class="card-description">
-					{% if card_changed %}
-						<span class="card-completed-text">
-							<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i> Level complete!
-						</span>
-					{% endif %}
-					<span class="card-description-wrapper">Requirements and details on {{ detail.level }} are listed below.</span>
-				</div>
-				<div class="card-clear"></div>
-				{% if detail.experience || detail.bonus %}
-					<dl class="details details-small">
-						{% if detail.experience %}
-							<dt>Experience:</dt>
-							<dd>{{ detail.experience }}</dd>
-						{% endif %}
-						{% if detail.bonus %}
-							<dt>Bonus:</dt>
-							<dd>{{ detail.bonus }}</dd>
-						{% endif %}
-					</dl>
+			<span class="card-description-wrapper">Requirements and details on {{ detail.level }} are listed below.</span>
+		</div>
+		<div class="card-clear"></div>
+		{% if detail.experience || detail.bonus %}
+			<dl class="details details-small">
+				{% if detail.experience %}
+					<dt>Experience:</dt>
+					<dd>{{ detail.experience }}</dd>
 				{% endif %}
-			</div>
-		{% endfor %}
+				{% if detail.bonus %}
+					<dt>Bonus:</dt>
+					<dd>{{ detail.bonus }}</dd>
+				{% endif %}
+			</dl>
+		{% endif %}
 	</div>
-</section>
+	{% if detail.level % multiplier == 0 %}
+			</div>
+		</section>
+	{% endif %}
+{% endfor %}

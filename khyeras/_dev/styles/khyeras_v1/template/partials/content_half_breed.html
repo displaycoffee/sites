@@ -329,8 +329,10 @@
 
 {% for key, card in cards %}
 	{% set section_id = function.create_handle(key) %}
-	<section id="{{ section_id }}" class="page-content-section" data-quick-name="{{ key }}">
-		<h3>{{ key }}</h3>
+	<section id="{{ section_id }}" class="page-content-section toggleable-section" data-quick-name="{{ key }}">
+		<h3>
+			<button class="toggle-button button-link" type="button" data-toggle-type="half-breed" data-toggle-id="{{ loop.index }}" data-toggle-name="{{ key }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ key }}
+		</h3>
 		<div class="card-grid">
 			{% for detail in card %}
 				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
