@@ -1,60 +1,100 @@
-<div class="{{ character_class }}" role="tabpanel">
-	<div class="panel bg2">
-		<div class="inner">
-			<div class="column1">
-				<h3>Physical Features</h3>
-				{% set feature_count = (PROFILE_C_COMPLEXION_VALUE ~ PROFILE_C_HAIR_NAME ~ PROFILE_C_EYES_NAME ~ PROFILE_C_HEIGHT_NAME ~ PROFILE_C_WEIGHT_NAME) | length %}
+<div class="character-description {{ character_class }}">
+	{% set feature_list_count = (PROFILE_C_HEIGHT_VALUE ~ PROFILE_C_WEIGHT_VALUE ~ PROFILE_C_FIGURE_VALUE ~ PROFILE_C_TORSO_VALUE ~ PROFILE_C_COMPLEXION_VALUE ~ PROFILE_C_FACE_VALUE ~ PROFILE_C_HAIR_VALUE ~ PROFILE_C_EYES_VALUE ~ PROFILE_C_VOICE_VALUE) | length %}
+	{% set feature_other_count = (PROFILE_C_FEATURES_VALUE) | length %}
+	{% set feature_total_count = (feature_list_count + feature_other_count) %}
 
-				{% if feature_count && feature_count > 0 %}
-					{% set feature_fields = {
-						(PROFILE_C_COMPLEXION_NAME) : PROFILE_C_COMPLEXION_VALUE,
-						(PROFILE_C_HAIR_NAME)       : PROFILE_C_HAIR_VALUE,
-						(PROFILE_C_EYES_NAME)   	: PROFILE_C_EYES_VALUE,
-						(PROFILE_C_HEIGHT_NAME)  	: PROFILE_C_HEIGHT_VALUE,
-						(PROFILE_C_WEIGHT_NAME) 	: PROFILE_C_WEIGHT_VALUE
-					} %}
+	{% if feature_total_count && feature_total_count > 0 %}
+		<section class="page-content-section">
+			<h3>Physical Features</h3>
 
-					<dl class="details">
-						{% for name, value in feature_fields %}
-							{% if value %}
-								<dt>{{ name }}{{ lang('COLON') }}</dt>
-								<dd>{{ value }}</dd>
-							{% endif %}
-						{% endfor %}
-					</dl>
-				{% else %}
-					{{ nothing_here }}
-				{% endif %}
+			{% set feature_fields = {
+				(PROFILE_C_HEIGHT_NAME)     : PROFILE_C_HEIGHT_VALUE,
+				(PROFILE_C_WEIGHT_NAME)     : PROFILE_C_WEIGHT_VALUE,
+				(PROFILE_C_FIGURE_NAME)     : PROFILE_C_FIGURE_VALUE,
+				(PROFILE_C_TORSO_NAME)      : PROFILE_C_TORSO_VALUE,
+				(PROFILE_C_COMPLEXION_NAME) : PROFILE_C_COMPLEXION_VALUE,
+				(PROFILE_C_FACE_NAME)       : PROFILE_C_FACE_VALUE,
+				(PROFILE_C_HAIR_NAME)       : PROFILE_C_HAIR_VALUE,
+				(PROFILE_C_EYES_NAME)       : PROFILE_C_EYES_VALUE,
+				(PROFILE_C_EARS_NAME)       : PROFILE_C_EARS_VALUE,
+				(PROFILE_C_VOICE_NAME)      : PROFILE_C_VOICE_VALUE
+			} %}
 
-				{% if S_PROFILE_C_FEATURES %}
-					<p class="other-features"><strong>Other Features{L_COLON}</strong></p>
-					<p>{{ PROFILE_C_FEATURES_VALUE | replace({'<br /><br />': '</p><p>'}) }}</p>
-				{% endif %}
-			</div>
-			<div class="column2">
-				<h3>Personality</h3>
-				{% if S_PROFILE_C_PERSONALITY %}
-					<p>{{ PROFILE_C_PERSONALITY_VALUE | replace({'<br /><br />': '</p><p>'}) }}</p>
-				{% else %}
-					{{ nothing_here }}
-				{% endif %}
-				<h3>Relationships and Companions</h3>
-				{% if S_PROFILE_C_RELATIONSHIPS %}
-					<p>{{ PROFILE_C_RELATIONSHIPS_VALUE | replace({'<br /><br />': '</p><p>'}) }}</p>
-				{% else %}
-					{{ nothing_here }}
-				{% endif %}
-			</div>
-		</div>
-	</div>
-	<div class="panel bg2">
-		<div class="inner">
-			<h3>Background</h3>
-			{% if S_PROFILE_C_BACKGROUND %}
-				<p>{{ PROFILE_C_BACKGROUND_VALUE | replace({'<br /><br />': '</p><p>'}) }}</p>
-			{% else %}
-				{{ nothing_here }}
+			{% if feature_list_count && feature_list_count > 0 %}
+				{{ function.create_details(feature_fields) }}
 			{% endif %}
-		</div>
-	</div>
+
+			{% if PROFILE_C_RELIGION_HIST_VALUE %}
+				<h5>Other Features</h5>
+				<p>{{ function.replace_breaks(PROFILE_C_FEATURES_VALUE) }}</p>
+			{% endif %}
+		</section>
+	{% endif %}
+
+	{% set social_list_count = (PROFILE_C_ROMANTIC_VALUE ~ PROFILE_C_SEXUAL_VALUE) | length %}
+	{% set social_other_count = (PROFILE_C_RELATIONSHIPS_VALUE ~ PROFILE_C_PERSONALITY_VALUE) | length %}
+	{% set social_total_count = (social_list_count + social_other_count) %}
+
+	{% if social_total_count && social_total_count > 0 %}
+		<section class="page-content-section">
+			<h3>Social Interactions</h3>
+
+			{% set social_fields = {
+				(PROFILE_C_ROMANTIC_NAME) : PROFILE_C_ROMANTIC_VALUE,
+				(PROFILE_C_SEXUAL_NAME)   : PROFILE_C_SEXUAL_VALUE
+			} %}
+
+			{% if social_list_count && social_list_count > 0 %}
+				{{ function.create_details(social_fields) }}
+			{% endif %}
+
+			{% if PROFILE_C_RELATIONSHIPS_VALUE %}
+				<h5>{{ PROFILE_C_RELATIONSHIPS_NAME }}</h5>
+				<p>{{ function.replace_breaks(PROFILE_C_RELATIONSHIPS_VALUE) }}</p>
+			{% endif %}
+
+			{% if PROFILE_C_PERSONALITY_VALUE %}
+				<h5>{{ PROFILE_C_PERSONALITY_NAME }}</h5>
+				<p>{{ function.replace_breaks(PROFILE_C_PERSONALITY_VALUE) }}</p>
+			{% endif %}
+		</section>
+	{% endif %}
+
+	{% set religion_list_count = (PROFILE_C_RELIGION_TYPE_VALUE ~ PROFILE_C_RELIGION_OPTS_VALUE) | length %}
+	{% set religion_other_count = (PROFILE_C_RELIGION_HIST_VALUE) | length %}
+	{% set religion_total_count = (religion_list_count + religion_other_count) %}
+
+	{% if religion_total_count && religion_total_count > 0 %}
+		<section class="page-content-section">
+			<h3>Religion</h3>
+
+			{% set deity_label = 'None' %}
+			{% if PROFILE_C_RELIGION_TYPE_VALUE == 'Archaicism' %}
+				{% set deity_label = 'Archaics' %}
+			{% elseif PROFILE_C_RELIGION_TYPE_VALUE == 'Idolism' %}
+				{% set deity_label = 'Idols' %}
+			{% endif %}
+
+			{% set religion_fields = {
+				'Type'  : PROFILE_C_RELIGION_TYPE_VALUE,
+				'Deity' : PROFILE_C_RELIGION_OPTS_VALUE
+			} %}
+
+			{% if religion_list_count && religion_list_count > 0 %}
+				{{ function.create_details(religion_fields) }}
+			{% endif %}
+
+			{% if PROFILE_C_RELIGION_HIST_VALUE %}
+				<h5>History</h5>
+				<p>{{ function.replace_breaks(PROFILE_C_RELIGION_HIST_VALUE) }}</p>
+			{% endif %}
+		</section>
+	{% endif %}
+
+	{% if PROFILE_C_BACKGROUND_VALUE %}
+		<section class="page-content-section">
+			<h3>{{ PROFILE_C_BACKGROUND_NAME }}</h3>
+			<p>{{ function.replace_breaks(PROFILE_C_BACKGROUND_VALUE) }}</p>
+		</section>
+	{% endif %}
 </div>

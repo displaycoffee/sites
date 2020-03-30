@@ -1,22 +1,21 @@
 <dl class="left-box details profile-details {{ character_class }}">
 	<dd class="character-card details-full">
 		{{ function.display_level(KHY_MEMBER_LEVEL, 'false') }}
-		{{ function.display_stats(KHY_MEMBER_STATS['hp'], KHY_MEMBER_STATS['mp'], PROFILE_C_HP_VALUE, PROFILE_C_MP_VALUE, 'false') }}
+		{{ function.display_stats(KHY_MEMBER_STATS.hp, KHY_MEMBER_STATS.mp, PROFILE_C_HP_VALUE, PROFILE_C_MP_VALUE, 'false') }}
 	</dd>
 
-	{% set religion_value = (PROFILE_C_RELIGION_TYPE_VALUE) ~ (S_PROFILE_C_RELIGION_OPTS ? (' - ' ~ PROFILE_C_RELIGION_OPTS_VALUE) : '') %}
-
 	{% set character_fields = {
-		'Experience'  				 : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
-		'Currency'  				 : function.display_currency(KHY_MEMBER_CURRENCY),
+		'Experience'                 : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
+		'Currency'                   : function.display_currency(KHY_MEMBER_CURRENCY),
 		(PROFILE_C_RACE_OPTS_NAME)   : PROFILE_C_RACE_OPTS_VALUE | replace({', ': ' and '}),
 		(PROFILE_C_CLASS_OPTS_NAME)  : PROFILE_C_CLASS_OPTS_VALUE | replace({', ': ' and '}),
+		(PROFILE_C_PROFESSION_NAME)  : PROFILE_C_PROFESSION_VALUE,
+		(PROFILE_C_BIRTHDAY_NAME)    : PROFILE_C_BIRTHDAY_VALUE,
 		(PROFILE_C_AGE_NAME)         : PROFILE_C_AGE_VALUE,
 		(PROFILE_C_GENDER_NAME)      : PROFILE_C_GENDER_VALUE,
-		(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE,
 		(PROFILE_C_ORIGIN_NAME)      : PROFILE_C_ORIGIN_VALUE,
 		(PROFILE_C_RESIDENCE_NAME)   : PROFILE_C_RESIDENCE_VALUE,
-		'Religion' 					 : religion_value,
+		(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE
 	} %}
 
 	{% if character_fields %}

@@ -1,26 +1,70 @@
-{% if S_PROFILE_C_WRITER_NAME %}
-	{% set writer_value %}
-		For more information, see <a href="{{ ROOT_PATH }}{{ PROFILE_C_WRITER_NAME_CONTACT }}">{{ PROFILE_C_WRITER_NAME_VALUE }}</a>.
-	{% endset %}
-{% endif %}
-
-{% set writer_fields = {
-	'Age' 							: (S_PROFILE_C_WRITER_NAME ? '' : AGE),
-	(PROFILE_GENDER_NAME) 			: (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_GENDER_VALUE),
-	(PROFILE_PRONUNCIATION_NAME)    : (PROFILE_ACCOUNT_TYPE_VALUE == 'Writer' ? PROFILE_PRONUNCIATION_VALUE : ''),
-	(PROFILE_PHPBB_LOCATION_NAME)   : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_LOCATION_VALUE),
-	(PROFILE_PHPBB_INTERESTS_NAME)  : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_INTERESTS_VALUE),
-	(PROFILE_PHPBB_OCCUPATION_NAME) : (S_PROFILE_C_WRITER_NAME ? '' : PROFILE_PHPBB_OCCUPATION_VALUE),
-	(PROFILE_C_WRITER_NAME_NAME)    : writer_value,
-	(PROFILE_AVATAR_CREDIT_NAME)    : PROFILE_AVATAR_CREDIT_VALUE,
-	(PROFILE_SIG_CREDIT_NAME)       : PROFILE_SIG_CREDIT_VALUE
-} %}
-
-{% if writer_fields %}
-	{% for name, value in writer_fields %}
-		{% if value %}
-			<dt>{{ name }}{{ lang('COLON') }}</dt>
-			<dd>{{ value }}</dd>
+<dl class="left-box details profile-details{% if writer_class %} {{ writer_class }}{% endif %}">
+	{% EVENT memberlist_view_zebra_before %}
+	{% if S_USER_LOGGED_IN && S_ZEBRA %}
+		<dt>Alliance{{ lang('COLON') }}</dt>
+		{% if U_REMOVE_FRIEND %}
+			 <dd class="zebra">
+				 <a href="{{ U_REMOVE_FRIEND }}" data-ajax="zebra">
+					 <i class="icon rpg-icon rpg-shaking-hands"></i>{{ lang('REMOVE_FRIEND') }}
+				 </a>
+			 </dd>
+		{% elseif U_REMOVE_FOE %}
+			<dd class="zebra">
+				<a href="{{ U_REMOVE_FOE }}" data-ajax="zebra">
+					<i class="icon rpg-icon rpg-evil-hand"></i>{{ lang('REMOVE_FOE') }}
+				</a>
+			</dd>
+		{% else %}
+			<dd class="zebra">
+				{% if U_ADD_FRIEND %}
+					<a href="{{ U_ADD_FRIEND }}" data-ajax="zebra">
+						<i class="icon rpg-icon rpg-shaking-hands"></i>{{ lang('ADD_FRIEND') }}
+					</a>
+				{% endif %}
+				{% if U_ADD_FOE %}
+					<span class="bullet">&bull;</span>
+					<a href="{{ U_ADD_FOE }}" data-ajax="zebra">
+						<i class="icon rpg-icon rpg-evil-hand"></i>{{ lang('ADD_FOE') }}
+					</a>
+				{% endif %}
+			</dd>
 		{% endif %}
-	{% endfor %}
-{% endif %}
+	{% endif %}
+
+	{% EVENT memberlist_view_zebra_after %}
+
+	{% if S_USER_INACTIVE %}
+		<dt>{{ lang('USER_IS_INACTIVE') }}{{ lang('COLON') }}</dt>
+		<dd>{{ USER_INACTIVE_REASON }}</dd>
+	{% endif %}
+
+	{% EVENT memberlist_view_non_contact_custom_fields_before %}
+
+	{% if PROFILE_C_WRITER_NAME_VALUE %}
+		{% set writer_value %}
+			For more information, see <a href="{{ ROOT_PATH }}{{ PROFILE_C_WRITER_NAME_CONTACT }}">{{ PROFILE_C_WRITER_NAME_VALUE }}</a>.
+		{% endset %}
+	{% endif %}
+
+	{% set writer_fields = {
+		(PROFILE_C_WRITER_NAME_NAME) : writer_value,
+		(PROFILE_AVATAR_CREDIT_NAME) : PROFILE_AVATAR_CREDIT_VALUE,
+		(PROFILE_SIG_CREDIT_NAME)    : PROFILE_SIG_CREDIT_VALUE
+	} %}
+
+	{% if writer_fields %}
+		{% for name, value in writer_fields %}
+			{% if value %}
+				<dt>{{ name }}{{ lang('COLON') }}</dt>
+				<dd>{{ value }}</dd>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+
+	{% EVENT memberlist_view_non_contact_custom_fields_after %}
+
+	{% if S_GROUP_OPTIONS %}
+		<dt>{{ lang('USERGROUPS') }}{{ lang('COLON') }}</dt>
+		<dd class="group-options"><select name="g">{{ S_GROUP_OPTIONS }}</select> <input type="submit" name="submit" value="{{ lang('GO') }}" class="button2" /></dd>
+	{% endif %}
+</dl>

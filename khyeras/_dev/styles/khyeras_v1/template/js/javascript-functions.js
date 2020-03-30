@@ -126,7 +126,7 @@ function addQuickLinks() {
 
 	if ( links && links.length ) {
 		var panel = document.querySelector( '.page-body > .wrapper > .panel' );
-		var tabs = document.querySelector( '.page-body > .wrapper > .tabs' );
+		var tabs = document.querySelector( '.page-body > .wrapper .tabs' );
 
 		// Create the quick links element
 		var quickLinks = document.createElement( 'p' );

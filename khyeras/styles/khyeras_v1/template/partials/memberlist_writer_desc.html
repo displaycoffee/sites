@@ -1,0 +1,139 @@
+<div class="writer-description {{ writer_class }}">
+	{% set about_list_count = (AGE ~ PROFILE_GENDER_VALUE ~ PROFILE_PRONUNCIATION_VALUE ~ PROFILE_PHPBB_LOCATION_VALUE ~ PROFILE_PHPBB_INTERESTS_VALUE ~ PROFILE_PHPBB_OCCUPATION_VALUE) | length %}
+	{% set about_other_count = (PROFILE_WRITING_PREFS_VALUE) | length %}
+	{% set about_total_count = (about_list_count + about_other_count) %}
+
+	{% if about_total_count && about_total_count > 0 %}
+		<section class="page-content-section">
+			<h3>About</h3>
+
+			{% set about_fields = {
+				'Age'                           : AGE,
+				(PROFILE_GENDER_NAME)           : PROFILE_GENDER_VALUE,
+				(PROFILE_PRONUNCIATION_NAME)    : (PROFILE_ACCOUNT_TYPE_VALUE == 'Writer' ? PROFILE_PRONUNCIATION_VALUE : ''),
+				(PROFILE_PHPBB_LOCATION_NAME)   : PROFILE_PHPBB_LOCATION_VALUE,
+				(PROFILE_PHPBB_INTERESTS_NAME)  : PROFILE_PHPBB_INTERESTS_VALUE,
+				(PROFILE_PHPBB_OCCUPATION_NAME) : PROFILE_PHPBB_OCCUPATION_VALUE
+			} %}
+
+			{% if about_list_count && about_list_count > 0 %}
+				{{ function.create_details(about_fields) }}
+			{% endif %}
+
+			{% if PROFILE_WRITING_PREFS_VALUE %}
+				<h5>{{ PROFILE_WRITING_PREFS_NAME }}</h5>
+				<p>{{ PROFILE_WRITING_PREFS_VALUE }}</p>
+			{% endif %}
+		</section>
+	{% endif %}
+
+	{% if PROFILE_CHARACTER_LIST_VALUE || PROFILE_PLOTTERS_TRACKERS_VALUE %}
+		<section class="page-content-section">
+			{% if PROFILE_CHARACTER_LIST_VALUE && PROFILE_PLOTTERS_TRACKERS_VALUE %}
+				<div class="panel">
+					<div class="inner">
+						<div class="column1">
+			{% endif %}
+			{% if PROFILE_CHARACTER_LIST_VALUE %}
+				<h3>{PROFILE_CHARACTER_LIST_NAME}</h3>
+				<p>{PROFILE_CHARACTER_LIST_VALUE}</p>
+			{% endif %}
+			{% if PROFILE_CHARACTER_LIST_VALUE && PROFILE_PLOTTERS_TRACKERS_VALUE %}
+				</div>
+				<div class="column2">
+			{% endif %}
+			{% if PROFILE_PLOTTERS_TRACKERS_VALUE %}
+				<h3>{PROFILE_PLOTTERS_TRACKERS_NAME}</h3>
+				<p>{PROFILE_PLOTTERS_TRACKERS_VALUE}</p>
+			{% endif %}
+			{% if S_PROFILE_PLOTTERS_TRACKERS && S_PROFILE_CHARACTER_LIST %}
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		</section>
+	{% endif %}
+
+	<section class="page-content-section user-contact">
+		<h3>{{ lang('CONTACT_USER') }}</h3>
+
+		{% EVENT memberlist_view_contact_before %}
+
+		<div class="contact-icons">
+			{% if U_EMAIL %}
+				<a href="{{ U_EMAIL }}" title="{{ lang('SEND_EMAIL_USER') }}">
+					<span class="contact-icon email-icon">{{ lang('SEND_EMAIL_USER') }}</span>
+				</a>
+			{% endif %}
+			{% if U_PM %}
+				<a href="{{ U_PM }}" title="{{ lang('SEND_PRIVATE_MESSAGE') }}">
+					<span class="contact-icon pm-icon">{{ lang('SEND_PRIVATE_MESSAGE') }}</span>
+				</a>
+			{% endif %}
+			{% if U_JABBER && S_JABBER_ENABLED %}
+				<a href="{{ U_JABBER }}" onclick="popup(this.href, 750, 320); return false;" title="{{ lang('SEND_JABBER_MESSAGE') }}">
+					<span class="contact-icon jabber-icon">{{ lang('SEND_JABBER_MESSAGE') }}</span>
+				</a>
+			{% endif %}
+			{% for field in custom_fields if field.S_PROFILE_CONTACT && field.PROFILE_FIELD_CONTACT %}
+				<a href="{{ field.PROFILE_FIELD_CONTACT }}" title="{{ field.PROFILE_FIELD_DESC }}">
+					<span class="contact-icon {{ field.PROFILE_FIELD_IDENT }}-icon">{{ field.PROFILE_FIELD_DESC }}</span>
+				</a>
+			{% endfor %}
+		</div>
+
+		<dl class="details">
+			{% if USER_JABBER %}
+				<dt>{{ lang('JABBER') }}{{ lang('COLON') }}</dt>
+				<dd>{{ USER_JABBER }}</dd>
+			{% endif %}
+
+			{% EVENT memberlist_view_contact_custom_fields_before %}
+
+			{% for field in custom_fields if field.S_PROFILE_CONTACT && not field.PROFILE_FIELD_CONTACT %}
+				<dt>{{ field.PROFILE_FIELD_NAME }}{{ lang('COLON') }}</dt>
+				<dd>{{ field.PROFILE_FIELD_VALUE }}</dd>
+			{% endfor %}
+
+			{% EVENT memberlist_view_contact_custom_fields_after %}
+		</dl>
+
+		{% EVENT memberlist_view_contact_after %}
+	</section>
+
+	<section class="page-content-section user-stats">
+		<h3>{{ lang('USER_FORUM') }}</h3>
+
+		<dl class="details">
+			{% EVENT memberlist_view_user_statistics_before %}
+
+			<dt>{{ lang('JOINED') }}{{ lang('COLON') }}</dt>
+			<dd>{{ JOINED }}</dd>
+			<dt>{{ lang('LAST_ACTIVE') }}{{ lang('COLON') }}</dt>
+			<dd>{{ LAST_ACTIVE }}</dd>
+			{% if S_WARNINGS %}
+				<dt>{{ lang('WARNINGS') }}{{ lang('COLON') }} </dt>
+				<dd>
+					<strong>{{ WARNINGS }}</strong>
+					{% if U_NOTES || U_WARN %}[ {% if U_NOTES %}<a href="{{ U_NOTES }}">{{ lang('VIEW_NOTES') }}</a>{% endif %}{% if U_WARN %}{% if U_NOTES %} | {% endif %} <a href="{{ U_WARN }}">{{ lang('WARN_USER') }}</a>{% endif %} ]{% endif %}
+				</dd>
+			{% endif %}
+			<dt>{{ lang('TOTAL_POSTS') }}{{ lang('COLON') }}</dt>
+			<dd>
+				{{ POSTS }}{% if S_DISPLAY_SEARCH %} | <strong><a href="{{ U_SEARCH_USER }}">{{ lang('SEARCH_USER_POSTS') }}</a></strong>{% endif %}
+				{% if POSTS_PCT %} ({{ POSTS_PCT }} / {{ POSTS_DAY }}){% endif %}
+				{% if POSTS_IN_QUEUE && U_MCP_QUEUE %}(<a href="{{ U_MCP_QUEUE }}">{{ lang('POSTS_IN_QUEUE') }}</a>){% elseif POSTS_IN_QUEUE %} ({{ lang('POSTS_IN_QUEUE') }}){% endif %}
+			</dd>
+			{% if S_SHOW_ACTIVITY && POSTS %}
+				<dt>{{ lang('ACTIVE_IN_FORUM') }}{{ lang('COLON') }}</dt>
+				<dd>{% if ACTIVE_FORUM != '' %}<strong><a href="{{ U_ACTIVE_FORUM }}">{{ ACTIVE_FORUM }}</a></strong> ({{ ACTIVE_FORUM_POSTS }} / {{ ACTIVE_FORUM_PCT }}){% else %} - {% endif %}</dd>
+				<dt>{{ lang('ACTIVE_IN_TOPIC') }}{{ lang('COLON') }}</dt>
+				<dd>{% if ACTIVE_TOPIC != '' %}<strong><a href="{{ U_ACTIVE_TOPIC }}">{{ ACTIVE_TOPIC }}</a></strong> ({{ ACTIVE_TOPIC_POSTS }} / {{ ACTIVE_TOPIC_PCT }}){% else %} - {% endif %}</dd>
+			{% endif %}
+		</dl>
+	</section>
+
+	<section class="page-content-section extra-details">
+		{% EVENT memberlist_view_content_append %}		
+	</section>
+</div>
