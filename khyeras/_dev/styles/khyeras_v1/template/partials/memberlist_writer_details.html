@@ -1,4 +1,4 @@
-<dl class="left-box details profile-details{% if writer_class %} {{ writer_class }}{% endif %}">
+<dl class="details {{ writer_class }}">
 	{% EVENT memberlist_view_zebra_before %}
 	{% if S_USER_LOGGED_IN && S_ZEBRA %}
 		<dt>Alliance{{ lang('COLON') }}</dt>
@@ -67,4 +67,13 @@
 		<dt>{{ lang('USERGROUPS') }}{{ lang('COLON') }}</dt>
 		<dd class="group-options"><select name="g">{{ S_GROUP_OPTIONS }}</select> <input type="submit" name="submit" value="{{ lang('GO') }}" class="button2" /></dd>
 	{% endif %}
+
+	<!-- IF U_EDIT_SELF or U_USER_ADMIN or U_USER_BAN or U_SWITCH_PERMISSIONS -->
+		<dd class="profile-permissions">
+			<!-- IF U_EDIT_SELF --> [ <a href="{U_EDIT_SELF}">{L_EDIT_PROFILE}</a> ]<!-- ENDIF -->
+			<!-- IF U_USER_ADMIN --> [ <a href="{U_USER_ADMIN}">{L_USER_ADMIN}</a> ]<!-- ENDIF -->
+			<!-- IF U_USER_BAN --> [ <a href="{U_USER_BAN}">{L_USER_BAN}</a> ]<!-- ENDIF -->
+			<!-- IF U_SWITCH_PERMISSIONS --> [ <a href="{U_SWITCH_PERMISSIONS}">{L_USE_PERMISSIONS}</a> ]<!-- ENDIF -->
+		</dd>
+	<!-- ENDIF -->
 </dl>

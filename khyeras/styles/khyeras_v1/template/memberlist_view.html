@@ -29,57 +29,68 @@
 
 	<div class="panel bg1<!-- IF S_ONLINE --> online<!-- ENDIF --> profile-panel">
 		<div class="inner">
-			<section class="section-test">
-				<dl class="left-box postprofile">
-					<dt class="<!-- IF RANK_TITLE or RANK_IMG -->has-profile-rank<!-- ELSE -->no-profile-rank<!-- ENDIF --> <!-- IF AVATAR_IMG -->has-avatar<!-- ELSE -->no-avatar<!-- ENDIF -->">
-						<!-- IF AVATAR_IMG -->
+			<div class="flex-row flex-row-20">
+				<div class="flex-column profile-avatar">
+					<dl class="postprofile">
+						<dt class="has-avatar">
+							<!-- IF PROFILE_ALT_AVATAR_VALUE -->
+								<div class="alt-avatar-container">
+									<div class="alt-avatar">
+										{{ PROFILE_ALT_AVATAR_VALUE }}
+									</div>
+								</div>
+							<!-- ENDIF -->
 							<div class="avatar-container">
-								<div class="avatar">{AVATAR_IMG}</div>
+								<div class="avatar">
+									<!-- IF AVATAR_IMG -->
+										{AVATAR_IMG}
+									<!-- ELSE -->
+										<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
+									<!-- ENDIF -->
+								</div>
 							</div>
+						</dt>
+					</dl>
+				</div>
+				<div class="flex-column profile-details">
+					<dl class="postprofile">
+						<dt class="<!-- IF RANK_TITLE or RANK_IMG -->has-profile-rank<!-- ELSE -->no-profile-rank<!-- ENDIF -->">
+							<!-- EVENT memberlist_view_username_prepend -->
+							<!-- IF USER_COLOR --><span  class="username-coloured" style="color: {USER_COLOR};"><!-- ELSE --><span><!-- ENDIF -->{USERNAME}</span>
+							<!-- EVENT memberlist_view_username_append -->
+						</dt>
+						<!-- IF AVATAR_IMG -->
+							<!-- EVENT memberlist_view_rank_avatar_before -->
+						<!-- ELSE -->
+							<!-- EVENT memberlist_view_rank_no_avatar_before -->
 						<!-- ENDIF -->
-						<!-- EVENT memberlist_view_username_prepend -->
-						<!-- IF USER_COLOR --><span  class="username-coloured" style="color: {USER_COLOR};"><!-- ELSE --><span><!-- ENDIF -->{USERNAME}</span>
-						<!-- EVENT memberlist_view_username_append -->
-					</dt>
-					<!-- IF AVATAR_IMG -->
-						<!-- EVENT memberlist_view_rank_avatar_before -->
-					<!-- ELSE -->
-						<!-- EVENT memberlist_view_rank_no_avatar_before -->
-					<!-- ENDIF -->
-					<!-- IF RANK_TITLE or RANK_IMG or PROFILE_TITLE_VALUE -->
-						<dd class="profile-rank">
-							<!-- IF RANK_TITLE or RANK_IMG -->
-								<div class="rank-label">{RANK_TITLE}</div>
-								<!-- IF RANK_IMG -->
-									<div class="rank-image">{RANK_IMG}</div>
+						<!-- IF RANK_TITLE or RANK_IMG or PROFILE_TITLE_VALUE -->
+							<dd class="profile-rank">
+								<!-- IF RANK_TITLE or RANK_IMG -->
+									<div class="rank-label">{RANK_TITLE}</div>
+									<!-- IF RANK_IMG -->
+										<div class="rank-image">{RANK_IMG}</div>
+									<!-- ENDIF -->
 								<!-- ENDIF -->
-							<!-- ENDIF -->
-							<!-- IF PROFILE_TITLE_VALUE -->
-								<div class="title-label">{PROFILE_TITLE_VALUE}</div>
-							<!-- ENDIF -->
-						</dd>
-					<!-- ENDIF -->
-					<!-- IF AVATAR_IMG -->
-						<!-- EVENT memberlist_view_rank_avatar_after -->
-					<!-- ELSE -->
-						<!-- EVENT memberlist_view_rank_no_avatar_after -->
-					<!-- ENDIF -->
-					<!-- IF U_EDIT_SELF or U_USER_ADMIN or U_USER_BAN or U_SWITCH_PERMISSIONS -->
-						<dd class="profile-permissions">
-							<!-- IF U_EDIT_SELF --> [ <a href="{U_EDIT_SELF}">{L_EDIT_PROFILE}</a> ]<!-- ENDIF -->
-							<!-- IF U_USER_ADMIN --> [ <a href="{U_USER_ADMIN}">{L_USER_ADMIN}</a> ]<!-- ENDIF -->
-							<!-- IF U_USER_BAN --> [ <a href="{U_USER_BAN}">{L_USER_BAN}</a> ]<!-- ENDIF -->
-							<!-- IF U_SWITCH_PERMISSIONS --> [ <a href="{U_SWITCH_PERMISSIONS}">{L_USE_PERMISSIONS}</a> ]<!-- ENDIF -->
-						</dd>
-					<!-- ENDIF -->
-				</dl>
+								<!-- IF PROFILE_TITLE_VALUE -->
+									<div class="title-label">{PROFILE_TITLE_VALUE}</div>
+								<!-- ENDIF -->
+							</dd>
+						<!-- ENDIF -->
+						<!-- IF AVATAR_IMG -->
+							<!-- EVENT memberlist_view_rank_avatar_after -->
+						<!-- ELSE -->
+							<!-- EVENT memberlist_view_rank_no_avatar_after -->
+						<!-- ENDIF -->
+					</dl>
 
-				<!-- INCLUDE partials/memberlist_writer_details.html -->
+					<!-- INCLUDE partials/memberlist_writer_details.html -->
 
-				<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-					<!-- INCLUDE partials/memberlist_character_details.html -->
-				<!-- ENDIF -->
-			</section>
+					<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+						<!-- INCLUDE partials/memberlist_character_details.html -->
+					<!-- ENDIF -->
+				</div>
+			</div>
 
 			<!-- INCLUDE partials/memberlist_writer_desc.html -->
 

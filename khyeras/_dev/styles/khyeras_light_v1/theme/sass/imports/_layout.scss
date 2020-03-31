@@ -823,13 +823,13 @@ dl.details {
 /* Round Images
 ============================================== */
 
-.postprofile dt.has-avatar .avatar-container > .avatar,
+.postprofile .has-avatar .avatar-container > .avatar,
 .styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image dt .forum-image {
 	display: block;
 	line-height: 0;
 }
 
-.postprofile dt.has-avatar .avatar-container > .avatar, #page-welcome .user-profile .user-avatar .image-wrap,
+.postprofile .has-avatar .avatar-container > .avatar, #page-welcome .user-profile .user-avatar .image-wrap,
 .excerpt .excerpt-image .image-wrap, .styled-listing .topiclist > li.row dl[class*='forum'].has-forum-image dt .forum-image, .card-grid .card-block .user-avatar .image-wrap {
 	border: 5px solid $color-01;
 	border-radius: 100%;
@@ -839,7 +839,7 @@ dl.details {
 	}
 }
 
-.postprofile dt.has-avatar .avatar-container > .avatar, #page-welcome .user-profile .user-avatar .image-wrap,
+.postprofile .has-avatar .avatar-container > .avatar, #page-welcome .user-profile .user-avatar .image-wrap,
 .excerpt .excerpt-image .image-wrap, .card-grid .card-block .user-avatar .image-wrap {
 	height: 0;
 	padding-bottom: calc(100% - 10px);;

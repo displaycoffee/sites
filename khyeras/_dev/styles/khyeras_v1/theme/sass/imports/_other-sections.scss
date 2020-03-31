@@ -128,7 +128,7 @@ dl.faq {
 	}
 }
 
-/* View Profile
+/* Memberlist - View Profile
 ============================================== */
 
 #viewprofile {
@@ -143,48 +143,62 @@ dl.faq {
 	}
 	.profile-panel {
 		position: relative;
-		.inner {
-			@include flex-flow(row nowrap);
-			.postprofile {
-				flex: 0 0 231px;
-				margin: 0 20px 20px 0;
-				padding: 0 20px 0 0;
+		.flex-row {
+			.flex-column {
+				margin: 0 0 20px 0;
+			}
+			.profile-avatar {
+				flex: 0 0 350px;
 			}
 			.profile-details {
 				@include flex(base);
-				.group-options select {
-					width: auto;
-					margin-bottom: 0;
-					min-width: 50%;
-				}
-				.zebra a i {
-					color: $color-00;
-					font-size: rem(16px);
-					margin: 0 5px 0 0;
-					@include position($type: relative, $top: 1px);
-				}
 			}
 		}
-	}
-	.user-contact .contact-icons {
-		a {
+		.profile-avatar {
+			.alt-avatar-container {
+				display: none;
+				// & ~ .avatar-container {
+				// 	display: none;
+				// }
+				// .alt-avatar {
+				// 	line-height: 0;
+				// 	border: 5px solid $color-01;
+				// }
+			}
+		}
+		.profile-details dl {
+			margin-bottom: 0;
+		}
+		.character-card {
+			margin: 10px 0 0 0;
+		}
+		.stats .stat-bar {
+			max-width: 75%;
+		}
+		.group-options select {
+			width: auto;
+			margin-bottom: 0;
+			min-width: 75%;
+		}
+		.zebra a i {
 			color: $color-00;
-			&:hover {
-				color: $color-03;
-			}
-			.contact-icon:before {
-				font-size: rem(20px);
-			}
+			font-size: rem(16px);
+			margin: 0 5px 0 0;
+			@include position($type: relative, $top: 1px);
 		}
 	}
-	.user-stats dl.details dd {
-		br {
-			display: none;
+	.user-contact .contact-icons a {
+		color: $color-00;
+		&:hover {
+			color: $color-03;
 		}
-		strong a {
-			display: inline-block;
-			margin: 0 10px 0 0;
+		.contact-icon:before {
+			font-size: rem(20px);
 		}
+	}
+	.user-stats dl.details dd strong a {
+		display: inline-block;
+		margin: 0 10px 0 0;
 	}
 	.panel .signature {
 		margin-top: 20px;

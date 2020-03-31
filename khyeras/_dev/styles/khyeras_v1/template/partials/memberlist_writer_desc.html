@@ -28,11 +28,9 @@
 	{% endif %}
 
 	{% if PROFILE_CHARACTER_LIST_VALUE || PROFILE_PLOTTERS_TRACKERS_VALUE %}
-		<section class="page-content-section">
+		<section class="page-content-section clearfix">
 			{% if PROFILE_CHARACTER_LIST_VALUE && PROFILE_PLOTTERS_TRACKERS_VALUE %}
-				<div class="panel">
-					<div class="inner">
-						<div class="column1">
+				<div class="column1">
 			{% endif %}
 			{% if PROFILE_CHARACTER_LIST_VALUE %}
 				<h3>{PROFILE_CHARACTER_LIST_NAME}</h3>
@@ -47,8 +45,6 @@
 				<p>{PROFILE_PLOTTERS_TRACKERS_VALUE}</p>
 			{% endif %}
 			{% if S_PROFILE_PLOTTERS_TRACKERS && S_PROFILE_CHARACTER_LIST %}
-						</div>
-					</div>
 				</div>
 			{% endif %}
 		</section>
@@ -134,6 +130,6 @@
 	</section>
 
 	<section class="page-content-section extra-details">
-		{% EVENT memberlist_view_content_append %}		
+		<div class="extra-details-inner">{% EVENT memberlist_view_content_append %}</div>
 	</section>
 </div>

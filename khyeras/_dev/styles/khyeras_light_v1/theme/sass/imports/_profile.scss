@@ -110,10 +110,6 @@
 	}
 }
 
-#viewprofile .stats .stat-bar {
-	max-width: 50%;
-}
-
 /* Character Card
 ============================================== */
 
@@ -225,5 +221,69 @@
 	}
 	&:after {
 		top: 39px;
+	}
+}
+
+/* Memberlist - View Profile
+============================================== */
+
+#viewprofile {
+	.tab-panel {
+		&.show-panel {
+			@include toggle-content(show, $transition: true);
+		}
+		&.hide-panel {
+			@include toggle-content(hide);
+			@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+		}
+	}
+	.profile-panel {
+		position: relative;
+		.inner {
+			@include flex-flow(row nowrap);
+			.postprofile {
+				flex: 0 0 231px;
+				margin: 0 20px 20px 0;
+				padding: 0 20px 0 0;
+			}
+			.profile-details {
+				@include flex(base);
+				.group-options select {
+					width: auto;
+					margin-bottom: 0;
+					min-width: 50%;
+				}
+				.zebra a i {
+					color: $color-00;
+					font-size: rem(16px);
+					margin: 0 5px 0 0;
+					@include position($type: relative, $top: 1px);
+				}
+			}
+		}
+	}
+	.user-contact .contact-icons {
+		a {
+			color: $color-00;
+			&:hover {
+				color: $color-03;
+			}
+			.contact-icon:before {
+				font-size: rem(20px);
+			}
+		}
+	}
+	.user-stats dl.details dd {
+		br {
+			display: none;
+		}
+		strong a {
+			display: inline-block;
+			margin: 0 10px 0 0;
+		}
+	}
+	.panel .signature {
+		margin-top: 20px;
+		padding-top: 20px;
 	}
 }
