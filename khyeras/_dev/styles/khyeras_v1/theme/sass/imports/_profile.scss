@@ -8,21 +8,20 @@
  	dt {
 		a, span {
 			&[class*='username'] {
-				display: block;
 				@include spectral-common;
-				font-size: rem(22px);
+				font-size: rem(24px);
 			}
 		}
-		.avatar-container > .avatar {
-			margin: 0 0 10px 0;
+	}
+	.profile-rank, .profile-character-details {
+		margin: 0 0 20px 0;
+		& > div:first-child ~ div {
+			margin-top: 5px;
 		}
 	}
 	.profile-rank {
 		font-family: $font-02;
 		font-style: italic;
-		.rank-label ~ .title-label {
-			margin: 5px 0 0 0;
-		}
 	}
 }
 
@@ -32,11 +31,15 @@
 .level {
 	.level-wrap {
 		display: inline-block;
+		.level-name, .level-value {
+			line-height: 1;
+		}
 		.level-name {
 			font-size: rem(18px);
 		}
 		.level-value {
-			font-size: rem(50px);
+			font-size: rem(48px);
+			margin: 2.5px 0 -10px 0;
 		}
 	}
 	&.level-small .level-wrap {
@@ -44,7 +47,7 @@
 			font-size: rem(14px);
 		}
 		.level-value {
-			font-size: rem(38px);
+			font-size: rem(40px);
 		}
 	}
 }
@@ -172,39 +175,39 @@
 .online .postprofile dt.no-avatar {
 	margin-top: 30px;
 }
-//
-// .section-viewtopic .post.online {
-// 	&:before, &:after {
-// 		left: -12px;
-// 	}
-// 	&:before {
-// 		top: 20px;
-// 	}
-// 	&:after {
-// 		top: 44px;
-// 	}
-// }
-//
-// .pm.post.online {
-// 	&:before, &:after {
-// 		left: -12px;
-// 	}
-// 	&:before {
-// 		top: 15px;
-// 	}
-// 	&:after {
-// 		top: 39px;
-// 	}
-// }
-//
-// #viewprofile .panel.online {
-// 	&:before, &:after {
-// 		left: -11px;
-// 	}
-// 	&:before {
-// 		top: 15px;
-// 	}
-// 	&:after {
-// 		top: 39px;
-// 	}
-// }
+
+.section-viewtopic .post.online {
+	&:before, &:after {
+		left: -12px;
+	}
+	&:before {
+		top: 20px;
+	}
+	&:after {
+		top: 44px;
+	}
+}
+
+.pm.post.online {
+	&:before, &:after {
+		left: -12px;
+	}
+	&:before {
+		top: 15px;
+	}
+	&:after {
+		top: 39px;
+	}
+}
+
+#viewprofile .panel.online {
+	&:before, &:after {
+		left: -11px;
+	}
+	&:before {
+		top: 15px;
+	}
+	&:after {
+		top: 39px;
+	}
+}

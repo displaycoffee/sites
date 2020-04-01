@@ -1,5 +1,38 @@
 <dl class="details {{ writer_class }}">
+	{% if S_USER_INACTIVE %}
+		<dt>{{ lang('USER_IS_INACTIVE') }}{{ lang('COLON') }}</dt>
+		<dd>{{ USER_INACTIVE_REASON }}</dd>
+	{% endif %}
+
+	{% EVENT memberlist_view_non_contact_custom_fields_before %}
+
+	{% if PROFILE_C_WRITER_NAME_VALUE %}
+		{% set writer_value %}
+			For more information, see <a href="{{ ROOT_PATH }}{{ PROFILE_C_WRITER_NAME_CONTACT }}">{{ PROFILE_C_WRITER_NAME_VALUE }}</a>.
+		{% endset %}
+	{% endif %}
+
+	{% set writer_fields = {
+		(PROFILE_C_WRITER_NAME_NAME) : writer_value,
+		'Age'                        : AGE,
+		(PROFILE_GENDER_NAME)        : PROFILE_GENDER_VALUE,
+		(PROFILE_AVATAR_CREDIT_NAME) : PROFILE_AVATAR_CREDIT_VALUE,
+		(PROFILE_SIG_CREDIT_NAME)    : PROFILE_SIG_CREDIT_VALUE
+	} %}
+
+	{% if writer_fields %}
+		{% for name, value in writer_fields %}
+			{% if value %}
+				<dt>{{ name }}{{ lang('COLON') }}</dt>
+				<dd>{{ value }}</dd>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+
+	{% EVENT memberlist_view_non_contact_custom_fields_after %}
+
 	{% EVENT memberlist_view_zebra_before %}
+
 	{% if S_USER_LOGGED_IN && S_ZEBRA %}
 		<dt>Alliance{{ lang('COLON') }}</dt>
 		{% if U_REMOVE_FRIEND %}
@@ -33,47 +66,18 @@
 
 	{% EVENT memberlist_view_zebra_after %}
 
-	{% if S_USER_INACTIVE %}
-		<dt>{{ lang('USER_IS_INACTIVE') }}{{ lang('COLON') }}</dt>
-		<dd>{{ USER_INACTIVE_REASON }}</dd>
+	{% if  U_EDIT_SELF or U_USER_ADMIN or U_USER_BAN or U_SWITCH_PERMISSIONS %}
+		<dt>Permissions{{ lang('COLON') }}</dt>
+		<dd class="profile-permissions">
+			{% if U_EDIT_SELF %} [ <a href="{{ U_EDIT_SELF }}">{{ lang('EDIT_PROFILE') }}</a> ]{% endif %}
+			{% if U_USER_ADMIN %} [ <a href="{{ U_USER_ADMIN }}">{{ lang('USER_ADMIN') }}</a> ]{% endif %}
+			{% if U_USER_BAN %} [ <a href="{{ U_USER_BAN }}">{{ lang('USER_BAN') }}</a> ]{% endif %}
+			{% if U_SWITCH_PERMISSIONS %} [ <a href="{{ U_SWITCH_PERMISSIONS }}">{{ lang('USE_PERMISSIONS') }}</a> ]{% endif %}
+		</dd>
 	{% endif %}
-
-	{% EVENT memberlist_view_non_contact_custom_fields_before %}
-
-	{% if PROFILE_C_WRITER_NAME_VALUE %}
-		{% set writer_value %}
-			For more information, see <a href="{{ ROOT_PATH }}{{ PROFILE_C_WRITER_NAME_CONTACT }}">{{ PROFILE_C_WRITER_NAME_VALUE }}</a>.
-		{% endset %}
-	{% endif %}
-
-	{% set writer_fields = {
-		(PROFILE_C_WRITER_NAME_NAME) : writer_value,
-		(PROFILE_AVATAR_CREDIT_NAME) : PROFILE_AVATAR_CREDIT_VALUE,
-		(PROFILE_SIG_CREDIT_NAME)    : PROFILE_SIG_CREDIT_VALUE
-	} %}
-
-	{% if writer_fields %}
-		{% for name, value in writer_fields %}
-			{% if value %}
-				<dt>{{ name }}{{ lang('COLON') }}</dt>
-				<dd>{{ value }}</dd>
-			{% endif %}
-		{% endfor %}
-	{% endif %}
-
-	{% EVENT memberlist_view_non_contact_custom_fields_after %}
 
 	{% if S_GROUP_OPTIONS %}
 		<dt>{{ lang('USERGROUPS') }}{{ lang('COLON') }}</dt>
 		<dd class="group-options"><select name="g">{{ S_GROUP_OPTIONS }}</select> <input type="submit" name="submit" value="{{ lang('GO') }}" class="button2" /></dd>
 	{% endif %}
-
-	<!-- IF U_EDIT_SELF or U_USER_ADMIN or U_USER_BAN or U_SWITCH_PERMISSIONS -->
-		<dd class="profile-permissions">
-			<!-- IF U_EDIT_SELF --> [ <a href="{U_EDIT_SELF}">{L_EDIT_PROFILE}</a> ]<!-- ENDIF -->
-			<!-- IF U_USER_ADMIN --> [ <a href="{U_USER_ADMIN}">{L_USER_ADMIN}</a> ]<!-- ENDIF -->
-			<!-- IF U_USER_BAN --> [ <a href="{U_USER_BAN}">{L_USER_BAN}</a> ]<!-- ENDIF -->
-			<!-- IF U_SWITCH_PERMISSIONS --> [ <a href="{U_SWITCH_PERMISSIONS}">{L_USE_PERMISSIONS}</a> ]<!-- ENDIF -->
-		</dd>
-	<!-- ENDIF -->
 </dl>

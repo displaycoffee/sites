@@ -17,7 +17,6 @@ addSearchIgnoredClass();
 addThanksClass();
 bannerCodeGenerator('.link-banners img', '#link-banner-code code');
 checkForEmpty( '.section-mcp-post-details .pagination ul' );
-checkForEmpty( '.page-content-section.extra-details .extra-details-inner' );
 checkForNewPM();
 detectiPhone();
 moveRankText();

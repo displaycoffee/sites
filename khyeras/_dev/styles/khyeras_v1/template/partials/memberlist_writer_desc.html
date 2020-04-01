@@ -1,5 +1,5 @@
 <div class="writer-description {{ writer_class }}">
-	{% set about_list_count = (AGE ~ PROFILE_GENDER_VALUE ~ PROFILE_PRONUNCIATION_VALUE ~ PROFILE_PHPBB_LOCATION_VALUE ~ PROFILE_PHPBB_INTERESTS_VALUE ~ PROFILE_PHPBB_OCCUPATION_VALUE) | length %}
+	{% set about_list_count = (PROFILE_PHPBB_LOCATION_VALUE ~ PROFILE_PHPBB_INTERESTS_VALUE ~ PROFILE_PHPBB_OCCUPATION_VALUE) | length %}
 	{% set about_other_count = (PROFILE_WRITING_PREFS_VALUE) | length %}
 	{% set about_total_count = (about_list_count + about_other_count) %}
 
@@ -8,9 +8,6 @@
 			<h3>About</h3>
 
 			{% set about_fields = {
-				'Age'                           : AGE,
-				(PROFILE_GENDER_NAME)           : PROFILE_GENDER_VALUE,
-				(PROFILE_PRONUNCIATION_NAME)    : (PROFILE_ACCOUNT_TYPE_VALUE == 'Writer' ? PROFILE_PRONUNCIATION_VALUE : ''),
 				(PROFILE_PHPBB_LOCATION_NAME)   : PROFILE_PHPBB_LOCATION_VALUE,
 				(PROFILE_PHPBB_INTERESTS_NAME)  : PROFILE_PHPBB_INTERESTS_VALUE,
 				(PROFILE_PHPBB_OCCUPATION_NAME) : PROFILE_PHPBB_OCCUPATION_VALUE
@@ -130,6 +127,6 @@
 	</section>
 
 	<section class="page-content-section extra-details">
-		<div class="extra-details-inner">{% EVENT memberlist_view_content_append %}</div>
+		{% EVENT memberlist_view_content_append %}
 	</section>
 </div>

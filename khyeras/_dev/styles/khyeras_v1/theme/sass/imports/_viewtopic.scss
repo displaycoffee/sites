@@ -414,35 +414,6 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 	font-style: italic;
 }
 
-/* View Topic - Profile
-============================================== */
-
-.post .postprofile {
-	border-right: 1px dashed $color-01;
-	.profile-contact {
-		position: relative;
-		.dropdown-container {
-			display: inline-block;
-			position: static;
-			.dropdown .dropdown-contents > div {
-				display: inline;
-			}
-			&.dropdown-visible .dropdown {
-				left: 0;
-			}
-		}
-	}
-	.profile-character-wrapper {
-		margin: 20px 0;
-		padding: 15px 0 10px 0;
-		border-top: 1px dashed $color-01;
-		border-bottom: 1px dashed $color-01;
-		.character-currency, .race-and-class {
-			margin: 5px 0 0 0;
-		}
-	}
-}
-
 /* View Topic - Topic & PM Layout (not preview or review)
 ============================================== */
 
@@ -458,17 +429,35 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		flex: 0 0 231px;
 		margin: 0 20px 0 0;
 		padding: 0 20px 0 0;
-		dt, .profile-rank, .profile-permissions {
+		border-right: 1px dashed $color-01;
+		dt, .profile-rank, .profile-title {
 			text-align: center;
 		}
 		dt {
-			margin: 0 0 10px 0;
 			& > strong {
 				font-weight: normal;
 			}
+			a, span {
+				&[class*='username'] {
+					display: block;
+				}
+			}
 		}
-		.profile-rank {
-			margin: 10px 0;
+		.avatar-container > .avatar {
+			margin: 0 0 20px 0;
+		}
+		.profile-contact {
+			position: relative;
+			.dropdown-container {
+				display: inline-block;
+				position: static;
+				.dropdown .dropdown-contents > div {
+					display: inline;
+				}
+				&.dropdown-visible .dropdown {
+					left: 0;
+				}
+			}
 		}
 	}
 	.postbody {

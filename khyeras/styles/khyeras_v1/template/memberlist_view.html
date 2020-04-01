@@ -29,8 +29,8 @@
 
 	<div class="panel bg1<!-- IF S_ONLINE --> online<!-- ENDIF --> profile-panel">
 		<div class="inner">
-			<div class="flex-row flex-row-20">
-				<div class="flex-column profile-avatar">
+			<div class="flex-row flex-row-10">
+				<div class="flex-column profile-avatar<!-- IF PROFILE_ALT_AVATAR_VALUE --> has-alt-avatar<!-- ENDIF -->">
 					<dl class="postprofile">
 						<dt class="has-avatar">
 							<!-- IF PROFILE_ALT_AVATAR_VALUE -->
@@ -57,13 +57,16 @@
 						<dt class="<!-- IF RANK_TITLE or RANK_IMG -->has-profile-rank<!-- ELSE -->no-profile-rank<!-- ENDIF -->">
 							<!-- EVENT memberlist_view_username_prepend -->
 							<!-- IF USER_COLOR --><span  class="username-coloured" style="color: {USER_COLOR};"><!-- ELSE --><span><!-- ENDIF -->{USERNAME}</span>
+							{% if PROFILE_PRONUNCIATION_VALUE %}<em class="pronunciation">({{ PROFILE_PRONUNCIATION_VALUE }})</em>{% endif %}
 							<!-- EVENT memberlist_view_username_append -->
 						</dt>
+
 						<!-- IF AVATAR_IMG -->
 							<!-- EVENT memberlist_view_rank_avatar_before -->
 						<!-- ELSE -->
 							<!-- EVENT memberlist_view_rank_no_avatar_before -->
 						<!-- ENDIF -->
+
 						<!-- IF RANK_TITLE or RANK_IMG or PROFILE_TITLE_VALUE -->
 							<dd class="profile-rank">
 								<!-- IF RANK_TITLE or RANK_IMG -->
@@ -77,26 +80,36 @@
 								<!-- ENDIF -->
 							</dd>
 						<!-- ENDIF -->
+
 						<!-- IF AVATAR_IMG -->
 							<!-- EVENT memberlist_view_rank_avatar_after -->
 						<!-- ELSE -->
 							<!-- EVENT memberlist_view_rank_no_avatar_after -->
 						<!-- ENDIF -->
-					</dl>
 
-					<!-- INCLUDE partials/memberlist_writer_details.html -->
+						<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+							<dd class="profile-character-details {{ character_class }}">
+								<div class="character-card">
+									{{ function.display_level(KHY_MEMBER_LEVEL, 'false') }}
+									{{ function.display_stats(KHY_MEMBER_STATS.hp, KHY_MEMBER_STATS.mp, PROFILE_C_HP_VALUE, PROFILE_C_MP_VALUE, 'false') }}
+								</div>
+								{{ function.display_currency(KHY_MEMBER_CURRENCY) }}
+							</dd>
+						<!-- ENDIF -->
+					</dl>
 
 					<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 						<!-- INCLUDE partials/memberlist_character_details.html -->
 					<!-- ENDIF -->
+
+					<!-- INCLUDE partials/memberlist_writer_details.html -->
 				</div>
 			</div>
-
-			<!-- INCLUDE partials/memberlist_writer_desc.html -->
-
 			<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
 				<!-- INCLUDE partials/memberlist_character_desc.html -->
 			<!-- ENDIF -->
+
+			<!-- INCLUDE partials/memberlist_writer_desc.html -->
 		</div>
 	</div>
 

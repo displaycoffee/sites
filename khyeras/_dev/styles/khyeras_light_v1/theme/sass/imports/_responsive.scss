@@ -199,18 +199,6 @@
 	}
 
 	// other-sections.scss
-	#viewprofile {
-		.profile-panel .inner .postprofile {
-			flex: 0 0 176px;
-		}
-		.character-panel {
-			.column1, .column2 {
-				float: none;
-				width: auto;
-				padding: 0;
-			}
-		}
-	}
 	#search_memberlist fieldset.fields1 dl {
 		dt {
 			width: auto;
@@ -219,6 +207,14 @@
 		}
 		dd {
 			margin-left: 0;
+		}
+	}
+	#viewprofile {
+		.profile-panel .inner .postprofile {
+			flex: 0 0 250px;
+		}
+		.stats .stat-bar {
+			max-width: none;
 		}
 	}
 	.key.key-grid li {
@@ -914,16 +910,23 @@
 			display: none;
 		}
 	}
-	#viewprofile .stats .stat-bar {
-		max-width: 75%;
-	}
 
 	// other-sections.scss
-	#viewprofile .profile-panel .inner {
-		display: block;
-		.postprofile {
-			margin: 0 0 20px 0;
-			padding: 0 0 20px 0;
+	#viewprofile {
+		.profile-panel {
+			.main-profile-section {
+				display: block;
+			}
+			.postprofile {
+				margin: 0 0 20px 0;
+				padding: 0 0 20px 0;
+				.alt-avatar-container {
+					display: none;
+					& ~ .avatar-container {
+						display: block;
+					}
+				}
+			}
 		}
 	}
 	.popup-wrap {
@@ -1540,9 +1543,6 @@
 			margin-left: 0;
 		}
 	}
-	#viewprofile .stats .stat-bar {
-		max-width: none;
-	}
 	.online .postprofile dt.has-avatar .avatar-container {
 		margin-top: 30px;
 	}
@@ -1551,10 +1551,6 @@
 	#search_memberlist .dropdown-container .dropdown.live-search[style*='block'] {
 		min-width: 1px;
 		@include position($left: -1px, $right: -1px);
-	}
-	.section-search form[data-focus='keywords'] fieldset dl dd #sk {
-		@include flex(full);
-		max-width: none;
 	}
 	#viewprofile {
 		.profile-panel .inner {
@@ -1565,9 +1561,10 @@
 				margin-left: 0;
 			}
 		}
-		.other-features {
-			font-weight: bold;
-		}
+	}
+	.section-search form[data-focus='keywords'] fieldset dl dd #sk {
+		@include flex(full);
+		max-width: none;
 	}
 	.content-image {
 		&.content-image-left, &.content-image-right {
@@ -1868,18 +1865,18 @@
 	}
 
 	// other-sections.scss
-	#viewprofile .profile-panel .inner .left-box.profile-details .group-options select {
-		width: 100%;
-		& + .button2 {
-			margin-top: $ffs;
-		}
-	}
 	.section-search form[data-focus='keywords'] fieldset dl dd {
 		#st, select[name='ch'] {
 			max-width: none;
 		}
 		select[name='ch'] {
 			margin-bottom: $ffs;
+		}
+	}
+	#viewprofile .profile-panel .inner .left-box.profile-details .group-options select {
+		width: 100%;
+		& + .button2 {
+			margin-top: $ffs;
 		}
 	}
 	.key.key-grid li {
@@ -2109,4 +2106,5 @@
 			}
 		}
 	}
+
 }

@@ -128,6 +128,86 @@ dl.faq {
 	}
 }
 
+/* Memberlist - View Profile
+============================================== */
+
+#viewprofile {
+	.tab-panel {
+		&.show-panel {
+			@include toggle-content(show, $transition: true);
+		}
+		&.hide-panel {
+			@include toggle-content(hide);
+			@include position($type: absolute, $top: -9999px, $left: -9999px, $z: -1);
+		}
+	}
+	.profile-panel {
+		position: relative;
+		.flex-row {
+			.flex-column {
+				margin: 0 0 20px 0;
+			}
+			.profile-avatar {
+				flex: 0 0 300px;
+			}
+			.profile-details {
+				@include flex(base);
+			}
+		}
+		.profile-avatar.has-alt-avatar {
+			flex: 0 0 400px;
+			.alt-avatar-container .alt-avatar {
+				line-height: 0;
+				border: 5px solid $color-01;
+				img {
+					max-height: 600px;
+				}
+			}
+			.avatar-container {
+				display: none;
+			}
+		}
+		.postprofile, .profile-details dl {
+			margin-bottom: 0;
+		}
+		.pronunciation {
+			padding: 0 0 0 5px;
+			font-size: rem(13px);
+		}
+		.stats .stat-bar {
+			max-width: 75%;
+		}
+		.group-options select {
+			width: auto;
+			margin-bottom: 0;
+			min-width: 75%;
+		}
+		.zebra a i {
+			color: $color-00;
+			font-size: rem(16px);
+			margin: 0 5px 0 0;
+			@include position($type: relative, $top: 1px);
+		}
+	}
+	.user-contact .contact-icons a {
+		color: $color-00;
+		&:hover {
+			color: $color-03;
+		}
+		.contact-icon:before {
+			font-size: rem(20px);
+		}
+	}
+	.user-stats dl.details dd strong a {
+		display: inline-block;
+		margin: 0 10px 0 0;
+	}
+	.panel .signature {
+		margin-top: 20px;
+		padding-top: 20px;
+	}
+}
+
 /* Pop Up - Find member, etc...
 ============================================== */
 

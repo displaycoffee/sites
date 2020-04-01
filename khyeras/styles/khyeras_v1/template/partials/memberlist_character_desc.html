@@ -97,4 +97,11 @@
 			<p>{{ function.replace_breaks(PROFILE_C_BACKGROUND_VALUE) }}</p>
 		</section>
 	{% endif %}
+
+	{% if !feature_total_count && !social_total_count && !religion_total_count && !PROFILE_C_BACKGROUND_VALUE %}
+		<section class="page-content-section">
+			<h3>Nothing Here Yet</h3>
+			<p>This character is still filling out their profile. Check back later!</p>
+		</section>
+	{% endif %}
 </div>

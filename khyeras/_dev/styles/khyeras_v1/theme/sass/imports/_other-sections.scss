@@ -148,29 +148,31 @@ dl.faq {
 				margin: 0 0 20px 0;
 			}
 			.profile-avatar {
-				flex: 0 0 350px;
+				flex: 0 0 300px;
 			}
 			.profile-details {
 				@include flex(base);
 			}
 		}
-		.profile-avatar {
-			.alt-avatar-container {
+		.profile-avatar.has-alt-avatar {
+			flex: 0 0 400px;
+			.alt-avatar-container .alt-avatar {
+				line-height: 0;
+				border: 5px solid $color-01;
+				img {
+					max-height: 600px;
+				}
+			}
+			.avatar-container {
 				display: none;
-				// & ~ .avatar-container {
-				// 	display: none;
-				// }
-				// .alt-avatar {
-				// 	line-height: 0;
-				// 	border: 5px solid $color-01;
-				// }
 			}
 		}
-		.profile-details dl {
+		.postprofile, .profile-details dl {
 			margin-bottom: 0;
 		}
-		.character-card {
-			margin: 10px 0 0 0;
+		.pronunciation {
+			padding: 0 0 0 5px;
+			font-size: rem(13px);
 		}
 		.stats .stat-bar {
 			max-width: 75%;

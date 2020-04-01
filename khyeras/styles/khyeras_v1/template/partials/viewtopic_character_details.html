@@ -1,18 +1,18 @@
-<dd class="profile-character-wrapper">
-	{% for post in postrow.khy %}
+{% for post in postrow.khy %}
+	<dd class="profile-character-details">
 		<div class="character-card">
 			{{ function.display_level(post.PROFILE_LEVEL, 'true') }}
 			{{ function.display_stats(post.PROFILE_STATS['hp'], post.PROFILE_STATS['mp'], postrow.PROFILE_C_HP_VALUE, postrow.PROFILE_C_MP_VALUE, 'true') }}
 		</div>
 		{{ function.display_currency(post.PROFILE_CURRENCY) }}
-	{% endfor %}
-
-	{% if postrow.S_PROFILE_C_RACE_OPTS || postrow.PROFILE_C_CLASS_OPTS_VALUE %}
-		<div class="race-and-class">
-			{{ postrow.PROFILE_C_RACE_OPTS_VALUE | replace({', ': ' and '}) }}
-			{% if postrow.S_PROFILE_C_CLASS_OPTS %}
-				 / {{ postrow.PROFILE_C_CLASS_OPTS_VALUE | replace({', ': ' and '}) }}
-			{% endif %}
-		</div>
-	{% endif %}
-</dd>
+	</dd>
+{% endfor %}
+{% if postrow.S_PROFILE_C_RACE_OPTS %}
+	<dd class="profile-race">
+		<strong>{{ postrow.PROFILE_C_RACE_OPTS_NAME }}{{ lang('COLON') }}</strong> {{ postrow.PROFILE_C_RACE_OPTS_VALUE | replace({', ': ' and '}) }}</dd>
+{% endif %}
+{% if postrow.PROFILE_C_CLASS_OPTS_VALUE %}
+	<dd class="profile-class">
+		<strong>{{ postrow.PROFILE_C_CLASS_OPTS_NAME }}{{ lang('COLON') }}</strong> {{ postrow.PROFILE_C_CLASS_OPTS_VALUE | replace({', ': ' and '}) }}
+	</dd>
+{% endif %}
