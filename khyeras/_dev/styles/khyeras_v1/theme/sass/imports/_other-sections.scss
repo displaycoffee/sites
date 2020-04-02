@@ -143,50 +143,47 @@ dl.faq {
 	}
 	.profile-panel {
 		position: relative;
+		.has-alt-avatar .postprofile dt.has-avatar .avatar-container, .postprofile dt.has-avatar a, .postprofile dt.has-avatar span , .postprofile .profile-rank {
+			display: none;
+		}
 		.flex-row {
-			.flex-column {
-				margin: 0 0 20px 0;
-			}
-			.profile-avatar {
+			.flex-column-left {
 				flex: 0 0 300px;
 			}
-			.profile-details {
+			.flex-column-right {
 				@include flex(base);
 			}
+			.flex-column-left.has-alt-avatar {
+				flex: 0 0 400px;
+			}
 		}
-		.profile-avatar.has-alt-avatar {
-			flex: 0 0 400px;
-			.alt-avatar-container .alt-avatar {
-				line-height: 0;
-				border: 5px solid $color-01;
-				img {
-					max-height: 600px;
+		.postprofile {
+			dt.has-avatar {
+				.alt-avatar-container .alt-avatar {
+					line-height: 0;
+					border: 5px solid $color-01;
+					margin: 0 0 20px 0;
+					img {
+						max-height: 600px;
+					}
 				}
 			}
-			.avatar-container {
-				display: none;
+		}
+		.detailsprofile {
+			.stats .stat-bar {
+				max-width: 75%;
 			}
-		}
-		.postprofile, .profile-details dl {
-			margin-bottom: 0;
-		}
-		.pronunciation {
-			padding: 0 0 0 5px;
-			font-size: rem(13px);
-		}
-		.stats .stat-bar {
-			max-width: 75%;
-		}
-		.group-options select {
-			width: auto;
-			margin-bottom: 0;
-			min-width: 75%;
-		}
-		.zebra a i {
-			color: $color-00;
-			font-size: rem(16px);
-			margin: 0 5px 0 0;
-			@include position($type: relative, $top: 1px);
+			.group-options select {
+				width: auto;
+				margin-bottom: 0;
+				min-width: 75%;
+			}
+			.zebra a i {
+				color: $color-00;
+				font-size: rem(16px);
+				margin: 0 5px 0 0;
+				@include position($type: relative, $top: 1px);
+			}
 		}
 	}
 	.user-contact .contact-icons a {

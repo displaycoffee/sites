@@ -1,11 +1,12 @@
 /* Profile - View Topic, PM, Memberlist View
 ============================================== */
 
-.postprofile {
+.postprofile, .detailsprofile {
+	margin: 0;
 	dt, dd {
 		margin: 0 0 5px 0;
 	}
- 	dt {
+	dt {
 		a, span {
 			&[class*='username'] {
 				@include spectral-common;
@@ -22,6 +23,25 @@
 	.profile-rank {
 		font-family: $font-02;
 		font-style: italic;
+	}
+}
+
+.postprofile {
+	dt, .profile-rank, .profile-title {
+		text-align: center;
+	}
+	dt {
+		& > strong {
+			font-weight: normal;
+		}
+		a, span {
+			&[class*='username'] {
+				display: block;
+			}
+		}
+	}
+	.avatar-container > .avatar {
+		margin: 0 0 20px 0;
 	}
 }
 

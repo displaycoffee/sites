@@ -1,4 +1,4 @@
-<dl class="details {{ writer_class }}">
+<dl class="detailsprofile details {{ writer_class }}">
 	{% if S_USER_INACTIVE %}
 		<dt>{{ lang('USER_IS_INACTIVE') }}{{ lang('COLON') }}</dt>
 		<dd>{{ USER_INACTIVE_REASON }}</dd>
@@ -16,6 +16,7 @@
 		(PROFILE_C_WRITER_NAME_NAME) : writer_value,
 		'Age'                        : AGE,
 		(PROFILE_GENDER_NAME)        : PROFILE_GENDER_VALUE,
+		(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE,
 		(PROFILE_AVATAR_CREDIT_NAME) : PROFILE_AVATAR_CREDIT_VALUE,
 		(PROFILE_SIG_CREDIT_NAME)    : PROFILE_SIG_CREDIT_VALUE
 	} %}

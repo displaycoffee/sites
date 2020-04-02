@@ -91,10 +91,29 @@
 		</section>
 	{% endif %}
 
+	{% set background_list_count = (PROFILE_C_BIRTHDAY_VALUE ~ PROFILE_C_AGE_VALUE ~ PROFILE_C_ORIGIN_VALUE ~ PROFILE_C_RESIDENCE_VALUE) | length %}
+	{% set background_other_count = (PROFILE_C_BACKGROUND_VALUE) | length %}
+	{% set background_total_count = (background_list_count + background_other_count) %}
+
 	{% if PROFILE_C_BACKGROUND_VALUE %}
 		<section class="page-content-section">
 			<h3>{{ PROFILE_C_BACKGROUND_NAME }}</h3>
-			<p>{{ function.replace_breaks(PROFILE_C_BACKGROUND_VALUE) }}</p>
+
+			{% set background_fields = {
+				(PROFILE_C_BIRTHDAY_NAME)    : PROFILE_C_BIRTHDAY_VALUE,
+				(PROFILE_C_AGE_NAME)         : PROFILE_C_AGE_VALUE,
+				(PROFILE_C_ORIGIN_NAME)      : PROFILE_C_ORIGIN_VALUE,
+				(PROFILE_C_RESIDENCE_NAME)   : PROFILE_C_RESIDENCE_VALUE
+			} %}
+
+			{% if background_fields && background_fields > 0 %}
+				{{ function.create_details(background_fields) }}
+			{% endif %}
+
+			{% if PROFILE_C_BACKGROUND_VALUE %}
+				<h5>History</h5>
+				<p>{{ function.replace_breaks(PROFILE_C_BACKGROUND_VALUE) }}</p>
+			{% endif %}
 		</section>
 	{% endif %}
 
