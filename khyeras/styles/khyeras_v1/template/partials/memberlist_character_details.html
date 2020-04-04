@@ -1,19 +1,20 @@
-<dl class="details {{ character_class }}">
-	{% set character_fields = {
-		'Experience'                 : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
-		(PROFILE_C_RACE_OPTS_NAME)   : PROFILE_C_RACE_OPTS_VALUE | replace({', ': ' and '}),
-		(PROFILE_C_CLASS_OPTS_NAME)  : PROFILE_C_CLASS_OPTS_VALUE | replace({', ': ' and '}),
-		(PROFILE_C_PROFESSION_NAME)  : PROFILE_C_PROFESSION_VALUE,
-		(PROFILE_C_GENDER_NAME)      : PROFILE_C_GENDER_VALUE,
-		(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE
-	} %}
+{% set character_fields = {
+	(PROFILE_C_EXPERIENCE_NAME)  : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
+	(PROFILE_C_RACE_OPTS_NAME)   : function.replace_comma(PROFILE_C_RACE_OPTS_VALUE),
+	(PROFILE_C_CLASS_OPTS_NAME)  : function.replace_comma(PROFILE_C_CLASS_OPTS_VALUE),
+	(PROFILE_C_LANGUAGES_NAME)   : PROFILE_C_LANGUAGES_VALUE,
+	(PROFILE_C_PROFESSION_NAME)  : PROFILE_C_PROFESSION_VALUE,
+	(PROFILE_C_GENDER_NAME)      : PROFILE_C_GENDER_VALUE,
+	(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE
+} %}
 
-	{% if character_fields %}
-		{% for name, value in character_fields %}
-			{% if value %}
-				<dt>{{ name }}{{ lang('COLON') }}</dt>
-				<dd>{{ value }}</dd>
-			{% endif %}
+{% set character_list_count = function.count_details(character_fields) %}
+
+{% if character_list_count > 0 %}
+	<dl class="details{{ character_class }}">
+		{% for name, value in character_fields if value %}
+			<dt>{{ name }}{{ lang('COLON') }}</dt>
+			<dd>{{ value }}</dd>
 		{% endfor %}
-	{% endif %}
-</dl>
+	</dl>
+{% endif %}

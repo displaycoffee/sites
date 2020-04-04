@@ -34,11 +34,11 @@
 						<dl class="details details-small">
 							{% if detail.race %}
 								<dt>Race:</dt>
-								<dd>{{ detail.race | replace({', ': ' and '}) }}</dd>
+								<dd>{{ function.replace_comma(detail.race) }}</dd>
 							{% endif %}
 							{% if detail.class %}
 								<dt>Class:</dt>
-								<dd>{{ detail.class | replace({', ': ' and '}) }}</dd>
+								<dd>{{ function.replace_comma(detail.class) }}</dd>
 							{% endif %}
 							{% if detail.gender %}
 								<dt>Gender:</dt>

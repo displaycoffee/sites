@@ -1,10 +1,10 @@
 {% import 'utilities/macros.html' as function %}
 
-<!-- INCLUDE overall_header.html -->
+{% include 'overall_header.html' %}
 
 {% if PROFILE_ACCOUNT_TYPE_VALUE == 'Character' %}
-	{% set character_class = 'character-panel tab-panel show-panel' %}
-	{% set writer_class = 'writer-panel tab-panel hide-panel' %}
+	{% set character_class = ' character-panel tab-panel show-panel' %}
+	{% set writer_class = ' writer-panel tab-panel hide-panel' %}
 {% endif %}
 
 {% set member_avatar %}
@@ -47,10 +47,10 @@
 	{% endif %}
 {% endset %}
 
-<h2 class="memberlist-title">{PAGE_TITLE}</h2>
+<h2 class="memberlist-title">{{ PAGE_TITLE }}</h2>
 
-<form method="post" action="{S_PROFILE_ACTION}" id="viewprofile">
-	<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+<form method="post" action="{{ S_PROFILE_ACTION }}" id="viewprofile">
+	{% if PROFILE_ACCOUNT_TYPE_VALUE == 'Character' %}
 		<div id="tabs" class="tabs profile-tabs sub-panels" role="tablist">
 			<ul>
 				<li class="tab activetab">
@@ -61,36 +61,36 @@
 				</li>
 			</ul>
 		</div>
-	<!-- ENDIF -->
+	{% endif %}
 
-	<div class="panel bg1<!-- IF S_ONLINE --> online<!-- ENDIF --> profile-panel">
+	<div class="panel bg1{% if S_ONLINE %} online{% endif %} profile-panel">
 		<div class="inner">
 			<div class="flex-row flex-row-10">
-				<div class="flex-column flex-column-left<!-- IF PROFILE_ALT_AVATAR_VALUE --> has-alt-avatar<!-- ENDIF -->">
+				<div class="flex-column flex-column-left{% if PROFILE_ALT_AVATAR_VALUE %} has-alt-avatar{% endif %}">
 					<dl class="postprofile">
-						<dt class="has-avatar <!-- IF RANK_TITLE or RANK_IMG -->has-profile-rank<!-- ELSE -->no-profile-rank<!-- ENDIF -->">
-							<!-- IF PROFILE_ALT_AVATAR_VALUE -->
+						<dt class="has-avatar {% if RANK_TITLE || RANK_IMG %}has-profile-rank{% else %}no-profile-rank{% endif %}">
+							{% if PROFILE_ALT_AVATAR_VALUE %}
 								<div class="alt-avatar-container">
 									<div class="alt-avatar">
 										{{ PROFILE_ALT_AVATAR_VALUE }}
 									</div>
 								</div>
-							<!-- ELSE -->
+							{% else %}
 								{{ member_avatar }}
-							<!-- ENDIF -->
+							{% endif %}
 						</dt>
 					</dl>
 				</div>
 
 				<div class="flex-column flex-column-right">
 					<dl class="postprofile">
-						<dt class="has-avatar <!-- IF RANK_TITLE or RANK_IMG -->has-profile-rank<!-- ELSE -->no-profile-rank<!-- ENDIF -->">
+						<dt class="has-avatar {% if RANK_TITLE || RANK_IMG %}has-profile-rank{% else %}no-profile-rank{% endif %}">
 							{{ member_avatar }}
 							{{ member_name }}
 						</dt>
 						{{ member_rank_title }}
 
-						<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+						{% if PROFILE_ACCOUNT_TYPE_VALUE == 'Character' %}
 							<dd class="profile-character-details">
 								<div class="character-card">
 									{{ function.display_level(KHY_MEMBER_LEVEL, 'false') }}
@@ -98,35 +98,35 @@
 								</div>
 								{{ function.display_currency(KHY_MEMBER_CURRENCY) }}
 							</dd>
-						<!-- ENDIF -->
+						{% endif %}
 					</dl>
 
-					<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-						<!-- INCLUDE partials/memberlist_character_details.html -->
-					<!-- ENDIF -->
+					{% if PROFILE_ACCOUNT_TYPE_VALUE == 'Character' %}
+						{% include 'partials/memberlist_character_details.html' %}
+					{% endif %}
 
-					<!-- INCLUDE partials/memberlist_writer_details.html -->
+					{% include 'partials/memberlist_writer_details.html' %}
 				</div>
 			</div>
 
-			<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
-				<!-- INCLUDE partials/memberlist_character_desc.html -->
-			<!-- ENDIF -->
+			{% if PROFILE_ACCOUNT_TYPE_VALUE == 'Character' %}
+				{% include 'partials/memberlist_character_desc.html' %}
+			{% endif %}
 
-			<!-- INCLUDE partials/memberlist_writer_desc.html -->
+			{% include 'partials/memberlist_writer_desc.html' %}
 		</div>
 	</div>
 
-	<!-- IF SIGNATURE -->
+	{% if SIGNATURE %}
 		<div class="panel bg2">
 			<div class="inner">
-				<h3>{L_SIGNATURE}</h3>
-				<div class="postbody"><div class="signature standalone">{SIGNATURE}</div></div>
+				<h3>{{ lang('SIGNATURE') }}</h3>
+				<div class="postbody"><div class="signature standalone">{{ SIGNATURE }}</div></div>
 			</div>
 		</div>
-	<!-- ENDIF -->
+	{% endif %}
 </form>
 
-<!-- INCLUDE jumpbox.html -->
+{% include 'jumpbox.html' %}
 
-<!-- INCLUDE overall_footer.html -->
+{% include 'overall_footer.html' %}

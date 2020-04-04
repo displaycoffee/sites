@@ -867,7 +867,9 @@
 			.profile-race {
 				margin-left: 0;
 				&:after {
-					content: ',\0000a0\0000a0';
+					content: ',';
+					position: relative;
+					left: -2px;
 				}
 			}
 		}

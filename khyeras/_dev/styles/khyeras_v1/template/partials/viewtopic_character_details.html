@@ -9,10 +9,10 @@
 {% endfor %}
 {% if postrow.S_PROFILE_C_RACE_OPTS %}
 	<dd class="profile-race">
-		<strong>{{ postrow.PROFILE_C_RACE_OPTS_NAME }}{{ lang('COLON') }}</strong> {{ postrow.PROFILE_C_RACE_OPTS_VALUE | replace({', ': ' and '}) }}</dd>
+		<strong>{{ postrow.PROFILE_C_RACE_OPTS_NAME }}{{ lang('COLON') }}</strong> {{ function.replace_comma(postrow.PROFILE_C_RACE_OPTS_VALUE) }}</dd>
 {% endif %}
 {% if postrow.PROFILE_C_CLASS_OPTS_VALUE %}
 	<dd class="profile-class">
-		<strong>{{ postrow.PROFILE_C_CLASS_OPTS_NAME }}{{ lang('COLON') }}</strong> {{ postrow.PROFILE_C_CLASS_OPTS_VALUE | replace({', ': ' and '}) }}
+		<strong>{{ postrow.PROFILE_C_CLASS_OPTS_NAME }}{{ lang('COLON') }}</strong> {{ function.replace_comma(postrow.PROFILE_C_CLASS_OPTS_VALUE) }}
 	</dd>
 {% endif %}

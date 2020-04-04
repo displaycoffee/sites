@@ -1,3 +1,11 @@
+{% macro count_details(details) %}{% spaceless %}
+	{% set count = 0 %}
+	{% for name, value in details if value %}
+		{% set count = count + 1 %}
+	{% endfor %}
+	{{ count }}
+{% endspaceless %}{% endmacro %}
+
 {% macro create_handle(value) %}{% spaceless %}
 	{{ value | replace({'"' : '', '\'' : '', '(' : '', ')' : '', ',' : '', '!' : '', ' ' : '-'}) | lower }}
 {% endspaceless %}{% endmacro %}
@@ -134,4 +142,8 @@
 
 {% macro replace_breaks(value) %}
 	{{ value | spaceless | replace({'<br><br>': '<\/p><p>'}) }}
+{% endmacro %}
+
+{% macro replace_comma(value) %}
+	{{ value | spaceless | replace({', ': ' and '}) }}
 {% endmacro %}

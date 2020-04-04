@@ -227,12 +227,20 @@ function bannerCodeGenerator( bannerImages, bannerCode ) {
 }
 
 // Check for empty content elements on the page
-function checkForEmpty( selector ) {
+function checkForEmpty( selector, parent ) {
 	var emptySelector = document.querySelectorAll( selector );
 
 	if ( emptySelector && emptySelector.length ) {
 		for ( var i = 0; i < emptySelector.length; i++ ) {
-			emptySelector[i].parentNode.style.display = 'none';
+			var empty = emptySelector[i];
+			var emptyHTML = empty.innerHTML.replace(/\s+|\n|\r/g, '').length;
+			if ( emptyHTML <= 0 ) {
+				if ( parent ) {
+					empty.parentNode.style.display = 'none';
+				} else {
+					empty.style.display = 'none';
+				}
+			}
 		}
 	}
 }

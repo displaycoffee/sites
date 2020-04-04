@@ -77,6 +77,9 @@
 	pre code, code pre {
 		background: none;
 	}
+	.panel .inner table ~ .pagination {
+		margin: 0 0 20px 0;
+	}
 	.topiclist {
 		& + p > strong {
 			display: block;

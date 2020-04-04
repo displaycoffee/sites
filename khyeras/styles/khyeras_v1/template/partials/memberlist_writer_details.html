@@ -1,4 +1,4 @@
-<dl class="details {{ writer_class }}">
+<dl class="details{{ writer_class }}">
 	{% if S_USER_INACTIVE %}
 		<dt>{{ lang('USER_IS_INACTIVE') }}{{ lang('COLON') }}</dt>
 		<dd>{{ USER_INACTIVE_REASON }}</dd>
@@ -14,19 +14,19 @@
 
 	{% set writer_fields = {
 		(PROFILE_C_WRITER_NAME_NAME) : writer_value,
-		'Age'                        : AGE,
-		(PROFILE_GENDER_NAME)        : PROFILE_GENDER_VALUE,
-		(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE,
+		(lang('AGE'))                : PROFILE_C_WRITER_NAME_NAME ? false : AGE,
+		(PROFILE_GENDER_NAME)        : PROFILE_C_WRITER_NAME_NAME ? false : PROFILE_GENDER_VALUE,
+		(PROFILE_PRONUNCIATION_NAME) : PROFILE_C_WRITER_NAME_NAME ? false : PROFILE_PRONUNCIATION_VALUE,
 		(PROFILE_AVATAR_CREDIT_NAME) : PROFILE_AVATAR_CREDIT_VALUE,
 		(PROFILE_SIG_CREDIT_NAME)    : PROFILE_SIG_CREDIT_VALUE
 	} %}
 
-	{% if writer_fields %}
-		{% for name, value in writer_fields %}
-			{% if value %}
-				<dt>{{ name }}{{ lang('COLON') }}</dt>
-				<dd>{{ value }}</dd>
-			{% endif %}
+	{% set writer_list_count = function.count_details(writer_fields) %}
+
+	{% if writer_list_count > 0 %}
+		{% for name, value in writer_fields if value %}
+			<dt>{{ name }}{{ lang('COLON') }}</dt>
+			<dd>{{ value }}</dd>
 		{% endfor %}
 	{% endif %}
 
@@ -37,11 +37,11 @@
 	{% if S_USER_LOGGED_IN && S_ZEBRA %}
 		<dt>Alliance{{ lang('COLON') }}</dt>
 		{% if U_REMOVE_FRIEND %}
-			 <dd class="zebra">
-				 <a href="{{ U_REMOVE_FRIEND }}" data-ajax="zebra">
-					 <i class="icon rpg-icon rpg-shaking-hands"></i>{{ lang('REMOVE_FRIEND') }}
-				 </a>
-			 </dd>
+			<dd class="zebra">
+				<a href="{{ U_REMOVE_FRIEND }}" data-ajax="zebra">
+					<i class="icon rpg-icon rpg-shaking-hands"></i>{{ lang('REMOVE_FRIEND') }}
+				</a>
+			</dd>
 		{% elseif U_REMOVE_FOE %}
 			<dd class="zebra">
 				<a href="{{ U_REMOVE_FOE }}" data-ajax="zebra">
@@ -67,7 +67,7 @@
 
 	{% EVENT memberlist_view_zebra_after %}
 
-	{% if  U_EDIT_SELF or U_USER_ADMIN or U_USER_BAN or U_SWITCH_PERMISSIONS %}
+	{% if U_EDIT_SELF || U_USER_ADMIN || U_USER_BAN || U_SWITCH_PERMISSIONS %}
 		<dt>Permissions{{ lang('COLON') }}</dt>
 		<dd class="profile-permissions">
 			{% if U_EDIT_SELF %} [ <a href="{{ U_EDIT_SELF }}">{{ lang('EDIT_PROFILE') }}</a> ]{% endif %}
