@@ -209,12 +209,20 @@
 			margin-left: 0;
 		}
 	}
-	#viewprofile {
-		.profile-panel .inner .postprofile {
-			flex: 0 0 250px;
+	#viewprofile .profile-panel {
+		.flex-row .flex-column-left {
+			flex: 0 0 200px;
+			&.has-alt-avatar {
+				flex: 0 0 300px;
+			}
 		}
-		.stats .stat-bar {
-			max-width: none;
+		.postprofile {
+			dt.has-avatar .alt-avatar-container > .alt-avatar img {
+				max-height: 500px;
+			}
+			.stats .stat-bar {
+				max-width: none;
+			}
 		}
 	}
 	.key.key-grid li {
@@ -227,7 +235,7 @@
 		}
 	}
 	.banner.banner-vertical {
-		padding-bottom: calc(100% - 4px);
+		padding-bottom: calc(100% - 10px);
 		img {
 			width: 100%;
 			height: auto;
@@ -620,6 +628,30 @@
 		@include sr-only;
 	}
 
+	// profile.scss
+	.postprofile {
+		@include clearfix('&');
+		dt.has-avatar {
+			.avatar-container {
+				float: left;
+				width: 150px;
+				margin: 0 20px 0 0;
+			}
+			a[class*='username'], span[class*='username'], & ~ dd {
+				margin-left: 170px;
+			}
+		}
+		dd:last-child {
+			margin-bottom: 0;
+		}
+		.profile-rank {
+			margin: 0 0 5px 0;
+		}
+		.profile-character-details {
+			margin: 10px 0 0 0;
+		}
+	}
+
 	// viewlisting.scss
 	.topiclist {
 		& > li {
@@ -815,11 +847,28 @@
 		.postprofile {
 			margin: 0 0 20px 0;
 			padding: 0 0 20px 0;
-			.profile-character-wrapper {
-				border-top: 0;
-				border-bottom: 0;
-				padding: 0;
-				margin-bottom: 0;
+			border-bottom: 1px dashed $color-01;
+			border-right: 0;
+			dt, .profile-rank, .profile-permissions {
+				text-align: left;
+			}
+			dt {
+				a[class*='username'], span[class*='username'] {
+					padding-right: 50px;
+				}
+			}
+			.profile-character-details, .profile-posts, .profile-phpbb_location {
+				display: none;
+			}
+			.profile-race, .profile-class {
+				@include inline-block(baseline);
+				margin-left: 0;
+			}
+			.profile-race {
+				margin-left: 0;
+				&:after {
+					content: ',\0000a0\0000a0';
+				}
 			}
 		}
 	}
@@ -877,56 +926,16 @@
 		}
 	}
 
-	// profile.scss
-	.postprofile {
-		border-right: 0;
-		border-bottom: 1px dashed $color-01;
-		@include clearfix('&');
-		dt, .profile-rank, .profile-permissions {
-			text-align: left;
-		}
-		dt {
-			margin-bottom: 0;
-			a[class*='username'] {
-				padding-right: 50px;
-			}
-			a, span {
-				&[class*='username'] {
-					margin-top: 0;
-				}
-			}
-			&.has-avatar {
-				.avatar-container {
-					float: left;
-					width: 140px;
-					margin-right: 10px;
-				}
-				& ~ dd {
-					margin-left: 150px;
-				}
-			}
-		}
-		.profile-posts, .profile-joined, .profile-character-wrapper ~ .profile-contact {
+	// other-sections.scss
+	#viewprofile .profile-panel .flex-row {
+		.flex-column-left {
 			display: none;
 		}
-	}
-
-	// other-sections.scss
-	#viewprofile {
-		.profile-panel {
-			.main-profile-section {
-				display: block;
-			}
-			.postprofile {
-				margin: 0 0 20px 0;
-				padding: 0 0 20px 0;
-				.alt-avatar-container {
-					display: none;
-					& ~ .avatar-container {
-						display: block;
-					}
-				}
-			}
+		.flex-column-right .postprofile .avatar-container {
+			display: block;
+		}
+		.details {
+			margin-top: 20px;
 		}
 	}
 	.popup-wrap {
@@ -1450,7 +1459,25 @@
 		}
 	}
 
-	// viewtopics.scss
+	// profile.scss
+	.postprofile {
+		dt, .profile-rank, .profile-title {
+			text-align: center;
+		}
+		dt.has-avatar {
+			a[class*='username'], span[class*='username'], & ~ dd {
+				margin-left: 0;
+			}
+			.avatar-container {
+				margin: 0 auto 20px auto;
+				float: none;
+				width: auto;
+				max-width: 150px;
+			}
+		}
+	}
+
+	// viewtopic.scss
 	.postbody {
 		.content, .signature {
 			blockquote cite {
@@ -1518,6 +1545,16 @@
 		margin-left: 0;
 		padding: 0;
 	}
+	.post .postprofile {
+		&, dt, .profile-rank, .profile-title {
+			text-align: center;
+		}
+		dt {
+			a[class*='username'], span[class*='username'] {
+				padding-right: 0;
+			}
+		}
+	}
 
 	// posting.scss
 	#color_palette_placeholder table {
@@ -1530,37 +1567,10 @@
 		}
 	}
 
-	// profile.scss
-	.postprofile dt.has-avatar {
-		.avatar-container {
-			width: 90px;
-			& > .avatar {
-				border-width: 2px;
-				padding-bottom: calc(100% - 4px);
-			}
-		}
-		& ~ dd {
-			margin-left: 0;
-		}
-	}
-	.online .postprofile dt.has-avatar .avatar-container {
-		margin-top: 30px;
-	}
-
 	// other-sections.scss
 	#search_memberlist .dropdown-container .dropdown.live-search[style*='block'] {
 		min-width: 1px;
 		@include position($left: -1px, $right: -1px);
-	}
-	#viewprofile {
-		.profile-panel .inner {
-			.postprofile dd {
-				display: block;
-			}
-			.profile-details .group-options {
-				margin-left: 0;
-			}
-		}
 	}
 	.section-search form[data-focus='keywords'] fieldset dl dd #sk {
 		@include flex(full);
@@ -1595,6 +1605,19 @@
 				}
 			}
 		}
+	}
+	.card-grid .card-block .user-avatar {
+		float: none;
+		width: auto;
+		max-width: 150px;
+		margin: 0 auto 20px auto;
+		.image-wrap {
+			border-width: 5px;
+			padding-bottom: calc(100% - 10px);
+		}
+	}
+	.section-page-character-listing .card-grid .card-block .card-title {
+		text-align: center;
 	}
 	.section-page-map {
 		.quick-links, #tabs {
@@ -1873,7 +1896,7 @@
 			margin-bottom: $ffs;
 		}
 	}
-	#viewprofile .profile-panel .inner .left-box.profile-details .group-options select {
+	#viewprofile .profile-panel .flex-row .details .group-options select {
 		width: 100%;
 		& + .button2 {
 			margin-top: $ffs;
@@ -2024,7 +2047,7 @@
 ============================================== */
 
 @include respond(em(397)) {
-	// viewtopics.scss
+	// viewtopic.scss
 	fieldset.polls dl {
 		.resultbar, .poll_option_percent {
 			float: none;
@@ -2039,44 +2062,6 @@
 				content: 'Count: \0000A0';
 			}
 		}
-	}
-	.post .postprofile .profile-character-wrapper {
-		margin-top: 10px;
-	}
-
-	// profile.scss
-	.postprofile {
-		dt, dd, .profile-rank, .profile-permissions {
-			text-align: center;
-		}
-		dt {
-			a[class*='username'] {
-				padding-right: 0;
-			}
-			.avatar-container > .avatar {
-				margin-bottom: 20px;
-			}
-			&.has-avatar .avatar-container {
-				float: none;
-				width: auto;
-				max-width: 150px;
-				margin: 0 auto;
-			}
-		}
-	}
-	.online .postprofile dt.has-avatar .avatar-container {
-		margin-top: 0;
-	}
-
-	// other-sections.scss
-	.card-grid .card-block .user-avatar {
-		float: none;
-		width: auto;
-		max-width: 150px;
-		margin: 0 auto 20px auto;
-	}
-	.section-page-character-listing .card-grid .card-block .card-title {
-		text-align: center;
 	}
 
 	// header.scss
@@ -2106,5 +2091,4 @@
 			}
 		}
 	}
-
 }

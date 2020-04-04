@@ -1,17 +1,27 @@
 /* Profile - View Topic, PM, Memberlist View
 ============================================== */
 
-.postprofile, .detailsprofile {
+.postprofile {
 	margin: 0;
 	dt, dd {
 		margin: 0 0 5px 0;
 	}
 	dt {
+		& > strong {
+			font-weight: normal;
+		}
 		a, span {
 			&[class*='username'] {
+				display: block;
 				@include spectral-common;
 				font-size: rem(24px);
 			}
+		}
+		&.no-avatar .avatar-container {
+			display: none;
+		}
+		&.has-avatar .avatar-container {
+			margin: 0 0 20px 0;
 		}
 	}
 	.profile-rank, .profile-character-details {
@@ -23,25 +33,6 @@
 	.profile-rank {
 		font-family: $font-02;
 		font-style: italic;
-	}
-}
-
-.postprofile {
-	dt, .profile-rank, .profile-title {
-		text-align: center;
-	}
-	dt {
-		& > strong {
-			font-weight: normal;
-		}
-		a, span {
-			&[class*='username'] {
-				display: block;
-			}
-		}
-	}
-	.avatar-container > .avatar {
-		margin: 0 0 20px 0;
 	}
 }
 

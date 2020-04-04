@@ -431,6 +431,9 @@ fieldset.polls dl .poll_option_select, #preview fieldset.polls dl dd {
 		margin: 0 20px 0 0;
 		padding: 0 20px 0 0;
 		border-right: 1px dashed $color-01;
+		dt, .profile-rank, .profile-title {
+			text-align: center;
+		}
 		.profile-contact {
 			position: relative;
 			.dropdown-container {

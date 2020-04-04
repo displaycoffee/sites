@@ -7,9 +7,17 @@
 	{% set writer_class = 'writer-panel tab-panel hide-panel' %}
 {% endif %}
 
+{% set member_avatar %}
+	<div class="avatar-container">
+		<div class="avatar">
+			{% if AVATAR_IMG %}{{ AVATAR_IMG }}{% else %}<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />{% endif %}
+		</div>
+	</div>
+{% endset %}
+
 {% set member_name %}
 	{% EVENT memberlist_view_username_prepend %}
-	{% if USER_COLOR %}<span  class="username-coloured" style="color: {{ USER_COLOR }};">{% else %}<span>{% endif %}{{ USERNAME }}</span>
+	{% if USER_COLOR %}<span class="username-coloured" style="color: {{ USER_COLOR }};">{% else %}<span>{% endif %}{{ USERNAME }}</span>
 	{% EVENT memberlist_view_username_append %}
 {% endset %}
 
@@ -67,28 +75,30 @@
 										{{ PROFILE_ALT_AVATAR_VALUE }}
 									</div>
 								</div>
+							<!-- ELSE -->
+								{{ member_avatar }}
 							<!-- ENDIF -->
-							<div class="avatar-container">
-								<div class="avatar">
-									<!-- IF AVATAR_IMG -->
-										{AVATAR_IMG}
-									<!-- ELSE -->
-										<img src="{T_THEME_PATH}/images/no_avatar.gif" alt="Default Avatar" />
-									<!-- ENDIF -->
-								</div>
-							</div>
-							{{ member_name }}
 						</dt>
-						{{ member_rank_title }}
 					</dl>
 				</div>
 
 				<div class="flex-column flex-column-right">
-					<dl class="detailsprofile">
-						<dt class="<!-- IF RANK_TITLE or RANK_IMG -->has-profile-rank<!-- ELSE -->no-profile-rank<!-- ENDIF -->">
+					<dl class="postprofile">
+						<dt class="has-avatar <!-- IF RANK_TITLE or RANK_IMG -->has-profile-rank<!-- ELSE -->no-profile-rank<!-- ENDIF -->">
+							{{ member_avatar }}
 							{{ member_name }}
 						</dt>
 						{{ member_rank_title }}
+
+						<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
+							<dd class="profile-character-details">
+								<div class="character-card">
+									{{ function.display_level(KHY_MEMBER_LEVEL, 'false') }}
+									{{ function.display_stats(KHY_MEMBER_STATS.hp, KHY_MEMBER_STATS.mp, PROFILE_C_HP_VALUE, PROFILE_C_MP_VALUE, 'false') }}
+								</div>
+								{{ function.display_currency(KHY_MEMBER_CURRENCY) }}
+							</dd>
+						<!-- ENDIF -->
 					</dl>
 
 					<!-- IF PROFILE_ACCOUNT_TYPE_VALUE == 'Character' -->
