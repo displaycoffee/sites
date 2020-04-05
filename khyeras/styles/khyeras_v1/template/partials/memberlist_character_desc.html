@@ -20,7 +20,7 @@
 		<section class="page-content-section">
 			<h3>Physical Features</h3>
 
-			{% if feature_list_count > 0 %}
+			{% if feature_list_count != '0' %}
 				{{ function.create_details(feature_fields) }}
 			{% endif %}
 
@@ -44,7 +44,7 @@
 		<section class="page-content-section">
 			<h3>Social Interactions</h3>
 
-			{% if social_list_count > 0 %}
+			{% if social_list_count != '0' %}
 				{{ function.create_details(social_fields) }}
 			{% endif %}
 
@@ -80,7 +80,7 @@
 		<section class="page-content-section">
 			<h3>Religion</h3>
 
-			{% if religion_list_count > 0 %}
+			{% if religion_list_count != '0' %}
 				{{ function.create_details(religion_fields) }}
 			{% endif %}
 
@@ -106,7 +106,7 @@
 		<section class="page-content-section">
 			<h3>{{ PROFILE_C_BACKGROUND_NAME }}</h3>
 
-			{% if background_fields > 0 %}
+			{% if background_fields != '0' %}
 				{{ function.create_details(background_fields) }}
 			{% endif %}
 
@@ -120,7 +120,7 @@
 	{% if feature_total_count == 1 && social_total_count == 1 && religion_total_count == 1 && background_total_count == 1 %}
 		<section class="page-content-section">
 			<h3>Nothing Here Yet</h3>
-			<p>This character is still filling out their profile. Check back later!</p>
+			<p>This character is filling out their profile. Check back later!</p>
 		</section>
 	{% endif %}
 </div>

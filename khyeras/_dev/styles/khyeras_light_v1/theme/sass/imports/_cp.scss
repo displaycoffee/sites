@@ -165,9 +165,9 @@
 /* UCP - Avatar (User & Groups)
 ============================================== */
 
-.section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details, .section-mcp-warnings {
+.section-ucp-edit-avatar, .section-ucp-manage-groups, .section-mcp-user-details, .section-mcp-warnings, .section-ucp-edit-profile {
 	.cp-main {
-		.avatar, img[src*='no_avatar.gif'] {
+		.avatar, img[src*='no_avatar.gif'], img[title='Alternate Avatar'] {
 			border: 5px solid $color-01;
 			margin: 0 0 10px 0;
 		}
@@ -388,10 +388,23 @@
 /* UCP - Profile
 ============================================== */
 
-.section-ucp-edit-profile .cp-main fieldset dl dd label[for*='bday'] {
-	display: block;
-	select {
-		width: auto;
+.section-ucp-edit-profile .cp-main fieldset dl dd  {
+	label[for*='bday'] {
+		display: block;
+		select {
+			width: auto;
+		}
+	}
+	img[title='Alternate Avatar'] {
+		max-height: 400px;
+		& ~ br {
+			display: none;
+		}
+	}
+	label[for='pf_alt_avatar_delete'] {
+		flex: 1 1 100%;
+		margin-top: 10px;
+		margin-bottom: 5px;
 	}
 }
 

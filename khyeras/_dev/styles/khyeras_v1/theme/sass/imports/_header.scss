@@ -330,10 +330,8 @@ $transform: color 0.3s ease-in-out, transform 0.5s ease-in-out;
 		h5, p {
 			margin: 0 0 10px 0
 		}
-		p {
-			&:last-child, &:nth-last-child(2) {
-				margin-bottom: 20px;
-			}
+		p:last-child {
+			margin-bottom: 20px;
 		}
 		.welcome-header {
 			font-family: $font-03;
@@ -345,6 +343,10 @@ $transform: color 0.3s ease-in-out, transform 0.5s ease-in-out;
 			&:hover {
 				color: $color-03;
 			}
+		}
+		.level {
+			font-size: rem(16px);
+			@include spectral-common;
 		}
 	}
 	.user-information {

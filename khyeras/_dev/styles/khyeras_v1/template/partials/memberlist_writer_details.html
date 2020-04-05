@@ -23,7 +23,7 @@
 
 	{% set writer_list_count = function.count_details(writer_fields) %}
 
-	{% if writer_list_count > 0 %}
+	{% if writer_list_count != '0' %}
 		{% for name, value in writer_fields if value %}
 			<dt>{{ name }}{{ lang('COLON') }}</dt>
 			<dd>{{ value }}</dd>
@@ -67,13 +67,21 @@
 
 	{% EVENT memberlist_view_zebra_after %}
 
-	{% if U_EDIT_SELF || U_USER_ADMIN || U_USER_BAN || U_SWITCH_PERMISSIONS %}
-		<dt>Permissions{{ lang('COLON') }}</dt>
+	{% set action_fields = {
+		(lang('EDIT_PROFILE'))    : U_EDIT_SELF ? U_EDIT_SELF : false,
+		(lang('USER_ADMIN'))      : U_USER_ADMIN ? U_USER_ADMIN : false,
+		(lang('USER_BAN'))        : U_USER_BAN ? U_USER_BAN : false,
+		(lang('USE_PERMISSIONS')) : U_SWITCH_PERMISSIONS ? U_SWITCH_PERMISSIONS : false
+	} %}
+
+	{% set action_list_count = function.count_details(action_fields) %}
+
+	{% if action_list_count != '0' %}
+		<dt>Actions{{ lang('COLON') }}</dt>
 		<dd class="profile-permissions">
-			{% if U_EDIT_SELF %} [ <a href="{{ U_EDIT_SELF }}">{{ lang('EDIT_PROFILE') }}</a> ]{% endif %}
-			{% if U_USER_ADMIN %} [ <a href="{{ U_USER_ADMIN }}">{{ lang('USER_ADMIN') }}</a> ]{% endif %}
-			{% if U_USER_BAN %} [ <a href="{{ U_USER_BAN }}">{{ lang('USER_BAN') }}</a> ]{% endif %}
-			{% if U_SWITCH_PERMISSIONS %} [ <a href="{{ U_SWITCH_PERMISSIONS }}">{{ lang('USE_PERMISSIONS') }}</a> ]{% endif %}
+			{% for name, value in action_fields if value %}
+				<a href="{{ value }}">{{ name }}</a><span class="comma">, </span>
+			{% endfor %}
 		</dd>
 	{% endif %}
 

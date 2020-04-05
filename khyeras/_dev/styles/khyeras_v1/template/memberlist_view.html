@@ -4,6 +4,7 @@
 
 {% if PROFILE_ACCOUNT_TYPE_VALUE == 'Character' %}
 	{% set character_class = ' character-panel tab-panel show-panel' %}
+	{% set inventory_class = ' inventory-panel tab-panel hide-panel' %}
 	{% set writer_class = ' writer-panel tab-panel hide-panel' %}
 {% endif %}
 
@@ -57,6 +58,9 @@
 					<a data-tabname="character-panel" role="tab" aria-controls="character-panel">Character</a>
 				</li>
 				<li class="tab">
+					<a data-tabname="inventory-panel" role="tab" aria-controls="inventory-panel">Inventory</a>
+				</li>
+				<li class="tab">
 					<a data-tabname="writer-panel" role="tab" aria-controls="writer-panel">Writer</a>
 				</li>
 			</ul>
@@ -103,6 +107,7 @@
 
 					{% if PROFILE_ACCOUNT_TYPE_VALUE == 'Character' %}
 						{% include 'partials/memberlist_character_details.html' %}
+						{% include 'partials/memberlist_inventory_details.html' %}
 					{% endif %}
 
 					{% include 'partials/memberlist_writer_details.html' %}
@@ -111,6 +116,7 @@
 
 			{% if PROFILE_ACCOUNT_TYPE_VALUE == 'Character' %}
 				{% include 'partials/memberlist_character_desc.html' %}
+				{% include 'partials/memberlist_inventory_desc.html' %}
 			{% endif %}
 
 			{% include 'partials/memberlist_writer_desc.html' %}

@@ -19,8 +19,7 @@
 								Level {{ zero }}{{ KHY_USER_LEVEL }}
 							</p>
 							<p class="race-and-class">
-								{{ KHY_USER_RACE | replace({',': ' and'}) }}
-								/ {{ KHY_USER_CLASS | replace({',': ' and'}) }}
+								{{ function.replace_comma(KHY_USER_RACE) }} / {{ function.replace_comma(KHY_USER_CLASS) }}
 							</p>
 						{% elseif S_REGISTERED_USER %}
 							<p>

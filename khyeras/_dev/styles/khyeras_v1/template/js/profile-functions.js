@@ -9,24 +9,25 @@ function updateProfileFields() {
 
 		// Reusable language variables
 		var defaultText = '-- Please Select --';
-		var fb 			= 'Full blooded';
-		var hb 			= 'Half-breed';
-		var single		= 'Single';
-		var dual		= 'Dual';
-		var archaicism	= 'Archaicism';
-		var idolism		= 'Idolism';
+		var fb          = 'Full blooded';
+		var hb          = 'Half-breed';
+		var single      = 'Single';
+		var dual        = 'Dual';
+		var archaicism  = 'Archaicism';
+		var idolism     = 'Idolism';
+		var hide        = 'hide-fields';
 
 		// Reusable selectors for fields
 		var accountType     = jQuery( '#pf_account_type' );
 		var characterFields = jQuery( '[id^=pf_c_]' );
-		var raceType 		= jQuery( '#pf_c_race_type' );
-		var raceOpts 		= jQuery( 'input[name="pf_c_race_opts[]"]' );
+		var raceType        = jQuery( '#pf_c_race_type' );
+		var raceOpts        = jQuery( 'input[name="pf_c_race_opts[]"]' );
 		var raceParent      = jQuery( '#pf_c_race_opts_1' ).closest( 'dd' );
-		var classType 		= jQuery( '#pf_c_class_type' );
-		var classOpts 		= jQuery( 'input[name="pf_c_class_opts[]"]' );
+		var classType       = jQuery( '#pf_c_class_type' );
+		var classOpts       = jQuery( 'input[name="pf_c_class_opts[]"]' );
 		var classParent     = jQuery( '#pf_c_class_opts_1' ).closest( 'dd' );
-		var religionType 	= jQuery( '#pf_c_religion_type' );
-		var religionOpts 	= jQuery( 'input[name="pf_c_religion_opts[]"]' );
+		var religionType    = jQuery( '#pf_c_religion_type' );
+		var religionOpts    = jQuery( 'input[name="pf_c_religion_opts[]"]' );
 		var religionParent  = jQuery( '#pf_c_religion_opts_1' ).closest( 'dd' );
 
 		// Set variables without values
@@ -40,6 +41,9 @@ function updateProfileFields() {
 			accType = false;
 		}
 
+		// List of writer fields that should be hidden if "Writer Name" field is filled out for characters
+		var hiddenWriterFields = [ 'pf_contact_discord', 'pf_phpbb_facebook', 'pf_phpbb_twitter', 'pf_phpbb_skype', 'pf_phpbb_youtube', 'pf_phpbb_website', 'pf_gender', 'pf_phpbb_location', 'pf_phpbb_interests', 'pf_phpbb_occupation', 'pf_writing_prefs', 'pf_character_list', 'pf_plotters_trackers' ];
+
 		// --- START --- ACCOUNT LOGIC
 
 		// If selected account is default or writer, disable and reset fields
@@ -49,6 +53,20 @@ function updateProfileFields() {
 			toggleFieldClass( true );
 		} else {
 			toggleFieldClass( false );
+
+			// Hide writer fields when "Writer Name" is filled out
+			if ( pageType == 'ucp' ) {
+				var writerName = jQuery( '#pf_c_writer_name' ).val();
+
+				if ( writerName && writerName.length ) {
+					jQuery( hiddenWriterFields ).each( function( i ) {
+						var currentField = jQuery( '#' + hiddenWriterFields[i] );
+						if ( currentField && currentField.length ) {
+							currentField.parents( 'dl' ).addClass( hide );
+						}
+					});
+				}
+			}
 		}
 
 		// Check for changes on account type dropdown
@@ -89,10 +107,11 @@ function updateProfileFields() {
 
 		// Add or remove classes to hide fields
 		function toggleFieldClass( condition ) {
+			var fieldsToHide = jQuery( '.error-msg-chracter, .character-fields' );
 			if ( condition ) {
-				jQuery( '.error-msg-chracter, .character-fields' ).addClass( 'hide-fields' );
+				fieldsToHide.addClass( hide );
 			} else {
-				jQuery( '.error-msg-chracter, .character-fields' ).removeClass( 'hide-fields' );
+				fieldsToHide.removeClass( hide );
 			}
 		}
 

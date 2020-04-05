@@ -565,6 +565,10 @@
 		float: none;
 		padding: 0;
 	}
+	.column-border {
+		border-top: 1px dashed $color-01;
+		padding: 20px 0 0 0;
+	}
 	.action-bar .pagination, .display-actions .display-actions-wrapper .left-box,
 	.display-actions .display-actions-wrapper .select-actions {
 		@include flex(full);
@@ -1898,9 +1902,11 @@
 			margin-bottom: $ffs;
 		}
 	}
-	#viewprofile .profile-panel .flex-row .details .group-options select {
-		width: 100%;
-		& + .button2 {
+	#viewprofile .profile-panel .flex-row .details .group-options {
+		padding-right: 10px;
+		.button2 {
+			position: static;
+			width: 100%;
 			margin-top: $ffs;
 		}
 	}

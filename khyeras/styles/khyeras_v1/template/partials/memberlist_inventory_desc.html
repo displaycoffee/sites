@@ -1,0 +1,59 @@
+{% set spellbook = PROFILE_C_SPELLBOOK_VALUE ? 'true' : 'false' %}
+{% if PROFILE_C_SPELLBOOK_VALUE %}
+	{% set spellbook = function.set_spellbook(spellbook, PROFILE_C_CLASS_OPTS_VALUE, PROFILE_C_RACE_OPTS_VALUE) %}
+{% endif %}
+
+{% set inventory_other_count = (PROFILE_C_WEAPONS_VALUE || PROFILE_C_ARMOR_VALUE || PROFILE_C_CLOTHING_ACC_VALUE || PROFILE_C_SKILLS_VALUE || spellbook == 'true') ? 1 : 0 %}
+
+<div class="character-inventory{{ inventory_class }}">
+	{% if inventory_other_count %}
+		{% if PROFILE_C_WEAPONS_VALUE %}
+			<section class="page-content-section">
+				<h3>{{ PROFILE_C_WEAPONS_NAME }}</h3>
+				<p>{{ function.replace_breaks(PROFILE_C_WEAPONS_VALUE) }}</p>
+			</section>
+		{% endif %}
+
+		{% if PROFILE_C_ARMOR_VALUE || PROFILE_C_CLOTHING_ACC_VALUE %}
+			<section class="page-content-section clearfix">
+				{% if PROFILE_C_ARMOR_VALUE && PROFILE_C_CLOTHING_ACC_VALUE %}
+					<div class="column1">
+				{% endif %}
+				{% if PROFILE_C_ARMOR_VALUE %}
+					<h3>{{ PROFILE_C_ARMOR_NAME }}</h3>
+					<p>{{ function.replace_breaks(PROFILE_C_ARMOR_VALUE) }}</p>
+				{% endif %}
+				{% if PROFILE_C_ARMOR_VALUE && PROFILE_C_CLOTHING_ACC_VALUE %}
+					</div>
+					<div class="column2 column-border">
+				{% endif %}
+				{% if PROFILE_C_CLOTHING_ACC_VALUE %}
+					<h3>{{ PROFILE_C_CLOTHING_ACC_NAME }}</h3>
+					<p>{{ function.replace_breaks(PROFILE_C_CLOTHING_ACC_VALUE) }}</p>
+				{% endif %}
+				{% if S_PROFILE_C_CLOTHING_ACC && S_PROFILE_C_ARMOR %}
+					</div>
+				{% endif %}
+			</section>
+		{% endif %}
+
+		{% if PROFILE_C_SKILLS_VALUE %}
+			<section class="page-content-section">
+				<h3>{{ PROFILE_C_SKILLS_NAME }}</h3>
+				<p>{{ function.replace_breaks(PROFILE_C_SKILLS_VALUE) }}</p>
+			</section>
+		{% endif %}
+
+		{% if spellbook == 'true' %}
+			<section class="page-content-section">
+				<h3>{{ PROFILE_C_SPELLBOOK_NAME }}</h3>
+				<p>{{ function.replace_breaks(PROFILE_C_SPELLBOOK_VALUE) }}</p>
+			</section>
+		{% endif %}
+	{% else %}
+		<section class="page-content-section">
+			<h3>Nothing Here Yet</h3>
+			<p>This character is getting their gear together. Check back later!</p>
+		</section>
+	{% endif %}
+</div>

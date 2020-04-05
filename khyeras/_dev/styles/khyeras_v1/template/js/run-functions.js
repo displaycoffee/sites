@@ -16,6 +16,8 @@ addQuickLinks();
 addSearchIgnoredClass();
 addThanksClass();
 bannerCodeGenerator('.link-banners img', '#link-banner-code code');
+checkForEmpty( '#viewprofile .user-contact .contact-icons', false );
+checkForEmpty( '#viewprofile .user-contact .details', false );
 checkForEmpty( '#viewprofile .extra-details', false );
 checkForEmpty( '.section-mcp-post-details .pagination ul', true );
 checkForNewPM();

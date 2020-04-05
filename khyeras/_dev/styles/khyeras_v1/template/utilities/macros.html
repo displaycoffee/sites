@@ -147,3 +147,23 @@
 {% macro replace_comma(value) %}
 	{{ value | spaceless | replace({', ': ' and '}) }}
 {% endmacro %}
+
+{% macro set_spellbook(spellbook, class_opts, race_opts) %}{% spaceless %}
+	{% set spellbook = spellbook %}
+
+	{% set magical = ['Paladin', 'Ranger', 'Druid', 'Sorcerer', 'Summoner', 'Wizard', 'Bard', 'Cleric', 'Physical', 'Magical', 'Restoration'] %}
+	{% set non_magical = ['Barbarian', 'Fighter', 'Monk', 'Rogue', 'Alchemist'] %}
+	{% set class_array = class_opts | split(', ') %}
+
+	{% for class in class_array %}
+		{% if class in non_magical %}
+			{% set spellbook = 'false' %}
+		{% elseif class in magical %}
+			{% set spellbook = 'true' %}
+		{% endif %}
+	{% endfor %}
+
+	{% if race_opts == 'Dwarf' || 'Kerasoka' in race_opts %}{% set spellbook = 'false' %}{% endif %}
+	
+	{{ spellbook }}
+{% endspaceless %}{% endmacro %}

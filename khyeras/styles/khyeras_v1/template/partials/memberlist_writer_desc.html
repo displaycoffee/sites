@@ -14,7 +14,7 @@
 			<section class="page-content-section">
 				<h3>About</h3>
 
-				{% if about_list_count > 0 %}
+				{% if about_list_count != '0' %}
 					{{ function.create_details(about_fields) }}
 				{% endif %}
 
@@ -36,7 +36,7 @@
 				{% endif %}
 				{% if PROFILE_CHARACTER_LIST_VALUE && PROFILE_PLOTTERS_TRACKERS_VALUE %}
 					</div>
-					<div class="column2">
+					<div class="column2 column-border">
 				{% endif %}
 				{% if PROFILE_PLOTTERS_TRACKERS_VALUE %}
 					<h3>{{ PROFILE_PLOTTERS_TRACKERS_NAME }}</h3>

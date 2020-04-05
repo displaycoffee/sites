@@ -160,16 +160,25 @@ dl.faq {
 				}
 			}
 			.details {
-				.group-options select {
-					width: auto;
-					margin-bottom: 0;
-					min-width: 75%;
+				.group-options {
+					position: relative;
+					padding-right: 65px;
+					select {
+						margin-bottom: 0;
+					}
+					.button2 {
+						@include position($type: absolute, $right: 0, $top: 0);
+						width: 60px;
+					}
 				}
 				.zebra a i {
 					color: $color-00;
 					font-size: rem(16px);
 					margin: 0 5px 0 0;
 					@include position($type: relative, $top: 1px);
+				}
+				.profile-permissions .comma:last-child {
+					display: none;
 				}
 			}
 		}

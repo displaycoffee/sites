@@ -10,7 +10,7 @@
 
 {% set character_list_count = function.count_details(character_fields) %}
 
-{% if character_list_count > 0 %}
+{% if character_list_count != '0' %}
 	<dl class="details{{ character_class }}">
 		{% for name, value in character_fields if value %}
 			<dt>{{ name }}{{ lang('COLON') }}</dt>
