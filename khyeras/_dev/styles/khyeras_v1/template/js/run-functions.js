@@ -29,6 +29,7 @@ toggleElements( '.forabg .toggle-button', '.topiclist.forums', 'inner', true );
 toggleElements( '.toggle-links .toggle-button', '.site-links', 'user-information', false );
 toggleElements( '.toggle-featured .toggle-button', '.featured-content', 'wrap', false );
 toggleElements( '.toggleable-section .toggle-button', '.card-grid', 'toggleable-section', true );
+addFiltering();
 
 // Run all jquery functions on document ready
 jQuery( document ).ready( function( $ ) {

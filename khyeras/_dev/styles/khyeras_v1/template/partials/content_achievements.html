@@ -763,6 +763,22 @@
 	{% set completed_cards = KHY_USER_ACHIEVEMENTS | replace({', ' : ','}) | split(',') %}
 {% endif %}
 
+{% set card_filters = {
+	'Location' : ['Tviyr', 'Fellsgard', 'Verdant Row', 'Ninraih', 'Ajteire', 'Irtuen Reaches', 'Domrhask', 'Khy\'eras'],
+	'Type'     : ['Book', 'People', 'Castle', 'Portal', 'Swords', 'Direction', 'Grail'],
+	'Status'   : ['Completed', 'Not Completed']
+} %}
+
+<div class="card-filters">
+	{% for key, card in card_filters %}
+		<div class="card-filter-menu">
+			{% for filter in card %}
+				<a class="card-filter" id="card-filter-{{ function.create_handle(key) }}-{{ function.create_handle(filter) }}" data-field="{{ function.create_handle(key) }}" data-filter="{{ function.create_handle(filter) }}">{{ filter }}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			{% endfor %}
+		</div><br /><br />
+	{% endfor %}
+</div>
+
 {% if completed_cards %}
 	<section class="page-content-section">
 		<div class="card-filter">

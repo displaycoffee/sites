@@ -117,6 +117,7 @@ function createTask(key) {
 		var jsSources = [
 			devJS + '/global-functions.js',
 			devJS + '/javascript-functions.js',
+			devJS + '/filter-functions.js',
 			devJS + '/jquery-functions.js',
 			devJS + '/profile-functions.js',
 			devJS + '/run-functions.js'
