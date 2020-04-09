@@ -800,7 +800,23 @@
 			{% for detail in card %}
 				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
 				{% set card_changed = (completed_cards && card_id in completed_cards) ? true : false %}
-				<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed card-opacity{% endif %}">
+
+				{% set card_type = 'Book' %}
+				{% if 'rpg-two-shadows' in detail.icon %}
+					{% set card_type = 'People' %}
+				{% elseif 'rpg-castle' in detail.icon %}
+					{% set card_type = 'Castle' %}
+				{% elseif 'rpg-portal' in detail.icon %}
+					{% set card_type = 'Portal' %}
+				{% elseif 'rpg-crossed-swords' in detail.icon %}
+					{% set card_type = 'Swords' %}
+				{% elseif 'rpg-direction-sign' in detail.icon %}
+					{% set card_type = 'Direction' %}
+				{% elseif 'rpg-holy-grail' in detail.icon %}
+					{% set card_type = 'Grail' %}
+				{% endif %}
+
+				<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed card-opacity{% endif %}" data-filters="location={{ function.create_handle(key) }}, type={{ function.create_handle(card_type) }}, status={{ card_changed ? 'true' : 'false' }}">
 					<h5 class="card-title">{{ detail.title }}</h5>
 					<div class="icon-wrapper">
 						<i class="icon icon-round rpg-icon {{ detail.icon }}" aria-hidden="true"></i>
