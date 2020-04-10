@@ -22,6 +22,14 @@ function addFiltering() {
 			var filterParameters = [];
 		}
 
+		// Add reset function to button
+		var cardReset = document.querySelectorAll( '.card-filter-reset' );
+		if ( cardReset && cardReset.length ) {
+			cardReset[0].onclick = function() {
+				resetAll();
+			};
+		}
+
 		// Loop through filter links
 		for ( var j = 0; j < filters.length; j++ ) {
 			var currentFilter = filters[j];
@@ -83,19 +91,37 @@ function addFiltering() {
 					block.applied -= 1;
 				}
 
-				var blockSelector = document.querySelector( block.id );
-				if ( blockSelector.classList.contains( toggleHide ) ) {
-					// do nothing if class contains toggle-hide already
-					// the block should stay hidden
-				} else {
-					if ( block.filters.indexOf( parameter ) !== -1 && block.applied < 1 ) {
-						if ( blockSelector.classList.contains( toggleShow ) ) {
-							blockSelector.classList.remove( toggleShow );
+				if ( filterParameters.length > 0) {
+					var blockSelector = document.querySelector( block.id );
+					if ( blockSelector.classList.contains( toggleHide ) ) {
+						// do nothing if class contains toggle-hide already
+						// the block should stay hidden
+					} else {
+						if ( block.filters.indexOf( parameter ) !== -1 && block.applied < 1 ) {
+							if ( blockSelector.classList.contains( toggleShow ) ) {
+								blockSelector.classList.remove( toggleShow );
+							}
+							blockSelector.classList.add( toggleHide );
 						}
-						blockSelector.classList.add( toggleHide );
 					}
 				}
 			});
+
+			// If there are no parameters, show all cards again
+			if ( filterParameters.length <= 0) {
+				resetAll();
+			}
+		}
+
+		// Reset all card block classes
+		function resetAll() {
+			window.history.pushState( {} , '', '?' );
+
+			var cardBlockElements = document.querySelectorAll( '.card-block' );
+			for ( var k = 0; k < cardBlockElements.length; k++ ) {
+				cardBlockElements[k].classList.remove( toggleShow );
+				cardBlockElements[k].classList.remove( toggleHide );
+			}
 		}
 	}
 }
