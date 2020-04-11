@@ -875,31 +875,37 @@
 	'Status'   : ['Completed', 'Not Completed']
 } %}
 
-<div class="card-filters">
-	{% for key, card in card_filters %}
-		<div class="card-filter-menu">
-			{% for filter in card %}
-				<a class="card-filter" id="card-filter-{{ function.create_handle(key) }}-{{ function.create_handle(filter) }}" data-field="{{ function.create_handle(key) }}" data-filter="{{ function.create_handle(filter) }}">{{ filter }}</a>&nbsp;&nbsp;&nbsp;&nbsp;
-			{% endfor %}
-		</div><br /><br />
-	{% endfor %}
-
-	<button class="card-filter-reset button-link" type="button">
-		<i class="icon rpg-icon rpg-pokecog"></i>
-		<span>Reset Filters</span>
-	</button>
-</div>
-
-{% if completed_cards %}
-	<section class="page-content-section">
-		<div class="card-filter">
-			<button class="card-filter-button toggle-button-show button-link" type="button">
-				<i class="icon rpg-icon rpg-pokecog"></i>
-				<span>completed achievements</span>
+<section class="card-filters page-content-section">
+	<div class="card-filter-row">
+		<div class="card-filter-column card-filter-label">Filter Achievements:</div>
+		{% for key, card in card_filters %}
+			<div class="card-filter-column card-filter-menu">
+				<div class="dropdown-container">
+					<div class="dropdown-trigger">
+						<span>{{ key }}</span><i class="icon icon-lg fa-angle-down"></i>
+					</div>
+					<div class="dropdown">
+						<ul class="dropdown-contents" role="menu">
+							{% for filter in card %}
+								<li>
+									<a class="card-filter" id="card-filter-{{ function.create_handle(key) }}-{{ function.create_handle(filter) }}" data-field="{{ function.create_handle(key) }}" data-filter="{{ function.create_handle(filter) }}" title="{{ filter }}" role="menuitem">{{ filter }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		<div class="card-filter-column card-filter-button">
+			<button class="card-filter-reset button" type="button">
+				<i class="icon fa-close"></i>
+				<span>Clear Filters</span>
 			</button>
 		</div>
-	</section>
-{% endif %}
+	</div>
+</section>
+
+{% set card_object = '' %}
 
 {% for key, card in cards %}
 	{% set section_id = function.create_handle(key) %}
@@ -911,7 +917,7 @@
 			{% for detail in card %}
 				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
 				{% set card_changed = (completed_cards && card_id in completed_cards) ? true : false %}
-				<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed card-opacity{% endif %}">
+				<div id="{{ card_id }}" class="card-block{% if card_changed %} card-opacity{% endif %}">
 					<h5 class="card-title">{{ detail.title }}</h5>
 					<div class="icon-wrapper">
 						<i class="icon icon-round rpg-icon {{ detail.icon }}" aria-hidden="true"></i>
@@ -938,19 +944,15 @@
 						</dl>
 					{% endif %}
 				</div>
+				{% set card_data %}{% spaceless %}
+					{'id' : '#{{ card_id }}', 'filters' : 'location={{ function.create_handle(key) }}, type={{ function.create_handle(detail.type) }}, status={{ card_changed ? 'completed' : 'not-completed' }}', 'applied' : 0}{% if (!loop.last && key == 'Khy\'eras') || (key != 'Khy\'eras') %},{% endif %}
+				{% endspaceless %}{% endset %}
+				{% set card_object = card_object ~ card_data %}
 			{% endfor %}
 		</div>
 	</section>
 {% endfor %}
 
 <script>
-	var cardBlocks = [{% for key, card in cards %}{% spaceless %}
-		{% set section_id = function.create_handle(key) %}
-		{% for detail in card %}{% spaceless %}
-			{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
-			{% set card_changed = (completed_cards && card_id in completed_cards) ? true : false %}
-
-			{'id' : '#{{ card_id }}', 'filters' : 'location={{ function.create_handle(key) }}, type={{ function.create_handle(detail.type) }}, status={{ card_changed ? 'true' : 'false' }}', 'applied' : 0}{% if (!loop.last && key == 'Khy\'eras') || (key != 'Khy\'eras') %},{% endif %}
-		{% endspaceless %}{% endfor %}
-	{% endspaceless %}{% endfor %}];
+	var cardBlocks = [{{ card_object }}];
 </script>

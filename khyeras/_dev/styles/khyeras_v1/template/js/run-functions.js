@@ -47,7 +47,6 @@ jQuery( document ).ready( function( $ ) {
 	formatDisplayActions();
 	hidePMPostBox();
 	addCPWrapper();
-	toggleContent( '.card-filter-button', '.card-changed', 'toggle-hide', '' );
 	toggleMemberDisplay();
 	toggleMapDisplay();
 

@@ -255,6 +255,18 @@
 	.card-grid .card-block {
 		width: 50%;
 	}
+	.card-filters {
+		.card-filter-label, .card-filter-button {
+			@include flex(1 0 auto);
+			width: 50%;
+		}
+		.card-filter-menu {
+			order: 1;
+		}
+		.card-filter-button {
+			text-align: right;
+		}
+	}
 
 	// cp.scss
 	.cp-wrapper {
@@ -995,13 +1007,11 @@
 		.excerpt-image, &.excerpt-right .excerpt-image {
 			margin: 0 0 20px 0;
 		}
-		.excerpt-image {
-			.image-wrap {
-				height: 150px;
-				border-radius: 0;
-				border-width: 2px;
-				padding-bottom: 0;
-			}
+		.excerpt-image .image-wrap {
+			height: 150px;
+			border-radius: 0;
+			border-width: 2px;
+			padding-bottom: 0;
 		}
 		.excerpt-details {
 			.excerpt-title {
@@ -1916,6 +1926,17 @@
 	}
 	.banner.banner-vertical {
 		padding-bottom: calc(100% - -39px);
+	}
+	.card-filters {
+		.card-filter-label, .card-filter-button {
+			@include flex(full);
+		}
+		.card-filter-menu {
+			order: 0;
+		}
+		.card-filter-button .button {
+			width: 100%;
+		}
 	}
 	.pie-chart {
 		display: block;

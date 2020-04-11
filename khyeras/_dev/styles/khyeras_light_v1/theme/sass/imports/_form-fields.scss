@@ -84,16 +84,21 @@ button, html input, option, select, textarea {
 	}
 }
 
-button, option {
-	&[disabled] {
-		color: $color-11;
-	}
-}
-
 html input, select, textarea {
 	&[disabled] {
 		color: map-get($color-set-11, dark-00);
 		background: $color-11;
+	}
+}
+
+option[disabled] {
+	color: $color-11;
+}
+
+button[disabled] {
+	opacity: 0.5;
+	&:hover {
+		background: $color-05;
 	}
 }
 

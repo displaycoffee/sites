@@ -1,13 +1,15 @@
 function addFiltering() {
 	var filters = document.querySelectorAll( '.card-filters .card-filter-menu .card-filter' );
+	var filterParameters = [];
 	var filtersActive = 'card-filter-active';
 	var toggleShow = 'toggle-show';
 	var toggleHide = 'toggle-hide';
+	var cardReset = document.querySelectorAll( '.card-filter-reset' );
 
 	if ( filters && filters.length && cardBlocks ) {
 		// Check if there are already filter parameters applied to the url
 		if ( window.location.search ) {
-			var filterParameters = window.location.search.replace( '?', '' ).split( '&' );
+			filterParameters = window.location.search.replace( '?', '' ).split( '&' );
 
 			// If there are filters applied to the url, add active class
 			for ( var i = 0; i < filterParameters.length; i++ ) {
@@ -19,11 +21,10 @@ function addFiltering() {
 				}
 			}
 		} else {
-			var filterParameters = [];
+			toggleCardButton( false );
 		}
 
 		// Add reset function to button
-		var cardReset = document.querySelectorAll( '.card-filter-reset' );
 		if ( cardReset && cardReset.length ) {
 			cardReset[0].onclick = function() {
 				resetAll();
@@ -36,6 +37,10 @@ function addFiltering() {
 
 			// Filter click event
 			currentFilter.onclick = function( e ) {
+				if ( !window.location.search ) {
+					toggleCardButton( true );
+				}
+
 				var selector = e.target || e.srcElement;
 				var field = selector.getAttribute( 'data-field' );
 				var filter = selector.getAttribute( 'data-filter' );
@@ -115,12 +120,37 @@ function addFiltering() {
 
 		// Reset all card block classes
 		function resetAll() {
+			// Clear filters array
+			filterParameters = [];
+
+			// Reset push state
 			window.history.pushState( {} , '', '?' );
 
-			var cardBlockElements = document.querySelectorAll( '.card-block' );
-			for ( var k = 0; k < cardBlockElements.length; k++ ) {
-				cardBlockElements[k].classList.remove( toggleShow );
-				cardBlockElements[k].classList.remove( toggleHide );
+			// Remove filtersActive class
+			for ( var k = 0; k < filters.length; k++ ) {
+				filters[k].classList.remove( filtersActive );
+			}
+
+			// Loop through blocks, reset count, and remove classes
+			cardBlocks.filter( function( block ) {
+				if ( block.applied > 0 ) {
+					block.applied = 0;
+				}
+
+				var blockSelector = document.querySelector( block.id );
+				blockSelector.classList.remove( toggleShow );
+				blockSelector.classList.remove( toggleHide );
+			});
+
+			toggleCardButton( false );
+		}
+
+		// Enable or disable reset button
+		function toggleCardButton( toggle ) {
+			if ( toggle ) {
+				cardReset[0].removeAttribute( 'disabled' );
+			} else {
+				cardReset[0].setAttribute( 'disabled', '' );
 			}
 		}
 	}

@@ -110,37 +110,6 @@ function addCPWrapper() {
 	}
 }
 
-// Show/hide selected content
-function toggleContent( button, selector, toggleClass, type ) {
-	var button = jQuery( button );
-	var buttonShow = 'toggle-button-show';
-	var buttonHide = 'toggle-button-hide';
-
-	if ( button && button.length ) {
-		// Add button click event
-		button.off().on( 'click', function() {
-			var current = jQuery( this );
-
-			// Change content selector depending on type
-			var content = jQuery( selector );
-			if ( type == 'prev' ) {
-				content = current.prev( selector );
-			} else if ( type == 'next' ) {
-				content = current.next( selector );
-			}
-
-			// Add or remove toggle classes
-			if ( current.hasClass( buttonHide ) ) {
-				content.removeClass( toggleClass );
-				current.removeClass( buttonHide ).addClass( buttonShow );
-			} else {
-				content.addClass( toggleClass );
-				current.removeClass( buttonShow ).addClass( buttonHide );
-			}
-		});
-	}
-}
-
 // Toggle display of character versus writer on memberlist_view
 function toggleMemberDisplay() {
 	var profileTabs = jQuery( '.profile-tabs' );

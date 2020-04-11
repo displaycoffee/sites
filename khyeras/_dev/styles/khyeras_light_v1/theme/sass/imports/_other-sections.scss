@@ -507,15 +507,56 @@ dl.faq {
 	}
 }
 
-.card-filter {
+.card-filters {
 	margin: 0 0 20px 0;
-	text-align: center;
-	.card-filter-button {
-		&.toggle-button-show span:before {
-			content: 'Hide ';
+	.card-filter-row {
+		@include flex-flow(row wrap);
+		align-items: center;
+		margin: 0 -5px -10px -5px;
+		.card-filter-column {
+			padding: 0 5px;
+			margin: 0 0 10px 0;
 		}
-		&.toggle-button-hide span:before {
-			content: 'Show ';
+	}
+	.card-filter-label, .card-filter-button {
+		@include flex;
+	}
+	.card-filter-label {
+		font-weight: bold;
+	}
+	.card-filter-menu {
+		@include flex(base);
+		.dropdown-container {
+			.dropdown-trigger {
+				min-width: 150px;
+				padding: 0 50px 0 20px;
+				background: $color-02;
+				border: 1px solid $color-01;
+				line-height: 38px;
+				position: relative;
+				.fa-angle-down {
+					@include sizing(16px, 16px);
+					@include position($type: absolute, $top: 0, $bottom: 0, $right: 20px);
+					margin: auto;
+				}
+			}
+			.dropdown {
+				min-width: 1px;
+				margin-top: 10px !important;
+				@include position($top: auto, $left: 0, $right: 0);
+				.dropdown-contents > li  {
+					.card-filter {
+						cursor: pointer;
+					}
+					.card-filter-active {
+						color: $color-04;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		.dropdown-visible .dropdown-trigger .fa-angle-down:before {
+			content: unicode($icon-angle-up);
 		}
 	}
 }
