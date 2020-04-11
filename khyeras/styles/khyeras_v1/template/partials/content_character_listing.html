@@ -1,14 +1,9 @@
 {% if KHY_CHARACTERS %}
 	{% set card = KHY_CHARACTERS %}
 
-	<section class="page-content-section">
-		<div class="card-filter">
-			<button class="card-filter-button toggle-button-show button-link" type="button">
-				<i class="icon rpg-icon rpg-pokecog"></i>
-				<span>inactive characters</span>
-			</button>
-		</div>
-	</section>
+	{{ function.create_filters('Characters', KHY_CHARACTER_FILTERS) }}
+
+	{% set card_object = '' %}
 
 	{% set section_id = 'character' %}
 	<section class="page-content-section">
@@ -17,7 +12,7 @@
 			{% for detail in card %}
 				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.name) ~ detail.key %}
 				{% set card_changed = (detail.last_post == 'Never' || detail.days_since > 180) ? true : false %}
-				<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed{% endif %}">
+				<div id="{{ card_id }}" class="card-block">
 					<h5 class="card-title">
 						<a href="{{ ROOT_PATH }}{{ detail.profile }}">{{ detail.name }}</a>
 					</h5>
@@ -63,9 +58,17 @@
 						</dl>
 					{% endif %}
 				</div>
+				{% set card_data %}{% spaceless %}
+					{'id' : '#{{ card_id }}', 'filters' : 'race={{ function.create_handle(detail.parameters.race.0) }}, {% if detail.parameters.race.1 %}race={{ function.create_handle(detail.parameters.race.1) }}, {% endif %}class={{ function.create_handle(detail.parameters.class.0) }}, {% if detail.parameters.class.1 %}class={{ function.create_handle(detail.parameters.class.1) }}, {% endif %}gender={{ function.create_handle(detail.parameters.gender) }}, residence={{ function.create_handle(detail.parameters.residence) }}, status={{ function.create_handle(detail.parameters.status) }}', 'applied' : 0}{% if !loop.last %},{% endif %}
+				{% endspaceless %}{% endset %}
+				{% set card_object = card_object ~ card_data %}
 			{% endfor %}
 		</div>
 	</section>
+
+	<script>
+		var cardBlocks = [{{ card_object }}];
+	</script>
 {% else %}
 	<section class="page-content-section">
 		<p>There are no active characters.</p>

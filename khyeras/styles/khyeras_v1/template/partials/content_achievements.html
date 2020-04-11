@@ -875,35 +875,7 @@
 	'Status'   : ['Completed', 'Not Completed']
 } %}
 
-<section class="card-filters page-content-section">
-	<div class="card-filter-row">
-		<div class="card-filter-column card-filter-label">Filter Achievements:</div>
-		{% for key, card in card_filters %}
-			<div class="card-filter-column card-filter-menu">
-				<div class="dropdown-container">
-					<div class="dropdown-trigger">
-						<span>{{ key }}</span><i class="icon icon-lg fa-angle-down"></i>
-					</div>
-					<div class="dropdown">
-						<ul class="dropdown-contents" role="menu">
-							{% for filter in card %}
-								<li>
-									<a class="card-filter" id="card-filter-{{ function.create_handle(key) }}-{{ function.create_handle(filter) }}" data-field="{{ function.create_handle(key) }}" data-filter="{{ function.create_handle(filter) }}" title="{{ filter }}" role="menuitem">{{ filter }}</a>
-								</li>
-							{% endfor %}
-						</ul>
-					</div>
-				</div>
-			</div>
-		{% endfor %}
-		<div class="card-filter-column card-filter-button">
-			<button class="card-filter-reset button" type="button">
-				<i class="icon fa-close"></i>
-				<span>Clear Filters</span>
-			</button>
-		</div>
-	</div>
-</section>
+{{ function.create_filters('Achievements', card_filters) }}
 
 {% set card_object = '' %}
 

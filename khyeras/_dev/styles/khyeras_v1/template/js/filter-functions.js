@@ -6,7 +6,7 @@ function addFiltering() {
 	var toggleHide = 'toggle-hide';
 	var cardReset = document.querySelectorAll( '.card-filter-reset' );
 
-	if ( filters && filters.length && cardBlocks ) {
+	if ( filters && filters.length && typeof cardBlocks != 'undefined' ) {
 		// Check if there are already filter parameters applied to the url
 		if ( window.location.search ) {
 			filterParameters = window.location.search.replace( '?', '' ).split( '&' );

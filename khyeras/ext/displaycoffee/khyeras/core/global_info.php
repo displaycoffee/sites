@@ -207,6 +207,15 @@ class global_info {
 
 		// Don't run any of the below code unless on the correct pages
 		if ($common['script_name'] == 'app/members-character-census' || $common['script_name'] == 'app/members-character-listing') {
+			// Empty object to store chracter filters
+			$character_filters = [
+				'Race'      => [],
+				'Class'     => [],
+				'Gender'    => [],
+				'Residence' => [],
+				'Status'    => ['Active', 'Inactive']
+			];
+
 			// Get the user lang_id
 			$lang_id = $common['user']['lang'];
 
@@ -235,7 +244,7 @@ class global_info {
 			// Run the query
 			$character_result = $this->db->sql_query($character_sql);
 
-			// Loops through the chracter rows and add to characters
+			// Loops through the character rows and add to characters
 			while ($row = $this->db->sql_fetchrow($character_result)) {
 				// Set user last post time
 				$last_post_time = intval($row['user_lastpost_time']);
@@ -291,7 +300,7 @@ class global_info {
 
 			// Loop through characters array
 			foreach ($characters as $key => $value) {
-				// Get chracter profile field information
+				// Get character profile field information
 				$pf = $this->manager->grab_profile_fields_data($value['id'])[$value['id']];
 
 				// Set level and currenty for later Variables
@@ -305,7 +314,7 @@ class global_info {
 				$character_residence = $this->utilities->exists($pf['c_residence']['value'], 'Elsewhere');
 
 				// Get hp and mp loss
-				$chracter_remaining = [
+				$character_remaining = [
 					'hp' => ($pf['c_hp']['value'] * 1),
 					'mp' => ($pf['c_mp']['value'] * 1)
 				];
@@ -320,8 +329,15 @@ class global_info {
 					'residence'   => $character_residence,
 					'level'       => $character_level,
 					'stats'       => $this->utilities->get_life_modifier($character_race, $character_class, $character_level),
-					'remaining'   => $chracter_remaining,
-					'currency'    => $this->utilities->calc_currency($pf['c_copper']['value'])
+					'remaining'   => $character_remaining,
+					'currency'    => $this->utilities->calc_currency($pf['c_copper']['value']),
+					'parameters'  => [
+						'race'      => array(),
+						'class'     => array(),
+						'gender'    => '',
+						'residence' => '',
+						'status'    => check_limit($value['days_since']) ? 'active' : 'inactive'
+					]
 				];
 
 				// Add details to characters array
@@ -344,6 +360,14 @@ class global_info {
 					if (check_limit($value['days_since'])) {
 						$character_census['race'][$limit][$race_key] += 1;
 						$character_census['race'][$limit_expanded][$current_race] += 1;
+					}
+
+					// Also add race parameters to character
+					array_push($characters[$value['id']]['parameters']['race'], $current_race);
+
+					// Add race values to filters if not already in array
+					if (!in_array($current_race, $character_filters['Race'])) {
+						array_push($character_filters['Race'], $current_race);
 					}
 				}
 
@@ -370,13 +394,21 @@ class global_info {
 						$character_census['class'][$limit][$class_key] += 1;
 						$character_census['class'][$limit_expanded][$current_class] += 1;
 					}
+
+					// Also add class parameters to character
+					array_push($characters[$value['id']]['parameters']['class'], $current_class);
+
+					// Add class values to filters if not already in array
+					if (!in_array($current_class, $character_filters['Class'])) {
+						array_push($character_filters['Class'], $current_class);
+					}
 				}
 
 				// Add gender count
 				if ($character_gender) {
 					// Set object / array of genders we want to show in the count
 					$allowed_genders = [
-						'Transgender' => array('transgender', 'transsexual'),
+						'Transgender' => array('transgender', 'transsexual', 'trans'),
 						'Non-binary'  => array('nonbinary', 'genderqueer', 'bigender', 'genderfluid', 'gender fluid', 'agender', 'demigender'),
 						'Female'      => array('female', 'woman', 'her', 'she', 'hers', 'girl'),
 						'Male'        => array('male', 'man', 'him', 'he', 'his', 'boy'),
@@ -403,6 +435,14 @@ class global_info {
 						}
 					}
 
+					// Also add gender parameters to character
+					$characters[$value['id']]['parameters']['gender'] = $gender_key;
+
+					// Add gender values to filters if not already in array
+					if (!in_array($gender_key, $character_filters['Gender'])) {
+						array_push($character_filters['Gender'], $gender_key);
+					}
+
 					// Add counts for gender
 					$character_census['gender'][$all][$gender_key] += 1;
 
@@ -420,6 +460,14 @@ class global_info {
 					// If the residence is not in $allowed_residences, add as "Elsewhere"
 					$residence_key = in_array($character_residence, $allowed_residences) ? $character_residence : 'Elsewhere';
 
+					// Also add residence parameters to character
+					$characters[$value['id']]['parameters']['residence'] = $residence_key;
+
+					// Add residence values to filters if not already in array
+					if (!in_array($residence_key, $character_filters['Residence'])) {
+						array_push($character_filters['Residence'], $residence_key);
+					}
+
 					// Add counts for residences
 					$character_census['residence'][$all][$residence_key] += 1;
 
@@ -430,10 +478,17 @@ class global_info {
 				}
 			}
 
+			// Sort filter values alphabetically
+			foreach ($character_filters as $key => $value) {
+				sort($value);
+				$character_filters[$key] = $value;
+			}
+
 			// Assign global template variables for re-use
 			$this->template->assign_vars(array(
-				'KHY_CHARACTERS' => $characters,
-				'KHY_CENSUS'     => $character_census
+				'KHY_CHARACTERS'        => $characters,
+				'KHY_CENSUS'            => $character_census,
+				'KHY_CHARACTER_FILTERS' => $character_filters
 	 		));
 		}
 	}

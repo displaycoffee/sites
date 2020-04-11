@@ -10,6 +10,38 @@
 	{{ value | replace({'"' : '', '\'' : '', '(' : '', ')' : '', ',' : '', '!' : '', ' ' : '-'}) | lower }}
 {% endspaceless %}{% endmacro %}
 
+{% macro create_filters(title, filters) %}
+	<section class="card-filters page-content-section">
+		<div class="card-filter-row">
+			<div class="card-filter-column card-filter-label">Filter {{ title }}:</div>
+			{% for key, card in filters %}
+				<div class="card-filter-column card-filter-menu">
+					<div class="dropdown-container">
+						<div class="dropdown-trigger">
+							<span>{{ key }}</span><i class="icon icon-lg fa-angle-down"></i>
+						</div>
+						<div class="dropdown">
+							<ul class="dropdown-contents" role="menu">
+								{% for filter in card %}
+									<li>
+										<a class="card-filter" id="card-filter-{{ _self.create_handle(key) }}-{{ _self.create_handle(filter) }}" data-field="{{ _self.create_handle(key) }}" data-filter="{{ _self.create_handle(filter) }}" title="{{ filter }}" role="menuitem">{{ filter }}</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			<div class="card-filter-column card-filter-button">
+				<button class="card-filter-reset button" type="button">
+					<i class="icon fa-close"></i>
+					<span>Clear Filters</span>
+				</button>
+			</div>
+		</div>
+	</section>
+{% endmacro %}
+
 {% macro create_details(details) %}
 	<dl class="details">
 		{% for name, value in details %}
@@ -164,6 +196,6 @@
 	{% endfor %}
 
 	{% if race_opts == 'Dwarf' || 'Kerasoka' in race_opts %}{% set spellbook = 'false' %}{% endif %}
-	
+
 	{{ spellbook }}
 {% endspaceless %}{% endmacro %}
