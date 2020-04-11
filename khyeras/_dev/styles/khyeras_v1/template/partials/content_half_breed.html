@@ -1,331 +1,335 @@
-{% set cards = {
-	'Dragon' : [
-		{
-			title : 'Not Applicable',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : '<em>Cannot create a half-breed with this race!</em> Dragons limit reproduction to their own kind. They have experimented allowing Humans to use their blood to create the Ue\'drahc, but this genesis is not utilized presently.'
-		}
-	],
-	'Dwarf' : [
-		{
-			title : 'Elemental',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. This race contains too many arcane and whimsical properties.'
-		},
-		{
-			title : 'Fae',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Not interested in races with heavy magical influence.'
-		},
-		{
-			title : 'Human',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Dwarves can tolerate this race.'
-		},
-		{
-			title : 'Kerasoka',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Ever since the Kerasoka lost magic, it hasn\'t been a problem.'
-		},
-		{
-			title : 'Lumeacia',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Not interested in races with heavy magical influence.'
-		},
-		{
-			title : 'Shapeshifter',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Dwarves can tolerate this race.'
-		},
-		{
-			title : 'Ue\'drahc',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Reptilian Humans are imposing, tall, and scaly.'
-		}
-	],
-	'Elemental' : [
-		{
-			title : 'Dwarf',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Dwarves haven\'t made an alliance acceptable.'
-		},
-		{
-			title : 'Fae',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The Fae is welcomed because of enchanted bloodlines.'
-		},
-		{
-			title : 'Human',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. While not overly exciting for the Elemental, there\'s nothing wrong with a Human friend.'
-		},
-		{
-			title : 'Kerasoka',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Although most wish the Kerasoka possessed magic, they have established liaisons.'
-		},
-		{
-			title : 'Lumeacia',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The Lumeacia is welcomed because of enchanted bloodlines.'
-		},
-		{
-			title : 'Shapeshifter',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Shapeshifters have abilities to transform into beings that make situations easier.'
-		},
-		{
-			title : 'Ue\'drahc',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		}
-	],
-	'Fae' : [
-		{
-			title : 'Dwarf',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Dwarves haven\'t made an alliance acceptable.'
-		},
-		{
-			title : 'Elemental',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Ties between the two can create exceptionally talented beings.'
-		},
-		{
-			title : 'Human',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. A Human is almost like a wingless Fae in the end.'
-		},
-		{
-			title : 'Kerasoka',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. This elven race shares habitat with the Fae, so bonds are common.'
-		},
-		{
-			title : 'Lumeacia',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. There is tension due to the Kerasoka alliance.'
-		},
-		{
-			title : 'Shapeshifter',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The Fae have no historical problems with Shapeshifters.'
-		},
-		{
-			title : 'Ue\'drahc',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		}
-	],
-	'Ghost' : [
-		{
-			title : 'Not Applicable',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : '<em>Cannot create a half-breed with this race!</em> A being is either dead or not-dead; there is no in-between. Ghosts derive from the passing of select races: Lumeacia, Kerasoka, Shapeshifter, Dwarf, or Human.'
-		}
-	],
-	'Human' : [
-		{
-			title : 'Dwarf',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Humans are accepting and open to all types of exchanges.'
-		},
-		{
-			title : 'Elemental',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Humans are accepting and open to all types of exchanges.'
-		},
-		{
-			title : 'Fae',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Humans are accepting and open to all types of exchanges.'
-		},
-		{
-			title : 'Kerasoka',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Humans are accepting and open to all types of exchanges.'
-		},
-		{
-			title : 'Lumeacia',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. These elves see no benefit to coalescing with Humans.'
-		},
-		{
-			title : 'Shapeshifter',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. This race is similar to Humans, but with bonus abilities.'
-		},
-		{
-			title : 'Ue\'drahc',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Offspring are more Dragon-like, therefore keeping the Ue\'drahc community strong.'
-		}
-	],
-	'Kerasoka' : [
-		{
-			title : 'Dwarf',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Dwarves are on the gruff side, but do form stable and healthy affairs.'
-		},
-		{
-			title : 'Elemental',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Few Kerasoka are keen to regain magic and this might help.'
-		},
-		{
-			title : 'Fae',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The Fae shares habitat with this elven race, so bonds are common.'
-		},
-		{
-			title : 'Human',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The pair is close in their composition and are agreeable.'
-		},
-		{
-			title : 'Lumeacia',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Viewed as forbidden because of past events, but it does happen.'
-		},
-		{
-			title : 'Shapeshifter',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The pair is close in their composition and are agreeable.'
-		},
-		{
-			title : 'Ue\'drahc',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		}
-	],
-	'Korcai' : [
-		{
-			title : 'Not Applicable',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : '<em>Cannot create a half-breed with this race!</em> Folk who are bitten and turned by the Korcai virus are completely altered. Once transformed, the infected lose any capabilities and appearances of their former race.'
-		}
-	],
-	'Lumeacia' : [
-		{
-			title : 'Dwarf',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. The feeling of dislike is mutual between the two.'
-		},
-		{
-			title : 'Elemental',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The Lumeacia are positive when it relates to enhancing magical and intellectual knowledge.'
-		},
-		{
-			title : 'Fae',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. There is tension due to the Kerasoka alliance.'
-		},
-		{
-			title : 'Human',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. There is no curiosity or passion with races that may struggle with magic.'
-		},
-		{
-			title : 'Kerasoka',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Viewed as forbidden because of past events, but it does happen.'
-		},
-		{
-			title : 'Shapeshifter',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. There is no curiosity or passion with races that may struggle with magic.'
-		},
-		{
-			title : 'Ue\'drahc',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. They do not detest Ue\'drahc, but the product of their union could be an abomination.'
-		}
-	],
-	'Shapeshifter' : [
-		{
-			title : 'Dwarf',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Shapeshifters are accepting and open to all types of exchanges.'
-		},
-		{
-			title : 'Elemental',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Shapeshifters are accepting and open to all types of exchanges.'
-		},
-		{
-			title : 'Fae',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Shapeshifters are accepting and open to all types of exchanges.'
-		},
-		{
-			title : 'Human',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The roots of Shapeshifters orginated with Humans.'
-		},
-		{
-			title : 'Kerasoka',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. The pair is close in their composition and are agreeable.'
-		},
-		{
-			title : 'Lumeacia',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Largely because of Lumeacia opinion, these elves are avoided.'
-		},
-		{
-			title : 'Ue\'drahc',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		}
-	],
-	'Ue\'drahc' : [
-		{
-			title : 'Dwarf',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		},
-		{
-			title : 'Elemental',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		},
-		{
-			title : 'Fae',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		},
-		{
-			title : 'Human',
-			icon : 'icon-bg-green fa-heart',
-			description : 'Yes. Humans are the only race where an affiliation permits them to extend the Ue\'drahc population.'
-		},
-		{
-			title : 'Kerasoka',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		},
-		{
-			title : 'Lumeacia',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		},
-		{
-			title : 'Shapeshifter',
-			icon : 'icon-bg-red fa-close card-trigger',
-			description : 'No. Though there are no ill feelings, the partnership is not considered.'
-		},
-	]
-} %}
+{% spaceless %}
+	{% set cards = {
+		'Dragon' : [
+			{
+				title : 'Not Applicable',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : '<em>Cannot create a half-breed with this race!</em> Dragons limit reproduction to their own kind. They have experimented allowing Humans to use their blood to create the Ue\'drahc, but this genesis is not utilized presently.'
+			}
+		],
+		'Dwarf' : [
+			{
+				title : 'Elemental',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. This race contains too many arcane and whimsical properties.'
+			},
+			{
+				title : 'Fae',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Not interested in races with heavy magical influence.'
+			},
+			{
+				title : 'Human',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Dwarves can tolerate this race.'
+			},
+			{
+				title : 'Kerasoka',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Ever since the Kerasoka lost magic, it hasn\'t been a problem.'
+			},
+			{
+				title : 'Lumeacia',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Not interested in races with heavy magical influence.'
+			},
+			{
+				title : 'Shapeshifter',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Dwarves can tolerate this race.'
+			},
+			{
+				title : 'Ue\'drahc',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Reptilian Humans are imposing, tall, and scaly.'
+			}
+		],
+		'Elemental' : [
+			{
+				title : 'Dwarf',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Dwarves haven\'t made an alliance acceptable.'
+			},
+			{
+				title : 'Fae',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The Fae is welcomed because of enchanted bloodlines.'
+			},
+			{
+				title : 'Human',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. While not overly exciting for the Elemental, there\'s nothing wrong with a Human friend.'
+			},
+			{
+				title : 'Kerasoka',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Although most wish the Kerasoka possessed magic, they have established liaisons.'
+			},
+			{
+				title : 'Lumeacia',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The Lumeacia is welcomed because of enchanted bloodlines.'
+			},
+			{
+				title : 'Shapeshifter',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Shapeshifters have abilities to transform into beings that make situations easier.'
+			},
+			{
+				title : 'Ue\'drahc',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			}
+		],
+		'Fae' : [
+			{
+				title : 'Dwarf',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Dwarves haven\'t made an alliance acceptable.'
+			},
+			{
+				title : 'Elemental',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Ties between the two can create exceptionally talented beings.'
+			},
+			{
+				title : 'Human',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. A Human is almost like a wingless Fae in the end.'
+			},
+			{
+				title : 'Kerasoka',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. This elven race shares habitat with the Fae, so bonds are common.'
+			},
+			{
+				title : 'Lumeacia',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. There is tension due to the Kerasoka alliance.'
+			},
+			{
+				title : 'Shapeshifter',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The Fae have no historical problems with Shapeshifters.'
+			},
+			{
+				title : 'Ue\'drahc',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			}
+		],
+		'Ghost' : [
+			{
+				title : 'Not Applicable',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : '<em>Cannot create a half-breed with this race!</em> A being is either dead or not-dead; there is no in-between. Ghosts derive from the passing of select races: Lumeacia, Kerasoka, Shapeshifter, Dwarf, or Human.'
+			}
+		],
+		'Human' : [
+			{
+				title : 'Dwarf',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Humans are accepting and open to all types of exchanges.'
+			},
+			{
+				title : 'Elemental',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Humans are accepting and open to all types of exchanges.'
+			},
+			{
+				title : 'Fae',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Humans are accepting and open to all types of exchanges.'
+			},
+			{
+				title : 'Kerasoka',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Humans are accepting and open to all types of exchanges.'
+			},
+			{
+				title : 'Lumeacia',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. These elves see no benefit to coalescing with Humans.'
+			},
+			{
+				title : 'Shapeshifter',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. This race is similar to Humans, but with bonus abilities.'
+			},
+			{
+				title : 'Ue\'drahc',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Offspring are more Dragon-like, therefore keeping the Ue\'drahc community strong.'
+			}
+		],
+		'Kerasoka' : [
+			{
+				title : 'Dwarf',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Dwarves are on the gruff side, but do form stable and healthy affairs.'
+			},
+			{
+				title : 'Elemental',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Few Kerasoka are keen to regain magic and this might help.'
+			},
+			{
+				title : 'Fae',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The Fae shares habitat with this elven race, so bonds are common.'
+			},
+			{
+				title : 'Human',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The pair is close in their composition and are agreeable.'
+			},
+			{
+				title : 'Lumeacia',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Viewed as forbidden because of past events, but it does happen.'
+			},
+			{
+				title : 'Shapeshifter',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The pair is close in their composition and are agreeable.'
+			},
+			{
+				title : 'Ue\'drahc',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			}
+		],
+		'Korcai' : [
+			{
+				title : 'Not Applicable',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : '<em>Cannot create a half-breed with this race!</em> Folk who are bitten and turned by the Korcai virus are completely altered. Once transformed, the infected lose any capabilities and appearances of their former race.'
+			}
+		],
+		'Lumeacia' : [
+			{
+				title : 'Dwarf',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. The feeling of dislike is mutual between the two.'
+			},
+			{
+				title : 'Elemental',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The Lumeacia are positive when it relates to enhancing magical and intellectual knowledge.'
+			},
+			{
+				title : 'Fae',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. There is tension due to the Kerasoka alliance.'
+			},
+			{
+				title : 'Human',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. There is no curiosity or passion with races that may struggle with magic.'
+			},
+			{
+				title : 'Kerasoka',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Viewed as forbidden because of past events, but it does happen.'
+			},
+			{
+				title : 'Shapeshifter',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. There is no curiosity or passion with races that may struggle with magic.'
+			},
+			{
+				title : 'Ue\'drahc',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. They do not detest Ue\'drahc, but the product of their union could be an abomination.'
+			}
+		],
+		'Shapeshifter' : [
+			{
+				title : 'Dwarf',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Shapeshifters are accepting and open to all types of exchanges.'
+			},
+			{
+				title : 'Elemental',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Shapeshifters are accepting and open to all types of exchanges.'
+			},
+			{
+				title : 'Fae',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Shapeshifters are accepting and open to all types of exchanges.'
+			},
+			{
+				title : 'Human',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The roots of Shapeshifters orginated with Humans.'
+			},
+			{
+				title : 'Kerasoka',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. The pair is close in their composition and are agreeable.'
+			},
+			{
+				title : 'Lumeacia',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Largely because of Lumeacia opinion, these elves are avoided.'
+			},
+			{
+				title : 'Ue\'drahc',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			}
+		],
+		'Ue\'drahc' : [
+			{
+				title : 'Dwarf',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			},
+			{
+				title : 'Elemental',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			},
+			{
+				title : 'Fae',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			},
+			{
+				title : 'Human',
+				icon : 'icon-bg-green fa-heart',
+				description : 'Yes. Humans are the only race where an affiliation permits them to extend the Ue\'drahc population.'
+			},
+			{
+				title : 'Kerasoka',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			},
+			{
+				title : 'Lumeacia',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			},
+			{
+				title : 'Shapeshifter',
+				icon : 'icon-bg-red fa-close card-trigger',
+				description : 'No. Though there are no ill feelings, the partnership is not considered.'
+			},
+		]
+	} %}
 
-<section class="page-content-section">
-	<div class="card-filter">
-		<button class="card-filter-button toggle-button-show button-link" type="button">
-			<i class="icon rpg-icon rpg-pokecog"></i>
-			<span>incompatible races</span>
-		</button>
-	</div>
-</section>
+	{% set race_filters = ['Dwarf', 'Elemental', 'Fae', 'Human', 'Kerasoka', 'Lumeacia', 'Shapeshifter', 'Ue\'drahc'] %}
+	{% set card_filters = {
+		'Race'            : race_filters,
+		'Compatible With' : race_filters,
+		'Status'          : ['Compatible', 'In compatible']
+	} %}
+
+	{% set card_object = '' %}
+{% endspaceless %}
+
+{{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Races', card_filters) }}
 
 {% for key, card in cards %}
 	{% set section_id = function.create_handle(key) %}
@@ -337,7 +341,7 @@
 			{% for detail in card %}
 				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
 				{% set card_changed = ('card-trigger' in detail.icon) ? true : false %}
-				<div id="{{ card_id }}" class="card-block{% if card_changed %} card-changed{% endif %}{% if detail.title == 'Not Applicable'%} card-full{% endif %}">
+				<div id="{{ card_id }}" class="card-block{% if detail.title == 'Not Applicable'%} card-full{% endif %}">
 					<h5 class="card-title">{{ detail.title }}</h5>
 					<div class="icon-wrapper">
 						<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
@@ -347,7 +351,19 @@
 					</div>
 					<div class="card-clear"></div>
 				</div>
+				{% set card_data %}{% spaceless %}
+					{% set compatible_with = '' %}
+					{% if 'fa-heart' in detail.icon %}
+						{% set compatible_with = 'compatible-with=' ~ detail.title ~ ', ' %}
+					{% endif %}
+					{'id' : '#{{ card_id }}', 'filters' : 'race={{ function.create_handle(detail.title) }}, {{ function.create_handle(compatible_with) }} status={{ card_changed ? 'in-compatible' : 'compatible' }}', 'applied' : 0}{% if (!loop.last && key == 'Ue\'drahc') || (key != 'Ue\'drahc') %},{% endif %}
+				{% endspaceless %}{% endset %}
+				{% set card_object = card_object ~ card_data %}
 			{% endfor %}
 		</div>
 	</section>
 {% endfor %}
+
+<script>
+	var cardBlocks = [{{ card_object }}];
+</script>

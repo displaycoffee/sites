@@ -1,69 +1,77 @@
-{% set max_level = 60 %}
-{% set multiplier = max_level / 5 %}
-{% set level_mods = range(25, 50, 0.5) %}
+{% spaceless %}
+	{% set max_level = 60 %}
+	{% set multiplier = max_level / 5 %}
+	{% set level_mods = range(25, 50, 0.5) %}
+	{% set card = [] %}
+	{% set low_range = '' %}
+	{% set high_range = '' %}
 
-{% set card = [] %}
+	{% for i in range(1, max_level) %}
+		{% set modifier_index = ((i / 5) | round(0, 'ceil') - 1) %}
 
-{% for i in range(1, max_level) %}
-	{% set modifier_index = ((i / 5) | round(0, 'ceil') - 1) %}
+		{% if KHY_USER_LEVEL && i <= KHY_USER_LEVEL %}
+			{% set icon = 'icon-bg-green fa-heart' %}
+		{% else %}
+			{% set icon = 'icon-bg-red fa-close' %}
+		{% endif %}
 
-	{% if KHY_USER_LEVEL && i <= KHY_USER_LEVEL %}
-		{% set icon = 'icon-bg-green fa-heart' %}
-	{% else %}
-		{% set icon = 'icon-bg-red fa-close' %}
-	{% endif %}
+		{% set experience = (level_mods[modifier_index] * i * (i - 1)) | number_format(0, '.', ',') %}
 
-	{% set experience = (level_mods[modifier_index] * i * (i - 1)) | number_format(0, '.', ',') %}
+		{% if i % 10 == 0 %}
+			{% set bonus = 'HP and MP increase.' %}
+		{% else %}
+			{% set bonus = 'No bonus.' %}
+		{% endif %}
 
-	{% if i % 10 == 0 %}
-		{% set bonus = 'HP and MP increase.' %}
-	{% else %}
-		{% set bonus = 'No bonus.' %}
-	{% endif %}
+		{% set actual_level = ((i < (10)) ? '0' : '') ~ i %}
 
-	{% set actual_level = ((i < (10)) ? '0' : '') ~ i %}
+		{% if actual_level % multiplier == 1 %}
+			{% set low_range = actual_level %}
+			{% set high_range = (actual_level - 1 + multiplier) %}
+		{% endif %}
 
-	{% set cards_add = [{
-		title      : 'Level ' ~ actual_level,
-		level      : actual_level,
-		icon       : icon,
-		experience : experience ? experience : '&#48;',
-		bonus      : bonus
-	}] %}
+		{% set cards_add = [{
+			title      : 'Level ' ~ actual_level,
+			level      : actual_level,
+			icon       : icon,
+			experience : experience ? experience : '&#48;',
+			bonus      : bonus,
+			range      : 'Levels ' ~ low_range ~ ' to ' ~ high_range
+		}] %}
 
-	{% set card = card | merge(cards_add) %}
-{% endfor %}
-
-{% if KHY_USER_LEVEL %}
-	{% set completed_cards = [] %}
-	{% for i in range(1, KHY_USER_LEVEL) %}
-		{% set current_level = 'level-' ~ ((i < (10)) ? '0' : '') ~ i %}
-		{% set completed_cards = completed_cards | merge([current_level]) %}
+		{% set card = card | merge(cards_add) %}
 	{% endfor %}
-{% endif %}
 
-{% if completed_cards %}
-	<section class="page-content-section">
-		<div class="card-filter">
-			<button class="card-filter-button toggle-button-show button-link" type="button">
-				<i class="icon rpg-icon rpg-pokecog"></i>
-				<span>completed levels</span>
-			</button>
-		</div>
-	</section>
-{% endif %}
+	{% if KHY_USER_LEVEL %}
+		{% set completed_cards = [] %}
+		{% for i in range(1, KHY_USER_LEVEL) %}
+			{% set current_level = 'level-' ~ ((i < (10)) ? '0' : '') ~ i %}
+			{% set completed_cards = completed_cards | merge([current_level]) %}
+		{% endfor %}
+	{% endif %}
+
+	{% set card_filters = {
+		'Range'  : ['01 to 12', '13 to 24', '25 to 36', '37 to 48', '49 to 60'],
+		'Bonus'  : ['Has bonus', 'No bonus'],
+		'Status' : ['Completed', 'Not completed']
+	} %}
+
+	{% set card_object = '' %}
+{% endspaceless %}
+
+{{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Levels', card_filters) }}
 
 {% for detail in card %}
 	{% if detail.level % multiplier == 1 %}
-		{% set card_name = 'Levels ' ~ detail.level ~ ' to ' ~ (detail.level - 1 + multiplier) %}
-		<section id="{{ function.create_handle(card_name) }}" class="page-content-section toggleable-section" data-quick-name="{{ card_name }}">
+		<section id="{{ function.create_handle(detail.range) }}" class="page-content-section toggleable-section" data-quick-name="{{ detail.range }}">
 			<h3>
-				<button class="toggle-button button-link" type="button" data-toggle-type="level" data-toggle-id="{{ detail.level }}" data-toggle-name="{{ card_name }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ card_name }}
+				<button class="toggle-button button-link" type="button" data-toggle-type="level" data-toggle-id="{{ detail.level }}" data-toggle-name="{{ detail.range }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ detail.range }}
 			</h3>
 			<div class="card-grid">
 	{% endif %}
+	{% set card_id = function.create_handle(detail.title) %}
 	{% set card_changed = (completed_cards && (function.create_handle(detail.title)) in completed_cards) ? true : false %}
-	<div class="card-block{% if card_changed %} card-changed card-opacity{% endif %}">
+	<div id="{{ card_id }}" class="card-block{% if card_changed %} card-opacity{% endif %}">
 		<h5 class="card-title">{{ detail.title }}</h5>
 		<div class="icon-wrapper">
 			<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
@@ -90,8 +98,18 @@
 			</dl>
 		{% endif %}
 	</div>
+	{% set card_data %}{% spaceless %}
+		{% set new_range = detail.range | replace({'Levels ' : ''}) %}
+		{% set new_bonus = (detail.bonus == 'No bonus.') ? 'No bonus' : 'Has bonus' %}
+		{'id' : '#{{ card_id }}', 'filters' : 'range={{ function.create_handle(new_range) }}, bonus={{ function.create_handle(new_bonus) }}, status={{ card_changed ? 'completed' : 'not-completed' }}', 'applied' : 0}{% if !loop.last %},{% endif %}
+	{% endspaceless %}{% endset %}
+	{% set card_object = card_object ~ card_data %}
 	{% if detail.level % multiplier == 0 %}
 			</div>
 		</section>
 	{% endif %}
 {% endfor %}
+
+<script>
+	var cardBlocks = [{{ card_object }}];
+</script>

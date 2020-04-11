@@ -1,16 +1,16 @@
 {% if KHY_CHARACTERS %}
-	{% set card = KHY_CHARACTERS %}
+	{% spaceless %}
+		{% set card = KHY_CHARACTERS %}
 
-	{{ function.create_filters('Characters', KHY_CHARACTER_FILTERS) }}
+		{% set card_object = '' %}
+	{% endspaceless %}
 
-	{% set card_object = '' %}
+	{{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Characters', KHY_CHARACTER_FILTERS) }}
 
-	{% set section_id = 'character' %}
 	<section class="page-content-section">
-		<h3>{{ key }}</h3>
 		<div class="card-grid">
 			{% for detail in card %}
-				{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.name) ~ detail.key %}
+				{% set card_id = 'character-' ~ function.create_handle(detail.name) ~ detail.key %}
 				{% set card_changed = (detail.last_post == 'Never' || detail.days_since > 180) ? true : false %}
 				<div id="{{ card_id }}" class="card-block">
 					<h5 class="card-title">
