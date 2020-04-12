@@ -27,6 +27,10 @@
 		&, a {
 			color: $light-06;
 		}
+		$quote-shadow: map-get($dark-set, dark-05);
+		.site-description h1, .site-description h3, .site-quotes {
+			text-shadow: -1px -1px 0 $quote-shadow, 1px -1px 0 $quote-shadow, -1px 1px 0 $quote-shadow, 1px 1px 0 $quote-shadow;
+		}
 		.site-description, .site-quotes {
 			@include flex(base);
 		}
@@ -39,18 +43,15 @@
 				font-family: $font-03;
 				font-size: rem(100px);
 				font-variant: normal;
-				text-shadow: 2px 2px 0 map-get($dark-set, dark-08);
 			}
 			h3 {
 				font-size: rem(28px);
-				text-shadow: 2px 1px 0 map-get($dark-set, dark-08), 2px 1px 5px map-get($dark-set, dark-10);
 				letter-spacing: 2px;
 			}
 		}
 		.site-quotes {
 			font-family: $font-02;
 			font-size: rem($global-font-size);
-			text-shadow: 1px 1px 0 map-get($dark-set, dark-08), 1px 1px 5px map-get($dark-set, dark-10);
 			p {
 				margin: 0 0 10px 0;
 				&:last-child {
@@ -70,7 +71,7 @@
 				display: block;
 				background: $light-06;
 				@include sizing(100%, 100%);
-				box-shadow: 1px 1px 0 0 map-get($dark-set, dark-02);
+				box-shadow: 1px 1px 0 0 $quote-shadow;
 			}
 		}
 	}
@@ -447,6 +448,9 @@ $transform: color 0.3s ease-in-out, transform 0.5s ease-in-out;
 					@include transition(transform 0.5s ease-in-out);
 				}
 			}
+		}
+		.featured-profiles .image-wrap img {
+			margin-top: 0;
 		}
 	}
 }
