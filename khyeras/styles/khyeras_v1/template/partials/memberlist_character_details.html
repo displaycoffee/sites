@@ -1,3 +1,5 @@
+{% import 'utilities/macros.html' as function %}
+
 {% set character_fields = {
 	(PROFILE_C_EXPERIENCE_NAME)  : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
 	(PROFILE_C_RACE_OPTS_NAME)   : function.replace_comma(PROFILE_C_RACE_OPTS_VALUE),

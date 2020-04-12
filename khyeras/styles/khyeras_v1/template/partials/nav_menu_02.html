@@ -1,3 +1,5 @@
+{% import 'utilities/macros.html' as function %}
+
 <ul class="menu user-menu" role="menu">
 	{% if S_REGISTERED_USER %}
 		{% if S_DISPLAY_PM %}
@@ -52,7 +54,7 @@
 				</ul>
 			</div>
 		</li>
-	{% else %}
+	{% elseif !S_IS_BOT %}
 		<li class="guest-info">
 			<div class="menu-label">
 				<span class="user-name">

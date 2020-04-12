@@ -112,11 +112,11 @@ dl.faq {
 }
 
 #search_memberlist .dropdown-container .dropdown.live-search {
-	&[style*='block'] {
+	&:not([style*='none']) {
 		@include toggle-content(show);
 		@include position($top: 45px, $left: -1px, $z: 2);
 	}
-	.dropdown-contents.search-results li .search-result {
+	.dropdown-contents.search-results li {
 		cursor: pointer;
 	}
 }

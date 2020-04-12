@@ -1,7 +1,8 @@
+{% import 'utilities/macros.html' as function %}
 <nav class="navbar" role="navigation">
 	<div class="wrapper">
 		<div class="site-logo-text">
-			<a href="<!-- IF U_SITE_HOME -->{U_SITE_HOME}<!-- ELSE -->{U_INDEX}<!-- ENDIF -->" title="<!-- IF U_SITE_HOME -->{L_SITE_HOME}<!-- ELSE -->{L_INDEX}<!-- ENDIF -->">{SITENAME}</a>
+			<a href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" title="{% if U_SITE_HOME %}{{ L_SITE_HOME }}{% else %}{{ L_INDEX }}{% endif %}">{SITENAME}</a>
 		</div>
 		<button class="mobile-menu-button button-link" type="button">
 			<div class="button-section">

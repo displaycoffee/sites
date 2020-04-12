@@ -1,3 +1,5 @@
+{% import 'utilities/macros.html' as function %}
+
 <div class="writer-description{{ writer_class }}">
 	{% if !PROFILE_C_WRITER_NAME_VALUE %}
 		{% set about_fields = {

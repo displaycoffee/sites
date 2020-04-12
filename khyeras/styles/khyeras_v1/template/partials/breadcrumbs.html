@@ -21,7 +21,7 @@
 				<li class="crumb crumb-seperator{% if is_home %} home{% endif %}">
 					<i class="icon {{ crumb_icon }}"></i>
 				</li>
-				<li class="crumb{% if is_home %} home{% endif %}" itemtype="http://schema.org/ListItem" itemprop="item" itemscope{{ crumb_data }}>
+				<li class="crumb{% if is_home %} home{% endif %}" itemtype="http://schema.org/ListItem" itemscope itemprop="item"{{ crumb_data }}>
 					<a href="{{ crumb_url }}" itemtype="https://schema.org/Thing" itemprop="item"{{ crumb_attr }} title="{{ crumb_label }}">
 						<span itemprop="name">{{ crumb_label }}</span>
 					</a>
@@ -63,10 +63,12 @@
 				{% endif %}
 
 				{% for nav in navlinks %}
+					{% set NAVLINK_NAME = nav.BREADCRUMB_NAME | default(nav.FORUM_NAME) %}
+					{% set NAVLINK_LINK = nav.U_BREADCRUMB | default(nav.U_VIEW_FORUM) %}
 					{% EVENT overall_header_navlink_prepend %}
 					{% set crumb_data = nav.MICRODATA ? (' ' ~ nav.MICRODATA) : '' %}
 					{% set crumb_position = crumb_position + 1 %}
-					{{ _self.breadcrumb(nav.U_VIEW_FORUM, nav.FORUM_NAME, crumb_position, false, crumb_data) }}
+					{{ _self.breadcrumb(NAVLINK_LINK, NAVLINK_NAME, crumb_position, false, crumb_data) }}
 					{% EVENT overall_header_navlink_append %}
 				{% endfor %}
 

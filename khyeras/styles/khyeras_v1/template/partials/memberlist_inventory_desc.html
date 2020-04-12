@@ -1,3 +1,5 @@
+{% import 'utilities/macros.html' as function %}
+
 {% set spellbook = PROFILE_C_SPELLBOOK_VALUE ? 'true' : 'false' %}
 {% if PROFILE_C_SPELLBOOK_VALUE %}
 	{% set spellbook = function.set_spellbook(spellbook, PROFILE_C_CLASS_OPTS_VALUE, PROFILE_C_RACE_OPTS_VALUE) %}
