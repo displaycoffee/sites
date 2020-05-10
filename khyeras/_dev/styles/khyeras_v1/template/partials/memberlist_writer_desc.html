@@ -7,16 +7,16 @@
 			(PROFILE_PHPBB_INTERESTS_NAME)  : PROFILE_PHPBB_INTERESTS_VALUE,
 			(PROFILE_PHPBB_OCCUPATION_NAME) : PROFILE_PHPBB_OCCUPATION_VALUE
 		} %}
+		{% set about_other_fields = {
+			(PROFILE_WRITING_PREFS_NAME) : PROFILE_WRITING_PREFS_VALUE
+		} %}
+		{% set about_all_fields = about_fields | merge(about_other_fields) %}
 
-		{% set about_list_count = function.count_details(about_fields) %}
-		{% set about_other_count = (PROFILE_WRITING_PREFS_VALUE) ? 1 : 0 %}
-		{% set about_total_count = about_list_count + about_other_count %}
-
-		{% if about_total_count > 1 %}
+		{% if function.show_details(about_all_fields) == 'true' %}
 			<section class="page-content-section">
 				<h3>About</h3>
 
-				{% if about_list_count != '0' %}
+				{% if function.show_details(about_fields) == 'true' %}
 					{{ function.create_details(about_fields) }}
 				{% endif %}
 

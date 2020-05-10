@@ -22,10 +22,9 @@
 		(PROFILE_AVATAR_CREDIT_NAME) : PROFILE_AVATAR_CREDIT_VALUE,
 		(PROFILE_SIG_CREDIT_NAME)    : PROFILE_SIG_CREDIT_VALUE
 	} %}
+	{% set writer_all_fields = writer_fields %}
 
-	{% set writer_list_count = function.count_details(writer_fields) %}
-
-	{% if writer_list_count != '0' %}
+	{% if function.show_details(writer_all_fields) == 'true' %}
 		{% for name, value in writer_fields if value %}
 			<dt>{{ name }}{{ lang('COLON') }}</dt>
 			<dd>{{ value }}</dd>
@@ -75,10 +74,9 @@
 		(lang('USER_BAN'))        : U_USER_BAN ? U_USER_BAN : false,
 		(lang('USE_PERMISSIONS')) : U_SWITCH_PERMISSIONS ? U_SWITCH_PERMISSIONS : false
 	} %}
+	{% set action_all_fields = action_fields %}
 
-	{% set action_list_count = function.count_details(action_fields) %}
-
-	{% if action_list_count != '0' %}
+	{% if function.show_details(action_all_fields) == 'true' %}
 		<dt>Actions{{ lang('COLON') }}</dt>
 		<dd class="profile-permissions">
 			{% for name, value in action_fields if value %}

@@ -313,6 +313,12 @@ class global_info {
 				$character_gender = $this->utilities->exists($pf['c_gender']['value'], 'Undisclosed');
 				$character_residence = $this->utilities->exists($pf['c_residence']['value'], 'Elsewhere');
 
+				// Do some replacements for residence
+				$residence_lower = strtolower($character_residence);
+				if ($this->utilities->in_string($residence_lower, 'fellsguard')) {
+					$character_residence = str_replace('fellsguard', 'Fellsgard', strtolower($residence_lower));
+				}
+
 				// Get hp and mp loss
 				$character_remaining = [
 					'hp' => ($pf['c_hp']['value'] * 1),

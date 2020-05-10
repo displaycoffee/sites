@@ -1,4 +1,5 @@
 {% import 'utilities/macros.html' as function %}
+{% set show_character_details = 'false' %}
 
 {% set character_fields = {
 	(PROFILE_C_EXPERIENCE_NAME)  : (PROFILE_C_EXPERIENCE_VALUE ? PROFILE_C_EXPERIENCE_VALUE : '&#48;'),
@@ -9,10 +10,10 @@
 	(PROFILE_C_GENDER_NAME)      : PROFILE_C_GENDER_VALUE,
 	(PROFILE_PRONUNCIATION_NAME) : PROFILE_PRONUNCIATION_VALUE
 } %}
+{% set character_all_fields = character_fields %}
 
-{% set character_list_count = function.count_details(character_fields) %}
-
-{% if character_list_count != '0' %}
+{% if function.show_details(character_all_fields) == 'true' %}
+	{% set show_character_details = 'true' %}
 	<dl class="details{{ character_class }}">
 		{% for name, value in character_fields if value %}
 			<dt>{{ name }}{{ lang('COLON') }}</dt>

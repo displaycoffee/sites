@@ -1,11 +1,3 @@
-{% macro count_details(details) %}{% spaceless %}
-	{% set count = 0 %}
-	{% for name, value in details if value %}
-		{% set count = count + 1 %}
-	{% endfor %}
-	{{ count }}
-{% endspaceless %}{% endmacro %}
-
 {% macro create_handle(value) %}{% spaceless %}
 	{{ value | replace({'"' : '', '\'' : '', '(' : '', ')' : '', ',' : '', '!' : '', ' ' : '-'}) | lower }}
 {% endspaceless %}{% endmacro %}
@@ -173,4 +165,12 @@
 	{% if race_opts == 'Dwarf' || 'Kerasoka' in race_opts %}{% set spellbook = 'false' %}{% endif %}
 
 	{{ spellbook }}
+{% endspaceless %}{% endmacro %}
+
+{% macro show_details(details) %}{% spaceless %}
+	{% set count = 0 %}
+	{% for name, value in details if value %}
+		{% set count = count + 1 %}
+	{% endfor %}
+	{% if count > 0 %}true{% else %}false{% endif %}
 {% endspaceless %}{% endmacro %}

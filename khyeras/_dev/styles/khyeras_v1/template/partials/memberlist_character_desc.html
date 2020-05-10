@@ -1,4 +1,5 @@
 {% import 'utilities/macros.html' as function %}
+{% set show_character_desc = 'false' %}
 
 <div class="character-description{{ character_class }}">
 	{% set feature_fields = {
@@ -13,16 +14,17 @@
 		(PROFILE_C_EARS_NAME)       : PROFILE_C_EARS_VALUE,
 		(PROFILE_C_VOICE_NAME)      : PROFILE_C_VOICE_VALUE
 	} %}
+	{% set feature_other_fields = {
+		(PROFILE_C_FEATURES_NAME) : PROFILE_C_FEATURES_VALUE
+	} %}
+	{% set feature_all_fields = feature_fields | merge(feature_other_fields) %}
 
-	{% set feature_list_count = function.count_details(feature_fields) %}
-	{% set feature_other_count = (PROFILE_C_FEATURES_VALUE) ? 1 : 0 %}
-	{% set feature_total_count = feature_list_count + feature_other_count %}
-
-	{% if feature_total_count > 1 %}
+	{% if function.show_details(feature_all_fields) == 'true' %}
+		{% set show_character_desc = 'true' %}
 		<section class="page-content-section">
 			<h3>Physical Features</h3>
 
-			{% if feature_list_count != '0' %}
+			{% if function.show_details(feature_fields) == 'true' %}
 				{{ function.create_details(feature_fields) }}
 			{% endif %}
 
@@ -37,16 +39,18 @@
 		(PROFILE_C_ROMANTIC_NAME) : PROFILE_C_ROMANTIC_VALUE,
 		(PROFILE_C_SEXUAL_NAME)   : PROFILE_C_SEXUAL_VALUE
 	} %}
+	{% set social_other_fields = {
+		(PROFILE_C_RELATIONSHIPS_NAME) : PROFILE_C_RELATIONSHIPS_VALUE,
+		(PROFILE_C_PERSONALITY_NAME)   : PROFILE_C_PERSONALITY_VALUE
+	} %}
+	{% set social_all_fields = social_fields | merge(social_other_fields) %}
 
-	{% set social_list_count = function.count_details(social_fields) %}
-	{% set social_other_count = (PROFILE_C_RELATIONSHIPS_VALUE || PROFILE_C_PERSONALITY_VALUE) ? 1 : 0 %}
-	{% set social_total_count = (social_list_count + social_other_count) %}
-
-	{% if social_total_count > 1 %}
+	{% if function.show_details(social_all_fields) == 'true' %}
+		{% set show_character_desc = 'true' %}
 		<section class="page-content-section">
 			<h3>Social Interactions</h3>
 
-			{% if social_list_count != '0' %}
+			{% if function.show_details(social_fields) == 'true' %}
 				{{ function.create_details(social_fields) }}
 			{% endif %}
 
@@ -73,16 +77,17 @@
 		'Belief'      : PROFILE_C_RELIGION_TYPE_VALUE,
 		(deity_label) : PROFILE_C_RELIGION_OPTS_VALUE
 	} %}
+	{% set religion_other_fields = {
+		(PROFILE_C_RELIGION_HIST_NAME) : PROFILE_C_RELIGION_HIST_VALUE
+	} %}
+	{% set religion_all_fields = religion_fields | merge(religion_other_fields) %}
 
-	{% set religion_list_count = function.count_details(religion_fields) %}
-	{% set religion_other_count = (PROFILE_C_RELIGION_HIST_VALUE) ? 1 : 0 %}
-	{% set religion_total_count = (religion_list_count + religion_other_count) %}
-
-	{% if religion_total_count > 1 %}
+	{% if function.show_details(religion_all_fields) == 'true' %}
+		{% set show_character_desc = 'true' %}
 		<section class="page-content-section">
 			<h3>Religion</h3>
 
-			{% if religion_list_count != '0' %}
+			{% if function.show_details(religion_fields) == 'true' %}
 				{{ function.create_details(religion_fields) }}
 			{% endif %}
 
@@ -94,21 +99,22 @@
 	{% endif %}
 
 	{% set background_fields = {
-		(PROFILE_C_BIRTHDAY_NAME)    : PROFILE_C_BIRTHDAY_VALUE,
-		(PROFILE_C_AGE_NAME)         : PROFILE_C_AGE_VALUE,
-		(PROFILE_C_ORIGIN_NAME)      : PROFILE_C_ORIGIN_VALUE,
-		(PROFILE_C_RESIDENCE_NAME)   : PROFILE_C_RESIDENCE_VALUE
+		(PROFILE_C_BIRTHDAY_NAME)  : PROFILE_C_BIRTHDAY_VALUE,
+		(PROFILE_C_AGE_NAME)       : PROFILE_C_AGE_VALUE,
+		(PROFILE_C_ORIGIN_NAME)    : PROFILE_C_ORIGIN_VALUE,
+		(PROFILE_C_RESIDENCE_NAME) : PROFILE_C_RESIDENCE_VALUE
 	} %}
+	{% set background_other_fields = {
+		(PROFILE_C_BACKGROUND_NAME) : PROFILE_C_BACKGROUND_VALUE
+	} %}
+	{% set background_all_fields = background_fields | merge(background_other_fields) %}
 
-	{% set background_list_count = function.count_details(background_fields) %}
-	{% set background_other_count = (PROFILE_C_BACKGROUND_VALUE) ? 1 : 0 %}
-	{% set background_total_count = (background_list_count + background_other_count) %}
-
-	{% if background_total_count > 1 %}
+	{% if function.show_details(background_all_fields) == 'true' %}
+		{% set show_character_desc = 'true' %}
 		<section class="page-content-section">
-			<h3>{{ PROFILE_C_BACKGROUND_NAME }}</h3>
+			<h3>Background</h3>
 
-			{% if background_fields != '0' %}
+			{% if function.show_details(background_fields) == 'true' %}
 				{{ function.create_details(background_fields) }}
 			{% endif %}
 
@@ -119,7 +125,7 @@
 		</section>
 	{% endif %}
 
-	{% if feature_total_count == 1 && social_total_count == 1 && religion_total_count == 1 && background_total_count == 1 %}
+	{% if show_character_desc == 'false' %}
 		<section class="page-content-section">
 			<h3>Nothing Here Yet</h3>
 			<p>This character is filling out their profile. Check back later!</p>
