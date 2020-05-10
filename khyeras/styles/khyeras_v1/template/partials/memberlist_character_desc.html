@@ -101,8 +101,8 @@
 	{% set background_fields = {
 		(PROFILE_C_BIRTHDAY_NAME)  : PROFILE_C_BIRTHDAY_VALUE,
 		(PROFILE_C_AGE_NAME)       : PROFILE_C_AGE_VALUE,
-		(PROFILE_C_ORIGIN_NAME)    : function.replace_fellsgard(PROFILE_C_ORIGIN_VALUE),
-		(PROFILE_C_RESIDENCE_NAME) : function.replace_fellsgard(PROFILE_C_RESIDENCE_VALUE)
+		(PROFILE_C_ORIGIN_NAME)    : PROFILE_C_ORIGIN_VALUE ? function.replace_fellsgard(PROFILE_C_ORIGIN_VALUE) : '',
+		(PROFILE_C_RESIDENCE_NAME) : PROFILE_C_RESIDENCE_VALUE ? function.replace_fellsgard(PROFILE_C_RESIDENCE_VALUE) : ''
 	} %}
 	{% set background_other_fields = {
 		(PROFILE_C_BACKGROUND_NAME) : PROFILE_C_BACKGROUND_VALUE
