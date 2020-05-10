@@ -147,6 +147,10 @@
 	{{ value | spaceless | replace({', ': ' and '}) }}
 {% endmacro %}
 
+{% macro replace_fellsgard(value) %}
+	{{ value | spaceless | replace({'fellsguard': 'Fellsgard', 'Fellsguard': 'Fellsgard'}) }}
+{% endmacro %}
+
 {% macro set_spellbook(spellbook, class_opts, race_opts) %}{% spaceless %}
 	{% set spellbook = spellbook %}
 
