@@ -16,7 +16,7 @@
 			{% set crumb_icon = 'icon-slash' %}
 		{% endif %}
 
-		{% spaceless %}
+		{% apply spaceless %}
 			{% if crumb_label != 'n/a' %}
 				<li class="crumb crumb-seperator{% if is_home %} home{% endif %}">
 					<i class="icon {{ crumb_icon }}"></i>
@@ -28,7 +28,7 @@
 					<meta itemprop="position" content="{{ position }}" />
 				</li>
 			{% endif %}
-		{% endspaceless %}
+		{% endapply %}
 	{% endmacro %}
 
 	<nav id="nav-breadcrumbs" class="nav-breadcrumbs linklist navlinks" role="menubar">

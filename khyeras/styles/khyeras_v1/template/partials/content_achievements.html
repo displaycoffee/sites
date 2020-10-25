@@ -1,6 +1,6 @@
 {% import 'utilities/macros.html' as function %}
 
-{% spaceless %}
+{% apply spaceless %}
 	{% set cards = {
 		'Tviyr' : [
 			{
@@ -879,7 +879,7 @@
 	} %}
 
 	{% set card_object = '' %}
-{% endspaceless %}
+{% endapply %}
 
 {{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Achievements', card_filters) }}
 
@@ -920,9 +920,9 @@
 						</dl>
 					{% endif %}
 				</div>
-				{% set card_data %}{% spaceless %}
+				{% set card_data %}{% apply spaceless %}
 					{'id' : '#{{ card_id }}', 'filters' : 'location={{ function.create_handle(key) }}, type={{ function.create_handle(detail.type) }}, status={{ card_changed ? 'completed' : 'not-completed' }}', 'applied' : 0}{% if (!loop.last && key == 'Khy\'eras') || (key != 'Khy\'eras') %},{% endif %}
-				{% endspaceless %}{% endset %}
+				{% endapply %}{% endset %}
 				{% set card_object = card_object ~ card_data %}
 			{% endfor %}
 		</div>

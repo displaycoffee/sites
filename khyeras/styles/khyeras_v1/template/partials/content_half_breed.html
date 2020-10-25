@@ -1,6 +1,6 @@
 {% import 'utilities/macros.html' as function %}
 
-{% spaceless %}
+{% apply spaceless %}
 	{% set cards = {
 		'Dragon' : [
 			{
@@ -329,7 +329,7 @@
 	} %}
 
 	{% set card_object = '' %}
-{% endspaceless %}
+{% endapply %}
 
 {{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Races', card_filters) }}
 
@@ -353,13 +353,13 @@
 					</div>
 					<div class="card-clear"></div>
 				</div>
-				{% set card_data %}{% spaceless %}
+				{% set card_data %}{% apply spaceless %}
 					{% set compatible_with = '' %}
 					{% if 'fa-heart' in detail.icon %}
 						{% set compatible_with = 'compatible-with=' ~ detail.title ~ ', ' %}
 					{% endif %}
 					{'id' : '#{{ card_id }}', 'filters' : 'race={{ function.create_handle(detail.title) }}, {{ function.create_handle(compatible_with) }} status={{ card_changed ? 'in-compatible' : 'compatible' }}', 'applied' : 0}{% if (!loop.last && key == 'Ue\'drahc') || (key != 'Ue\'drahc') %},{% endif %}
-				{% endspaceless %}{% endset %}
+				{% endapply %}{% endset %}
 				{% set card_object = card_object ~ card_data %}
 			{% endfor %}
 		</div>

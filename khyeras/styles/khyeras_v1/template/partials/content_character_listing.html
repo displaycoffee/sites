@@ -2,11 +2,11 @@
 {% set textlimit = 75 %}
 
 {% if KHY_CHARACTERS %}
-	{% spaceless %}
+	{% apply spaceless %}
 		{% set card = KHY_CHARACTERS %}
 
 		{% set card_object = '' %}
-	{% endspaceless %}
+	{% endapply %}
 
 	{{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Characters', KHY_CHARACTER_FILTERS) }}
 
@@ -61,9 +61,9 @@
 						</dl>
 					{% endif %}
 				</div>
-				{% set card_data %}{% spaceless %}
+				{% set card_data %}{% apply spaceless %}
 					{'id' : '#{{ card_id }}', 'filters' : 'race={{ function.create_handle(detail.parameters.race.0) }}, {% if detail.parameters.race.1 %}race={{ function.create_handle(detail.parameters.race.1) }}, {% endif %}class={{ function.create_handle(detail.parameters.class.0) }}, {% if detail.parameters.class.1 %}class={{ function.create_handle(detail.parameters.class.1) }}, {% endif %}gender={{ function.create_handle(detail.parameters.gender) }}, residence={{ function.create_handle(detail.parameters.residence) }}, status={{ function.create_handle(detail.parameters.status) }}', 'applied' : 0}{% if !loop.last %},{% endif %}
-				{% endspaceless %}{% endset %}
+				{% endapply %}{% endset %}
 				{% set card_object = card_object ~ card_data %}
 			{% endfor %}
 		</div>

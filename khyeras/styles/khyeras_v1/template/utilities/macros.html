@@ -1,6 +1,6 @@
-{% macro create_handle(value) %}{% spaceless %}
+{% macro create_handle(value) %}{% apply spaceless %}
 	{{ value | replace({'"' : '', '\'' : '', '(' : '', ')' : '', ',' : '', '!' : '', ' ' : '-'}) | lower }}
-{% endspaceless %}{% endmacro %}
+{% endapply %}{% endmacro %}
 
 {% macro create_filters(account, title, filters) %}
 	<section class="card-filters page-content-section">
@@ -66,9 +66,9 @@
 	</li>
 {% endmacro %}
 
-{% macro create_title(title, khy_data) %}{% spaceless %}
+{% macro create_title(title, khy_data) %}{% apply spaceless %}
 	{% if khy_data.self %}{{ khy_data.name }}{% else %}{{ title }}{% endif %}
-{% endspaceless %}{% endmacro %}
+{% endapply %}{% endmacro %}
 
 {% macro display_avatar(avatar, theme_path) %}
 	<div class="user-avatar">
@@ -151,7 +151,7 @@
 	{{ value | spaceless | replace({'fellsguard': 'Fellsgard', 'Fellsguard': 'Fellsgard'}) }}
 {% endmacro %}
 
-{% macro set_spellbook(spellbook, class_opts, race_opts) %}{% spaceless %}
+{% macro set_spellbook(spellbook, class_opts, race_opts) %}{% apply spaceless %}
 	{% set spellbook = spellbook %}
 
 	{% set magical = ['Paladin', 'Ranger', 'Druid', 'Sorcerer', 'Summoner', 'Wizard', 'Bard', 'Cleric', 'Physical', 'Magical', 'Restoration'] %}
@@ -169,12 +169,12 @@
 	{% if race_opts == 'Dwarf' || 'Kerasoka' in race_opts %}{% set spellbook = 'false' %}{% endif %}
 
 	{{ spellbook }}
-{% endspaceless %}{% endmacro %}
+{% endapply %}{% endmacro %}
 
-{% macro show_details(details) %}{% spaceless %}
+{% macro show_details(details) %}{% apply spaceless %}
 	{% set count = 0 %}
 	{% for name, value in details if value %}
 		{% set count = count + 1 %}
 	{% endfor %}
 	{% if count > 0 %}true{% else %}false{% endif %}
-{% endspaceless %}{% endmacro %}
+{% endapply %}{% endmacro %}
