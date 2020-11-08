@@ -21,9 +21,9 @@
 		.button, select {
 			vertical-align: top;
 			margin: 0 $ffs-half $ffs $ffs-half;
-			order: 20;
+			order: 50;
 		}
-		.bbcode-hidden, .bbcode-mention, .bbcode-speech, .bbcode-text-align, .bbcode-s, .bbcode-header, .bbcode-user, .bbcode-img-align, .bbcode-first-letter, .bbcode-first-line {
+		.bbcode-hidden, .bbcode-mention, .bbcode-speech, .bbcode-text-align, .bbcode-divider, .bbcode-s, .bbcode-header, .bbcode-user, .bbcode-img-align, .bbcode-first-letter, .bbcode-first-line {
 			font-size: 0;
 			&:before {
 				line-height: 13px;
@@ -65,8 +65,16 @@
 				content: unicode($icon-align-center);
 			}
 		}
-		.bbcode-first-letter, .bbcode-first-line {
+		.bbcode-divider {
 			order: 4;
+			&:before {
+				content: '';
+				@include icon-font($family: game, $lh: false);
+				content: unicode($misc-minus);
+			}
+		}
+		.bbcode-first-letter, .bbcode-first-line {
+			order: 5;
 			&:before, &:after {
 				font-size: rem(13px);
 				text-transform: none;
@@ -91,19 +99,19 @@
 			font-variant: small-caps;
 		}
 		.bbcode-list, .bbcode-list-, .bbcode-asterisk, .bbcode-hidden {
-			order: 5;
+			order: 65;
 		}
 		.bbcode-hidden:before {
 			content: unicode($icon-eye);
 		}
 		.bbcode-quote, .bbcode-mention {
-			order: 6;
+			order: 7;
 		}
 		.bbcode-mention:before {
 			content: unicode($icon-bell);
 		}
 		.bbcode-img, .bbcode-img-align {
-			order: 7;
+			order: 8;
 		}
 		.bbcode-img-align:before {
 			content: unicode($icon-images);

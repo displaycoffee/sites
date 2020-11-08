@@ -415,6 +415,16 @@
 	margin: 0 0 20px 0;
 }
 
+/* UCP - Login Keys
+============================================== */
+
+.section-ucp-manage-remember-me-login-keys table.table1 td dfn ~ label {
+	display: inline;
+	margin: 0;
+	cursor: pointer;
+}
+
+
 /* UCP - Private Messages - Legend
 ============================================== */
 

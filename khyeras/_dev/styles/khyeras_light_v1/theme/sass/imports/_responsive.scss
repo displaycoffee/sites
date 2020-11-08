@@ -897,6 +897,17 @@
 		.post-buttons {
 			max-width: 20%;
 		}
+		.content, .signature {
+			.bbcode-divider {
+				margin: 32px auto;
+				max-width: 100%;
+				.icon {
+					@include sizing($responsive-icon-size, $responsive-icon-size);
+					line-height: $responsive-icon-size;
+					font-size: rem(14px);
+				}
+			}
+		}
 	}
 	.section-viewtopic {
 		.post {
@@ -1828,7 +1839,7 @@
 	}
 	.icon-round {
 		line-height: $responsive-icon-size;
-		font-size: rem(16px);
+		font-size: rem(14px);
 	}
 	.icon-round-lg {
 		@include sizing($responsive-icon-lg-size, $responsive-icon-lg-size);
