@@ -1,0 +1,50 @@
+{% import 'utilities/macros.html' as function %}
+
+{% if KHY_BADGE_LIST %}
+	{% apply spaceless %}
+		{% set cards = KHY_BADGE_LIST %}
+	{% endapply %}
+
+	{% for key, card in cards if card.list %}
+		{% set section_id = function.create_handle(key) %}
+		<section id="{{ section_id }}" class="page-content-section toggleable-section" data-quick-name="{{ card.title }}">
+			<h3>
+				<button class="toggle-button button-link" type="button" data-toggle-type="badges" data-toggle-id="{{ loop.index }}" data-toggle-name="{{ key }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ card.title }}
+			</h3>
+			<p>{{ card.desc }}</p>
+			<div class="card-grid">
+				{% for detail in card.list %}
+					{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
+					<div id="{{ card_id }}" class="card-block">
+						<h5 class="card-title">
+							<a href="{{ ROOT_PATH }}{{ detail.url }}">{{ detail.title }}</a>
+						</h5>
+						<div class="icon-wrapper">
+							<div class="icon-badge">
+								<img src="{{ ROOT_PATH }}{{ detail.image }}" alt="{{ detail.title }}" title="{{ detail.title }}" />
+							</div>
+						</div>
+						<div class="card-description">
+							<span class="card-description-wrapper">{{ detail.desc }}</span>
+						</div>
+						<div class="card-clear"></div>
+						{% if detail.recipients %}
+							<dl class="details details-small">
+								<dt>Recipients:</dt>
+								<dd>
+									{% for recipient in detail.recipients %}
+										<a href="{{ ROOT_PATH }}{{ recipient.profile }}">{{ recipient.name }}</a>{% if !loop.last %}, {% endif %}
+									{% endfor %}
+								</dd>
+							</dl>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+	{% endfor %}
+{% else %}
+	<section class="page-content-section">
+		<p>There are no active badge categories.</p>
+	</section>
+{% endif %}

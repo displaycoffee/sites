@@ -1,0 +1,18 @@
+{% import 'utilities/macros.html' as function %}
+{% for post in postrow.khy if post.PROFILE_BADGES %}
+	{% set badge_limit = 5 %}
+	<dd class="profile-badges">
+		<div class="badge-list">
+			{% for badge in post.PROFILE_BADGES | slice(0, badge_limit) %}
+				<a href="{{ ROOT_PATH }}gameplay-badges#{{ badge.type }}-{{ function.create_handle(badge.title) }}" class="badge-list-link">
+					<img src="{{ ROOT_PATH }}{{ badge.image }}" alt="{{ badge.title }}" title="{{ badge.title }}" />
+				</a>
+			{% endfor %}
+			{% if post.PROFILE_BADGES | length > badge_limit %}
+				<a href="{postrow.U_POST_AUTHOR}" class="badge-list-link badge-list-link-more" title="More Badges">
+					<i class="icon fa-plus fa-fw" aria-hidden="true"></i>
+				</a>
+			{% endif %}
+		</div>
+	</dd>
+{% endfor %}
