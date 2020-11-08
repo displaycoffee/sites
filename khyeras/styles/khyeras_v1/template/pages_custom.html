@@ -36,6 +36,10 @@
 					{% include 'partials/content_achievements.html' %}
 				{% endif %}
 
+				{% if KHY_SCRIPT_NAME == 'gameplay-badges' %}
+					{% include 'partials/content_badges.html' %}
+				{% endif %}
+
 				{% if KHY_SCRIPT_NAME == 'members-character-census' %}
 					{% include 'partials/content_census.html' %}
 				{% endif %}

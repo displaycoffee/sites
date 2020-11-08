@@ -171,7 +171,7 @@ h5, h6, .h5, .h6 {
 .icon-wrapper {
 	line-height: 0;
 	margin: 0 -5px;
-	.icon-round {
+	.icon-round, .icon-badge {
 		margin: 0 5px;
 	}
 }
@@ -203,7 +203,7 @@ h5, h6, .h5, .h6 {
 	font-size: rem(10px);
 }
 
-.icon-round, .icon-round-image {
+.icon-round, .icon-round-image, .icon-badge {
 	@include sizing($list-icon-size, $list-icon-size);
 	border-radius: 100%;
 	overflow: hidden;
@@ -225,6 +225,15 @@ h5, h6, .h5, .h6 {
 	@include sizing($list-icon-lg-size, $list-icon-lg-size);
 	line-height: $list-icon-lg-size;
 	font-size: rem(28px);
+}
+
+.icon-badge {
+	position: relative;
+	img {
+		@include position($type: absolute, $top: 0, $bottom: 0, $left: 0, $right: 0, $z: 1);
+		margin: auto;
+		max-height: 100%;
+	}
 }
 
 /* Icon Colors

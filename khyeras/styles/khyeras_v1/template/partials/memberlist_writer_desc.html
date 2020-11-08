@@ -130,6 +130,20 @@
 		</dl>
 	</section>
 
+	{% if KHY_MEMBER_BADGES %}
+		<section class="page-content-section user-stats">
+			<h3>Badges</h3>
+
+			<div class="badge-list">
+				{% for badge in KHY_MEMBER_BADGES %}
+					<a href="{{ ROOT_PATH }}gameplay-badges#{{ badge.type }}-{{ function.create_handle(badge.title) }}" class="badge-list-link">
+						<img src="{{ ROOT_PATH }}{{ badge.image }}" alt="{{ badge.title }}" title="{{ badge.title }}" />
+					</a>
+				{% endfor %}
+			</div>
+		</section>
+	{% endif %}
+
 	<section class="page-content-section extra-details">
 		{% EVENT memberlist_view_content_append %}
 	</section>

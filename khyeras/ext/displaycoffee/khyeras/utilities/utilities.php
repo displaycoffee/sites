@@ -160,6 +160,39 @@ class utilities {
 	}
 
 	/**
+	* Get badge data array
+	*/
+	public function get_badges() {
+		// Commonly used badge variables
+		$badge_obj = [
+			'default' => create_badge_image('pending'),
+			'spooky'  => 'spooky-sundown'
+		];
+
+		$badges = array(
+			'events'       => [
+				'title' => 'Events',
+				'desc'  => 'Badges awared through limited timed events.',
+				'list'  => [
+					$badge_obj['spooky'] => [
+						'title'       => 'Spooky Sundown 2020',
+						'url'         => 'viewtopic.php?f=26&amp;t=351',
+						'image'       => create_badge_image($badge_obj['spooky']),
+						'desc'        => 'Awared to those who participated in the Spooky Sundown 2020 Halloween Event.',
+						'recipients'  => []
+					]
+				]
+			],
+			'achievements' => [
+				'title' => 'Achievements',
+				'desc'  => 'Badges awared through player achievements.'
+			]
+		);
+
+		return $badges;
+	}
+
+	/**
 	* Determine character level
 	*/
 	public function get_level($exp)	{
@@ -297,6 +330,19 @@ function calc_life_modifier($options, $list) {
 	}
 
 	return [round($hp_mod / count($selected_options)), round($mp_mod / count($selected_options))];
+}
+
+
+/**
+* Create badge image url
+*/
+function create_badge_image($value) {
+	// Badge image variables
+	$badge_image_path = 'images/badges/';
+	$badge_image_size = '-x24';
+	$badge_image_ext = '.png';
+
+	return $badge_image_path . $value . $badge_image_size . $badge_image_ext;
 }
 
 /**

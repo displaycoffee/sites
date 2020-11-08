@@ -218,3 +218,19 @@
 		top: 39px;
 	}
 }
+
+/* Badges
+============================================== */
+
+.badge-list {
+	margin: 0 (-$ffs-half) ($ffs * 3) (-$ffs-half);
+	.badge-list-link {
+		@include inline-block(middle);
+		margin: 0 $ffs-half ($ffs) $ffs-half;
+		line-height: 0;
+	}
+}
+
+.profile-badges .badge-list {
+	margin-bottom: (-$ffs-half);
+}

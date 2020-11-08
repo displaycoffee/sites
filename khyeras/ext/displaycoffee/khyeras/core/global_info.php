@@ -498,6 +498,86 @@ class global_info {
 	 		));
 		}
 	}
+
+	/**
+	* Get details of characters
+	*/
+	public function khy_get_badge_data($event) {
+		// Call common utilities
+		$common = $this->utilities->common();
+
+		// Don't run any of the below code unless on the correct pages
+		if ($common['script_name'] == 'app/gameplay-badges') {
+			// List of badges
+			$badges = $this->utilities->get_badges();
+
+			// Get the user lang_id
+			$lang_id = $common['user']['lang'];
+
+			// Empty object to store members
+			$members = [];
+
+			// Create the SQL statement for character data
+			$member_sql = 'SELECT *
+				FROM ' . $common['tables']['users'] . '
+				WHERE group_id=2 OR group_id=4 OR group_id=5 OR group_id=7 OR group_id=8 OR group_id=9
+				ORDER BY user_id ASC';
+
+			// Run the query
+			$member_result = $this->db->sql_query($member_sql);
+
+			// Loops through the member rows and add to members
+			while ($row = $this->db->sql_fetchrow($member_result)) {
+				// Set initial member details
+				$member_data = [
+					'id'      => $row['user_id'],
+					'name'    => $row['username'],
+					'profile' => 'memberlist.php?mode=viewprofile&un=' . $row['username_clean']
+				];
+
+				$members[$row['user_id']] = $member_data;
+			}
+
+			// Be sure to free the result after a SELECT query
+			$this->db->sql_freeresult($member_result);
+
+			// Load profile field language
+			$this->lang_helper->load_option_lang($lang_id);
+
+			// Loop through members array
+			foreach ($members as $key => $value) {
+				// Get character profile field information
+				$pf = $this->manager->grab_profile_fields_data($value['id'])[$value['id']];
+
+				// Get member badge if set
+				$member_badges = $this->utilities->exists($pf['c_badges']['value'], false);
+
+				// If there is member badge data, loop through badge list and add recipients
+				if ($member_badges) {
+					// Split member badges
+					$badge_array = explode(', ', $member_badges);
+
+					// Loop through main badge types
+					foreach ($badges as $badge_key => $badge_value) {
+						if ($badge_value['list']) {
+							// Loop through badge types list
+							foreach ($badge_value['list'] as $badge_list_key => $badge_list_value) {
+								// If the badge is in the badge_array, push the member data to recipient list
+								if (in_array($badge_list_key, $badge_array)) {
+									array_push($badges[$badge_key]['list'][$badge_list_key]['recipients'], $members[$value['id']]);
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// Assign global template variables for re-use
+			$this->template->assign_vars(array(
+				'KHY_BADGE_LIST' => $badges
+	 		));
+		}
+	}
 }
 
 /**

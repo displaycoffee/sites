@@ -1823,7 +1823,7 @@
 			position: static;
 		}
 	}
-	.icon-round, .icon-round-image {
+	.icon-round, .icon-round-image, .icon-badge {
 		@include sizing($responsive-icon-size, $responsive-icon-size);
 	}
 	.icon-round {
