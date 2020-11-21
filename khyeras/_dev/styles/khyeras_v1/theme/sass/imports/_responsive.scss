@@ -111,10 +111,10 @@
 	}
 	dl.details {
 		dt {
-			width: 150px;
+			width: 165px;
 		}
 		dd {
-			margin-left: 150px;
+			margin-left: 165px;
 		}
 	}
 
@@ -1459,6 +1459,8 @@
 	dl.details {
 		dt {
 			float: none;
+			overflow: visible;
+			white-space: normal;
 			&.empty-space {
 				display: none;
 			}

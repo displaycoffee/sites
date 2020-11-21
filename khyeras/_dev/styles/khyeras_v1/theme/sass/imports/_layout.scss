@@ -796,6 +796,7 @@ dl.details {
 		font-weight: bold;
 		float: left;
 		width: 200px;
+		@include ellipsis;
 	}
 	dd {
 		margin-left: 200px;
