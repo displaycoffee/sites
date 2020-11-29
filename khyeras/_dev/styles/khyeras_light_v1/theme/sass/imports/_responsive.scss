@@ -899,7 +899,7 @@
 		}
 		.content, .signature {
 			.bbcode-divider {
-				margin: 32px auto;
+				margin: 14px auto 34px auto;
 				max-width: 100%;
 				.icon {
 					@include sizing($responsive-icon-size, $responsive-icon-size);
