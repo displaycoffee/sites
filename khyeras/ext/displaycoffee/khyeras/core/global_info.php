@@ -500,7 +500,7 @@ class global_info {
 	}
 
 	/**
-	* Get details of characters
+	* Get details of badges
 	*/
 	public function khy_get_badge_data($event) {
 		// Call common utilities
@@ -576,6 +576,62 @@ class global_info {
 			$this->template->assign_vars(array(
 				'KHY_BADGE_LIST' => $badges
 	 		));
+		}
+	}
+
+	/**
+	* Get details of collections
+	*/
+	public function khy_get_collection_data($event) {
+		// Call common utilities
+		$common = $this->utilities->common();
+
+		// Don't run any of the below code unless on the correct pages
+		if ($common['script_name'] == 'app/gameplay-collections') {
+			// List of collections
+			$collections_json = file_get_contents('./ext/displaycoffee/khyeras/json/collections.json');
+			$collections = json_decode($collections_json, true);
+
+			// Get the user lang_id
+			$lang_id = $common['user']['lang'];
+
+			// Empty object to store members
+			$members = $this->utilities->get_members($common['tables']['users'], 'group_id=9');
+
+			// Load profile field language
+			$this->lang_helper->load_option_lang($lang_id);
+
+			// Loop through members array
+			foreach ($members as $key => $value) {
+				$member_id = $value['id'];
+
+				// Get character profile field information
+				$pf = $this->manager->grab_profile_fields_data($member_id)[$member_id];
+
+				// Get member collection if set
+				$member_collections = $this->utilities->exists($pf['c_collections']['value'], false);
+
+				// If there is member collection data, loop through collection and add recipients
+				if ($member_collections) {
+					// Loop through collections
+					foreach ($collections as $collection_key => $collection_value) {
+						if (in_array($collection_key, explode(', ', $member_collections))) {
+							// Add recipients array
+							if (!$collections[$collection_key]['recipients']) {
+								$collections[$collection_key]['recipients'] = [];
+							}
+
+							// Then push recipients to collection
+							array_push($collections[$collection_key]['recipients'], $members[$member_id]);
+						}
+					}
+				}
+			}
+
+			// Assign global template variables for re-use
+			$this->template->assign_vars(array(
+				'KHY_COLLECTION_LIST' => $collections
+			));
 		}
 	}
 }

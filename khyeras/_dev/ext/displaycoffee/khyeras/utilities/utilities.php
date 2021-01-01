@@ -217,6 +217,37 @@ class utilities {
 	}
 
 	/**
+	* Get members from table
+	*/
+	public function get_members($table, $statement) {
+		// Empty object to store members
+		$members = [];
+
+		// Create the SQL statement for character data
+		$member_sql = 'SELECT * FROM ' . $table . ' WHERE ' . $statement . ' ORDER BY user_id ASC';
+
+		// Run the query
+		$member_result = $this->db->sql_query($member_sql);
+
+		// Loops through the member rows and add to members
+		while ($row = $this->db->sql_fetchrow($member_result)) {
+			// Set initial member details
+			$member_data = [
+				'id'      => $row['user_id'],
+				'name'    => $row['username'],
+				'profile' => 'memberlist.php?mode=viewprofile&un=' . $row['username_clean']
+			];
+
+			$members[$row['user_id']] = $member_data;
+		}
+
+		// Be sure to free the result after a SELECT query
+		$this->db->sql_freeresult($member_result);
+
+		return $members;
+	}
+
+	/**
 	* Determine character HP/MP
 	*/
 	public function get_life_modifier($race, $class, $level) {

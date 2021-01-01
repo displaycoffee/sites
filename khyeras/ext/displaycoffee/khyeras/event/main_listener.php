@@ -89,5 +89,8 @@ class main_listener implements EventSubscriberInterface {
 
 		// Get badge details from members
 		$this->global_info->khy_get_badge_data($event);
+
+		// Get collection details from members
+		$this->global_info->khy_get_collection_data($event);
 	}
 }
