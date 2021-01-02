@@ -465,6 +465,9 @@ dl.faq {
 			@include position($type: absolute, $top: -9999px, $left: -9999px);
 			@include toggle-content(hide, false);
 		}
+		&.card-half {
+			width: 50%;
+		}
 		&.card-full {
 			@include flex(base);
 		}

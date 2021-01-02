@@ -8,6 +8,11 @@
 		width: 33.33%;
 	}
 
+	// profile.scss
+	.collection-list .collection-item {
+		width: 25%;
+	}
+
 	// viewlisting.scss
 	.topiclist > li dl dd {
 		&.topics, &.posts, &.views {
@@ -116,6 +121,11 @@
 		dd {
 			margin-left: 165px;
 		}
+	}
+
+	// profile.scss
+	.collection-list .collection-item {
+		width: 33.33%;
 	}
 
 	// viewlisting.scss
@@ -667,6 +677,9 @@
 			margin: 10px 0 0 0;
 		}
 	}
+	.collection-list .collection-item {
+		width: 50%;
+	}
 
 	// viewlisting.scss
 	.topiclist {
@@ -1058,7 +1071,7 @@
 	}
 	.card-grid {
 		display: block;
-		.card-block {
+		.card-block, .card-block.card-half {
 			width: auto;
 		}
 	}
@@ -1503,6 +1516,12 @@
 				width: auto;
 				max-width: 150px;
 			}
+		}
+	}
+	.collection-list {
+		display: block;
+		.collection-item {
+			width: auto;
 		}
 	}
 

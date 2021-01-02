@@ -587,42 +587,54 @@ class global_info {
 		$common = $this->utilities->common();
 
 		// Don't run any of the below code unless on the correct pages
-		if ($common['script_name'] == 'app/gameplay-collections') {
+		if ($common['script_name'] == 'app/gameplay-collections' || $this->utilities->in_string($common['page'], 'mode=viewprofile')) {
 			// List of collections
 			$collections_json = file_get_contents('./ext/displaycoffee/khyeras/json/collections.json');
 			$collections = json_decode($collections_json, true);
 
-			// Get the user lang_id
-			$lang_id = $common['user']['lang'];
+			// No need to add recipients on profiles
+			if ($common['script_name'] == 'app/gameplay-collections') {
+				// Get the user lang_id
+				$lang_id = $common['user']['lang'];
 
-			// Empty object to store members
-			$members = $this->utilities->get_members($common['tables']['users'], 'group_id=9');
+				// Empty object to store members
+				$members = $this->utilities->get_members($common['tables']['users'], 'group_id=9');
 
-			// Load profile field language
-			$this->lang_helper->load_option_lang($lang_id);
+				// Load profile field language
+				$this->lang_helper->load_option_lang($lang_id);
 
-			// Loop through members array
-			foreach ($members as $key => $value) {
-				$member_id = $value['id'];
+				// Loop through members array
+				foreach ($members as $key => $value) {
+					$member_id = $value['id'];
 
-				// Get character profile field information
-				$pf = $this->manager->grab_profile_fields_data($member_id)[$member_id];
+					// Get character profile field information
+					$pf = $this->manager->grab_profile_fields_data($member_id)[$member_id];
 
-				// Get member collection if set
-				$member_collections = $this->utilities->exists($pf['c_collections']['value'], false);
+					// Get member collection if set
+					$member_collections = $this->utilities->exists($pf['c_collections']['value'], false);
 
-				// If there is member collection data, loop through collection and add recipients
-				if ($member_collections) {
-					// Loop through collections
-					foreach ($collections as $collection_key => $collection_value) {
-						if (in_array($collection_key, explode(', ', $member_collections))) {
-							// Add recipients array
-							if (!$collections[$collection_key]['recipients']) {
-								$collections[$collection_key]['recipients'] = [];
+					// If there is member collection data, add recipients
+					if ($member_collections) {
+						$member_array = explode(', ', $member_collections);
+
+						// Loop through collections
+						for ($i = 0; $i < count($member_array); $i++) {
+							$collection_id = explode('~', $member_array[$i]);
+
+							if (count($collection_id) > 1) {
+								$collection_type = $collection_id[0];
+								$collection_name = $collection_id[1];
+
+								if ($collections[$collection_type]['items'][$collection_name]) {
+									// Add recipients array
+									if (!$collections[$collection_type]['items'][$collection_name]['recipients']) {
+										$collections[$collection_type]['items'][$collection_name]['recipients'] = [];
+									}
+
+									// Then push recipients to collection
+									array_push($collections[$collection_type]['items'][$collection_name]['recipients'], $members[$member_id]);
+								}
 							}
-
-							// Then push recipients to collection
-							array_push($collections[$collection_key]['recipients'], $members[$member_id]);
 						}
 					}
 				}
@@ -630,7 +642,7 @@ class global_info {
 
 			// Assign global template variables for re-use
 			$this->template->assign_vars(array(
-				'KHY_COLLECTION_LIST' => $collections
+				'KHY_COLLECTIONS' => $collections
 			));
 		}
 	}

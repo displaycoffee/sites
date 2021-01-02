@@ -2,16 +2,20 @@
 ============================================== */
 
 $rpg-achievement: \e929;
+$rpg-beer-stein: \e947;
 $rpg-big-gear: \e902;
 $rpg-book-cover: \e919;
 $rpg-bookmarklet: \e91a;
 $rpg-burning-embers: \e934;
+$rpg-camp-cooking-pot: \e949;
 $rpg-cash: \e932;
 $rpg-castle: \e905;
 $rpg-clockwork: \e90f;
+$rpg-coffee-cup: \e94a;
 $rpg-compass: \e911;
 $rpg-crossed-swords: \e91e;
 $rpg-cross-shield: \e924;
+$rpg-diamond-ring: \e946;
 $rpg-dice-cubes: \e943;
 $rpg-dice-cup: \e942;
 $rpg-direction-sign: \e915;
@@ -19,6 +23,7 @@ $rpg-dragon-head: \e90c;
 $rpg-dwarf-face: \e90d;
 $rpg-elf-ear: \e90e;
 $rpg-evil-hand: \e91b;
+$rpg-fork-knife-spoon: \e948;
 $rpg-fairy: \e91d;
 $rpg-fangs: \e906;
 $rpg-fire: \e93b;
@@ -28,6 +33,7 @@ $rpg-ghost-ally: \e909;
 $rpg-goose: \e941;
 $rpg-harpy: \e907;
 $rpg-holy-grail: \e930;
+$rpg-horse: \e94b;
 $rpg-hourglass: \e931;
 $rpg-hunting-horn: \e920;
 $rpg-key: \e913;
@@ -47,6 +53,7 @@ $rpg-shaking-hands: \e91c;
 $rpg-ship-wheel: \e940;
 $rpg-spell-book: \e918;
 $rpg-stabbed-note: \e916;
+$rpg-stable: \e94c;
 $rpg-stag-head: \e945;
 $rpg-stars-stack: \e92a;
 $rpg-stone-crafting: \e925;
@@ -68,6 +75,9 @@ $rpg-zeppelin: \e93d;
 .rpg-achievement:before {
 	content: unicode($rpg-achievement);
 }
+.rpg-beer-stein:before {
+	content: unicode($rpg-beer-stein);
+}
 .rpg-big-gear:before {
 	content: unicode($rpg-big-gear);
 }
@@ -80,6 +90,9 @@ $rpg-zeppelin: \e93d;
 .rpg-burning-embers:before {
 	content: unicode($rpg-burning-embers);
 }
+.rpg-camp-cooking-pot:before {
+	content: unicode($rpg-camp-cooking-pot);
+}
 .rpg-cash:before {
 	content: unicode($rpg-cash);
 }
@@ -89,6 +102,9 @@ $rpg-zeppelin: \e93d;
 .rpg-clockwork:before {
 	content: unicode($rpg-clockwork);
 }
+.rpg-coffee-cup:before {
+	content: unicode($rpg-coffee-cup);
+}
 .rpg-compass:before {
 	content: unicode($rpg-compass);
 }
@@ -97,6 +113,9 @@ $rpg-zeppelin: \e93d;
 }
 .rpg-cross-shield:before {
 	content: unicode($rpg-cross-shield);
+}
+.rpg-diamond-ring:before {
+	content: unicode($rpg-diamond-ring);
 }
 .rpg-dice-cubes:before {
 	content: unicode($rpg-dice-cubes);
@@ -131,6 +150,9 @@ $rpg-zeppelin: \e93d;
 .rpg-fire-silhouette:before {
 	content: unicode($rpg-fire-silhouette);
 }
+.rpg-fork-knife-spoon:before {
+	content: unicode($rpg-fork-knife-spoon);
+}
 .rpg-gavel:before {
 	content: unicode($rpg-gavel);
 }
@@ -145,6 +167,9 @@ $rpg-zeppelin: \e93d;
 }
 .rpg-holy-grail:before {
 	content: unicode($rpg-holy-grail);
+}
+.rpg-horse:before {
+	content: unicode($rpg-horse);
 }
 .rpg-hourglass:before {
 	content: unicode($rpg-hourglass);
@@ -202,6 +227,9 @@ $rpg-zeppelin: \e93d;
 }
 .rpg-stabbed-note:before {
 	content: unicode($rpg-stabbed-note);
+}
+.rpg-stable:before {
+	content: unicode($rpg-stable);
 }
 .rpg-stag-head:before {
 	content: unicode($rpg-stag-head);

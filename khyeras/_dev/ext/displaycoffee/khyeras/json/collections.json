@@ -1,172 +1,209 @@
 {
-	"bosuns-remedy"                             : {
-		"name"    : "Bosun's Remedy",
-		"type"    : "Beverage",
-		"icon"    : "",
-		"origin"  : "Fellsgard - Mac's",
-		"link"    : "./viewtopic.php?p=139#p139",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Common",
-		"desc"    : "A foamy, pale, yellow-green colored concoction. Made with pear and green grape juice, vodka, and ground bone ash from four-horned yaks of Irtuen Reaches. Topped with whipped, foamy egg whites. Should be stirred before drinking."
+	"beverage" : {
+		"name" : "Beverage",
+		"items" : {
+			"bosuns-remedy" : {
+				"name" : "Bosun's Remedy",
+				"icon" : "rpg-icon rpg-beer-stein",
+				"desc" : "A foamy, pale, yellow-green colored concoction. Made with pear and green grape juice, vodka, and ground bone ash from four-horned yaks of Irtuen Reaches. Topped with whipped, foamy egg whites. Should be stirred before drinking.",
+				"details" : {
+					"origin" : "Fellsgard - Mac's",
+					"link" : "viewtopic.php?p=139#p139",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Common"
+				}
+			},
+			"deaths-doorstep" : {
+				"name" : "Death's Doorstep",
+				"icon" : "rpg-icon rpg-beer-stein",
+				"desc" : "A mystery drink  made with orange juice, sugar, and a random bottle off a shelf.",
+				"details" : {
+					"origin" : "Verdant Row - Heartbroken Socks Inn",
+					"link" : "viewtopic.php?p=2093#p2093",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Common"
+				}
+			},
+			"dwarven-ale" : {
+				"name" : "Dwarven Ale",
+				"icon" : "rpg-icon rpg-beer-stein",
+				"desc" : "Traditional Dwarven Ale. Size: 64 ounces.",
+				"details" : {
+					"origin" : "Domrhask - The Bearded Siren",
+					"link" : "viewtopic.php?p=1808#p1808",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Common"
+				}
+			},
+			"herbal-tea" : {
+				"name" : "Herbal Tea",
+				"icon" : "rpg-icon rpg-beer-stein",
+				"desc" : "Orange, cranberry, and honey tea.",
+				"details" : {
+					"origin" : "Ajteire - The Preamble",
+					"link" : "viewtopic.php?p=1920#p1920",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Common"
+				}
+			},
+			"phoenix-fire" : {
+				"name" : "Phoenix Fire",
+				"icon" : "rpg-icon rpg-beer-stein",
+				"desc" : "Served in a bottle with a round bottom and slim neck. When opened, smoke puffs out into the shape of a bird and gives a bird-like call. Inside is a rich, aged, and spicy liquid.",
+				"details" : {
+					"origin" : "Verdant Row - Heartbroken Socks Inn",
+					"link" : "viewtopic.php?p=1809#p1809",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Uncommon"
+				}
+			},
+			"spider-eggs" : {
+				"name" : "Spider Eggs",
+				"icon" : "rpg-icon rpg-beer-stein",
+				"desc" : "A red-tinted ale with notes of strawberry and apple accompanied by three olives that are stuffed with spider eggs from the Crimson Boltback, a large arachnid residing in the jungles of Ajteire. It is dyed with a few drops of snake blood.",
+				"details" : {
+					"origin" : "Fellsgard - Mac's",
+					"link" : "viewtopic.php?p=139#p139",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Uncommon"
+				}
+			},
+			"white-wine" : {
+				"name" : "White Wine",
+				"icon" : "rpg-icon rpg-beer-stein",
+				"desc" : "A simple white wine.",
+				"details" : {
+					"origin" : "Ajteire - The Preamble",
+					"link" : "viewtopic.php?p=1920#p1920",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Common"
+				}
+			}
+		}
 	},
-	"spider-eggs"                               : {
-		"name"    : "Spider Eggs",
-		"type"    : "Beverage",
-		"icon"    : "",
-		"origin"  : "Fellsgard - Mac's",
-		"link"    : "./viewtopic.php?p=139#p139",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Uncommon",
-		"desc"    : "A red-tinted ale with notes of strawberry and apple accompanied by three olives that are stuffed with spider eggs from the Crimson Boltback, a large arachnid residing in the jungles of Ajteire. It is dyed with a few drops of snake blood."
+	"food" : {
+		"name" : "Food",
+		"items" : {
+			"colossaleius-emperor-lobster" : {
+				"name" : "Colossaleius Emperor Lobster",
+				"icon" : "rpg-icon rpg-fork-knife-spoon",
+				"desc" : "A steaming, 60-pound lobster with four claws. Served with a saucer of butter for dunking.",
+				"details" : {
+					"origin" : "Fellsgard - Mac's",
+					"link" : "viewtopic.php?p=3155#p3155",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Uncommon"
+				}
+			},
+			"rustic-siren-stew" : {
+				"name" : "Rustic Siren Stew",
+				"icon" : "rpg-icon rpg-fork-knife-spoon",
+				"desc" : "A stew with a rich brown-red colored broth, chunks of potatoes, carrots, onions, and peas accompanied by two different types of meat (snake and turtle).",
+				"details" : {
+					"origin" : "Domrhask - The Bearded Siren",
+					"link" : "viewtopic.php?p=1808#p1808",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Common"
+				}
+			},
+			"wild-rice-soup" : {
+				"name" : "Wild Rice Soup",
+				"icon" : "rpg-icon rpg-fork-knife-spoon",
+				"desc" : "Soup made with a mushroom broth, wild rice, diced mushrooms, spinach, and chopped tomatoes. Has a sprinkling of aged cheese on top. Complimented with crusty, rosemary bread.",
+				"details" : {
+					"origin" : "Ajteire - The Preamble",
+					"link" : "viewtopic.php?p=1920#p1920",
+					"trigger" : "Achievement - Today's Special",
+					"rating" : "Common"
+				}
+			}
+		}
 	},
-	"oscar-the-warthog"                         : {
-		"name"    : "Oscar the Warthog",
-		"type"    : "Mount",
-		"icon"    : "",
-		"origin"  : "Fellsgard - Stables",
-		"link"    : "./viewtopic.php?p=199#p199",
-		"trigger" : "Achievement - Unstable Stables",
-		"rating"  : "Uncommon",
-		"desc"    : "A beefy looking warthog with magnificent curled tusks, about three and half feet tall."
+	"miscellaneous" : {
+		"name" : "Miscellaneous",
+		"items" : {
+			"the-lost-mirror" : {
+				"name" : "The Lost Mirror",
+				"icon" : "rpg-icon rpg-dice-cubes",
+				"desc" : "An handheld mirror with an oval frame found in the Captain's Cabin. The handle and frame are made from wood found in Lament of the Willow. The wood is intricately carved with vines and flowers. Most of the time when this is used it only shows the holder's reflection, but sometimes it is said to capture the essence and image of spirits or undead.",
+				"details" : {
+					"origin" : "Res'lora Azure - An abandoned, ghost ship",
+					"link" : "viewtopic.php?p=2985#p2985",
+					"trigger" : "Event - Spooky Sundown",
+					"rating" : "Rare"
+				}
+			},
+			"the-shade-waltz" : {
+				"name" : "The Shade Waltz",
+				"icon" : "rpg-icon rpg-dice-cubes",
+				"desc" : "A square, black music box (about 6x6 inches) adorned with flecks of obsidian on the outside. Inside, there is a wooden figure of a woman painted with pale skin, a messy bun of brown hair and a black dress, twirling to the haunting melody the box plays. When opened,  there is a compartment for storing items and after retrieving the items, it is said the holder knows the origins of the objects. It is also rumored that the box's melody should not be played for a long time, as spirits may be let free into Khy'eras.",
+				"details" : {
+					"origin" : "Tviyr - A ruined village",
+					"link" : "viewtopic.php?p=2989#p2989",
+					"trigger" : "Event - Spooky Sundown",
+					"rating" : "Rare"
+				}
+			}
+		}
 	},
-	"big-arse-the-ostrich"                      : {
-		"name"    : "Big Arse the Ostrich",
-		"type"    : "Mount",
-		"icon"    : "",
-		"origin"  : "Fellsgard - Stables",
-		"link"    : "./viewtopic.php?p=199#p199",
-		"trigger" : "Achievement - Unstable Stables",
-		"rating"  : "Uncommon",
-		"desc"    : "Tall and uneasy in appearance with beady and slightly crazed eyes that constantly rustles its feathers as if wanting to get into a fight."
-	},
-	"sir-francis-de-eradrald-the-xii-the-moose" : {
-		"name"    : "Sir Francis de Eradrald the XII the Moose",
-		"type"    : "Mount",
-		"icon"    : "",
-		"origin"  : "Fellsgard - Stables",
-		"link"    : "./viewtopic.php?p=1750#p1750",
-		"trigger" : "Achievement - Unstable Stables",
-		"rating"  : "Uncommon",
-		"desc"    : "A great creature over seven feet tall, sporting an impressive set of full-grown antlers and an earthy, brown colored coat. Originally hails from Domrhask."
-	},
-	"dwarven-ale"                               : {
-		"name"    : "Dwarven Ale",
-		"type"    : "Beverage",
-		"icon"    : "",
-		"origin"  : "Domrhask - The Bearded Siren",
-		"link"    : "./viewtopic.php?p=1808#p1808",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Common",
-		"desc"    : "Traditional Dwarven Ale. Size: 64 ounces."
-	},
-	"rustic-siren-stew"                         : {
-		"name"    : "Rustic Siren Stew",
-		"type"    : "Food",
-		"icon"    : "",
-		"origin"  : "Domrhask - The Bearded Siren",
-		"link"    : "./viewtopic.php?p=1808#p1808",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Common",
-		"desc"    : "A stew with a rich brown-red colored broth, chunks of potatoes, carrots, onions, and peas accompanied by two different types of meat (snake and turtle)."
-	},
-	"phoenix-fire"                              : {
-		"name"    : "Phoenix Fire",
-		"type"    : "Beverage",
-		"icon"    : "",
-		"origin"  : "Verdant Row - Heartbroken Socks Inn",
-		"link"    : "./viewtopic.php?p=1809#p1809",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Uncommon",
-		"desc"    : "Served in a bottle with a round bottom and slim neck. When opened, smoke puffs out into the shape of a bird and gives a bird-like call. Inside is a rich, aged, and spicy liquid."
-	},
-	"herbal-tea"                                : {
-		"name"    : "Herbal Tea",
-		"type"    : "Beverage",
-		"icon"    : "",
-		"origin"  : "Ajteire - The Preamble",
-		"link"    : "./viewtopic.php?p=1920#p1920",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Common",
-		"desc"    : "Orange, cranberry, and honey tea."
-	},
-	"white-wine"                                : {
-		"name"    : "White Wine",
-		"type"    : "Beverage",
-		"icon"    : "",
-		"origin"  : "Ajteire - The Preamble",
-		"link"    : "./viewtopic.php?p=1920#p1920",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Common",
-		"desc"    : "A simple white wine."
-	},
-	"wild-rice-soup"                            : {
-		"name"    : "Wild Rice Soup",
-		"type"    : "Food",
-		"icon"    : "",
-		"origin"  : "Ajteire - The Preamble",
-		"link"    : "./viewtopic.php?p=1920#p1920",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Common",
-		"desc"    : "Soup made with a mushroom broth, wild rice, diced mushrooms, spinach, and chopped tomatoes. Has a sprinkling of aged cheese on top. Complimented with crusty, rosemary bread."
-	},
-	"the-tiniest-of-horses"                     : {
-		"name"    : "The Tiniest of Horses",
-		"type"    : "Mount",
-		"icon"    : "",
-		"origin"  : "Fellsgard - Stables",
-		"link"    : "./viewtopic.php?p=2064#p2064",
-		"trigger" : "Achievement - Unstable Stables",
-		"rating"  : "Uncommon",
-		"desc"    : "A horse standing a total of 20 inches tall that is enchanted to be able to hold a person's weight. He'll never give you up, let you down, or run around and desert you."
-	},
-	"deaths-doorstep"                           : {
-		"name"    : "Death's Doorstep",
-		"type"    : "Beverage",
-		"icon"    : "",
-		"origin"  : "Verdant Row - Heartbroken Socks Inn",
-		"link"    : "./viewtopic.php?p=2093#p2093",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Common",
-		"desc"    : "A mystery drink  made with orange juice, sugar, and a random bottle off a shelf."
-	},
-	"muffins-the-velociraptor"                  : {
-		"name"    : "Muffins the Velociraptor",
-		"type"    : "Mount",
-		"icon"    : "",
-		"origin"  : "Ajteire - Stables",
-		"link"    : "./viewtopic.php?p=2823#p2823",
-		"trigger" : "Achievement - Well, That's New",
-		"rating"  : "Uncommon",
-		"desc"    : "A trusty dinosaur mount with brown, leathery skin marked with auburn colored stripes much like a tiger's pattern. The reptile is about eight feet in height, supported by two strong legs adorned with talons."
-	},
-	"colossaleius-emperor-lobster"              : {
-		"name"    : "Colossaleius Emperor Lobster",
-		"type"    : "Food",
-		"icon"    : "",
-		"origin"  : "Fellsgard - Mac's",
-		"link"    : "./viewtopic.php?p=3155#p3155",
-		"trigger" : "Achievement - Today's Special",
-		"rating"  : "Uncommon",
-		"desc"    : "A steaming, 60-pound lobster with four claws. Served with a saucer of butter for dunking."
-	},
-	"the-lost-mirror"                           : {
-		"name"    : "The Lost Mirror",
-		"type"    : "Miscellaneous",
-		"icon"    : "",
-		"origin"  : "Res'lora Azure - An abandoned, ghost ship",
-		"link"    : "./viewtopic.php?p=2985#p2985",
-		"trigger" : "Event - Spooky Sundown",
-		"rating"  : "Rare",
-		"desc"    : "An handheld mirror with an oval frame found in the Captain's Cabin. The handle and frame are made from wood found in Lament of the Willow. The wood is intricately carved with vines and flowers. Most of the time when this is used it only shows the holder's reflection, but sometimes it is said to capture the essence and image of spirits or undead."
-	},
-	"the-shade-waltz"                           : {
-		"name"    : "The Shade Waltz",
-		"type"    : "Miscellaneous",
-		"icon"    : "",
-		"origin"  : "Tviyr - A ruined village",
-		"link"    : "./viewtopic.php?p=2989#p2989",
-		"trigger" : "Event - Spooky Sundown",
-		"rating"  : "Rare",
-		"desc"    : "A square, black music box (about 6x6 inches) adorned with flecks of obsidian on the outside. Inside, there is a wooden figure of a woman painted with pale skin, a messy bun of brown hair and a black dress, twirling to the haunting melody the box plays. When opened,  there is a compartment for storing items and after retrieving the items, it is said the holder knows the origins of the objects. It is also rumored that the box's melody should not be played for a long time, as spirits may be let free into Khy'eras."
+	"mount" : {
+		"name" : "Mount",
+		"items" : {
+			"big-arse-the-ostrich" : {
+				"name" : "Big Arse the Ostrich",
+				"icon" : "rpg-icon rpg-stable",
+				"desc" : "Tall and uneasy in appearance with beady and slightly crazed eyes that constantly rustles its feathers as if wanting to get into a fight.",
+				"details" : {
+					"origin" : "Fellsgard - Stables",
+					"link" : "viewtopic.php?p=199#p199",
+					"trigger" : "Achievement - Unstable Stables",
+					"rating" : "Uncommon"
+				}
+			},
+			"muffins-the-velociraptor" : {
+				"name" : "Muffins the Velociraptor",
+				"icon" : "rpg-icon rpg-stable",
+				"desc" : "A trusty dinosaur mount with brown, leathery skin marked with auburn colored stripes much like a tiger's pattern. The reptile is about eight feet in height, supported by two strong legs adorned with talons.",
+				"details" : {
+					"origin" : "Ajteire - Stables",
+					"link" : "viewtopic.php?p=2823#p2823",
+					"trigger" : "Achievement - Well, That's New",
+					"rating" : "Uncommon"
+				}
+			},
+			"oscar-the-warthog" : {
+				"name" : "Oscar the Warthog",
+				"icon" : "rpg-icon rpg-stable",
+				"desc" : "A beefy looking warthog with magnificent curled tusks, about three and half feet tall.",
+				"details" : {
+					"origin" : "Fellsgard - Stables",
+					"link" : "viewtopic.php?p=199#p199",
+					"trigger" : "Achievement - Unstable Stables",
+					"rating" : "Uncommon"
+				}
+			},
+			"sir-francis-de-eradrald-the-xii-the-moose" : {
+				"name" : "Sir Francis de Eradrald the XII the Moose",
+				"icon" : "rpg-icon rpg-stable",
+				"desc" : "A great creature over seven feet tall, sporting an impressive set of full-grown antlers and an earthy, brown colored coat. Originally hails from Domrhask.",
+				"details" : {
+					"origin" : "Fellsgard - Stables",
+					"link" : "viewtopic.php?p=1750#p1750",
+					"trigger" : "Achievement - Unstable Stables",
+					"rating" : "Uncommon"
+				}
+			},
+			"the-tiniest-of-horses" : {
+				"name" : "The Tiniest of Horses",
+				"icon" : "rpg-icon rpg-stable",
+				"desc" : "A horse standing a total of 20 inches tall that is enchanted to be able to hold a person's weight. He'll never give you up, let you down, or run around and desert you.",
+				"details" : {
+					"origin" : "Fellsgard - Stables",
+					"link" : "viewtopic.php?p=2064#p2064",
+					"trigger" : "Achievement - Unstable Stables",
+					"rating" : "Uncommon"
+				}
+			}
+		}
 	}
 }

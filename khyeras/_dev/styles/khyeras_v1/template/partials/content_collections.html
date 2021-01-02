@@ -1,0 +1,60 @@
+{% import 'utilities/macros.html' as function %}
+
+{% if KHY_COLLECTIONS %}
+	{% apply spaceless %}
+		{% set cards = KHY_COLLECTIONS %}
+	{% endapply %}
+
+	{% for key, card in cards %}
+		<section id="{{ key }}" class="page-content-section toggleable-section" data-quick-name="{{ card.name }}">
+			<h3>
+				<button class="toggle-button button-link" type="button" data-toggle-type="collections" data-toggle-id="{{ loop.index }}" data-toggle-name="{{ key }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ card.name }}
+			</h3>
+			{% if card.desc %}
+				<p>{{ card.desc }}</p>
+			{% endif %}
+			<div class="card-grid">
+				{% for item_key, item in card.items %}
+					<div id="{{ key }}-{{ item_key }}" class="card-block card-half">
+						<h5 class="card-title">{{ item.name }}</h5>
+						<div class="icon-wrapper">
+							<i class="icon icon-round {{ item.icon }}" aria-hidden="true"></i>
+						</div>
+						<div class="card-description">
+							<span class="card-description-wrapper">{{ item.desc }}</span>
+						</div>
+						<div class="card-clear"></div>
+						{% if item.details || item.recipients %}
+							<dl class="details details-small">
+								{% if item.details.origin %}
+									<dt>Origin:</dt>
+									<dd>{{ item.details.origin }}</dd>
+								{% endif %}
+								{% if item.details.trigger %}
+									<dt>Trigger:</dt>
+									<dd><a href="{{ ROOT_PATH }}{{ item.details.link }}">{{ item.details.trigger }}</a></dd>
+								{% endif %}
+								{% if item.details.rating %}
+									<dt>Rating:</dt>
+									<dd>{{ item.details.rating }}</dd>
+								{% endif %}
+								{% if item.recipients %}
+									<dt>Recipients:</dt>
+									<dd>
+										{% for recipient in item.recipients %}
+											<a href="{{ ROOT_PATH }}{{ recipient.profile }}">{{ recipient.name }}</a>{% if !loop.last %}, {% endif %}
+										{% endfor %}
+									</dd>
+								{% endif %}
+							</dl>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+	{% endfor %}
+{% else %}
+	<section class="page-content-section">
+		<p>There are no active collections.</p>
+	</section>
+{% endif %}

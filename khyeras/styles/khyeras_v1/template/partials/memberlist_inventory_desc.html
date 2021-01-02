@@ -11,7 +11,8 @@
 	(PROFILE_C_ARMOR_NAME)        : PROFILE_C_ARMOR_VALUE,
 	(PROFILE_C_CLOTHING_ACC_NAME) : PROFILE_C_CLOTHING_ACC_VALUE,
 	(PROFILE_C_SKILLS_NAME)       : PROFILE_C_SKILLS_VALUE,
-	(PROFILE_C_SPELLBOOK_NAME)    : (spellbook == 'false') ? '' : spellbook
+	(PROFILE_C_SPELLBOOK_NAME)    : (spellbook == 'false') ? '' : spellbook,
+	(PROFILE_C_COLLECTIONS_NAME)  : PROFILE_C_COLLECTIONS_VALUE
 } %}
 {% set inventory_all_fields = inventory_fields %}
 
@@ -59,6 +60,31 @@
 			<section class="page-content-section">
 				<h3>{{ PROFILE_C_SPELLBOOK_NAME }}</h3>
 				<p>{{ function.replace_breaks(PROFILE_C_SPELLBOOK_VALUE) }}</p>
+			</section>
+		{% endif %}
+
+		{% if PROFILE_C_COLLECTIONS_VALUE && KHY_COLLECTIONS %}
+			<section class="page-content-section">
+				<h3>{{ PROFILE_C_COLLECTIONS_NAME }}</h3>
+
+				<div class="collection-list">
+					{% for collection in (PROFILE_C_COLLECTIONS_VALUE | split(', ')) %}
+						<div class="collection-item">
+							{% set collection_id = collection | split('~') %}
+							{% if collection_id | length > 1 %}
+								{% set collection_type = collection_id[0] %}
+								{% set collection_name= collection_id[1] %}
+								{% if KHY_COLLECTIONS[collection_type]['items'][collection_name] %}
+									<i class="icon rpg-icon {{ KHY_COLLECTIONS[collection_type]['items'][collection_name]['icon'] }}" aria-hidden="true"></i>
+									<a href="{{ ROOT_PATH }}gameplay-collections#{{ collection_type }}-{{ collection_name }}" class="collection-value">{{ KHY_COLLECTIONS[collection_type]['items'][collection_name]['name'] }}</a>
+								{% endif %}
+							{% else %}
+								<i class="icon fa-question-circle" aria-hidden="true"></i>
+								<span class="collection-value">{{ collection }}<span>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
 			</section>
 		{% endif %}
 	{% endif %}

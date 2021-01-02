@@ -234,3 +234,21 @@
 .profile-badges .badge-list {
 	margin-bottom: (-$ffs-half);
 }
+
+/* Collections
+============================================== */
+
+.collection-list {
+	@include flex-flow(row wrap);
+	margin: 0 -5px 10px -5px;
+	.collection-item {
+		@include flex;
+		width: 20%;
+		padding: 0 5px 0 30px;
+		margin: 0 0 5px 0;
+		position: relative;
+		.icon {
+			@include position($type: absolute, $left: 5px, $top: 1.5px);
+		}
+	}
+}

@@ -107,6 +107,7 @@ class utilities {
 				'time'  => $this->user->time_now
 			],
 			'script_name' => str_replace('.' . $this->php_ext, '', $this->user->page['page_name']),
+			'page'        => $this->user->page['page'],
 			'tables'      => [
 				'groups'      => $this->groups_table,
 				'pages'       => $this->pages_table,

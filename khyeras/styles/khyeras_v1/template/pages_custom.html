@@ -40,6 +40,10 @@
 					{% include 'partials/content_badges.html' %}
 				{% endif %}
 
+				{% if KHY_SCRIPT_NAME == 'gameplay-collections' %}
+					{% include 'partials/content_collections.html' %}
+				{% endif %}
+
 				{% if KHY_SCRIPT_NAME == 'members-character-census' %}
 					{% include 'partials/content_census.html' %}
 				{% endif %}
