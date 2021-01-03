@@ -90,7 +90,12 @@ class global_info {
 		// Add list of completed achievements only for achievement page
 		$achievements_array = array();
 		if ($common['script_name'] == 'app/gameplay-achievements') {
+			// List of achievements
+			$achievements_json = file_get_contents('./ext/displaycoffee/khyeras/json/achievements.json');
+			$achievements = json_decode($achievements_json, true);
+
 			$achievements_array = array(
+				'KHY_ACHIEVEMENTS' => $achievements,
 				'KHY_USER_ACHIEVEMENTS' => $pf['c_achievements']['value']
 			);
 		}
