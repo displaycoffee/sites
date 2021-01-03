@@ -1,38 +1,38 @@
 {% import 'utilities/macros.html' as function %}
 
-{% if KHY_BADGE_LIST %}
+{% if KHY_BADGES %}
 	{% apply spaceless %}
-		{% set cards = KHY_BADGE_LIST %}
+		{% set cards = KHY_BADGES %}
 	{% endapply %}
 
-	{% for key, card in cards if card.list %}
-		{% set section_id = function.create_handle(key) %}
-		<section id="{{ section_id }}" class="page-content-section toggleable-section" data-quick-name="{{ card.title }}">
+	{% for key, card in cards if card.items %}
+		<section id="{{ key }}" class="page-content-section toggleable-section" data-quick-name="{{ card.name }}">
 			<h3>
-				<button class="toggle-button button-link" type="button" data-toggle-type="badges" data-toggle-id="{{ loop.index }}" data-toggle-name="{{ key }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ card.title }}
+				<button class="toggle-button button-link" type="button" data-toggle-type="badges" data-toggle-id="{{ loop.index }}" data-toggle-name="{{ key }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ card.name }}
 			</h3>
-			<p>{{ card.desc }}</p>
+			{% if card.desc %}
+				<p>{{ card.desc }}</p>
+			{% endif %}
 			<div class="card-grid">
-				{% for detail in card.list %}
-					{% set card_id = section_id  ~ '-' ~ function.create_handle(detail.title) %}
-					<div id="{{ card_id }}" class="card-block">
+				{% for item_key, item in card.items %}
+					<div id="{{ key }}-{{ item_key }}" class="card-block">
 						<h5 class="card-title">
-							<a href="{{ ROOT_PATH }}{{ detail.url }}">{{ detail.title }}</a>
+							<a href="{{ ROOT_PATH }}{{ item.details.link }}">{{ item.name }}</a>
 						</h5>
 						<div class="icon-wrapper">
 							<div class="icon-badge">
-								<img src="{{ ROOT_PATH }}{{ detail.image }}" alt="{{ detail.title }}" title="{{ detail.title }}" />
+								<img src="{{ ROOT_PATH }}{{ item.icon }}" alt="{{ item.name }}" title="{{ item.name }}" />
 							</div>
 						</div>
 						<div class="card-description">
-							<span class="card-description-wrapper">{{ detail.desc }}</span>
+							<span class="card-description-wrapper">{{ item.desc }}</span>
 						</div>
 						<div class="card-clear"></div>
-						{% if detail.recipients %}
+						{% if item.recipients %}
 							<dl class="details details-small">
 								<dt>Recipients:</dt>
 								<dd>
-									{% for recipient in detail.recipients %}
+									{% for recipient in item.recipients %}
 										<a href="{{ ROOT_PATH }}{{ recipient.profile }}">{{ recipient.name }}</a>{% if !loop.last %}, {% endif %}
 									{% endfor %}
 								</dd>

@@ -1,0 +1,20 @@
+{
+	"achievements" : {
+		"name" : "Achievements",
+		"desc" : "Badges awared through player achievements."
+	},
+	"events" : {
+		"name" : "Events",
+		"desc" : "Badges awared through limited timed events.",
+		"items" : {
+			"spooky-sundown" : {
+				"name" : "Spooky Sundown",
+				"icon" : "images/badges/spooky-sundown-x24.png",
+				"desc" : "Awared to those who participated in the Spooky Sundown 2020 Halloween Event.",
+				"details" : {
+					"link" : "viewtopic.php?f=26&amp;t=351"
+				}
+			}
+		}
+	}
+}

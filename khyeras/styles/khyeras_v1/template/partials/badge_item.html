@@ -1,0 +1,23 @@
+{% set badge_missing %}
+	<a href="{{ ROOT_PATH }}gameplay-badges" class="badge-value">
+		<img src="{{ ROOT_PATH }}images/badges/pending-x24.png" alt="Badge Unknown" title="Badge Unknown" />
+	</a>
+{% endset %}
+
+<div class="badge-item">
+	{% set badge_key = badge | split('~') %}
+	{% if badge_key | length > 1 %}
+		{% set badge_type = badge_key[0] %}
+		{% set badge_id = badge_key[1] %}
+		{% if KHY_BADGES[badge_type]['items'][badge_id] %}
+			{% set badge_name = KHY_BADGES[badge_type]['items'][badge_id]['name'] %}
+			<a href="{{ ROOT_PATH }}gameplay-badges#{{ badge_type }}-{{ badge_id }}" class="badge-value">
+				<img src="{{ ROOT_PATH }}{{ KHY_BADGES[badge_type]['items'][badge_id]['icon'] }}" alt="{{ badge_name }}" title="{{ badge_name }}" />
+			</a>
+		{% else %}
+			{{ badge_missing }}
+		{% endif %}
+	{% else %}
+		{{ badge_missing }}
+	{% endif %}
+</div>

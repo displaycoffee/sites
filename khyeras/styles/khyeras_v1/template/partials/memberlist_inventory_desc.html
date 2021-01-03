@@ -64,23 +64,31 @@
 		{% endif %}
 
 		{% if PROFILE_C_COLLECTIONS_VALUE && KHY_COLLECTIONS %}
+			{% set collection_missing %}
+				<i class="icon fa-question-circle" aria-hidden="true"></i>
+				<span class="collection-value">Unknown collection</span>
+			{% endset %}
+
 			<section class="page-content-section">
 				<h3>{{ PROFILE_C_COLLECTIONS_NAME }}</h3>
 
 				<div class="collection-list">
-					{% for collection in (PROFILE_C_COLLECTIONS_VALUE | split(', ')) %}
+					{% set collection_list = PROFILE_C_COLLECTIONS_VALUE | split(', ') %}
+					{% for collection in collection_list %}
 						<div class="collection-item">
-							{% set collection_id = collection | split('~') %}
-							{% if collection_id | length > 1 %}
-								{% set collection_type = collection_id[0] %}
-								{% set collection_name= collection_id[1] %}
-								{% if KHY_COLLECTIONS[collection_type]['items'][collection_name] %}
-									<i class="icon rpg-icon {{ KHY_COLLECTIONS[collection_type]['items'][collection_name]['icon'] }}" aria-hidden="true"></i>
-									<a href="{{ ROOT_PATH }}gameplay-collections#{{ collection_type }}-{{ collection_name }}" class="collection-value">{{ KHY_COLLECTIONS[collection_type]['items'][collection_name]['name'] }}</a>
+							{% set collection_key = collection | split('~') %}
+							{% if collection_key | length > 1 %}
+								{% set collection_type = collection_key[0] %}
+								{% set collection_id = collection_key[1] %}
+								{% if KHY_COLLECTIONS[collection_type]['items'][collection_id] %}
+									{% set collection_name = KHY_COLLECTIONS[collection_type]['items'][collection_id]['name'] %}
+									<i class="icon rpg-icon {{ KHY_COLLECTIONS[collection_type]['items'][collection_id]['icon'] }}" aria-hidden="true"></i>
+									<a href="{{ ROOT_PATH }}gameplay-collections#{{ collection_type }}-{{ collection_id }}" class="collection-value">{{ collection_name }}</a>
+								{% else %}
+									{{ collection_missing }}
 								{% endif %}
 							{% else %}
-								<i class="icon fa-question-circle" aria-hidden="true"></i>
-								<span class="collection-value">{{ collection }}<span>
+								{{ collection_missing }}
 							{% endif %}
 						</div>
 					{% endfor %}

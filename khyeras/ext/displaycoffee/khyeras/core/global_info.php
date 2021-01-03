@@ -507,64 +507,53 @@ class global_info {
 		$common = $this->utilities->common();
 
 		// Don't run any of the below code unless on the correct pages
-		if ($common['script_name'] == 'app/gameplay-badges') {
+		if ($common['script_name'] == 'app/gameplay-badges' || $common['script_name'] == 'viewtopic' || $this->utilities->in_string($common['page'], 'mode=viewprofile')) {
 			// List of badges
-			$badges = $this->utilities->get_badges();
+			$badges_json = file_get_contents('./ext/displaycoffee/khyeras/json/badges.json');
+			$badges = json_decode($badges_json, true);
 
-			// Get the user lang_id
-			$lang_id = $common['user']['lang'];
+			// No need to add recipients on profiles
+			if ($common['script_name'] == 'app/gameplay-badges') {
+				// Get the user lang_id
+				$lang_id = $common['user']['lang'];
 
-			// Empty object to store members
-			$members = [];
+				// Empty object to store members
+				$group_selection = 'group_id=2 OR group_id=4 OR group_id=5 OR group_id=7 OR group_id=8 OR group_id=9';
+				$members = $this->utilities->get_members($common['tables']['users'], $group_selection);
 
-			// Create the SQL statement for character data
-			$member_sql = 'SELECT *
-				FROM ' . $common['tables']['users'] . '
-				WHERE group_id=2 OR group_id=4 OR group_id=5 OR group_id=7 OR group_id=8 OR group_id=9
-				ORDER BY user_id ASC';
+				// Load profile field language
+				$this->lang_helper->load_option_lang($lang_id);
 
-			// Run the query
-			$member_result = $this->db->sql_query($member_sql);
+				// Loop through members array
+				foreach ($members as $key => $value) {
+					$member_id = $value['id'];
 
-			// Loops through the member rows and add to members
-			while ($row = $this->db->sql_fetchrow($member_result)) {
-				// Set initial member details
-				$member_data = [
-					'id'      => $row['user_id'],
-					'name'    => $row['username'],
-					'profile' => 'memberlist.php?mode=viewprofile&un=' . $row['username_clean']
-				];
+					// Get character profile field information
+					$pf = $this->manager->grab_profile_fields_data($member_id)[$member_id];
 
-				$members[$row['user_id']] = $member_data;
-			}
+					// Get member badges if set
+					$member_badges = $this->utilities->exists($pf['c_badges']['value'], false);
 
-			// Be sure to free the result after a SELECT query
-			$this->db->sql_freeresult($member_result);
+					// If there is member badge data, add recipients
+					if ($member_badges) {
+						$member_array = explode(', ', $member_badges);
 
-			// Load profile field language
-			$this->lang_helper->load_option_lang($lang_id);
+						// Loop through badges
+						for ($i = 0; $i < count($member_array); $i++) {
+							$badge_key = explode('~', $member_array[$i]);
 
-			// Loop through members array
-			foreach ($members as $key => $value) {
-				// Get character profile field information
-				$pf = $this->manager->grab_profile_fields_data($value['id'])[$value['id']];
+							if (count($badge_key) > 1) {
+								$badge_type = $badge_key[0];
+								$badge_id = $badge_key[1];
 
-				// Get member badge if set
-				$member_badges = $this->utilities->exists($pf['c_badges']['value'], false);
+								if ($badges[$badge_type]['items'][$badge_id]) {
+									// Add recipients array
+									if (!$badges[$badge_type]['items'][$badge_id]['recipients']) {
+										$badges[$badge_type]['items'][$badge_id]['recipients'] = [];
+									}
 
-				// If there is member badge data, loop through badge list and add recipients
-				if ($member_badges) {
-					// Split member badges
-					$badge_array = explode(', ', $member_badges);
-
-					// Loop through main badge types
-					foreach ($badges as $badge_key => $badge_value) {
-						if ($badge_value['list']) {
-							// Loop through badge types list
-							foreach ($badge_value['list'] as $badge_list_key => $badge_list_value) {
-								// If the badge is in the badge_array, push the member data to recipient list
-								if (in_array($badge_list_key, $badge_array)) {
-									array_push($badges[$badge_key]['list'][$badge_list_key]['recipients'], $members[$value['id']]);
+									// Then push recipients to badge
+									array_push($badges[$badge_type]['items'][$badge_id]['recipients'], $members[$member_id]);
 								}
 							}
 						}
@@ -574,8 +563,8 @@ class global_info {
 
 			// Assign global template variables for re-use
 			$this->template->assign_vars(array(
-				'KHY_BADGE_LIST' => $badges
-	 		));
+				'KHY_BADGES' => $badges
+			));
 		}
 	}
 
@@ -598,7 +587,8 @@ class global_info {
 				$lang_id = $common['user']['lang'];
 
 				// Empty object to store members
-				$members = $this->utilities->get_members($common['tables']['users'], 'group_id=9');
+				$group_selection = 'group_id=9';
+				$members = $this->utilities->get_members($common['tables']['users'], $group_selection);
 
 				// Load profile field language
 				$this->lang_helper->load_option_lang($lang_id);
@@ -619,20 +609,20 @@ class global_info {
 
 						// Loop through collections
 						for ($i = 0; $i < count($member_array); $i++) {
-							$collection_id = explode('~', $member_array[$i]);
+							$collection_key = explode('~', $member_array[$i]);
 
-							if (count($collection_id) > 1) {
-								$collection_type = $collection_id[0];
-								$collection_name = $collection_id[1];
+							if (count($collection_key) > 1) {
+								$collection_type = $collection_key[0];
+								$collection_id = $collection_key[1];
 
-								if ($collections[$collection_type]['items'][$collection_name]) {
+								if ($collections[$collection_type]['items'][$collection_id]) {
 									// Add recipients array
-									if (!$collections[$collection_type]['items'][$collection_name]['recipients']) {
-										$collections[$collection_type]['items'][$collection_name]['recipients'] = [];
+									if (!$collections[$collection_type]['items'][$collection_id]['recipients']) {
+										$collections[$collection_type]['items'][$collection_id]['recipients'] = [];
 									}
 
 									// Then push recipients to collection
-									array_push($collections[$collection_type]['items'][$collection_name]['recipients'], $members[$member_id]);
+									array_push($collections[$collection_type]['items'][$collection_id]['recipients'], $members[$member_id]);
 								}
 							}
 						}

@@ -224,10 +224,12 @@
 
 .badge-list {
 	margin: 0 (-$ffs-half) ($ffs * 3) (-$ffs-half);
-	.badge-list-link {
+	.badge-item {
 		@include inline-block(middle);
 		margin: 0 $ffs-half ($ffs) $ffs-half;
-		line-height: 0;
+		.badge-value {
+			line-height: 0;
+		}
 	}
 }
 

@@ -59,44 +59,6 @@ class character_info_viewtopic {
 			);
 		}
 
-		// Set empty badge details array
-		$badge_details = array();
-
-		// Only assign these variables if member has badges
-		if ($pf[$prefix . 'C_BADGES_VALUE']) {
-			// Set empty badge data array
-			$member_badge_data = array();
-
-			// List of badges
-			$badges = $this->utilities->get_badges();
-
-			// Split member badges
-			$badge_array = explode(', ', $pf[$prefix . 'C_BADGES_VALUE']);
-
-			// Loop through main badge types
-			foreach ($badges as $key => $value) {
-				if ($value['list']) {
-					// Loop through badge types list
-					foreach ($value['list'] as $badge_list_key => $badge_list_value) {
-						// If the badge is in the badge_array, push the member data to member badge data
-						if (in_array($badge_list_key, $badge_array)) {
-							$badge_details = $badge_list_value;
-							$badge_details['type'] = $key;
-							unset($badge_details['recipients']);
-
-							array_push($member_badge_data, $badge_details);
-						}
-					}
-				}
-			}
-
-			if ($member_badge_data) {
-				$badge_details = array(
-					'PROFILE_BADGES' => $member_badge_data
-				);
-			}
-		}
-
 		// Clean description by removing html and bbcode for word count
 		$desc = preg_replace('/(\[.*?\])/', '', strip_tags($pf['MESSAGE'], ''));
 		$desc_count = array(
@@ -104,6 +66,6 @@ class character_info_viewtopic {
 		);
 
 		// Assign viewtopic variables
-		$this->template->assign_block_vars('postrow.khy', array_merge($character_details, $badge_details, $desc_count));
+		$this->template->assign_block_vars('postrow.khy', array_merge($character_details, $desc_count));
 	}
 }

@@ -5,7 +5,7 @@
 		{% set cards = KHY_COLLECTIONS %}
 	{% endapply %}
 
-	{% for key, card in cards %}
+	{% for key, card in cards if card.items %}
 		<section id="{{ key }}" class="page-content-section toggleable-section" data-quick-name="{{ card.name }}">
 			<h3>
 				<button class="toggle-button button-link" type="button" data-toggle-type="collections" data-toggle-id="{{ loop.index }}" data-toggle-name="{{ key }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ card.name }}

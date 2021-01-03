@@ -130,15 +130,14 @@
 		</dl>
 	</section>
 
-	{% if KHY_MEMBER_BADGES %}
-		<section class="page-content-section user-stats">
-			<h3>Badges</h3>
+	{% if PROFILE_C_BADGES_VALUE && KHY_BADGES %}
+		<section class="page-content-section">
+			<h3>{{ PROFILE_C_BADGES_NAME }}</h3>
 
 			<div class="badge-list">
-				{% for badge in KHY_MEMBER_BADGES %}
-					<a href="{{ ROOT_PATH }}gameplay-badges#{{ badge.type }}-{{ function.create_handle(badge.title) }}" class="badge-list-link">
-						<img src="{{ ROOT_PATH }}{{ badge.image }}" alt="{{ badge.title }}" title="{{ badge.title }}" />
-					</a>
+				{% set badge_list = PROFILE_C_BADGES_VALUE | split(', ') %}
+				{% for badge in badge_list %}
+					{% include 'partials/badge_item.html' %}
 				{% endfor %}
 			</div>
 		</section>
