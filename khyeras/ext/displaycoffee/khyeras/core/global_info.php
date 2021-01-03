@@ -87,11 +87,11 @@ class global_info {
 			);
 		}
 
-		// Add list of completed achievements only for achievement page
+		// Add list of achievements and completed user achievements only for achievement page
 		$achievements_array = array();
 		if ($common['script_name'] == 'app/gameplay-achievements') {
 			// List of achievements
-			$achievements_json = file_get_contents('./ext/displaycoffee/khyeras/json/achievements.json');
+			$achievements_json = file_get_contents($common['json_path'] . 'achievements.json');
 			$achievements = json_decode($achievements_json, true);
 
 			$achievements_array = array(
@@ -100,8 +100,22 @@ class global_info {
 			);
 		}
 
+		// Add list of half-breed race combinations
+		$half_breed_array = array();
+		if ($common['script_name'] == 'app/lore-races-half-breed') {
+			// List of achievements
+			$half_breed_json = file_get_contents($common['json_path'] . 'half_breed.json');
+			$half_breed = json_decode($half_breed_json, true);
+
+			$half_breed_array = array(
+				'KHY_HALF_BREED' => $half_breed
+			);
+		}
+
 		// Assign global template variables for re-use
-		$this->template->assign_vars(array_merge($account_array, $character_array, $achievements_array));
+		$this->template->assign_vars(array_merge(
+			$account_array, $character_array, $achievements_array, $half_breed_array
+		));
 	}
 
 	/**
@@ -514,7 +528,7 @@ class global_info {
 		// Don't run any of the below code unless on the correct pages
 		if ($common['script_name'] == 'app/gameplay-badges' || $common['script_name'] == 'viewtopic' || $this->utilities->in_string($common['page'], 'mode=viewprofile')) {
 			// List of badges
-			$badges_json = file_get_contents('./ext/displaycoffee/khyeras/json/badges.json');
+			$badges_json = file_get_contents($common['json_path'] . 'badges.json');
 			$badges = json_decode($badges_json, true);
 
 			// No need to add recipients on profiles
@@ -583,7 +597,7 @@ class global_info {
 		// Don't run any of the below code unless on the correct pages
 		if ($common['script_name'] == 'app/gameplay-collections' || $this->utilities->in_string($common['page'], 'mode=viewprofile')) {
 			// List of collections
-			$collections_json = file_get_contents('./ext/displaycoffee/khyeras/json/collections.json');
+			$collections_json = file_get_contents($common['json_path'] . 'collections.json');
 			$collections = json_decode($collections_json, true);
 
 			// No need to add recipients on profiles

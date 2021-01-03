@@ -20,7 +20,6 @@
 	{{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Achievements', card_filters) }}
 
 	{% for key, card in cards %}
-		{% set section_id = function.create_handle(key) %}
 		<section id="{{ key }}" class="page-content-section toggleable-section" data-quick-name="{{ card.name }}">
 			<h3>
 				<button class="toggle-button button-link" type="button" data-toggle-type="achievement" data-toggle-id="{{ loop.index }}" data-toggle-name="{{ key }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ card.name }}

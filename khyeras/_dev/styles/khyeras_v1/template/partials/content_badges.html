@@ -15,7 +15,8 @@
 			{% endif %}
 			<div class="card-grid">
 				{% for item_key, item in card.items %}
-					<div id="{{ key }}-{{ item_key }}" class="card-block">
+					{% set card_id = key  ~ '-' ~ item_key %}
+					<div id="{{ card_id }}" class="card-block">
 						<h5 class="card-title">
 							<a href="{{ ROOT_PATH }}{{ item.details.link }}">{{ item.name }}</a>
 						</h5>
