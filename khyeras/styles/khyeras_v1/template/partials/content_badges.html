@@ -18,7 +18,7 @@
 					{% set card_id = key  ~ '-' ~ item_key %}
 					<div id="{{ card_id }}" class="card-block">
 						<h5 class="card-title">
-							<a href="{{ ROOT_PATH }}{{ item.details.link }}">{{ item.name }}</a>
+							<a href="{{ ROOT_PATH }}{{ item.link }}">{{ item.name }}</a>
 						</h5>
 						<div class="icon-wrapper">
 							<div class="icon-badge">
@@ -29,7 +29,8 @@
 							<span class="card-description-wrapper">{{ item.desc }}</span>
 						</div>
 						<div class="card-clear"></div>
-						{% if item.recipients %}
+						{% set show_details = (item.recipients) ? true : false %}
+						{% if show_details %}
 							<dl class="details details-small">
 								<dt>Recipients:</dt>
 								<dd>

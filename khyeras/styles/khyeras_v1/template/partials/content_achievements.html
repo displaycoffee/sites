@@ -46,21 +46,22 @@
 							<span class="card-description-wrapper">{{ item.desc }}</span>
 						</div>
 						<div class="card-clear"></div>
-						{% if item.details %}
+						{% set show_details = (item.requirements || item.reward) ? true : false %}
+						{% if show_details %}
 							<dl class="details details-small">
-								{% if item.details.requirements %}
+								{% if item.requirements %}
 									<dt>Requirements:</dt>
-									<dd>{{ item.details.requirements }}</dd>
+									<dd>{{ item.requirements }}</dd>
 								{% endif %}
-								{% if item.details.reward %}
+								{% if item.reward %}
 									<dt>Rewards:</dt>
-									<dd>{{ item.details.reward }}</dd>
+									<dd>{{ item.reward }}</dd>
 								{% endif %}
 							</dl>
 						{% endif %}
 					</div>
 					{% set card_data %}{% apply spaceless %}
-						{'id' : '#{{ card_id }}', 'filters' : 'location={{ function.create_handle(key) }}, type={{ function.create_handle(item.details.type) }}, status={{ card_changed ? 'completed' : 'not-completed' }}', 'applied' : 0}{% if (!loop.last && key == 'Khy\'eras') || (key != 'Khy\'eras') %},{% endif %}
+						{'id' : '#{{ card_id }}', 'filters' : 'location={{ function.create_handle(key) }}, type={{ function.create_handle(item.type) }}, status={{ card_changed ? 'completed' : 'not-completed' }}', 'applied' : 0}{% if (!loop.last && key == 'Khy\'eras') || (key != 'Khy\'eras') %},{% endif %}
 					{% endapply %}{% endset %}
 					{% set card_object = card_object ~ card_data %}
 				{% endfor %}

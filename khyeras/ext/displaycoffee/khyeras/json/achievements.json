@@ -5,62 +5,50 @@
 			"siblings" : {
 				"name" : "Siblings",
 				"icon" : "icon-bg-brown rpg-direction-sign",
-				"desc" : "In the northwest where mountains meet the Ordinuad River, the stream divides itself into two pieces known as &quot;The Serpent Kin&quot;. To this day, folk are unsure if it was titled after snakes or siblings or both.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Travel from one branch of The Serpent Kin to the other.",
-					"reward" : "20 experience, 5 copper"
-				}
+				"desc" : "In the northwest where mountains meet the Ordinuad River, the stream divides itself into two pieces known as \"The Serpent Kin\". To this day, folk are unsure if it was titled after snakes or siblings or both.",
+				"type" : "Expedition",
+				"requirements" : "Travel from one branch of The Serpent Kin to the other.",
+				"reward" : "20 experience, 5 copper"
 			},
 			"the-mountains-are-calling" : {
 				"name" : "The Mountains Are Calling",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "The Slyscera Mountains boast imposing and ominous peaks throughout chains of rock and stone. It is a sure death wish to climb too high up into the mountains, but not all paths are elevated.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Complete in Tviyr. Find a lower path and hike through the Slyscera Mountains. ",
-					"reward" : "25 experience, 5 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Complete in Tviyr. Find a lower path and hike through the Slyscera Mountains. ",
+				"reward" : "25 experience, 5 copper"
 			},
 			"that-escalated-quickly" : {
 				"name" : "That Escalated Quickly",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "It appears the passage you selected might have been the wrong one. Isn't that the way of life? The path has lifted to greater heights and the trek is becoming treacherous, unmanageable, and covered with snowfall.",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete &quot;The Mountains are Calling&quot; in Tviyr. Leave the Slyscera Mountain path when it turns dangerous.",
-					"reward" : "30 experience"
-				}
+				"type" : "Special",
+				"requirements" : "Complete \"The Mountains are Calling\" in Tviyr. Leave the Slyscera Mountain path when it turns dangerous.",
+				"reward" : "30 experience"
 			},
 			"the-hills-are-alive" : {
 				"name" : "The Hills Are Alive",
 				"icon" : "icon-bg-brown rpg-direction-sign",
-				"desc" : "South of Tviyr and southwest of Ninraih lies an immense island decorated with hills and cliffs called &quot;Baslehr Ridge&quot; . It claims no cities or villages, but in the past it was residence to the Erair family.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Complete in Tviyr. Travel to Baslehr Ridge, going from the Ninraih boundary to the Tviyr boundary.",
-					"reward" : "40 experience"
-				}
+				"desc" : "South of Tviyr and southwest of Ninraih lies an immense island decorated with hills and cliffs called \"Baslehr Ridge\" . It claims no cities or villages, but in the past it was residence to the Erair family.",
+				"type" : "Expedition",
+				"requirements" : "Complete in Tviyr. Travel to Baslehr Ridge, going from the Ninraih boundary to the Tviyr boundary.",
+				"reward" : "40 experience"
 			},
 			"liquid-reserves" : {
 				"name" : "Liquid Reserves",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "A miniscule part of Khy'eras history, but no less important, the Elasokir Reservoir was created to ensure the realm had a pure source of water during the Undead War. Although not heavily guarded in the present, it is still a wonderous, vast spot to behold.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Complete in Tviyr. Visit the Elasokir Reservoir and reminisce on its history or discuss its inception with another traveler.",
-					"reward" : "30 experience"
-				}
+				"type" : "People",
+				"requirements" : "Complete in Tviyr. Visit the Elasokir Reservoir and reminisce on its history or discuss its inception with another traveler.",
+				"reward" : "30 experience"
 			},
 			"danger-in-the-water" : {
 				"name" : "Danger in the Water",
 				"icon" : "icon-bg-brown rpg-direction-sign",
-				"desc" : "&quot;Sail through the Preldova Narrows,&quot; they said. &quot;It'll be easy,&quot; they said. To get to your destination faster, it was suggested to go through the Narrows, but now you're faced with the perils of rocky seas and crashing stone from the pillars.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Complete in Tviyr. Face a conflict provided by the Preldova Narrows. Make it through safely or have your ship destroyed in the process.",
-					"reward" : "35 experience"
-				}
+				"desc" : "\"Sail through the Preldova Narrows,\" they said. \"It'll be easy,\" they said. To get to your destination faster, it was suggested to go through the Narrows, but now you're faced with the perils of rocky seas and crashing stone from the pillars.",
+				"type" : "Expedition",
+				"requirements" : "Complete in Tviyr. Face a conflict provided by the Preldova Narrows. Make it through safely or have your ship destroyed in the process.",
+				"reward" : "35 experience"
 			}
 		}
 	},
@@ -71,201 +59,161 @@
 				"name" : "The Three Beacons",
 				"icon" : "rpg-open-book",
 				"desc" : "Everyone in Fellsgard is always chatting about the lighthouses and how awe-inspiring the buildings are. It could be nice to see a part of history.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Observe the lighthouses and describe your feelings.",
-					"reward" : "10 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Observe the lighthouses and describe your feelings.",
+				"reward" : "10 experience"
 			},
 			"an-ill-favored-wind" : {
 				"name" : "An Ill Favored Wind",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "It appears daily maintenance on windmills have become a little slack and there's a defect present on a structure. Nothing major, but perhaps help is required.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Use your expertise to help fix a windmill.",
-					"reward" : "15 experience, 10 copper"
-				}
+				"type" : "Architecture",
+				"requirements" : "Use your expertise to help fix a windmill.",
+				"reward" : "15 experience, 10 copper"
 			},
 			"westward-bazaar" : {
 				"name" : "Westward Bazaar",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "While Fellsgard's Trade District doesn't have the greatest supply, occasionally a person might find a rare and astonishing trinket.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "10 copper. Detail the purchase.",
-					"reward" : "20 experience"
-				}
+				"type" : "Architecture",
+				"requirements" : "10 copper. Detail the purchase.",
+				"reward" : "20 experience"
 			},
 			"upward-opinions" : {
 				"name" : "Upward Opinions",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "Just once before death, most folk desire to feel what it's like to be part of the rich community of the Noble District. Maybe a stroll along the streets will fit the bill.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Describe how the upper class reacts to your presence.",
-					"reward" : "15 experience, 5 copper"
-				}
+				"type" : "People",
+				"requirements" : "Describe how the upper class reacts to your presence.",
+				"reward" : "15 experience, 5 copper"
 			},
 			"everyday-living" : {
 				"name" : "Everyday Living",
 				"icon" : "icon-bg-orange rpg-two-shadows",
-				"desc" : "Right when everything seemed so plain and boring, something out of the ordinary is transpiring amongst the &quot;normalcy&quot; of Fellsgard's Urban District.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Examine an uncommon event or object.",
-					"reward" : "15 experience, 5 copper"
-				}
+				"desc" : "Right when everything seemed so plain and boring, something out of the ordinary is transpiring amongst the \"normalcy\" of Fellsgard's Urban District.",
+				"type" : "People",
+				"requirements" : "Examine an uncommon event or object.",
+				"reward" : "15 experience, 5 copper"
 			},
 			"humble-evenings" : {
 				"name" : "Humble Evenings",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "Out of all Fellsgard communities, perhaps it is the impoverished families in the Lower District that treasure their time more and make the most of their days.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Rest with and participate in a single activity (game, chat, etc.) with a poor family.",
-					"reward" : "25 experience"
-				}
+				"type" : "People",
+				"requirements" : "Rest with and participate in a single activity (game, chat, etc.) with a poor family.",
+				"reward" : "25 experience"
 			},
 			"street-smarts" : {
 				"name" : "Street Smarts",
 				"icon" : "icon-bg-red rpg-crossed-swords",
 				"desc" : "It would be interesting to cause a commotion in the crowded streets, or on the other hand, evade a tussle that is currently happening.",
-				"details" : {
-					"type" : "Combat",
-					"requirements" : "Start or avoid a ruckus in the streets.",
-					"reward" : "30 experience"
-				}
+				"type" : "Combat",
+				"requirements" : "Start or avoid a ruckus in the streets.",
+				"reward" : "30 experience"
 			},
 			"if-it-aint-broke" : {
 				"name" : "If It Ain't Broke",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Specific dirt roads outside Fellsgard have become damaged due to laden wagons that break along the way. Must be all the goods they're carrying.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Fix or break a wagon wheel to reap the benefits.",
-					"reward" : "15 experience, 10 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Fix or break a wagon wheel to reap the benefits.",
+				"reward" : "15 experience, 10 copper"
 			},
 			"stowaway" : {
 				"name" : "Stowaway",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Avoid the high cost of airfare! The pilots are constantly raising prices, and thus, select citizens are taking action.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Try sneaking onto an airship without paying.",
-					"reward" : "25 experience, 5 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Try sneaking onto an airship without paying.",
+				"reward" : "25 experience, 5 copper"
 			},
 			"boxcar-blues" : {
 				"name" : "Boxcar Blues",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Jumping into that open train car to save money was a good idea, but there's another passenger - a bardic hobo. Could it become an evening of poems, songs, and stories?",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Get into the boxcar and meet a long-winded traveler.",
-					"reward" : "35 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Get into the boxcar and meet a long-winded traveler.",
+				"reward" : "35 experience"
 			},
 			"unstable-stables" : {
 				"name" : "Unstable Stables",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Perhaps traditional traveling methods, such as mounts, are in order. But why are they so cheap right now...?",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "10 copper. The mount must be randomly chosen by an admin.",
-					"reward" : "40 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "10 copper. The mount must be randomly chosen by an admin.",
+				"reward" : "40 experience"
 			},
 			"fishy-goods" : {
 				"name" : "Fishy Goods",
 				"icon" : "rpg-open-book",
 				"desc" : "House Lericyro inspects Fellsgard's wares for quality, but they could use assistance. There's a side job to check for poisoned, damaged, or defective merchandise.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Complete the House Lericyro job.",
-					"reward" : "50 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Complete the House Lericyro job.",
+				"reward" : "50 experience"
 			},
 			"worthy-opinions" : {
 				"name" : "Worthy Opinions",
 				"icon" : "rpg-open-book",
 				"desc" : "Wouldn't it be nice to discover that your trusty sword or breastplate is worth quite a bit of cash? Well, House Arcaod can give you their trusted, professional opinion.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Receive a weapon or armor appraisal from House Arcaod.",
-					"reward" : "50 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Receive a weapon or armor appraisal from House Arcaod.",
+				"reward" : "50 experience"
 			},
 			"herbal-helper" : {
 				"name" : "Herbal Helper",
 				"icon" : "rpg-open-book",
 				"desc" : "All you wanted was a bandage, but it turns out a hospital needs help too. There's a missing and very necessary herb and the hospital states House Enlann knows where to find it.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Take the hospital's order and then inquire at House Enlann.",
-					"reward" : "50 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Take the hospital's order and then inquire at House Enlann.",
+				"reward" : "50 experience"
 			},
 			"im-an-adventurer" : {
 				"name" : "I'm An Adventurer!",
 				"icon" : "rpg-open-book",
 				"desc" : "A bit of extra currency in the pockets could be useful these days. Good thing that House Sidrioh has bulletin boards with jobs. Can't be too difficult...",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Complete a House Sidrioh job of your choosing.",
-					"reward" : "35 experience, 25 copper"
-				}
+				"type" : "Lore",
+				"requirements" : "Complete a House Sidrioh job of your choosing.",
+				"reward" : "35 experience, 25 copper"
 			},
 			"dont-judge-a-book" : {
 				"name" : "Don't Judge a Book",
 				"icon" : "rpg-open-book",
 				"desc" : "Education is important and what better place to witness it than at a House Nyshasa academy. However, something otherworldly and hidden is definitely going on.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Visit a House Nyshasa academy and encounter a secret magical device or incident.",
-					"reward" : "50 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Visit a House Nyshasa academy and encounter a secret magical device or incident.",
+				"reward" : "50 experience"
 			},
 			"people-person" : {
 				"name" : "People Person",
 				"icon" : "icon-bg-purple rpg-portal",
 				"desc" : "People have differing opinions on magic and frequently, those thoughts are hidden. But the guards have made it clear; they don't support magic users roaming the city.",
-				"details" : {
-					"type" : "Magic",
-					"requirements" : "Support or detain a magic user.",
-					"reward" : "30 experience"
-				}
+				"type" : "Magic",
+				"requirements" : "Support or detain a magic user.",
+				"reward" : "30 experience"
 			},
 			"todays-special" : {
 				"name" : "Today's Special",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "Mac's is known to have excellent and well-prepared dishes, but about the special that was ordered... How can one describe the emotions?",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "15 copper. Have a reaction to the special which will be randomly chosen by an admin.",
-					"reward" : "40 experience"
-				}
+				"type" : "Architecture",
+				"requirements" : "15 copper. Have a reaction to the special which will be randomly chosen by an admin.",
+				"reward" : "40 experience"
 			},
 			"audience-participation" : {
 				"name" : "Audience Participation",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "Audience participation - folk either love it or hate it. Make the best out of the situation since you are being called on.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Perform in Mac's show for the evening.",
-					"reward" : "40 experience, 10 copper, 1 silver"
-				}
+				"type" : "Architecture",
+				"requirements" : "Perform in Mac's show for the evening.",
+				"reward" : "40 experience, 10 copper, 1 silver"
 			},
 			"settle-down" : {
 				"name" : "Settle Down",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Fellsgard is a satisfactory place to settle down. There's plenty of houses and locations to scope out, so it's time to take notes.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Record and describe your favored locations in Fellsgard.",
-					"reward" : "30 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Record and describe your favored locations in Fellsgard.",
+				"reward" : "30 experience"
 			}
 		}
 	},
@@ -276,201 +224,161 @@
 				"name" : "On the Way",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Traveling can certainly make the body weary. A place to rest and put up one's feet sure sounds nice. Luckily, Verdant Row is close by and just the type of place.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "5 copper. Stay in Verdant Row for the night.",
-					"reward" : "10 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "5 copper. Stay in Verdant Row for the night.",
+				"reward" : "10 experience"
 			},
 			"close-encounters" : {
 				"name" : "Close Encounters",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "Strolling about Verdant Row is a weird ordeal. Instead of bumping into people, walking through the undead is common. But thankfully, spirits don't seem to mind.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Pass through three spirits and describe their appearances.",
-					"reward" : "15 experience"
-				}
+				"type" : "People",
+				"requirements" : "Pass through three spirits and describe their appearances.",
+				"reward" : "15 experience"
 			},
 			"extra-extra" : {
 				"name" : "Extra, Extra",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "When in Verdant Row, it's a good idea to catch up on the latest news surrounding the area. Topics vary from cities to roads to best recipes. Attempt to join or eavesdrop on a conversation.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Overhear or discuss recent matters with folk.",
-					"reward" : "20 experience, 10 copper"
-				}
+				"type" : "People",
+				"requirements" : "Overhear or discuss recent matters with folk.",
+				"reward" : "20 experience, 10 copper"
 			},
 			"no-comment" : {
 				"name" : "No Comment",
 				"icon" : "icon-bg-orange rpg-two-shadows",
-				"desc" : "Communication is obviously an important part of a relationship, so why aren't these spirits trying to chat properly? Must be part of that whole &quot;being dead&quot; thing.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Argue or converse with a spirit, an action that ultimately ends in failure.",
-					"reward" : "15 experience"
-				}
+				"desc" : "Communication is obviously an important part of a relationship, so why aren't these spirits trying to chat properly? Must be part of that whole \"being dead\" thing.",
+				"type" : "People",
+				"requirements" : "Argue or converse with a spirit, an action that ultimately ends in failure.",
+				"reward" : "15 experience"
 			},
 			"a-familiar-face" : {
 				"name" : "A Familiar Face",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "Perhaps the most eerie thing about Verdant Row is seeing a familiar face, because those faces are typically lifeless ones. This could be a good or bad thing.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Meet a spirit that has a haunting visage from your past.",
-					"reward" : "15 experience, 10 copper"
-				}
+				"type" : "People",
+				"requirements" : "Meet a spirit that has a haunting visage from your past.",
+				"reward" : "15 experience, 10 copper"
 			},
 			"im-inn" : {
 				"name" : "I'm Inn",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "Heartbroken Socks Inn was booked solid and when having to resort to another inn, the keepers forgot to mention that you would be sharing a room with some one. Hope this roommate doesn't snore.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "5 copper. Book and stay in a room shared with a stranger.",
-					"reward" : "30 experience"
-				}
+				"type" : "People",
+				"requirements" : "5 copper. Book and stay in a room shared with a stranger.",
+				"reward" : "30 experience"
 			},
 			"an-old-fashioned-brawl" : {
 				"name" : "An Old Fashioned Brawl",
 				"icon" : "icon-bg-red rpg-crossed-swords",
 				"desc" : "Visitors often try to put the lack of law in Verdant Row to the test. And of course, the source of any decent brawl usually starts with the town's bar.",
-				"details" : {
-					"type" : "Combat",
-					"requirements" : "Participate in or cause a bar fight.",
-					"reward" : "20 experience, 10 copper"
-				}
+				"type" : "Combat",
+				"requirements" : "Participate in or cause a bar fight.",
+				"reward" : "20 experience, 10 copper"
 			},
 			"a-fleeting-moment" : {
 				"name" : "A Fleeting Moment",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "Verdant Row isn't only for mischief. It can be for an emotional or passionate rendezvous. Though these moments are frequently short lived, they are worth remembering.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "10 copper. Spend a romantic evening with a traveler only to discover their disappearance the next day.",
-					"reward" : "30 experience"
-				}
+				"type" : "People",
+				"requirements" : "10 copper. Spend a romantic evening with a traveler only to discover their disappearance the next day.",
+				"reward" : "30 experience"
 			},
 			"missed-chances" : {
 				"name" : "Missed Chances",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "A missed flight is an airship ticket bought and wasted. With such limited scheduling, Verdant Row doesn't offer refunds for transport. Better make sure you're on time.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Be late for a flight to Domrhask or Fellsgard and try to get a refund.",
-					"reward" : "25 experience, 5 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Be late for a flight to Domrhask or Fellsgard and try to get a refund.",
+				"reward" : "25 experience, 5 copper"
 			},
 			"choo-chew" : {
 				"name" : "Choo Chew",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Taking the train means there's time to grab a bit to eat. It's rumored that the train from Verdant Row's station has decent grub, but what car is lunch being served in?",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "10 copper. Pass through at least three train cars until you can order lunch.",
-					"reward" : "35 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "10 copper. Pass through at least three train cars until you can order lunch.",
+				"reward" : "35 experience"
 			},
 			"unstable-stables-continued" : {
 				"name" : "Unstable Stables Continued",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "Perfect, just perfect. At the stables in Verdant Row, they don't have any room for the mount you rented at Fellsgard. They're saying it needs to be taken back.",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete &quot;Unstable Stables&quot;. Realize your mount needs to go to Fellsgard.",
-					"reward" : "40 experience"
-				}
+				"type" : "Special",
+				"requirements" : "Complete \"Unstable Stables\". Realize your mount needs to go to Fellsgard.",
+				"reward" : "40 experience"
 			},
 			"judgement-day" : {
 				"name" : "Judgement Day",
 				"icon" : "icon-bg-red rpg-crossed-swords",
 				"desc" : "There's a balance to everything in Khy'eras, even crime. As it happens, you're witness to felony. Do you stop the culprit or join in to reap the rewards?",
-				"details" : {
-					"type" : "Combat",
-					"requirements" : "Halt or assist in a misconduct that is taking place.",
-					"reward" : "35 experience, 25 copper"
-				}
+				"type" : "Combat",
+				"requirements" : "Halt or assist in a misconduct that is taking place.",
+				"reward" : "35 experience, 25 copper"
 			},
 			"parting-the-veil" : {
 				"name" : "Parting the Veil",
 				"icon" : "icon-bg-purple rpg-portal",
 				"desc" : "Strange things can occur in this town, but this time, you were absolutely positive that you had nothing to do with those mystical, conjured beings! Nevertheless, the situation is oddly motivating.",
-				"details" : {
-					"type" : "Magic",
-					"requirements" : "Have an otherworldly encounter and get inspired when choosing where to journey next.",
-					"reward" : "50 experience"
-				}
+				"type" : "Magic",
+				"requirements" : "Have an otherworldly encounter and get inspired when choosing where to journey next.",
+				"reward" : "50 experience"
 			},
 			"tricks-of-the-trade" : {
 				"name" : "Tricks of the Trade",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "The shop keep wasn't pushy about selling wares, but resisting the trinket that the spirit offered was not going to happen. There was no walking out of the shop empty handed.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "15 copper. Purchase a unique item from a shop.",
-					"reward" : "50 experience"
-				}
+				"type" : "People",
+				"requirements" : "15 copper. Purchase a unique item from a shop.",
+				"reward" : "50 experience"
 			},
 			"a-history-lesson" : {
 				"name" : "A History Lesson",
 				"icon" : "rpg-open-book",
 				"desc" : "Ghosts and spirits may seem like empty vessels, but there is a contrast between both beings. Verdant Row's haunted tavern is the place to gain knowledge on this section of history.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Visit the tavern where the Ghost race originated. Learn what happened or if you already know, reflect on the event.",
-					"reward" : "50 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Visit the tavern where the Ghost race originated. Learn what happened or if you already know, reflect on the event.",
+				"reward" : "50 experience"
 			},
 			"a-darker-side" : {
 				"name" : "A Darker Side",
 				"icon" : "icon-bg-purple rpg-portal",
 				"desc" : "This might have been a wrong turn. Suddenly that shadowy alley led right into a shop focused on occult based magic. And curiously enough, the shop keep is a human, not a spirit.",
-				"details" : {
-					"type" : "Magic",
-					"requirements" : "Find the hidden magic shop and talk with the owner.",
-					"reward" : "50 experience"
-				}
+				"type" : "Magic",
+				"requirements" : "Find the hidden magic shop and talk with the owner.",
+				"reward" : "50 experience"
 			},
 			"by-the-riverside" : {
 				"name" : "By the Riverside",
 				"icon" : "rpg-open-book",
 				"desc" : "Folk claim that Ordinuad River neighboring Verdant Row has first-rate areas to camp at. Not only is staying in a tent free, but there's beautiful surrounding scenery and occasionally, one can see fledgling spirits surfacing from nature.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Camp alongside the river and detail the scenery and/or new spirits that you see.",
-					"reward" : "30 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Camp alongside the river and detail the scenery and/or new spirits that you see.",
+				"reward" : "30 experience"
 			},
 			"todays-special" : {
 				"name" : "Today's Special",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "The stomach will need to be settled by drinking rather than food. Heartbroken Socks Inn only provides liquid nourishment, but they are famous for rare and timeworn beverages.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "15 copper. Have a reaction to the special which will be randomly chosen by an admin.",
-					"reward" : "40 experience"
-				}
+				"type" : "Architecture",
+				"requirements" : "15 copper. Have a reaction to the special which will be randomly chosen by an admin.",
+				"reward" : "40 experience"
 			},
 			"sing-along" : {
 				"name" : "Sing Along",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "Music can soothe the soul, stir up memories, or bring together new friends. The piano player at Heartbroken Socks Inn is definitely having an effect on the patrons.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Join in a sing-a-long or be moved by a song that is being performed.",
-					"reward" : "40 experience, 10 copper"
-				}
+				"type" : "Architecture",
+				"requirements" : "Join in a sing-a-long or be moved by a song that is being performed.",
+				"reward" : "40 experience, 10 copper"
 			},
 			"quick-stop-pit-stop" : {
 				"name" : "Quick Stop, Pit Stop",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "This stop wasn't meant to be permanent. People do not reside in Verdant Row for long durations and no one is surprised to see you go anyway.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Enter and leave Verdant Row in less than four hours.",
-					"reward" : "30 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Enter and leave Verdant Row in less than four hours.",
+				"reward" : "30 experience"
 			}
 		}
 	},
@@ -481,81 +389,65 @@
 				"name" : "A Fine Vine",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "It is not uncommon to hear about the immense flora that grows in the jungles, but never did you imagine it could stop a train. To continue your journey, leave the train car and help the crew remove overgrown vegetation that is obstructing the tracks.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Clear away a considerable mass of intertwined plant-life that is covering train tracks.",
-					"reward" : "50 experience, 10 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Clear away a considerable mass of intertwined plant-life that is covering train tracks.",
+				"reward" : "50 experience, 10 copper"
 			},
 			"the-hills-are-alive" : {
 				"name" : "The Hills Are Alive",
 				"icon" : "icon-bg-brown rpg-direction-sign",
-				"desc" : "South of Tviyr and southwest of Ninraih lies an immense island decorated with hills and cliffs called &quot;Baslehr Ridge&quot; . It claims no cities or villages, but in the past it was residence to the Erair family.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Complete in Ninraih. Travel to Baslehr Ridge, going from the Tviyr boundary to the Ninraih boundary.",
-					"reward" : "40 experience"
-				}
+				"desc" : "South of Tviyr and southwest of Ninraih lies an immense island decorated with hills and cliffs called \"Baslehr Ridge\" . It claims no cities or villages, but in the past it was residence to the Erair family.",
+				"type" : "Expedition",
+				"requirements" : "Complete in Ninraih. Travel to Baslehr Ridge, going from the Tviyr boundary to the Ninraih boundary.",
+				"reward" : "40 experience"
 			},
 			"mind-your-manors" : {
 				"name" : "Mind Your Manors",
 				"icon" : "icon-bg-red rpg-crossed-swords",
 				"desc" : "On the Ninraih side of Baslehr Ridge lies the Erair Manor, abandoned home of Victoria Erair. The place is known to be cursed - filled with decay, rabid animals, and vicious undead. Just what was it you were planning on doing here?",
-				"details" : {
-					"type" : "Combat",
-					"requirements" : "Head inside the Erair Manor grounds and get chased away by wildlife or something more sinister.",
-					"reward" : "35 experience"
-				}
+				"type" : "Combat",
+				"requirements" : "Head inside the Erair Manor grounds and get chased away by wildlife or something more sinister.",
+				"reward" : "35 experience"
 			},
 			"liquid-reserves" : {
 				"name" : "Liquid Reserves",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "A miniscule part of Khy'eras history, but no less important, the Elasokir Reservoir was created to ensure the realm had a pure source of water during the Undead War. Although not heavily guarded in the present, it is still a wonderous, vast spot to behold.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Complete in Ninraih. Visit the Elasokir Reservoir and reminisce on its history or discuss its inception with another traveler.",
-					"reward" : "30 experience"
-				}
+				"type" : "People",
+				"requirements" : "Complete in Ninraih. Visit the Elasokir Reservoir and reminisce on its history or discuss its inception with another traveler.",
+				"reward" : "30 experience"
 			},
 			"danger-in-the-water" : {
 				"name" : "Danger in the Water",
 				"icon" : "icon-bg-brown rpg-direction-sign",
-				"desc" : "&quot;Sail through the Preldova Narrows,&quot; they said. &quot;It'll be easy,&quot; they said. To get to your destination faster, it was suggested to go through the Narrows, but now you're faced with the perils of rocky seas and crashing stone from the pillars.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Complete in Ninraih. Face a conflict provided by the Preldova Narrows. Make it through safely or have your ship destroyed in the process.",
-					"reward" : "35 experience"
-				}
+				"desc" : "\"Sail through the Preldova Narrows,\" they said. \"It'll be easy,\" they said. To get to your destination faster, it was suggested to go through the Narrows, but now you're faced with the perils of rocky seas and crashing stone from the pillars.",
+				"type" : "Expedition",
+				"requirements" : "Complete in Ninraih. Face a conflict provided by the Preldova Narrows. Make it through safely or have your ship destroyed in the process.",
+				"reward" : "35 experience"
 			},
 			"willows-and-wisps" : {
 				"name" : "Willows and Wisps",
 				"icon" : "icon-bg-purple rpg-portal",
 				"desc" : "Not far outside Ajteire is Lament of the Willow, a grove littered with archaic and twisted willow trees and home to the Silver Brushed I'kello. Visitors claim the atmosphere is haunted as they hear undistinguishable, whispered songs and voices.",
-				"details" : {
-					"type" : "Magic",
-					"requirements" : "Spend time at Lament of the Willow. Is it eerie? Do you hear strange sounds or feel watched?",
-					"reward" : "35 experience"
-				}
+				"type" : "Magic",
+				"requirements" : "Spend time at Lament of the Willow. Is it eerie? Do you hear strange sounds or feel watched?",
+				"reward" : "35 experience"
 			},
 			"fish-in-the-sea" : {
 				"name" : "Fish in the Sea",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "There is more to the Cetnisadel Bay besides docks and ships. With an ample amount of space, the bay is a prime location to witness Khy'eras' most exotic marine life. ",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "At Cetnisadel Bay, observe giant octopuses, visit the coral reef, or wade along the shore with smaller fish.",
-					"reward" : "30 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "At Cetnisadel Bay, observe giant octopuses, visit the coral reef, or wade along the shore with smaller fish.",
+				"reward" : "30 experience"
 			},
 			"heart-of-the-ocean" : {
 				"name" : "Heart of the Ocean",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "The coral reef that decorates the northwestern side of Cetnisadel Bay is a favorite resource for Alchemist and potion brewers. The reef's waters and deposits has restorative properties.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "20 copper. Buy a reef potion from a sailor or make your own and describe its effects.",
-					"reward" : "45 experience"
-				}
+				"type" : "People",
+				"requirements" : "20 copper. Buy a reef potion from a sailor or make your own and describe its effects.",
+				"reward" : "45 experience"
 			}
 		}
 	},
@@ -566,191 +458,153 @@
 				"name" : "Lost, But Not Forgotten",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "That might have been a wrong turn. No, wait. That might have been 20 wrong turns. It would be nice to see Ajteire, but the jungles prevent travelers from finding their way to the city.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Become lost and identify the way to Ajteire or call for aid.",
-					"reward" : "10 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Become lost and identify the way to Ajteire or call for aid.",
+				"reward" : "10 experience"
 			},
 			"a-creeping-shadow" : {
 				"name" : "A Creeping Shadow",
 				"icon" : "icon-bg-red rpg-crossed-swords",
 				"desc" : "Even with all the city's enchantments and protection efforts, the undead still manages to lurk about the perimeter of Ajteire. A particular enemy is drawing nearer. Now, how to dispatch of it?",
-				"details" : {
-					"type" : "Combat",
-					"requirements" : "Encounter the undead and request assistance from the Fae or Kerasoka or attempt to get rid of it yourself.",
-					"reward" : "15 experience, 10 copper"
-				}
+				"type" : "Combat",
+				"requirements" : "Encounter the undead and request assistance from the Fae or Kerasoka or attempt to get rid of it yourself.",
+				"reward" : "15 experience, 10 copper"
 			},
 			"this-little-light" : {
 				"name" : "This Little Light",
 				"icon" : "rpg-open-book",
 				"desc" : "Many books written on Ajteire's history speak of the fireflies that protect it, but the whole notion of mystical bugs seems a little silly. Perhaps if a person sits amidst the tiny creatures for a while, they might learn.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Rest at a firefly populated area and take in their magical presence. How do the fireflies behave?",
-					"reward" : "20 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Rest at a firefly populated area and take in their magical presence. How do the fireflies behave?",
+				"reward" : "20 experience"
 			},
 			"a-lesson-in-forestry" : {
 				"name" : "A Lesson In Forestry",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "There's no sense in getting lost again. Plenty of Kerasoka are willing to give folk lessons in forestry and navigation of the surrounding jungles. One has only to ask.",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete &quot;Lost, But Not Forgotten&quot;. Have a meeting with a Kersoka who teaches you about the area.",
-					"reward" : "15 experience, 5 copper"
-				}
+				"type" : "Special",
+				"requirements" : "Complete \"Lost, But Not Forgotten\". Have a meeting with a Kersoka who teaches you about the area.",
+				"reward" : "15 experience, 5 copper"
 			},
 			"back-to-the-basics" : {
 				"name" : "Back to the Basics",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "The citizens of Ajteire certainly work well together. Everyone has a talent which contributes to the well-being of the community. While visiting, take part, whether it is by cooking, gardening, hunting, making clothes, etc.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Participate in a communal activity, giving back to the citizens for their hospitality.",
-					"reward" : "20 experience"
-				}
+				"type" : "People",
+				"requirements" : "Participate in a communal activity, giving back to the citizens for their hospitality.",
+				"reward" : "20 experience"
 			},
 			"a-necessary-exchange" : {
 				"name" : "A Necessary Exchange",
 				"icon" : "icon-bg-orange rpg-two-shadows",
-				"desc" : "Ajteire's Exchange Cantons are quite small in comparison to Khy'eras' remaining cities. Nearly all wares are requested through trade or craft exchanges. While there are a shops to find necessities, the chances of finding a rare &quot;gem&quot; are slim indeed. Until today at least...",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Discover a needed object at a shop and trade a sentimental possession of yours for it.",
-					"reward" : "25 experience"
-				}
+				"desc" : "Ajteire's Exchange Cantons are quite small in comparison to Khy'eras' remaining cities. Nearly all wares are requested through trade or craft exchanges. While there are a shops to find necessities, the chances of finding a rare \"gem\" are slim indeed. Until today at least...",
+				"type" : "People",
+				"requirements" : "Discover a needed object at a shop and trade a sentimental possession of yours for it.",
+				"reward" : "25 experience"
 			},
 			"late-night-snacks" : {
 				"name" : "Late Night Snacks",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "Seeing Ajteire during the day didn't work out. Here you are, turning up later than expected, weary and hungry from all that travelling. Not many people are awake, but perhaps a watch chef  at an Amenity Canton can still be summoned for a quick bite to eat.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Arrive at a belated hour, request a watch chef, and receive a meal or fall asleep waiting for a cook to arrive.",
-					"reward" : "30 experience"
-				}
+				"type" : "People",
+				"requirements" : "Arrive at a belated hour, request a watch chef, and receive a meal or fall asleep waiting for a cook to arrive.",
+				"reward" : "30 experience"
 			},
 			"building-or-burning-bridges" : {
 				"name" : "Building or Burning Bridges",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "For the most part, the aerial walkways connecting the treehouses have been well-kept and managed. Nevertheless, a few bridges appear risky to cross and could be fixed. Does one dare to cross the bridge or is a repair in order first?",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Save yourself from a collapsing bridge or assist in fixing a broken one.",
-					"reward" : "15 experience, 10 copper"
-				}
+				"type" : "Architecture",
+				"requirements" : "Save yourself from a collapsing bridge or assist in fixing a broken one.",
+				"reward" : "15 experience, 10 copper"
 			},
 			"swing-low" : {
 				"name" : "Swing Low",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "Well, there's no beds at the inns, just hammocks. Sleeping on a netted swing might not be too dreadful. At least breakfast is included the following morning.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "5 copper. Book a room, sleep in a hammock, and the next morning, detail your visit in the guest book.",
-					"reward" : "30 experience"
-				}
+				"type" : "People",
+				"requirements" : "5 copper. Book a room, sleep in a hammock, and the next morning, detail your visit in the guest book.",
+				"reward" : "30 experience"
 			},
 			"camping" : {
 				"name" : "Camping",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "It's a busy evening in the city and without advanced reservations, there's no rooms to book at any of the Ajteire's inns. Fortunately, the city residents don't mind if outsiders camp among the trees.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Put up a tent and camp along the city trees.",
-					"reward" : "35 experience, 5 copper"
-				}
+				"type" : "Architecture",
+				"requirements" : "Put up a tent and camp along the city trees.",
+				"reward" : "35 experience, 5 copper"
 			},
 			"the-crows-nest" : {
 				"name" : "The Crow's Nest",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "Up in the treetops, the lookout towers provide spectacular views of Ajteire and permits folk to scout for incoming enemies. This is definitely a spot to climb up and check out.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Observe the landscape from a lookout platform.",
-					"reward" : "40 experience"
-				}
+				"type" : "Architecture",
+				"requirements" : "Observe the landscape from a lookout platform.",
+				"reward" : "40 experience"
 			},
 			"well-thats-new" : {
 				"name" : "Well, That's New",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "The quaint and modest stables in the city have average mounts such as horses, but there are unrecognizable creatures residing in the stalls. It's a wonder which steed the copper in a person's pocket might allow them to rent.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "20 copper. Overpay to possibly lease an extraordinary mount which is randomly chosen by an admin.",
-					"reward" : "50 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "20 copper. Overpay to possibly lease an extraordinary mount which is randomly chosen by an admin.",
+				"reward" : "50 experience"
 			},
 			"hearing-voices" : {
 				"name" : "Hearing Voices",
 				"icon" : "rpg-open-book",
 				"desc" : "With all the trees in Ajteire, it is effortless for a person to be misplaced in the jungles. Stumbling and alone, struggling to uncover the way back to the city, you now think you're hearing whispers. But what if the sounds are not part of your imagination...?",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "While lost, discover the trees that house the slumbering Voices of Fate. An admin must give a surprise message from the past, present, or future.",
-					"reward" : "55 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "While lost, discover the trees that house the slumbering Voices of Fate. An admin must give a surprise message from the past, present, or future.",
+				"reward" : "55 experience"
 			},
 			"hired-hands" : {
 				"name" : "Hired Hands",
 				"icon" : "icon-bg-red rpg-crossed-swords",
 				"desc" : "For years, Ajteire has physically defended itself by not using an army, but by relying on a militia. This gathering is not dedicated to strict posts or duties, so it's accepting for outsiders to lend a hand where they think their combat skills might prove beneficial.",
-				"details" : {
-					"type" : "Combat",
-					"requirements" : "Join the Ajteire militia for up to two days and guard the city.",
-					"reward" : "35 experience, 25 copper"
-				}
+				"type" : "Combat",
+				"requirements" : "Join the Ajteire militia for up to two days and guard the city.",
+				"reward" : "35 experience, 25 copper"
 			},
 			"differing-opinions" : {
 				"name" : "Differing Opinions",
 				"icon" : "icon-bg-purple rpg-portal",
 				"desc" : "Entering Ajteire as a magic user, one might feel at ease and relaxed to be placed in an accepting society. However, as a non-magic user, a person might endure confusion, disgust, or fear. A disagreeable traveler might also be outnumbered in their viewpoints.",
-				"details" : {
-					"type" : "Magic",
-					"requirements" : "Reflect on Ajteire's lack of magic bans.",
-					"reward" : "50 experience"
-				}
+				"type" : "Magic",
+				"requirements" : "Reflect on Ajteire's lack of magic bans.",
+				"reward" : "50 experience"
 			},
 			"courts-in-session" : {
 				"name" : "Court's In Session",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "It is bizarre when there is a court being held in the city, meaning that some body must have done something rather awful. To witness such limited events are memorable, as the crimes committed generally recall sadness or heartbreak.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Observe a court, be a member of the jury, or be the cause of a court.",
-					"reward" : "30 experience"
-				}
+				"type" : "People",
+				"requirements" : "Observe a court, be a member of the jury, or be the cause of a court.",
+				"reward" : "30 experience"
 			},
 			"todays-special" : {
 				"name" : "Today's Special",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "As a tavern that serves light snacks and beverages, it is curious that there is an undescribed special on The Preamble's menu. How complex could the dish be? It should be interesting to try.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "15 copper. Have a reaction to the special which will be randomly chosen by an admin.",
-					"reward" : "40 experience"
-				}
+				"type" : "Architecture",
+				"requirements" : "15 copper. Have a reaction to the special which will be randomly chosen by an admin.",
+				"reward" : "40 experience"
 			},
 			"story-time" : {
 				"name" : "Story Time",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "When in The Preamble, it is not unlikely to hear a tale or ballad from a bard. Listening to a minstrel, you hone in on the words and concentrate, not sure how to reply until the entertainment is concluded.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Listen to a story or song in The Preamble and applaud or claim the narrative is a lie.",
-					"reward" : "40 experience, 10 copper"
-				}
+				"type" : "Architecture",
+				"requirements" : "Listen to a story or song in The Preamble and applaud or claim the narrative is a lie.",
+				"reward" : "40 experience, 10 copper"
 			},
 			"fond-farewells" : {
 				"name" : "Fond Farewells",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "A lengthy stay in Ajteire wasn't part of the plans, but the city was so welcoming and rejuvenating, that an extended visit never seemed like it was actually transpiring. But, it's time to move forward and continue the journey.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Leave Ajteire after residing in the town for longer than expected.",
-					"reward" : "30 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Leave Ajteire after residing in the town for longer than expected.",
+				"reward" : "30 experience"
 			}
 		}
 	},
@@ -761,51 +615,41 @@
 				"name" : "Ice Prison",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Getting positioned on the Varorthe Barrens north of Irtuen Reaches is not a joy for anyone, especially not a person going to Afhenalt. Since you happen to be heading to the Barrens for whatever reason, make the best out of a cold situation or attempt to leave.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Get stuck on or be sent to the Varorthe Barrens.",
-					"reward" : "40 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Get stuck on or be sent to the Varorthe Barrens.",
+				"reward" : "40 experience"
 			},
 			"the-mountains-are-calling" : {
 				"name" : "The Mountains Are Calling",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "The Slyscera Mountains boast imposing and ominous peaks throughout chains of rock and stone. It is a sure death wish to climb too high up into the mountains, but not all paths are elevated.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Complete in Irtuen Reaches. Find a lower path and hike through the Slyscera Mountains.",
-					"reward" : "25 experience, 5 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Complete in Irtuen Reaches. Find a lower path and hike through the Slyscera Mountains.",
+				"reward" : "25 experience, 5 copper"
 			},
 			"that-escalated-quickly" : {
 				"name" : "That Escalated Quickly",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "It appears the passage you selected might have been the wrong one. Isn't that the way of life? The path has lifted to greater heights and the trek is becoming treacherous, unmanageable, and covered with snowfall. ",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete &quot;The Mountains are Calling&quot; in Irtuen Reaches. Leave the Slyscera Mountain path when it turns dangerous.",
-					"reward" : "30 experience"
-				}
+				"type" : "Special",
+				"requirements" : "Complete \"The Mountains are Calling\" in Irtuen Reaches. Leave the Slyscera Mountain path when it turns dangerous.",
+				"reward" : "30 experience"
 			},
 			"remnants-of-ruin" : {
 				"name" : "Remnants of Ruin",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Slyscera is not simply a mountain; its peaks are graveyards for artifacts and junk where man tried to dominate over nature and sorely lost. It is not unlikely that an adventurer will encounter objects from abandoned train tracks to broken weapons to tattered clothing to skeletons.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Discover rubbish while hiking through the Slyscera Mountains. Is there anything worth keeping?",
-					"reward" : "25 experience, 15 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Discover rubbish while hiking through the Slyscera Mountains. Is there anything worth keeping?",
+				"reward" : "25 experience, 15 copper"
 			},
 			"bath-time" : {
 				"name" : "Bath Time",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "The grandest lake in Khy'eras cradled against the mountain is Farinyir's Basin, named for a painter and philosopher Shapeshifter. The basin provides a layers crystalline water and unmeasurable depths.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Perform an activity (such as fishing, seeking treasure, swimming, bathing, etc.) at Farinyir's Basin.",
-					"reward" : "25 experience, 15 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Perform an activity (such as fishing, seeking treasure, swimming, bathing, etc.) at Farinyir's Basin.",
+				"reward" : "25 experience, 15 copper"
 			}
 		}
 	},
@@ -815,202 +659,162 @@
 			"stone-cold" : {
 				"name" : "Stone Cold",
 				"icon" : "rpg-open-book",
-				"desc" : "Domrhask's history can be traced back to even the smallest remnants. The city was built on an enduring foundation of rock by golems called &quot;Irenohl&quot;. Thus, it is not unlikely that minuscule pebbles could be artifacts of the Irenohl.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Uncover a rock that you believe may be a fragment of an Irenohl.",
-					"reward" : "10 experience"
-				}
+				"desc" : "Domrhask's history can be traced back to even the smallest remnants. The city was built on an enduring foundation of rock by golems called \"Irenohl\". Thus, it is not unlikely that minuscule pebbles could be artifacts of the Irenohl.",
+				"type" : "Lore",
+				"requirements" : "Uncover a rock that you believe may be a fragment of an Irenohl.",
+				"reward" : "10 experience"
 			},
 			"frost-bitten" : {
 				"name" : "Frost Bitten",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "When beginning a trek to Domrhask, the weather never seems awful, but the closer the city comes into view, the more frigid a person gets. It might be smart to backtrack and purchase proper cold weather gear for the hike.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "10 copper. After travelling towards Domrhask, turn around to the nearest village and buy warm, winter gear.",
-					"reward" : "20 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "10 copper. After travelling towards Domrhask, turn around to the nearest village and buy warm, winter gear.",
+				"reward" : "20 experience"
 			},
 			"from-a-distance" : {
 				"name" : "From a Distance",
 				"icon" : "rpg-open-book",
 				"desc" : "Snow-laden winds can disorient the path towards Domrhask. Even when the city is practically a straight shot north, the weather causes delays and trouble. As soon as the eight towers come into view, the structures can be used as navigational points.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Miles away, fixate on the towers of Domrhask and utilize the buildings to steer your way to the city.",
-					"reward" : "20 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Miles away, fixate on the towers of Domrhask and utilize the buildings to steer your way to the city.",
+				"reward" : "20 experience"
 			},
 			"just-another-curse" : {
 				"name" : "Just Another Curse",
 				"icon" : "icon-bg-red rpg-crossed-swords",
 				"desc" : "With scarce vegetation in Irtuen Reaches, flora should be protected. As it so happens, not far outside of Domrhask, there is a blackened patch of soil poisoned by a skeleton and the plant-life circling it is decaying. Do you dare to cleanse the area?",
-				"details" : {
-					"type" : "Combat",
-					"requirements" : "Remove or destroy skeletal remains (skull, hand, etc.) negatively effecting vegetation.",
-					"reward" : "15 experience, 5 copper"
-				}
+				"type" : "Combat",
+				"requirements" : "Remove or destroy skeletal remains (skull, hand, etc.) negatively effecting vegetation.",
+				"reward" : "15 experience, 5 copper"
 			},
 			"a-simple-gift" : {
 				"name" : "A Simple Gift",
 				"icon" : "rpg-open-book",
-				"desc" : "Attraction tours are hardly ever exciting and therefore, you expected the descent down into the Dwarven mines to be dull. It was Thraora, the &quot;Tree of Blades&quot;, that made the duration of the tour fascinating. Never did you expect such a gift.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Receive a modest offering (fallen leaf, drop of sap, small piece of chipped bark, etc.) from Thraora.",
-					"reward" : "15 experience, 15 copper"
-				}
+				"desc" : "Attraction tours are hardly ever exciting and therefore, you expected the descent down into the Dwarven mines to be dull. It was Thraora, the \"Tree of Blades\", that made the duration of the tour fascinating. Never did you expect such a gift.",
+				"type" : "Lore",
+				"requirements" : "Receive a modest offering (fallen leaf, drop of sap, small piece of chipped bark, etc.) from Thraora.",
+				"reward" : "15 experience, 15 copper"
 			},
 			"one-of-the-crowd" : {
 				"name" : "One of the Crowd",
 				"icon" : "icon-bg-orange rpg-two-shadows",
-				"desc" : "There's a quote around Domrhask: &quot;Two's company, but anyone else not a Dwarf is a crowd.&quot; The unwelcomeness of this statement is further elevated depending on race, but if that race is Dwarven, get ready for an outstanding time in the city.",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Join a group of Dwarves in conversation and have the gathering react accordingly depending on your race.",
-					"reward" : "25 experience"
-				}
+				"desc" : "There's a quote around Domrhask: \"Two's company, but anyone else not a Dwarf is a crowd.\" The unwelcomeness of this statement is further elevated depending on race, but if that race is Dwarven, get ready for an outstanding time in the city.",
+				"type" : "People",
+				"requirements" : "Join a group of Dwarves in conversation and have the gathering react accordingly depending on your race.",
+				"reward" : "25 experience"
 			},
 			"rate-of-exchange" : {
 				"name" : "Rate of Exchange",
 				"icon" : "icon-bg-orange rpg-two-shadows",
 				"desc" : "The rumors about shopping in the Plaza Tower are sadly accurate. For Dwarves, unspoken discounts present themselves. But for the outsider, trying to purchase a high-quality ware can be equal to the cost of a soul or first-born child. Is there a complaint department around here?",
-				"details" : {
-					"type" : "People",
-					"requirements" : "Argue about the unreasonable cost of items, then visit or write a letter to The Coin. Or, receive a discount on goods.",
-					"reward" : "30 experience"
-				}
+				"type" : "People",
+				"requirements" : "Argue about the unreasonable cost of items, then visit or write a letter to The Coin. Or, receive a discount on goods.",
+				"reward" : "30 experience"
 			},
 			"lofty-living-spaces" : {
 				"name" : "Lofty Living Spaces",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "Climbing the inn's ladder to the loft was quite a ways up and you nearly turned around to request a room on a lower level. Once in the loft though, there's enough area to roll around, so surely you'll slumber through the night. Or will you?",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "5 copper. While sleeping, fall out of the loft or awake before falling.",
-					"reward" : "20 experience"
-				}
+				"type" : "Architecture",
+				"requirements" : "5 copper. While sleeping, fall out of the loft or awake before falling.",
+				"reward" : "20 experience"
 			},
 			"ive-been-looking-for-you" : {
 				"name" : "I've Been Looking For You",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "There's no way around it. Domrhask has markets with bountiful trinkets, objects, armor, and weapons scattered in various towers. If there's something a person needs, the city has it. And unfortunately, that person is you. Let's see how much can be spent in a day.",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete &quot;Rate of Exchange&quot;. 30 copper. Discover an item that you have been seeking and purchase it.",
-					"reward" : "50 experience"
-				}
+				"type" : "Special",
+				"requirements" : "Complete \"Rate of Exchange\". 30 copper. Discover an item that you have been seeking and purchase it.",
+				"reward" : "50 experience"
 			},
 			"what-goes-up" : {
 				"name" : "What Goes Up",
 				"icon" : "icon-bg-green rpg-castle",
-				"desc" : "&quot;Out of Order&quot; is the last thing anybody wants to view on a sign when nearing the city elevators. Time is of the essence and when needing to go up, the stairs are still an exhausting, yet feasible option.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Take the stairs to the top level of a tower and describe your stamina level during or when completing this.",
-					"reward" : "35 experience"
-				}
+				"desc" : "\"Out of Order\" is the last thing anybody wants to view on a sign when nearing the city elevators. Time is of the essence and when needing to go up, the stairs are still an exhausting, yet feasible option.",
+				"type" : "Architecture",
+				"requirements" : "Take the stairs to the top level of a tower and describe your stamina level during or when completing this.",
+				"reward" : "35 experience"
 			},
 			"a-fools-errand" : {
 				"name" : "A Fool's Errand",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "What was that noise? Is the airship shaking? Were the warnings about frequent crashes true!? Could it be engine failure or a vicious snow storm or the ship hitting the side of the mountain? No matter the cause, start praying that you make it out of this situation.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Be present on a bound airship that almost crashes.",
-					"reward" : "40 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Be present on a bound airship that almost crashes.",
+				"reward" : "40 experience"
 			},
 			"safety-in-numbers" : {
 				"name" : "Safety In Numbers",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "There's numerous ways to get to Domrhask, but the leading method may be traveling as a group. Caravans can be joined and even better if the accompanying people are skilled adventurers. Consequently, these gatherings regularly become targets for wild beasts in the region.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Travel with a group and fend off foes that try to attack.",
-					"reward" : "50 experience, 15 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Travel with a group and fend off foes that try to attack.",
+				"reward" : "50 experience, 15 copper"
 			},
 			"a-new-blade" : {
 				"name" : "A New Blade",
 				"icon" : "rpg-open-book",
 				"desc" : "The gauntlet has been set up and its time for the Dwarves to choose a new The Sword! Not only is this a momentous occasion to be part of, but the whole city is alive with festivities complete with drinks, food, and games.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Attend the gauntlet that determines which Dwarf will become the next The Sword.",
-					"reward" : "50 experience, 10 copper"
-				}
+				"type" : "Lore",
+				"requirements" : "Attend the gauntlet that determines which Dwarf will become the next The Sword.",
+				"reward" : "50 experience, 10 copper"
 			},
 			"ban-hammer" : {
 				"name" : "Ban Hammer",
 				"icon" : "rpg-open-book",
 				"desc" : "It is no secret how Dwarven folk respond when presented with magic. But to see The Hammer in action, laying down judgements when mystical elements are about, can be quite intimidating.",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "Be banished or watch as another is banished when The Hammer determines there was magic involvement about.",
-					"reward" : "50 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "Be banished or watch as another is banished when The Hammer determines there was magic involvement about.",
+				"reward" : "50 experience"
 			},
 			"unreasonable-upgrade" : {
 				"name" : "Unreasonable Upgrade",
 				"icon" : "rpg-open-book",
 				"desc" : "It is convenient that The Shield has a roster and map of all armories in Domrhask. With so many stores, searching for an upgrade can be tedious. And even more tedious is locating a shop that has first-rate deals (and one that hopefully won't take all your money).",
-				"details" : {
-					"type" : "Lore",
-					"requirements" : "30 copper. Search the city (at least eight stores) for the best and most costly upgrade to your current weapon or armor.",
-					"reward" : "65 experience"
-				}
+				"type" : "Lore",
+				"requirements" : "30 copper. Search the city (at least eight stores) for the best and most costly upgrade to your current weapon or armor.",
+				"reward" : "65 experience"
 			},
 			"new-age-remedies" : {
 				"name" : "New Age Remedies",
 				"icon" : "icon-bg-purple rpg-portal",
 				"desc" : "Being in Domrhask is an unfavorable time to catch a cold or fever. If a person is magic tolerant, relying on alternative healing methods are frustrating. The road to recovery requires putting trust in the city hospitals and their practices.",
-				"details" : {
-					"type" : "Magic",
-					"requirements" : "Catch an illness when in Domrhask and be cured by non-magical methods that do or do not work.",
-					"reward" : "50 experience"
-				}
+				"type" : "Magic",
+				"requirements" : "Catch an illness when in Domrhask and be cured by non-magical methods that do or do not work.",
+				"reward" : "50 experience"
 			},
 			"keep-it-secret-keep-it-safe" : {
 				"name" : "Keep It Secret, Keep It Safe",
 				"icon" : "icon-bg-purple rpg-portal",
 				"desc" : "In a city that restricts discussion and operation of supernatural energies, what do people do when a sticky situation requires magic? Maybe you are the one using it; maybe you aren't. The more important question here is: how long can you keep silent?",
-				"details" : {
-					"type" : "Magic",
-					"requirements" : "In a situation where magic is necessary, attempt to use it or help another use it secretly.",
-					"reward" : "30 experience"
-				}
+				"type" : "Magic",
+				"requirements" : "In a situation where magic is necessary, attempt to use it or help another use it secretly.",
+				"reward" : "30 experience"
 			},
 			"todays-special" : {
 				"name" : "Today's Special",
 				"icon" : "icon-bg-green rpg-castle",
 				"desc" : "Ah, The Bearded Siren! A delightful tavern with patrons just as bearded and pleasant. The building is primarily occupied by Dwarves and while these folk are hard-pressed to talk to those outside their race, with a bit of coin, hearty grub can be ordered. At least the menu's special is on sale.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "20 copper. Have a reaction to the special which will be randomly chosen by an admin.",
-					"reward" : "45 experience"
-				}
+				"type" : "Architecture",
+				"requirements" : "20 copper. Have a reaction to the special which will be randomly chosen by an admin.",
+				"reward" : "45 experience"
 			},
 			"high-risk-sports" : {
 				"name" : "High Risk Sports",
 				"icon" : "icon-bg-green rpg-castle",
-				"desc" : "Visiting The Bearded Siren on any other evening would have been a better choice. Tonight, however, is a night of sporting events and randomly, you have been chosen to participate. The crowd is not accepting &quot;no&quot; for an answer.",
-				"details" : {
-					"type" : "Architecture",
-					"requirements" : "Engage in a competition inside The Bearded Siren (from wrestling to weapon challenges to boxing).",
-					"reward" : "40 experience, 20 copper, 1 silver"
-				}
+				"desc" : "Visiting The Bearded Siren on any other evening would have been a better choice. Tonight, however, is a night of sporting events and randomly, you have been chosen to participate. The crowd is not accepting \"no\" for an answer.",
+				"type" : "Architecture",
+				"requirements" : "Engage in a competition inside The Bearded Siren (from wrestling to weapon challenges to boxing).",
+				"reward" : "40 experience, 20 copper, 1 silver"
 			},
 			"good-riddance" : {
 				"name" : "Good Riddance",
 				"icon" : "icon-bg-brown rpg-direction-sign",
-				"desc" : "Domrhask is definitely either a &quot;love it&quot; or &quot;hate it&quot; place. The Dwarves express gratitude or no emotion at all when certain folk depart. Non-residents are usually happy enough to leave with their money and limbs still in tact.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Leave Domrhask and reflect accordingly about the visit. If applicable, have Dwarves also respond to the departure.",
-					"reward" : "30 experience"
-				}
+				"desc" : "Domrhask is definitely either a \"love it\" or \"hate it\" place. The Dwarves express gratitude or no emotion at all when certain folk depart. Non-residents are usually happy enough to leave with their money and limbs still in tact.",
+				"type" : "Expedition",
+				"requirements" : "Leave Domrhask and reflect accordingly about the visit. If applicable, have Dwarves also respond to the departure.",
+				"reward" : "30 experience"
 			}
 		}
 	},
@@ -1021,81 +825,65 @@
 				"name" : "Where the River Goes",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Roads and skies are not the only methods for journeying. The Ordinuad River runs north to south through central segments of the land. Though there are sections that contain rough rapids, in the right places, the current allows a person to lazily drift and relax.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "For a day or more, float down the Ordinuad River to a destination of your choosing.",
-					"reward" : "15 experience, 5 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "For a day or more, float down the Ordinuad River to a destination of your choosing.",
+				"reward" : "15 experience, 5 copper"
 			},
 			"anything-but-ordinuad" : {
 				"name" : "Anything but Ordinuad",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Popular opinion dictates that the Ordinuad River has refreshing and rejuvenating water. Every now and then, an adventurer who has traversed the river will tell you otherwise. In some areas, the water is tainted.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Drink from the Ordinuad River and describe the taste depending on your location.",
-					"reward" : "15 experience, 5 copper"
-				}
+				"type" : "Expedition",
+				"requirements" : "Drink from the Ordinuad River and describe the taste depending on your location.",
+				"reward" : "15 experience, 5 copper"
 			},
 			"little-getaways" : {
 				"name" : "Little Getaways",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "Despite its sizable cities, rivers, and mountains, Khy'eras has small islands that dot the perimeters of land or are situated out in the oceans. These portions of land are perfect for escaping and unwinding.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Find your way to and camp out at three different Khy'eras islands.",
-					"reward" : "35 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Find your way to and camp out at three different Khy'eras islands.",
+				"reward" : "35 experience"
 			},
 			"the-endless" : {
 				"name" : "The Endless",
 				"icon" : "icon-bg-brown rpg-direction-sign",
 				"desc" : "The true size of Khy'eras ocean - the Res'lora Azure - is unknown and its shroud of mist has not helped to determine this measurement or if there are any lands beyond what is marked on maps. Despite this, the never-ending waters contain pockets of treasures, chances at exploration, and mysteries.",
-				"details" : {
-					"type" : "Expedition",
-					"requirements" : "Spend two days out at sea, explore the waters, and uncover a small artifact or encounter a form of aquatic life.",
-					"reward" : "35 experience"
-				}
+				"type" : "Expedition",
+				"requirements" : "Spend two days out at sea, explore the waters, and uncover a small artifact or encounter a form of aquatic life.",
+				"reward" : "35 experience"
 			},
 			"map-maker" : {
 				"name" : "Map Maker",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "Wandering throughout Khy'eras is becoming easier! Roads and landmarks are recognizable and even more so when these places are charted on a map.",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete eight achievements where you visited unique cities, locations, or buildings. Achievements must be presented in a list.",
-					"reward" : "40 experience"
-				}
+				"type" : "Special",
+				"requirements" : "Complete eight achievements where you visited unique cities, locations, or buildings. Achievements must be presented in a list.",
+				"reward" : "40 experience"
 			},
 			"gourmand" : {
 				"name" : "Gourmand",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "Though you wouldn't claim to have an outstanding palate, tasting regional dishes of Khy'eras has given your taste buds wisdom. Consider yourself knowledgeable about what to stuff your face with and what to avoid.",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete all four &quot;Today's Special&quot; achievements.",
-					"reward" : "40 experience"
-				}
+				"type" : "Special",
+				"requirements" : "Complete all four \"Today's Special\" achievements.",
+				"reward" : "40 experience"
 			},
 			"well-rested" : {
 				"name" : "Well Rested",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "In addition to having a mental list of places to chow down at, you're also familiar with exceptional places to sleep at. After all, it is imperative for a seasoned traveler such as yourself to be well rested prior to journeying or causing a ruckus.",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete four achievements requiring you to spend the night in Fellsgard, Verdant Row, Ajteire, and Domrhask.",
-					"reward" : "40 experience"
-				}
+				"type" : "Special",
+				"requirements" : "Complete four achievements requiring you to spend the night in Fellsgard, Verdant Row, Ajteire, and Domrhask.",
+				"reward" : "40 experience"
 			},
 			"i-get-around" : {
 				"name" : "I Get Around",
 				"icon" : "icon-bg-yellow rpg-holy-grail",
 				"desc" : "For a person to claim they are educated about Khy'eras' terrain and countries, they should have information regarding top travel choices and methods to get around. This could be useful news to pass onto fledgling adventurers... or not.",
-				"details" : {
-					"type" : "Special",
-					"requirements" : "Complete four achievements related to transportation, where you depart from or go to Fellsgard, Verdant Row, Ajteire, and Domrhask.",
-					"reward" : "40 experience"
-				}
+				"type" : "Special",
+				"requirements" : "Complete four achievements related to transportation, where you depart from or go to Fellsgard, Verdant Row, Ajteire, and Domrhask.",
+				"reward" : "40 experience"
 			}
 		}
 	}

@@ -108,7 +108,6 @@ class utilities {
 			],
 			'script_name' => str_replace('.' . $this->php_ext, '', $this->user->page['page_name']),
 			'page'        => $this->user->page['page'],
-			'json_path'   => './ext/displaycoffee/khyeras/json/',
 			'tables'      => [
 				'groups'      => $this->groups_table,
 				'pages'       => $this->pages_table,
@@ -159,6 +158,14 @@ class utilities {
 		$this->db->sql_freeresult($group_result);
 
 		return $common;
+	}
+
+	/**
+	* Get json, format, and return it
+	*/
+	public function get_json($file) {
+		$file_json = file_get_contents('./ext/displaycoffee/khyeras/json/' . $file . '.json');
+		return json_decode($file_json, true);
 	}
 
 	/**

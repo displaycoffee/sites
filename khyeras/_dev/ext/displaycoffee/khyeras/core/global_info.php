@@ -90,12 +90,8 @@ class global_info {
 		// Add list of achievements and completed user achievements only for achievement page
 		$achievements_array = array();
 		if ($common['script_name'] == 'app/gameplay-achievements') {
-			// List of achievements
-			$achievements_json = file_get_contents($common['json_path'] . 'achievements.json');
-			$achievements = json_decode($achievements_json, true);
-
 			$achievements_array = array(
-				'KHY_ACHIEVEMENTS' => $achievements,
+				'KHY_ACHIEVEMENTS' => $this->utilities->get_json('achievements'),
 				'KHY_USER_ACHIEVEMENTS' => $pf['c_achievements']['value']
 			);
 		}
@@ -103,18 +99,36 @@ class global_info {
 		// Add list of half-breed race combinations
 		$half_breed_array = array();
 		if ($common['script_name'] == 'app/lore-races-half-breed') {
-			// List of achievements
-			$half_breed_json = file_get_contents($common['json_path'] . 'half_breed.json');
-			$half_breed = json_decode($half_breed_json, true);
-
 			$half_breed_array = array(
-				'KHY_HALF_BREED' => $half_breed
+				'KHY_HALF_BREED' => $this->utilities->get_json('half_breed')
 			);
 		}
 
+		// Add list of timeline events
+		$timeline_array = array();
+		if ($common['script_name'] == 'app/lore-timeline') {
+			$timeline_array = array(
+				'KHY_TIMELINE' => $this->utilities->get_json('timeline')
+			);
+		}
+
+		// Add list of faqs
+		$faq_array = array();
+		if ($common['script_name'] == 'app/help/bbcode' || $common['script_name'] == 'app/about-khyeras-faq') {
+			$faq_array = array(
+				'KHY_BBCODE_FAQ' => $this->utilities->get_json('bbcode_faq'),
+				'KHY_KHYERAS_FAQ' => $this->utilities->get_json('khyeras_faq')
+			);
+		}
+
+		// Add list of layout variables
+		$layout_array = array(
+			'KHY_LAYOUT' => $this->utilities->get_json('layout')
+		);
+
 		// Assign global template variables for re-use
 		$this->template->assign_vars(array_merge(
-			$account_array, $character_array, $achievements_array, $half_breed_array
+			$account_array, $character_array, $achievements_array, $half_breed_array, $timeline_array, $faq_array, $layout_array
 		));
 	}
 
@@ -509,9 +523,17 @@ class global_info {
 				$character_filters[$key] = $value;
 			}
 
+			// Update characters array to be formatted like other json
+			$formatted_characters = [
+				'characters' => [
+					'name' => 'Characters',
+					'items' => $characters
+				]
+			];
+
 			// Assign global template variables for re-use
 			$this->template->assign_vars(array(
-				'KHY_CHARACTERS'        => $characters,
+				'KHY_CHARACTERS'        => $formatted_characters,
 				'KHY_CENSUS'            => $character_census,
 				'KHY_CHARACTER_FILTERS' => $character_filters
 	 		));
@@ -528,8 +550,7 @@ class global_info {
 		// Don't run any of the below code unless on the correct pages
 		if ($common['script_name'] == 'app/gameplay-badges' || $common['script_name'] == 'viewtopic' || $this->utilities->in_string($common['page'], 'mode=viewprofile')) {
 			// List of badges
-			$badges_json = file_get_contents($common['json_path'] . 'badges.json');
-			$badges = json_decode($badges_json, true);
+			$badges = $this->utilities->get_json('badges');
 
 			// No need to add recipients on profiles
 			if ($common['script_name'] == 'app/gameplay-badges') {
@@ -597,8 +618,7 @@ class global_info {
 		// Don't run any of the below code unless on the correct pages
 		if ($common['script_name'] == 'app/gameplay-collections' || $this->utilities->in_string($common['page'], 'mode=viewprofile')) {
 			// List of collections
-			$collections_json = file_get_contents($common['json_path'] . 'collections.json');
-			$collections = json_decode($collections_json, true);
+			$collections = $this->utilities->get_json('collections');
 
 			// No need to add recipients on profiles
 			if ($common['script_name'] == 'app/gameplay-collections') {

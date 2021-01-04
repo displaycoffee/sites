@@ -33,7 +33,7 @@
 		{% endif %}
 
 		{% set cards_add = [{
-			title      : 'Level ' ~ actual_level,
+			name      : 'Level ' ~ actual_level,
 			level      : actual_level,
 			icon       : icon,
 			experience : experience ? experience : '&#48;',
@@ -63,20 +63,20 @@
 
 {{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Levels', card_filters) }}
 
-{% for detail in card %}
-	{% if detail.level % multiplier == 1 %}
-		<section id="{{ function.create_handle(detail.range) }}" class="page-content-section toggleable-section" data-quick-name="{{ detail.range }}">
+{% for item in card %}
+	{% if item.level % multiplier == 1 %}
+		<section id="{{ function.create_handle(item.range) }}" class="page-content-section toggleable-section" data-quick-name="{{ item.range }}">
 			<h3>
-				<button class="toggle-button button-link" type="button" data-toggle-type="level" data-toggle-id="{{ detail.level }}" data-toggle-name="{{ detail.range }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ detail.range }}
+				<button class="toggle-button button-link" type="button" data-toggle-type="level" data-toggle-id="{{ item.level }}" data-toggle-name="{{ item.range }}" data-toggle-state="true" data-toggle-mobile="false"><i class="icon icon-xl fa-angle-up menu-trigger"></i></button> {{ item.range }}
 			</h3>
 			<div class="card-grid">
 	{% endif %}
-	{% set card_id = function.create_handle(detail.title) %}
-	{% set card_changed = (completed_cards && (function.create_handle(detail.title)) in completed_cards) ? true : false %}
+	{% set card_id = function.create_handle(item.name) %}
+	{% set card_changed = (completed_cards && (function.create_handle(item.name)) in completed_cards) ? true : false %}
 	<div id="{{ card_id }}" class="card-block{% if card_changed %} card-opacity{% endif %}">
-		<h5 class="card-title">{{ detail.title }}</h5>
+		<h5 class="card-title">{{ item.name }}</h5>
 		<div class="icon-wrapper">
-			<i class="icon icon-round {{ detail.icon }}" aria-hidden="true"></i>
+			<i class="icon icon-round {{ item.icon }}" aria-hidden="true"></i>
 		</div>
 		<div class="card-description">
 			{% if card_changed %}
@@ -84,29 +84,30 @@
 					<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i> Level complete!
 				</span>
 			{% endif %}
-			<span class="card-description-wrapper">Requirements and details on {{ detail.level }} are listed below.</span>
+			<span class="card-description-wrapper">Requirements and details on {{ item.level }} are listed below.</span>
 		</div>
 		<div class="card-clear"></div>
-		{% if detail.experience || detail.bonus %}
+		{% set show_details = (item.experience || item.bonus) ? true : false %}
+		{% if show_details %}
 			<dl class="details details-small">
-				{% if detail.experience %}
+				{% if item.experience %}
 					<dt>Experience:</dt>
-					<dd>{{ detail.experience }}</dd>
+					<dd>{{ item.experience }}</dd>
 				{% endif %}
-				{% if detail.bonus %}
+				{% if item.bonus %}
 					<dt>Bonus:</dt>
-					<dd>{{ detail.bonus }}</dd>
+					<dd>{{ item.bonus }}</dd>
 				{% endif %}
 			</dl>
 		{% endif %}
 	</div>
 	{% set card_data %}{% apply spaceless %}
-		{% set new_range = detail.range | replace({'Levels ' : ''}) %}
-		{% set new_bonus = (detail.bonus == 'No bonus.') ? 'No bonus' : 'Has bonus' %}
+		{% set new_range = item.range | replace({'Levels ' : ''}) %}
+		{% set new_bonus = (item.bonus == 'No bonus.') ? 'No bonus' : 'Has bonus' %}
 		{'id' : '#{{ card_id }}', 'filters' : 'range={{ function.create_handle(new_range) }}, bonus={{ function.create_handle(new_bonus) }}, status={{ card_changed ? 'completed' : 'not-completed' }}', 'applied' : 0}{% if !loop.last %},{% endif %}
 	{% endapply %}{% endset %}
 	{% set card_object = card_object ~ card_data %}
-	{% if detail.level % multiplier == 0 %}
+	{% if item.level % multiplier == 0 %}
 			</div>
 		</section>
 	{% endif %}

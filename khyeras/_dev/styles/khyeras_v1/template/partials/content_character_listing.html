@@ -3,75 +3,81 @@
 
 {% if KHY_CHARACTERS %}
 	{% apply spaceless %}
-		{% set card = KHY_CHARACTERS %}
-
+		{% set cards = KHY_CHARACTERS %}
+		
 		{% set card_object = '' %}
 	{% endapply %}
 
 	{{ function.create_filters(KHY_USER_ACCOUNT_TYPE, 'Characters', KHY_CHARACTER_FILTERS) }}
 
-	<section class="page-content-section">
-		<div class="card-grid">
-			{% for detail in card %}
-				{% set card_id = 'character-' ~ function.create_handle(detail.name) ~ detail.key %}
-				{% set card_changed = (detail.last_post == 'Never' || detail.days_since > 180) ? true : false %}
-				<div id="{{ card_id }}" class="card-block">
-					<h5 class="card-title">
-						<a href="{{ ROOT_PATH }}{{ detail.profile }}">{{ detail.name }}</a>
-					</h5>
-					{{ function.display_avatar(detail.avatar, T_THEME_PATH) }}
-					<div class="card-description">
-						<div class="character-card">
-							{{ function.display_level(detail.level, 'true') }}
-							{{ function.display_stats(detail.stats.hp, detail.stats.mp, detail.remaining.hp, detail.remaining.mp, 'true') }}
+	{% for key, card in cards %}
+		<section id="{{ key }}" class="page-content-section">
+			{% if card.desc %}
+				<p>{{ card.desc }}</p>
+			{% endif %}
+			<div class="card-grid">
+				{% for item_key, item in card.items %}
+					{% set card_id = key  ~ '-' ~ function.create_handle(item.name) %}
+					{% set card_changed = (item.last_post == 'Never' || item.days_since > 180) ? true : false %}
+					<div id="{{ card_id }}" class="card-block">
+						<h5 class="card-title">
+							<a href="{{ ROOT_PATH }}{{ item.profile }}">{{ item.name }}</a>
+						</h5>
+						{{ function.display_avatar(item.avatar, T_THEME_PATH) }}
+						<div class="card-description">
+							<div class="character-card">
+								{{ function.display_level(item.level, 'true') }}
+								{{ function.display_stats(item.stats.hp, item.stats.mp, item.remaining.hp, item.remaining.mp, 'true') }}
+							</div>
+							{{ function.display_currency(item.currency) }}
 						</div>
-						{{ function.display_currency(detail.currency) }}
-					</div>
-					<div class="card-clear"></div>
-					{% if detail.race || detail.class || detail.gender || detail.residence || detail.writer_url || detail.profile %}
-						<dl class="details details-small">
-							{% if detail.race %}
-								<dt>Race:</dt>
-								<dd>{{ function.replace_comma(detail.race) }}</dd>
-							{% endif %}
-							{% if detail.class %}
-								<dt>Class:</dt>
-								<dd>{{ function.replace_comma(detail.class) }}</dd>
-							{% endif %}
-							{% if detail.gender %}
-								<dt>Gender:</dt>
-								<dd>{{ detail.gender }}</dd>
-							{% endif %}
-							{% if detail.residence %}
-								<dt>Residence:</dt>
-								<dd>{{ ((detail.residence | length) > textlimit) ? (detail.residence[:textlimit] ~ '...') : detail.residence }}</dd>
-							{% endif %}
-							<dt>Writer Name:</dt>
-							<dd>
-								{% if detail.writer_url %}
-									<a href="{{ ROOT_PATH }}{{ detail.writer_url }}">{{ detail.writer_name }}</a>
-								{% else %}
-									Writer account not linked yet
+						<div class="card-clear"></div>
+						{% set show_details = (item.race || item.class || item.gender || item.residence || item.writer_url || item.profile) ? true : false %}
+						{% if show_details %}
+							<dl class="details details-small">
+								{% if item.race %}
+									<dt>Race:</dt>
+									<dd>{{ function.replace_comma(item.race) }}</dd>
 								{% endif %}
-							</dd>
-							{% if detail.profile %}
-								<dt>Profile:</dt>
-								<dd><a href="{{ ROOT_PATH }}{{ detail.profile }}">View additional details</a></dd>
-							{% endif %}
-						</dl>
-					{% endif %}
-				</div>
-				{% set card_data %}{% apply spaceless %}
-					{'id' : '#{{ card_id }}', 'filters' : 'race={{ function.create_handle(detail.parameters.race.0) }}, {% if detail.parameters.race.1 %}race={{ function.create_handle(detail.parameters.race.1) }}, {% endif %}class={{ function.create_handle(detail.parameters.class.0) }}, {% if detail.parameters.class.1 %}class={{ function.create_handle(detail.parameters.class.1) }}, {% endif %}gender={{ function.create_handle(detail.parameters.gender) }}, residence={{ function.create_handle(detail.parameters.residence) }}, status={{ function.create_handle(detail.parameters.status) }}', 'applied' : 0}{% if !loop.last %},{% endif %}
-				{% endapply %}{% endset %}
-				{% set card_object = card_object ~ card_data %}
-			{% endfor %}
-		</div>
-	</section>
+								{% if item.class %}
+									<dt>Class:</dt>
+									<dd>{{ function.replace_comma(item.class) }}</dd>
+								{% endif %}
+								{% if item.gender %}
+									<dt>Gender:</dt>
+									<dd>{{ item.gender }}</dd>
+								{% endif %}
+								{% if item.residence %}
+									<dt>Residence:</dt>
+									<dd>{{ ((item.residence | length) > textlimit) ? (item.residence[:textlimit] ~ '...') : item.residence }}</dd>
+								{% endif %}
+								<dt>Writer Name:</dt>
+								<dd>
+									{% if item.writer_url %}
+										<a href="{{ ROOT_PATH }}{{ item.writer_url }}">{{ item.writer_name }}</a>
+									{% else %}
+										Writer account not linked yet
+									{% endif %}
+								</dd>
+								{% if item.profile %}
+									<dt>Profile:</dt>
+									<dd><a href="{{ ROOT_PATH }}{{ item.profile }}">View additional details</a></dd>
+								{% endif %}
+							</dl>
+						{% endif %}
+					</div>
+					{% set card_data %}{% apply spaceless %}
+						{'id' : '#{{ card_id }}', 'filters' : 'race={{ function.create_handle(item.parameters.race.0) }}, {% if item.parameters.race.1 %}race={{ function.create_handle(item.parameters.race.1) }}, {% endif %}class={{ function.create_handle(item.parameters.class.0) }}, {% if item.parameters.class.1 %}class={{ function.create_handle(item.parameters.class.1) }}, {% endif %}gender={{ function.create_handle(item.parameters.gender) }}, residence={{ function.create_handle(item.parameters.residence) }}, status={{ function.create_handle(item.parameters.status) }}', 'applied' : 0}{% if !loop.last %},{% endif %}
+					{% endapply %}{% endset %}
+					{% set card_object = card_object ~ card_data %}
+				{% endfor %}
+			</div>
+		</section>
 
-	<script>
-		var cardBlocks = [{{ card_object }}];
-	</script>
+		<script>
+			var cardBlocks = [{{ card_object }}];
+		</script>
+	{% endfor %}
 {% else %}
 	<section class="page-content-section">
 		<p>There are no active characters.</p>

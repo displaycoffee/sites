@@ -1,43 +1,17 @@
-{% set footer_links = {
-	'Listed At' : [
-		{
-			name : 'RPG Initiative',
-			url :  '//rpginitiative.com',
-			image : ROOT_PATH ~ 'images/content/misc/banner-rpginitiative.png'
-		},
-		{
-			name : 'RPG-Directory',
-			url :  '//rpg-directory.com/index.php',
-			image : '//files.jcink.net/uploads/rpgdirectory/RPGD_Buttons/rpgdbutton1.png'
-		},
-		{
-			name : 'RPG Rating System',
-			url :  '//rpgrating.com',
-			image : ROOT_PATH ~ 'images/content/misc/banner-rpgrating-333.png'
-		}
-	],
-	'Affiliates' : [
-		{
-			name : 'Thorns: Uprising',
-			url :  '//anaxasdiaries.com/',
-			image : ROOT_PATH ~ 'images/content/misc/banner-thorns-uprising.png'
-		}
-	]
-} %}
+{% macro create_footer_links(link_set, path) %}
+	{% if link_set && link_set.items %}
+		<h4>{{ link_set.name }}</h4>
+		<div class="listed-at-wrapper">
+			{% for item_key, item in link_set.items %}
+				<a class="listed-at-link" href="{{ item.link }}" target="_blank">
+					<img src="{% if 'images/' in item.image %}{{ path }}{% endif %}{{ item.image }}" alt="{{ item.name }}" title="{{ item.name }}" />
+				</a>
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endmacro %}
 
-{% if footer_links %}
-	{% for key, link in footer_links %}
-		<h4>{{ key }}</h4>
-		{% if (link | length) > 0 %}
-			<div class="listed-at-wrapper">
-				{% for detail in link %}
-					<a class="listed-at-link" href="{{ detail.url }}" target="_blank">
-						<img src="{{ detail.image }}" alt="{{ detail.name }}" title="{{ detail.name }}" />
-					</a>
-				{% endfor %}
-			</div>
-		{% else %}
-			<p><em>Coming soon...!</em></p>
-		{% endif %}
-	{% endfor %}
+{% if KHY_LAYOUT['footer-listed-at'] || KHY_LAYOUT['footer-affiliates'] %}
+	{{ _self.create_footer_links(KHY_LAYOUT['footer-listed-at'], ROOT_PATH) }}
+	{{ _self.create_footer_links(KHY_LAYOUT['footer-affiliates'], ROOT_PATH) }}
 {% endif %}

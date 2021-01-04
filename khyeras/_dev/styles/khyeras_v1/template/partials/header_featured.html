@@ -1,43 +1,20 @@
-{% set featured_blocks = [
-	{
-		url  : 'viewtopic.php?f=9&t=361',
-		type : 'nanowrim',
-		text : 'NaNoWriMo'
-	},
-	{
-		url  : 'members-character-census',
-		type : 'character-census',
-		text : 'Character Census'
-	},
-	{
-		url  : 'members-character-listing',
-		type : 'character-listing',
-		text : 'Character Listing'
-	},
-	{
-		url  : 'setting',
-		type : 'setting',
-		text : 'Expanded Locations'
-	}
-] %}
-
-{% if featured_blocks && (featured_blocks | length) > 0 %}
+{% if KHY_LAYOUT['featured-blocks'] && KHY_LAYOUT['featured-blocks'].items %}
 	<section id="featured-content" class="featured-content">
 		<div class="wrapper">
 			<div class="featured-title">
 				<h4>
-					<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>Featured<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>
+					<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>{{ KHY_LAYOUT['featured-blocks'].name }}<i class="icon rpg-icon rpg-stars-stack" aria-hidden="true"></i>
 				</h4>
 			</div>
 			<div class="flex-row flex-row-05">
-				{% for feature in featured_blocks %}
-					<div class="flex-column featured-{{ feature.type }}">
-						<a href="{{ ROOT_PATH }}{{ feature.url }}">
+				{% for item_key, item in KHY_LAYOUT['featured-blocks'].items %}
+					<div class="flex-column featured-{{ item_key }}">
+						<a href="{{ ROOT_PATH }}{{ item.link }}">
 							<div class="featured-details">
 								<div class="image-wrap">
-									<img src="{{ ROOT_PATH }}images/content/misc/feature-{{ feature.type }}.jpg" alt="{{ feature.text }}" />
+									<img src="{{ ROOT_PATH }}images/content/misc/feature-{{ item_key }}.jpg" alt="{{ item.name }}" />
 								</div>
-								<p>{{ feature.text }}</p>
+								<p>{{ item.name }}</p>
 							</div>
 						</a>
 					</div>

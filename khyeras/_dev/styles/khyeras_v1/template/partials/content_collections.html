@@ -25,19 +25,20 @@
 							<span class="card-description-wrapper">{{ item.desc }}</span>
 						</div>
 						<div class="card-clear"></div>
-						{% if item.details || item.recipients %}
+						{% set show_details = (item.origin || item.trigger || item.rating || item.recipients) ? true : false %}
+						{% if show_details %}
 							<dl class="details details-small">
-								{% if item.details.origin %}
+								{% if item.origin %}
 									<dt>Origin:</dt>
-									<dd>{{ item.details.origin }}</dd>
+									<dd>{{ item.origin }}</dd>
 								{% endif %}
-								{% if item.details.trigger %}
+								{% if item.trigger %}
 									<dt>Trigger:</dt>
-									<dd><a href="{{ ROOT_PATH }}{{ item.details.link }}">{{ item.details.trigger }}</a></dd>
+									<dd><a href="{{ ROOT_PATH }}{{ item.link }}">{{ item.trigger }}</a></dd>
 								{% endif %}
-								{% if item.details.rating %}
+								{% if item.rating %}
 									<dt>Rating:</dt>
-									<dd>{{ item.details.rating }}</dd>
+									<dd>{{ item.rating }}</dd>
 								{% endif %}
 								{% if item.recipients %}
 									<dt>Recipients:</dt>

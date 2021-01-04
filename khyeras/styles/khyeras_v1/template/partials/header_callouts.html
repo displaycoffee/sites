@@ -1,65 +1,26 @@
-{% set header_links = {
-	'Announcements' : [
-		{
-			name : 'Updates 11.07.20',
-			date : 'November 07, 2020',
-			url  : 'viewtopic.php?f=9&t=365'
-		},
-		{
-			name : 'NaNoWriMo',
-			date : 'November 01, 2020',
-			url  : 'viewtopic.php?f=9&t=361'
-		},
-		{
-			name : 'Happy First!',
-			date : 'June 07, 2020',
-			url  : 'viewtopic.php?f=9&t=339'
-		},
-		{
-			name : 'Updates 05.09.20',
-			date : 'May 09, 2020',
-			url  : 'viewtopic.php?f=9&t=337'
-		},
-		{
-			name : 'Updates 04.12.20',
-			date : 'April 12, 2020',
-			url  : 'viewtopic.php?f=9&t=325'
-		}
-	],
-	'Events'        : [
-		{
-			name : 'Spooky Sundown Voitng',
-			date : 'November 07, 2020',
-			url  : 'viewtopic.php?f=26&t=364'
-		},
-		{
-			name : 'Spooky Sundown',
-			date : 'October 17, 2020',
-			url  : 'viewtopic.php?f=26&t=351'
-		}
-	]
-} %}
+{% macro create_header_callouts(link_set, path) %}
+	{% if link_set && link_set.items %}
+		{% set textlimit = (( link_set.items | length) > 1) ? 25 : 55 %}
+		<div class="flex-column">
+			<h5>{{ link_set.name }}</h5>
+			<ul>
+				{% for item_key, item in link_set.items %}
+					<li>
+						<a href="{{ path }}{{ item.link }}">
+							{{ ((item.name | length) > textlimit) ? (item.name[:textlimit] ~ '...') : item.name }}
+						</a> posted {{ item.date }}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+{% endmacro %}
 
-{% if header_links %}
-	{% set textlimit = ((header_links | length) > 1) ? 25 : 55 %}
+{% if KHY_LAYOUT['header-announcements'] || KHY_LAYOUT['header-events'] %}
 	<div class="site-links">
 		<div class="flex-row flex-row-10">
-			{% for key, link in header_links %}
-				{% if (link | length) > 0 %}
-					<div class="flex-column">
-						<h5>{{ key }}</h5>
-						<ul>
-							{% for detail in link %}
-								<li>
-									<a href="{{ ROOT_PATH }}{{ detail.url }}">
-										{{ ((detail.name | length) > textlimit) ? (detail.name[:textlimit] ~ '...') : detail.name }}
-									</a> posted {{ detail.date }}
-								</li>
-							{% endfor %}
-						</ul>
-					</div>
-				{% endif %}
-			{% endfor %}
+			{{ _self.create_header_callouts(KHY_LAYOUT['header-announcements'], ROOT_PATH) }}
+			{{ _self.create_header_callouts(KHY_LAYOUT['header-events'], ROOT_PATH) }}
 		</div>
 	</div>
 {% endif %}

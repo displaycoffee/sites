@@ -1,0 +1,217 @@
+{
+	"age-of-rebirth" : {
+		"name" : "Age of Rebirth",
+		"desc" : "000 &bullet; 462",
+		"items" : {
+			"000" : {
+				"name" : "000",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "Khy'eras, a dying realm, is discovered by five Eidolons: <a href=\"./lore-religion-archaicism#ixaziel\">Ixaziel</a>, <a href=\"./lore-religion-archaicism#pheriss\">Pheriss</a>, <a href=\"./lore-religion-archaicism#ristgir\">Ristgir</a>, <a href=\"./lore-religion-archaicism#nytha\">Ny'tha</a>, and <a href=\"./lore-religion-archaicism#dainyil\">Dainyil</a>. The spirit beings give the land another chance and reawaken it using their rare magic. With the efforts of Ixaziel and Pheriss, Khy'eras is blessed with exotic creatures (like Dragons), plant-life, lands, and oceans."
+			},
+			"100" : {
+				"name" : "100",
+				"icon" : "icon-bg-yellow rpg-icon rpg-holy-grail",
+				"desc" : "To live upon the realm, races, such as <a href=\"./lore-races-fae\">Fae</a>, <a href=\"./lore-races#elf\">Elves</a>, and <a href=\"./lore-races-human\">Humans</a> are conceived by Ixaziel."
+			},
+			"120" : {
+				"name" : "120",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "Ristgir bestowed the sun and fire while Ny'tha gave the moon and stars, together paving a path towards the concept of time."
+			},
+			"122" : {
+				"name" : "122",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "As a final act of Eidolon gifting, Dainyil founded knowledge, arts, and inspiration for the races to cultivate and manage themselves."
+			},
+			"204" : {
+				"name" : "204",
+				"icon" : "icon-bg-orange rpg-icon rpg-two-shadows",
+				"desc" : "Ixaziel grants abilities to a chosen group of Humans, permitting them to feel as animals, all in an effort to lecture on controlled hunting and environmental balance. These Humans are referred to as \"Empaths\"."
+			},
+			"248" : {
+				"name" : "248",
+				"icon" : "icon-bg-green rpg-icon rpg-castle",
+				"desc" : "Alongside the coast of <a href=\"./setting-tviyr\">Tviyr</a>, a city called \"<a href=\"./setting-tviyr-fellsgard\">Fellsgard</a>\" is founded which eventually becomes a central hub for all races to meet and mingle."
+			},
+			"215" : {
+				"name" : "215",
+				"icon" : "icon-bg-purple rpg-icon rpg-portal",
+				"desc" : "Magic is sealed away as it is deemed too potent for the masses. Without protest, nearly all society continues to live with the absence of magic."
+			},
+			"462" : {
+				"name" : "462",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "This age ends and the next begins."
+			}
+		}
+	},
+	"age-of-unveiling" : {
+		"name" : "Age of Unveiling",
+		"desc" : "000 &bullet; 254",
+		"items" : {
+			"000" : {
+				"name" : "000",
+				"icon" : "icon-bg-purple rpg-icon rpg-portal",
+				"desc" : "<a href=\"./lore-religion-idolism#bhelest\">Bhelest</a>, an unrecognized scholar at the time, attempts to unlock the Eidolons' forbidden magic. By ripping open a veil in the spiritual world, he obtains powers and practices wielding and shaping magic."
+			},
+			"064" : {
+				"name" : "064",
+				"icon" : "icon-bg-green rpg-icon rpg-castle",
+				"desc" : "Stone Golems called <a href=\"/lore-races#terra\">\"Irenohl\"</a> emerge from the northern Slyscera Mountains and construct the city of <a href=\"./setting-irtuen-reaches-domrhask\">Domrhask</a> in <a href=\"./setting-irtuen-reaches\">Irtuen Reaches</a>."
+			},
+			"089" : {
+				"name" : "089",
+				"icon" : "icon-bg-purple rpg-icon rpg-portal",
+				"desc" : "Through selling magic on black markets, Bhelest spreads his influence throughout the regions. He learns that he can stop souls from returning to the realm and claims the wandering dead as his own."
+			},
+			"093" : {
+				"name" : "093",
+				"icon" : "icon-bg-yellow rpg-icon rpg-holy-grail",
+				"desc" : "Ixaziel pulls the Fae - in their bird form - from their home in the mountains, making them Human-like in the process."
+			},
+			"113" : {
+				"name" : "113",
+				"icon" : "icon-bg-yellow rpg-icon rpg-holy-grail",
+				"desc" : "To correct any wrong-doings, Ixaziel gives the weakened Fae wings with brilliant colors allowing them to fly and feel alive again."
+			},
+			"122" : {
+				"name" : "122",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "The Eidolons learn of the chaos that Bhelest has been inflicting upon the land. They rally to stop him, but realize Pheriss is missing. Consequently, the oceans become restless and a thick plague of mist surrounds the coastline, disallowing sea voyage."
+			},
+			"123a" : {
+				"name" : "123",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "Pheriss' aura is sensed and the remaining four Eidolons go to the location they know the spirit to be at. They encounter Bhelest waiting with Pheriss' essence merged in an abomination - a massive hydra called \"Nihegora\"."
+			},
+			"123b" : {
+				"name" : "123",
+				"icon" : "icon-bg-red rpg-icon rpg-crossed-swords",
+				"desc" : "In a rage over Pheriss' demise, Ixaziel summons Dragons to battle the hydra. Fourteen days pass as the Dragons fight alongside the Eidolons to stop Nihegora. Near extinction, the Dragons flee and the abandoned Eidolons' powers are transferred to Nihegora. The Eidolons are exiled by Bhelest."
+			},
+			"168" : {
+				"name" : "168",
+				"icon" : "icon-bg-green rpg-icon rpg-castle",
+				"desc" : "For protection, the Fae head to <a href=\"./setting-ninraih\">Ninraih's</a> jungles and build the city of <a href=\"./setting-ninraih-ajteire\">Ajteire</a>."
+			},
+			"254" : {
+				"name" : "254",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "This age ends and the next begins."
+			}
+		}
+	},
+	"age-of-dominance" : {
+		"name" : "Age of Dominance",
+		"desc" : "000 &bullet; 202",
+		"items" : {
+			"000" : {
+				"name" : "000",
+				"icon" : "icon-bg-red rpg-icon rpg-crossed-swords",
+				"desc" : "The denizens live under Bhelest's rule. To strengthen his position, Bhelest creates a constant cover of nightfall using Ny'tha's magic and an undead army with the souls he captured. Cities and towns are destroyed by Nihegora. The people abandon their lingering faith in the Eidolons."
+			},
+			"086" : {
+				"name" : "086",
+				"icon" : "icon-bg-orange rpg-icon rpg-two-shadows",
+				"desc" : "Bhelest tricks Victoria Erair into drinking a vial of poisoned-laced blood which kills her and turns her undead. After waking up in a blood-thirsty rage, she retaliates by spawning the <a href=\"./lore-races-korcai\">Korcai</a> race and attempts to hunt Bhelest."
+			},
+			"202" : {
+				"name" : "202",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "This age ends and the next begins."
+			}
+		}
+	},
+	"age-of-valor" : {
+		"name" : "Age of Valor",
+		"desc" : "000 &bullet; 035",
+		"items" : {
+			"000" : {
+				"name" : "000",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "<a href=\"./lore-religion-idolism#cecilia\">Cecilia</a> of Fellsgard devises a way to end Bhelest by employing a combination of the city's lighthouses and Ristgir's magic. She departs on a journey and gathers followers along the way who believe in her cause."
+			},
+			"004" : {
+				"name" : "004",
+				"icon" : "icon-bg-red rpg-icon rpg-crossed-swords",
+				"desc" : "Bhelest sends an imposing army to Domrhask and enslaves the Irenohl, taking control of the city with intentions to use the north's natural resources for weaponry."
+			},
+			"028" : {
+				"name" : "028",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "Hearing that Cecelia's solution is related to a light source, fireflies are magically enchanted to protect Ajteire."
+			},
+			"030" : {
+				"name" : "030",
+				"icon" : "icon-bg-yellow rpg-icon rpg-holy-grail",
+				"desc" : "The bickering Elves are split into the <a href=\"./lore-races-kerasoka\">Kerasoka</a> and <a href=\"./lore-races-lumeacia\">Lumeacia</a> tribes. The Kerasoka lose their magic by Bhelest's hand and move to Ajteire. The Lumeacia head off to an unknown location, shielded from the world."
+			},
+			"034" : {
+				"name" : "034",
+				"icon" : "icon-bg-red rpg-icon rpg-crossed-swords",
+				"desc" : "Ristgir's magic is unearthed in his temple ruins and a mage in Cecilia's group contains the energy. The party heads back to Fellsgard. Followers of Cecilia and Bhelest hear of the news and are at the city fighting as Cecilia returns. The lighthouses and Ristgir's magic are fused together which weakens the undead. Bhelest is defeated and Nihegora retreats with no master in command. Cecilia is shot with an arrow and dies."
+			},
+			"035" : {
+				"name" : "035",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "This age ends and the next begins."
+			}
+		}
+	},
+	"age-of-neverend" : {
+		"name" : "Age of Neverend",
+		"desc" : "000 &bullet; 289",
+		"items" : {
+			"000" : {
+				"name" : "000",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "The use of magic, though not entirely banned, is discouraged in several places and cities. A portion of the mist has withdrawn and folk manage to travel and explore."
+			},
+			"001" : {
+				"name" : "001",
+				"icon" : "icon-bg-orange rpg-icon rpg-two-shadows",
+				"desc" : "Domrhask is released from capture and the Irenohl are abandoned, but the stone giants transform into <a href=\"./lore-races-dwarf\">Dwarves</a> who rebuild the city."
+			},
+			"002" : {
+				"name" : "002",
+				"icon" : "icon-bg-orange rpg-icon rpg-two-shadows",
+				"desc" : "Empaths' skills are altered, allowing individuals to change into animals and other living creatures. They are labeled as their own race - \"<a href=\"./lore-races-shapeshifter\">Shapeshifters</a>\"."
+			},
+			"008" : {
+				"name" : "008",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "Religion is deemed safe to practice again and is divided between  <a href=\"./lore-religion-archaicism\">Archaicism</a> and <a href=\"./lore-religion-idolism\">Idolism</a>."
+			},
+			"012" : {
+				"name" : "012",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "Six, secret mages native to Fellsgard assist in reconstructing the city using technology that incorporates wind and water power. With effort, the city becomes a staple for advancement, enlightenment, and engineering."
+			},
+			"031" : {
+				"name" : "031",
+				"icon" : "icon-bg-orange rpg-icon rpg-two-shadows",
+				"desc" : "In seclusion, Dragons gather Human companions to help their beast race become educated. While together, they form the race of <a href=\"./lore-races-uedrahc\">Ue'drahc</a>, blood hybrids of Human and Dragon."
+			},
+			"052a" : {
+				"name" : "052",
+				"icon" : "icon-bg-green rpg-icon rpg-castle",
+				"desc" : "<a href=\"./setting-tviyr-verdant-row\">Verdant Row</a> is established by spirits as a quick-stop town - a resting point - for weary travelers."
+			},
+			"052b" : {
+				"name" : "052",
+				"icon" : "icon-bg-orange rpg-icon rpg-two-shadows",
+				"desc" : "Months into Verdant Row's construction, a mass murder plot takes place resulting in the race of Ghosts."
+			},
+			"077" : {
+				"name" : "077",
+				"icon" : "icon-bg-orange rpg-icon rpg-two-shadows",
+				"desc" : "<a href=\"./lore-races-elemental\">Elementals</a>, a race birthed from a combination of \"Aura\" (link to the physical word) and \"Force\" (link to magic), emerge from Ninraih."
+			},
+			"289" : {
+				"name" : "289",
+				"icon" : "rpg-icon rpg-open-book",
+				"desc" : "New adventures in Khy'eras await those who will have them. <em>Will you be one to accept...?</em>"
+			}
+		}
+	}
+}

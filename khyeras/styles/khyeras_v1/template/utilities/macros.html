@@ -40,9 +40,9 @@
 	</section>
 {% endmacro %}
 
-{% macro create_details(details) %}
+{% macro create_details(items) %}
 	<dl class="details">
-		{% for name, value in details %}
+		{% for name, value in items %}
 			{% if value %}
 				<dt>{{ name }}{{ lang('COLON') }}</dt>
 				<dd>{{ value }}</dd>

@@ -1,0 +1,224 @@
+{
+	"header-announcements" : {
+		"name" : "Announcements",
+		"items" : {
+			"updates-010421" : {
+				"name" : "Updates 01.04.21",
+				"date" : "January 04, 2021",
+				"link" : "viewtopic.php?f=9&t=388"
+			},
+			"updates-110720" : {
+				"name" : "Updates 11.07.20",
+				"date" : "November 07, 2020",
+				"link" : "viewtopic.php?f=9&t=365"
+			},
+			"nanowrimo" : {
+				"name" : "NaNoWriMo",
+				"date" : "November 01, 2020",
+				"link" : "viewtopic.php?f=9&t=361"
+			},
+			"happy-first" : {
+				"name" : "Happy First!",
+				"date" : "June 07, 2020",
+				"link" : "viewtopic.php?f=9&t=339"
+			},
+			"updates-050920" : {
+				"name" : "Updates 05.09.20",
+				"date" : "May 09, 2020",
+				"link" : "viewtopic.php?f=9&t=337"
+			}
+		}
+	},
+	"header-events" : {
+		"name" : "Events",
+		"items" : {}
+	},
+	"featured-blocks" : {
+		"name" : "Featured",
+		"items" : {
+			"collections" : {
+				"name" : "Collections",
+				"link" : "gameplay-collections"
+			},
+			"character-census" : {
+				"name" : "Character Census",
+				"link" : "members-character-census"
+			},
+			"character-listing" : {
+				"name" : "Character Listing",
+				"link" : "members-character-listing"
+			},
+			"setting" : {
+				"name" : "Expanded Locations",
+				"link" : "setting"
+			}
+		}
+	},
+	"footer-listed-at" : {
+		"name" : "Listed At",
+		"items" : {
+			"rpg-initiative" : {
+				"name" : "RPG Initiative",
+				"image" : "images/content/misc/banner-rpginitiative.png",
+				"link" : "//rpginitiative.com"
+			},
+			"rpg-directory" : {
+				"name" : "RPG-Directory",
+				"image" : "//files.jcink.net/uploads/rpgdirectory/RPGD_Buttons/rpgdbutton1.png",
+				"link" : "//rpg-directory.com/index.php"
+			},
+			"rpg-rating-system" : {
+				"name" : "RPG Rating System",
+				"image" : "images/content/misc/banner-rpgrating-333.png",
+				"link" : "//rpgrating.com"
+			}
+		}
+	},
+	"footer-affiliates" : {
+		"name" : "Affiliates",
+		"items" : {
+			"thorns-uprising" : {
+				"name" : "Thorns: Uprising",
+				"image" : "images/content/misc/banner-thorns-uprising.png",
+				"link" : "//anaxasdiaries.com"
+			}
+		}
+	},
+	"quotes" : {
+		"name" : "Quotes",
+		"items" : {
+			"1" : {
+				"desc" : "Someone had once called Toa impulsive and while she had responded to this by slapping them in the face in retrospect they may have had a point.",
+				"author" : "<a href=\"./viewtopic.php?p=296#p296\">Toa</a>"
+			},
+			"2" : {
+				"desc" : "When the smoke vanished from the falling entity, a cat had taken the place of the hawk. Silvery coat, with black spots and large, tufted ears; Loxiel's cat form was the only chance he had at surviving this fall. A cat always landed on its feet... right?",
+				"author" : "<a href=\"./viewtopic.php?p=526#p526\">Loxiel</a>"
+			},
+			"3" : {
+				"desc" : "\"I... uh. I guess you saw that.\" Cass began nervously, offering the other a sheepish smile. \"You're shorter than I thought.\"",
+				"author" : "<a href=\"./viewtopic.php?p=522#p522\">Cassian Thander</a>"
+			},
+			"4" : {
+				"desc" : "With a shake of his now massive head, Harroc planted his paws firmly and let loose a bone-rattling howl. The mournful wail seemed to pierce through the jungle and leave silence behind. After several moments of silence, far off replies could be heard. They wove together and became uncountable before finally fading away.",
+				"author" : "<a href=\"./viewtopic.php?p=430#p430\">Harroc Crownegrove</a>"
+			},
+			"5" : {
+				"desc" : "\"Well, can't pretend I ever knew Lilian all that well, but I dare to say you're far more of a looker than she ever was; if you're still needing comfort in the dead of night, I've received splendid reviews about my bedside.\" Was it inappropriate? Maybe. Would Katarya disapprove of Val leaning over the counter with far more spirit than before and eyeing her black outfit up and down? Almost certainly, but try explaining good manners and empathy to a bard.",
+				"author" : "<a href=\"./viewtopic.php?p=468#p468\">Val Bellamy</a>"
+			},
+			"6" : {
+				"desc" : "\"If you're so berry talented, then lettuce hear you sweeten your tune to plumb the depths of our hearts as well as our coin purses, hmm? Give it another try, darling, and this time try to make it a-peel-ing instead of appalling.\" There was a lilt to his accent, an obvious blending of vowels and lingering on certain consonants that marked him just as much from Ninraih as his stature and his wings, as his color and flair marked him as a glorious jungle flower far from home.",
+				"author" : "<a href=\"./viewtopic.php?p=441#p4411\">Roan Mohan</a>"
+			},
+			"7" : {
+				"desc" : "\"Did you know,\" Mara began, abruptly breaking the silence, \"there is a love story about Ristgir and Ny'tha? It was said that Ixaziel did tell them to rule the heavens equally, instructing them to march across the sky in an endless parade of day into night, night into day. They follow after one another, always just out of reach.\"",
+				"author" : "<a href=\"./viewtopic.php?p=711#p711\">Mara Whitewood</a>"
+			},
+			"8" : {
+				"desc" : "\"Did he draw you in with some tale about his 'dear old nan' or was he just pathetic?\" She opened her eyes wide, innocently. \"Artemis can be rather manipulative, so I do hope you're staying on your toes.\"",
+				"author" : "<a href=\"./viewtopic.php?p=771#p771\">Ksenia</a>"
+			},
+			"9" : {
+				"desc" : "\"Mm,\" she hummed, her distracted tone verging on dismissive. Peering sidelong at her Lanae continued, adding more softly, \"Hide while you can, but like calls to like; your fangs are not invisible either - to those who know how to look.\"",
+				"author" : "<a href=\"./viewtopic.php?p=860#p860\">Lanae Ofnowhere</a>"
+			},
+			"10" : {
+				"desc" : "Swearing colourfully in his mother tongue, D&aacute;ire tried to wriggle out from under the flailing limbs of the wizard, was the man drunk? After managing to scramble to his feet, he could detect no lingering scents of stale liquor on the man, who was still on the ground. No longer flailing, just sitting quietly, squinting up at D&aacute;ire as he watched him.",
+				"author" : "<a href=\"./viewtopic.php?p=874#p874\">D&aacute;ire</a>"
+			},
+			"11" : {
+				"desc" : "I hate coming up with smart ass comments and not being able to use them, so instead, I made my way over to the fallen woman and said, \"I believe the store is closed. You may want to try back during normal business hours.\" And I reached out a hand to offer her a hand up.",
+				"author" : "<a href=\"./viewtopic.php?p=110#p110\">Victor Sage</a>"
+			},
+			"12" : {
+				"desc" : "\"What do you want? Congratulations on your vocal performance last night? Gotta say, the soprano screams at about three in the morning knocked me right off my bedroll. And the fortissimo groaning set it off so nicely, I hardly have room to mention that really lovely aria that seemed to consist of Artemis's name - and every idol and eidolon, ever.\"",
+				"author" : "<a href=\"./viewtopic.php?p=910#p910\">Ksenia</a>"
+			},
+			"13" : {
+				"desc" : "Maggie seemed kind and proud. A formidable old woman with a steely resolve and a warm heart. She might practice the Arts rather then wield a sword, but in his eyes she held every caliber of a knight.",
+				"author" : "<a href=\"./viewtopic.php?p=990#p990\">Arthur Claymore</a>"
+			},
+			"14" : {
+				"desc" : "Reputation was the only real currency that mattered when you dealt in the lawless and dangerous. Gold can be taken, forged, or simply never appear. Reputation took time to build, and could be destroyed in a moment. A man without it had less than the alleyways; they could be relied upon to stink.",
+				"author" : "<a href=\"./viewtopic.php?p=1190#p1190\">Artemis Black</a>"
+			},
+			"15" : {
+				"desc" : "\"Hey, no pushing now.\" He chided two kids as they tried to get closer. He stepped aside regardless; children should have fun; as much fun as is possible, especially since they were Human and would be dead soon anyway. Raen shrugged.",
+				"author" : "<a href=\"./viewtopic.php?p=1278#p1278\">Raen Silver</a>"
+			},
+			"16" : {
+				"desc" : "It was seldom the wolf was wrong in her assessments of threats, her extrasensory perceptions bordering on otherworldly. Khan had to wonder if she possessed the magic he had been robbed of, hundreds of years ago. It was a terrible thing to remember what was lost, particularly when it was intertwined with one's literal being.",
+				"author" : "<a href=\"./viewtopic.php?p=1426#p1426\">Galynhun-Khan Tinnudir</a>"
+			},
+			"17" : {
+				"desc" : "The wolf had started bouncing around excitedly by this point and he decided it was either a very lost companion to some sort of ranger, or had some terrible brain parasite. He'd heard of those once, they lived in the water. It's why you always boiled it.",
+				"author" : "<a href=\"./viewtopic.php?p=1626#p1626\">Malcolm Rhodes</a>"
+			},
+			"18" : {
+				"desc" : "When the crafter started showing all the signs of a creator possessed, Artemis knew he'd chosen correctly. Most people who made things from thin air tended to have similar monologues when approached with an opportunity. It meant they weren't paying any attention at all to silly details like their own safety or getting paid a fair amount.",
+				"author" : "<a href=\"./viewtopic.php?p=565#p565\">Artemis Black</a>"
+			},
+			"19" : {
+				"desc" : "The flying squirrel didn't respond. As usual. But it did happily take a few berries from her as she snacked on her way. Tika thought it was funny to feed berries to Tok, as the berries stained the creatures mouth and made her look carnivorous. Honestly, a carnivorous flying squirrel was a scary concept!",
+				"author" : "<a href=\"./viewtopic.php?p=1645#p1645\">Tika</a>"
+			},
+			"20" : {
+				"desc" : "She picked up one that looked promising - \"Pyromancy for Halfwits\" was the title, blazoned across a bright yellow cover. She tucked it under her arm and kept looking.",
+				"author" : "<a href=\"./viewtopic.php?p=1965#p1965\">Roridula Lunatus</a>"
+			},
+			"21" : {
+				"desc" : "If nothing else, at least admiring the buildings were interesting. He couldn't help but wonder if Cecilia had lived in one of these many houses, or maybe some other one of the many Idols, considering the absolute prestige in this area. Or did exciting things happen to ordinary folk? \"Maybe even... someone like me?\"",
+				"author" : "<a href=\"./viewtopic.php?p=2217#p2217\">Calem Sabathe</a>"
+			},
+			"22" : {
+				"desc" : "\"My teacher calls me Dez, and I'm looking for a performer.\" The dragon gave his best smile following his words.</p><p>\"Oh really aren't we all? Isn't that right soldiers?\" The three other warriors nodded in unison. The youngest gave an extra wink. \"Right, but you look like a thief to me. So watch yourself kid. We take pride in our job. Stay out of trouble and move along.\"",
+				"author" : "<a href=\"./viewtopic.php?p=2055#p2055\">Dessrexin</a>"
+			},
+			"23" : {
+				"desc" : "He doubted very much his master would be upset if Kit died of an infected wound. If anything, he'd probably beat Kit's cold corpse for the inconvenience.",
+				"author" : "<a href=\"./viewtopic.php?p=2472#p2472\">Kit Heron</a>"
+			},
+			"24" : {
+				"desc" : "\"Let no man stand before a Frost woman and show we deserve anything other than respect, beyond all.\"",
+				"author" : "<a href=\"./viewtopic.php?p=1726#p1726\">Katarya Frost</a>"
+			},
+			"25" : {
+				"desc" : "\"Tell me the absolute truth... unless it's bad news then lie to me and I shall go and drink myself to death, lamenting the best thing I had going for me; being absolutely gorgeous.\"",
+				"author" : "<a href=\"./viewtopic.php?p=2515#p2515\">Raen Silver</a>"
+			},
+			"26" : {
+				"desc" : "Quite a few faces turned from their food to look at her - and in that moment, June started to understand why this job might not have been for everyone. Some of these guys looked like they wrestled bears (wait, there were a few sailors here - maybe they wrestled octo-bears?) just for the fun of it.",
+				"author" : "<a href=\"./viewtopic.php?p=2480#p2480\">Spirits of Adventure</a>"
+			},
+			"27" : {
+				"desc" : "\"Put me to work,\" she said, a little tonelessly. \"I have some skill with a hammer. Not much. I am strong.\"</p><p>With this glowing assessment of her own capabilities complete, she stood and waited for her orders.",
+				"author" : "<a href=\"./viewtopic.php?p=2513#p2513\">Jourin Argall</a>"
+			},
+			"28" : {
+				"desc" : "\"Kess- Ksenia, I have had this at least seven times, and only vomited twice. Those are great odds.\" Ksenia put her head against her fist, shaking her head.",
+				"author" : "<a href=\"./viewtopic.php?p=2675#p2675\">Artemis Black</a>"
+			},
+			"29" : {
+				"desc" : "He had often come to the narrows as it was rarely travelled by others and so its rich waters made an ideal place to hunt for food - large schools of fish made a nice change in his diet. Not to mention there was something exhilarating even after nearly three centuries of gliding just above the water, seeing your reflection shimmer below you, and to feel the cool spray of the salt water as he dipped his head below to catch something. It was a little thing, silly really, but he still enjoyed it even as he was becoming too old for such things.",
+				"author" : "<a href=\"./viewtopic.php?p=2817#p2817\">Itzcohuatl</a>"
+			},
+			"30" : {
+				"desc" : "\"Cap'n! It's a dragon!\" Logan hollered down, fear in his voice.</p><p>Finn's head snapped up. Logan's cry told him that the man was serious and not drunk at all. The men fell silent and looked at Finn. He had just opened his mouth to tell them to man the ballistae, when the Queen's prow entered between the first pillars.",
+				"author" : "<a href=\"./viewtopic.php?p=2832#p2832\">Finn Roberts</a>"
+			},
+			"31" : {
+				"desc" : "\"The night is always darkest before the dawn.<br />Creatures wait in the shadows seeking victims unwary.<br />Keep your hearts strong however for the seventh son's rest is never.<br />The night is always darkest before the dawn.<br />Blackest hearts prowl the night seeking to give all a fright.<br />Keep your wits about you and you shall see it thru.<br />The night is always darkest before the dawn.<br />When the rays of Ristgir touch the ground all will be profound.<br />Worry not when night comes again the seventh son's work is about to begin.<br />The night is always darkest before the dawn.\"",
+				"author" : "<a href=\"./viewtopic.php?p=2151#p2151\">The Capuche sisters</a>"
+			},
+			"32" : {
+				"desc" : "\"If your here to save the day your late, It's already well past sunset. Thanks for believing in my talents with traps though. You literally put your lives in my hands.\" Every word dripped sarcasm though he wondered if the mortals picked up on it.",
+				"author" : "<a href=\"./viewtopic.php?p=2799#p2799\">Horus</a>"
+			},
+			"33" : {
+				"desc" : "\"Please, accept my apologies for the behavior of my colleague. She isn't a bad person, she just never tends to think about what she's saying. It's actually quite scientifically impressive how she can operate without using her brain.\" She murmured the last part to herself, but still received a glare from June.",
+				"author" : "<a href=\"./viewtopic.php?p=3183#p3183\">Calem Sabathe</a>"
+			}
+		}
+	}
+}
