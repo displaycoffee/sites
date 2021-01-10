@@ -164,7 +164,10 @@ class utilities {
 	* Get json, format, and return it
 	*/
 	public function get_json($file) {
-		$file_json = file_get_contents('./ext/displaycoffee/khyeras/json/' . $file . '.json');
+		$file_domain_live = 'https://khyeras.org';
+		$file_domain_dev = 'http://localhost:3000/sites/khyeras';
+		$file_domain = (strpos('localhost', $this->user->host) !== false) ? $file_domain_dev : $file_domain_live;
+		$file_json = file_get_contents($file_domain . '/ext/displaycoffee/khyeras/json/' . $file . '.json');
 		return json_decode($file_json, true);
 	}
 
