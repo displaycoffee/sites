@@ -65,7 +65,7 @@
 			"rpg-directory" : {
 				"name" : "RPG-Directory",
 				"image" : "//files.jcink.net/uploads/rpgdirectory/RPGD_Buttons/rpgdbutton1.png",
-				"link" : "//rpg-directory.com/index.php"
+				"link" : "http://rpg-directory.com/index.php"
 			},
 			"rpg-rating-system" : {
 				"name" : "RPG Rating System",

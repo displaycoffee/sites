@@ -20,7 +20,7 @@
 				<ul>
 					{% for key, value in data %}
 						<li>
-							<span class="pie-chart-key-color pie-chart-key-color-{{ loop.index0 }}"></span><strong>{{ key }}:</strong> {{ value }}
+							<span class="pie-chart-key-color pie-chart-key-color-{{ loop.index0 }}" data-key-name="{{ key }}"></span><strong>{{ key }}:</strong> {{ value }}
 						</li>
 					{% endfor %}
 				</ul>

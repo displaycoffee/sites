@@ -79,6 +79,10 @@
   color: #00bf80;
 }
 
+.bbcode-character-speech[data-name='Daniela'] {
+  color: #d4734a;
+}
+
 .bbcode-character-speech[data-name='Dash ODell'] {
   color: #008040;
 }

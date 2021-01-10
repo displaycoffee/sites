@@ -17,7 +17,7 @@ body {
 	-webkit-print-color-adjust: exact;
 	-webkit-tap-highlight-color: rgba($light-00, 0.00);
 	backface-visibility: hidden;
-	background: url($images + 'background.png') 0 0 repeat;
+	background: $color-02 url($images + 'background.png') 0 0 repeat;
 }
 
 img {
