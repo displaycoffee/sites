@@ -134,7 +134,7 @@
 				"trigger" : "Achievement - Unstable Stables",
 				"rating" : "Uncommon"
 			},
-			"Bumblesweet the Bear" : {
+			"bumblesweet-the-bear" : {
 				"name" : "Bumblesweet the Bear",
 				"icon" : "rpg-icon rpg-stable",
 				"desc" : "A rather gentle sandy-hued grizzly bear. Likes good company and long walks across Khy'eras.",
