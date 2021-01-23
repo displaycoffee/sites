@@ -88,6 +88,15 @@
 				"trigger" : "Achievement - Today's Special",
 				"rating" : "Common"
 			},
+			"seafood-chili" : {
+				"name" : "Seafood Chili",
+				"icon" : "rpg-icon rpg-fork-knife-spoon",
+				"desc" : "A deep red, very spicy broth with a mixture of chunks of shrimp, lobster, and clams; diced tomatoes; onions; corn; and beans.",
+				"origin" : "Fellsgard - Mac's",
+				"link" : "viewtopic.php?p=3288#p3288",
+				"trigger" : "Achievement - Today's Special",
+				"rating" : "Common"
+			},
 			"wild-rice-soup" : {
 				"name" : "Wild Rice Soup",
 				"icon" : "rpg-icon rpg-fork-knife-spoon",
