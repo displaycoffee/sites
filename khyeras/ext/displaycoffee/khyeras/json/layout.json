@@ -31,26 +31,36 @@
 	},
 	"header-events" : {
 		"name" : "Events",
-		"items" : {}
+		"items" : {
+			"faryvs-dawn" : {
+				"name" : "Faryv's Dawn",
+				"date" : "February 06, 2020",
+				"link" : "viewtopic.php?f=26&t=401"
+			}
+		}
 	},
 	"featured-blocks" : {
 		"name" : "Featured",
 		"items" : {
+			"faryvs-dawn" : {
+				"name"  : "Faryv's Dawn",
+				"image" : "images/content/misc/feature-faryvs-dawn.jpg",
+				"link"  : "viewtopic.php?f=9&t=337"
+			},
 			"collections" : {
-				"name" : "Collections",
-				"link" : "gameplay-collections"
+				"name"  : "Collections",
+				"image" : "images/content/misc/feature-collections.jpg",
+				"link"  : "gameplay-collections"
 			},
 			"character-census" : {
-				"name" : "Character Census",
-				"link" : "members-character-census"
+				"name"  : "Character Census",
+				"image" : "images/content/misc/feature-character-census.jpg",
+				"link"  : "members-character-census"
 			},
 			"character-listing" : {
-				"name" : "Character Listing",
-				"link" : "members-character-listing"
-			},
-			"setting" : {
-				"name" : "Expanded Locations",
-				"link" : "setting"
+				"name"  : "Character Listing",
+				"image" : "images/content/misc/feature-character-listing.jpg",
+				"link"  : "members-character-listing"
 			}
 		}
 	},
