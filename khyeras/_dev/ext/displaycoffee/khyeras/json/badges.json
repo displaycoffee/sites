@@ -7,6 +7,12 @@
 		"name" : "Events",
 		"desc" : "Badges awared through limited timed events.",
 		"items" : {
+			"faryvs-dawn" : {
+				"name" : "Faryv's Dawn",
+				"icon" : "images/badges/faryvs-dawn-x24.png",
+				"desc" : "Awared to those who participated in the Faryv's Dawn 2021 Event.",
+				"link" : "viewtopic.php?f=26&amp;t=401"
+			},
 			"spooky-sundown" : {
 				"name" : "Spooky Sundown",
 				"icon" : "images/badges/spooky-sundown-x24.png",

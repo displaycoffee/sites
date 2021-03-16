@@ -32,9 +32,14 @@
 	"header-events" : {
 		"name" : "Events",
 		"items" : {
+			"faryvs-dawn-voting" : {
+				"name" : "Faryv's Dawn Voting",
+				"date" : "March 15, 2021",
+				"link" : "viewtopic.php?f=26&t=415"
+			},
 			"faryvs-dawn" : {
 				"name" : "Faryv's Dawn",
-				"date" : "February 06, 2020",
+				"date" : "February 06, 2021",
 				"link" : "viewtopic.php?f=26&t=401"
 			}
 		}
@@ -43,9 +48,9 @@
 		"name" : "Featured",
 		"items" : {
 			"faryvs-dawn" : {
-				"name"  : "Faryv's Dawn",
+				"name"  : "Faryv's Dawn Voting",
 				"image" : "images/content/misc/feature-faryvs-dawn.jpg",
-				"link"  : "viewtopic.php?f=9&t=337"
+				"link"  : "viewtopic.php?f=26&t=415"
 			},
 			"collections" : {
 				"name"  : "Collections",
